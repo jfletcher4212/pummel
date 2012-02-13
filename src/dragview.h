@@ -14,6 +14,7 @@ class DragView : public QGraphicsView
 {
 public:
     DragView(QWidget *parent = 0);
+
 };
 
 #endif // DRAGVIEW_H
