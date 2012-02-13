@@ -32,6 +32,10 @@ private slots:
     void cut();
     void copy();
     void paste();
+    void newTab();
+    void saveAsFile();
+    void openFile();
+    void closeTab();
     void bold();
     void italic();
     void leftAlign();
@@ -55,6 +59,9 @@ private:
     Toolbar *toolbar;
     DrawArea *canvas;
     BorderLayout *layout;
+    /*Tabs for multiple files open at once*/
+    QTabWidget *tabWidget;
+    QWidget *fileTab;
 
 
     void createActions();
