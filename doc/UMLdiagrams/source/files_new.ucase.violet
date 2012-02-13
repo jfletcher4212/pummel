@@ -5,8 +5,8 @@
    <object id="ActorNode0" class="com.horstmann.violet.ActorNode"/> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>12.0</double> 
-     <double>214.0</double> 
+     <double>207.0</double> 
+     <double>224.0</double> 
     </void> 
    </object> 
   </void> 
@@ -20,8 +20,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>201.0</double> 
-     <double>228.0</double> 
+     <double>437.0</double> 
+     <double>203.0</double> 
     </void> 
    </object> 
   </void> 
@@ -35,8 +35,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>289.0</double> 
-     <double>293.0</double> 
+     <double>464.0</double> 
+     <double>298.0</double> 
     </void> 
    </object> 
   </void> 
@@ -50,8 +50,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>166.0</double> 
-     <double>333.0</double> 
+     <double>323.0</double> 
+     <double>312.0</double> 
     </void> 
    </object> 
   </void> 
@@ -65,8 +65,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>175.0</double> 
-     <double>87.0</double> 
+     <double>287.0</double> 
+     <double>64.0</double> 
     </void> 
    </object> 
   </void> 
@@ -80,8 +80,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>275.0</double> 
-     <double>162.0</double> 
+     <double>349.0</double> 
+     <double>148.0</double> 
     </void> 
    </object> 
   </void> 
@@ -95,8 +95,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>168.0</double> 
-     <double>521.0</double> 
+     <double>266.0</double> 
+     <double>459.0</double> 
     </void> 
    </object> 
   </void> 
@@ -110,8 +110,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>55.0</double> 
-     <double>66.0</double> 
+     <double>152.0</double> 
+     <double>69.0</double> 
     </void> 
    </object> 
   </void> 
@@ -125,8 +125,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>218.0</double> 
-     <double>405.0</double> 
+     <double>366.0</double> 
+     <double>378.0</double> 
     </void> 
    </object> 
   </void> 
@@ -150,6 +150,21 @@
     <void method="setLocation"> 
      <double>115.0</double> 
      <double>12.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="UseCaseNode8" class="com.horstmann.violet.UseCaseNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>Save project</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>569.0</double> 
+     <double>248.0</double> 
     </void> 
    </object> 
   </void> 
@@ -192,6 +207,26 @@
    <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
    <object idref="ActorNode0"/> 
    <object idref="UseCaseNode6"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.UseCaseRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="lineStyle"> 
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>«extend»</string> 
+    </void> 
+   </object> 
+   <object idref="UseCaseNode8"/> 
+   <object idref="UseCaseNode1"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.UseCaseRelationshipEdge"/> 
+   <object idref="ActorNode0"/> 
+   <object idref="UseCaseNode8"/> 
   </void> 
  </object> 
 </java> 
