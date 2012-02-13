@@ -1187,290 +1187,238 @@ Case Diagrams}}
 
 \subsubsection{Use Case Descriptions}
 
-\paragraph{Create new diagram - Req No. UC1}
-\subparagraph*{Actors}
-- User
-\subparagraph*{Goals}
-- Create a new diagram
-\subparagraph*{Preconditions}
-- UML editor is started
-\subparagraph*{Summary}
-- The user creates a new diagram.
-\subparagraph*{Related use cases}
- - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Click new on the top toolbar.
-\item A dialog pops up. Choose the diagram type in the dialog.
-\item Click create.
-\end{enumerate}
-\subparagraph*{Alternatives}
- - none -
-\subparagraph*{Post conditions\\}
-There is an empty diagram.  The diagram specific tools are activated on the left toolbar. One can now start drawing a UML diagram.
+\paragraph{Create new diagram - Req No. UC1\newline}
+ Actors - User
+Goals - Create a new diagram\\
+Preconditions - UML editor is started\\
+Summary - The user creates a new diagram.\\
+Related use cases - none\\
+Steps\\
+1. Click new on the top toolbar. \\
+2. A dialogue pops up. Choose the diagram type in the dialogue.\\
+3. Click create.\\
+Alternatives - none \\
+Post conditions - There is an empty diagram.  The diagram specific tools are activated on the left toolbar. One can now start drawing a UML diagram.
 
-\paragraph{Load a diagram - Req No. UC2
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Load a previously saved diagram
-\subparagraph*{Preconditions}- UML editor is started
-\subparagraph*{Summary}- The user loads a previously saved diagram from the file system.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Click open on the top toolbar.
-\item A dialog pops up. Navigate through your file system. Choose the file.
-\item Click open.
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}The saved diagram is open.  The diagram specific tools are activated on the left toolbar. One can now start editing the UML diagram.
+\paragraph{Load a diagram - Req No. UC2\newline}
+Actors- User\\
+Goals- Load a previously saved diagram\\
+Preconditions - UML editor is started\\
+Summary - The user loads a previously saved diagram from the file system.\\
+Related use cases - none\\
+Steps\\
+1. Click open on the top toolbar.\\
+2. A dialog pops up. Navigate through your file system. Choose the file.\\
+3. Click open.\\
+Alternatives - none\\
+Post conditions - The saved diagram is open.  The diagram specific tools are activated on the left toolbar. One can now start editing the UML diagram.\\
 
-\paragraph{Export a diagram - Req No. UC3
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Export the open diagram
-\subparagraph*{Preconditions}- Diagram file is opened
-\subparagraph*{Summary}- The user exports the open diagram to a PDF file.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Click save on the top toolbar. 
-\item Click export to PDF in the pop-down menu.
-\item Enter a filename.
-\item Click save.
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}The diagram is exported as a PDF file. The PDF file is saved in the user specified location of the users file system.
+\paragraph{Export a diagram - Req No. UC3\newline}
+Actors - User\\
+Goals - Export the open diagram\\
+Preconditions - Diagram file is opened\\
+Summary - The user exports the open diagram to a PDF file.\\
+Related use cases - none\\
+Steps\\
+1. Click save on the top toolbar. \\
+2. Click export to PDF in the pop-down menu.\\
+3. Enter a filename.\\
+4. Click save.\\
+Alternatives - none\\
+Post conditions - The diagram is exported as a PDF file. The PDF file is saved in the user specified location of the users file system.\\
 
-\paragraph{Save a diagram - Req No. UC4
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Save the open diagram
-\subparagraph*{Preconditions}- Diagram file is opened
-\subparagraph*{Summary}- The user saves the open diagram to a XML file.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Click save on the top toolbar.
-\item Click save as file in the pop-down menu.
-\item Enter a filename.
-\item Click save.
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}The diagram is saved as an XML file. The XML file is saved in the user specified location of the users file system.
+\paragraph{Save a diagram - Req No. UC4\newline}
+Actors - User\\
+Goals - Save the open diagram\\
+Preconditions - Diagram file is opened\\
+Summary - The user saves the open diagram to a XML file.\\
+Related use cases - none\\
+Steps\\
+1. Click save on the top toolbar.\\
+2. Click save as file in the pop-down menu.\\
+3. Enter a filename.\\
+4. Click save.\\
+Alternatives - none\\
+Post conditions - The diagram is saved as an XML file. The XML file is saved in the user specified location of the users file system.\\
 
-\paragraph{Print a diagram - Req No. UC5
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Print the open diagram
-\subparagraph*{Preconditions}- Diagram file is opened
-\subparagraph*{Summary}- The user prints the open diagram. The UML tool uses the OS's  print dialog and therefore the OS's print drivers.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Click print on the top toolbar.
-\item Select a printer.
-\item Select printer specific options. 
-\item When you are satisfied with the settings, click print.
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}The diagram is printed. 
-\paragraph{Toggle grid on/off - Req No. UC6
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Toggle the grid of the drawing area on or off
-\subparagraph*{Preconditions}- Diagram file is opened
-\subparagraph*{Summary}- The user toggles the grid of the drawing area on or off.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Click on grid on the top toolbar.
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}If the grid was turned on, the grid is turned off.
-If the grid was turned off, the grid is turned on.
-\paragraph{Place shapes on diagram - Req No. UC7
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Place a shape on the drawing area
-\subparagraph*{Preconditions}- Diagram file is opened
-\subparagraph*{Summary}- The user chooses a shape from the drawing toolbar and places it on the drawing area.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Select the shape from the left drawing toolbar.
-\item Click on the diagram to place the shape on the diagram.
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}The selected shape is placed on the drawing area at the place pointed at by the user.
+\paragraph{Print a diagram - Req No. UC5\newline}
+Actors - User\\
+Goals - Print the open diagram\\
+Preconditions - Diagram file is opened\\
+Summary - The user prints the open diagram. The UML tool uses the OS's  print dialog and therefore the OS's print drivers.\\
+Related use cases - none\\
+Steps\\
+1. Click print on the top toolbar.\\
+2. Select a printer.\\
+3. Select printer specific options. \\
+4. When you are satisfied with the settings, click print.\\
+Alternatives - none\\
+Post conditions - The diagram is printed. \\
 
-\paragraph{Connect shapes - Req No. UC8
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Connect two shapes on the drawing area with a connecting line
-\subparagraph*{Preconditions}- Diagram file is opened
-\subparagraph*{Summary}- The user chooses a line type from the drawing toolbar and specifies the two shapes on the drawing area to connect.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Select a connector from the left drawing toolbar.
-\item Click on the source shape.
-\item Click on the target shape.
-\item A connecting line is placed from the source shape to the target shape.
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}The selected line connects is placed on the drawing area at the place pointed at by the user.
+\paragraph{Toggle grid on/off - Req No. UC6\newline}
+Actors - User\\
+Goals - Toggle the grid of the drawing area on or off\\
+Preconditions - Diagram file is opened\\
+Summary - The user toggles the grid of the drawing area on or off.\\
+Related use cases - none\\
+Steps\\
+1. Click on grid on the top toolbar.\\
+Alternatives - none\\
+Post conditions - If the grid was turned on, the grid is turned off. If the grid was turned off, the grid is turned on.\\
 
-\paragraph{Undo commands - Req No. UC9
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Undo the last command
-\subparagraph*{Preconditions}- Diagram file is opened. A command has been used.
-\subparagraph*{Summary}- The last action taken by the user is being undone and put into a redo stack.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Click undo on the top toolbar.
-\item The last command is revoked.
-\item Continue drawing.
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}The last command is revoked and stored in the redo.
+\paragraph{Place shapes on diagram - Req No. UC7\newline}
+Actors - User\\
+Goals - Place a shape on the drawing area\\
+Preconditions - Diagram file is opened\\
+Summary - The user chooses a shape from the drawing toolbar and places it on the drawing area.\\
+Related use cases - none \\
+Steps\\
+1. Select the shape from the left drawing toolbar.\\
+2. Click on the diagram to place the shape on the diagram.\\
+Alternatives - none\\
+Post conditions - The selected shape is placed on the drawing area at the place pointed at by the user.\\
 
-\paragraph{Redo commands - Req No. UC10
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Redo the last undone command
-\subparagraph*{Preconditions}- Diagram file is opened. A command has been undone.
-\subparagraph*{Summary}- The last action on top of the redo stack is redone and removed from the stack.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Click redo on the top toolbar.
-\item The last revoked command is redone.
-\item Continue drawing.
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}The last undone action is redone and removed from the stack.
+\paragraph{Connect shapes - Req No. UC8\newline}
+Actors - User\\
+Goals - Connect two shapes on the drawing area with a connecting line\\
+Preconditions - Diagram file is opened\\
+Summary - The user chooses a line type from the drawing toolbar and specifies the two shapes on the drawing area to connect.\\
+Related use cases - none\\
+Steps\\
+1. Select a connector from the left drawing toolbar.\\
+2. Click on the source shape.\\
+3. Click on the target shape.\\
+4. A connecting line is placed from the source shape to the target shape.\\
+Alternatives - none\\
+Post conditions - The selected line connects is placed on the drawing area at the place pointed at by the user.\\
 
-\paragraph{Select shapes and multiple shapes - Req No. UC11
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Select one or more shapes
-\subparagraph*{Preconditions}- Shapes are available to select on the drawing area. 
-\subparagraph*{Summary}- The user selects the shapes for further commands.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Click on a shape to select it.
-\item Hold CTRL and click other shapes to select multiple shapes.
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}The selected shapes are marked. Further commands can be invoked to all selected shapes.
+\paragraph{Undo commands - Req No. UC9\newline}
+Actors - User\\
+Goals - Undo the last command\\
+Preconditions - Diagram file is opened. A command has been used.\\
+Summary - The last action taken by the user is being undone and put into a redo stack.\\
+Related use cases - none\\
+Steps\\
+1. Click undo on the top toolbar.\\
+2. The last command is revoked.\\
+3. Continue drawing.\\
+Alternatives - none\\
+Post conditions - The last command is revoked and stored in the redo.\\
 
-\paragraph{Move shapes - Req No. UC12
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Move one or more shapes
-\subparagraph*{Preconditions}- One or more shapes are selected
-\subparagraph*{Summary}- The user moves the shapes to a different location on the drawing area.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Select one or more shapes.
-\item Click and hold the mouse button on one of the shapes.
-\item Move the shapes to a new place.
-\item Release the mouse button
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}The selected shapes are moved to the new place.
+\paragraph{Redo commands - Req No. UC10\newline}
+Actors - User\\
+Goals - Redo the last undone command\\
+Preconditions - Diagram file is opened. A command has been undone.\\
+Summary - The last action on top of the redo stack is redone and removed from the stack.\\
+Related use cases - none\\
+Steps\\
+1. Click redo on the top toolbar.\\
+2. The last revoked command is redone.\\
+3. Continue drawing.\\
+Alternatives - none\\
+Post conditions - The last undone action is redone and removed from the stack.\\
 
-\paragraph{Copy shapes - Req No. UC13
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Copy one or more shapes
-\subparagraph*{Preconditions}- One or more shapes are selected
-\subparagraph*{Summary}- The user copies the selected shapes to the clipboard.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Select one or more shapes.
-\item Click copy on the top toolbar.
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}The selected shapes are copied to the clipboard and can be pasted in a drawing area.
+\paragraph{Select shapes and multiple shapes - Req No. UC11\newline}
+Actors - User\\
+Goals - Select one or more shapes\\
+Preconditions - Shapes are available to select on the drawing area. \\
+Summary - The user selects the shapes for further commands.\\
+Related use cases - none\\
+Steps//
+1. Click on a shape to select it.\\
+2. Hold CTRL and click other shapes to select multiple shapes.\\
+Alternatives - none\\
+Post conditions - The selected shapes are marked. Further commands can be invoked to all selected shapes.\\
 
-\paragraph{Cut shapes - Req No. UC14
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Cut one or more shapes
-\subparagraph*{Preconditions}- One or more shapes are selected
-\subparagraph*{Summary- }The user cuts the selected shapes to the clipboard. The shapes are removed from the drawing area.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Select one or more shapes.
-\item Click cut on the top toolbar.
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}The selected shapes are copied to the clipboard and can be pasted in a drawing area. The shapes are removed from the drawing area.
+\paragraph{Move shapes - Req No. UC12\newline}
+Actors - User\\
+Goals - Move one or more shapes\\
+Preconditions - One or more shapes are selected\\
+Summary - The user moves the shapes to a different location on the drawing area.\\
+Related use cases - none\\
+Steps\\
+1. Select one or more shapes.\\
+2. Click and hold the mouse button on one of the shapes.\\
+3. Move the shapes to a new place.\\
+4. Release the mouse button\\
+Alternatives - none\\
+Post conditions - The selected shapes are moved to the new place.\\
 
-\paragraph{Paste shapes - Req No. UC15
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Paste one or more shapes
-\subparagraph*{Preconditions}- A selection of shapes is stored in the clipboard
-\subparagraph*{Summary}- The user pastes the shapes from the clipboard into the drawing area.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Click paste on the top toolbar.
-\end{enumerate}
-\subparagraph*{Alternatives} - none -
-\subparagraph*{Post conditions\\}The shapes from the clipboard are inserted in the top left corner of the diagram.
+\paragraph{Copy shapes - Req No. UC13\newline}
+Actors - User\\
+Goals - Copy one or more shapes\\
+Preconditions - One or more shapes are selected\\
+Summary - The user copies the selected shapes to the clipboard.\\
+Related use cases - none\\
+Steps\\
+1. Select one or more shapes.\\
+2. Click copy on the top toolbar.\\
+Alternatives - none\\
+Post conditions - The selected shapes are copied to the clipboard and can be pasted in a drawing area.\\
 
-\paragraph{Edit shape properties - Req No. UC16
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Change the properties of a single shape
-\subparagraph*{Preconditions}- A shape is available for editing on the draw area.
-\subparagraph*{Summary}- The user edits a shape on the drawing area.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Select one shape.
-\item Click shape preferences on the top toolbar.
-\item Select shape specific options. 
-\item When you are satisfied with the settings, click ok.
-\end{enumerate}
+\paragraph{Cut shapes - Req No. UC14\newline}
+Actors - User\\
+Goals - Cut one or more shapes\\
+Preconditions - One or more shapes are selected\\
+Summary - The user cuts the selected shapes to the clipboard. The shapes are removed from the drawing area.\\
+Related use cases - none\\
+Steps\\
+1. Select one or more shapes.\\
+2. Click cut on the top toolbar.\\
+Alternatives - none\\
+Post conditions - The selected shapes are copied to the clipboard and can be pasted in a drawing area. The shapes are removed from the drawing area.\\
 
-\subparagraph*{Alternatives}- Instead of selecting a shape and clicking shape preferences on the toolbar, one can also double click on a shape to get to the shape specific options.
-\subparagraph*{Post conditions\\}The shape properties are changed.
+\paragraph{Paste shapes - Req No. UC15\newline}
+Actors - User\\
+Goals - Paste one or more shapes\\
+Preconditions - A selection of shapes is stored in the clipboard\\
+Summary - The user pastes the shapes from the clipboard into the drawing area.\\
+Related use cases - none\\
+Steps\\
+1. Click paste on the top toolbar.\\
+Alternatives - none\\
+Post conditions - The shapes from the clipboard are inserted in the top left corner of the diagram.\\
 
-\paragraph{Edit default properties - Req No. UC17
-}\subparagraph*{Actors}- User
-\subparagraph*{Goals}- Change the default properties of the UML tool
-\subparagraph*{Preconditions}- UML editor is started
-\subparagraph*{Summary}- The user edits the default properties of the UML tool.
-\subparagraph*{Related use cases} - none -
-\subparagraph*{Steps}
-\begin{enumerate}
-\item Click on options on the top toolbar.
-\item Modify preferences for the default shapes.
-\end{enumerate}
+\paragraph{Edit shape properties - Req No. UC16\newline}
+Actors - User\\
+Goals - Change the properties of a single shape\\
+Preconditions - A shape is available for editing on the draw area.\\
+Summary - The user edits a shape on the drawing area.\\
+Related use cases - none\\
+Steps\\
+1. Select one shape.\\
+2. Click shape preferences on the top toolbar.\\
+3. Select shape specific options. \\
+4. When you are satisfied with the settings, click ok.\\
+Alternatives - Instead of selecting a shape and clicking shape preferences on the toolbar, one can also double click on a shape to get to the shape specific options.\\
+Post conditions - The shape properties are changed.\\
 
-The shape options are:
-\begin{itemize}
-\item Color
-\item Fill color
-\item Line thickness
-\end{itemize}
+\paragraph{Edit default properties - Req No. UC17\newline}
+Actors - User\\
+Goals - Change the default properties of the UML tool\\
+Preconditions - UML editor is started\\
+Summary - The user edits the default properties of the UML tool.\\
+Related use cases - none\\
+Steps\\
+1. Click on options on the top toolbar.\\
+2. Modify preferences for the default shapes.\\
+\indent The shape options are:\\
+- Color\\
+- Fill color\\
+- Line thickness\\
 
-\indent The line options are:
-\begin{itemize}
-\item Color
-\item Thickness
-\end{itemize}
+\indent The line options are:\\
+- Color\\
+- Thickness\\
 
-
-\indent The text options are:
-\begin{itemize}
-
-\item Color
-\item Font
-\item Size
-\item Fill color
-\item Border color
-\end{itemize}
-
-
-\subparagraph*{Alternatives}- none -
-\subparagraph*{Post conditions\\}The default properties are changed.
+\indent The text options are:\\
+- Color\\
+- Font\\
+- Size\\
+- Fill color\\
+- Border color\\
+Alternatives - none\\
+Post conditions - The default properties are changed.\\
 
 
 % Noel end

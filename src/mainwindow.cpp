@@ -14,19 +14,29 @@
 #include "borderlayout.h"
 #include "drawarea.h"
 #include "toolbar.h"
-
+#include <QTabBar>
 MainWindow::MainWindow()
 {
     widget = new QWidget;
     setCentralWidget(widget);
 
     toolbar = new Toolbar;
+    /* need some way to get
+     * multiple canvas's
+     * for different tabs*/
     canvas = new DrawArea;
     layout = new BorderLayout;
-
+    /*Create tab objects*/
+    tabWidget = new QTabWidget;
+    fileTab = new QWidget;
+   // tabWidget->addTab(fileTab, tr("Start File"));
+    /*end*/
     layout->setMargin(5);
     layout->addWidget(toolbar, BorderLayout::West);
     layout->addWidget(canvas, BorderLayout::Center);
+    /*Add tab objects to mainwindow*/
+    layout->addWidget(tabWidget, BorderLayout::North);
+    /*end*/
     widget->setLayout(layout);
 
     createActions();
@@ -51,7 +61,12 @@ void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 
 void MainWindow::newFile()
 {
-    infoLabel->setText(tr("Invoked <b>File|New</b>"));
+    /* for some reason, this next line prevented the
+     * project from working correctly (ie, it would
+     * crash as soon as newFile() was called, even if
+     * newTab() was commented out)*/
+    //infoLabel->setText(tr("Invoked <b>File|New</b>"));
+    newTab();
 }
 
 void MainWindow::open()
@@ -92,6 +107,58 @@ void MainWindow::copy()
 void MainWindow::paste()
 {
     infoLabel->setText(tr("Invoked <b>Edit|Paste</b>"));
+}
+
+/*
+ * Function for creating a new tab;
+ * Should be invoked by new-file and open-file.
+ *
+ * For differentiating between unsaved and saved files,
+ * perhaps a 'filename' argument should be passed in.
+ *
+ * 'i' and 'setcurrentindex' are used to create a new
+ * canvas associated with that tab...somehow? How would
+ * they be kept track of (ie, each canvas associated with
+ * each tab)? .-.
+ */
+void MainWindow::newTab()
+{
+    int i = tabWidget->count();
+    QString n = "Untitled";
+    tabWidget->addTab(new QWidget(), "Untitled");
+    tabWidget->setCurrentIndex(i);
+
+}
+/*end*/
+
+void MainWindow::saveAsFile()
+{
+      QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
+      tabWidget->setTabText(tabWidget->currentIndex(), filename );
+      /* Insert
+       * actual
+       * saving
+       * function
+       * stuff
+       * here
+       */
+}
+
+void MainWindow::openFile()
+{
+    QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
+    newTab();
+    tabWidget->setTabText(tabWidget->currentIndex(), filename);
+    /* new tab
+     * set new tab name to filename
+     * load in stuff
+     * profit
+     * */
+}
+
+void MainWindow::closeTab()
+{
+    tabWidget->removeTab(tabWidget->currentIndex());
 }
 
 void MainWindow::bold()
@@ -165,15 +232,17 @@ void MainWindow::addSquare(){
 
 void MainWindow::createActions()
 {
-    newAct = new QAction(tr("&Use Case"), this);
-    //connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
+    newAct = new QAction(tr("New"), this);
+    connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
 
-    openAct = new QAction(tr("&Class Diagram"), this);
-    //connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
+    openAct = new QAction(tr("Close File"), this);
+    connect(openAct, SIGNAL(triggered()), this, SLOT(closeTab()));
 
-    saveAct = new QAction(tr("&Interaction"), this);
+    saveAct = new QAction(tr("Save as..."), this);
+    connect(saveAct, SIGNAL(triggered()), this, SLOT(saveAsFile()));
 
-    printAct = new QAction(tr("&State Chart"), this);
+    printAct = new QAction(tr("Open"), this);
+    connect(printAct, SIGNAL(triggered()), this, SLOT(openFile()));
 
     exitAct = new QAction(tr("Activity"), this);
 
@@ -307,7 +376,7 @@ void MainWindow::createActions()
 
 void MainWindow::createMenus()
 {
-    fileMenu = menuBar()->addMenu(tr("&New"));
+    fileMenu = menuBar()->addMenu(tr("File"));
     fileMenu->addAction(newAct);
     fileMenu->addAction(openAct);
     fileMenu->addAction(saveAct);
