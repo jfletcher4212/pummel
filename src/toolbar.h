@@ -42,8 +42,6 @@ public:
     //parameters for text
     textParams text;
 
-    int gridState;      //int to toggle grid on and off, used in toggleGrid()
-
 signals:
 
 public slots:
@@ -53,6 +51,39 @@ public slots:
     void toggleGrid();
     void showOptions();
 
+    void addRect();
+    void addSquare();
+    void addCircle();
+    void addEllipse();
+    void addNone();
+
+    void gridOn();
+    void gridOff();
+
+private:
+
+    void createActions();
+    void createMenus();
+
+
+    QPushButton * shapeButton;
+    QPushButton * textButton;
+    QPushButton * lineButton;
+    QPushButton * optionsButton;
+    QPushButton * gridButton;
+
+    QMenu *shapeMenu;
+    QActionGroup *shapesGroup;
+    QAction *addNoneAct;
+    QAction *addSquareAct;
+    QAction *addCircleAct;
+    QAction *addRectAct;
+    QAction *addEllipseAct;
+
+    QMenu *gridMenu;
+    QActionGroup *gridOnOffToggleGroup;
+    QAction *gridOnAct;
+    QAction *gridOffAct;
 };
 
 #endif // TOOLBAR_H

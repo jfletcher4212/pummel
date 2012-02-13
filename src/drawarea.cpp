@@ -14,3 +14,34 @@ DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth){
     this->setLayout(layout);
 }
 
+void DrawArea::setSceneCreateMode(ShapeType newType){
+    scene->setCreateMode(newType);
+}
+
+ShapeType DrawArea::getSceneCreateMode(){
+    return scene->getCreateMode();
+}
+
+void DrawArea::setSceneCreate(bool a){
+    scene->setSceneCreate(a);
+}
+
+bool DrawArea::getSceneCreate(){
+    return scene->getSceneCreate();
+}
+
+bool DrawArea::getSceneGrid(){
+    return scene->getGrid();
+}
+
+int DrawArea::getSceneGridSize(){
+    return scene->getGridSize();
+}
+
+void DrawArea::setSceneGrid(bool a){
+    scene->setGrid(a);
+}
+
+void DrawArea::setSceneGridSize(int newSize){
+    scene->setGridSize(newSize);
+}
