@@ -4,13 +4,15 @@
 */
 #include "toolbar.h"
 #include "optionsdialog.h"
+#include "drawarea.h"
+
+#include "global.h"
 
 Toolbar::Toolbar(QWidget *parent) :
     //QDialog(parent)
     QWidget(parent)
 {
     this->setWindowModality(Qt::NonModal);
-    this->
     options = new OptionsDialog;
 
     /* set defaults for Param variables
@@ -24,22 +26,27 @@ Toolbar::Toolbar(QWidget *parent) :
     line.color = "black";
     line.weight = 1;
 
-    gridState = 0;  //grid is initialized to off
+    createActions();
+    createMenus();
 
     QGridLayout *layout;
     layout = initButtons();
     setLayout(layout);
+
+    shapeButton->setMenu(shapeMenu);
+    gridButton->setMenu(gridMenu);
 }
 
 //create buttons and add to layout
 QGridLayout * Toolbar::initButtons()
 {
     //create buttons
-    QPushButton * shapeButton = new QPushButton(tr("Shape"));
-    QPushButton * textButton = new QPushButton(tr("Text"));
-    QPushButton * lineButton = new QPushButton(tr("Line"));
-    QPushButton * optionsButton = new QPushButton(tr("Options"));
-    QPushButton * gridButton = new QPushButton(tr("Grid On/Off"));
+    //shapeButton = new QPushButton(tr("Shape"), this);
+    shapeButton = new QPushButton(tr("Shape"));
+    textButton = new QPushButton(tr("Text"));
+    lineButton = new QPushButton(tr("Line"));
+    optionsButton = new QPushButton(tr("Options"));
+    gridButton = new QPushButton(tr("Grid"));
 
     // connect buttons to slots
     connect(shapeButton, SIGNAL(clicked()), this, SLOT(insertShape()));
@@ -62,6 +69,62 @@ QGridLayout * Toolbar::initButtons()
     return layout;
 }
 
+void Toolbar::createActions(){
+    addRectAct = new QAction(tr("Rectangle"), this);
+    addRectAct->setCheckable(true);
+    connect(addRectAct, SIGNAL(triggered()), this, SLOT(addRect()));
+
+    addEllipseAct = new QAction(tr("Ellipse"), this);
+    addEllipseAct->setCheckable(true);
+    connect(addEllipseAct, SIGNAL(triggered()), this, SLOT(addEllipse()));
+
+    addSquareAct = new QAction(tr("Square"), this);
+    addSquareAct->setCheckable(true);
+    connect(addSquareAct, SIGNAL(triggered()), this, SLOT(addSquare()));
+
+    addCircleAct = new QAction(tr("Circle"), this);
+    addCircleAct->setCheckable(true);
+    connect(addCircleAct, SIGNAL(triggered()), this, SLOT(addCircle()));
+
+    addNoneAct = new QAction(tr("None"), this);
+    addNoneAct->setCheckable(true);
+    addNoneAct->setChecked(true);
+    connect(addNoneAct, SIGNAL(triggered()), this, SLOT(addNone()));
+
+    shapesGroup = new QActionGroup(this);
+    shapesGroup->addAction(addNoneAct);
+    shapesGroup->addAction(addRectAct);
+    shapesGroup->addAction(addSquareAct);
+    shapesGroup->addAction(addCircleAct);
+    shapesGroup->addAction(addEllipseAct);
+
+    gridOnAct = new QAction(tr("On"), this);
+    gridOnAct->setCheckable(true);
+    gridOnAct->setChecked(true);
+    connect(gridOnAct, SIGNAL(triggered()), this, SLOT(gridOn()));
+
+    gridOffAct = new QAction(tr("Off"), this);
+    gridOffAct->setCheckable(true);
+    connect(gridOffAct, SIGNAL(triggered()), this, SLOT(gridOff()));
+
+    gridOnOffToggleGroup = new QActionGroup(this);
+    gridOnOffToggleGroup->addAction(gridOnAct);
+    gridOnOffToggleGroup->addAction(gridOffAct);
+}
+
+void Toolbar::createMenus(){
+    shapeMenu = new QMenu(this);
+    shapeMenu->addAction(addNoneAct);
+    shapeMenu->addAction(addSquareAct);
+    shapeMenu->addAction(addCircleAct);
+    shapeMenu->addAction(addRectAct);
+    shapeMenu->addAction(addEllipseAct);
+
+    gridMenu = new QMenu(this);
+    gridMenu->addAction(gridOnAct);
+    gridMenu->addAction(gridOffAct);
+}
+
 void Toolbar::showOptions()
 {
 //    options->exec();
@@ -79,9 +142,8 @@ void Toolbar::showOptions()
  * DrawArea object.  Use drawArea.insertShape, and pass in
  * the shape struct
  */
-void Toolbar::insertShape()
-{
-
+void Toolbar::insertShape(){
+    shapeButton->showMenu();
 }
 
 /*  add text into the drawing area. Use the parent's
@@ -111,4 +173,36 @@ void Toolbar::toggleGrid()
     else
         parent.drawArea.showGrid();
 */
+}
+
+void Toolbar::addRect(){
+    canvas->setSceneCreate(true);
+    canvas->setSceneCreateMode(Rectangle);
+}
+
+void Toolbar::addSquare(){
+    canvas->setSceneCreate(true);
+    canvas->setSceneCreateMode(Square);
+}
+
+void Toolbar::addCircle(){
+    canvas->setSceneCreate(true);
+    canvas->setSceneCreateMode(Circle);
+}
+
+void Toolbar::addEllipse(){
+    canvas->setSceneCreate(true);
+    canvas->setSceneCreateMode(Ellipse);
+}
+
+void Toolbar::addNone(){
+    canvas->setSceneCreate(false);
+}
+
+void Toolbar::gridOn(){
+    canvas->setSceneGrid(true);
+}
+
+void Toolbar::gridOff(){
+    canvas->setSceneGrid(false);
 }
