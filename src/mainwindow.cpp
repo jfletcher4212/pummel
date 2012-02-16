@@ -214,22 +214,6 @@ void MainWindow::aboutQt()
     infoLabel->setText(tr("Invoked <b>Help|About Qt</b>"));
 }
 
-void MainWindow::addRect(){
-    canvas->scene->setCreateMode(Rectangle);
-}
-
-void MainWindow::addEllipse(){
-    canvas->scene->setCreateMode(Ellipse);
-}
-
-void MainWindow::addCircle(){
-    canvas->scene->setCreateMode(Circle);
-}
-
-void MainWindow::addSquare(){
-    canvas->scene->setCreateMode(Square);
-}
-
 void MainWindow::createActions()
 {
     newAct = new QAction(tr("New"), this);
@@ -337,40 +321,12 @@ void MainWindow::createActions()
     centerAct->setStatusTip(tr("Center the selected text"));
     connect(centerAct, SIGNAL(triggered()), this, SLOT(center()));
 
-    addRectAct = new QAction(tr("Add &Rectangle"), this);
-    addRectAct->setShortcut(tr("Ctrl+1"));
-    addRectAct->setCheckable(true);
-    addRectAct->setChecked(true);
-    connect(addRectAct, SIGNAL(triggered()), this, SLOT(addRect()));
-
-    addEllipseAct = new QAction(tr("Add &Ellipse"), this);
-    addEllipseAct->setCheckable(true);
-    addEllipseAct->setShortcut(tr("Ctrl+2"));
-    connect(addEllipseAct, SIGNAL(triggered()), this, SLOT(addEllipse()));
-
-    addSquareAct = new QAction(tr("Add &Circle"), this);
-    addSquareAct->setCheckable(true);
-    addSquareAct->setShortcut(tr("Ctrl+3"));
-    connect(addSquareAct, SIGNAL(triggered()), this, SLOT(addCircle()));
-
-    addCircleAct = new QAction(tr("Add &Square"), this);
-    addCircleAct->setCheckable(true);
-    addCircleAct->setShortcut(tr("Ctrl+4"));
-    connect(addCircleAct, SIGNAL(triggered()), this, SLOT(addSquare()));
-
-
     alignmentGroup = new QActionGroup(this);
     alignmentGroup->addAction(leftAlignAct);
     alignmentGroup->addAction(rightAlignAct);
     alignmentGroup->addAction(justifyAct);
     alignmentGroup->addAction(centerAct);
     leftAlignAct->setChecked(true);
-
-    objectsGroup = new QActionGroup(this);
-    objectsGroup->addAction(addRectAct);
-    objectsGroup->addAction(addSquareAct);
-    objectsGroup->addAction(addCircleAct);
-    objectsGroup->addAction(addEllipseAct);
 
 }
 
@@ -407,11 +363,5 @@ void MainWindow::createMenus()
     formatMenu->addSeparator();
     formatMenu->addAction(setLineSpacingAct);
     formatMenu->addAction(setParagraphSpacingAct);
-
-    objectsMenu = menuBar()->addMenu(tr("&Add Object"));
-    objectsMenu->addAction(addSquareAct);
-    objectsMenu->addAction(addRectAct);
-    objectsMenu->addAction(addCircleAct);
-    objectsMenu->addAction(addEllipseAct);
 
 }
