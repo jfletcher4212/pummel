@@ -5,7 +5,6 @@
 #include "toolbar.h"
 #include "optionsdialog.h"
 #include "drawarea.h"
-
 #include "global.h"
 
 Toolbar::Toolbar(QWidget *parent) :
@@ -53,7 +52,6 @@ QGridLayout * Toolbar::initButtons()
     connect(textButton, SIGNAL(clicked()), this, SLOT(insertText()));
     connect(lineButton, SIGNAL(clicked()), this, SLOT(insertLine()));
     connect(optionsButton, SIGNAL(clicked()), this, SLOT(showOptions()));
-    connect(gridButton, SIGNAL(clicked()), this, SLOT(toggleGrid()));
 
     /* add created buttons to a grid layout
      * buttons are arranged in a single column
@@ -142,6 +140,7 @@ void Toolbar::showOptions()
  * DrawArea object.  Use drawArea.insertShape, and pass in
  * the shape struct
  */
+
 void Toolbar::insertShape(){
     shapeButton->showMenu();
 }
@@ -164,45 +163,34 @@ void Toolbar::insertLine()
 
 }
 
-void Toolbar::toggleGrid()
-{
-/*
-    gridState = (gridState+1)%2;    //increment grid tracking variable
-    if(gridState == 0)
-        parent.drawArea.hideGrid();
-    else
-        parent.drawArea.showGrid();
-*/
-}
-
 void Toolbar::addRect(){
-    canvas->setSceneCreate(true);
-    canvas->setSceneCreateMode(Rectangle);
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Rectangle);
 }
 
 void Toolbar::addSquare(){
-    canvas->setSceneCreate(true);
-    canvas->setSceneCreateMode(Square);
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Square);
 }
 
 void Toolbar::addCircle(){
-    canvas->setSceneCreate(true);
-    canvas->setSceneCreateMode(Circle);
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Circle);
 }
 
 void Toolbar::addEllipse(){
-    canvas->setSceneCreate(true);
-    canvas->setSceneCreateMode(Ellipse);
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Ellipse);
 }
 
 void Toolbar::addNone(){
-    canvas->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(false);
 }
 
 void Toolbar::gridOn(){
-    canvas->setSceneGrid(true);
+    canvas.at(tabWidget->currentIndex())->setSceneGrid(true);
 }
 
 void Toolbar::gridOff(){
-    canvas->setSceneGrid(false);
+    canvas.at(tabWidget->currentIndex())->setSceneGrid(false);
 }

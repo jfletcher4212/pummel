@@ -3,9 +3,9 @@
 
 #include <QMainWindow>
 #include "toolbar.h"
-#include "drawarea.h"
 #include "optionsdialog.h"
 #include "borderlayout.h"
+#include "global.h"
 
 class QAction;
 class QActionGroup;
@@ -51,13 +51,10 @@ private slots:
 private:
 
     QWidget *widget;
-
     Toolbar *toolbar;
-    DrawArea *canvas;
     BorderLayout *layout;
-    /*Tabs for multiple files open at once*/
-    QTabWidget *tabWidget;
-    QWidget *fileTab;
+
+    int next_tab_num;
 
 
     void createActions();

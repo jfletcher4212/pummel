@@ -13,6 +13,7 @@
 #include <QtGui>
 #include "./OptionsDialog.h"
 #include "params.h"
+#include "dragitem.h"
 
 using namespace std;
 
@@ -42,13 +43,10 @@ public:
     //parameters for text
     textParams text;
 
-signals:
-
 public slots:
     void insertShape();
     void insertLine();
     void insertText();
-    void toggleGrid();
     void showOptions();
 
     void addRect();
