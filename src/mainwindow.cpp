@@ -14,28 +14,25 @@
 #include "borderlayout.h"
 #include "drawarea.h"
 #include "toolbar.h"
-#include <QTabBar>
 MainWindow::MainWindow()
 {
     widget = new QWidget;
     setCentralWidget(widget);
 
+
     toolbar = new Toolbar;
     /* need some way to get
      * multiple canvas's
      * for different tabs*/
-    canvas = new DrawArea;
     layout = new BorderLayout;
     /*Create tab objects*/
-    tabWidget = new QTabWidget;
-    fileTab = new QWidget;
-   // tabWidget->addTab(fileTab, tr("Start File"));
+    tabWidget = new TabManager;
+    next_tab_num = 1;
     /*end*/
     layout->setMargin(5);
     layout->addWidget(toolbar, BorderLayout::West);
-    layout->addWidget(canvas, BorderLayout::Center);
     /*Add tab objects to mainwindow*/
-    layout->addWidget(tabWidget, BorderLayout::North);
+    layout->addWidget(tabWidget, BorderLayout::Center);
     /*end*/
     widget->setLayout(layout);
 
@@ -45,9 +42,10 @@ MainWindow::MainWindow()
     QString message = tr("A context menu is available by right-clicking");
     statusBar()->showMessage(message);
 
-    setWindowTitle(tr("Menus"));
+    setWindowTitle(tr("pUML"));
     setMinimumSize(160, 160);
     resize(480, 320);
+    this->newTab();
 }
 
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
@@ -124,10 +122,16 @@ void MainWindow::paste()
 void MainWindow::newTab()
 {
     int i = tabWidget->count();
-    QString n = "Untitled";
-    tabWidget->addTab(new QWidget(), "Untitled");
+    char* s = (char*)malloc(10*sizeof(char));
+    sprintf(s, "Tab %d", next_tab_num);
+    next_tab_num++;
+    QString q = QString(s);
+    DrawArea *newCanvas = new DrawArea;
+    canvas.append(newCanvas);
+    tabWidget->insertTab(i, newCanvas, s);
     tabWidget->setCurrentIndex(i);
-
+    tabWidget->widget(i)->setVisible(true);
+    free(s);
 }
 /*end*/
 
@@ -158,7 +162,9 @@ void MainWindow::openFile()
 
 void MainWindow::closeTab()
 {
+    canvas.removeAt(tabWidget->currentIndex());
     tabWidget->removeTab(tabWidget->currentIndex());
+
 }
 
 void MainWindow::bold()
@@ -216,7 +222,7 @@ void MainWindow::aboutQt()
 
 void MainWindow::createActions()
 {
-    newAct = new QAction(tr("New"), this);
+    newAct = new QAction(tr("New Tab"), this);
     connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
 
     openAct = new QAction(tr("Close File"), this);
