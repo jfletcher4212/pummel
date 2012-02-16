@@ -32,10 +32,11 @@ public:
     void setSceneCreate(bool a);
     void setSceneGrid(bool a);
     void setSceneGridSize(int newSize);
+    DragScene *scene;
 
 private:
 
-    DragScene *scene;
+
     DragView *view;
     QHBoxLayout *layout;
 
