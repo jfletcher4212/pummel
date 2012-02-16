@@ -47,10 +47,6 @@ private slots:
     void about();
     void aboutQt();
 
-    void addRect();
-    void addEllipse();
-    void addCircle();
-    void addSquare();
 
 private:
 
@@ -93,12 +89,6 @@ private:
     QAction *setParagraphSpacingAct;
     QAction *aboutAct;
     QAction *aboutQtAct;
-
-    QActionGroup *objectsGroup;
-    QAction *addSquareAct;
-    QAction *addCircleAct;
-    QAction *addRectAct;
-    QAction *addEllipseAct;
 
     QLabel *infoLabel;
 };
