@@ -1,4 +1,6 @@
 #include "drawarea.h"
+#include "tabmanager.h"
 
-DrawArea *canvas;
+QList<DrawArea*> canvas;
+TabManager *tabWidget;
 
