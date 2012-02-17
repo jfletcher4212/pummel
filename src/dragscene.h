@@ -49,11 +49,11 @@ protected:
 
 
 private:
-    int gridSize;
-    bool grid;
+    int gridSize; // pixel width of grid lines
+    bool grid; // toggle for grid
     ShapeType createMode; // type of shape the scene is creating
     bool sceneCreate; // toggle for click creation
-    QList<DragItem*> scene_items;
+    QList<DragItem*> scene_items; // custom list of all the DragItem*'s (not QGraphicsItem*) in DragScene
 };
 
 #endif // DRAGSCENE_H
