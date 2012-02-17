@@ -14,6 +14,9 @@
 #include "borderlayout.h"
 #include "drawarea.h"
 #include "toolbar.h"
+#include<iostream>
+
+using namespace std;
 MainWindow::MainWindow()
 {
     widget = new QWidget;
@@ -138,6 +141,13 @@ void MainWindow::newTab()
 void MainWindow::saveAsFile()
 {
       QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
+      
+      
+      
+      // strip full path off filename for display
+      int idx = filename.lastIndexOf("/");
+      filename.remove(0, idx+1);
+      
       tabWidget->setTabText(tabWidget->currentIndex(), filename );
       /* Insert
        * actual
@@ -152,6 +162,11 @@ void MainWindow::openFile()
 {
     QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
     newTab();
+    
+    // strip full path off filename for display
+    int idx = filename.lastIndexOf("/");
+    filename.remove(0, idx+1);
+    
     tabWidget->setTabText(tabWidget->currentIndex(), filename);
     /* new tab
      * set new tab name to filename
