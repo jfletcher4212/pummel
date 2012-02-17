@@ -142,6 +142,8 @@ void MainWindow::saveAsFile()
 {
       QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
       
+      
+      
       // strip full path off filename for display
       int idx = filename.lastIndexOf("/");
       filename.remove(0, idx+1);
