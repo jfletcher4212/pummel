@@ -33,6 +33,12 @@ public:
     void setSceneCreate(bool a);
     void setGrid(bool a);
     void setGridSize(int newSize);
+    
+    /*
+    // file io
+    void writeXML(QString *filename);
+    void readXML(){};
+    */
 
 protected:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
