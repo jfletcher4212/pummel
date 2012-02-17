@@ -3,6 +3,8 @@
 
 #include <QList>
 #include <QGraphicsSceneDragDropEvent>
+#include <QXmlStreamWriter>
+#include <QIODevice>
 
 DragScene::DragScene(QObject* parent, int initHeight, int initWidth){
     this->setSceneRect(QRectF(0,0,initHeight, initWidth));
@@ -146,6 +148,24 @@ void DragScene::drawBackground(QPainter *painter, const QRectF &rect){
         painter->drawLines(linesX.data(), linesX.size());
         painter->drawLines(linesY.data(), linesY.size());
     }
+
+    /*
+void DragScene::writeXML(QString *filename)
+{
+    int i;
+    QFile *file = new QFile(filename);
+    QXmlStreamWriter *writer = new QXmlStreamWriter(file);
+    
+    writer->writeStartDocument();
+    
+    writer->writeEndDocument();
+    
+    file.close();
+    
+    delete file;
+    delete writer;
+}
+    */
 }
 
 
