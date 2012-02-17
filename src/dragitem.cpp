@@ -71,25 +71,27 @@ void DragItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
         markers[2]->setVisible(true);
         markers[3]->setVisible(true);
 
+        // this next section grabs the scenePos of the object and offsets its markerboxes 3 pixels away from the corners of the obejcts
+        // boundingRect
         QPointF pos = this->scenePos(); // sets position to the upper left pixel
         pos.rx() = -8;
         pos.ry() = -8;
-        markers[0]->setPos(pos);
+        markers[0]->setPos(pos); // upper left markerbox
 
         pos = this->scenePos();
         pos.rx() = width+3;
         pos.ry() = -8;
-        markers[1]->setPos(pos);
+        markers[1]->setPos(pos); // upper right
 
         pos = this->scenePos();
         pos.rx() = -8;
         pos.ry() = height+3;
-        markers[2]->setPos(pos);
+        markers[2]->setPos(pos); // lower left
 
         pos = this->scenePos();
         pos.rx() = width+3;
         pos.ry() = height+3;
-        markers[3]->setPos(pos);
+        markers[3]->setPos(pos); // lower right
 
     } else{
         // if not selected, make the boxes invisible
@@ -127,7 +129,7 @@ void DragItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 void DragItem::mousePressEvent(QGraphicsSceneMouseEvent *event){
     event->accept();
     QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * width;
+    pos.rx() -= 0.5 * width; // this centers the object on the cursor
     pos.ry() -= 0.5 * height;
     this->grabMouse();  // DragItem will take all mouse actions
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
