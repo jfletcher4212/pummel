@@ -1,0 +1,17 @@
+DEMO BENCHMARKS:
+
+1st test
+	All UI components appear in one window
+	Icons can be added to DrawArea
+	Icons can be dragged properly
+2nd test
+	Icon properties can be changed (color, line thickness, size)
+	Toolbar is linked to DrawArea events (inserting objects, changing object properties)
+	Icons can be linked (arrows)
+	Text can be added to icons
+3rd test
+	diagrams can be saved
+	UML project file can keep track of multiple diagrams
+	print
+4th (Final) test
+	error checking
