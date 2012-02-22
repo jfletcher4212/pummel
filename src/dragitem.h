@@ -10,39 +10,45 @@
 #include <QtGui>
 #include <QGraphicsItem>
 
-enum ShapeType {Square, Pill, Ellipse, Rectangle, Circle};
+#include "markerbox.h"
 
+// Shape types
+enum ShapeType {Square, Pill, Ellipse, Rectangle, Circle};
 
 class DragItem : public QGraphicsItem
 {
 public:
-    /*
-      This is the DragItem constructor, it defaults to a 'base' rectangle of 25x25.  Will probably adapt
-      a constructor to take a shape object as a parameter.  The object passed in would need to have its 'base'
-      rectangle and some way of determining what kind of shape it is (I was thinking enum, prototype is above).
-      */
     DragItem(QGraphicsItem *parent = 0);
-    //DragItem(QGraphicsItem *parent = 0, QRectF newRect = QRectF(0,0,25,25), ShapeType newShape = Rectangle);
-    void setBase(QRectF newBase);
+
+    // Mutators
     void setShape(ShapeType shape);
+    void setSize(int newWidth, int newHeight);
 
-
-    QRectF boundingRect() const;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
-    //void paintSquare(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
+    // Accessors
+    int getWidth();
+    int getHeight();
+    int getId();
 
 protected:
+    QRectF boundingRect() const;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 private:
-    QRectF base;
+    // DragItem id counter
+    static int next_id;
+
+    // DragItem parameters
+    int width;
+    int height;
     ShapeType shape;
-    /*
-      Since all QT images are drawn from rectangles are figured we could use a base rectangle for just about all
-      drawing and it would hopefully make them easily scalable.
-      */
+    int id;
+
+    // Selection boxes for the DragItem
+    MarkerBox *markers[4];
+
 };
 
 #endif // DRAGITEM_H
