@@ -144,7 +144,7 @@ void DragScene::drawBackground(QPainter *painter, const QRectF &rect){
         for (qreal y = top; y < rect.bottom(); y += gridInterval ){
             linesY.append(QLineF(rect.left(), y, rect.right(), y));
         }
-        painter->setOpacity(0.4);
+        painter->setOpacity(0.2);
         painter->drawLines(linesX.data(), linesX.size());
         painter->drawLines(linesY.data(), linesY.size());
     }

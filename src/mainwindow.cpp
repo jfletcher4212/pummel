@@ -240,7 +240,7 @@ void MainWindow::createActions()
     newAct = new QAction(tr("New Tab"), this);
     connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
 
-    openAct = new QAction(tr("Close File"), this);
+    openAct = new QAction(tr("Close Tab"), this);
     connect(openAct, SIGNAL(triggered()), this, SLOT(closeTab()));
 
     saveAct = new QAction(tr("Save as..."), this);
