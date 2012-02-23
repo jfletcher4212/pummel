@@ -6,15 +6,9 @@
 #include <QGraphicsItem>
 
 #include "markerbox.h"
-class ellipse : icon
+class ellipse : public icon
 {
-public:
-    ellipse(QGraphicsItem *parent = 0);
 
-    // Accessors
-    //int getWidth();
-    //int getHeight();
-    //int getId();
 
 protected:
     QRectF boundingRect() const;
@@ -24,7 +18,7 @@ protected:
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 private:
-    // DragItem id counter
+    // DragItem id counter         // also done in parent class
     //static int next_id;
 
     // DragItem parameters
@@ -35,6 +29,16 @@ private:
 
     // Selection boxes for the DragItem
     MarkerBox *markers[4];
+
+public:
+
+    ellipse(QGraphicsItem *parent = 0);
+    ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
+
+    // Accessors            // done in parent class
+    //int getWidth();
+    //int getHeight();
+    //int getId();
 
 };
 

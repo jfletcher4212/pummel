@@ -2,11 +2,12 @@
 #define TESTICON_H
 
 #include "icon.h"
-#include <QtTest/QtTest>
+//#include <QtTest/QtTest>
 
-class TestIcon : icon
+class TestIcon : public icon
 {
 public:
+    TestIcon();
     void setSize();
     void setPos();
     void setShapetype();
