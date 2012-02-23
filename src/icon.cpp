@@ -6,55 +6,57 @@
 #include <QtGui>
 
 
-icon::icon()
+int icon::m_next_id = 1;
+
+icon::icon(QGraphicsItem *parent) : QGraphicsItem(parent)
 {
 
 }
 
 int icon::getXPos()
 {
-    return baseIcon.posx;
+    return m_xpos;
 }
 
 int icon::getYPos()
 {
-    return baseIcon.posy;
+    return m_ypos;
 }
 
 void icon::setPos(int newXPos, int newYPos)
 {
-    baseIcon.posx = newXPos;
-    baseIcon.posy = newYPos;
+    m_xpos = newXPos;
+    m_ypos = newYPos;
 }
 
 int icon::getXSize()
 {
-    return baseIcon.xsize;
+    return m_xsize;
 }
 
 int icon::getYSize()
 {
-    return baseIcon.ysize;
+    return m_ysize;
 }
 
 void icon::setSize(int newXSize, int newYSize)
 {
-    baseIcon.xsize = newXSize;
-    baseIcon.ysize = newYSize;
+    m_xsize = newXSize;
+    m_ysize = newYSize;
 
 }
 
 QString icon::reportShapetype()
 {
-    return baseIcon.shapetype;
+    return m_shapetype;
 }
 
 void icon::setShapetype(QString shapename)
 {
-    baseIcon.shapetype = shapename;
+    m_shapetype = shapename;
 }
 
 int icon::getID()
 {
-    return baseIcon.iD;
+    return m_iD;
 }

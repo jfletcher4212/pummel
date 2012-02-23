@@ -2,7 +2,7 @@
 #define TESTELLIPSE_H
 
 #include "ellipse.h"
-#include <QtTest/QtTest>
+//#include <QtTest/QtTest>
 
 class TestEllipse : ellipse
 {

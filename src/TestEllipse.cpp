@@ -1,6 +1,6 @@
 #include "TestEllipse.h"
-#include <QtTest/QtTest>
-
+//#include <QtTest/QtTest>
+/*
 TestEllipse::TestEllipse()
 {
 
@@ -34,3 +34,4 @@ void TestEllipse::getID()
 {
 
 }
+*/
