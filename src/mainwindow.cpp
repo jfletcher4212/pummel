@@ -14,28 +14,28 @@
 #include "borderlayout.h"
 #include "drawarea.h"
 #include "toolbar.h"
-#include <QTabBar>
+#include<iostream>
+
+using namespace std;
 MainWindow::MainWindow()
 {
     widget = new QWidget;
     setCentralWidget(widget);
 
+
     toolbar = new Toolbar;
     /* need some way to get
      * multiple canvas's
      * for different tabs*/
-    canvas = new DrawArea;
     layout = new BorderLayout;
     /*Create tab objects*/
-    tabWidget = new QTabWidget;
-    fileTab = new QWidget;
-   // tabWidget->addTab(fileTab, tr("Start File"));
+    tabWidget = new TabManager;
+    next_tab_num = 1;
     /*end*/
     layout->setMargin(5);
     layout->addWidget(toolbar, BorderLayout::West);
-    layout->addWidget(canvas, BorderLayout::Center);
     /*Add tab objects to mainwindow*/
-    layout->addWidget(tabWidget, BorderLayout::North);
+    layout->addWidget(tabWidget, BorderLayout::Center);
     /*end*/
     widget->setLayout(layout);
 
@@ -45,9 +45,10 @@ MainWindow::MainWindow()
     QString message = tr("A context menu is available by right-clicking");
     statusBar()->showMessage(message);
 
-    setWindowTitle(tr("Menus"));
+    setWindowTitle(tr("pUML"));
     setMinimumSize(160, 160);
     resize(480, 320);
+    this->newTab();
 }
 
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
@@ -124,16 +125,29 @@ void MainWindow::paste()
 void MainWindow::newTab()
 {
     int i = tabWidget->count();
-    QString n = "Untitled";
-    tabWidget->addTab(new QWidget(), "Untitled");
+    char* s = (char*)malloc(10*sizeof(char));
+    sprintf(s, "Tab %d", next_tab_num);
+    next_tab_num++;
+    QString q = QString(s);
+    DrawArea *newCanvas = new DrawArea;
+    canvas.append(newCanvas);
+    tabWidget->insertTab(i, newCanvas, s);
     tabWidget->setCurrentIndex(i);
-
+    tabWidget->widget(i)->setVisible(true);
+    free(s);
 }
 /*end*/
 
 void MainWindow::saveAsFile()
 {
       QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
+      
+      
+      
+      // strip full path off filename for display
+      int idx = filename.lastIndexOf("/");
+      filename.remove(0, idx+1);
+      
       tabWidget->setTabText(tabWidget->currentIndex(), filename );
       /* Insert
        * actual
@@ -148,6 +162,11 @@ void MainWindow::openFile()
 {
     QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
     newTab();
+    
+    // strip full path off filename for display
+    int idx = filename.lastIndexOf("/");
+    filename.remove(0, idx+1);
+    
     tabWidget->setTabText(tabWidget->currentIndex(), filename);
     /* new tab
      * set new tab name to filename
@@ -158,7 +177,9 @@ void MainWindow::openFile()
 
 void MainWindow::closeTab()
 {
+    canvas.removeAt(tabWidget->currentIndex());
     tabWidget->removeTab(tabWidget->currentIndex());
+
 }
 
 void MainWindow::bold()
@@ -214,28 +235,12 @@ void MainWindow::aboutQt()
     infoLabel->setText(tr("Invoked <b>Help|About Qt</b>"));
 }
 
-void MainWindow::addRect(){
-    canvas->scene->setCreateMode(Rectangle);
-}
-
-void MainWindow::addEllipse(){
-    canvas->scene->setCreateMode(Ellipse);
-}
-
-void MainWindow::addCircle(){
-    canvas->scene->setCreateMode(Circle);
-}
-
-void MainWindow::addSquare(){
-    canvas->scene->setCreateMode(Square);
-}
-
 void MainWindow::createActions()
 {
-    newAct = new QAction(tr("New"), this);
+    newAct = new QAction(tr("New Tab"), this);
     connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
 
-    openAct = new QAction(tr("Close File"), this);
+    openAct = new QAction(tr("Close Tab"), this);
     connect(openAct, SIGNAL(triggered()), this, SLOT(closeTab()));
 
     saveAct = new QAction(tr("Save as..."), this);
@@ -337,40 +342,12 @@ void MainWindow::createActions()
     centerAct->setStatusTip(tr("Center the selected text"));
     connect(centerAct, SIGNAL(triggered()), this, SLOT(center()));
 
-    addRectAct = new QAction(tr("Add &Rectangle"), this);
-    addRectAct->setShortcut(tr("Ctrl+1"));
-    addRectAct->setCheckable(true);
-    addRectAct->setChecked(true);
-    connect(addRectAct, SIGNAL(triggered()), this, SLOT(addRect()));
-
-    addEllipseAct = new QAction(tr("Add &Ellipse"), this);
-    addEllipseAct->setCheckable(true);
-    addEllipseAct->setShortcut(tr("Ctrl+2"));
-    connect(addEllipseAct, SIGNAL(triggered()), this, SLOT(addEllipse()));
-
-    addSquareAct = new QAction(tr("Add &Circle"), this);
-    addSquareAct->setCheckable(true);
-    addSquareAct->setShortcut(tr("Ctrl+3"));
-    connect(addSquareAct, SIGNAL(triggered()), this, SLOT(addCircle()));
-
-    addCircleAct = new QAction(tr("Add &Square"), this);
-    addCircleAct->setCheckable(true);
-    addCircleAct->setShortcut(tr("Ctrl+4"));
-    connect(addCircleAct, SIGNAL(triggered()), this, SLOT(addSquare()));
-
-
     alignmentGroup = new QActionGroup(this);
     alignmentGroup->addAction(leftAlignAct);
     alignmentGroup->addAction(rightAlignAct);
     alignmentGroup->addAction(justifyAct);
     alignmentGroup->addAction(centerAct);
     leftAlignAct->setChecked(true);
-
-    objectsGroup = new QActionGroup(this);
-    objectsGroup->addAction(addRectAct);
-    objectsGroup->addAction(addSquareAct);
-    objectsGroup->addAction(addCircleAct);
-    objectsGroup->addAction(addEllipseAct);
 
 }
 
@@ -407,11 +384,5 @@ void MainWindow::createMenus()
     formatMenu->addSeparator();
     formatMenu->addAction(setLineSpacingAct);
     formatMenu->addAction(setParagraphSpacingAct);
-
-    objectsMenu = menuBar()->addMenu(tr("&Add Object"));
-    objectsMenu->addAction(addSquareAct);
-    objectsMenu->addAction(addRectAct);
-    objectsMenu->addAction(addCircleAct);
-    objectsMenu->addAction(addEllipseAct);
 
 }
