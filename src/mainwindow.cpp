@@ -15,6 +15,9 @@
 #include "drawarea.h"
 #include "toolbar.h"
 #include<iostream>
+#include <QXmlStreamWriter>
+#include <QFile>
+#include "coord.h"
 
 using namespace std;
 MainWindow::MainWindow()
@@ -141,21 +144,43 @@ void MainWindow::newTab()
 void MainWindow::saveAsFile()
 {
       QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
-      
-      
-      
-      // strip full path off filename for display
+      cout << filename.toStdString() << endl;
+      QFile savefile ( filename );
+      savefile.open(QIODevice::WriteOnly);
+
+      // strip full path off filename for display later and addition to xml file
       int idx = filename.lastIndexOf("/");
       filename.remove(0, idx+1);
+
+      int size = 10;
+      
+      // testing icons
+      coord *icon_list = new coord[size];
+
+      for ( int i = 0; i < size; i++ )
+      {
+          icon_list[i] = coord(2+i, 3+i);
+      }
+
+      QXmlStreamWriter saver(&savefile);
+
+      saver.writeStartDocument();
+      saver.writeStartElement(filename);
+      for ( int i = 0; i < size; i++ )
+      {
+          //QString valueAsString = QString::number(valueAsDouble);
+          //wrapper tags will eventually be the object's individual ID #
+          saver.writeStartElement("coord");
+          saver.writeTextElement("x_coord", QString::number(icon_list[i].get_x()));
+          saver.writeTextElement("y_coord", QString::number(icon_list[i].get_y()));
+          saver.writeEndElement();
+      }
+
+      saver.writeEndDocument();
+      saver.setAutoFormatting(true);
+      savefile.close();
       
       tabWidget->setTabText(tabWidget->currentIndex(), filename );
-      /* Insert
-       * actual
-       * saving
-       * function
-       * stuff
-       * here
-       */
 }
 
 void MainWindow::openFile()
@@ -163,16 +188,88 @@ void MainWindow::openFile()
     QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
     newTab();
     
+    QFile infile ( filename );
+    infile.open(QIODevice::ReadOnly);
+
     // strip full path off filename for display
     int idx = filename.lastIndexOf("/");
     filename.remove(0, idx+1);
     
     tabWidget->setTabText(tabWidget->currentIndex(), filename);
-    /* new tab
-     * set new tab name to filename
-     * load in stuff
-     * profit
-     * */
+    
+    QXmlStreamReader reader(&infile);
+    // what is this doing???
+    QList< QMap<QString,QString> > icons;
+    
+    while ( !reader.atEnd() && !reader.hasError() )
+      {
+	//read next element
+	QXmlStreamReader::TokenType token = xml.readNext();
+	
+	if ( token == QXmlStreamReader::StartDocument )
+	  {
+	    continue;
+	  }
+
+	if ( token == QXmlStreamReader::StartElement )
+	  {
+	    if ( reader.name() == filename )
+	      {
+		continue;
+	      }
+	    
+	    if ( reader.name() == "coord" )
+	      {
+		icons.append(parse_icon(reader));
+	      }
+	    
+	  }
+      }
+    
+    // icons should have everything we need at this point
+    
+    //cout<<reader.readElementText(1)<endl;
+    cout<<"HERE"<<endl;
+    //cout<<reader.readElementText().toStdString()<<endl;
+    reader.readNextStartElement();
+    cout<<reader.readElementText(QXmlStreamReader::IncludeChildElements).toStdString()<<endl;
+}
+
+QMap<QString, QString> MainWindow::parsePerson(QXmlStreamReader& xml)
+{
+  QMap<QString, QString> icon;
+  
+  if ( ! (xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "coord") ) 
+    return icon;
+  
+  QXmlStreamAttributes attributes = xml.attributes();
+  /*
+    // this is for the object id
+  if(attributes.hasAttribute("icon_id")) 
+    {
+      person["icon_id"] = attributes.value("icon_id").toString();
+    }
+    xml.readNext();
+  */
+  
+  while( !(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "coord") )
+    {
+      if( xml.tokenType() == QXmlStreamReader::StartElement) 
+	{
+	  if( xml.name() == "x_coord" ) 
+	    {
+	      this->addElementDataToMap(xml, icon);
+	    }
+	  
+	  if( xml.name() == "y_coord" ) 
+	    {
+	      this->addElementDataToMap(xml, icon);
+	    }
+	}
+      xml.readNext();
+    }
+  
+  return icon;
 }
 
 void MainWindow::closeTab()
