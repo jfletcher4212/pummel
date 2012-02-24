@@ -3,9 +3,9 @@
 
 #include <QMainWindow>
 #include "toolbar.h"
-#include "drawarea.h"
 #include "optionsdialog.h"
 #include "borderlayout.h"
+#include "global.h"
 
 class QAction;
 class QActionGroup;
@@ -47,21 +47,14 @@ private slots:
     void about();
     void aboutQt();
 
-    void addRect();
-    void addEllipse();
-    void addCircle();
-    void addSquare();
 
 private:
 
     QWidget *widget;
-
     Toolbar *toolbar;
-    DrawArea *canvas;
     BorderLayout *layout;
-    /*Tabs for multiple files open at once*/
-    QTabWidget *tabWidget;
-    QWidget *fileTab;
+
+    int next_tab_num;
 
 
     void createActions();
@@ -93,12 +86,6 @@ private:
     QAction *setParagraphSpacingAct;
     QAction *aboutAct;
     QAction *aboutQtAct;
-
-    QActionGroup *objectsGroup;
-    QAction *addSquareAct;
-    QAction *addCircleAct;
-    QAction *addRectAct;
-    QAction *addEllipseAct;
 
     QLabel *infoLabel;
 };
