@@ -5,8 +5,6 @@
 #include "toolbar.h"
 #include "optionsdialog.h"
 #include "drawarea.h"
-#include "ellipse.h"
-
 #include "global.h"
 
 Toolbar::Toolbar(QWidget *parent) :
