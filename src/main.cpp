@@ -1,7 +1,6 @@
 /* main.cpp - file that displays windows.
   */
 #include <QtGui/QApplication>
-#include "icon.h"
 #include "drawarea.h"
 #include "mainwindow.h"
 #include "toolbar.h"
