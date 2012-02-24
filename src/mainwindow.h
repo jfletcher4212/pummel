@@ -46,7 +46,7 @@ private slots:
     void setParagraphSpacing();
     void about();
     void aboutQt();
-
+    
 
 private:
 
@@ -59,6 +59,9 @@ private:
 
     void createActions();
     void createMenus();
+    
+    // helper for xml reading
+    QMap<QString, QString> parsePerson(QXmlStreamReader& xml);
 
     QMenu *fileMenu;
     QMenu *editMenu;
