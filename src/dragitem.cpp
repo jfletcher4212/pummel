@@ -10,6 +10,7 @@ DragItem::DragItem(QGraphicsItem *parent) : QGraphicsItem(parent){
     //base = QRectF(0,0,0,0);
     width = 0;
     height = 0;
+    state = 0;
     shape = Square;
     id = next_id;
     next_id++;
@@ -46,6 +47,14 @@ void DragItem::setSize(int newWidth, int newHeight){
 
 int DragItem::getId(){
     return id;
+}
+
+int DragItem::getState(){
+    return state;
+}
+
+void DragItem::setState(int x){
+    state = x;
 }
 
 void DragItem::setShape(ShapeType newShape){
@@ -133,6 +142,7 @@ void DragItem::mousePressEvent(QGraphicsSceneMouseEvent *event){
     pos.ry() -= 0.5 * height;
     this->grabMouse();  // DragItem will take all mouse actions
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
+    state = 2;
 }
 
 void DragItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
