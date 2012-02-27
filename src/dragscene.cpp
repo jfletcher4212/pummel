@@ -54,6 +54,7 @@ int DragScene::getGridSize(){
 
 void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     // this block checks if an object is under the cursor, if so, select it
+    int topItem = 0;
     if(this->itemAt(event->scenePos())){
         int index;
         // object bounds checking shenanigans below
@@ -62,7 +63,10 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
                      (int)event->scenePos().x() <= ((int)(scene_items.at(i)->x()+(int)scene_items.at(i)->getWidth())) &&
                      (int)event->scenePos().y() >= (int)scene_items.at(i)->y() &&
                      (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight()))){
-                index = i;
+                if(scene_items.at(i)->zValue() > topItem){
+                    index = i;
+                }
+
             }
         }
         DragItem *item = scene_items.at(index);
