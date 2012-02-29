@@ -53,6 +53,15 @@ int DragItem::getState(){
     return state;
 }
 
+QList<DragItem*> DragItem::getConnections(){
+    return connections_list;
+}
+
+void DragItem::addConnection(DragItem* item){
+    connections_list.append(item);
+}
+
+
 void DragItem::setState(int x){
     state = x;
 }
@@ -143,6 +152,7 @@ void DragItem::mousePressEvent(QGraphicsSceneMouseEvent *event){
     this->grabMouse();  // DragItem will take all mouse actions
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
     state = 2;
+    update();
 }
 
 void DragItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
@@ -168,6 +178,7 @@ void DragItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     this->setPos(pos);
     this->setOpacity(1.0);
     this->ungrabMouse();  // release mouse back to DragScene
+    update();
 }
 
 

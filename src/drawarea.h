@@ -26,6 +26,7 @@ public:
     bool getSceneCreate();
     bool getSceneGrid();
     int getSceneGridSize();
+    QList<DragItem*> getObjects();
 
     // Mutators
     void setSceneCreateMode(ShapeType newType);
@@ -34,9 +35,11 @@ public:
     void setSceneGridSize(int newSize);
     DragScene *scene;
 
+    // Testing
+
+    void testAction();
+
 private:
-
-
     DragView *view;
     QHBoxLayout *layout;
 
