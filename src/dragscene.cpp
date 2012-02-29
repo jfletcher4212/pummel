@@ -52,6 +52,15 @@ int DragScene::getGridSize(){
     return gridSize;
 }
 
+void DragScene::drawConnections(){
+    for(int i = 0; i < scene_items.size(); i++){
+        for(int j = 0; j < scene_items.at(i)->getConnections().size(); j++){
+            QLine *line = new QLine();
+            line->setLine(scene_items.at(i)->pos().x(), scene_items.at(i)->pos().y(), scene_items.at(i)->getConnections().at(j)->pos().x(), scene_items.at(i)->getConnections().at(j)->pos().y());
+        }
+    }
+}
+
 void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     // this block checks if an object is under the cursor, if so, select it
     int topItem = 0;
@@ -64,12 +73,15 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
                      (int)event->scenePos().y() >= (int)scene_items.at(i)->y() &&
                      (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight()))){
                 if(scene_items.at(i)->zValue() > topItem){
+                    topItem = scene_items.at(i)->zValue(); // ensures the top item is selected, not the ones below it
                     index = i;
                 }
-
             }
         }
         DragItem *item = scene_items.at(index);
+        for(int i = 0; i < scene_items.size(); i++){
+            scene_items.at(i)->setSelected(false);
+        }
         item->setSelected(true);
     } else if(this->selectedItems().size() == 0 && sceneCreate){
         // if there is no object under the cursor, the number of selected items is zero,and sceneCreate is true, create an new item
@@ -102,6 +114,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
         scene_items.append(newItem);
         }
     // if there are items selected, this will deselect them, otherwise it will just pass the click to DragItem
+    update();
     QGraphicsScene::mousePressEvent(event);
 }
 
@@ -161,7 +174,20 @@ void DragScene::drawBackground(QPainter *painter, const QRectF &rect){
         painter->drawLines(linesX.data(), linesX.size());
         painter->drawLines(linesY.data(), linesY.size());
     }
+}
 
+
+void DragScene::testAction(){
+    printf("in testAction\n");
+    if(scene_items.size() > 1 && scene_items.at(1)->isSelected()){
+        QLine* line = new QLine();
+        line->setLine(scene_items.at(1)->x(), scene_items.at(1)->y(), scene_items.at(0)->x(), scene_items.at(0)->y());
+    } else{
+        printf("testAction: triggered but not enough items\n");
+    }
+
+
+}
     /*
 void DragScene::writeXML(QString *filename)
 {
@@ -179,7 +205,7 @@ void DragScene::writeXML(QString *filename)
     delete writer;
 }
     */
-}
+
 
 
 

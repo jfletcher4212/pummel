@@ -12,6 +12,7 @@ DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth){
     view->setScene(scene);
     layout->addWidget(view);
     this->setLayout(layout);
+
 }
 
 void DrawArea::setSceneCreateMode(ShapeType newType){
@@ -38,10 +39,24 @@ int DrawArea::getSceneGridSize(){
     return scene->getGridSize();
 }
 
+QList<DragItem*> DrawArea::getObjects(){
+    return scene->getObjectList();
+}
+
 void DrawArea::setSceneGrid(bool a){
     scene->setGrid(a);
 }
 
 void DrawArea::setSceneGridSize(int newSize){
     scene->setGridSize(newSize);
+}
+
+
+
+/***************************************
+*** Testing Functions/Actions **********
+***************************************/
+
+void DrawArea::testAction(){
+    scene->testAction();
 }

@@ -33,7 +33,13 @@ public:
     void setSceneCreate(bool a);
     void setGrid(bool a);
     void setGridSize(int newSize);
-    
+
+    // Testing Fucntions
+    void drawConnections();
+    void testAction();
+
+
+
     /*
     // file io
     void writeXML(QString *filename);
