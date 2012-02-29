@@ -1,19 +1,19 @@
-#include "dragitem.h"
+#include "ellipse.h"
 #include "markerbox.h"
 
-int DragItem::next_id = 1;
 
-DragItem::DragItem(QGraphicsItem *parent) : QGraphicsItem(parent){
+
+ellipse::ellipse(QGraphicsItem *parent) : icon(parent)
+{
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
     // allows setting of the base rectangle of dragitem
     //base = QRectF(0,0,0,0);
-    width = 0;
-    height = 0;
-    state = 0;
-    shape = Square;
-    id = next_id;
-    next_id++;
+    m_xsize = 1;
+    m_ysize = 1;
+    m_shapetype = "Ellipse";
+    m_iD = m_next_id;
+    m_next_id++;
 
     // selection boxes
     markers[0] = new MarkerBox();
@@ -32,40 +32,44 @@ DragItem::DragItem(QGraphicsItem *parent) : QGraphicsItem(parent){
     markers[3]->setVisible(false);
 }
 
-int DragItem::getWidth(){
-    return width;
+
+
+ellipse::ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : icon(parent)
+{
+    setFlag(QGraphicsItem::ItemIsMovable);
+    setFlag(QGraphicsItem::ItemIsSelectable);
+    // allows setting of the base rectangle of dragitem
+    //base = QRectF(0,0,0,0);
+    m_xsize = xsize;
+    m_ysize = ysize;
+    m_xpos = xpos;
+    m_ypos = ypos;
+    m_shapetype = "Ellipse";
+    m_iD = m_next_id;
+    m_next_id++;
+
+    // selection boxes
+    markers[0] = new MarkerBox();
+    markers[1] = new MarkerBox();
+    markers[2] = new MarkerBox();
+    markers[3] = new MarkerBox();
+
+    markers[0]->setParentItem(this);
+    markers[1]->setParentItem(this);
+    markers[2]->setParentItem(this);
+    markers[3]->setParentItem(this);
+
+    markers[0]->setVisible(false);
+    markers[1]->setVisible(false);
+    markers[2]->setVisible(false);
+    markers[3]->setVisible(false);
 }
 
-int DragItem::getHeight(){
-    return height;
+QRectF ellipse::boundingRect() const{
+    return QRectF(0,0,m_xsize, m_ysize);
 }
 
-void DragItem::setSize(int newWidth, int newHeight){
-    width = newWidth;
-    height = newHeight;
-}
-
-int DragItem::getId(){
-    return id;
-}
-
-int DragItem::getState(){
-    return state;
-}
-
-void DragItem::setState(int x){
-    state = x;
-}
-
-void DragItem::setShape(ShapeType newShape){
-    shape = newShape;
-}
-
-QRectF DragItem::boundingRect() const{
-    return QRectF(0,0,width, height);
-}
-
-void DragItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
+void ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
     if(painter == 0){
         // make a painter if none exists
         painter = new QPainter();
@@ -80,27 +84,25 @@ void DragItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
         markers[2]->setVisible(true);
         markers[3]->setVisible(true);
 
-        // this next section grabs the scenePos of the object and offsets its markerboxes 3 pixels away from the corners of the obejcts
-        // boundingRect
         QPointF pos = this->scenePos(); // sets position to the upper left pixel
         pos.rx() = -8;
         pos.ry() = -8;
-        markers[0]->setPos(pos); // upper left markerbox
+        markers[0]->setPos(pos);
 
         pos = this->scenePos();
-        pos.rx() = width+3;
+        pos.rx() = m_xsize+3;
         pos.ry() = -8;
-        markers[1]->setPos(pos); // upper right
+        markers[1]->setPos(pos);
 
         pos = this->scenePos();
         pos.rx() = -8;
-        pos.ry() = height+3;
-        markers[2]->setPos(pos); // lower left
+        pos.ry() = m_ysize+3;
+        markers[2]->setPos(pos);
 
         pos = this->scenePos();
-        pos.rx() = width+3;
-        pos.ry() = height+3;
-        markers[3]->setPos(pos); // lower right
+        pos.rx() = m_xsize+3;
+        pos.ry() = m_ysize+3;
+        markers[3]->setPos(pos);
 
     } else{
         // if not selected, make the boxes invisible
@@ -111,50 +113,30 @@ void DragItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
         markers[3]->setVisible(false);
     }
 
-    switch(shape){
-        case Rectangle:{
-            painter->drawRect(QRectF(0,0,width,height));
-            break;
-        }
-        case Ellipse:{
-            painter->drawEllipse(QRectF(0,0,width,height));
-            break;
-        }
-        case Circle:{
-            painter->drawEllipse(QRectF(0,0,width,height));
-            break;
-        }
-        case Square:{
-            painter->drawRect(QRectF(0,0,width,height));
-            break;
-        }
-        default:{
-            printf("Error in DragItem::paint, Why doesn't this DragItem have a shape type?\n");
-            exit(1);
-        }
-    }
+        painter->drawEllipse(QRectF(0,0,m_xsize,m_ysize));
+
 }
 
-void DragItem::mousePressEvent(QGraphicsSceneMouseEvent *event){
+
+void ellipse::mousePressEvent(QGraphicsSceneMouseEvent *event){
     event->accept();
     QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * width; // this centers the object on the cursor
-    pos.ry() -= 0.5 * height;
+    pos.rx() -= 0.5 * m_xsize;
+    pos.ry() -= 0.5 * m_ysize;
     this->grabMouse();  // DragItem will take all mouse actions
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
-    state = 2;
 }
 
-void DragItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
+void ellipse::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * width;
-    pos.ry() -= 0.5 * height;
-    this->setPos(pos);
+    pos.rx() -= 0.5 * m_xsize;
+    pos.ry() -= 0.5 * m_ysize;
+    this->setPos(pos.rx(), pos.ry());
 }
 
-void DragItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
+void ellipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     /*
       This resets the object's coordinates to the cursor's coordinates when the
       mouse is released, as opposed to creating a new object and then deleting the old one.
@@ -163,9 +145,9 @@ void DragItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * width;
-    pos.ry() -= 0.5 * height;
-    this->setPos(pos);
+    pos.rx() -= 0.5 * m_xsize;
+    pos.ry() -= 0.5 * m_ysize;
+    this->setPos(pos.rx(),pos.ry());
     this->setOpacity(1.0);
     this->ungrabMouse();  // release mouse back to DragScene
 }

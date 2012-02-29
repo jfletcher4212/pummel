@@ -106,8 +106,16 @@ void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
 }
 
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
-    // future site of zValue checking and object layering/collision
-    /*
+    DragItem* lastItem;
+    for(int i = 0; i < scene_items.size(); i++){
+        if(scene_items.at(i)->getState() == 2){
+            scene_items.at(i)->setState(1);
+            lastItem = scene_items.at(i);
+        } else{
+            scene_items.at(i)->setState(0);
+        }
+    }
+
     if(this->itemAt(event->scenePos())){
         int maxZ = 0;
         for(int i = 0; i < scene_items.size(); i++){
@@ -115,13 +123,14 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
                      (int)event->scenePos().x() <= ((int)(scene_items.at(i)->x()+(int)scene_items.at(i)->getWidth())) &&
                      (int)event->scenePos().y() >= (int)scene_items.at(i)->y() &&
                      (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight()))){
-                if(maxZ < (int)scene_items.at(i)->zValue()){
-                    maxZ = (int)scene_items.at(i)->zValue();
+                if(scene_items.at(i)->zValue() > maxZ){
+                    maxZ = scene_items.at(i)->zValue();
                 }
             }
         }
+        lastItem->setZValue(maxZ+1);
     }
-    */
+    update();
     QGraphicsScene::mouseReleaseEvent(event);
 }
 
