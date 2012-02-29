@@ -23,11 +23,14 @@ public:
     // Mutators
     void setShape(ShapeType shape);
     void setSize(int newWidth, int newHeight);
+    void setState(int x);
 
     // Accessors
     int getWidth();
     int getHeight();
     int getId();
+    int getState();
+
 
 protected:
     QRectF boundingRect() const;
@@ -39,6 +42,7 @@ protected:
 private:
     // DragItem id counter
     static int next_id;
+    int state;
 
     // DragItem parameters
     int width;
