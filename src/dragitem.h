@@ -24,7 +24,6 @@ public:
     void setShape(ShapeType shape);
     void setSize(int newWidth, int newHeight);
     void setState(int x);
-    void addConnection(DragItem* item);
 
     // Accessors
     QList<DragItem*> getConnections();
@@ -32,6 +31,7 @@ public:
     int getHeight();
     int getId();
     int getState();
+    MarkerBox* getMarkerBox(int i);
 
 
 protected:
@@ -44,19 +44,20 @@ protected:
 private:
     // DragItem id counter
     static int next_id;
+
+    // used for zValue stacking and item selection
     int state;
 
     // DragItem parameters
     int width;
     int height;
     ShapeType shape;
+
+    // ID number for individual objects
     int id;
 
     // Selection boxes for the DragItem
     MarkerBox *markers[4];
-
-    // Connections
-    QList<DragItem*> connections_list;
 
 };
 
