@@ -9,8 +9,6 @@ ellipse::ellipse(QGraphicsItem *parent) : icon(parent)
     setFlag(QGraphicsItem::ItemIsSelectable);
     // allows setting of the base rectangle of dragitem
     //base = QRectF(0,0,0,0);
-    m_xsize = 1;
-    m_ysize = 1;
     m_shapetype = "Ellipse";
     m_iD = m_next_id;
     m_next_id++;
@@ -42,8 +40,6 @@ ellipse::ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos
     //base = QRectF(0,0,0,0);
     m_xsize = xsize;
     m_ysize = ysize;
-    m_xpos = xpos;
-    m_ypos = ypos;
     m_shapetype = "Ellipse";
     m_iD = m_next_id;
     m_next_id++;

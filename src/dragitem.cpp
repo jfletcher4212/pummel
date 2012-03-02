@@ -169,5 +169,3 @@ void DragItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     this->setOpacity(1.0);
     this->ungrabMouse();  // release mouse back to DragScene
 }
-
-
