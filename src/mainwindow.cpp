@@ -97,10 +97,8 @@ void MainWindow::redo()
 
 void MainWindow::cut()
 {
-    printf("1\n");
     // whatever this line is crashes it
    // infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
-    printf("2\n");
 
     // Testing for connections below, I just needed something to click, will delete all of it
     canvas.at(tabWidget->currentIndex())->testAction();
