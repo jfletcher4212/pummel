@@ -5,6 +5,7 @@
 #include "dragitem.h"
 
 DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth){
+    parent = 0;
     scene = new DragScene(0, newHeight, newWidth);
     view = new DragView();
     layout = new QHBoxLayout();
