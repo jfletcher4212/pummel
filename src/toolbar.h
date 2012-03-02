@@ -11,7 +11,7 @@
 #include <QWidget>
 #include <QDialog>
 #include <QtGui>
-#include "./OptionsDialog.h"
+#include "optionsdialog.h"
 #include "params.h"
 #include "dragitem.h"
 
