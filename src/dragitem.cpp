@@ -53,14 +53,9 @@ int DragItem::getState(){
     return state;
 }
 
-QList<DragItem*> DragItem::getConnections(){
-    return connections_list;
+MarkerBox* DragItem::getMarkerBox(int i){
+    return markers[i];
 }
-
-void DragItem::addConnection(DragItem* item){
-    connections_list.append(item);
-}
-
 
 void DragItem::setState(int x){
     state = x;
@@ -147,7 +142,8 @@ void DragItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 void DragItem::mousePressEvent(QGraphicsSceneMouseEvent *event){
     event->accept();
     QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * width; // this centers the object on the cursor
+    // this centers the object on the cursor
+    pos.rx() -= 0.5 * width;
     pos.ry() -= 0.5 * height;
     this->grabMouse();  // DragItem will take all mouse actions
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging

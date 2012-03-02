@@ -18,3 +18,19 @@ void MarkerBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     painter->setBrush(Qt::black);
     painter->drawRect(QRectF(0, 0,width,height));
 }
+
+void MarkerBox::mousePressEvent(QGraphicsSceneMouseEvent *event){
+    event->accept();
+    this->grabMouse();
+}
+
+void MarkerBox::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
+
+}
+
+void MarkerBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
+    this->ungrabMouse();
+}
+
+
+

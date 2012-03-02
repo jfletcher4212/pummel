@@ -11,7 +11,6 @@
 #include <QGraphicsScene>
 #include <QList>
 #include "dragitem.h"
-#include "connection.h"
 
 class DragScene : public QGraphicsScene
 {
@@ -27,21 +26,16 @@ public:
     bool getSceneCreate();
     bool getGrid();
     int getGridSize();
-    bool getSceneConnect();
     QList<DragItem*> getObjectList();
 
     // Mutators
     void setCreateMode(ShapeType newType);
     void setSceneCreate(bool a);
-    void setSceneConnect(bool a);
     void setGrid(bool a);
     void setGridSize(int newSize);
-    void addSceneConnection(DragItem* a, DragItem* b);
 
     // Testing Fucntions
     void testAction();
-
-
 
     /*
     // file io
@@ -61,11 +55,8 @@ private:
     int gridSize; // pixel width of grid lines
     bool grid; // toggle for grid
     ShapeType createMode; // type of shape the scene is creating
-    bool connectMode;
     bool sceneCreate; // toggle for click creation
-    QPen* pen;
     QList<DragItem*> scene_items; // custom list of all the DragItem*'s (not QGraphicsItem*) in DragScene
-    QList<Connection*> connection_list; // list of all connection between items
 };
 
 #endif // DRAGSCENE_H
