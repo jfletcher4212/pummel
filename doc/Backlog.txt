@@ -1,0 +1,43 @@
+BACKLOG:
+
+properly display objects in DrawArea
+add all UI components to a single window
+allow for object dragging in DrawArea
+implement text in icons
+add arrows that allow connecting of icons
+implement saving/opening drawings
+implement saving/opening entire projects
+printing
+changing properties of icons (color, size, etc)
+Toolbar is linked to DrawArea
+diagrams can be checked for accuracy (no illegal/illogical drawings are permitted)
+decide on what features project files will have
+grid on/off works
+construct test cases
+finish SSDD
+finish SSRS
+update user manual
+write other help documentation
+update UML diagrams (esp. class diagram)
+add more objects
+create dialog for individual objects property changes (what should we name?)
+
+for week of Jan 30, 2012:
+do hg tutorial/justification
+refine class diagram
+review use case diagrams, get ready to present changes on thursday (Coleman and Adrian)
+prioritize items on Gantt, also see if we can identify dependencies
+update state chart (Theora)
+get multiple icons added to the DrawArea
+
+Complete Demo 1 milestones
+audit diagrams/ begin edits
+add diagrams to SSDD
+
+Over the weekend:
+	Test Case (Cable and Coleman)
+	Test Plan (Cable and Coleman)
+	Use Case Diagrams (Coleman)
+	SSRS and SSDD (Theora)
+	HTML File (Austin)
+	
