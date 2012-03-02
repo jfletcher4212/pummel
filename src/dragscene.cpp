@@ -7,11 +7,14 @@
 #include <QIODevice>
 
 DragScene::DragScene(QObject* parent, int initHeight, int initWidth){
+    parent = 0;
     this->setSceneRect(QRectF(0,0,initHeight, initWidth));
     createMode = Square;
     sceneCreate = false;
     gridSize = 10;
     grid = true;
+    connectMode = false;
+    pen = new QPen();
 }
 
 void DragScene::setCreateMode(ShapeType newType){
@@ -52,8 +55,23 @@ int DragScene::getGridSize(){
     return gridSize;
 }
 
+bool DragScene::getSceneConnect(){
+    return connectMode;
+}
+
+void DragScene::setSceneConnect(bool a){
+    connectMode = a;
+}
+
+void DragScene::addSceneConnection(DragItem* a, DragItem* b){
+    Connection* newConnect = new Connection();
+    newConnect->setObjects(a, b);
+    connection_list.append(newConnect);
+}
+
 void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     // this block checks if an object is under the cursor, if so, select it
+    int topItem = 0;
     if(this->itemAt(event->scenePos())){
         int index;
         // object bounds checking shenanigans below
@@ -62,10 +80,17 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
                      (int)event->scenePos().x() <= ((int)(scene_items.at(i)->x()+(int)scene_items.at(i)->getWidth())) &&
                      (int)event->scenePos().y() >= (int)scene_items.at(i)->y() &&
                      (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight()))){
-                index = i;
+                if(scene_items.at(i)->zValue() > topItem){
+                    topItem = scene_items.at(i)->zValue(); // ensures the top item is selected, not the ones below it
+                    index = i;
+                }
             }
         }
         DragItem *item = scene_items.at(index);
+        // if there are items selected, this will deselect them
+        for(int i = 0; i < scene_items.size(); i++){
+            scene_items.at(i)->setSelected(false);
+        }
         item->setSelected(true);
     } else if(this->selectedItems().size() == 0 && sceneCreate){
         // if there is no object under the cursor, the number of selected items is zero,and sceneCreate is true, create an new item
@@ -97,7 +122,36 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
         newItem->setPos(event->scenePos());
         scene_items.append(newItem);
         }
-    // if there are items selected, this will deselect them, otherwise it will just pass the click to DragItem
+    // connections
+    if(connectMode && this->itemAt(event->scenePos())){
+        int selectedIndex, eventIndex;
+        // find selected item
+        for(int i = 0; i < scene_items.size(); i++){
+            if(scene_items.at(i)->isSelected()){
+                selectedIndex = i;
+            }
+        }
+
+        // find event item
+        int topItem = 0;
+        for(int i = 0; i < scene_items.size(); i++){
+            if((int)event->scenePos().x() >= (int)scene_items.at(i)->x() &&
+                     (int)event->scenePos().x() <= ((int)(scene_items.at(i)->x()+(int)scene_items.at(i)->getWidth())) &&
+                     (int)event->scenePos().y() >= (int)scene_items.at(i)->y() &&
+                     (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight()))){
+                if(scene_items.at(i)->zValue() > topItem){
+                    topItem = scene_items.at(i)->zValue(); // ensures the top item is selected, not the ones below it
+                    eventIndex = i;
+                }
+            }
+        }
+        // add connection
+
+        addSceneConnection(scene_items.at(selectedIndex), scene_items.at(eventIndex));
+        printf("added connection\n");
+        connectMode = false;
+    }
+    update();
     QGraphicsScene::mousePressEvent(event);
 }
 
@@ -135,6 +189,10 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
 }
 
 void DragScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event){
+    for(int i = 0; i < connection_list.size(); i++){
+        this->addLine(connection_list.at(i)->getStartObject()->x(), connection_list.at(i)->getStartObject()->y(), connection_list.at(i)->getEndObject()->x(), connection_list.at(i)->getStartObject()->y(), *pen);
+
+    }
     QGraphicsScene::mouseDoubleClickEvent(event);
 }
 
@@ -157,7 +215,22 @@ void DragScene::drawBackground(QPainter *painter, const QRectF &rect){
         painter->drawLines(linesX.data(), linesX.size());
         painter->drawLines(linesY.data(), linesY.size());
     }
+}
 
+
+void DragScene::testAction(){
+    DragItem* item1 = new DragItem();
+    DragItem* item2 = new DragItem();
+    item1 = scene_items.at(0);
+    item2 = scene_items.at(1);
+    addSceneConnection(scene_items.at(0), scene_items.at(1));
+    item1 = scene_items.at(1);
+    item2 = scene_items.at(2);
+    addSceneConnection(scene_items.at(1), scene_items.at(2));
+    item1 = scene_items.at(3);
+    item2 = scene_items.at(4);
+    addSceneConnection(scene_items.at(3), scene_items.at(4));
+}
     /*
 void DragScene::writeXML(QString *filename)
 {
@@ -175,7 +248,7 @@ void DragScene::writeXML(QString *filename)
     delete writer;
 }
     */
-}
+
 
 
 

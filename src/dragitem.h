@@ -24,8 +24,10 @@ public:
     void setShape(ShapeType shape);
     void setSize(int newWidth, int newHeight);
     void setState(int x);
+    void addConnection(DragItem* item);
 
     // Accessors
+    QList<DragItem*> getConnections();
     int getWidth();
     int getHeight();
     int getId();
@@ -52,6 +54,9 @@ private:
 
     // Selection boxes for the DragItem
     MarkerBox *markers[4];
+
+    // Connections
+    QList<DragItem*> connections_list;
 
 };
 
