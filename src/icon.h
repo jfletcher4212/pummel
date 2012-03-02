@@ -6,6 +6,7 @@
 
 #include <QWidget>
 #include <QGraphicsItem>
+#include <QPointF>
 
 //int next_ID = 1;
 
@@ -14,26 +15,30 @@ class icon : public QGraphicsItem
 protected:
 
     int m_iD;
-    int m_xpos;
-    int m_ypos;
+    QPointF m_pos;
     int m_xsize;
     int m_ysize;
     QString m_shapetype;
+    QString m_label;
+    QGraphicsTextItem *m_labelbox;
+    QPolygon *m_type;
 
     static int m_next_id;
 
 public:
 
     icon(QGraphicsItem *parent = 0);
-    int getXPos();
-    int getYPos();
-    void setPos(int newXPos, int newYPos);   // simple accessor and mutator methods for the position
     int getXSize();
     int getYSize();
     void setSize(int newXSize, int newYSize);  // simple accessor and mutator methods for the size
     QString reportShapetype();
     void setShapetype(QString shapename);     // simple accessor and mutator methods for the shapetype
     int getID();                              // simple accessor for getting the ID
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+    QPolygon *getType();
+
 };
 
 #endif // shapes_H
