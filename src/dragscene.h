@@ -11,6 +11,7 @@
 #include <QGraphicsScene>
 #include <QList>
 #include "dragitem.h"
+#include "solidline.h"
 
 class DragScene : public QGraphicsScene
 {
@@ -31,6 +32,7 @@ public:
     // Mutators
     void setCreateMode(ShapeType newType);
     void setSceneCreate(bool a);
+    void setArrowCreateMode(LineType newType);
     void setGrid(bool a);
     void setGridSize(int newSize);
     
@@ -52,6 +54,7 @@ private:
     int gridSize; // pixel width of grid lines
     bool grid; // toggle for grid
     ShapeType createMode; // type of shape the scene is creating
+    LineType lineCreateMode;
     bool sceneCreate; // toggle for click creation
     QList<DragItem*> scene_items; // custom list of all the DragItem*'s (not QGraphicsItem*) in DragScene
 };
