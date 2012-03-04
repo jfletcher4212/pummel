@@ -1,3 +1,4 @@
+/*
 #include "dragitem.h"
 #include "markerbox.h"
 
@@ -56,7 +57,8 @@ int DragItem::getState(){
 void DragItem::setState(int x){
     state = x;
 }
-
+************************************/
+/***********************************
 void DragItem::setShape(ShapeType newShape){
     shape = newShape;
 }
@@ -153,8 +155,8 @@ void DragItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
     pos.ry() -= 0.5 * height;
     this->setPos(pos);
 }
-
-void DragItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
+************************/
+//void DragItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     /*
       This resets the object's coordinates to the cursor's coordinates when the
       mouse is released, as opposed to creating a new object and then deleting the old one.
@@ -162,6 +164,7 @@ void DragItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
       */
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
+/****************************
     QPointF pos = event->scenePos();
     pos.rx() -= 0.5 * width;
     pos.ry() -= 0.5 * height;
@@ -169,5 +172,4 @@ void DragItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     this->setOpacity(1.0);
     this->ungrabMouse();  // release mouse back to DragScene
 }
-
-
+****************************/

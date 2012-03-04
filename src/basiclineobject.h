@@ -13,19 +13,16 @@ class QGraphicsSceneMouseEvent;
 class QPainterPath;
 class QPointF;
 QT_END_NAMESPACE
-
-//Is used when identifying custom items.
-//The default is UserType (65536) and the custom
-//item's enum value must be higher than or equal
-//to that.
-//References: QGraphicsItem::type()
-//T qgraphicsitem_cast
-//enum { objType = UserType + 4 };
-enum LineType {Solid_Line};
-
 class BasicLineObject : public QGraphicsLineItem
 {
 public:
+    //Is used when identifying custom items.
+    //The default is UserType (65536) and the custom
+    //item's enum value must be higher than or equal
+    //to that.
+    //References: QGraphicsItem::type()
+    //T qgraphicsitem_cast
+    enum { objType = UserType + 4 };
     //Constructor for the object
     BasicLineObject(DragItem *sourceReferenceObj, DragItem *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
     //Overrides the default boundingRect() method inherited
@@ -35,7 +32,7 @@ public:
     //Methods for accessing the object's
     //various elements
     int type() const
-        { return Solid_Line; } //objType; }
+        { return objType; }
     DragItem *sourceReferenceObj() const
         { return mySourceReferenceObj; }
     DragItem *destinationReferenceObj() const
@@ -52,6 +49,5 @@ protected:
     DragItem *myDestinationReferenceObj;
     QColor myColor;
     QPolygonF arrowHead;
-    //const LineType typeOfLine_ = Solid_Line;
 };
 #endif // BASICLINEOBJECT_H

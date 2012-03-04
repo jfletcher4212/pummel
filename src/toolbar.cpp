@@ -161,12 +161,7 @@ void Toolbar::insertText()
  */
 void Toolbar::insertLine()
 {
-   //Retrieve a pointer to the source icon
-   //DragItem *sourceObj = mou
-   //Retrieve a pointer to the target icon
-   //Create an instance of solidline using these
-   canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
-   canvas.at(tabWidget->currentIndex())->setArrowSceneCreateMode(Solid_Line);
+
 }
 
 void Toolbar::addRect(){

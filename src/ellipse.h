@@ -13,9 +13,9 @@ class ellipse : public icon
 protected:
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+   // void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+    //void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    //void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 private:
     // DragItem id counter         // also done in parent class
