@@ -5,15 +5,17 @@
 
 ellipse::ellipse(QGraphicsItem *parent) : icon(parent)
 {
+    printf("constructed an ellipse\n");
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
     // allows setting of the base rectangle of dragitem
     //base = QRectF(0,0,0,0);
-    m_xsize = 1;
-    m_ysize = 1;
     m_shapetype = "Ellipse";
     m_iD = m_next_id;
     m_next_id++;
+    m_xsize = 40;
+    m_ysize = 25;
+
 
     // selection boxes
     markers[0] = new MarkerBox();
@@ -30,20 +32,22 @@ ellipse::ellipse(QGraphicsItem *parent) : icon(parent)
     markers[1]->setVisible(false);
     markers[2]->setVisible(false);
     markers[3]->setVisible(false);
+
+    m_labelbox->setParentItem(this);
+    m_labelbox->setVisible(true);
 }
 
 
 
 ellipse::ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : icon(parent)
 {
+    printf("constructed an ellipse\n");
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
     // allows setting of the base rectangle of dragitem
     //base = QRectF(0,0,0,0);
     m_xsize = xsize;
     m_ysize = ysize;
-    m_xpos = xpos;
-    m_ypos = ypos;
     m_shapetype = "Ellipse";
     m_iD = m_next_id;
     m_next_id++;
@@ -63,6 +67,9 @@ ellipse::ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos
     markers[1]->setVisible(false);
     markers[2]->setVisible(false);
     markers[3]->setVisible(false);
+
+    m_labelbox->setParentItem(this);
+    m_labelbox->setVisible(true);
 }
 
 QRectF ellipse::boundingRect() const{
@@ -115,9 +122,11 @@ void ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
 
         painter->drawEllipse(QRectF(0,0,m_xsize,m_ysize));
 
+        printf("painted an ellipse\n");
+
 }
 
-
+/*
 void ellipse::mousePressEvent(QGraphicsSceneMouseEvent *event){
     event->accept();
     QPointF pos = event->scenePos();
@@ -135,8 +144,8 @@ void ellipse::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
     pos.ry() -= 0.5 * m_ysize;
     this->setPos(pos.rx(), pos.ry());
 }
-
-void ellipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
+************/
+//void ellipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     /*
       This resets the object's coordinates to the cursor's coordinates when the
       mouse is released, as opposed to creating a new object and then deleting the old one.
@@ -144,6 +153,7 @@ void ellipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
       */
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
+/*************************
     QPointF pos = event->scenePos();
     pos.rx() -= 0.5 * m_xsize;
     pos.ry() -= 0.5 * m_ysize;
@@ -151,5 +161,4 @@ void ellipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     this->setOpacity(1.0);
     this->ungrabMouse();  // release mouse back to DragScene
 }
-
-
+********************************/

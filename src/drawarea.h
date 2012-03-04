@@ -12,7 +12,6 @@
 #include <QWidget>
 #include "dragscene.h"
 #include "dragview.h"
-#include "basiclineobject.h"
 
 class DrawArea : public QWidget
 {
@@ -30,9 +29,6 @@ public:
 
     // Mutators
     void setSceneCreateMode(ShapeType newType);
-
-    void setArrowSceneCreateMode(LineType newType);
-
     void setSceneCreate(bool a);
     void setSceneGrid(bool a);
     void setSceneGridSize(int newSize);

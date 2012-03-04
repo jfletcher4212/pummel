@@ -1,6 +1,7 @@
 #include "dragscene.h"
-#include "dragitem.h"
-
+#include "icon.h"
+#include "ellipse.h"
+//#include "dragitem.h"
 #include <QList>
 #include <QGraphicsSceneDragDropEvent>
 #include <QXmlStreamWriter>
@@ -22,7 +23,7 @@ ShapeType DragScene::getCreateMode(){
     return createMode;
 }
 
-QList<DragItem*> DragScene::getObjectList(){
+QList<icon*> DragScene::getObjectList(){
     return scene_items;
 }
 
@@ -32,11 +33,6 @@ bool DragScene::getSceneCreate(){
 
 void DragScene::setSceneCreate(bool a){
     sceneCreate = a;
-}
-
-void DragScene::setArrowCreateMode(LineType newType)
-{
-   lineCreateMode = newType;
 }
 
 void DragScene::setGrid(bool a){
@@ -58,6 +54,8 @@ int DragScene::getGridSize(){
 }
 
 void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
+    printf("SceneCreate: %i\n", sceneCreate);
+    printf("selecteditems.size: %i\n", this->selectedItems().size());
     // this block checks if an object is under the cursor, if so, select it
     if(this->itemAt(event->scenePos())){
         int index;
@@ -70,13 +68,13 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
                 index = i;
             }
         }
-        DragItem *item = scene_items.at(index);
+        icon *item = scene_items.at(index);
         item->setSelected(true);
     } else if(this->selectedItems().size() == 0 && sceneCreate){
         // if there is no object under the cursor, the number of selected items is zero,and sceneCreate is true, create an new item
-        DragItem *newItem = new DragItem();
+        icon *newItem = new ellipse();
         newItem->setShape(createMode);
-        switch(createMode){
+  /*      switch(createMode){
             case Square:{
                 newItem->setSize(25, 25);
                 break;
@@ -98,9 +96,11 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
                 exit(1);
             }
         }
+        */
         this->addItem(newItem);
         newItem->setPos(event->scenePos());
         scene_items.append(newItem);
+        printf("appended to scene_item \n");
         }
     // if there are items selected, this will deselect them, otherwise it will just pass the click to DragItem
     QGraphicsScene::mousePressEvent(event);
@@ -111,7 +111,8 @@ void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
 }
 
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
-    DragItem* lastItem;
+    icon* lastItem = NULL;
+    printf("scene_items.size: %i\n", scene_items.size());
     for(int i = 0; i < scene_items.size(); i++){
         if(scene_items.at(i)->getState() == 2){
             scene_items.at(i)->setState(1);
@@ -133,8 +134,10 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
                 }
             }
         }
-        lastItem->setZValue(maxZ+1);
+        if (lastItem != NULL)
+            lastItem->setZValue(maxZ+1);
     }
+
     update();
     QGraphicsScene::mouseReleaseEvent(event);
 }

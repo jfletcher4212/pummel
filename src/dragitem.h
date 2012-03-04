@@ -4,7 +4,7 @@
  *
  */
 
-#ifndef DRAGITEM_H
+/*#ifndef DRAGITEM_H
 #define DRAGITEM_H
 
 #include <QtGui>
@@ -56,3 +56,4 @@ private:
 };
 
 #endif // DRAGITEM_H
+*/
