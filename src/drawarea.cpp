@@ -20,6 +20,11 @@ void DrawArea::setSceneCreateMode(ShapeType newType){
     scene->setCreateMode(newType);
 }
 
+void DrawArea::setArrowSceneCreateMode(LineType newType)
+{
+   scene->setArrowCreateMode(newType);
+}
+
 ShapeType DrawArea::getSceneCreateMode(){
     return scene->getCreateMode();
 }
