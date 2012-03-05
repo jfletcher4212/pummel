@@ -15,6 +15,7 @@ DragItem::DragItem(QGraphicsItem *parent) : QGraphicsItem(parent){
     id = next_id;
     next_id++;
 
+
     // selection boxes
     markers[0] = new MarkerBox();
     markers[1] = new MarkerBox();
@@ -55,6 +56,13 @@ int DragItem::getState(){
 
 MarkerBox* DragItem::getMarkerBox(int i){
     return markers[i];
+}
+
+void DragItem::setMarkers(MarkerBox* a, MarkerBox* b, MarkerBox* c, MarkerBox* d){
+    markers[0] = a;
+    markers[1] = b;
+    markers[2] = c;
+    markers[3] = d;
 }
 
 void DragItem::setState(int x){

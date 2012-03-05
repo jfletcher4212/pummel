@@ -25,6 +25,8 @@ public:
     void setSize(int newWidth, int newHeight);
     void setState(int x);
 
+    void setMarkers(MarkerBox* a, MarkerBox* b, MarkerBox* c, MarkerBox* d);
+
     // Accessors
     QList<DragItem*> getConnections();
     int getWidth();
