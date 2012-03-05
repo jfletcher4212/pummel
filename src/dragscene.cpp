@@ -35,6 +35,11 @@ void DragScene::setSceneCreate(bool a){
     sceneCreate = a;
 }
 
+void DragScene::setArrowCreateMode(LineType newType)
+{
+   lineCreateMode = newType;
+}
+
 void DragScene::setGrid(bool a){
     grid = a;
     update();

@@ -184,5 +184,3 @@ void DragItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     this->ungrabMouse();  // release mouse back to DragScene
     update();
 }
-
-
