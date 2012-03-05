@@ -31,6 +31,7 @@ DragItem::DragItem(QGraphicsItem *parent) : QGraphicsItem(parent){
     markers[1]->setVisible(false);
     markers[2]->setVisible(false);
     markers[3]->setVisible(false);
+
 }
 
 int DragItem::getWidth(){
@@ -78,6 +79,8 @@ QRectF DragItem::boundingRect() const{
 }
 
 void DragItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
+    option = 0;
+    widget = 0;
     if(painter == 0){
         // make a painter if none exists
         painter = new QPainter();
@@ -117,6 +120,7 @@ void DragItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     } else{
         // if not selected, make the boxes invisible
         painter->setBrush(Qt::black);
+
         markers[0]->setVisible(false);
         markers[1]->setVisible(false);
         markers[2]->setVisible(false);

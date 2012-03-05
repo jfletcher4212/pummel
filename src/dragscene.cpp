@@ -37,7 +37,7 @@ void DragScene::setSceneCreate(bool a){
 
 void DragScene::setArrowCreateMode(LineType newType)
 {
-   lineCreateMode = newType;
+    lineCreateMode = newType;
 }
 
 void DragScene::setGrid(bool a){
@@ -61,63 +61,63 @@ int DragScene::getGridSize(){
 void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     // this block checks if an object is under the cursor, if so, select it
     int topItem = 0;
+    int index = -1;
     if(this->itemAt(event->scenePos())){
-        int index;
         // object bounds checking shenanigans below
         for(int i = 0; i < scene_items.size(); i++){
             if((int)event->scenePos().x() >= (int)scene_items.at(i)->x() &&
-                     (int)event->scenePos().x() <= ((int)(scene_items.at(i)->x()+(int)scene_items.at(i)->getWidth())) &&
-                     (int)event->scenePos().y() >= (int)scene_items.at(i)->y() &&
-                     (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight()))){
+                    (int)event->scenePos().x() <= ((int)(scene_items.at(i)->x()+(int)scene_items.at(i)->getWidth())) &&
+                    (int)event->scenePos().y() >= (int)scene_items.at(i)->y() &&
+                    (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight()))){
                 if(scene_items.at(i)->zValue() > topItem){
                     topItem = scene_items.at(i)->zValue(); // ensures the top item is selected, not the ones below it
                     index = i;
                 }
             }
         }
-        if(index > scene_items.size()){
-            printf("triggered...\n");
-            QGraphicsScene::mousePressEvent(event);
+        if(index < 0){
+            printf("clicked markerbox...\n");
+        } else {
+            DragItem *item = scene_items.at(index);
+            // if there are items selected, this will deselect them
+            for(int i = 0; i < scene_items.size(); i++){
+                scene_items.at(i)->setSelected(false);
+            }
+            item->setSelected(true);
         }
-        DragItem *item = scene_items.at(index);
-        // if there are items selected, this will deselect them
-        for(int i = 0; i < scene_items.size(); i++){
-            scene_items.at(i)->setSelected(false);
-        }
-        item->setSelected(true);
+
     } else if(this->selectedItems().size() == 0 && sceneCreate){
-        // if there is no object under the cursor, the number of selected items is zero,and sceneCreate is true, create an new item
+        // if there is no object under the cursor, the number of selected items is zero,and sceneCreate is true, create a new item
         DragItem *newItem = new DragItem();
         newItem->setShape(createMode);
         switch(createMode){
-            case Square:{
-                newItem->setSize(25, 25);
-                break;
-            }
-            case Rectangle:{
-                newItem->setSize(60, 25);
-                break;
-            }
-            case Circle:{
-                newItem->setSize(25, 25);
-                break;
-            }
-            case Ellipse:{
-                newItem->setSize(60, 25);
-                break;
-            }
-            default:{
-                printf("Error in DragScene::mouseDoubleClickEvent, Why doesn't the scene have a static createMode set?\n");
-                exit(1);
-            }
+        case Square:{
+            newItem->setSize(25, 25);
+            break;
+        }
+        case Rectangle:{
+            newItem->setSize(60, 25);
+            break;
+        }
+        case Circle:{
+            newItem->setSize(25, 25);
+            break;
+        }
+        case Ellipse:{
+            newItem->setSize(60, 25);
+            break;
+        }
+        default:{
+            printf("Error in DragScene::mousePressEvent, Why doesn't the scene have a static createMode set?\n");
+            exit(1);
+        }
         }
         // add the new item to the scene
         this->addItem(newItem);
         newItem->setPos(event->scenePos());
         // add new item to the custom list
         scene_items.append(newItem);
-        }
-
+    }
     update();
     QGraphicsScene::mousePressEvent(event);
 }
@@ -139,17 +139,24 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
 
     if(this->itemAt(event->scenePos())){
         int maxZ = 0;
+        int index = -1;
         for(int i = 0; i < scene_items.size(); i++){
             if((int)event->scenePos().x() >= (int)scene_items.at(i)->x() &&
-                     (int)event->scenePos().x() <= ((int)(scene_items.at(i)->x()+(int)scene_items.at(i)->getWidth())) &&
-                     (int)event->scenePos().y() >= (int)scene_items.at(i)->y() &&
-                     (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight()))){
+                    (int)event->scenePos().x() <= ((int)(scene_items.at(i)->x()+(int)scene_items.at(i)->getWidth())) &&
+                    (int)event->scenePos().y() >= (int)scene_items.at(i)->y() &&
+                    (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight()))){
                 if(scene_items.at(i)->zValue() > maxZ){
+                    index = i;
                     maxZ = scene_items.at(i)->zValue();
                 }
             }
         }
-        lastItem->setZValue(maxZ+1);
+        if(index < 0){
+            // clicked a markerbox
+        }
+        else {
+            lastItem->setZValue(maxZ+1);
+        }
     }
     update();
     QGraphicsScene::mouseReleaseEvent(event);
@@ -184,7 +191,7 @@ void DragScene::drawBackground(QPainter *painter, const QRectF &rect){
 void DragScene::testAction(){
 
 }
-    /*
+/*
 void DragScene::writeXML(QString *filename)
 {
     int i;
