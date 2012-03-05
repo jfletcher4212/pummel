@@ -70,6 +70,10 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
                 }
             }
         }
+        if(index > scene_items.size()){
+            printf("triggered...\n");
+            QGraphicsScene::mousePressEvent(event);
+        }
         DragItem *item = scene_items.at(index);
         // if there are items selected, this will deselect them
         for(int i = 0; i < scene_items.size(); i++){
@@ -104,11 +108,6 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
         }
         // add the new item to the scene
         this->addItem(newItem);
-        // add the items marker boxes to the scene
-        this->addItem(newItem->getMarkerBox(0));
-        this->addItem(newItem->getMarkerBox(1));
-        this->addItem(newItem->getMarkerBox(2));
-        this->addItem(newItem->getMarkerBox(3));
         newItem->setPos(event->scenePos());
         // add new item to the custom list
         scene_items.append(newItem);
