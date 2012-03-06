@@ -8,16 +8,15 @@ ellipse::ellipse(QGraphicsItem *parent) : icon(parent)
     printf("constructed an ellipse\n");
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
-    // allows setting of the base rectangle of dragitem
-    //base = QRectF(0,0,0,0);
+
+    //base = QRectF(0,0,0,0);	// allows setting of the base rectangle of dragitem
     m_shapetype = "Ellipse";
     m_iD = m_next_id;
     m_next_id++;
     m_xsize = 40;
     m_ysize = 25;
 
-
-    // selection boxes
+    // create and display marker boxes
     markers[0] = new MarkerBox();
     markers[1] = new MarkerBox();
     markers[2] = new MarkerBox();
@@ -27,7 +26,7 @@ ellipse::ellipse(QGraphicsItem *parent) : icon(parent)
     markers[1]->setParentItem(this);
     markers[2]->setParentItem(this);
     markers[3]->setParentItem(this);
-
+	//marker boxes are hidden until parent icon is selected
     markers[0]->setVisible(false);
     markers[1]->setVisible(false);
     markers[2]->setVisible(false);
@@ -36,8 +35,6 @@ ellipse::ellipse(QGraphicsItem *parent) : icon(parent)
     m_labelbox->setParentItem(this);
     m_labelbox->setVisible(true);
 }
-
-
 
 ellipse::ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : icon(parent)
 {
@@ -77,13 +74,15 @@ QRectF ellipse::boundingRect() const{
 }
 
 void ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
-    if(painter == 0){
+    if(painter == 0)
+	{
         // make a painter if none exists
         painter = new QPainter();
     }
     painter->setPen(Qt::NoPen);
 
-    if(this->isSelected()){
+    if(this->isSelected())
+	{
         // properly sets the marker boxes around selected objects
         painter->setBrush(Qt::red);
         markers[0]->setVisible(true);
@@ -126,7 +125,7 @@ void ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
 
 }
 
-/*
+/********** these events are handled in the base icon class
 void ellipse::mousePressEvent(QGraphicsSceneMouseEvent *event){
     event->accept();
     QPointF pos = event->scenePos();
