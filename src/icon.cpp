@@ -1,7 +1,9 @@
-/* icon.cpp -contains the functions to store default properties in the shape structs
-               and contains the creation function for each shape
-               Made by Theora Rice
-  */
+/* icon.cpp -
+ * contains members and functions common to all shapes
+ * mouse events are initially defined here
+ * Made by Theora Rice
+ */
+
 #include "icon.h"
 #include <QtGui>
 
@@ -19,10 +21,14 @@ icon::icon(QGraphicsItem *parent) : QGraphicsItem(parent)
     m_xsize = 0;
     m_ysize = 0;
     m_label = "this is text";
+
+	//set up the title textbox
+	//initial position is icon's top left corner  
     m_labelbox = new QGraphicsTextItem;
     m_labelbox->setDefaultTextColor((Qt::red));
     m_labelbox->setPlainText(m_label);
     m_labelbox->setPos(this->pos());
+
     m_type = new QPolygon();
     m_state = 0;
 }
@@ -37,6 +43,7 @@ int icon::getHeight()
     return m_ysize;
 }
 
+//set height of bounding rectangle(i think?)
 void icon::setSize(int newXSize, int newYSize)
 {
     m_xsize = newXSize;
@@ -92,7 +99,6 @@ void icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     this->setPos(pos);
     this->setOpacity(1.0);
     this->ungrabMouse();  // release mouse back to DragScene
-    //m_labelbox->setPos(pos);
 }
 
 QPolygon* icon::getType()

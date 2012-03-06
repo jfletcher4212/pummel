@@ -42,7 +42,7 @@ public:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
     QPolygon *getType();
-    void setText(QString input);
+    void setText(QString input);		//change the value of m_labelbox
     int getState();
     void setState(int x);
 
