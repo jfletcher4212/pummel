@@ -15,6 +15,7 @@ DragItem::DragItem(QGraphicsItem *parent) : QGraphicsItem(parent){
     id = next_id;
     next_id++;
 
+
     // selection boxes
     markers[0] = new MarkerBox();
     markers[1] = new MarkerBox();
@@ -30,6 +31,7 @@ DragItem::DragItem(QGraphicsItem *parent) : QGraphicsItem(parent){
     markers[1]->setVisible(false);
     markers[2]->setVisible(false);
     markers[3]->setVisible(false);
+
 }
 
 int DragItem::getWidth(){
@@ -53,6 +55,17 @@ int DragItem::getState(){
     return state;
 }
 
+MarkerBox* DragItem::getMarkerBox(int i){
+    return markers[i];
+}
+
+void DragItem::setMarkers(MarkerBox* a, MarkerBox* b, MarkerBox* c, MarkerBox* d){
+    markers[0] = a;
+    markers[1] = b;
+    markers[2] = c;
+    markers[3] = d;
+}
+
 void DragItem::setState(int x){
     state = x;
 }
@@ -66,6 +79,8 @@ QRectF DragItem::boundingRect() const{
 }
 
 void DragItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
+    option = 0;
+    widget = 0;
     if(painter == 0){
         // make a painter if none exists
         painter = new QPainter();
@@ -105,6 +120,7 @@ void DragItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     } else{
         // if not selected, make the boxes invisible
         painter->setBrush(Qt::black);
+
         markers[0]->setVisible(false);
         markers[1]->setVisible(false);
         markers[2]->setVisible(false);
@@ -138,11 +154,13 @@ void DragItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 void DragItem::mousePressEvent(QGraphicsSceneMouseEvent *event){
     event->accept();
     QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * width; // this centers the object on the cursor
+    // this centers the object on the cursor
+    pos.rx() -= 0.5 * width;
     pos.ry() -= 0.5 * height;
     this->grabMouse();  // DragItem will take all mouse actions
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
     state = 2;
+    update();
 }
 
 void DragItem::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
@@ -168,4 +186,5 @@ void DragItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     this->setPos(pos);
     this->setOpacity(1.0);
     this->ungrabMouse();  // release mouse back to DragScene
+    update();
 }

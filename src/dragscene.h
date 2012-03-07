@@ -35,7 +35,10 @@ public:
     void setArrowCreateMode(LineType newType);
     void setGrid(bool a);
     void setGridSize(int newSize);
-    
+
+    // Testing Fucntions
+    void testAction();
+
     /*
     // file io
     void writeXML(QString *filename);
