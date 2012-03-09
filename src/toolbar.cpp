@@ -9,7 +9,6 @@
 #include "global.h"
 
 Toolbar::Toolbar(QWidget *parent) :
-    //QDialog(parent)
     QWidget(parent)
 {
     this->setWindowModality(Qt::NonModal);
