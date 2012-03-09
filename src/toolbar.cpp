@@ -164,7 +164,7 @@ void Toolbar::insertLine()
    //DragItem *sourceObj = mou
    //Retrieve a pointer to the target icon
    //Create an instance of solidline using these
-   canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+   canvas.at(tabWidget->currentIndex())->se
    canvas.at(tabWidget->currentIndex())->setArrowSceneCreateMode(Solid_Line);
 }
 
