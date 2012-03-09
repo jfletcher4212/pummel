@@ -60,8 +60,8 @@ int DragScene::getGridSize(){
 
 void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     // this block checks if an object is under the cursor, if so, select it
-    int topItem = 0;
-    int index = -1;
+    int topItem = -1;
+    int index = -1; // left at -1 to make sure an object is clicked, not a markerbox
     if(this->itemAt(event->scenePos())){
         // object bounds checking shenanigans below
         for(int i = 0; i < scene_items.size(); i++){
@@ -75,14 +75,16 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
                 }
             }
         }
+        // if still -1, clicked a marker box
         if(index < 0){
-            printf("clicked markerbox...\n");
+            // do nothing
         } else {
             DragItem *item = scene_items.at(index);
             // if there are items selected, this will deselect them
             for(int i = 0; i < scene_items.size(); i++){
                 scene_items.at(i)->setSelected(false);
             }
+            // selected the last clicked item
             item->setSelected(true);
         }
 
@@ -128,6 +130,7 @@ void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
 
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     DragItem* lastItem;
+    // find what the last item dropped (state 2), set it to state 1, reset everything else (state 0)
     for(int i = 0; i < scene_items.size(); i++){
         if(scene_items.at(i)->getState() == 2){
             scene_items.at(i)->setState(1);
@@ -138,7 +141,8 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     }
 
     if(this->itemAt(event->scenePos())){
-        int maxZ = 0;
+        // starting at -1 forces the loop to run
+        int maxZ = -1;
         int index = -1;
         for(int i = 0; i < scene_items.size(); i++){
             if((int)event->scenePos().x() >= (int)scene_items.at(i)->x() &&
@@ -151,10 +155,12 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
                 }
             }
         }
+        // marker box check
         if(index < 0){
             // clicked a markerbox
         }
         else {
+            // increment the zValue
             lastItem->setZValue(maxZ+1);
         }
     }
@@ -171,16 +177,21 @@ void DragScene::drawBackground(QPainter *painter, const QRectF &rect){
     if(grid){
         int gridInterval = gridSize; //interval to draw grid lines at
         painter->setWorldMatrixEnabled(true);
+        // find the start points
         qreal left = int(rect.left()) - (int(rect.left()) % gridInterval );
         qreal top = int(rect.top()) - (int(rect.top()) % gridInterval );
         QVarLengthArray<QLineF, 100> linesX;
+        // create all the lines for background
+        // X lines
         for (qreal x = left; x < rect.right(); x += gridInterval ){
             linesX.append(QLineF(x, rect.top(), x, rect.bottom()));
         }
+        // Y lines
         QVarLengthArray<QLineF, 100> linesY;
         for (qreal y = top; y < rect.bottom(); y += gridInterval ){
             linesY.append(QLineF(rect.left(), y, rect.right(), y));
         }
+        // paint them, opacity is 20%
         painter->setOpacity(0.2);
         painter->drawLines(linesX.data(), linesX.size());
         painter->drawLines(linesY.data(), linesY.size());
