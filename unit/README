@@ -19,3 +19,7 @@ after you have done this just run the resulting executable:
 >>$ ./ut_file.ut
 Running 1 test.OK!
 
+
+you can also build and run all the tests at once using the all directive:
+
+>>$ make all
