@@ -23,3 +23,6 @@ void MarkerBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 
 }
 
+void MarkerBox::mousePressEvent(QGraphicsSceneMouseEvent *event){
+    this->parentItem()->setPos(this->parentItem()->x()+50, this->parentItem()->y());
+}
