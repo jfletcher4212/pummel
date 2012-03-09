@@ -28,11 +28,13 @@ public:
     bool getSceneGrid();
     int getSceneGridSize();
     QList<DragItem*> getObjects();
+    bool getLineCreate();
 
     // Mutators
     void setSceneCreateMode(ShapeType newType);
 
-    void setArrowSceneCreateMode(LineType newType);
+    void setLineCreateType(LineType newType);
+    void setLineCreate(bool a);
 
     void setSceneCreate(bool a);
     void setSceneGrid(bool a);

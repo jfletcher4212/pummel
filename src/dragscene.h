@@ -28,11 +28,15 @@ public:
     bool getGrid();
     int getGridSize();
     QList<DragItem*> getObjectList();
+    QList<BasicLineObject*> getLineList();
+    bool getLineCreate();
+    LineType getLineCreateType();
 
     // Mutators
     void setCreateMode(ShapeType newType);
     void setSceneCreate(bool a);
-    void setArrowCreateMode(LineType newType);
+    void setLineCreateType(LineType newType);
+    void setLineCreate(bool a);
     void setGrid(bool a);
     void setGridSize(int newSize);
 
@@ -57,9 +61,11 @@ private:
     int gridSize; // pixel width of grid lines
     bool grid; // toggle for grid
     ShapeType createMode; // type of shape the scene is creating
-    LineType lineCreateMode;
+    LineType lineTypeEnum;
     bool sceneCreate; // toggle for click creation
+    bool lineCreate; // toggle for line creation
     QList<DragItem*> scene_items; // custom list of all the DragItem*'s (not QGraphicsItem*) in DragScene
+    QList<BasicLineObject*> scene_lines;  //custom list of all lines in DragScene
 };
 
 #endif // DRAGSCENE_H
