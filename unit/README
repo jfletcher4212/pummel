@@ -5,21 +5,27 @@ a little while.
 
 >>$ ./setup.sh
 
-then run the shell script wrapper that executes the
-makefile using the command line arg that specifies
-the test you want to run (look in the tests dir):
+
+then run the makefile using the command line arg that 
+specifies the test you want to run (look in the tests dir):
 
 >>$ ls tests
-ut_file.h
+test_dragitem.h
 
->>$ make ut_file
+>>$ make test_dragitem
+
 
 after you have done this just run the resulting executable:
 
->>$ ./ut_file.ut
+>>$ ./test_dragitem
 Running 1 test.OK!
 
 
-you can also build and run all the tests at once using the all directive:
+you can also build and run all the tests at once using the 
+all directive:
 
 >>$ make all
+
+
+look in the makefile itself for instructions on how to add
+your tests to the build.
