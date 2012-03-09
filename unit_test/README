@@ -1,0 +1,21 @@
+to run a unit test, you first need to run the setup script.
+this simply goes into the src/ direcory and builds the project
+in order to generate the .o files for linking. this may take
+a little while.
+
+>>$ ./setup.sh
+
+then run the shell script wrapper that executes the
+makefile using the command line arg that specifies
+the test you want to run (look in the tests dir):
+
+>>$ ls tests
+ut_file.h
+
+>>$ make ut_file
+
+after you have done this just run the resulting executable:
+
+>>$ ./ut_file.ut
+Running 1 test.OK!
+
