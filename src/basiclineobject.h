@@ -2,7 +2,7 @@
 #define BASICLINEOBJECT_H
 #include <QGraphicsLineItem>
 #include <QPen>
-#include "DragItem.h"
+#include "dragitem.h"
 #include <QtGui>
 QT_BEGIN_NAMESPACE
 class QGraphicsPolygonItem;
