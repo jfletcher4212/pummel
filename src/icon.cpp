@@ -15,7 +15,7 @@ icon::icon(QGraphicsItem *parent) : QGraphicsItem(parent)
     m_ysize = 0;
 //    m_label = "";
     m_labelbox = new QGraphicsTextItem;
-    m_labelbox->setPlainText(m_label);
+    m_labelbox->setPlainText("");
     m_labelbox->setPos(this->pos());
     m_type = new QPolygon();
 }
