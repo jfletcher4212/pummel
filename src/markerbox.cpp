@@ -1,4 +1,5 @@
 #include "markerbox.h"
+#include "global.h"
 
 MarkerBox::MarkerBox(QGraphicsItem *parent) : QGraphicsItem(parent){
     setFlag(QGraphicsItem::ItemIsMovable);
@@ -24,5 +25,5 @@ void MarkerBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 }
 
 void MarkerBox::mousePressEvent(QGraphicsSceneMouseEvent *event){
-    this->parentItem()->setPos(this->parentItem()->x()+50, this->parentItem()->y());
+    // does the QGraphicsScene items list line up with our custom list? test this
 }
