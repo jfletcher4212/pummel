@@ -31,13 +31,27 @@ bool DragScene::getSceneCreate(){
     return sceneCreate;
 }
 
+bool DragScene::getLineCreate(){
+    return lineCreate;
+}
+
+LineType DragScene::getLineCreateType()
+{
+   return lineTypeEnum;
+}
+
 void DragScene::setSceneCreate(bool a){
     sceneCreate = a;
 }
 
-void DragScene::setArrowCreateMode(LineType newType)
+void DragScene::setLineCreateType(LineType newType)
 {
-    lineCreateMode = newType;
+    lineTypeEnum = newType;
+}
+
+void DragScene::setLineCreate(bool a)
+{
+   lineCreate = a;
 }
 
 void DragScene::setGrid(bool a){
@@ -64,12 +78,15 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     int index = -1; // left at -1 to make sure an object is clicked, not a markerbox
     if(this->itemAt(event->scenePos())){
         // object bounds checking shenanigans below
-        for(int i = 0; i < scene_items.size(); i++){
+        for(int i = 0; i < scene_items.size(); i++)
+        {
             if((int)event->scenePos().x() >= (int)scene_items.at(i)->x() &&
                     (int)event->scenePos().x() <= ((int)(scene_items.at(i)->x()+(int)scene_items.at(i)->getWidth())) &&
                     (int)event->scenePos().y() >= (int)scene_items.at(i)->y() &&
-                    (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight()))){
-                if(scene_items.at(i)->zValue() > topItem){
+                    (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight())))
+            {
+                if(scene_items.at(i)->zValue() > topItem)
+                {
                     topItem = scene_items.at(i)->zValue(); // ensures the top item is selected, not the ones below it
                     index = i;
                 }
@@ -81,14 +98,23 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
         } else {
             DragItem *item = scene_items.at(index);
             // if there are items selected, this will deselect them
-            for(int i = 0; i < scene_items.size(); i++){
+            for(int i = 0; i < scene_items.size(); i++)
+            {
                 scene_items.at(i)->setSelected(false);
             }
             // selected the last clicked item
             item->setSelected(true);
+
+            //Learn if in line creation mode
+            if (lineCreate == true)
+            {
+
+            }
         }
 
-    } else if(this->selectedItems().size() == 0 && sceneCreate){
+
+    }
+    else if(this->selectedItems().size() == 0 && sceneCreate){
         // if there is no object under the cursor, the number of selected items is zero,and sceneCreate is true, create a new item
         DragItem *newItem = new DragItem();
         newItem->setShape(createMode);
