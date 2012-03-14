@@ -13,9 +13,9 @@ icon::icon(QGraphicsItem *parent) : QGraphicsItem(parent)
 {
     m_xsize = 0;
     m_ysize = 0;
-    m_label = "";
+//    m_label = "";
     m_labelbox = new QGraphicsTextItem;
-    m_labelbox->setPlainText(m_label);
+    m_labelbox->setPlainText("");
     m_labelbox->setPos(this->pos());
     m_type = new QPolygon();
 }
@@ -91,3 +91,7 @@ QPolygon* icon::getType()
     return m_type;
 }
 
+void icon::setText(QString input)
+{
+    m_labelbox->setPlainText(input);
+}

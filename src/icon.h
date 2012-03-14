@@ -19,7 +19,7 @@ protected:
     int m_xsize;
     int m_ysize;
     QString m_shapetype;
-    QString m_label;
+//    QString m_label;
     QGraphicsTextItem *m_labelbox;
     QPolygon *m_type;
 
@@ -38,7 +38,7 @@ public:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
     QPolygon *getType();
-
+    void setText(QString input);		//change the value of m_labelbox
 };
 
 #endif // shapes_H
