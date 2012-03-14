@@ -5,7 +5,7 @@
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
 # add to this variable list and then mirror the code at the bottom
 TARG_1=test_dragitem
-#TARG_2=test_something
+TARG_2=test_mainwindow
 #TARG_=test_
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
 
@@ -44,8 +44,8 @@ OBJECTS = ../src/borderlayout.o \
 ../src/moc_toolbar.o
 
 
-all: $(TARG_1) #$(TARG_)
-	./$(TARG_1); #./$(TARG_);
+all: $(TARG_1) $(TARG_2) #$(TARG_)
+	./$(TARG_1); ./$(TARG_2); #./$(TARG_);
 
 # test_dragitem
 $(TARG_1): $(TARG_1).o $(OBJECTS)
@@ -59,6 +59,18 @@ $(TARG_1).o: $(TARG_1).cpp
 $(TARG_1).cpp: ./tests/$(TARG_1).h
 	cxxtestgen --error-printer -o $(TARG_1).cpp ./tests/$(TARG_1).h
 
+
+# test_mainwindow
+$(TARG_2): $(TARG_2).o $(OBJECTS)
+	$(CXX) $(INC) -o $(TARG_2) $(TARG_2).o $(OBJECTS) $(LIBS)
+
+
+$(TARG_2).o: $(TARG_2).cpp
+	$(CXX) $(INC) -c $(TARG_2).cpp $(LIBS)
+
+
+$(TARG_2).cpp: ./tests/$(TARG_2).h
+	cxxtestgen --error-printer -o $(TARG_2).cpp ./tests/$(TARG_2).h
 
 # test_
 #$(TARG_): $(TARG_).o $(OBJECTS)
@@ -75,7 +87,7 @@ $(TARG_1).cpp: ./tests/$(TARG_1).h
 
 # add your test name to the end of the clean directive
 clean:
-	rm -rf *.o *.cpp $(TARG_1) #$(TARG_)
+	rm -rf *.o *.cpp $(TARG_1) $(TARG_2) #$(TARG_)
 
 
 
