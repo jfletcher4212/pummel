@@ -5,10 +5,10 @@
 #include "toolbar.h"
 #include "optionsdialog.h"
 #include "drawarea.h"
+#include "icon.h"
 #include "global.h"
 
 Toolbar::Toolbar(QWidget *parent) :
-    //QDialog(parent)
     QWidget(parent)
 {
     this->setWindowModality(Qt::NonModal);
@@ -160,7 +160,12 @@ void Toolbar::insertText()
  */
 void Toolbar::insertLine()
 {
-
+   //Retrieve a pointer to the source icon
+   //DragItem *sourceObj = mou
+   //Retrieve a pointer to the target icon
+   //Create an instance of solidline using these
+   //canvas.at(tabWidget->currentIndex())->seSceneCreate(true);
+   //canvas.at(tabWidget->currentIndex())->setArrowSceneCreateMode(Solid_Line);
 }
 
 void Toolbar::addRect(){

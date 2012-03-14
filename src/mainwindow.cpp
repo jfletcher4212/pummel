@@ -12,7 +12,7 @@
 
 #include "mainwindow.h"
 #include "borderlayout.h"
-#include "drawarea.h"
+#include "global.h"
 #include "toolbar.h"
 #include<iostream>
 #include <QXmlStreamWriter>
@@ -100,7 +100,12 @@ void MainWindow::redo()
 
 void MainWindow::cut()
 {
-    infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
+    // whatever this line is crashes it
+   // infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
+
+    // Testing for connections below, I just needed something to click, will delete all of it
+    canvas.at(tabWidget->currentIndex())->testAction();
+
 }
 
 void MainWindow::copy()
@@ -124,7 +129,12 @@ void MainWindow::paste()
  * canvas associated with that tab...somehow? How would
  * they be kept track of (ie, each canvas associated with
  * each tab)? .-.
+ *
+ * The tabs and canvas have an index number when they are created, Tab 1 =  Canvas 1, etc.
+ * This will only be a problem if someone makes huge amounts of Tabs (maybe... I don't know how well QList would handle it)
+ * But it has been tested to handle about 20 tabs, any more than that seems overkill
  */
+
 void MainWindow::newTab()
 {
     int i = tabWidget->count();
