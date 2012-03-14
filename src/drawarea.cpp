@@ -5,6 +5,7 @@
 #include "dragitem.h"
 
 DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth){
+    parent = 0;
     scene = new DragScene(0, newHeight, newWidth);
     view = new DragView();
     layout = new QHBoxLayout();
@@ -12,11 +13,17 @@ DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth){
     view->setScene(scene);
     layout->addWidget(view);
     this->setLayout(layout);
+
 }
 
 void DrawArea::setSceneCreateMode(ShapeType newType){
     scene->setCreateMode(newType);
 }
+
+//void DrawArea::setArrowSceneCreateMode(LineType newType)
+//{
+//   scene->setLineCreateType(newType);
+//}
 
 ShapeType DrawArea::getSceneCreateMode(){
     return scene->getCreateMode();
@@ -38,10 +45,24 @@ int DrawArea::getSceneGridSize(){
     return scene->getGridSize();
 }
 
+QList<DragItem*> DrawArea::getObjects(){
+    return scene->getObjectList();
+}
+
 void DrawArea::setSceneGrid(bool a){
     scene->setGrid(a);
 }
 
 void DrawArea::setSceneGridSize(int newSize){
     scene->setGridSize(newSize);
+}
+
+
+
+/***************************************
+*** Testing Functions/Actions **********
+***************************************/
+
+void DrawArea::testAction(){
+    scene->testAction();
 }

@@ -12,6 +12,7 @@
 #include <QWidget>
 #include "dragscene.h"
 #include "dragview.h"
+#include "basiclineobject.h"
 
 class DrawArea : public QWidget
 {
@@ -26,16 +27,25 @@ public:
     bool getSceneCreate();
     bool getSceneGrid();
     int getSceneGridSize();
+    QList<DragItem*> getObjects();
+    bool getLineCreate();
 
     // Mutators
     void setSceneCreateMode(ShapeType newType);
+
+    void setLineCreateType(LineType newType);
+    void setLineCreate(bool a);
+
     void setSceneCreate(bool a);
     void setSceneGrid(bool a);
     void setSceneGridSize(int newSize);
+    DragScene *scene;
+
+    // Testing
+
+    void testAction();
 
 private:
-
-    DragScene *scene;
     DragView *view;
     QHBoxLayout *layout;
 
