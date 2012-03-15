@@ -22,6 +22,9 @@ MainWindow::MainWindow()
     widget = new QWidget;
     setCentralWidget(widget);
 
+    QIcon thumbnail;                    //this sets up an image for the upper corner
+    thumbnail.addFile("icons/viking.png"); //while its running
+
 
     toolbar = new Toolbar;
     /* need some way to get
@@ -46,6 +49,7 @@ MainWindow::MainWindow()
     statusBar()->showMessage(message);
 
     setWindowTitle(tr("pUML"));
+    setWindowIcon(thumbnail);
     setMinimumSize(160, 160);
     resize(480, 320);
     this->newTab();
