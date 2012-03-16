@@ -3,11 +3,13 @@
 #include "mainwindow.h"
 extern MainWindow window;
 
-TabManager::TabManager(QWidget *parent) : QTabWidget(parent){
+TabManager::TabManager(QWidget *parent) : QTabWidget(parent)
+{
     connect(this , SIGNAL(currentChanged(int)),this,SLOT(currentChangedSlot(int)));
 }
 
-void TabManager::currentChangedSlot(int index){
+void TabManager::currentChangedSlot(int index)
+{
     ShapeType indexCreateMode;
     bool indexGrid;
     indexCreateMode = canvas.at(index)->getSceneCreateMode();
