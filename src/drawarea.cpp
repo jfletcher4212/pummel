@@ -4,7 +4,8 @@
 #include "dragview.h"
 #include "dragitem.h"
 
-DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth){
+DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth)
+{
     parent = 0;
     scene = new DragScene(0, newHeight, newWidth);
     view = new DragView();
@@ -16,7 +17,8 @@ DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth){
 
 }
 
-void DrawArea::setSceneCreateMode(ShapeType newType){
+void DrawArea::setSceneCreateMode(ShapeType newType)
+{
     scene->setCreateMode(newType);
 }
 
@@ -25,35 +27,43 @@ void DrawArea::setSceneCreateMode(ShapeType newType){
 //   scene->setLineCreateType(newType);
 //}
 
-ShapeType DrawArea::getSceneCreateMode(){
+ShapeType DrawArea::getSceneCreateMode()
+{
     return scene->getCreateMode();
 }
 
-void DrawArea::setSceneCreate(bool a){
+void DrawArea::setSceneCreate(bool a)
+{
     scene->setSceneCreate(a);
 }
 
-bool DrawArea::getSceneCreate(){
+bool DrawArea::getSceneCreate()
+{
     return scene->getSceneCreate();
 }
 
-bool DrawArea::getSceneGrid(){
+bool DrawArea::getSceneGrid()
+{
     return scene->getGrid();
 }
 
-int DrawArea::getSceneGridSize(){
+int DrawArea::getSceneGridSize()
+{
     return scene->getGridSize();
 }
 
-QList<DragItem*> DrawArea::getObjects(){
+QList<DragItem*> DrawArea::getObjects()
+{
     return scene->getObjectList();
 }
 
-void DrawArea::setSceneGrid(bool a){
+void DrawArea::setSceneGrid(bool a)
+{
     scene->setGrid(a);
 }
 
-void DrawArea::setSceneGridSize(int newSize){
+void DrawArea::setSceneGridSize(int newSize)
+{
     scene->setGridSize(newSize);
 }
 
@@ -63,6 +73,7 @@ void DrawArea::setSceneGridSize(int newSize){
 *** Testing Functions/Actions **********
 ***************************************/
 
-void DrawArea::testAction(){
+void DrawArea::testAction()
+{
     scene->testAction();
 }

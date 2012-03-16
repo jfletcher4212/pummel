@@ -6,7 +6,8 @@
 #include <QXmlStreamWriter>
 #include <QIODevice>
 
-DragScene::DragScene(QObject* parent, int initHeight, int initWidth){
+DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
+{
     parent = 0;
     this->setSceneRect(QRectF(0,0,initHeight, initWidth));
     createMode = Square;
@@ -15,23 +16,28 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth){
     grid = true;
 }
 
-void DragScene::setCreateMode(ShapeType newType){
+void DragScene::setCreateMode(ShapeType newType)
+{
     createMode = newType;
 }
 
-ShapeType DragScene::getCreateMode(){
+ShapeType DragScene::getCreateMode()
+{
     return createMode;
 }
 
-QList<DragItem*> DragScene::getObjectList(){
+QList<DragItem*> DragScene::getObjectList()
+{
     return scene_items;
 }
 
-bool DragScene::getSceneCreate(){
+bool DragScene::getSceneCreate()
+{
     return sceneCreate;
 }
 
-bool DragScene::getLineCreate(){
+bool DragScene::getLineCreate()
+{
     return lineCreate;
 }
 
@@ -40,7 +46,8 @@ LineType DragScene::getLineCreateType()
    return lineTypeEnum;
 }
 
-void DragScene::setSceneCreate(bool a){
+void DragScene::setSceneCreate(bool a)
+{
     sceneCreate = a;
 }
 
@@ -54,25 +61,30 @@ void DragScene::setLineCreate(bool a)
    lineCreate = a;
 }
 
-void DragScene::setGrid(bool a){
+void DragScene::setGrid(bool a)
+{
     grid = a;
     update();
 }
 
-void DragScene::setGridSize(int newSize){
+void DragScene::setGridSize(int newSize)
+{
     gridSize = newSize;
     update();
 }
 
-bool DragScene::getGrid(){
+bool DragScene::getGrid()
+{
     return grid;
 }
 
-int DragScene::getGridSize(){
+int DragScene::getGridSize()
+{
     return gridSize;
 }
 
-void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
+void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
     // this block checks if an object is under the cursor, if so, select it
     int topItem = 0;
     int index = -1;
@@ -116,31 +128,37 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
 
 
     }
-    else if(this->selectedItems().size() == 0 && sceneCreate){
+    else if(this->selectedItems().size() == 0 && sceneCreate)
+    {
         // if there is no object under the cursor, the number of selected items is zero,and sceneCreate is true, create a new item
         DragItem *newItem = new DragItem();
         newItem->setShape(createMode);
-        switch(createMode){
-        case Square:{
-            newItem->setSize(25, 25);
-            break;
-        }
-        case Rectangle:{
-            newItem->setSize(60, 25);
-            break;
-        }
-        case Circle:{
-            newItem->setSize(25, 25);
-            break;
-        }
-        case Ellipse:{
-            newItem->setSize(60, 25);
-            break;
-        }
-        default:{
-            printf("Error in DragScene::mousePressEvent, Why doesn't the scene have a static createMode set?\n");
-            exit(1);
-        }
+        switch(createMode)
+        {
+            case Square:
+            {
+                newItem->setSize(25, 25);
+                break;
+            }
+            case Rectangle:{
+                newItem->setSize(60, 25);
+                break;
+            }
+            case Circle:
+            {
+                newItem->setSize(25, 25);
+                break;
+            }
+            case Ellipse:
+            {
+                newItem->setSize(60, 25);
+                break;
+            }
+            default:
+            {
+                printf("Error in DragScene::mousePressEvent, Why doesn't the scene have a static createMode set?\n");
+                exit(1);
+            }
         }
         // add the new item to the scene
         this->addItem(newItem);
@@ -152,39 +170,51 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     QGraphicsScene::mousePressEvent(event);
 }
 
-void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
+void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
     QGraphicsScene::mouseMoveEvent(event);
 }
 
-void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
+void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
     DragItem* lastItem;
-    for(int i = 0; i < scene_items.size(); i++){
-        if(scene_items.at(i)->getState() == 2){
+    for(int i = 0; i < scene_items.size(); i++)
+    {
+        if(scene_items.at(i)->getState() == 2)
+        {
             scene_items.at(i)->setState(1);
             lastItem = scene_items.at(i);
-        } else{
+        }
+        else
+        {
             scene_items.at(i)->setState(0);
         }
     }
 
-    if(this->itemAt(event->scenePos())){
+    if(this->itemAt(event->scenePos()))
+    {
         int maxZ = 0;
         int index = -1;
-        for(int i = 0; i < scene_items.size(); i++){
+        for(int i = 0; i < scene_items.size(); i++)
+        {
             if((int)event->scenePos().x() >= (int)scene_items.at(i)->x() &&
                     (int)event->scenePos().x() <= ((int)(scene_items.at(i)->x()+(int)scene_items.at(i)->getWidth())) &&
                     (int)event->scenePos().y() >= (int)scene_items.at(i)->y() &&
-                    (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight()))){
-                if(scene_items.at(i)->zValue() > maxZ){
+                    (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight())))
+                {
+                if(scene_items.at(i)->zValue() > maxZ)
+                {
                     index = i;
                     maxZ = scene_items.at(i)->zValue();
                 }
             }
         }
-        if(index < 0){
+        if(index < 0)
+        {
             // clicked a markerbox
         }
-        else {
+        else
+        {
             lastItem->setZValue(maxZ+1);
         }
     }
@@ -192,23 +222,28 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     QGraphicsScene::mouseReleaseEvent(event);
 }
 
-void DragScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event){
+void DragScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
     QGraphicsScene::mouseDoubleClickEvent(event);
 }
 
-void DragScene::drawBackground(QPainter *painter, const QRectF &rect){
+void DragScene::drawBackground(QPainter *painter, const QRectF &rect)
+{
     // if the grid is on, draw the background
-    if(grid){
+    if(grid)
+    {
         int gridInterval = gridSize; //interval to draw grid lines at
         painter->setWorldMatrixEnabled(true);
         qreal left = int(rect.left()) - (int(rect.left()) % gridInterval );
         qreal top = int(rect.top()) - (int(rect.top()) % gridInterval );
         QVarLengthArray<QLineF, 100> linesX;
-        for (qreal x = left; x < rect.right(); x += gridInterval ){
+        for (qreal x = left; x < rect.right(); x += gridInterval )
+        {
             linesX.append(QLineF(x, rect.top(), x, rect.bottom()));
         }
         QVarLengthArray<QLineF, 100> linesY;
-        for (qreal y = top; y < rect.bottom(); y += gridInterval ){
+        for (qreal y = top; y < rect.bottom(); y += gridInterval )
+        {
             linesY.append(QLineF(rect.left(), y, rect.right(), y));
         }
         painter->setOpacity(0.2);
@@ -218,7 +253,8 @@ void DragScene::drawBackground(QPainter *painter, const QRectF &rect){
 }
 
 
-void DragScene::testAction(){
+void DragScene::testAction()
+{
 
 }
 /*

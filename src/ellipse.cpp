@@ -63,18 +63,22 @@ ellipse::ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos
     markers[3]->setVisible(false);
 }
 
-QRectF ellipse::boundingRect() const{
+QRectF ellipse::boundingRect() const
+{
     return QRectF(0,0,m_xsize, m_ysize);
 }
 
-void ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
-    if(painter == 0){
+void ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
+    if(painter == 0)
+    {
         // make a painter if none exists
         painter = new QPainter();
     }
     painter->setPen(Qt::NoPen);
 
-    if(this->isSelected()){
+    if(this->isSelected())
+    {
         // properly sets the marker boxes around selected objects
         painter->setBrush(Qt::red);
         markers[0]->setVisible(true);
@@ -102,7 +106,9 @@ void ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
         pos.ry() = m_ysize+3;
         markers[3]->setPos(pos);
 
-    } else{
+    }
+    else
+    {
         // if not selected, make the boxes invisible
         painter->setBrush(Qt::black);
         markers[0]->setVisible(false);
@@ -117,7 +123,8 @@ void ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
 }
 
 
-void ellipse::mousePressEvent(QGraphicsSceneMouseEvent *event){
+void ellipse::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
     event->accept();
     QPointF pos = event->scenePos();
     pos.rx() -= 0.5 * m_xsize;
@@ -126,7 +133,8 @@ void ellipse::mousePressEvent(QGraphicsSceneMouseEvent *event){
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
 }
 
-void ellipse::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
+void ellipse::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     QPointF pos = event->scenePos();
@@ -135,12 +143,13 @@ void ellipse::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
     this->setPos(pos.rx(), pos.ry());
 }
 
-void ellipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
+void ellipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
     /*
-      This resets the object's coordinates to the cursor's coordinates when the
-      mouse is released, as opposed to creating a new object and then deleting the old one.
-      Also puts opacity back to normal.
-      */
+     * This resets the object's coordinates to the cursor's coordinates when the
+     * mouse is released, as opposed to creating a new object and then deleting the old one.
+     * Also puts opacity back to normal.
+     */
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     QPointF pos = event->scenePos();

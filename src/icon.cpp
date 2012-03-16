@@ -52,7 +52,8 @@ int icon::getID()
     return m_iD;
 }
 
-void icon::mousePressEvent(QGraphicsSceneMouseEvent *event){
+void icon::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
     event->accept();
     QPointF pos = event->scenePos();
     pos.rx() -= 0.5 * m_xsize; // this centers the object on the cursor
@@ -61,7 +62,8 @@ void icon::mousePressEvent(QGraphicsSceneMouseEvent *event){
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
 }
 
-void icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
+void icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     QPointF pos = event->scenePos();
@@ -70,12 +72,13 @@ void icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
     this->setPos(pos);
 }
 
-void icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
+void icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
     /*
-      This resets the object's coordinates to the cursor's coordinates when the
-      mouse is released, as opposed to creating a new object and then deleting the old one.
-      Also puts opacity back to normal.
-      */
+     * This resets the object's coordinates to the cursor's coordinates when the
+     * mouse is released, as opposed to creating a new object and then deleting the old one.
+     * Also puts opacity back to normal.
+     */
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     QPointF pos = event->scenePos();
