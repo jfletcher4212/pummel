@@ -14,10 +14,12 @@ class QPainterPath;
 class QPointF;
 QT_END_NAMESPACE
 
-//Is used when identifying custom items.
-//The default is UserType (65536) and the custom
-//item's enum value must be higher than or equal
-//to that.
+/*
+ * Is used when identifying custom items.
+ * The default is UserType (65536) and the custom
+ * item's enum value must be higher than or equal
+ * to that.
+ */
 //References: QGraphicsItem::type()
 //T qgraphicsitem_cast
 //enum { objType = UserType + 4 };

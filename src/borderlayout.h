@@ -70,7 +70,8 @@
  private:
      struct ItemWrapper
      {
-         ItemWrapper(QLayoutItem *i, Position p) {
+         ItemWrapper(QLayoutItem *i, Position p)
+         {
              item = i;
              position = p;
          }

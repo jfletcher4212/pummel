@@ -70,13 +70,16 @@ QRectF actor::boundingRect() const
 
 void actor::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    if(painter == 0){
+    if(painter == 0)
+    {
         // make a painter if none exists
         painter = new QPainter();
     }
     painter->setPen(Qt::NoPen);
 
-    if(this->isSelected()){
+    if(this->isSelected())
+    {
+        QPointF pos;
         // properly sets the marker boxes around selected objects
         painter->setBrush(Qt::red);
         markers[0]->setVisible(true);
@@ -84,7 +87,7 @@ void actor::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
         markers[2]->setVisible(true);
         markers[3]->setVisible(true);
 
-        QPointF pos = this->scenePos(); // sets position to the upper left pixel
+        pos = this->scenePos(); // sets position to the upper left pixel
         pos.rx() = -8;
         pos.ry() = -8;
         markers[0]->setPos(pos);
@@ -104,7 +107,9 @@ void actor::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
         pos.ry() = m_ysize+3;
         markers[3]->setPos(pos);
 
-    } else{
+    }
+    else
+    {
         // if not selected, make the boxes invisible
         painter->setBrush(Qt::black);
         markers[0]->setVisible(false);
@@ -118,7 +123,8 @@ void actor::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 }
 
 
-void actor::mousePressEvent(QGraphicsSceneMouseEvent *event){
+void actor::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
     event->accept();
     QPointF pos = event->scenePos();
     pos.rx() -= 0.5 * m_xsize;
@@ -127,7 +133,8 @@ void actor::mousePressEvent(QGraphicsSceneMouseEvent *event){
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
 }
 
-void actor::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
+void actor::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     QPointF pos = event->scenePos();
@@ -136,12 +143,13 @@ void actor::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
     this->setPos(pos.rx(), pos.ry());
 }
 
-void actor::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
+void actor::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
     /*
-      This resets the object's coordinates to the cursor's coordinates when the
-      mouse is released, as opposed to creating a new object and then deleting the old one.
-      Also puts opacity back to normal.
-      */
+     * This resets the object's coordinates to the cursor's coordinates when the
+     * mouse is released, as opposed to creating a new object and then deleting the old one.
+     * Also puts opacity back to normal.
+     */
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     QPointF pos = event->scenePos();

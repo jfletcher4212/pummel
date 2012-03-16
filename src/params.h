@@ -7,20 +7,23 @@
 using namespace std;
 
 //parameters for shapes
-struct shapeParams{
+struct shapeParams
+{
     string name;
     QString fillColor;
     int weight;
 };
 
 //parameters for lines
-struct lineParams{
+struct lineParams
+{
     QString color;
     int weight;
 };
 
 //parameters for text
-struct textParams{
+struct textParams
+{
     QString font;
     QString color;
     int size;
