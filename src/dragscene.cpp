@@ -135,7 +135,7 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
     if(this->itemAt(event->scenePos()))
     {
-        int maxZ = 0;
+        int maxZ = -1;
         int index = -1;
         for(int i = 0; i < scene_items.size(); i++)
         {
