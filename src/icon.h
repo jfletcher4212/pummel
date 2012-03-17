@@ -22,6 +22,7 @@ protected:
 //    QString m_label;
     QGraphicsTextItem *m_labelbox;
     QPolygon *m_type;
+    QImage m_image;          //holds the imported image to be drawn
 
     static int m_next_id;
 

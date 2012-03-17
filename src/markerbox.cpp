@@ -2,7 +2,8 @@
 #include "global.h"
 #include "math.h"
 
-MarkerBox::MarkerBox(QGraphicsItem *parent) : QGraphicsItem(parent){
+MarkerBox::MarkerBox(QGraphicsItem *parent) : QGraphicsItem(parent)
+{
     setFlag(QGraphicsItem::ItemIsMovable);
     width = 5;
     height = 5;
@@ -12,14 +13,17 @@ MarkerBox::MarkerBox(QGraphicsItem *parent) : QGraphicsItem(parent){
     startY = -1;
 }
 
-QRectF MarkerBox::boundingRect() const{
+QRectF MarkerBox::boundingRect() const
+{
     return QRectF(0,0,width,height);
 }
 
-void MarkerBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
+void MarkerBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+{
     option = 0;
     widget = 0;
-    if(painter == 0){
+    if(painter == 0)
+    {
         // make a painter if none exists
         painter = new QPainter();
     }
