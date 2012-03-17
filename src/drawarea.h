@@ -23,27 +23,26 @@ public:
     DrawArea(QWidget *parent = 0, int newHeight = 250, int newWidth = 250);
 
     // Accessors
-    ShapeType getSceneCreateMode();
-    bool getSceneCreate();
-    bool getSceneGrid();
-    int getSceneGridSize();
-    QList<DragItem*> getObjects();
+    ShapeType getSceneCreateMode(){return scene->getCreateMode();}
+    bool getSceneCreate(){return scene->getSceneCreate();}
+    bool getSceneGrid(){return scene->getGrid();}
+    int getSceneGridSize(){return scene->getGridSize();}
+    QList<DragItem*> getObjects(){return scene->getObjectList();}
     bool getLineCreate();
 
     // Mutators
-    void setSceneCreateMode(ShapeType newType);
+    void setSceneCreateMode(ShapeType newType){scene->setCreateMode(newType);}
 
     void setLineCreateType(LineType newType);
     void setLineCreate(bool a);
 
-    void setSceneCreate(bool a);
-    void setSceneGrid(bool a);
-    void setSceneGridSize(int newSize);
+    void setSceneCreate(bool a){scene->setSceneCreate(a);}
+    void setSceneGrid(bool a){scene->setGrid(a);}
+    void setSceneGridSize(int newSize){scene->setGridSize(newSize);}
     DragScene *scene;
 
     // Testing
-
-    void testAction();
+    void testAction(){scene->testAction();}
 
 private:
     DragView *view;
