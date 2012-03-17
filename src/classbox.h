@@ -20,15 +20,18 @@ private:
     QGraphicsTextItem *m_memberBox, *m_methodBox;
     int m_titleBorder, m_memberBorder, m_methodBorder;
     QString m_members, m_methods;
+    void arrangeBoxes();
 
 protected:
     QRectF boundingRect() const;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget * = 0);
+    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
     void setValues();
 
 public:
     ClassBox();
     QString getLabel(), getMembers(), getMethods();
+    void setLabel(QString), setMembers(QString), setMethods(QString);
 };
 
 #endif // CLASSBOX_H
