@@ -86,3 +86,18 @@ void ClassBox::setValues()
 
     //copy dialog values into m_memberBox and m_methodBox
 }
+
+QString ClassBox::getLabel()
+{
+    return m_labelbox->toPlainText();
+}
+
+QString ClassBox::getMembers()
+{
+    return m_memberBox->toPlainText();
+}
+
+QString ClassBox::getMethods()
+{
+    return m_methodBox->toPlainText();
+}
