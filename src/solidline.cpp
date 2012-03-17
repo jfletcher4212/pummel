@@ -57,13 +57,14 @@ void solidline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     //arrowHead << line().p1() << arrowP1 << arrowP2;
     painter->drawLine(line());
     //painter->drawPolygon(arrowHead);
-    if (isSelected()) {
+    if (isSelected())
+    {
+        QLineF myLine = line();
         painter->setPen(QPen(myColor, 1, Qt::DashLine));
-    QLineF myLine = line();
-    myLine.translate(0, 4.0);
-    painter->drawLine(myLine);
-    myLine.translate(0,-8.0);
-    painter->drawLine(myLine);
+        myLine.translate(0, 4.0);
+        painter->drawLine(myLine);
+        myLine.translate(0,-8.0);
+        painter->drawLine(myLine);
     }
 }
 
