@@ -58,6 +58,8 @@ void shapes::createDashedArrow()
 //creating default line
 void shapes::createLine()
 {
+    QLineF line(105, 70, 140, 100);
+    QPainter painter;
     Arrows shapename;
     shapename.iD = count++;
     shapename.posx = 0;
@@ -67,8 +69,7 @@ void shapes::createLine()
     shapename.linewidth = 1;
     shapename.shapetype = "line";
     shapename.color = "black";
-    QLineF line(105, 70, 140, 100);
-    QPainter painter;
+
     painter.drawLine(line);
 }
 
