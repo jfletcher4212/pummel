@@ -19,7 +19,7 @@ class ClassBox : public Icon
 private:
     QGraphicsTextItem *m_memberBox, *m_methodBox;
     int m_titleBorder, m_memberBorder, m_methodBorder;
-    QString members, methods;
+    QString m_members, m_methods;
 
 protected:
     QRectF boundingRect() const;
@@ -28,6 +28,7 @@ protected:
 
 public:
     ClassBox();
+    QString getLabel(), getMembers(), getMethods();
 };
 
 #endif // CLASSBOX_H
