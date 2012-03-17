@@ -21,23 +21,22 @@ public:
     DragItem(QGraphicsItem *parent = 0);
 
     // Mutators
-    void setShape(ShapeType shape);
-    void setSize(int newWidth, int newHeight);
-    void setState(int x);
-
+    void setShape(ShapeType newShape){shape = newShape;}
+    void setSize(int newWidth, int newHeight){width = newWidth; height = newHeight;}
+    void setState(int x){state = x;}
     void setMarkers(MarkerBox* a, MarkerBox* b, MarkerBox* c, MarkerBox* d);
 
     // Accessors
     QList<DragItem*> getConnections();
-    int getWidth();
-    int getHeight();
-    int getId();
-    int getState();
-    MarkerBox* getMarkerBox(int i);
+    int getWidth(){return width;}
+    int getHeight(){return height;}
+    int getId(){return id;}
+    int getState(){return state;}
+    MarkerBox* getMarkerBox(int i){return markers[i];}
 
 
 protected:
-    QRectF boundingRect() const;
+    QRectF boundingRect() const{return QRectF(0,0,width, height);}
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);

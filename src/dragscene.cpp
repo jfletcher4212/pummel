@@ -1,6 +1,5 @@
 #include "dragscene.h"
 #include "dragitem.h"
-
 #include <QList>
 #include <QGraphicsSceneDragDropEvent>
 #include <QXmlStreamWriter>
@@ -16,78 +15,17 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
     grid = true;
 }
 
-void DragScene::setCreateMode(ShapeType newType)
-{
-    createMode = newType;
-}
-
-ShapeType DragScene::getCreateMode()
-{
-    return createMode;
-}
-
-QList<DragItem*> DragScene::getObjectList()
-{
-    return scene_items;
-}
-
-bool DragScene::getSceneCreate()
-{
-    return sceneCreate;
-}
-
-bool DragScene::getLineCreate()
-{
-    return lineCreate;
-}
-
-LineType DragScene::getLineCreateType()
-{
-   return lineTypeEnum;
-}
-
-void DragScene::setSceneCreate(bool a)
-{
-    sceneCreate = a;
-}
-
-void DragScene::setLineCreateType(LineType newType)
-{
-    lineTypeEnum = newType;
-}
-
-void DragScene::setLineCreate(bool a)
-{
-   lineCreate = a;
-}
-
-void DragScene::setGrid(bool a)
-{
-    grid = a;
-    update();
-}
-
-void DragScene::setGridSize(int newSize)
-{
-    gridSize = newSize;
-    update();
-}
-
-bool DragScene::getGrid()
-{
-    return grid;
-}
-
-int DragScene::getGridSize()
-{
-    return gridSize;
-}
-
+/****************************************************************
+  * mousePressEvent handles the following:
+  *     - object click detection
+  *     - item selection
+  *     - item creation
+  ***************************************************************/
 void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     // this block checks if an object is under the cursor, if so, select it
-    int topItem = 0;
-    int index = -1;
+    int topItem = -1; // -1 indicates an error
+    int index = -1; // -1 indicates an error
     if(this->itemAt(event->scenePos()))
     {
         // object bounds checking shenanigans below
@@ -107,7 +45,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         }
         if(index < 0)
         {
-            printf("clicked markerbox...\n");
+            // do nothing
         }
         else
         {
@@ -125,8 +63,6 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
             }
         }
-
-
     }
     else if(this->selectedItems().size() == 0 && sceneCreate)
     {
@@ -175,6 +111,12 @@ void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     QGraphicsScene::mouseMoveEvent(event);
 }
 
+/****************************************************************
+  * mousePressEvent handles the following:
+  *     - item selection
+  *     - item creation
+  *     - item zValue settings
+  ***************************************************************/
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     DragItem* lastItem;
@@ -227,6 +169,9 @@ void DragScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
     QGraphicsScene::mouseDoubleClickEvent(event);
 }
 
+/****************************************************************
+  * draws the grid, opacity set to 20%
+  ***************************************************************/
 void DragScene::drawBackground(QPainter *painter, const QRectF &rect)
 {
     // if the grid is on, draw the background

@@ -13,11 +13,6 @@ MarkerBox::MarkerBox(QGraphicsItem *parent) : QGraphicsItem(parent)
     startY = -1;
 }
 
-QRectF MarkerBox::boundingRect() const
-{
-    return QRectF(0,0,width,height);
-}
-
 void MarkerBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
@@ -29,10 +24,15 @@ void MarkerBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     }
     painter->setBrush(Qt::black);
     painter->drawRect(QRectF(0, 0,width,height));
-
 }
 
+/****************************************************************
+  * mousePressEvent sets the object the boxes reference if it is
+  * not set.  Sets the startX and startY values and grabs mouse
+  * events
+  ***************************************************************/
 void MarkerBox::mousePressEvent(QGraphicsSceneMouseEvent *event){
+    event->accept();
     if(itemIndex < 0){
         for(int i = 0; i < canvas.at(tabWidget->currentIndex())->scene->getObjectList().size(); i++){
             if(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(i)->isSelected()){
@@ -46,44 +46,53 @@ void MarkerBox::mousePressEvent(QGraphicsSceneMouseEvent *event){
 }
 
 void MarkerBox::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
-
+    event = 0;
 }
 
+/****************************************************************
+  * mouseReleaseEvent calculates the offset for the object and
+  * the width and height.  Resets the startX and startY and
+  * ungrabs the mouse
+  ***************************************************************/
 void MarkerBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
+    int moveDistanceX;
+    int moveDistanceY;
+    int newWidth;
+    int newHeight;
 
-    int moveDistanceX = (int)event->scenePos().x() - startX;
-    int moveDistanceY = (int)event->scenePos().y() - startY;
-    canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setPos(event->scenePos().x()+8, event->scenePos().y()+8);
-    MarkerBox* m0 = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->getMarkerBox(0);
-    MarkerBox* m1 = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->getMarkerBox(1);
-    MarkerBox* m2 = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->getMarkerBox(3);
-
-    int newWidth = 11 - (int)sqrt(pow((m0->x() + m1->x()), 2) + pow((m0->y() + m1->y()), 2));
-    int newHeight = 11 - (int)sqrt(pow((m0->x() + m2->x()), 2) + pow((m0->y() + m2->y()), 2));
-    canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setSize(newWidth, newHeight);
-    /*
-    int newX = event->scenePos().x() - startX;
-    int newY = event->scenePos().y() - startY;
-    int currWidth = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->getWidth();
-    int currHeight = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->getHeight();
-    */
     switch(id){
     case 0:{
-
+        moveDistanceX = startX - (int)event->scenePos().x();
+        moveDistanceY = startY - (int)event->scenePos().y();
+        canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setPos(event->scenePos().x()+8, event->scenePos().y()+8);
+        break;
     }
     case 1:{
-
+        moveDistanceX = (int)event->scenePos().x() - startX;
+        moveDistanceY = startY - (int)event->scenePos().y();
+        canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setPos(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->x(), event->scenePos().y()+8);
+        break;
     }
     case 2:{
-
+        moveDistanceX = startX - (int)event->scenePos().x();
+        moveDistanceY = (int)event->scenePos().y() - startY;
+        canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setPos(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->x() - moveDistanceX, canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->y());
+        break;
     }
     case 3:{
-
+        moveDistanceX = (int)event->scenePos().x() - startX;
+        moveDistanceY = (int)event->scenePos().y() - startY;
+        break;
     }
     default:{
-
+        printf("markerbox doesn't have and id\n");
+        exit(1);
+        break;
     }
     }
+    newWidth = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->getWidth() + moveDistanceX;
+    newHeight = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->getHeight() + moveDistanceY;
+    canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setSize(newWidth, newHeight);
 
    // canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setSize((newX), (newY));
     startX = -1;
