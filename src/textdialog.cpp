@@ -3,6 +3,7 @@
 TextDialog::TextDialog(ClassBox *origCaller) :
     QWidget()
 {
+    this->setWindowTitle("Edit Class Box");
     //copy the original caller to the member m_caller
     m_caller = origCaller;
 
