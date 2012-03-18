@@ -19,7 +19,9 @@ class ClassBox : public Icon
 private:
     QGraphicsTextItem *m_memberBox, *m_methodBox;
     int m_titleBorder, m_memberBorder, m_methodBorder;
+    int m_width, m_height;
     QString m_members, m_methods;
+    void setRect();
     void arrangeBoxes();
 
 protected:
