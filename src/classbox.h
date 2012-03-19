@@ -1,9 +1,7 @@
 /* classbox.h
  * ClassBox
  * 3 QGraphicsTextItems for the class name, class members and class methods
- * CURRENTLY:
- *  all text boxes hold default text (set in the constructor)
- *  class boxes can only be moved reliably by dragging the top left corner.
+ * TO-DO:   Modify double-click behavior so that the object doesn't move immediately when clicked
  */
 #ifndef CLASSBOX_H
 #define CLASSBOX_H

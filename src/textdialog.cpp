@@ -15,7 +15,7 @@ TextDialog::TextDialog(ClassBox *origCaller) :
     //separate layout for buttons
     QBoxLayout *buttonLayout = new QHBoxLayout();
 
-    initFields(origCaller);
+    initFields();
     buttonSetup();
 
     //add buttons to their layout
@@ -34,12 +34,12 @@ TextDialog::TextDialog(ClassBox *origCaller) :
 /* copies values from caller into member variables
  * initializes other members of dialog
  */
-void TextDialog::initFields(ClassBox *caller)
+void TextDialog::initFields()
 {
     //copy values from caller
-    m_name = caller->getLabel();
-    m_members = caller->getMembers();
-    m_methods = caller->getMethods();
+    m_name = m_caller->getLabel();
+    m_members = m_caller->getMembers();
+    m_methods = m_caller->getMethods();
 
     //initialize QTextEdits
     m_nameField = new QTextEdit();
@@ -71,11 +71,6 @@ void TextDialog::acknowledge()
     m_caller->setLabel(m_name);
     m_caller->setMembers(m_members);
     m_caller->setMethods(m_methods);
-/*
-    caller->m_labelbox = m_nameField->toPlainText();
-    m_members = m_membersField->toPlainText();
-    m_methods = m_methodsField->toPlainText();
-*/
 
     quit();
 }
