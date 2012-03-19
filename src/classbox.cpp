@@ -32,7 +32,7 @@ ClassBox::ClassBox()
 
 }
 
-//move boxes to their appropriate positions
+//move boxes to their appropriate positions and set overall size members
 void ClassBox::arrangeBoxes()
 {
     m_memberBox->setPos(m_labelbox->pos().x(), m_labelbox->pos().y() + m_labelbox->boundingRect().height());
@@ -43,13 +43,19 @@ void ClassBox::arrangeBoxes()
 
     //change m_height and m_width
     //match the width of the overall boundary rectangles to the widest one
-    if(m_memberBox->boundingRect().width() > m_methodBox->boundingRect().width())
+    if( (m_memberBox->boundingRect().width() > m_methodBox->boundingRect().width())
+            && (m_memberBox->boundingRect().width() > m_labelbox->boundingRect().width()))
     {
         m_width = m_memberBox->boundingRect().width();
     }
-    else
+    else if( (m_methodBox->boundingRect().width() > m_memberBox->boundingRect().width())
+             && (m_methodBox->boundingRect().width() > m_labelbox->boundingRect().width()))
     {
         m_width = m_methodBox->boundingRect().width();
+    }
+    else
+    {
+        m_width = m_labelbox->boundingRect().width();
     }
 
     m_height = m_labelbox->boundingRect().height()
