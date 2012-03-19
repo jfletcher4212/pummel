@@ -4,11 +4,15 @@
 solidline::solidline(DragItem *sourceReferenceObj, DragItem *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
    : BasicLineObject(sourceReferenceObj, destinationReferenceObj)
 {
+    parent = 0;
+    scene = 0;
 
    //BasicLineObject * objMyBasicLine = new BasicLineObject(sourceReferenceObj, destinationReferenceObj);
 }
 void solidline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+    option = 0;
+    widget = 0;
     if (mySourceReferenceObj->collidesWithItem(myDestinationReferenceObj))
         return;
     QPen myPen = pen();

@@ -23,22 +23,22 @@ public:
     DragScene(QObject* parent = 0, int initHeight = 500, int initWidth = 500);
 
     // Accessors
-    ShapeType getCreateMode();
-    bool getSceneCreate();
-    bool getGrid();
-    int getGridSize();
-    QList<DragItem*> getObjectList();
-    QList<BasicLineObject*> getLineList();
-    bool getLineCreate();
-    LineType getLineCreateType();
+    ShapeType getCreateMode(){return createMode;}
+    bool getSceneCreate(){return sceneCreate;}
+    bool getGrid(){return grid;}
+    int getGridSize(){return gridSize;}
+    QList<DragItem*> getObjectList(){return scene_items;}
+    QList<BasicLineObject*> getLineList(){return scene_lines;}
+    bool getLineCreate(){return lineCreate;}
+    LineType getLineCreateType(){return lineTypeEnum;}
 
     // Mutators
-    void setCreateMode(ShapeType newType);
-    void setSceneCreate(bool a);
-    void setLineCreateType(LineType newType);
-    void setLineCreate(bool a);
-    void setGrid(bool a);
-    void setGridSize(int newSize);
+    void setCreateMode(ShapeType newType){createMode = newType;}
+    void setSceneCreate(bool a){sceneCreate = a;}
+    void setLineCreateType(LineType newType){lineTypeEnum = newType;}
+    void setLineCreate(bool a){lineCreate = a;}
+    void setGrid(bool a){grid = a;}
+    void setGridSize(int newSize){gridSize = newSize;}
 
     // Testing Fucntions
     void testAction();
