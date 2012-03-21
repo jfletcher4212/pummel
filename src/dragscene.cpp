@@ -14,6 +14,48 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
     gridSize = 10;
     grid = true;
 }
+/****************************************************************
+  * sceneItemAt is a reimplementation of QGraphicsScene::itemAt()
+  * it returns the index number (int) of the top item (highest
+  * zValue) at the scene coordinate QPointF.
+  * Example usage: sceneItemAt(event->scenePos()); returns index
+  * of the DragItem in the scene_items list of the item at QPointF
+  * Returns -1 if no item is found
+  ***************************************************************/
+
+int DragScene::sceneItemAt(QPointF pos)
+{
+    int topItem = -1; // -1 indicates an error, no item should have a zValue under 0
+    int index = -1; // index doesn't exist, if an item is found, this is changed
+    if(!this->itemAt(pos))
+    {
+        // no item found under the cursor
+        return -1;
+    }
+    /*******************************************************
+    * The below for loop checks if the x and y of pos fall
+    * within the bounds each of the objects in scene_items.
+    * If more than one item is matched, the highest zValue
+    * item is returned.
+    ******************************************************/
+
+    for(int i = 0; i < scene_items.size(); i++)
+    {
+        if((int)pos.x() >= (int)scene_items.at(i)->x() &&
+                (int)pos.x() <= ((int)(scene_items.at(i)->x()+(int)scene_items.at(i)->getWidth())) &&
+                (int)pos.y() >= (int)scene_items.at(i)->y() &&
+                (int)pos.y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight())))
+        {
+            // if an item contains the pos.x() and pos.y(), check its zValue to see if it is the highest item
+            if(scene_items.at(i)->zValue() > topItem)
+            {
+                topItem = scene_items.at(i)->zValue();
+                index = i;
+            }
+        }
+    }
+    return index;
+}
 
 /****************************************************************
   * mousePressEvent handles the following:
@@ -24,25 +66,11 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
 void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     // this block checks if an object is under the cursor, if so, select it
-    int topItem = -1; // -1 indicates an error
-    int index = -1; // -1 indicates an error
+   // int topItem = -1; // -1 indicates an error
+    int index;
     if(this->itemAt(event->scenePos()))
     {
-        // object bounds checking shenanigans below
-        for(int i = 0; i < scene_items.size(); i++)
-        {
-            if((int)event->scenePos().x() >= (int)scene_items.at(i)->x() &&
-                    (int)event->scenePos().x() <= ((int)(scene_items.at(i)->x()+(int)scene_items.at(i)->getWidth())) &&
-                    (int)event->scenePos().y() >= (int)scene_items.at(i)->y() &&
-                    (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight())))
-            {
-                if(scene_items.at(i)->zValue() > topItem)
-                {
-                    topItem = scene_items.at(i)->zValue(); // ensures the top item is selected, not the ones below it
-                    index = i;
-                }
-            }
-        }
+        index = this->sceneItemAt(event->scenePos());
         if(index < 0)
         {
             // do nothing
@@ -56,6 +84,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
                 scene_items.at(i)->setSelected(false);
             }
             item->setSelected(true);
+            this->sceneCreate = false;
 
             //Learn if in line creation mode
             if (lineCreate == true)
@@ -71,30 +100,30 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         newItem->setShape(createMode);
         switch(createMode)
         {
-            case Square:
-            {
-                newItem->setSize(25, 25);
-                break;
-            }
-            case Rectangle:{
-                newItem->setSize(60, 25);
-                break;
-            }
-            case Circle:
-            {
-                newItem->setSize(25, 25);
-                break;
-            }
-            case Ellipse:
-            {
-                newItem->setSize(60, 25);
-                break;
-            }
-            default:
-            {
-                printf("Error in DragScene::mousePressEvent, Why doesn't the scene have a static createMode set?\n");
-                exit(1);
-            }
+        case Square:
+        {
+            newItem->setSize(25, 25);
+            break;
+        }
+        case Rectangle:{
+            newItem->setSize(60, 25);
+            break;
+        }
+        case Circle:
+        {
+            newItem->setSize(25, 25);
+            break;
+        }
+        case Ellipse:
+        {
+            newItem->setSize(60, 25);
+            break;
+        }
+        default:
+        {
+            printf("Error in DragScene::mousePressEvent, Why doesn't the scene have a static createMode set?\n");
+            exit(1);
+        }
         }
         // add the new item to the scene
         this->addItem(newItem);
@@ -135,29 +164,15 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
     if(this->itemAt(event->scenePos()))
     {
-        int maxZ = -1;
-        int index = -1;
-        for(int i = 0; i < scene_items.size(); i++)
-        {
-            if((int)event->scenePos().x() >= (int)scene_items.at(i)->x() &&
-                    (int)event->scenePos().x() <= ((int)(scene_items.at(i)->x()+(int)scene_items.at(i)->getWidth())) &&
-                    (int)event->scenePos().y() >= (int)scene_items.at(i)->y() &&
-                    (int)event->scenePos().y() <= ((int)(scene_items.at(i)->y()+(int)scene_items.at(i)->getHeight())))
-                {
-                if(scene_items.at(i)->zValue() > maxZ)
-                {
-                    index = i;
-                    maxZ = scene_items.at(i)->zValue();
-                }
-            }
-        }
+        int index;
+        index = this->sceneItemAt(event->scenePos());
         if(index < 0)
         {
             // clicked a markerbox
         }
         else
         {
-            lastItem->setZValue(maxZ+1);
+            lastItem->setZValue(scene_items.at(index)->zValue()+1);
         }
     }
     update();
