@@ -10,7 +10,7 @@
 #include <QtGui>
 #include <QGraphicsScene>
 #include <QList>
-#include "dragitem.h"
+#include "icon.h"
 #include "solidline.h"
 
 class DragScene : public QGraphicsScene
@@ -23,17 +23,15 @@ public:
     DragScene(QObject* parent = 0, int initHeight = 500, int initWidth = 500);
 
     // Accessors
-    ShapeType getCreateMode(){return createMode;}
     bool getSceneCreate(){return sceneCreate;}
     bool getGrid(){return grid;}
     int getGridSize(){return gridSize;}
-    QList<DragItem*> getObjectList(){return scene_items;}
+    QList<Icon*> getObjectList(){return scene_items;}
     QList<BasicLineObject*> getLineList(){return scene_lines;}
     bool getLineCreate(){return lineCreate;}
     LineType getLineCreateType(){return lineTypeEnum;}
 
     // Mutators
-    void setCreateMode(ShapeType newType){createMode = newType;}
     void setSceneCreate(bool a){sceneCreate = a;}
     void setLineCreateType(LineType newType){lineTypeEnum = newType;}
     void setLineCreate(bool a){lineCreate = a;}
@@ -63,11 +61,10 @@ protected:
 private:
     int gridSize; // pixel width of grid lines
     bool grid; // toggle for grid
-    ShapeType createMode; // type of shape the scene is creating
     LineType lineTypeEnum;
     bool sceneCreate; // toggle for click creation
     bool lineCreate; // toggle for line creation
-    QList<DragItem*> scene_items; // custom list of all the DragItem*'s (not QGraphicsItem*) in DragScene
+    QList<Icon*> scene_items; // custom list of all the DragItem*'s (not QGraphicsItem*) in DragScene
     QList<BasicLineObject*> scene_lines;  //custom list of all lines in DragScene
 };
 

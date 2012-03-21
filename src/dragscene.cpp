@@ -1,5 +1,6 @@
 #include "dragscene.h"
-#include "dragitem.h"
+#include "icon.h"
+#include "classbox.h"
 #include <QList>
 #include <QGraphicsSceneDragDropEvent>
 #include <QXmlStreamWriter>
@@ -9,7 +10,6 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
 {
     parent = 0;
     this->setSceneRect(QRectF(0,0,initHeight, initWidth));
-    createMode = Square;
     sceneCreate = false;
     gridSize = 10;
     grid = true;
@@ -77,7 +77,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         }
         else
         {
-            DragItem *item = scene_items.at(index);
+            Icon *item = scene_items.at(index);
             // if there are items selected, this will deselect them
             for(int i = 0; i < scene_items.size(); i++)
             {
@@ -96,35 +96,8 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
     else if(this->selectedItems().size() == 0 && sceneCreate)
     {
         // if there is no object under the cursor, the number of selected items is zero,and sceneCreate is true, create a new item
-        DragItem *newItem = new DragItem();
-        newItem->setShape(createMode);
-        switch(createMode)
-        {
-        case Square:
-        {
-            newItem->setSize(25, 25);
-            break;
-        }
-        case Rectangle:{
-            newItem->setSize(60, 25);
-            break;
-        }
-        case Circle:
-        {
-            newItem->setSize(25, 25);
-            break;
-        }
-        case Ellipse:
-        {
-            newItem->setSize(60, 25);
-            break;
-        }
-        default:
-        {
-            printf("Error in DragScene::mousePressEvent, Why doesn't the scene have a static createMode set?\n");
-            exit(1);
-        }
-        }
+        Icon *newItem;
+        newItem = new ClassBox();
         // add the new item to the scene
         this->addItem(newItem);
         newItem->setPos(event->scenePos());
@@ -148,7 +121,7 @@ void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
   ***************************************************************/
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    DragItem* lastItem;
+    Icon* lastItem;
     for(int i = 0; i < scene_items.size(); i++)
     {
         if(scene_items.at(i)->getState() == 2)

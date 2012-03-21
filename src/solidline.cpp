@@ -1,7 +1,7 @@
 
 #include "solidline.h"
 // solidline(DragItem *sourceReferenceObj, DragItem *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
-solidline::solidline(DragItem *sourceReferenceObj, DragItem *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
+solidline::solidline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
    : BasicLineObject(sourceReferenceObj, destinationReferenceObj)
 {
     parent = 0;
