@@ -12,7 +12,7 @@
 #include <iostream>
 #include "icon.h"
 
-class ClassBox : public icon
+class ClassBox : public Icon
 {
 private:
     QGraphicsTextItem *m_memberBox, *m_methodBox;

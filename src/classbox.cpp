@@ -39,7 +39,7 @@ void ClassBox::arrangeBoxes()
     m_methodBox->setPos(m_labelbox->pos().x(), m_memberBox->pos().y() + m_memberBox->boundingRect().height());
     this->prepareGeometryChange();
 
-    printf("boundingRect height: %i\n", (int)this->boundingRect().height());
+   // printf("boundingRect height: %i\n", (int)this->boundingRect().height());
 
     //change m_height and m_width
     //match the width of the overall boundary rectangles to the widest one

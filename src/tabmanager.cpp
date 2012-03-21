@@ -8,6 +8,7 @@ TabManager::TabManager(QWidget *parent) : QTabWidget(parent)
     connect(this , SIGNAL(currentChanged(int)),this,SLOT(currentChangedSlot(int)));
 }
 
+/*
 void TabManager::currentChangedSlot(int index)
 {
     ShapeType indexCreateMode;
@@ -15,3 +16,4 @@ void TabManager::currentChangedSlot(int index)
     indexCreateMode = canvas.at(index)->getSceneCreateMode();
     indexGrid = canvas.at(index)->getSceneGrid();
 }
+*/

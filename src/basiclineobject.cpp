@@ -1,7 +1,7 @@
 #include <math.h>
 #include "basiclineobject.h"
 const qreal Pi = 3.14;
-BasicLineObject::BasicLineObject(DragItem *sourceReferenceObj, DragItem *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsLineItem(parent, scene)
+BasicLineObject::BasicLineObject(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsLineItem(parent, scene)
 {
     //Instantiate the object's elements
     mySourceReferenceObj = sourceReferenceObj;
@@ -75,7 +75,7 @@ void BasicLineObject::updatePosition();
     setLine(line);
 }
 */
-QPointF BasicLineObject::findIntersection(DragItem *refObj, QLineF interLine) //Find the intersection of the line and object, for determining arrow direction
+QPointF BasicLineObject::findIntersection(Icon *refObj, QLineF interLine) //Find the intersection of the line and object, for determining arrow direction
 {
     //QLineF centerLine(myStartItem->pos(), myEndItem->pos());
         //Here a line object is constructed that "represents" a line between the position of myStartItem and myEndItem
@@ -113,7 +113,7 @@ QPointF BasicLineObject::findIntersection(DragItem *refObj, QLineF interLine) //
      */
     return interPoint;
 }
-double BasicLineObject::getAngle (QPointF intersectPoint, DragItem *myStartItem)//(BasicLineObject line)//rotateArrowHead(QPointF, DragItem)
+double BasicLineObject::getAngle (QPointF intersectPoint, Icon *myStartItem)//(BasicLineObject line)//rotateArrowHead(QPointF, DragItem)
 {
     setLine(QLineF(intersectPoint, myStartItem->pos()));
     /*

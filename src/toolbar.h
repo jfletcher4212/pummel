@@ -13,7 +13,7 @@
 #include <QtGui>
 #include "optionsdialog.h"
 #include "params.h"
-#include "dragitem.h"
+#include "icon.h"
 
 using namespace std;
 
