@@ -47,6 +47,7 @@ void MarkerBox::mousePressEvent(QGraphicsSceneMouseEvent *event){
 
 void MarkerBox::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
     event = 0;
+
 }
 
 /****************************************************************

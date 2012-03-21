@@ -40,6 +40,9 @@ public:
     void setGrid(bool a){grid = a;}
     void setGridSize(int newSize){gridSize = newSize;}
 
+    // Utility functions
+    int sceneItemAt(QPointF pos);
+
     // Testing Fucntions
     void testAction();
 
