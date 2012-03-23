@@ -10,7 +10,7 @@ public:
     explicit TabManager(QWidget *parent = 0);
 
 public slots:
-   // void currentChangedSlot(int index);
+    void currentChangedSlot(int index);
 
 };
 
