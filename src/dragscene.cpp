@@ -121,6 +121,7 @@ void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
   ***************************************************************/
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+    printf("dragscene event\n");
     Icon* lastItem;
     for(int i = 0; i < scene_items.size(); i++)
     {

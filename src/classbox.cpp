@@ -104,6 +104,22 @@ void ClassBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 */
 }
 
+void ClassBox::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    Icon::mousePressEvent(event);
+}
+
+void ClassBox::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+    Icon::mouseMoveEvent(event);
+}
+
+void ClassBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+    printf("classbox event\n");
+    Icon::mouseReleaseEvent(event);
+}
+
 //call setValues when classbox is doubleclicked
 void ClassBox::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {

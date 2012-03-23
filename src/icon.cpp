@@ -130,6 +130,7 @@ void Icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+    printf("icon event\n");
     /*
      * This resets the object's coordinates to the cursor's coordinates when the
      * mouse is released, as opposed to creating a new object and then deleting the old one.
@@ -143,6 +144,8 @@ void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     this->setPos(pos);
     this->setOpacity(1.0);
     this->ungrabMouse();  // release mouse back to DragScene
+    update();
+    //printf("%d, %d ///// %d, %d\n", (int)this->x(), (int)this->y(), (int)event->pos().x(), (int)event->pos().y());
 }
 
 QPolygon* Icon::getType()
