@@ -85,6 +85,11 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
             }
             item->setSelected(true);
             this->sceneCreate = false;
+            for(int i = 0; i < scene_items.size(); i++)
+            {
+                scene_items.at(i)->paintMarkerBoxes();
+            }
+            this->sceneCreate = false;
 
             //Learn if in line creation mode
             if (lineCreate == true)
@@ -188,6 +193,7 @@ void DragScene::drawBackground(QPainter *painter, const QRectF &rect)
 
 void DragScene::testAction()
 {
+    // use as needed
 
 }
 /*

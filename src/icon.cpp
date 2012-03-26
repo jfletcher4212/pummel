@@ -74,6 +74,48 @@ void Icon::paintMarkerBoxes()
         m_markers[1]->setVisible(true);
         m_markers[2]->setVisible(true);
         m_markers[3]->setVisible(true);
+        // this next section grabs the scenePos of the object and offsets its markerboxes 3 pixels away from the corners of the obejcts
+        // boundingRect
+        QPointF pos = this->scenePos(); // sets position to the upper left pixel
+        pos.rx() = -8;
+        pos.ry() = -8;
+        m_markers[0]->setPos(pos); // upper left markerbox
+
+        pos = this->scenePos();
+        pos.rx() = m_width+3;
+        pos.ry() = -8;
+        m_markers[1]->setPos(pos); // upper right
+
+        pos = this->scenePos();
+        pos.rx() = -8;
+        pos.ry() = m_height+3;
+        m_markers[2]->setPos(pos); // lower left
+
+        pos = this->scenePos();
+        pos.rx() = m_width+3;
+        pos.ry() = m_height+3;
+        m_markers[3]->setPos(pos); // lower right
+
+    }
+    else
+    {
+        // if not selected, make the boxes invisible
+        m_markers[0]->setVisible(false);
+        m_markers[1]->setVisible(false);
+        m_markers[2]->setVisible(false);
+        m_markers[3]->setVisible(false);
+    }
+=======
+    return m_iD;
+>>>>>>> theirs
+=======
+    if(this->isSelected())
+    {
+        // properly sets the marker boxes around selected objects
+        m_markers[0]->setVisible(true);
+        m_markers[1]->setVisible(true);
+        m_markers[2]->setVisible(true);
+        m_markers[3]->setVisible(true);
 
         // this next section grabs the scenePos of the object and offsets its markerboxes 3 pixels away from the corners of the obejcts
         // boundingRect
@@ -120,7 +162,7 @@ void Icon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void Icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-
+    event->accept();
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     QPointF pos = event->scenePos();
     pos.rx() -= 0.5 * m_width;

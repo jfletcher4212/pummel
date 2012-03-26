@@ -13,6 +13,20 @@ class Icon : public QGraphicsItem
 {
 protected:
 
+<<<<<<< mine
+<<<<<<< mine
+    QRectF boundingRect() const{return QRectF(0,0,m_width, m_height);}
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+
+    int m_width;
+    int m_height;
+    static int m_next_id;
+    int m_id;
+=======
+    int m_iD;
+=======
     QRectF boundingRect() const{return QRectF(0,0,m_width, m_height);}
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
@@ -22,9 +36,16 @@ protected:
 
     static int m_next_id;
     int m_id;
+>>>>>>> theirs
     QPointF m_pos;
+<<<<<<< mine
+    int m_xsize;
+    int m_ysize;
+>>>>>>> theirs
+=======
     int m_width;
     int m_height;
+>>>>>>> theirs
     QString m_shapetype;
 //    QString m_label;
     QGraphicsTextItem *m_labelbox;
@@ -53,6 +74,9 @@ public:
     void setState(int x);
     void setSize(int newXSize, int newYSize);  // simple accessor and mutator methods for the size
     void setText(QString input);		//change the value of m_labelbox
+
+    // Utility
+    void paintMarkerBoxes();
 };
 
 #endif // shapes_H
