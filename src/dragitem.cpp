@@ -40,12 +40,11 @@ void DragItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
         // make a painter if none exists
         painter = new QPainter();
     }
-    painter->setPen(Qt::NoPen);
+    painter->setPen(Qt::black);
 
     if(this->isSelected())
     {
         // properly sets the marker boxes around selected objects
-        painter->setBrush(Qt::red);
         markers[0]->setVisible(true);
         markers[1]->setVisible(true);
         markers[2]->setVisible(true);
@@ -77,7 +76,6 @@ void DragItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     else
     {
         // if not selected, make the boxes invisible
-        painter->setBrush(Qt::black);
 
         markers[0]->setVisible(false);
         markers[1]->setVisible(false);

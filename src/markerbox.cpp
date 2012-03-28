@@ -47,6 +47,7 @@ void MarkerBox::mousePressEvent(QGraphicsSceneMouseEvent *event){
 
 void MarkerBox::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
     event = 0;
+
 }
 
 /****************************************************************
@@ -93,8 +94,7 @@ void MarkerBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     newWidth = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->getWidth() + moveDistanceX;
     newHeight = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->getHeight() + moveDistanceY;
     canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setSize(newWidth, newHeight);
-
-   // canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setSize((newX), (newY));
+    canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->paintMarkerBoxes();
     startX = -1;
     startY = -1;
     this->ungrabMouse();
