@@ -14,6 +14,7 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
     gridSize = 10;
     grid = true;
 }
+
 /****************************************************************
   * sceneItemAt is a reimplementation of QGraphicsScene::itemAt()
   * it returns the index number (int) of the top item (highest
@@ -22,7 +23,6 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
   * of the DragItem in the scene_items list of the item at QPointF
   * Returns -1 if no item is found
   ***************************************************************/
-
 int DragScene::sceneItemAt(QPointF pos)
 {
     int topItem = -1; // -1 indicates an error, no item should have a zValue under 0
@@ -49,7 +49,7 @@ int DragScene::sceneItemAt(QPointF pos)
             // if an item contains the pos.x() and pos.y(), check its zValue to see if it is the highest item
             if(scene_items.at(i)->zValue() > topItem)
             {
-                topItem = scene_items.at(i)->zValue();
+                topItem = scene_items.at(i)->zValue(); // new highest zValue item is found
                 index = i;
             }
         }
@@ -59,15 +59,14 @@ int DragScene::sceneItemAt(QPointF pos)
 
 /****************************************************************
   * mousePressEvent handles the following:
-  *     - object click detection
-  *     - item selection
+  *     - item selection/deselection
   *     - item creation
   ***************************************************************/
 void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    // this block checks if an object is under the cursor, if so, select it
-   // int topItem = -1; // -1 indicates an error
     int index;
+
+    // this checks if an object is under the cursor, if so, select it
     if(this->itemAt(event->scenePos()))
     {
         index = this->sceneItemAt(event->scenePos());
@@ -78,26 +77,30 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         else
         {
             Icon *item = scene_items.at(index);
-            // if there are items selected, this will deselect them
+            // if there are items selected, this will deselect them, forcing only one item selected at a time
             for(int i = 0; i < scene_items.size(); i++)
             {
+                // set every item to not selected
                 scene_items.at(i)->setSelected(false);
             }
+            // set the clicked item to selected
             item->setSelected(true);
+
+            // stop creating items once something is selected
             this->sceneCreate = false;
 
             //Learn if in line creation mode
-            if (lineCreate == true)
+            if (lineCreate)
             {
-
+                // do stuff (epic stuff)
             }
         }
     }
+    // if there is no object under the cursor, the number of selected items is zero, and sceneCreate is true, create a new item
     else if(this->selectedItems().size() == 0 && sceneCreate)
     {
-        // if there is no object under the cursor, the number of selected items is zero,and sceneCreate is true, create a new item
-        Icon *newItem;
-        newItem = new ClassBox();
+        Icon *newItem;   // create an Icon pointer
+        newItem = new ClassBox(); // only abstract object currently, this will eventually be a switch statement
         // add the new item to the scene
         this->addItem(newItem);
         newItem->setPos(event->scenePos());
@@ -121,42 +124,48 @@ void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /****************************************************************
-  * mousePressEvent handles the following:
-  *     - item selection
-  *     - item creation
+  * mouseReleaseEvent handles the following:
+  *     - markerbox redrawing
   *     - item zValue settings
   ***************************************************************/
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     Icon* lastItem;
+    // item currently being dragged has a state of 2, the last item clicked has a state of 1, everything else has state 0
     for(int i = 0; i < scene_items.size(); i++)
     {
+        // find the item that was just dropped (state 2)
         if(scene_items.at(i)->getState() == 2)
         {
+            // find item in state 2, set it to state 1
             scene_items.at(i)->setState(1);
             lastItem = scene_items.at(i);
         }
         else
         {
+            // set everything else to state 0, leaving one item in state 1, zero in state 2
             scene_items.at(i)->setState(0);
         }
     }
-
+    // check if an item was clicked
     if(this->itemAt(event->scenePos()))
     {
         int index;
+        // get the index of the top item under the mouse (where we just dropped a new item)
         index = this->sceneItemAt(event->scenePos());
         if(index < 0)
         {
-            // clicked a markerbox
+            // clicked a markerbox, ignore everything else
         }
         else
         {
+            // set the zValue of the newly dropped item to 1 more than the top item where it was dropped
+            // do not alter the zValue of already present items (preserves any stacking)
             lastItem->setZValue(scene_items.at(index)->zValue()+1);
         }
     }
 
-    // update the marker boxes of all item in the dragscene
+    // update/redraw the marker boxes of all item in the dragscene
     for(int i = 0; i < scene_items.size(); i++)
     {
         scene_items.at(i)->paintMarkerBoxes();
