@@ -13,8 +13,6 @@ class Icon : public QGraphicsItem
 {
 protected:
 
-<<<<<<< mine
-<<<<<<< mine
     QRectF boundingRect() const{return QRectF(0,0,m_width, m_height);}
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
@@ -24,31 +22,10 @@ protected:
     int m_height;
     static int m_next_id;
     int m_id;
-=======
-    int m_iD;
-=======
-    QRectF boundingRect() const{return QRectF(0,0,m_width, m_height);}
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
-    void paintMarkerBoxes();
-
-    static int m_next_id;
-    int m_id;
->>>>>>> theirs
-    QPointF m_pos;
-<<<<<<< mine
-    int m_xsize;
-    int m_ysize;
->>>>>>> theirs
-=======
-    int m_width;
-    int m_height;
->>>>>>> theirs
     QString m_shapetype;
 //    QString m_label;
-    QGraphicsTextItem *m_labelbox;
+    QGraphicsTextItem *m_labelBox;
     QPolygon *m_type;
     QImage m_image;          //holds the imported image to be drawn
     int m_state; // used for zValue stacking and item selection

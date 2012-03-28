@@ -73,7 +73,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         index = this->sceneItemAt(event->scenePos());
         if(index < 0)
         {
-            // do nothing
+            // do nothing, index < 0 indicates a markerbox was clicked
         }
         else
         {
@@ -84,11 +84,6 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
                 scene_items.at(i)->setSelected(false);
             }
             item->setSelected(true);
-            this->sceneCreate = false;
-            for(int i = 0; i < scene_items.size(); i++)
-            {
-                scene_items.at(i)->paintMarkerBoxes();
-            }
             this->sceneCreate = false;
 
             //Learn if in line creation mode
@@ -109,7 +104,14 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         // add new item to the custom list
         scene_items.append(newItem);
     }
-    update();
+    else
+    {
+        // nothing is clicked and no create mode, deselect everything
+        for(int i = 0; i < scene_items.size(); i++)
+        {
+            scene_items.at(i)->setSelected(false);
+        }
+    }
     QGraphicsScene::mousePressEvent(event);
 }
 
@@ -153,7 +155,12 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
             lastItem->setZValue(scene_items.at(index)->zValue()+1);
         }
     }
-    update();
+
+    // update the marker boxes of all item in the dragscene
+    for(int i = 0; i < scene_items.size(); i++)
+    {
+        scene_items.at(i)->paintMarkerBoxes();
+    }
     QGraphicsScene::mouseReleaseEvent(event);
 }
 
