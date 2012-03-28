@@ -67,6 +67,8 @@ void ClassBox::arrangeBoxes()
                  + m_memberBox->boundingRect().height()
                  + m_methodBox->boundingRect().height();
     }
+    paintMarkerBoxes();
+    update();
 }
 
 //text is already handled, so paint only makes the boundary boxes
