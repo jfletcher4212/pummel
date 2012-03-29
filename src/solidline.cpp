@@ -1,14 +1,18 @@
 
 #include "solidline.h"
 // solidline(DragItem *sourceReferenceObj, DragItem *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
-solidline::solidline(DragItem *sourceReferenceObj, DragItem *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
+solidline::solidline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
    : BasicLineObject(sourceReferenceObj, destinationReferenceObj)
 {
+    parent = 0;
+    scene = 0;
 
    //BasicLineObject * objMyBasicLine = new BasicLineObject(sourceReferenceObj, destinationReferenceObj);
 }
 void solidline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+    option = 0;
+    widget = 0;
     if (mySourceReferenceObj->collidesWithItem(myDestinationReferenceObj))
         return;
     QPen myPen = pen();
@@ -57,13 +61,14 @@ void solidline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     //arrowHead << line().p1() << arrowP1 << arrowP2;
     painter->drawLine(line());
     //painter->drawPolygon(arrowHead);
-    if (isSelected()) {
+    if (isSelected())
+    {
+        QLineF myLine = line();
         painter->setPen(QPen(myColor, 1, Qt::DashLine));
-    QLineF myLine = line();
-    myLine.translate(0, 4.0);
-    painter->drawLine(myLine);
-    myLine.translate(0,-8.0);
-    painter->drawLine(myLine);
+        myLine.translate(0, 4.0);
+        painter->drawLine(myLine);
+        myLine.translate(0,-8.0);
+        painter->drawLine(myLine);
     }
 }
 
