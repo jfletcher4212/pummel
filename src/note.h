@@ -1,12 +1,13 @@
-#ifndef ELLIPSE_H
-#define ELLIPSE_H
+#ifndef NOTE_H
+#define NOTE_H
 
 #include "icon.h"
 #include <QtGui>
 #include <QGraphicsItem>
 
 #include "markerbox.h"
-class ellipse : public Icon
+
+class note : public icon
 {
 
 
@@ -24,10 +25,9 @@ private:
 
 public:
 
-    ellipse(QGraphicsItem *parent = 0);
-    ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
+    note(QGraphicsItem *parent = 0);
+    note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
 
 
 };
-
-#endif // ELLIPSE_H
+#endif // NOTE_H

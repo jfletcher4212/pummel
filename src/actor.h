@@ -1,12 +1,13 @@
-#ifndef ELLIPSE_H
-#define ELLIPSE_H
+#ifndef ACTOR_H
+#define ACTOR_H
 
 #include "icon.h"
 #include <QtGui>
 #include <QGraphicsItem>
 
 #include "markerbox.h"
-class ellipse : public Icon
+
+class actor : public Icon
 {
 
 
@@ -24,10 +25,10 @@ private:
 
 public:
 
-    ellipse(QGraphicsItem *parent = 0);
-    ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
+    actor(QGraphicsItem *parent = 0);
+    actor(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
 
 
 };
 
-#endif // ELLIPSE_H
+#endif // ACTOR_H
