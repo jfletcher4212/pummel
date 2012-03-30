@@ -212,25 +212,3 @@ void DragScene::testAction()
     // use as needed
 
 }
-/*
-void DragScene::writeXML(QString *filename)
-{
-    int i;
-    QFile *file = new QFile(filename);
-    QXmlStreamWriter *writer = new QXmlStreamWriter(file);
-    
-    writer->writeStartDocument();
-    
-    writer->writeEndDocument();
-    
-    file.close();
-    
-    delete file;
-    delete writer;
-}
-    */
-
-
-
-
-
