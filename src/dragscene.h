@@ -10,6 +10,7 @@
 #include <QtGui>
 #include <QGraphicsScene>
 #include <QList>
+#include <QLine>
 #include "icon.h"
 #include "solidline.h"
 
@@ -66,6 +67,9 @@ private:
     bool lineCreate; // toggle for line creation
     QList<Icon*> scene_items; // custom list of all the DragItem*'s (not QGraphicsItem*) in DragScene
     QList<BasicLineObject*> scene_lines;  //custom list of all lines in DragScene
+
+    QGraphicsLineItem* tempLine;
+    QColor myTempLineColor;
 };
 
 #endif // DRAGSCENE_H
