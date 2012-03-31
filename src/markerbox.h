@@ -15,7 +15,7 @@ public:
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
     // Mutators
-    void setId(int x){id = x;};
+    void setId(int x){id = x;}
 
 private:
     int itemIndex; //index in scene_items of DragScene that this markerbox references
