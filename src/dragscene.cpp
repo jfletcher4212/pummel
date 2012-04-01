@@ -14,6 +14,7 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
     gridSize = 10;
     grid = true;
 
+    lineCreate = false;
     lineTypeEnum = Solid_Line;
     tempLine = 0;
     myTempLineColor = Qt::black;
