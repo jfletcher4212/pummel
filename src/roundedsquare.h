@@ -1,12 +1,13 @@
-#ifndef ELLIPSE_H
-#define ELLIPSE_H
+#ifndef ROUNDEDSQUARE_H
+#define ROUNDEDSQUARE_H
 
 #include "icon.h"
 #include <QtGui>
 #include <QGraphicsItem>
 
 #include "markerbox.h"
-class ellipse : public Icon
+
+class roundedSquare : public icon
 {
 
 
@@ -24,10 +25,10 @@ private:
 
 public:
 
-    ellipse(QGraphicsItem *parent = 0);
-    ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
+    roundedSquare(QGraphicsItem *parent = 0);
+    roundedSquare(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
 
 
 };
 
-#endif // ELLIPSE_H
+#endif // ROUNDEDSQUARE_H
