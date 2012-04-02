@@ -1,8 +1,8 @@
 
 #include "solidline.h"
 // solidline(DragItem *sourceReferenceObj, DragItem *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
-solidline::solidline(DragItem *sourceReferenceObj, DragItem *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
-   : BasicLineObject(sourceReferenceObj, destinationReferenceObj)
+solidline::solidline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
+   : lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
 {
     parent = 0;
     scene = 0;
@@ -15,12 +15,24 @@ void solidline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     widget = 0;
     if (mySourceReferenceObj->collidesWithItem(myDestinationReferenceObj))
         return;
-    QPen myPen = pen();
-    myPen.setColor(myColor);
     //qreal arrowSize = 20;
-    painter->setPen(myPen);
-    painter->setBrush(myColor);
-    QLineF tempLineOne(mySourceReferenceObj->pos(), myDestinationReferenceObj->pos());
+    painter->setPen(QPen(myColor, 2));
+
+    QPointF obj1 = mySourceReferenceObj->pos();
+    QPointF obj2 = myDestinationReferenceObj->pos();
+
+    obj1.rx() += 0.5 * mySourceReferenceObj->getWidth();
+    obj1.ry() += 0.5 * mySourceReferenceObj->getHeight();
+
+    obj2.rx() += 0.5 * myDestinationReferenceObj->getWidth();
+    obj2.ry() += 0.5 * myDestinationReferenceObj->getHeight();
+
+    QLineF tempLineOne(obj1, obj2);
+
+
+    //QLineF tempLineOne(mySourceReferenceObj->pos(), myDestinationReferenceObj->pos());
+
+    this->setLine(tempLineOne);
 /*
     QPolygonF endPolygon = myEndItem->polygon();
     QPointF p1 = endPolygon.first() + myEndItem->pos();
@@ -59,7 +71,7 @@ void solidline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     //the arrow head. This isn't needed for the line
     //arrowHead.clear();
     //arrowHead << line().p1() << arrowP1 << arrowP2;
-    painter->drawLine(line());
+    painter->drawLine(tempLineOne);
     //painter->drawPolygon(arrowHead);
     if (isSelected())
     {
@@ -70,5 +82,6 @@ void solidline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
         myLine.translate(0,-8.0);
         painter->drawLine(myLine);
     }
+    update();
 }
 
