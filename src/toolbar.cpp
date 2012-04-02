@@ -164,28 +164,29 @@ void Toolbar::insertLine()
    //DragItem *sourceObj = mou
    //Retrieve a pointer to the target icon
    //Create an instance of solidline using these
-   //canvas.at(tabWidget->currentIndex())->seSceneCreate(true);
-   //canvas.at(tabWidget->currentIndex())->setArrowSceneCreateMode(Solid_Line);
+   canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+   canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+   canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
 }
 
 void Toolbar::addRect(){
     canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
-    canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Rectangle);
+    //canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Rectangle);
 }
 
 void Toolbar::addSquare(){
     canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
-    canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Square);
+   // canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Square);
 }
 
 void Toolbar::addCircle(){
     canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
-    canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Circle);
+   // canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Circle);
 }
 
 void Toolbar::addEllipse(){
     canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
-    canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Ellipse);
+    //canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Ellipse);
 }
 
 void Toolbar::addNone(){

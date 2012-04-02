@@ -34,7 +34,7 @@ public:
 signals:
 
 private:
-    QTextEdit *shapeFillField, *shapeWeightField, *lineColorField, *textFontField, *textColorField, ;
+    QTextEdit *shapeFillField, *shapeWeightField, *lineColorField, *textFontField, *textColorField ;
     QSpinBox *shapeWeightBox, *lineWeightBox, *textSizeBox;
     QPushButton *okButton, *cancelButton;
     void initValues();

@@ -24,6 +24,9 @@ MainWindow::MainWindow()
     widget = new QWidget;
     setCentralWidget(widget);
 
+    QIcon thumbnail;                    //this sets up an image for the upper corner
+    thumbnail.addFile("icons/viking.png"); //while its running
+
 
     toolbar = new Toolbar;
     /* need some way to get
@@ -48,6 +51,7 @@ MainWindow::MainWindow()
     statusBar()->showMessage(message);
 
     setWindowTitle(tr("pUML"));
+    setWindowIcon(thumbnail);
     setMinimumSize(160, 160);
     resize(480, 320);
     this->newTab();
@@ -123,11 +127,6 @@ void MainWindow::paste()
  *
  * For differentiating between unsaved and saved files,
  * perhaps a 'filename' argument should be passed in.
- *
- * 'i' and 'setcurrentindex' are used to create a new
- * canvas associated with that tab...somehow? How would
- * they be kept track of (ie, each canvas associated with
- * each tab)? .-.
  *
  * The tabs and canvas have an index number when they are created, Tab 1 =  Canvas 1, etc.
  * This will only be a problem if someone makes huge amounts of Tabs (maybe... I don't know how well QList would handle it)
@@ -335,6 +334,8 @@ void MainWindow::aboutQt()
 
 void MainWindow::createActions()
 {
+    QFont boldFont;
+    QFont italicFont;
     newAct = new QAction(tr("New Tab"), this);
     connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
 
@@ -383,7 +384,7 @@ void MainWindow::createActions()
     boldAct->setStatusTip(tr("Make the text bold"));
     connect(boldAct, SIGNAL(triggered()), this, SLOT(bold()));
 
-    QFont boldFont = boldAct->font();
+    boldFont = boldAct->font();
     boldFont.setBold(true);
     boldAct->setFont(boldFont);
 
@@ -393,7 +394,7 @@ void MainWindow::createActions()
     italicAct->setStatusTip(tr("Make the text italic"));
     connect(italicAct, SIGNAL(triggered()), this, SLOT(italic()));
 
-    QFont italicFont = italicAct->font();
+    italicFont = italicAct->font();
     italicFont.setItalic(true);
     italicAct->setFont(italicFont);
 
