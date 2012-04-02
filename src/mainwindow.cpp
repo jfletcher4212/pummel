@@ -151,36 +151,48 @@ void MainWindow::newTab()
 
 void MainWindow::saveAsFile()
 {
-    int idx;
+    // dialog box for user to enter filename
     QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
-    //cout << filename.toStdString() << endl;
+    
+    // write the file
+    write_xml(icon_list, size, filename);
+    
+    // make a new tab
+    tabWidget->setTabText(tabWidget->currentIndex(), filename );
+}
+
+// can we get filename from QFile object?
+void MainWindow::write_xml(Icon **icon_list, int size, QString filename)
+{
+    int idx;
     QFile savefile ( filename );
-    savefile.open(QIODevice::WriteOnly);
+    savefile.open(QIODevice::WriteOnly);            
     
     // strip full path off filename for display later and addition to xml file
     idx = filename.lastIndexOf("/");
     filename.remove(0, idx+1);
     
+    // instantiate the xml writer
     QXmlStreamWriter saver(&savefile);
-    /*
+    
     saver.writeStartDocument();
     saver.writeStartElement(filename);
+
     for ( int i = 0; i < size; i++ )
     {
 	//QString valueAsString = QString::number(valueAsDouble);
-	//wrapper tags will eventually be the object's individual ID #
+	// wrapper tags will eventually be the object's individual ID #
 	saver.writeStartElement("coord");
-	saver.writeTextElement("x_coord", QString::number(icon_list[i].get_x()));
-	saver.writeTextElement("y_coord", QString::number(icon_list[i].get_y()));
+	saver.writeTextElement("x_coord", QString::number(icon_list[i]->get_x()));
+	saver.writeTextElement("y_coord", QString::number(icon_list[i]->get_y()));
 	saver.writeEndElement();
     }
     
     saver.writeEndDocument();
     saver.setAutoFormatting(true);
     savefile.close();
-    
-    tabWidget->setTabText(tabWidget->currentIndex(), filename );*/
 }
+
 
 void MainWindow::openFile()
 {
