@@ -2,7 +2,7 @@
 #include "drawarea.h"
 #include "dragscene.h"
 #include "dragview.h"
-#include "dragitem.h"
+#include "icon.h"
 
 DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth)
 {

@@ -7,7 +7,7 @@
 
 #include "markerbox.h"
 
-class actor : public icon
+class actor : public Icon
 {
 
 

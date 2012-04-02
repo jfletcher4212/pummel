@@ -6,7 +6,7 @@
 #include <QGraphicsItem>
 
 #include "markerbox.h"
-class ellipse : public icon
+class ellipse : public Icon
 {
 
 
