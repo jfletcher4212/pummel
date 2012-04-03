@@ -124,6 +124,7 @@ void Icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     QPointF pos = event->scenePos();
     pos.rx() -= 0.5 * m_width;
     pos.ry() -= 0.5 * m_height;
+    update();
     this->setPos(pos);
 }
 

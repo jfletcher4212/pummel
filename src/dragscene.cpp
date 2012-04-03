@@ -13,16 +13,21 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
     sceneCreate = false;
     gridSize = 10;
     grid = true;
+
+    lineCreate = false;
+    lineTypeEnum = Solid_Line;
+    tempLine = 0;
+    myTempLineColor = Qt::black;
 }
 
 /****************************************************************
-  * sceneItemAt is a reimplementation of QGraphicsScene::itemAt()
-  * it returns the index number (int) of the top item (highest
-  * zValue) at the scene coordinate QPointF.
-  * Example usage: sceneItemAt(event->scenePos()); returns index
-  * of the DragItem in the scene_items list of the item at QPointF
-  * Returns -1 if no item is found
-  ***************************************************************/
+ * sceneItemAt is a reimplementation of QGraphicsScene::itemAt()
+ * it returns the index number (int) of the top item (highest
+ * zValue) at the scene coordinate QPointF.
+ * Example usage: sceneItemAt(event->scenePos()); returns index
+ * of the Icon in the scene_items list of the item at QPointF
+ * Returns -1 if no item is found
+ ***************************************************************/
 int DragScene::sceneItemAt(QPointF pos)
 {
     int topItem = -1; // -1 indicates an error, no item should have a zValue under 0
@@ -33,11 +38,11 @@ int DragScene::sceneItemAt(QPointF pos)
         return -1;
     }
     /*******************************************************
-    * The below for loop checks if the x and y of pos fall
-    * within the bounds each of the objects in scene_items.
-    * If more than one item is matched, the highest zValue
-    * item is returned.
-    ******************************************************/
+  * The below for loop checks if the x and y of pos fall
+  * within the bounds each of the objects in scene_items.
+  * If more than one item is matched, the highest zValue
+  * item is returned.
+  ******************************************************/
 
     for(int i = 0; i < scene_items.size(); i++)
     {
@@ -58,16 +63,16 @@ int DragScene::sceneItemAt(QPointF pos)
 }
 
 /****************************************************************
-  * mousePressEvent handles the following:
-  *     - item selection/deselection
-  *     - item creation
-  ***************************************************************/
+ * mousePressEvent handles the following:
+ *     - item selection/deselection
+ *     - item creation
+ ***************************************************************/
 void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     int index;
 
     // this checks if an object is under the cursor, if so, select it
-    if(this->itemAt(event->scenePos()))
+    if(this->itemAt(event->scenePos()) && !lineCreate)
     {
         index = this->sceneItemAt(event->scenePos());
         if(index < 0)
@@ -90,11 +95,14 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
             this->sceneCreate = false;
 
             //Learn if in line creation mode
-            if (lineCreate)
-            {
-                // do stuff (epic stuff)
-            }
         }
+        QGraphicsScene::mousePressEvent(event);
+    }
+    else if (lineCreate)
+    {
+        tempLine = new QGraphicsLineItem(QLineF(event->scenePos(), event->scenePos())); //Problem line?
+        tempLine->setPen(QPen(myTempLineColor, 2));
+        this->addItem(tempLine);
     }
     // if there is no object under the cursor, the number of selected items is zero, and sceneCreate is true, create a new item
     else if(this->selectedItems().size() == 0 && sceneCreate)
@@ -106,6 +114,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         newItem->setPos(event->scenePos());
         // add new item to the custom list
         scene_items.append(newItem);
+        QGraphicsScene::mousePressEvent(event);
     }
     else
     {
@@ -114,20 +123,28 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         {
             scene_items.at(i)->setSelected(false);
         }
+        QGraphicsScene::mousePressEvent(event);
     }
-    QGraphicsScene::mousePressEvent(event);
 }
 
 void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-    QGraphicsScene::mouseMoveEvent(event);
+    if(lineCreate && tempLine != 0)
+    {
+        QLineF newLine(tempLine->line().p1(), event->scenePos());
+        tempLine->setLine(newLine);
+    }
+    else
+    {
+        QGraphicsScene::mouseMoveEvent(event);
+    }
 }
 
 /****************************************************************
-  * mouseReleaseEvent handles the following:
-  *     - markerbox redrawing
-  *     - item zValue settings
-  ***************************************************************/
+ * mouseReleaseEvent handles the following:
+ *     - markerbox redrawing
+ *     - item zValue settings
+ ***************************************************************/
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     Icon* lastItem;
@@ -148,7 +165,7 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         }
     }
     // check if an item was clicked
-    if(this->itemAt(event->scenePos()))
+    if(this->itemAt(event->scenePos()) && !lineCreate)
     {
         int index;
         // get the index of the top item under the mouse (where we just dropped a new item)
@@ -164,7 +181,42 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
             lastItem->setZValue(scene_items.at(index)->zValue()+1);
         }
     }
+    else if(lineCreate && tempLine != 0)
+    {
+        /*
+        QList<QGraphicsItem *> startRefObjs = items(tempLine->line().p1());
+        if(startRefObjs.count() && startRefObjs.first() == tempLine)
+            startRefObjs.removeFirst();
+        QList<QGraphicsItem *> endRefObjs = items(tempLine->line().p2());
+        if(endRefObjs.count() && endRefObjs.first() == tempLine)
+            endRefObjs.removeFirst();
+            */
+        int indexStart, indexEnd;
+        indexStart = sceneItemAt(tempLine->line().p1());
+        indexEnd = sceneItemAt(tempLine->line().p2());
 
+        removeItem(tempLine);
+        delete tempLine;
+        if(indexStart == indexEnd || indexStart < 0 || indexEnd < 0)
+        {
+            // do nothing
+        }
+        else
+        {
+            Icon *initRefObj = scene_items.at(indexStart);
+            Icon *finRefObj = scene_items.at(indexEnd);
+            solidline *solidLine = new solidline(initRefObj, finRefObj, 0, 0);
+            //solidLine->setColor();
+            //initRefObj->addArrow(arrow);
+            //finRefObj->addArrow(arrow);
+            solidLine->setZValue(-1);
+            this->addItem(solidLine);
+           // solidline->updatePosition();
+        }
+
+        setLineCreate(false);
+        tempLine = 0;
+    }
     // update/redraw the marker boxes of all item in the dragscene
     for(int i = 0; i < scene_items.size(); i++)
     {
@@ -179,8 +231,8 @@ void DragScene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 }
 
 /****************************************************************
-  * draws the grid, opacity set to 20%
-  ***************************************************************/
+ * draws the grid, opacity set to 20%
+ ***************************************************************/
 void DragScene::drawBackground(QPainter *painter, const QRectF &rect)
 {
     // if the grid is on, draw the background
@@ -212,25 +264,5 @@ void DragScene::testAction()
     // use as needed
 
 }
-/*
-void DragScene::writeXML(QString *filename)
-{
-    int i;
-    QFile *file = new QFile(filename);
-    QXmlStreamWriter *writer = new QXmlStreamWriter(file);
-    
-    writer->writeStartDocument();
-    
-    writer->writeEndDocument();
-    
-    file.close();
-    
-    delete file;
-    delete writer;
-}
-    */
-
-
-
 
 
