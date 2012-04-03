@@ -78,6 +78,7 @@ void ClassBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     m_memberBox->boundingRect().setHeight(m_height/3);
     m_methodBox->boundingRect().setHeight(m_height/3);
     this->prepareGeometryChange();
+
     //pen object for drawing different widths of line
     QPen pen(Qt::black, 2, Qt::SolidLine);
     //boundary rectangles for the text boxes
