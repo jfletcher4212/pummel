@@ -147,8 +147,10 @@ void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  ***************************************************************/
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+
     Icon* lastItem;
     // item currently being dragged has a state of 2, the last item clicked has a state of 1, everything else has state 0
+
     for(int i = 0; i < scene_items.size(); i++)
     {
         // find the item that was just dropped (state 2)
@@ -164,15 +166,17 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
             scene_items.at(i)->setState(0);
         }
     }
+
     // check if an item was clicked
-    if(this->itemAt(event->scenePos()) && !lineCreate)
+    if(this->itemAt(event->scenePos()) && !lineCreate && !m_resizing)
     {
         int index;
         // get the index of the top item under the mouse (where we just dropped a new item)
         index = this->sceneItemAt(event->scenePos());
         if(index < 0)
         {
-            // clicked a markerbox, ignore everything else
+            // error, should never get here
+            exit(5);
         }
         else
         {
@@ -183,14 +187,6 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     }
     else if(lineCreate && tempLine != 0)
     {
-        /*
-        QList<QGraphicsItem *> startRefObjs = items(tempLine->line().p1());
-        if(startRefObjs.count() && startRefObjs.first() == tempLine)
-            startRefObjs.removeFirst();
-        QList<QGraphicsItem *> endRefObjs = items(tempLine->line().p2());
-        if(endRefObjs.count() && endRefObjs.first() == tempLine)
-            endRefObjs.removeFirst();
-            */
         int indexStart, indexEnd;
         indexStart = sceneItemAt(tempLine->line().p1());
         indexEnd = sceneItemAt(tempLine->line().p2());
@@ -222,6 +218,7 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     {
         scene_items.at(i)->paintMarkerBoxes();
     }
+
     QGraphicsScene::mouseReleaseEvent(event);
 }
 
