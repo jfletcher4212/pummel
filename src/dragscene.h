@@ -31,6 +31,7 @@ public:
     QList<BasicLineObject*> getLineList(){return scene_lines;}
     bool getLineCreate(){return lineCreate;}
     LineType getLineCreateType(){return lineTypeEnum;}
+    bool isResizing(){return m_resizing;}
 
     // Mutators
     void setSceneCreate(bool a){sceneCreate = a;}
@@ -38,6 +39,7 @@ public:
     void setLineCreate(bool a){lineCreate = a;}
     void setGrid(bool a){grid = a;}
     void setGridSize(int newSize){gridSize = newSize;}
+    void setResizing(bool x){m_resizing = x;}
 
     // Utility functions
     int sceneItemAt(QPointF pos);
@@ -60,6 +62,7 @@ protected:
 
 
 private:
+    bool m_resizing;
     int gridSize; // pixel width of grid lines
     bool grid; // toggle for grid
     LineType lineTypeEnum;
