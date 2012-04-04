@@ -2,10 +2,11 @@
 
 #ifndef SOLIDLINE_H
 #define SOLIDLINE_H
-#include "basiclineobject.h"
+//#include "basiclineobject.h"
+#include "linebody.h"
 
-
-class solidline : public BasicLineObject
+//class solidline : public BasicLineObject
+class solidline : public lineBody
 {
 public:
     //enum { objType = UserType + 6 };
