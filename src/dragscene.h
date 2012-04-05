@@ -13,6 +13,7 @@
 #include <QLine>
 #include "icon.h"
 #include "solidline.h"
+#include "dottedline.h"
 
 class DragScene : public QGraphicsScene
 {
