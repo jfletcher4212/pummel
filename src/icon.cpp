@@ -44,6 +44,11 @@ int Icon::getHeight()
     return m_height;
 }
 
+QString Icon::getLabel()
+{
+    return m_label;
+}
+
 void Icon::setSize(int newWidth, int newHeight)
 {
     m_width = newWidth;
