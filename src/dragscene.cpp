@@ -15,7 +15,7 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
     grid = true;
 
     lineCreate = false;
-    lineTypeEnum = Solid_Line;
+    //lineTypeEnum = Dotted_Line;
     tempLine = 0;
     myTempLineColor = Qt::black;
 }
@@ -165,14 +165,15 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         }
     }
     // check if an item was clicked
-    if(this->itemAt(event->scenePos()) && !lineCreate)
+    if(this->itemAt(event->scenePos()) && !lineCreate && !m_resizing)
     {
         int index;
         // get the index of the top item under the mouse (where we just dropped a new item)
         index = this->sceneItemAt(event->scenePos());
         if(index < 0)
         {
-            // clicked a markerbox, ignore everything else
+            // error, should never get here
+            exit(5);
         }
         else
         {
@@ -183,14 +184,6 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     }
     else if(lineCreate && tempLine != 0)
     {
-        /*
-        QList<QGraphicsItem *> startRefObjs = items(tempLine->line().p1());
-        if(startRefObjs.count() && startRefObjs.first() == tempLine)
-            startRefObjs.removeFirst();
-        QList<QGraphicsItem *> endRefObjs = items(tempLine->line().p2());
-        if(endRefObjs.count() && endRefObjs.first() == tempLine)
-            endRefObjs.removeFirst();
-            */
         int indexStart, indexEnd;
         indexStart = sceneItemAt(tempLine->line().p1());
         indexEnd = sceneItemAt(tempLine->line().p2());
@@ -205,13 +198,28 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         {
             Icon *initRefObj = scene_items.at(indexStart);
             Icon *finRefObj = scene_items.at(indexEnd);
-            solidline *solidLine = new solidline(initRefObj, finRefObj, 0, 0);
-            //solidLine->setColor();
+            //newLine->setColor();
             //initRefObj->addArrow(arrow);
             //finRefObj->addArrow(arrow);
-            solidLine->setZValue(-1);
-            this->addItem(solidLine);
-           // solidline->updatePosition();
+
+            if(lineTypeEnum == Solid_Line)
+            {
+                solidline *newLine = new solidline(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Dotted_Line)
+            {
+                dottedline *newLine = new dottedline(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Solid_Line_SAH)
+            {
+                //make new solid line + ah in here, just like above
+                //place code similar to above in paint function
+            }
+           // newLine->updatePosition();
         }
 
         setLineCreate(false);

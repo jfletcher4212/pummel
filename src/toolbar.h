@@ -55,6 +55,10 @@ public slots:
     void addEllipse();
     void addNone();
 
+    void addSolidLine();
+    void addDottedLine();
+    void addSolidLineAH();
+
     void gridOn();
     void gridOff();
 
@@ -77,6 +81,12 @@ private:
     QAction *addCircleAct;
     QAction *addRectAct;
     QAction *addEllipseAct;
+
+    QMenu *lineMenu;
+    QActionGroup *linesGroup;
+    QAction *addSolidLineAct;
+    QAction *addDottedLineAct;
+    QAction *addSolidLineAHAct;
 
     QMenu *gridMenu;
     QActionGroup *gridOnOffToggleGroup;

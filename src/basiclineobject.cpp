@@ -1,6 +1,6 @@
 #include <math.h>
 #include "basiclineobject.h"
-const qreal Pi = 3.14;
+
 BasicLineObject::BasicLineObject(QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsLineItem(parent, scene)
 {
     //Instantiate the object's elements
@@ -8,14 +8,9 @@ BasicLineObject::BasicLineObject(QGraphicsItem *parent, QGraphicsScene *scene) :
     myColor = Qt::black;
     //Allow for the item to be selected
     setFlag(QGraphicsItem::ItemIsSelectable, true);
-    setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    //setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 }
-//Change at which end of the line the arrow head resides.
-void BasicLineObject::swapLineDirection()
-{
-    //Swap the source and destination reference objects
-    //Redraw
-}
+
 /*
  * Virtual Function - QGraphicsLineItem
  * The point of the boundingRect() is to define
@@ -66,42 +61,4 @@ QPainterPath BasicLineObject::shape() const
      */
     path.addPolygon(arrowHead);
     return path;
-}
-/*
-void BasicLineObject::updatePosition();
-{
-    QLineF line(mapFromItem(myStartItem, 0, 0), mapFromItem(myEndItem, 0, 0));
-    setLine(line);
-}
-*/
-
-double BasicLineObject::getAngle (QPointF intersectPoint, Icon *myStartItem)//(BasicLineObject line)//rotateArrowHead(QPointF, DragItem)
-{
-    setLine(QLineF(intersectPoint, myStartItem->pos()));
-    /*
-     * The object's line needs to be set for line() to operate
-     * properly, which is done with the line above. However,
-     * not sure whether or not this line has to be set
-     * locally.
-     * Calculates the angle the line makes with the x axis.
-     * line()
-     * acos() is part of the math.h library
-     * dx() and dy() are part of the QLineF class
-     */
-    double angle = ::acos(line().dx() / line().length());
-    /*
-     * Checks to see if the lines vertical component is
-     * negative.
-     * The angle is flipped due to the setLine() oulined above which
-     * makes the initial point for the line the final reference
-     * object.
-     */
-    if (line().dy() >= 0)
-        angle = (Pi * 2) - angle;
-    return angle;
-    //The following lines are used to draw the arrowhead.
-     //    QPointF arrowP1 = line().p1() + QPointF(sin(angle + Pi / 3) * arrowSize, cos(angle + Pi / 3) * arrowSize);
-     //    QPointF arrowP2 = line().p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
-     //    arrowHead.clear();
-     //    arrowHead << line().p1() << arrowP1 << arrowP2;
 }
