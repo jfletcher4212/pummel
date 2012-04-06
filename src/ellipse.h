@@ -5,6 +5,7 @@
 #include "textboxdialog.h"
 #include <QtGui>
 #include <QGraphicsItem>
+#include <QImage>
 
 #include "markerbox.h"
 class Ellipse : public Icon
