@@ -1,5 +1,6 @@
 #include "ellipse.h"
 #include "markerbox.h"
+#include "textdialog.h"
 
 
 
@@ -18,8 +19,11 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
 
     m_labelBox->setVisible(true);
 
-
-    m_image.load("images/ellipse.png");  //loads the image for drawing later
+    //loads the image for drawing later
+    if(!m_image.load("icons/ellipse.png"))
+    {
+        printf("ellipse image failed to load\n");
+    }
 
 }
 
@@ -42,8 +46,11 @@ Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos
 
     m_labelBox->setVisible(true);
 
-
-    m_image.load("images/ellipse.png");  //loads the image for drawing later
+    //loads the image for drawing later
+    if(!m_image.load("icons/ellipse.png"))
+    {
+        printf("ellipse image failed to load\n");
+    }
 
 }
 
