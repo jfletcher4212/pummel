@@ -18,11 +18,15 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
     arrangeBoxes();
 
     m_labelBox->setVisible(true);
-
+    // In general, leave this block below running for loading images
 
     if (!m_image.load("icons/ellipse.png"))
         std::cout << "didn't load image properly\n";  //loads the image for drawing later
 
+
+    // If the relative path fails, uncomment and update the below with full path to images (example below from a mac)
+    //if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/ellipse.png"))
+      //  std::cout << "didn't load image properly\n";  //loads the image for drawing later
 }
 
 Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
@@ -44,9 +48,14 @@ Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos
 
     m_labelBox->setVisible(true);
 
+    // In general, leave this block below running for loading images
 
     if (!m_image.load("icons/ellipse.png"))
         std::cout << "didn't load image properly\n";  //loads the image for drawing later
+
+    // If the relative path fails, uncomment and update the below with full path to images (example below from a mac)
+  //  if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/ellipse.png"))
+    //    std::cout << "didn't load image properly\n";  //loads the image for drawing later
 
 }
 

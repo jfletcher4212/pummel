@@ -77,6 +77,10 @@ void ClassBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     m_labelBox->boundingRect().setHeight(m_height/3);
     m_memberBox->boundingRect().setHeight(m_height/3);
     m_methodBox->boundingRect().setHeight(m_height/3);
+
+    // draws the white background behind classbox
+    painter->setBrush(Qt::white);
+
     this->prepareGeometryChange();
 
     //pen object for drawing different widths of line
@@ -103,16 +107,12 @@ void ClassBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     //draw bounding rectangles
     painter->setPen(pen);
     painter->drawRect(m_labelBox->pos().x(), m_labelBox->pos().y(), m_width, (m_height/3));
-    pen.setWidth(1);
-    painter->setPen(pen);
     painter->drawRect(m_memberBox->pos().x(), (int)m_labelBox->pos().y() + (m_height/3), m_width, (m_height/3));
     painter->drawRect(m_methodBox->pos().x(), (int)m_labelBox->pos().y() + (2*(m_height/3)), m_width, (m_height/3));
     /*
     painter->drawRect(m_memberBox->pos().x(), m_memberBox->pos().y(), m_width, memberBoundary.height());
     painter->drawRect(m_methodBox->pos().x(), m_methodBox->pos().y(), m_width, methodBoundary.height());
     painter->drawRect(m_labelBox->pos().x(), m_labelBox->pos().y(), m_width, labelBoundary.height());
-
-
 
 /*
     QRectF mine = this->boundingRect();
