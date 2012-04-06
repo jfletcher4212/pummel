@@ -24,10 +24,6 @@ private:
 
     void arrangeBoxes();
 
-    // Selection boxes for the DragItem
-//    MarkerBox *markers[4];
-
-
 public:
 
     Ellipse(QGraphicsItem *parent = 0);
