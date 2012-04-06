@@ -31,6 +31,7 @@ public:
     QList<Icon*> getObjects(){return scene->getObjectList();}
     bool getLineCreate(){return scene->getLineCreate();}
     DiagramType getDiagramType(){return type;}
+    ShapeCreationType getSceneShapeCreationType(){return scene->getShapeCreationType();}
 
     // Mutators
     void setLineCreateType(LineType newType);
@@ -39,6 +40,7 @@ public:
     void setSceneGrid(bool a){scene->setGrid(a);}
     void setSceneGridSize(int newSize){scene->setGridSize(newSize);}
     void setDiagramType(DiagramType a){type = a;}
+    void setSceneShapeCreationType(ShapeCreationType newType){scene->setShapeCreationType(newType);}
     DragScene *scene;
 
     // Testing

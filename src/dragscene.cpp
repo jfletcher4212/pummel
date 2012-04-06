@@ -109,8 +109,24 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
     else if(this->selectedItems().size() == 0 && sceneCreate)
     {
         Icon *newItem;   // create an Icon pointer
-        newItem = new ClassBox(); // only abstract object currently, this will eventually be a switch statement
-        //newItem = new Ellipse();
+        // create abstract class based on m_shapeCreationType
+        switch(m_shapeCreationType){
+        case s_Classbox:{
+            newItem = new ClassBox();
+            break;
+        }
+        case s_Ellipse:{
+            newItem = new Ellipse();
+            break;
+        }
+        case s_Actor:{
+            break;
+        }
+        default:{
+            printf("dragscene doesn't have a shapeCreationType defined\n");
+        }
+        }
+
         // add the new item to the scene
         this->addItem(newItem);
         newItem->setPos(event->scenePos());
@@ -166,7 +182,7 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
             scene_items.at(i)->setState(0);
         }
     }
-    // check if an item was clicked
+    // if an item is under the cursor, a line isn't being drawn and an item is being resized
     if(this->itemAt(event->scenePos()) && !lineCreate && !m_resizing)
     {
         int index;
