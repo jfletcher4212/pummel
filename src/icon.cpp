@@ -146,15 +146,11 @@ void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     this->ungrabMouse();  // release mouse back to DragScene
 }
 
-QPolygonF* Icon::getPolyType()
+QPolygon* Icon::getType()
 {
-    return m_bound;
+    return m_type;
 }
 
-void Icon::setPolyType()
-{
-    *m_bound = QPolygonF(boundingRect());
-}
 void Icon::setText(QString input)
 {
     m_labelBox->setPlainText(input);
