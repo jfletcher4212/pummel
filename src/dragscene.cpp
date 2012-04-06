@@ -15,7 +15,7 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
     grid = true;
 
     lineCreate = false;
-    lineTypeEnum = Solid_Line;
+    //lineTypeEnum = Dotted_Line;
     tempLine = 0;
     myTempLineColor = Qt::black;
 }
@@ -147,10 +147,8 @@ void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  ***************************************************************/
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-
     Icon* lastItem;
     // item currently being dragged has a state of 2, the last item clicked has a state of 1, everything else has state 0
-
     for(int i = 0; i < scene_items.size(); i++)
     {
         // find the item that was just dropped (state 2)
@@ -166,7 +164,6 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
             scene_items.at(i)->setState(0);
         }
     }
-
     // check if an item was clicked
     if(this->itemAt(event->scenePos()) && !lineCreate && !m_resizing)
     {
@@ -201,13 +198,28 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         {
             Icon *initRefObj = scene_items.at(indexStart);
             Icon *finRefObj = scene_items.at(indexEnd);
-            solidline *solidLine = new solidline(initRefObj, finRefObj, 0, 0);
-            //solidLine->setColor();
+            //newLine->setColor();
             //initRefObj->addArrow(arrow);
             //finRefObj->addArrow(arrow);
-            solidLine->setZValue(-1);
-            this->addItem(solidLine);
-           // solidline->updatePosition();
+
+            if(lineTypeEnum == Solid_Line)
+            {
+                solidline *newLine = new solidline(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Dotted_Line)
+            {
+                dottedline *newLine = new dottedline(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Solid_Line_SAH)
+            {
+                //make new solid line + ah in here, just like above
+                //place code similar to above in paint function
+            }
+           // newLine->updatePosition();
         }
 
         setLineCreate(false);
@@ -218,7 +230,6 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     {
         scene_items.at(i)->paintMarkerBoxes();
     }
-
     QGraphicsScene::mouseReleaseEvent(event);
 }
 

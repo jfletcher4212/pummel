@@ -23,7 +23,7 @@ protected:
     static int m_next_id;
     int m_id;
 
-    QString m_shapetype;
+    QString m_shapetype, m_label;
 //    QString m_label;
     QGraphicsTextItem *m_labelBox;
     QPolygon *m_type;
@@ -45,6 +45,7 @@ public:
     void setShapetype(QString shapename);     // simple accessor and mutator methods for the shapetype
     int getID();    // simple accessor for getting the ID
     QPolygon *getType();
+    QString getLabel();
 
     // Mutators
     void setMarkers(MarkerBox* a, MarkerBox* b, MarkerBox* c, MarkerBox* d);

@@ -13,7 +13,8 @@ public:
    // solidline(DragItem *sourceReferenceObj, DragItem *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
    solidline(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
 private:
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
+
 protected:
+   void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
 };
 #endif // SOLIDLINE_H

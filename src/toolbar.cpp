@@ -33,6 +33,7 @@ Toolbar::Toolbar(QWidget *parent) :
     setLayout(layout);
 
     shapeButton->setMenu(shapeMenu);
+    lineButton->setMenu(lineMenu);
     gridButton->setMenu(gridMenu);
 }
 
@@ -96,6 +97,24 @@ void Toolbar::createActions(){
     shapesGroup->addAction(addCircleAct);
     shapesGroup->addAction(addEllipseAct);
 
+    addSolidLineAct = new QAction(tr("Solid Line"), this);
+    addSolidLineAct->setCheckable(true);
+    connect(addSolidLineAct, SIGNAL(triggered()), this, SLOT(addSolidLine()));
+
+    addDottedLineAct = new QAction(tr("Dotted Line"), this);
+    addDottedLineAct->setCheckable(true);
+    connect(addDottedLineAct, SIGNAL(triggered()), this, SLOT(addDottedLine()));
+
+    addSolidLineAHAct = new QAction(tr("Solid line w/solid arrow head"), this);
+    addSolidLineAHAct->setCheckable(true);
+    connect(addSolidLineAHAct, SIGNAL(triggered()), this, SLOT(addSolidLineAH()));
+
+    linesGroup = new QActionGroup(this);
+    linesGroup->addAction(addNoneAct);
+    linesGroup->addAction(addSolidLineAct);
+    linesGroup->addAction(addDottedLineAct);
+    linesGroup->addAction(addSolidLineAHAct);
+
     gridOnAct = new QAction(tr("On"), this);
     gridOnAct->setCheckable(true);
     gridOnAct->setChecked(true);
@@ -117,6 +136,12 @@ void Toolbar::createMenus(){
     shapeMenu->addAction(addCircleAct);
     shapeMenu->addAction(addRectAct);
     shapeMenu->addAction(addEllipseAct);
+
+    lineMenu = new QMenu(this);
+    lineMenu->addAction(addNoneAct);
+    lineMenu->addAction(addSolidLineAct);
+    lineMenu->addAction(addDottedLineAct);
+    lineMenu->addAction(addSolidLineAHAct);
 
     gridMenu = new QMenu(this);
     gridMenu->addAction(gridOnAct);
@@ -164,9 +189,10 @@ void Toolbar::insertLine()
    //DragItem *sourceObj = mou
    //Retrieve a pointer to the target icon
    //Create an instance of solidline using these
-   canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
-   canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
-   canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
+    lineButton->showMenu();
+    //canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+   //canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+   //canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
 }
 
 void Toolbar::addRect(){
@@ -191,6 +217,27 @@ void Toolbar::addEllipse(){
 
 void Toolbar::addNone(){
     canvas.at(tabWidget->currentIndex())->setSceneCreate(false);
+}
+
+void Toolbar::addSolidLine()
+{
+   canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+   canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+   canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
+}
+
+void Toolbar::addDottedLine()
+{
+   canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+   canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+   canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Line);
+}
+
+void Toolbar::addSolidLineAH()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line_SAH);
 }
 
 void Toolbar::gridOn(){
