@@ -1,16 +1,13 @@
+#include "dottedline.h"
 
-#include "solidline.h"
-// solidline(DragItem *sourceReferenceObj, DragItem *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
-solidline::solidline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
-   : lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
+dottedline::dottedline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0) : lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
 {
     parent = 0;
     scene = 0;
-    myLineType = Solid_Line;
-    //setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
-   //BasicLineObject * objMyBasicLine = new BasicLineObject(sourceReferenceObj, destinationReferenceObj);
+    myLineType = Dotted_Line;
+    //setPen(QPen(myColor, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
 }
-void solidline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void dottedline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
     widget = 0;
@@ -19,7 +16,7 @@ void solidline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     //qreal arrowSize = 20;
     //painter->setPen(QPen(myColor, 2));
     //setLinePen();
-    painter->setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    painter->setPen(QPen(myColor, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
 
     QPointF obj1 = mySourceReferenceObj->pos();
     QPointF obj2 = myDestinationReferenceObj->pos();

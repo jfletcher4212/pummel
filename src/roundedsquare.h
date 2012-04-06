@@ -7,7 +7,7 @@
 
 #include "markerbox.h"
 
-class roundedSquare : public icon
+class roundedSquare : public Icon
 {
 
 

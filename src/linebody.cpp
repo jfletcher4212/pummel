@@ -1,5 +1,7 @@
 #include "linebody.h"
 
+const qreal Pi = 3.14;
+
 lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : BasicLineObject()
 {
     parent = 0;
@@ -7,6 +9,13 @@ lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGra
 
     mySourceReferenceObj = sourceReferenceObj;
     myDestinationReferenceObj = destinationReferenceObj;
+}
+
+//Change at which end of the line the arrow head resides.
+void lineBody::swapLineDirection()
+{
+    //Swap the source and destination reference objects
+    //Redraw
 }
 
 QPointF lineBody::findIntersection(Icon *refObj, QLineF interLine) //Find the intersection of the line and object, for determining arrow direction
@@ -47,3 +56,37 @@ QPointF lineBody::findIntersection(Icon *refObj, QLineF interLine) //Find the in
      */
     return interPoint;
 }
+
+double lineBody::getAngle (QPointF intersectPoint, Icon *myStartItem)//(BasicLineObject line)//rotateArrowHead(QPointF, DragItem)
+{
+    setLine(QLineF(intersectPoint, myStartItem->pos()));
+    /*
+     * The object's line needs to be set for line() to operate
+     * properly, which is done with the line above. However,
+     * not sure whether or not this line has to be set
+     * locally.
+     * Calculates the angle the line makes with the x axis.
+     * line()
+     * acos() is part of the math.h library
+     * dx() and dy() are part of the QLineF class
+     */
+    double angle = ::acos(line().dx() / line().length());
+    /*
+     * Checks to see if the lines vertical component is
+     * negative.
+     * The angle is flipped due to the setLine() oulined above which
+     * makes the initial point for the line the final reference
+     * object.
+     */
+    if (line().dy() >= 0)
+        angle = (Pi * 2) - angle;
+    return angle;
+
+}
+/*
+void BasicLineObject::updatePosition();
+{
+    QLineF line(mapFromItem(myStartItem, 0, 0), mapFromItem(myEndItem, 0, 0));
+    setLine(line);
+}
+*/
