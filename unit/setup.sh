@@ -2,10 +2,10 @@
 
 # clean
 cd ../src/
-make clean
+#make clean
 
 # make
-qmake -project
-qmake
+#qmake -project
+#qmake
 make
 
