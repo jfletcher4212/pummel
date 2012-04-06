@@ -1,6 +1,7 @@
 #include "dragscene.h"
 #include "icon.h"
 #include "classbox.h"
+#include "ellipse.h"
 #include <QList>
 #include <QGraphicsSceneDragDropEvent>
 #include <QXmlStreamWriter>
@@ -108,7 +109,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
     else if(this->selectedItems().size() == 0 && sceneCreate)
     {
         Icon *newItem;   // create an Icon pointer
-        newItem = new ClassBox(); // only abstract object currently, this will eventually be a switch statement
+        newItem = new Ellipse(); // only abstract object currently, this will eventually be a switch statement
         // add the new item to the scene
         this->addItem(newItem);
         newItem->setPos(event->scenePos());
