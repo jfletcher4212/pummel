@@ -30,23 +30,17 @@ public:
     //from QGraphicsLineItem
     QRectF boundingRect() const;
     QPainterPath shape() const;
-    //Methods for accessing the object's
-    //various elements
-    //int type() const
-    //    { return Solid_Line; }
+
+    //Virtual function defined later.
     virtual int type() const = 0;
 
     QColor setColor() const
         { return myColor; }
-    //void updatePosition();
 private:
 protected:
-    void swapLineDirection();
-
-
-    double getAngle (QPointF, Icon *);//BasicLineObject line);
 
     QColor myColor;
+
     QPolygonF arrowHead;
 };
 #endif // BASICLINEOBJECT_H

@@ -41,12 +41,12 @@ void MarkerBox::mousePressEvent(QGraphicsSceneMouseEvent *event){
     }
     startX = (int)event->scenePos().x();
     startY = (int)event->scenePos().y();
+    canvas.at(tabWidget->currentIndex())->scene->setResizing(true);
     this->grabMouse();
 }
 
 void MarkerBox::mouseMoveEvent(QGraphicsSceneMouseEvent *event){
     event = 0;
-
 }
 
 /****************************************************************
@@ -59,12 +59,11 @@ void MarkerBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     int moveDistanceY;
     int newWidth;
     int newHeight;
-
     switch(id){
-   /* case 0:{
+    case 0:{
         moveDistanceX = startX - (int)event->scenePos().x();
         moveDistanceY = startY - (int)event->scenePos().y();
-        canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setPos(mapToScene(event->scenePos().x()+8, event->scenePos().y()+8);
+        canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setPos(event->scenePos().x()+8, event->scenePos().y()+8);
         break;
     }
     case 1:{
@@ -89,7 +88,7 @@ void MarkerBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
         printf("markerbox doesn't have and id\n");
         exit(1);
         break;
-    }*/
+    }
     }
     newWidth = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->getWidth() + moveDistanceX;
     newHeight = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->getHeight() + moveDistanceY;
@@ -97,5 +96,6 @@ void MarkerBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->paintMarkerBoxes();
     startX = -1;
     startY = -1;
+    canvas.at(tabWidget->currentIndex())->scene->setResizing(false);
     this->ungrabMouse();
 }
