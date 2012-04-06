@@ -14,6 +14,8 @@
 #include "dragview.h"
 #include "basiclineobject.h"
 
+enum DiagramType { Class, Sequence, UseCase };
+
 class DrawArea : public QWidget
 {
     Q_OBJECT
@@ -27,14 +29,16 @@ public:
     bool getSceneGrid(){return scene->getGrid();}
     int getSceneGridSize(){return scene->getGridSize();}
     QList<Icon*> getObjects(){return scene->getObjectList();}
-    bool getLineCreate();
+    bool getLineCreate(){return scene->getLineCreate();}
+    DiagramType getDiagramType(){return type;}
 
     // Mutators
     void setLineCreateType(LineType newType);
-    void setLineCreate(bool a);
+    void setLineCreate(bool a){scene->setLineCreate(a);}
     void setSceneCreate(bool a){scene->setSceneCreate(a);}
     void setSceneGrid(bool a){scene->setGrid(a);}
     void setSceneGridSize(int newSize){scene->setGridSize(newSize);}
+    void setDiagramType(DiagramType a){type = a;}
     DragScene *scene;
 
     // Testing
@@ -43,6 +47,7 @@ public:
 private:
     DragView *view;
     QHBoxLayout *layout;
+    DiagramType type;
 
 };
 
