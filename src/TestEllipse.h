@@ -4,7 +4,7 @@
 #include "ellipse.h"
 //#include <QtTest/QtTest>
 
-class TestEllipse : ellipse
+class TestEllipse : Ellipse
 {
     TestEllipse();
     QRectF boundingRect() const;
