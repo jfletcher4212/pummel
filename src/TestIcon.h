@@ -4,7 +4,7 @@
 #include "icon.h"
 //#include <QtTest/QtTest>
 
-class TestIcon : public icon
+class TestIcon : public Icon
 {
 public:
     TestIcon();
