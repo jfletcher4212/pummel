@@ -20,6 +20,7 @@ Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
     m_labelBox = new QGraphicsTextItem;
     m_labelBox->setPlainText("");
     m_labelBox->setPos(this->pos());
+    m_type = new QPolygon();
     m_id = m_next_id;
     m_next_id++;
 
@@ -41,6 +42,11 @@ int Icon::getWidth()
 int Icon::getHeight()
 {
     return m_height;
+}
+
+QString Icon::getLabel()
+{
+    return m_label;
 }
 
 void Icon::setSize(int newWidth, int newHeight)
@@ -149,8 +155,6 @@ void Icon::setPolyType()
 {
     *m_bound = QPolygonF(boundingRect());
 }
-
-
 void Icon::setText(QString input)
 {
     m_labelBox->setPlainText(input);
