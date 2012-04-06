@@ -1,12 +1,3 @@
-/*
-  Max McKinnon
-  UIdaho 2011
-
-  Specs: see UI concept on skydrive
-
-  The menu is non funcional at this point
-  */
-
 
 #include <QtGui>
 
@@ -14,8 +5,8 @@
 #include "borderlayout.h"
 #include "global.h"
 #include "toolbar.h"
+#include "xml_io.h"
 #include<iostream>
-#include <QXmlStreamWriter>
 #include <QFile>
 
 using namespace std;
@@ -153,135 +144,19 @@ void MainWindow::saveAsFile()
 {
     // dialog box for user to enter filename
     QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
+    //Xml_io writer(icon_list, filename/*, diagram_type*/);
     
     // write the file
-    write_xml(icon_list, size, filename);
+    //writer.write_xml();
     
     // make a new tab
     tabWidget->setTabText(tabWidget->currentIndex(), filename );
 }
 
-// can we get filename from QFile object?
-void MainWindow::write_xml(Icon **icon_list, int size, QString filename)
-{
-    int idx;
-    QFile savefile ( filename );
-    savefile.open(QIODevice::WriteOnly);            
-    
-    // strip full path off filename for display later and addition to xml file
-    idx = filename.lastIndexOf("/");
-    filename.remove(0, idx+1);
-    
-    // instantiate the xml writer
-    QXmlStreamWriter saver(&savefile);
-    
-    saver.writeStartDocument();
-    saver.writeStartElement(filename);
-
-    for ( int i = 0; i < size; i++ )
-    {
-	//QString valueAsString = QString::number(valueAsDouble);
-	// wrapper tags will eventually be the object's individual ID #
-	saver.writeStartElement("coord");
-	saver.writeTextElement("x_coord", QString::number(icon_list[i]->get_x()));
-	saver.writeTextElement("y_coord", QString::number(icon_list[i]->get_y()));
-	saver.writeEndElement();
-    }
-    
-    saver.writeEndDocument();
-    saver.setAutoFormatting(true);
-    savefile.close();
-}
-
-
 void MainWindow::openFile()
 {
-    /*
-    QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
-    newTab();
-    
-    QFile infile ( filename );
-    infile.open(QIODevice::ReadOnly);
-
-    // strip full path off filename for display
-    int idx = filename.lastIndexOf("/");
-    filename.remove(0, idx+1);
-    
-    tabWidget->setTabText(tabWidget->currentIndex(), filename);
-    
-    QXmlStreamReader reader(&infile);
-    // what is this doing???
-    QList< QMap<QString,QString> > icons;
-    
-    while ( !reader.atEnd() && !reader.hasError() )
-    {
-	//read next element
-	QXmlStreamReader::TokenType token = xml.readNext();
-	
-	if ( token == QXmlStreamReader::StartDocument )
-	{
-	    continue;
-	}
-	
-	if ( token == QXmlStreamReader::StartElement )
-	{
-	    if ( reader.name() == filename )
-	    {
-		continue;
-	    }
-	    
-	    if ( reader.name() == "coord" )
-	    {
-		icons.append(parse_icon(reader));
-	    }
-	    
-	    }
-    }
-    
-    // icons should have everything we need at this point
-    
-    //cout<<reader.readElementText(1)<endl;
-    cout<<"HERE"<<endl;
-    //cout<<reader.readElementText().toStdString()<<endl;
-    reader.readNextStartElement();
-    cout<<reader.readElementText(QXmlStreamReader::IncludeChildElements).toStdString()<<endl;*/
-}
-
-QMap<QString, QString> MainWindow::parsePerson(QXmlStreamReader& xml)
-{
-    QMap<QString, QString> icon;
-  
-    if ( ! (xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "coord") ) 
-	return icon;
-  
-    QXmlStreamAttributes attributes = xml.attributes();
-    /*
-    // this is for the object id
-    if(attributes.hasAttribute("icon_id")) 
-    {
-    person["icon_id"] = attributes.value("icon_id").toString();
-    }
-    xml.readNext();
-    */
-    /*
-    while( !(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "coord") )
-    {
-	if( xml.tokenType() == QXmlStreamReader::StartElement) 
-	{
-	    if( xml.name() == "x_coord" ) 
-	    {
-		this->addElementDataToMap(xml, icon);
-	    }
-	  
-	    if( xml.name() == "y_coord" ) 
-	    {
-		this->addElementDataToMap(xml, icon);
-	    }
-	}
-	xml.readNext();
-    }
-    */
-    return icon;
+  QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
+  newTab();
 }
 
 void MainWindow::closeTab()

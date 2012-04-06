@@ -48,7 +48,7 @@ private slots:
     void aboutQt();
     
     // MVC logic methods
-    void write_xml(Icon **icon_list, int size, QString filename);
+    //void write_xml(Icon **icon_list, int size, QString filename);
     
 
 private:
