@@ -1,9 +1,9 @@
-#include "textdialog.h"
+#include "textboxdialog.h"
 
-TextDialog::TextDialog(ClassBox *origCaller) :
+TextBoxDialog::TextBoxDialog(Icon *origCaller) :
     QWidget()
 {
-    this->setWindowTitle("Edit Class Box");
+    this->setWindowTitle("Edit Text Box");
     //copy the original caller to the member m_caller
     m_caller = origCaller;
 
@@ -24,47 +24,26 @@ TextDialog::TextDialog(ClassBox *origCaller) :
 
     //add controls to the main QFormLayout
     layout->addRow("Class Label", m_nameField);
-    layout->addRow("Class Members", m_membersField);
-    layout->addRow("Class Methods", m_methodsField);
     layout->addRow(buttonLayout);
 
     this->setLayout(layout);
 }
 
-TextDialog::~TextDialog()
-{
-    //delete fields
-    delete m_nameField;
-    delete m_membersField;
-    delete m_methodsField;
-
-    //delete buttons
-    delete m_okButton;
-    delete m_cancelButton;
-
-}
-
 /* copies values from caller into member variables
  * initializes other members of dialog
  */
-void TextDialog::initFields()
+void TextBoxDialog::initFields()
 {
     //copy values from caller
     m_name = m_caller->getLabel();
-    m_members = m_caller->getMembers();
-    m_methods = m_caller->getMethods();
 
     //initialize QTextEdits
     m_nameField = new QTextEdit();
     m_nameField->setText(m_name);
-    m_membersField = new QTextEdit();
-    m_membersField->setText(m_members);
-    m_methodsField = new QTextEdit();
-    m_methodsField->setText(m_methods);
 }
 
 //create buttons for closing dialog
-void TextDialog::buttonSetup()
+void TextBoxDialog::buttonSetup()
 {
     m_okButton = new QPushButton(tr("OK"));
     connect(m_okButton, SIGNAL(clicked()), this, SLOT(acknowledge()));
@@ -73,38 +52,25 @@ void TextDialog::buttonSetup()
 }
 
 //update the member variables when 'OK' is clicked
-void TextDialog::acknowledge()
+void TextBoxDialog::acknowledge()
 {
 
     //copy data here
     m_name = m_nameField->toPlainText();
-    m_members = m_membersField->toPlainText();
-    m_methods = m_methodsField->toPlainText();
 
-    m_caller->setLabel(m_name);
-    m_caller->setMembers(m_members);
-    m_caller->setMethods(m_methods);
+    m_caller->setText(m_name);
 
     quit();
 }
 
 //close the dialog
-void TextDialog::quit()
+void TextBoxDialog::quit()
 {
     this->close();
 }
 
-QString TextDialog::getName()
+QString TextBoxDialog::getName()
 {
     return m_name;
 }
 
-QString TextDialog::getMembers()
-{
-    return m_members;
-}
-
-QString TextDialog::getMethods()
-{
-    return m_members;
-}

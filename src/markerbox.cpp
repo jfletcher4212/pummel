@@ -32,7 +32,6 @@ void MarkerBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
   * events
   ***************************************************************/
 void MarkerBox::mousePressEvent(QGraphicsSceneMouseEvent *event){
-    event->accept();
     if(itemIndex < 0){
         for(int i = 0; i < canvas.at(tabWidget->currentIndex())->scene->getObjectList().size(); i++){
             if(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(i)->isSelected()){
@@ -42,6 +41,7 @@ void MarkerBox::mousePressEvent(QGraphicsSceneMouseEvent *event){
     }
     startX = (int)event->scenePos().x();
     startY = (int)event->scenePos().y();
+    canvas.at(tabWidget->currentIndex())->scene->setResizing(true);
     this->grabMouse();
 }
 
@@ -59,7 +59,6 @@ void MarkerBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     int moveDistanceY;
     int newWidth;
     int newHeight;
-
     switch(id){
     case 0:{
         moveDistanceX = startX - (int)event->scenePos().x();
@@ -79,6 +78,7 @@ void MarkerBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
         canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setPos(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->x() - moveDistanceX, canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->y());
         break;
     }
+
     case 3:{
         moveDistanceX = (int)event->scenePos().x() - startX;
         moveDistanceY = (int)event->scenePos().y() - startY;
@@ -93,9 +93,9 @@ void MarkerBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     newWidth = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->getWidth() + moveDistanceX;
     newHeight = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->getHeight() + moveDistanceY;
     canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setSize(newWidth, newHeight);
-
-   // canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->setSize((newX), (newY));
+    canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(itemIndex)->paintMarkerBoxes();
     startX = -1;
     startY = -1;
+    canvas.at(tabWidget->currentIndex())->scene->setResizing(false);
     this->ungrabMouse();
 }

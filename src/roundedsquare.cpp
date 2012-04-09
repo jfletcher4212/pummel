@@ -3,14 +3,14 @@
 
 
 
-roundedSquare::roundedSquare(QGraphicsItem *parent) : icon(parent)
+roundedSquare::roundedSquare(QGraphicsItem *parent) : Icon(parent)
 {
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
     // allows setting of the base rectangle of dragitem
     //base = QRectF(0,0,0,0);
     m_shapetype = "RoundedSquare";
-    m_iD = m_next_id;
+    m_id = m_next_id;
     m_next_id++;
 
     m_image.load("images/roundedSquare.png");  //loads the image for drawing later
@@ -34,16 +34,16 @@ roundedSquare::roundedSquare(QGraphicsItem *parent) : icon(parent)
 
 
 
-roundedSquare::roundedSquare(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : icon(parent)
+roundedSquare::roundedSquare(QGraphicsItem *parent, int width, int height, int xpos, int ypos) : Icon(parent)
 {
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
     // allows setting of the base rectangle of dragitem
     //base = QRectF(0,0,0,0);
-    m_xsize = xsize;
-    m_ysize = ysize;
+    m_width = width;
+    m_height = height;
     m_shapetype = "RoundedSquare";
-    m_iD = m_next_id;
+    m_id = m_next_id;
     m_next_id++;
 
     // selection boxes
@@ -65,7 +65,7 @@ roundedSquare::roundedSquare(QGraphicsItem *parent, int xsize, int ysize, int xp
 
 QRectF roundedSquare::boundingRect() const
 {
-    return QRectF(0,0,m_xsize, m_ysize);
+    return QRectF(0,0,m_width, m_height);
 }
 
 void roundedSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -93,18 +93,18 @@ void roundedSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
         markers[0]->setPos(pos);
 
         pos = this->scenePos();
-        pos.rx() = m_xsize+3;
+        pos.rx() = m_width+3;
         pos.ry() = -8;
         markers[1]->setPos(pos);
 
         pos = this->scenePos();
         pos.rx() = -8;
-        pos.ry() = m_ysize+3;
+        pos.ry() = m_height+3;
         markers[2]->setPos(pos);
 
         pos = this->scenePos();
-        pos.rx() = m_xsize+3;
-        pos.ry() = m_ysize+3;
+        pos.rx() = m_width+3;
+        pos.ry() = m_height+3;
         markers[3]->setPos(pos);
 
     }
@@ -118,7 +118,7 @@ void roundedSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
         markers[3]->setVisible(false);
     }
 
-    painter->drawImage(QRectF(0,0,m_xsize,m_ysize), m_image);   //paints from image file
+    painter->drawImage(QRectF(0,0,m_width,m_height), m_image);   //paints from image file
 
 }
 
@@ -127,8 +127,8 @@ void roundedSquare::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     event->accept();
     QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_xsize;
-    pos.ry() -= 0.5 * m_ysize;
+    pos.rx() -= 0.5 * m_width;
+    pos.ry() -= 0.5 * m_height;
     this->grabMouse();  // DragItem will take all mouse actions
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
 }
@@ -138,8 +138,8 @@ void roundedSquare::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_xsize;
-    pos.ry() -= 0.5 * m_ysize;
+    pos.rx() -= 0.5 * m_width;
+    pos.ry() -= 0.5 * m_height;
     this->setPos(pos.rx(), pos.ry());
 }
 
@@ -153,8 +153,8 @@ void roundedSquare::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_xsize;
-    pos.ry() -= 0.5 * m_ysize;
+    pos.rx() -= 0.5 * m_width;
+    pos.ry() -= 0.5 * m_height;
     this->setPos(pos.rx(),pos.ry());
     this->setOpacity(1.0);
     this->ungrabMouse();  // release mouse back to DragScene

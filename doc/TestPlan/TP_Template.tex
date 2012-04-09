@@ -730,7 +730,29 @@ plans. Overall rules and processes should be identified.
 \end{itemize}
 }
 {\selectlanguage{english}\color{black}
-[Insert text here.]}
+We use three different phases of testing for the entire project:
+
+\begin{enumerate}
+\item Unit Testing
+\item Integration Testing
+\item Functional Testing
+\end{enumerate}
+
+\subsection{Unit Testing}
+Since the project is almost entirely GUI based, satisfactory unit testing can be a difficult task. Our code allows for a rigorous Model View Control implementation. This was accomplished by separating the logical and GUI based code, as they cannot be tested in the same manner.
+
+Using the saveAsFile method as an example, this method is composed of three parts: invoking a dialogue box to enter the filename, writing the current diagram into XML, and opening a new tab. The first and third parts are invoking GUI events, which means this method cannot be fully unit tested independent of the GUI itself. This means it can only truly be tested during an integration test. However, since writing the XML document contains all the logic of the method (branching, loops, etc.) with no GUI interaction, it can be moved to a helper method and unit tested completely independent of GUI events. The GUI events can be tested in the later integration testing phase. Thus, we can confidently conclude that the saveFileAs process is tested to a satisfactory level.
+
+In order to actually unit test these methods, we will use the CxxTest framework. To write a test for a given class or file, the class and function definitions are written in a header file. From that header file is generated a .cpp file which is compiled individually and linked with the project, producing an executable unit test. Because every building step is automated by an in-house written makefile, the only training needed to use the tool is covered by the also in-house example template that displays proper class syntax and test macro calls.
+
+\subsection{Integration Testing}
+NEEDS EDITING
+This is the phase where the actual GUI events are tested. During this phase, all of the use cases will be walked through manually while confirming that the right events are being invoked based on input. For these individual use case tests, each test must be run as independently as possible, with minimal set-up. This is to observe the behaviour of each use case completely independent of the others.
+
+\subsection{Functional Testing}
+NEEDS EDITING
+The functional phase is where the usage of the UML editor is tested to a much higher degree. Rather than testing each use case individually, there will be a variety of users selected to attempt to produce UML diagrams of different types and magnitudes. This will produce a very large variety of permutations of use cases, and allow us to observe how the use cases behave when used together.
+}
 
 \section[ITEM PASS/FAIL CRITERIA]{\bfseries\color{black}
 	 ITEM PASS/FAIL CRITERIA}

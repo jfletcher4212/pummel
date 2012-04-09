@@ -10,8 +10,12 @@
 #include <QtGui>
 #include <QGraphicsScene>
 #include <QList>
-#include "dragitem.h"
+#include <QLine>
+#include "icon.h"
 #include "solidline.h"
+#include "dottedline.h"
+
+enum ShapeCreationType {s_Classbox, s_Ellipse, s_Actor};
 
 class DragScene : public QGraphicsScene
 {
@@ -23,22 +27,27 @@ public:
     DragScene(QObject* parent = 0, int initHeight = 500, int initWidth = 500);
 
     // Accessors
-    ShapeType getCreateMode(){return createMode;}
     bool getSceneCreate(){return sceneCreate;}
     bool getGrid(){return grid;}
     int getGridSize(){return gridSize;}
-    QList<DragItem*> getObjectList(){return scene_items;}
+    QList<Icon*> getObjectList(){return scene_items;}
     QList<BasicLineObject*> getLineList(){return scene_lines;}
     bool getLineCreate(){return lineCreate;}
     LineType getLineCreateType(){return lineTypeEnum;}
+    bool isResizing(){return m_resizing;}
+    ShapeCreationType getShapeCreationType(){return m_shapeCreationType;}
 
     // Mutators
-    void setCreateMode(ShapeType newType){createMode = newType;}
     void setSceneCreate(bool a){sceneCreate = a;}
     void setLineCreateType(LineType newType){lineTypeEnum = newType;}
     void setLineCreate(bool a){lineCreate = a;}
-    void setGrid(bool a){grid = a;}
-    void setGridSize(int newSize){gridSize = newSize;}
+    void setGrid(bool a){grid = a; update();}
+    void setGridSize(int newSize){gridSize = newSize; update();}
+    void setResizing(bool x){m_resizing = x;}
+    void setShapeCreationType(ShapeCreationType newType){m_shapeCreationType = newType;}
+
+    // Utility functions
+    int sceneItemAt(QPointF pos);
 
     // Testing Fucntions
     void testAction();
@@ -58,14 +67,18 @@ protected:
 
 
 private:
+    ShapeCreationType m_shapeCreationType;
+    bool m_resizing; // true if an item on the scene is being resized, false otherwise
     int gridSize; // pixel width of grid lines
     bool grid; // toggle for grid
-    ShapeType createMode; // type of shape the scene is creating
     LineType lineTypeEnum;
     bool sceneCreate; // toggle for click creation
     bool lineCreate; // toggle for line creation
-    QList<DragItem*> scene_items; // custom list of all the DragItem*'s (not QGraphicsItem*) in DragScene
+    QList<Icon*> scene_items; // custom list of all the DragItem*'s (not QGraphicsItem*) in DragScene
     QList<BasicLineObject*> scene_lines;  //custom list of all lines in DragScene
+
+    QGraphicsLineItem* tempLine;
+    QColor myTempLineColor;
 };
 
 #endif // DRAGSCENE_H

@@ -13,7 +13,7 @@
 #include <QtGui>
 #include "optionsdialog.h"
 #include "params.h"
-#include "dragitem.h"
+#include "icon.h"
 
 using namespace std;
 
@@ -49,11 +49,14 @@ public slots:
     void insertText();
     void showOptions();
 
-    void addRect();
-    void addSquare();
-    void addCircle();
+    void addClassBox();
     void addEllipse();
     void addNone();
+
+    void addNoLine();
+    void addSolidLine();
+    void addDottedLine();
+    void addSolidLineAH();
 
     void gridOn();
     void gridOff();
@@ -73,10 +76,15 @@ private:
     QMenu *shapeMenu;
     QActionGroup *shapesGroup;
     QAction *addNoneAct;
-    QAction *addSquareAct;
-    QAction *addCircleAct;
-    QAction *addRectAct;
+    QAction *addClassBoxAct;
     QAction *addEllipseAct;
+
+    QMenu *lineMenu;
+    QActionGroup *linesGroup;
+    QAction *addNoLineAct;
+    QAction *addSolidLineAct;
+    QAction *addDottedLineAct;
+    QAction *addSolidLineAHAct;
 
     QMenu *gridMenu;
     QActionGroup *gridOnOffToggleGroup;
