@@ -35,6 +35,7 @@ protected:
 public:
 
     Icon(QGraphicsItem *parent = 0);
+    ~Icon();
 
     // Accessors
     int getWidth();
