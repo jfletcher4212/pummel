@@ -34,6 +34,18 @@ Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
     }
 }
 
+Icon::~Icon()
+{
+    //delete marker boxes
+    for (int i = 0; i<4; i++)
+    {
+        delete m_markers[i];
+    }
+
+    delete m_labelBox;
+    delete m_type;
+}
+
 int Icon::getWidth()
 {
     return m_width;

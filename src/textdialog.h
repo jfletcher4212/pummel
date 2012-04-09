@@ -18,6 +18,7 @@ class TextDialog : public QWidget
     Q_OBJECT
 public:
     explicit TextDialog(ClassBox *caller = 0);
+    ~TextDialog();
     //Accessors
     QString getName();
     QString getMembers();

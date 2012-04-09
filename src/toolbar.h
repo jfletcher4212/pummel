@@ -49,12 +49,11 @@ public slots:
     void insertText();
     void showOptions();
 
-    void addRect();
-    void addSquare();
-    void addCircle();
+    void addClassBox();
     void addEllipse();
     void addNone();
 
+    void addNoLine();
     void addSolidLine();
     void addDottedLine();
     void addSolidLineAH();
@@ -77,13 +76,12 @@ private:
     QMenu *shapeMenu;
     QActionGroup *shapesGroup;
     QAction *addNoneAct;
-    QAction *addSquareAct;
-    QAction *addCircleAct;
-    QAction *addRectAct;
+    QAction *addClassBoxAct;
     QAction *addEllipseAct;
 
     QMenu *lineMenu;
     QActionGroup *linesGroup;
+    QAction *addNoLineAct;
     QAction *addSolidLineAct;
     QAction *addDottedLineAct;
     QAction *addSolidLineAHAct;
