@@ -31,6 +31,19 @@ TextDialog::TextDialog(ClassBox *origCaller) :
     this->setLayout(layout);
 }
 
+TextDialog::~TextDialog()
+{
+    //delete fields
+    delete m_nameField;
+    delete m_membersField;
+    delete m_methodsField;
+
+    //delete buttons
+    delete m_okButton;
+    delete m_cancelButton;
+
+}
+
 /* copies values from caller into member variables
  * initializes other members of dialog
  */
