@@ -110,27 +110,29 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
     else if(this->selectedItems().size() == 0 && sceneCreate)
     {
         Icon *newItem;   // create an Icon pointer
-<<<<<<< local
-        newItem = new Actor(); // only abstract object currently, this will eventually be a switch statement
-=======
+
         // create abstract class based on m_shapeCreationType
-        switch(m_shapeCreationType){
-        case s_Classbox:{
-            newItem = new ClassBox();
-            break;
+        switch(m_shapeCreationType)
+        {
+            case s_Classbox:
+            {
+                newItem = new ClassBox();
+                break;
+            }
+            case s_Ellipse:
+            {
+                newItem = new Ellipse();
+                break;
+            }
+            case s_Actor:
+            {
+                break;
+            }
+            default:
+            {
+                printf("dragscene doesn't have a shapeCreationType defined\n");
+            }
         }
-        case s_Ellipse:{
-            newItem = new Ellipse();
-            break;
-        }
-        case s_Actor:{
-            break;
-        }
-        default:{
-            printf("dragscene doesn't have a shapeCreationType defined\n");
-        }
-        }
->>>>>>> other
         // add the new item to the scene
         this->addItem(newItem);
         newItem->setPos(event->scenePos());
