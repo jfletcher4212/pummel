@@ -115,9 +115,6 @@ void Icon::paintMarkerBoxes()
 
 void Icon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_width; // this centers the object on the cursor
-    pos.ry() -= 0.5 * m_height;
     m_state = 2;
     this->grabMouse();  // icon will take all mouse actions
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
