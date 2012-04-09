@@ -65,6 +65,7 @@ private:
 
     void createActions();
     void createMenus();
+    void setAvailableActions();
 
 
     QPushButton * shapeButton;
