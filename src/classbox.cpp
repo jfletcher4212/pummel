@@ -30,6 +30,13 @@ ClassBox::ClassBox()
 
 }
 
+ClassBox::~ClassBox()
+{
+    delete m_memberBox;
+    delete m_methodBox;
+
+}
+
 //move boxes to their appropriate positions and set overall size members
 void ClassBox::arrangeBoxes()
 {
