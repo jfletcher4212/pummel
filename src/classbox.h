@@ -29,6 +29,7 @@ protected:
 
 public:
     ClassBox();
+    ~ClassBox();
     QString getLabel(), getMembers(), getMethods();
     void setLabel(QString), setMembers(QString), setMethods(QString);
 };

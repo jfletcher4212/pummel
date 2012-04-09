@@ -15,6 +15,8 @@
 #include "solidline.h"
 #include "dottedline.h"
 
+enum ShapeCreationType {s_Classbox, s_Ellipse, s_Actor};
+
 class DragScene : public QGraphicsScene
 {
 public:
@@ -33,14 +35,16 @@ public:
     bool getLineCreate(){return lineCreate;}
     LineType getLineCreateType(){return lineTypeEnum;}
     bool isResizing(){return m_resizing;}
+    ShapeCreationType getShapeCreationType(){return m_shapeCreationType;}
 
     // Mutators
     void setSceneCreate(bool a){sceneCreate = a;}
     void setLineCreateType(LineType newType){lineTypeEnum = newType;}
     void setLineCreate(bool a){lineCreate = a;}
-    void setGrid(bool a){grid = a;}
-    void setGridSize(int newSize){gridSize = newSize;}
+    void setGrid(bool a){grid = a; update();}
+    void setGridSize(int newSize){gridSize = newSize; update();}
     void setResizing(bool x){m_resizing = x;}
+    void setShapeCreationType(ShapeCreationType newType){m_shapeCreationType = newType;}
 
     // Utility functions
     int sceneItemAt(QPointF pos);
@@ -63,7 +67,8 @@ protected:
 
 
 private:
-    bool m_resizing;
+    ShapeCreationType m_shapeCreationType;
+    bool m_resizing; // true if an item on the scene is being resized, false otherwise
     int gridSize; // pixel width of grid lines
     bool grid; // toggle for grid
     LineType lineTypeEnum;
