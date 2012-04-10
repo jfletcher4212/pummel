@@ -1,6 +1,7 @@
 #include "ellipse.h"
 #include "markerbox.h"
-
+#include <iostream>
+#include <QString>
 
 
 Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
@@ -17,10 +18,15 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
     arrangeBoxes();
 
     m_labelBox->setVisible(true);
+    // In general, leave this block below running for loading images
+
+    if (!m_image.load("icons/ellipse.png"))
+        std::cout << "didn't load image properly\n";  //loads the image for drawing later
 
 
-    m_image.load("images/ellipse.png");  //loads the image for drawing later
-
+    // If the relative path fails, uncomment and update the below with full path to images (example below from a mac)
+    //if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/ellipse.png"))
+      //  std::cout << "didn't load image properly\n";  //loads the image for drawing later
 }
 
 Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
@@ -42,8 +48,14 @@ Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos
 
     m_labelBox->setVisible(true);
 
+    // In general, leave this block below running for loading images
 
-    m_image.load("images/ellipse.png");  //loads the image for drawing later
+    if (!m_image.load("icons/ellipse.png"))
+        std::cout << "didn't load image properly\n";  //loads the image for drawing later
+
+    // If the relative path fails, uncomment and update the below with full path to images (example below from a mac)
+  //  if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/ellipse.png"))
+    //    std::cout << "didn't load image properly\n";  //loads the image for drawing later
 
 }
 
@@ -54,8 +66,12 @@ QRectF Ellipse::boundingRect() const
 
 void Ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    m_labelBox->boundingRect().setHeight(m_height-10);
-    m_labelBox->boundingRect().setWidth(m_width-10);
+    m_labelBox->boundingRect().setHeight(m_height-20);
+    m_labelBox->boundingRect().setWidth(m_width-20);
+    //m_labelBox->boundingRect().setX(this->pos().x()+10);
+    //m_labelBox->boundingRect().setX(this->pos().x()+10);
+    //m_labelBox->setPos(this->pos().x(), this->pos().y());
+
 
     arrangeBoxes();
 
@@ -66,10 +82,20 @@ void Ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
     }
     painter->setPen(Qt::NoPen);
 
-    painter->drawImage(QRectF(0,0,m_width+40,m_height+40), m_image);   //paints from image file
+    //QString myPath;
+    //myPath = "icons/ellipse.png";
+    //if(!m_image.load(myPath))
+    //{std::cout <<"didnt load from in the paint func\n";}
+    painter->drawImage(this->boundingRect(),m_image);
+    //painter->drawImage(this->pos().x(),this->pos().y(),m_image);
+    //painter->drawImage(QRectF(0,0,m_width+40,m_height+40), m_image);   //paints from image file
 
-    painter->drawRect(m_labelBox->pos().x()+5, m_labelBox->pos().y()+5, m_width-10, m_height-10);
+    //painter->drawImage();
+    //painter->drawRect(m_labelBox->pos().x()+5, m_labelBox->pos().y()+5, m_width-10, m_height-10);
     //painter->drawEllipse(QRectF(0,0,m_xsize,m_ysize));
+
+    //painter->drawRect(m_labelBox->pos().x()+10, m_labelBox->pos().y()+10, m_width-10, m_height-10);
+
 
     update();
 
@@ -93,63 +119,24 @@ void Ellipse::setValues()
 
 void Ellipse::arrangeBoxes()
 {
+    m_labelBox->setPos(10, 10);
+
+
     this->prepareGeometryChange();
 
    // printf("boundingRect height: %i\n", (int)this->boundingRect().height());
 
     //change m_height and m_width
     //match the width of the overall boundary rectangles to the widest one
-    if(m_labelBox->boundingRect().width()+10 > m_width)
+    if(m_labelBox->boundingRect().width()+20 > m_width)
     {
-           m_width = m_labelBox->boundingRect().width()+10;
+           m_width = m_labelBox->boundingRect().width()+20;
     }
-    if(m_labelBox->boundingRect().height()+10 > m_height)
+    if(m_labelBox->boundingRect().height()+20 > m_height)
     {
-          m_height = m_labelBox->boundingRect().height() +10;
+          m_height = m_labelBox->boundingRect().height() +20;
     }
     paintMarkerBoxes();
     update();
 }
 
-
-
-
-/*void ellipse::mousePressEvent(QGraphicsSceneMouseEvent *event)
-{
-    event->accept();
-    QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_width;
-    pos.ry() -= 0.5 * m_height;
-    this->grabMouse();  // DragItem will take all mouse actions
-    this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
-}
-
-
-void ellipse::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
-{
-
-    // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
-    QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_width;
-    pos.ry() -= 0.5 * m_height;
-    this->setPos(pos.rx(), pos.ry());
-}
-
-void ellipse::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
-{
-    /*
-     * This resets the object's coordinates to the cursor's coordinates when the
-     * mouse is released, as opposed to creating a new object and then deleting the old one.
-     * Also puts opacity back to normal.
-     */
-/*
-    // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
-    QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_width;
-    pos.ry() -= 0.5 * m_height;
-    this->setPos(pos.rx(),pos.ry());
-    this->setOpacity(1.0);
-    this->ungrabMouse();  // release mouse back to DragScene
-}
-
-*/

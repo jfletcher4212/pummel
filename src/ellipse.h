@@ -5,6 +5,7 @@
 #include "textboxdialog.h"
 #include <QtGui>
 #include <QGraphicsItem>
+#include <QImage>
 
 #include "markerbox.h"
 class Ellipse : public Icon
@@ -23,10 +24,6 @@ protected:
 private:
 
     void arrangeBoxes();
-
-    // Selection boxes for the DragItem
-//    MarkerBox *markers[4];
-
 
 public:
 

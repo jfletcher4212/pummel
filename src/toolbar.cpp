@@ -69,21 +69,14 @@ QGridLayout * Toolbar::initButtons()
 }
 
 void Toolbar::createActions(){
-    addRectAct = new QAction(tr("Rectangle"), this);
-    addRectAct->setCheckable(true);
-    connect(addRectAct, SIGNAL(triggered()), this, SLOT(addRect()));
 
     addEllipseAct = new QAction(tr("Ellipse"), this);
     addEllipseAct->setCheckable(true);
     connect(addEllipseAct, SIGNAL(triggered()), this, SLOT(addEllipse()));
 
-    addSquareAct = new QAction(tr("Square"), this);
-    addSquareAct->setCheckable(true);
-    connect(addSquareAct, SIGNAL(triggered()), this, SLOT(addSquare()));
-
-    addCircleAct = new QAction(tr("Circle"), this);
-    addCircleAct->setCheckable(true);
-    connect(addCircleAct, SIGNAL(triggered()), this, SLOT(addCircle()));
+    addClassBoxAct = new QAction(tr("Class Box"), this);
+    addClassBoxAct->setCheckable(true);
+    connect(addClassBoxAct, SIGNAL(triggered()), this, SLOT(addClassBox()));
 
     addNoneAct = new QAction(tr("None"), this);
     addNoneAct->setCheckable(true);
@@ -92,9 +85,7 @@ void Toolbar::createActions(){
 
     shapesGroup = new QActionGroup(this);
     shapesGroup->addAction(addNoneAct);
-    shapesGroup->addAction(addRectAct);
-    shapesGroup->addAction(addSquareAct);
-    shapesGroup->addAction(addCircleAct);
+    shapesGroup->addAction(addClassBoxAct);
     shapesGroup->addAction(addEllipseAct);
 
     addSolidLineAct = new QAction(tr("Solid Line"), this);
@@ -109,8 +100,13 @@ void Toolbar::createActions(){
     addSolidLineAHAct->setCheckable(true);
     connect(addSolidLineAHAct, SIGNAL(triggered()), this, SLOT(addSolidLineAH()));
 
+    addNoLineAct = new QAction(tr("None"), this);
+    addNoLineAct->setCheckable(true);
+    addNoLineAct->setChecked(true);
+    connect(addNoLineAct, SIGNAL(triggered()), this, SLOT(addNoLine()));
+
     linesGroup = new QActionGroup(this);
-    linesGroup->addAction(addNoneAct);
+    linesGroup->addAction(addNoLineAct);
     linesGroup->addAction(addSolidLineAct);
     linesGroup->addAction(addDottedLineAct);
     linesGroup->addAction(addSolidLineAHAct);
@@ -132,9 +128,7 @@ void Toolbar::createActions(){
 void Toolbar::createMenus(){
     shapeMenu = new QMenu(this);
     shapeMenu->addAction(addNoneAct);
-    shapeMenu->addAction(addSquareAct);
-    shapeMenu->addAction(addCircleAct);
-    shapeMenu->addAction(addRectAct);
+    shapeMenu->addAction(addClassBoxAct);
     shapeMenu->addAction(addEllipseAct);
 
     lineMenu = new QMenu(this);
@@ -195,24 +189,14 @@ void Toolbar::insertLine()
    //canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
 }
 
-void Toolbar::addRect(){
-    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
-    //canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Rectangle);
-}
-
-void Toolbar::addSquare(){
-    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
-   // canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Square);
-}
-
-void Toolbar::addCircle(){
-    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
-   // canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Circle);
-}
-
 void Toolbar::addEllipse(){
     canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
-    //canvas.at(tabWidget->currentIndex())->setSceneCreateMode(Ellipse);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_Ellipse);
+}
+
+void Toolbar::addClassBox(){
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_Classbox);
 }
 
 void Toolbar::addNone(){
@@ -238,6 +222,13 @@ void Toolbar::addSolidLineAH()
     canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
     canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
     canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line_SAH);
+}
+
+void Toolbar::addNoLine()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
 }
 
 void Toolbar::gridOn(){
