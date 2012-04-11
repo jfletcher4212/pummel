@@ -25,12 +25,11 @@ Xml_io::~Xml_io()
 {
 }
 
-
 void Xml_io::write_xml()
 {
     int idx;
     QFile savefile ( m_filename );
-    savefile.open(QIODevice::WriteOnly);            
+    savefile.open(QIODevice::WriteOnly);
     
     // strip full path off filename for display later and addition to xml file
     idx = m_filename.lastIndexOf("/");
@@ -45,7 +44,7 @@ void Xml_io::write_xml()
     
     //Icon(int width, int height, int id, int label, int shapetype);
     
-    for ( int i = 0; i < m_items.length()-1; i++ )
+    for ( int i = 0; i < m_items.length(); i++ )
     {
 	//QString valueAsString = QString::number(valueAsDouble);
 	// wrapper tags coule be the object's individual ID #
@@ -53,7 +52,7 @@ void Xml_io::write_xml()
 	saver.writeTextElement("width", QString::number(m_items[i]->getWidth()));
 	saver.writeTextElement("height", QString::number(m_items[i]->getHeight()));
 	saver.writeTextElement("id", QString::number(m_items[i]->getID()));
-	saver.writeTextElement("label", m_items[i]->getLabel());
+	//saver.writeTextElement("label", m_items[i]->getLabel());
 	saver.writeTextElement("shapetype", m_items[i]->reportShapetype());
 	saver.writeEndElement();
     }
