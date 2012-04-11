@@ -18,7 +18,14 @@ Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
     m_state = 0;
 //    m_label = "";
     m_labelBox = new QGraphicsTextItem;
-    m_labelBox->setPlainText("");
+    
+    // this is the line that causes a segfault in unit tests because
+    // it needs the gui. my suggestion is to leave this member alone
+    // in base class and do the text instantiation in the same method
+    // (or called by the same method) as paintEvent in the children.
+    // might as well set the text RIGHT before we draw it to isolate
+    // the gui things a little further.
+    //m_labelBox->setPlainText("");
     m_labelBox->setPos(this->pos());
     m_type = new QPolygon();
     m_id = m_next_id;

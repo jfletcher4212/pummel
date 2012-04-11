@@ -1,8 +1,8 @@
 /* icon.h - contains structs and protoypes applicable to the shapes class.
               Made by Theora Rice - 12/16/2011
   */
-#ifndef icon_H
-#define icon_H
+#ifndef __ICON_H__
+#define __ICON_H__
 
 #include <QWidget>
 #include <QGraphicsItem>
@@ -58,4 +58,4 @@ public:
     void paintMarkerBoxes();
 };
 
-#endif // shapes_H
+#endif // __ICON_H__
