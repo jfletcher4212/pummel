@@ -47,6 +47,7 @@ public:
     void setShapeCreationType(ShapeCreationType newType){m_shapeCreationType = newType;}
 
     // Utility functions
+    void deleteItem(Icon* item);
     int sceneItemAt(QPointF pos);
 
     // Testing Fucntions
@@ -58,13 +59,13 @@ public:
     void readXML(){};
     */
 
+
 protected:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
     void drawBackground(QPainter *painter, const QRectF &rect);
-
 
 private:
     ShapeCreationType m_shapeCreationType;
@@ -79,6 +80,7 @@ private:
 
     QGraphicsLineItem* tempLine;
     QColor myTempLineColor;
+
 };
 
 #endif // DRAGSCENE_H
