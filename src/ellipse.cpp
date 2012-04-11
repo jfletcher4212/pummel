@@ -20,13 +20,13 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
     m_labelBox->setVisible(true);
     // In general, leave this block below running for loading images
 
-    if (!m_image.load("icons/ellipse.png"))
-        std::cout << "didn't load image properly\n";  //loads the image for drawing later
+  //  if (!m_image.load("icons/ellipse.png"))
+    //    std::cout << "didn't load image properly\n";  //loads the image for drawing later
 
 
     // If the relative path fails, uncomment and update the below with full path to images (example below from a mac)
-    //if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/ellipse.png"))
-      //  std::cout << "didn't load image properly\n";  //loads the image for drawing later
+    if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/ellipse.png"))
+        std::cout << "didn't load image properly\n";  //loads the image for drawing later
 }
 
 Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
@@ -50,12 +50,12 @@ Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos
 
     // In general, leave this block below running for loading images
 
-    if (!m_image.load("icons/ellipse.png"))
-        std::cout << "didn't load image properly\n";  //loads the image for drawing later
+   // if (!m_image.load("icons/ellipse.png"))
+     //   std::cout << "didn't load image properly\n";  //loads the image for drawing later
 
     // If the relative path fails, uncomment and update the below with full path to images (example below from a mac)
-  //  if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/ellipse.png"))
-    //    std::cout << "didn't load image properly\n";  //loads the image for drawing later
+    if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/ellipse.png"))
+        std::cout << "didn't load image properly\n";  //loads the image for drawing later
 
 }
 
@@ -79,11 +79,24 @@ void Ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
     painter->setPen(Qt::NoPen);
 
     painter->drawImage(this->boundingRect(),m_image);
+<<<<<<< local
+=======
+    //painter->drawImage(this->pos().x(),this->pos().y(),m_image);
+    //painter->drawImage(QRectF(0,0,m_width+40,m_height+40), m_image);   //paints from image file
+>>>>>>> other
 
+<<<<<<< local
+=======
+    //painter->drawImage();
+    //painter->drawRect(m_labelBox->pos().x()+5, m_labelBox->pos().y()+5, m_width-10, m_height-10);
+    //painter->drawEllipse(QRectF(0,0,m_xsize,m_ysize));
+
+    //painter->drawRect(m_labelBox->pos().x()+10, m_labelBox->pos().y()+10, m_width-10, m_height-10);
+
+>>>>>>> other
     update();
 
 }
-
 
 void Ellipse::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
@@ -102,7 +115,9 @@ void Ellipse::setValues()
 
 void Ellipse::arrangeBoxes()
 {
-    m_labelBox->setPos(10, 10);
+    m_labelBox->setPos(((m_width*0.5)-(m_labelBox->boundingRect().width()*0.5)), ((m_height*0.5)-(m_labelBox->boundingRect().height()*0.5)));
+   // (int)m_labelBox->boundingRect().width();
+   // (int)m_labelBox->boundingRect().height();
 
 
     this->prepareGeometryChange();
