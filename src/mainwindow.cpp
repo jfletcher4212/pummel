@@ -13,10 +13,12 @@
 #include "mainwindow.h"
 #include "borderlayout.h"
 #include "global.h"
-#include "toolbar.h"
-#include<iostream>
+#include <iostream>
 
 using namespace std;
+
+extern Toolbar *toolbar;
+
 MainWindow::MainWindow()
 {
     widget = new QWidget;
@@ -25,11 +27,7 @@ MainWindow::MainWindow()
     QIcon thumbnail;                    //this sets up an image for the upper corner
     thumbnail.addFile("icons/viking.png"); //while its running
 
-
     toolbar = new Toolbar;
-    /* need some way to get
-     * multiple canvas's
-     * for different tabs*/
     layout = new BorderLayout;
     /*Create tab objects*/
     tabWidget = new TabManager;

@@ -2,10 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "toolbar.h"
+#include "global.h"
 #include "optionsdialog.h"
 #include "borderlayout.h"
-#include "global.h"
+
 
 class QAction;
 class QActionGroup;
@@ -51,7 +51,6 @@ private slots:
 private:
 
     QWidget *widget;
-    Toolbar *toolbar;
     BorderLayout *layout;
 
     int next_tab_num;

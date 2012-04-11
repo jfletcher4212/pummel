@@ -19,6 +19,11 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
     //lineTypeEnum = Dotted_Line;
     tempLine = 0;
     myTempLineColor = Qt::black;
+
+    m_shapeCreationType = s_None;
+    m_resizing = 0;
+    sceneCreate = 0;
+    lineTypeEnum = No_Line;
 }
 
 /****************************************************************
@@ -94,6 +99,9 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
             // stop creating items once something is selected
             this->sceneCreate = false;
+            this->m_shapeCreationType = s_None;
+            this->lineTypeEnum = No_Line;
+
 
             //Learn if in line creation mode
         }
@@ -140,6 +148,11 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         {
             scene_items.at(i)->setSelected(false);
         }
+        for(int i = 0; i < scene_lines.size(); i++)
+        {
+            scene_items.at(i)->setSelected(false);
+        }
+
         QGraphicsScene::mousePressEvent(event);
     }
 }

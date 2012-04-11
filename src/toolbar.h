@@ -11,9 +11,12 @@
 #include <QWidget>
 #include <QDialog>
 #include <QtGui>
+#include "drawarea.h"
+#include "global.h"
 #include "optionsdialog.h"
 #include "params.h"
 #include "icon.h"
+#include "linebody.h"
 
 using namespace std;
 
@@ -33,6 +36,7 @@ private:
     QGridLayout *initButtons();
 public:
     explicit Toolbar(QWidget *parent = 0);
+    void canvasSync(DiagramType d_type, ShapeCreationType s_type, LineType l_type);
 
     //parameters for shapes
     shapeParams shape;

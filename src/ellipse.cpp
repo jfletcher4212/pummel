@@ -117,7 +117,7 @@ void Ellipse::setValues()
 
 void Ellipse::arrangeBoxes()
 {
-    m_labelBox->setPos((m_width*0.5), (m_height*0.5));
+    m_labelBox->setPos(((m_width*0.5)-(m_labelBox->boundingRect().width()*0.5)), ((m_height*0.5)-(m_labelBox->boundingRect().height()*0.5)));
    // (int)m_labelBox->boundingRect().width();
    // (int)m_labelBox->boundingRect().height();
 

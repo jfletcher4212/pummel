@@ -2,11 +2,12 @@
                 presented in toolbar.h
                 Made by Coleman Beasley - 12/16/2011
 */
+#include "global.h"
 #include "toolbar.h"
 #include "optionsdialog.h"
 #include "drawarea.h"
 #include "icon.h"
-#include "global.h"
+
 
 Toolbar::Toolbar(QWidget *parent) :
     QWidget(parent)
@@ -35,6 +36,7 @@ Toolbar::Toolbar(QWidget *parent) :
     shapeButton->setMenu(shapeMenu);
     lineButton->setMenu(lineMenu);
     gridButton->setMenu(gridMenu);
+
 }
 
 //create buttons and add to layout
@@ -238,3 +240,65 @@ void Toolbar::gridOn(){
 void Toolbar::gridOff(){
     canvas.at(tabWidget->currentIndex())->setSceneGrid(false);
 }
+
+void Toolbar::canvasSync(DiagramType d_type, ShapeCreationType s_type, LineType l_type)
+{
+    switch(s_type){
+    case s_Classbox:
+    {
+        this->addClassBox();
+        addClassBoxAct->setChecked(true);
+        break;
+    }
+    case s_Ellipse:
+    {
+        this->addEllipse();
+        addEllipseAct->setChecked(true);
+        break;
+    }
+    case s_None:
+    {
+        this->addNone();
+        addNoneAct->setChecked(true);
+        break;
+    }
+    default:
+    {
+        printf("no ShapeCreationType defined...\n");
+        exit(1);
+    }
+    }
+
+    switch(l_type){
+    case No_Line:
+    {
+        this->addNoLine();
+        addNoLineAct->setChecked(true);
+        break;
+    }
+    case Solid_Line:
+    {
+        this->addSolidLine();
+        addSolidLineAct->setChecked(true);
+        break;
+    }
+    case Dotted_Line:
+    {
+        this->addDottedLine();
+        addDottedLineAct->setChecked(true);
+        break;
+    }
+    case Solid_Line_SAH:
+    {
+        this->addSolidLineAH();
+        addSolidLineAHAct->setChecked(true);
+        break;
+    }
+    default:
+    {
+        printf("no LineType defined...\n");
+        exit(1);
+    }
+    }
+}
+
