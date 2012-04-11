@@ -49,7 +49,7 @@ MainWindow::MainWindow()
     setWindowTitle(tr("pUML"));
     setWindowIcon(thumbnail);
     setMinimumSize(160, 160);
-    resize(480, 320);
+    resize(600, 500);
     this->newTab();
 }
 
@@ -59,6 +59,7 @@ void MainWindow::contextMenuEvent(QContextMenuEvent *event)
     menu.addAction(cutAct);
     menu.addAction(copyAct);
     menu.addAction(pasteAct);
+    menu.addAction(deleteAct);
     menu.exec(event->globalPos());
 }
 
@@ -100,7 +101,7 @@ void MainWindow::redo()
 void MainWindow::cut()
 {
     // whatever this line is crashes it
-   // infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
+    // infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
 
     // Testing for connections below, I just needed something to click, will delete all of it
     canvas.at(tabWidget->currentIndex())->testAction();
@@ -115,6 +116,23 @@ void MainWindow::copy()
 void MainWindow::paste()
 {
     infoLabel->setText(tr("Invoked <b>Edit|Paste</b>"));
+}
+
+void MainWindow::deleteObject()
+{
+    printf("items: %d\n", canvas.at(tabWidget->currentIndex())->scene->getObjectList().size());
+    if(canvas.at(tabWidget->currentIndex())->scene->getObjectList().size() > 0){
+        Icon* item;
+        for(int i = 0; i < canvas.at(tabWidget->currentIndex())->scene->getObjectList().size(); i++)
+        {
+            if(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(i)->isSelected())
+            {
+                item = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(i);
+            }
+        }
+        canvas.at(tabWidget->currentIndex())->scene->deleteItem(item);
+        printf("items: %d\n", canvas.at(tabWidget->currentIndex())->scene->getObjectList().size());
+    }
 }
 
 /*
@@ -147,16 +165,16 @@ void MainWindow::newTab()
 
 void MainWindow::saveAsFile()
 {
-      QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
-      
-      
-      
-      // strip full path off filename for display
-      int idx = filename.lastIndexOf("/");
-      filename.remove(0, idx+1);
-      
-      tabWidget->setTabText(tabWidget->currentIndex(), filename );
-      /* Insert
+    QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
+
+
+
+    // strip full path off filename for display
+    int idx = filename.lastIndexOf("/");
+    filename.remove(0, idx+1);
+
+    tabWidget->setTabText(tabWidget->currentIndex(), filename );
+    /* Insert
        * actual
        * saving
        * function
@@ -288,6 +306,10 @@ void MainWindow::createActions()
                               "selection"));
     connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
 
+    deleteAct = new QAction(tr("&Delete"), this);
+    deleteAct->setStatusTip(tr("Delete the object"));
+    connect(deleteAct, SIGNAL(triggered()), this, SLOT(deleteObject()));
+
     boldAct = new QAction(tr("&Bold"), this);
     boldAct->setCheckable(true);
     boldAct->setShortcut(QKeySequence::Bold);
@@ -376,6 +398,7 @@ void MainWindow::createMenus()
     editMenu->addAction(cutAct);
     editMenu->addAction(copyAct);
     editMenu->addAction(pasteAct);
+    editMenu->addAction(deleteAct);
     editMenu->addSeparator();
 
     helpMenu = menuBar()->addMenu(tr("&Help"));

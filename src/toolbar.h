@@ -36,7 +36,7 @@ private:
     QGridLayout *initButtons();
 public:
     explicit Toolbar(QWidget *parent = 0);
-    void canvasSync(DiagramType d_type, ShapeCreationType s_type, LineType l_type);
+    void canvasSync();
 
     //parameters for shapes
     shapeParams shape;

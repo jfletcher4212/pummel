@@ -32,6 +32,7 @@ private slots:
     void cut();
     void copy();
     void paste();
+    void deleteObject();
     void newTab();
     void saveAsFile();
     void openFile();
@@ -75,6 +76,7 @@ private:
     QAction *cutAct;
     QAction *copyAct;
     QAction *pasteAct;
+    QAction *deleteAct;
     QAction *boldAct;
     QAction *italicAct;
     QAction *leftAlignAct;
