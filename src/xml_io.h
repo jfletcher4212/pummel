@@ -14,7 +14,7 @@ class Xml_io
   ~Xml_io();
   
   void write_xml();
-  void openFile();
+  void parse_xml();
   QMap<QString, QString> parsePerson(QXmlStreamReader& xml);
   
   
@@ -27,7 +27,7 @@ class Xml_io
   void set_items(QList<Icon*> icon_list) { m_items = icon_list; }
   void set_filename(QString filename) { m_filename = filename; }
   //void set_diagram_type(QString diagram_type) { m_diagram_type = diagram_type; }  
-  
+  void parse_icon(QXmlStreamReader &reader);
  private:
   int m_size; 
   QString m_filename;
