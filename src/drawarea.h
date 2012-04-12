@@ -30,6 +30,7 @@ public:
     int getSceneGridSize(){return scene->getGridSize();}
     QList<Icon*> getObjects(){return scene->getObjectList();}
     bool getLineCreate(){return scene->getLineCreate();}
+    LineType getLineCreationType(){return scene->getLineCreateType();}
     DiagramType getDiagramType(){return type;}
     ShapeCreationType getSceneShapeCreationType(){return scene->getShapeCreationType();}
 
