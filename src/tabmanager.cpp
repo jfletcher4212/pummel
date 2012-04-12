@@ -2,6 +2,7 @@
 #include "global.h"
 #include "mainwindow.h"
 extern MainWindow window;
+extern Toolbar *toolbar;
 
 TabManager::TabManager(QWidget *parent) : QTabWidget(parent)
 {
@@ -11,11 +12,6 @@ TabManager::TabManager(QWidget *parent) : QTabWidget(parent)
 
 void TabManager::currentChangedSlot(int index)
 {
-    /*
-    ShapeType indexCreateMode;
-    bool indexGrid;
-    indexCreateMode = canvas.at(index)->getSceneCreateMode();
-    indexGrid = canvas.at(index)->getSceneGrid();
-    */
+    toolbar->canvasSync();
 }
 

@@ -1,8 +1,8 @@
 /* icon.h - contains structs and protoypes applicable to the shapes class.
               Made by Theora Rice - 12/16/2011
   */
-#ifndef icon_H
-#define icon_H
+#ifndef __ICON_H__
+#define __ICON_H__
 
 #include <QWidget>
 #include <QGraphicsItem>
@@ -23,7 +23,7 @@ protected:
     static int m_next_id;
     int m_id;
 
-    QString m_shapetype;
+    QString m_shapetype, m_label;
 //    QString m_label;
     QGraphicsTextItem *m_labelBox;
     QPolygon *m_type;
@@ -35,6 +35,7 @@ protected:
 public:
 
     Icon(QGraphicsItem *parent = 0);
+    ~Icon();
 
     // Accessors
     int getWidth();
@@ -45,6 +46,7 @@ public:
     void setShapetype(QString shapename);     // simple accessor and mutator methods for the shapetype
     int getID();    // simple accessor for getting the ID
     QPolygon *getType();
+    QString getLabel();
 
     // Mutators
     void setMarkers(MarkerBox* a, MarkerBox* b, MarkerBox* c, MarkerBox* d);
@@ -56,4 +58,4 @@ public:
     void paintMarkerBoxes();
 };
 
-#endif // shapes_H
+#endif // __ICON_H__

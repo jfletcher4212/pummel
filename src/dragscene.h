@@ -13,6 +13,9 @@
 #include <QLine>
 #include "icon.h"
 #include "solidline.h"
+#include "dottedline.h"
+
+enum ShapeCreationType {s_None, s_Classbox, s_Ellipse, s_Actor};
 
 class DragScene : public QGraphicsScene
 {
@@ -31,15 +34,20 @@ public:
     QList<BasicLineObject*> getLineList(){return scene_lines;}
     bool getLineCreate(){return lineCreate;}
     LineType getLineCreateType(){return lineTypeEnum;}
+    bool isResizing(){return m_resizing;}
+    ShapeCreationType getShapeCreationType(){return m_shapeCreationType;}
 
     // Mutators
     void setSceneCreate(bool a){sceneCreate = a;}
     void setLineCreateType(LineType newType){lineTypeEnum = newType;}
     void setLineCreate(bool a){lineCreate = a;}
-    void setGrid(bool a){grid = a;}
-    void setGridSize(int newSize){gridSize = newSize;}
+    void setGrid(bool a){grid = a; update();}
+    void setGridSize(int newSize){gridSize = newSize; update();}
+    void setResizing(bool x){m_resizing = x;}
+    void setShapeCreationType(ShapeCreationType newType){m_shapeCreationType = newType;}
 
     // Utility functions
+    void deleteItem(Icon* item);
     int sceneItemAt(QPointF pos);
 
     // Testing Fucntions
@@ -51,6 +59,7 @@ public:
     void readXML(){};
     */
 
+
 protected:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
@@ -58,8 +67,9 @@ protected:
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event);
     void drawBackground(QPainter *painter, const QRectF &rect);
 
-
 private:
+    ShapeCreationType m_shapeCreationType;
+    bool m_resizing; // true if an item on the scene is being resized, false otherwise
     int gridSize; // pixel width of grid lines
     bool grid; // toggle for grid
     LineType lineTypeEnum;
@@ -70,6 +80,7 @@ private:
 
     QGraphicsLineItem* tempLine;
     QColor myTempLineColor;
+
 };
 
 #endif // DRAGSCENE_H
