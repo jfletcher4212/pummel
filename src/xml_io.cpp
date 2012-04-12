@@ -1,16 +1,21 @@
 
 #include "xml_io.h"
+#include <iostream>
 #include <QString>
+#include <QDebug>
+#include "actor.h"
+#include "ellipse.h"
 
-//using namespace std;
+
+using namespace std;
 
 
 Xml_io::Xml_io()
 {
-  //m_items = NULL;
+    //m_items = NULL;
   
-  //m_filename = "";
-  //  m_diagram_type = "";
+    m_filename = "";
+    //m_diagram_type = "";
 }
 
 Xml_io::Xml_io(QList<Icon*> icon_list, QString filename/*, QString diagram_type*/ )
@@ -62,30 +67,21 @@ void Xml_io::write_xml()
     savefile.close();
 }
 
-
-void Xml_io::openFile()
+void Xml_io::parse_xml()
 {
-    /*
-    QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
-    newTab();
-    
-    QFile infile ( filename );
+    // do a check to ensure the file exists first
+    QFile infile ( m_filename );
     infile.open(QIODevice::ReadOnly);
-
-    // strip full path off filename for display
-    int idx = filename.lastIndexOf("/");
-    filename.remove(0, idx+1);
-    
-    tabWidget->setTabText(tabWidget->currentIndex(), filename);
     
     QXmlStreamReader reader(&infile);
-    // what is this doing???
-    QList< QMap<QString,QString> > icons;
+
+    QList<Icon*> icons;
+    //QList< QMap<QString,QString> > icons;
     
-    while ( !reader.atEnd() && !reader.hasError() )
+    while ( ! reader.atEnd() && ! reader.hasError() )
     {
 	//read next element
-	QXmlStreamReader::TokenType token = xml.readNext();
+	QXmlStreamReader::TokenType token = reader.readNext();
 	
 	if ( token == QXmlStreamReader::StartDocument )
 	{
@@ -94,26 +90,79 @@ void Xml_io::openFile()
 	
 	if ( token == QXmlStreamReader::StartElement )
 	{
-	    if ( reader.name() == filename )
+	    if ( reader.name() == m_filename )
 	    {
 		continue;
 	    }
 	    
-	    if ( reader.name() == "coord" )
+	    if ( reader.name() == "icon" )
 	    {
-		icons.append(parse_icon(reader));
+		//qDebug() << reader.name();
+		//icons.append(parse_icon(reader));
+		parse_icon(reader);
 	    }
 	    
-	    }
+	}
     }
     
-    // icons should have everything we need at this point
+//    return icons;
+}
+
+void Xml_io::parse_icon(QXmlStreamReader &reader)
+{
+    int width;
+    int height;
+    int id;
+    QString type;
     
-    //cout<<reader.readElementText(1)<endl;
-    cout<<"HERE"<<endl;
-    //cout<<reader.readElementText().toStdString()<<endl;
-    reader.readNextStartElement();
-    cout<<reader.readElementText(QXmlStreamReader::IncludeChildElements).toStdString()<<endl;*/
+    Icon *ret;
+    
+    // next element
+    reader.readNext();
+    
+    while ( ! (reader.tokenType() == QXmlStreamReader::EndElement &&  reader.name() == "icon") )
+    {
+	//read next element
+	QXmlStreamReader::TokenType token = reader.readNext();
+
+	if ( token == QXmlStreamReader::StartElement )
+	{
+	    if( reader.name() == "width")
+	    {
+		reader.readNext();
+		width = reader.text().toString().toInt();
+	    }
+	    
+	    if( reader.name() == "height")
+	    {
+		reader.readNext();
+		height = reader.text().toString().toInt();
+	    }
+
+	    if( reader.name() == "id")
+	    {
+		reader.readNext();
+		id = reader.text().toString().toInt();
+	    }
+
+	    if( reader.name() == "shapetype")
+	    {
+		reader.readNext();
+		type = reader.text().toString();
+	    }
+	}
+    }
+
+    if ( type == "Ellipse") 
+    {
+	ret = new Ellipse();
+    }
+    if ( type == "Actor" )
+    {
+	ret = new actor();
+    }
+    
+    //return ret;
 }
 
 QMap<QString, QString> Xml_io::parsePerson(QXmlStreamReader& xml)
