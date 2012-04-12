@@ -1,9 +1,8 @@
 /* main.cpp - file that displays windows.
   */
 #include <QtGui/QApplication>
-#include "drawarea.h"
+#include "global.h"
 #include "mainwindow.h"
-#include "toolbar.h"
 
 int main(int argc, char *argv[])
 {

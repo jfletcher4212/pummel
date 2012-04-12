@@ -2,11 +2,12 @@
                 presented in toolbar.h
                 Made by Coleman Beasley - 12/16/2011
 */
+#include "global.h"
 #include "toolbar.h"
 #include "optionsdialog.h"
 #include "drawarea.h"
 #include "icon.h"
-#include "global.h"
+
 
 Toolbar::Toolbar(QWidget *parent) :
     QWidget(parent)
@@ -35,6 +36,7 @@ Toolbar::Toolbar(QWidget *parent) :
     shapeButton->setMenu(shapeMenu);
     lineButton->setMenu(lineMenu);
     gridButton->setMenu(gridMenu);
+
 }
 
 //create buttons and add to layout
@@ -132,7 +134,7 @@ void Toolbar::createMenus(){
     shapeMenu->addAction(addEllipseAct);
 
     lineMenu = new QMenu(this);
-    lineMenu->addAction(addNoneAct);
+    lineMenu->addAction(addNoLineAct);
     lineMenu->addAction(addSolidLineAct);
     lineMenu->addAction(addDottedLineAct);
     lineMenu->addAction(addSolidLineAHAct);
@@ -144,7 +146,7 @@ void Toolbar::createMenus(){
 
 void Toolbar::showOptions()
 {
-//    options->exec();
+    //    options->exec();
     options->show();
     shape.fillColor = options->shapeFillColor;
     shape.weight = options->shapeWeight;
@@ -179,42 +181,45 @@ void Toolbar::insertText()
  */
 void Toolbar::insertLine()
 {
-   //Retrieve a pointer to the source icon
-   //DragItem *sourceObj = mou
-   //Retrieve a pointer to the target icon
-   //Create an instance of solidline using these
+    //Retrieve a pointer to the source icon
+    //DragItem *sourceObj = mou
+    //Retrieve a pointer to the target icon
+    //Create an instance of solidline using these
     lineButton->showMenu();
     //canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
-   //canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
-   //canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
+    //canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    //canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
 }
 
 void Toolbar::addEllipse(){
     canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
     canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_Ellipse);
 }
 
 void Toolbar::addClassBox(){
     canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
     canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_Classbox);
 }
 
 void Toolbar::addNone(){
     canvas.at(tabWidget->currentIndex())->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
 }
 
 void Toolbar::addSolidLine()
 {
-   canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
-   canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
-   canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
 }
 
 void Toolbar::addDottedLine()
 {
-   canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
-   canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
-   canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Line);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Line);
 }
 
 void Toolbar::addSolidLineAH()
@@ -227,7 +232,6 @@ void Toolbar::addSolidLineAH()
 void Toolbar::addNoLine()
 {
     canvas.at(tabWidget->currentIndex())->scene->setLineCreate(false);
-    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
     canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
 }
 
@@ -238,3 +242,92 @@ void Toolbar::gridOn(){
 void Toolbar::gridOff(){
     canvas.at(tabWidget->currentIndex())->setSceneGrid(false);
 }
+
+void Toolbar::canvasSync()
+{
+    DiagramType d_type = canvas.at(tabWidget->currentIndex())->getDiagramType();
+    ShapeCreationType s_type = canvas.at(tabWidget->currentIndex())->getSceneShapeCreationType();
+    LineType l_type = canvas.at(tabWidget->currentIndex())->getLineCreationType();
+
+    if(canvas.at(tabWidget->currentIndex())->getLineCreate() && canvas.at(tabWidget->currentIndex())->getSceneCreate())
+    {
+        printf("line and shape create both set\n");
+    }
+
+    // if shape creation mode is off, set the menu to None
+    if(canvas.at(tabWidget->currentIndex())->getSceneCreate())
+    {
+        switch(s_type){
+        case s_Classbox:
+        {
+            this->addClassBox();
+            addClassBoxAct->setChecked(true);
+            break;
+        }
+        case s_Ellipse:
+        {
+            this->addEllipse();
+            addEllipseAct->setChecked(true);
+            break;
+        }
+        case s_None:
+        {
+            this->addNone();
+            addNoneAct->setChecked(true);
+            break;
+        }
+        default:
+        {
+            printf("no ShapeCreationType defined...\n");
+            exit(1);
+        }
+        }
+    }
+    else
+    {
+        this->addNone();
+        addNoneAct->setChecked(true);
+    }
+
+    // if the line creation mode is off, set the menu to No Line
+    if(canvas.at(tabWidget->currentIndex())->getLineCreate())
+    {
+        switch(l_type){
+        case No_Line:
+        {
+            this->addNoLine();
+            addNoLineAct->setChecked(true);
+            break;
+        }
+        case Solid_Line:
+        {
+            this->addSolidLine();
+            addSolidLineAct->setChecked(true);
+            break;
+        }
+        case Dotted_Line:
+        {
+            this->addDottedLine();
+            addDottedLineAct->setChecked(true);
+            break;
+        }
+        case Solid_Line_SAH:
+        {
+            this->addSolidLineAH();
+            addSolidLineAHAct->setChecked(true);
+            break;
+        }
+        default:
+        {
+            printf("no LineType defined...\n");
+            exit(1);
+        }
+        }
+    }
+    else
+    {
+        this->addNoLine();
+        addNoLineAct->setChecked(true);
+    }
+}
+
