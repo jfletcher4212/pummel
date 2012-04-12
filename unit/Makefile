@@ -3,15 +3,19 @@
 # and should be replicated whenever a test is added (remember to make it TARG_++)
 
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-# add to this variable list and then mirror the code at the bottom
+## add to this variable list and then mirror the code at the bottom
 TARG_1=test_xml_io
 #TARG_=test_
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-# the names of the functions you want coverage on
+## the names of the functions you want coverage on
 FUNCS=*
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-# add your targ to this list (space delimited) for clean and all directives
+## add your targ to this list (space delimited) for clean and all directives
 TARG_LIST=$(TARG_1) #$(TARG_)
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+## build project with these options (for coverage)
+CXX_OPTS='-pipe -O2 -Wall -W -D_REENTRANT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED -fprofile-arcs -ftest-coverage'
+LIB_OPTS='$(SUBLIBS)  -L/usr/lib -lQtGui -lQtCore -lpthread -lgcov'
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
 
 CXX=g++
@@ -106,13 +110,13 @@ $(TARG_1).cpp: ./tests/$(TARG_1).h
 
 # add your test name to the end of the clean directive
 clean:
-	rm -rf *.o *.cpp $(TARG_LIST)
+	rm -rf *.o *.cpp *.gcno *.gcda *.trucov $(TARG_LIST)
 
 setup:
-	cd ../src/; make
+	cd ../src/; make #CXXFLAGS=$(CXX_OPTS) LIBS=$(LIB_OPTS)
 
 full_setup:
-	cd ../src/; make clean; qmake -project; qmake; make
+	cd ../src/; make clean; qmake -project; qmake; make #CXXFLAGS=$(CXX_OPTS) LIBS=$(LIB_OPTS)
 
 help:
 	#  usage: make [directive]
