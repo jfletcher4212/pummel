@@ -11,9 +11,12 @@
 #include <QWidget>
 #include <QDialog>
 #include <QtGui>
+#include "drawarea.h"
+#include "global.h"
 #include "optionsdialog.h"
 #include "params.h"
 #include "icon.h"
+#include "linebody.h"
 
 using namespace std;
 
@@ -33,6 +36,7 @@ private:
     QGridLayout *initButtons();
 public:
     explicit Toolbar(QWidget *parent = 0);
+    void canvasSync();
 
     //parameters for shapes
     shapeParams shape;
@@ -49,11 +53,14 @@ public slots:
     void insertText();
     void showOptions();
 
-    void addRect();
-    void addSquare();
-    void addCircle();
+    void addClassBox();
     void addEllipse();
     void addNone();
+
+    void addNoLine();
+    void addSolidLine();
+    void addDottedLine();
+    void addSolidLineAH();
 
     void gridOn();
     void gridOff();
@@ -73,10 +80,15 @@ private:
     QMenu *shapeMenu;
     QActionGroup *shapesGroup;
     QAction *addNoneAct;
-    QAction *addSquareAct;
-    QAction *addCircleAct;
-    QAction *addRectAct;
+    QAction *addClassBoxAct;
     QAction *addEllipseAct;
+
+    QMenu *lineMenu;
+    QActionGroup *linesGroup;
+    QAction *addNoLineAct;
+    QAction *addSolidLineAct;
+    QAction *addDottedLineAct;
+    QAction *addSolidLineAHAct;
 
     QMenu *gridMenu;
     QActionGroup *gridOnOffToggleGroup;

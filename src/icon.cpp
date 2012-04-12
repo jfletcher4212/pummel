@@ -18,7 +18,14 @@ Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
     m_state = 0;
 //    m_label = "";
     m_labelBox = new QGraphicsTextItem;
-    m_labelBox->setPlainText("");
+    
+    // this is the line that causes a segfault in unit tests because
+    // it needs the gui. my suggestion is to leave this member alone
+    // in base class and do the text instantiation in the same method
+    // (or called by the same method) as paintEvent in the children.
+    // might as well set the text RIGHT before we draw it to isolate
+    // the gui things a little further.
+    //m_labelBox->setPlainText("");
     m_labelBox->setPos(this->pos());
     m_type = new QPolygon();
     m_id = m_next_id;
@@ -34,6 +41,18 @@ Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
     }
 }
 
+Icon::~Icon()
+{
+    //delete marker boxes
+    for (int i = 0; i<4; i++)
+    {
+        delete m_markers[i];
+    }
+
+    delete m_labelBox;
+    delete m_type;
+}
+
 int Icon::getWidth()
 {
     return m_width;
@@ -42,6 +61,11 @@ int Icon::getWidth()
 int Icon::getHeight()
 {
     return m_height;
+}
+
+QString Icon::getLabel()
+{
+    return m_label;
 }
 
 void Icon::setSize(int newWidth, int newHeight)
@@ -110,9 +134,6 @@ void Icon::paintMarkerBoxes()
 
 void Icon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_width; // this centers the object on the cursor
-    pos.ry() -= 0.5 * m_height;
     m_state = 2;
     this->grabMouse();  // icon will take all mouse actions
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging

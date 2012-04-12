@@ -1,6 +1,8 @@
 #include "dragscene.h"
 #include "icon.h"
 #include "classbox.h"
+#include "ellipse.h"
+#include "globalToolbar.h"
 #include <QList>
 #include <QGraphicsSceneDragDropEvent>
 #include <QXmlStreamWriter>
@@ -13,10 +15,14 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
     sceneCreate = false;
     gridSize = 10;
     grid = true;
-
-    lineTypeEnum = Solid_Line;
+    lineCreate = false;
     tempLine = 0;
     myTempLineColor = Qt::black;
+    m_shapeCreationType = s_None;
+    m_resizing = 0;
+    sceneCreate = false;
+    lineTypeEnum = No_Line;
+
 }
 
 /****************************************************************
@@ -61,27 +67,32 @@ int DragScene::sceneItemAt(QPointF pos)
     return index;
 }
 
+void DragScene::deleteItem(Icon* item)
+{
+    scene_items.removeOne(item);
+    this->removeItem(item);
+    delete item;
+}
+
 /****************************************************************
  * mousePressEvent handles the following:
  *     - item selection/deselection
  *     - item creation
  ***************************************************************/
+
 void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    int index;
-
-    // this checks if an object is under the cursor, if so, select it
+    // this checks if an object is under the cursor and lineCreate is false, if so, select it
     if(this->itemAt(event->scenePos()) && !lineCreate)
     {
-        index = this->sceneItemAt(event->scenePos());
-        if(index < 0)
+        if(this->sceneItemAt(event->scenePos()) < 0)
         {
             // do nothing, index < 0 indicates a markerbox was clicked
         }
         else
         {
-            Icon *item = scene_items.at(index);
-            // if there are items selected, this will deselect them, forcing only one item selected at a time
+            Icon *item = scene_items.at(this->sceneItemAt(event->scenePos()));
+            // if there is another item selected, this will deselect it, forcing only one item selected at a time
             for(int i = 0; i < scene_items.size(); i++)
             {
                 // set every item to not selected
@@ -92,14 +103,17 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
             // stop creating items once something is selected
             this->sceneCreate = false;
+            this->lineCreate = false;
+            this->m_shapeCreationType = s_None;
+            this->lineTypeEnum = No_Line;
+            toolbar->canvasSync(); // update toolbar to changes
 
-            //Learn if in line creation mode
         }
         QGraphicsScene::mousePressEvent(event);
     }
-    else if (lineCreate)
+    else if (this->itemAt(event->scenePos()) && lineCreate)
     {
-        tempLine = new QGraphicsLineItem(QLineF(event->scenePos(), event->scenePos())); //Problem line?
+        tempLine = new QGraphicsLineItem(QLineF(event->scenePos(), event->scenePos()));
         tempLine->setPen(QPen(myTempLineColor, 2));
         this->addItem(tempLine);
     }
@@ -107,7 +121,23 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
     else if(this->selectedItems().size() == 0 && sceneCreate)
     {
         Icon *newItem;   // create an Icon pointer
-        newItem = new ClassBox(); // only abstract object currently, this will eventually be a switch statement
+        // create abstract class based on m_shapeCreationType
+        switch(m_shapeCreationType){
+        case s_Classbox:{
+            newItem = new ClassBox();
+            break;
+        }
+        case s_Ellipse:{
+            newItem = new Ellipse();
+            break;
+        }
+        case s_Actor:{
+            break;
+        }
+        default:{
+            printf("dragscene doesn't have a shapeCreationType defined\n");
+        }
+        }
         // add the new item to the scene
         this->addItem(newItem);
         newItem->setPos(event->scenePos());
@@ -122,6 +152,11 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         {
             scene_items.at(i)->setSelected(false);
         }
+        for(int i = 0; i < scene_lines.size(); i++)
+        {
+            scene_items.at(i)->setSelected(false);
+        }
+
         QGraphicsScene::mousePressEvent(event);
     }
 }
@@ -164,14 +199,15 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         }
     }
     // check if an item was clicked
-    if(this->itemAt(event->scenePos()) && !lineCreate)
+    if(this->itemAt(event->scenePos()) && !lineCreate && !m_resizing)
     {
         int index;
         // get the index of the top item under the mouse (where we just dropped a new item)
         index = this->sceneItemAt(event->scenePos());
         if(index < 0)
         {
-            // clicked a markerbox, ignore everything else
+            // error, should never get here
+            exit(5);
         }
         else
         {
@@ -182,14 +218,6 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     }
     else if(lineCreate && tempLine != 0)
     {
-        /*
-        QList<QGraphicsItem *> startRefObjs = items(tempLine->line().p1());
-        if(startRefObjs.count() && startRefObjs.first() == tempLine)
-            startRefObjs.removeFirst();
-        QList<QGraphicsItem *> endRefObjs = items(tempLine->line().p2());
-        if(endRefObjs.count() && endRefObjs.first() == tempLine)
-            endRefObjs.removeFirst();
-            */
         int indexStart, indexEnd;
         indexStart = sceneItemAt(tempLine->line().p1());
         indexEnd = sceneItemAt(tempLine->line().p2());
@@ -204,16 +232,29 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         {
             Icon *initRefObj = scene_items.at(indexStart);
             Icon *finRefObj = scene_items.at(indexEnd);
-            solidline *solidLine = new solidline(initRefObj, finRefObj, 0, 0);
-            //solidLine->setColor();
+            //newLine->setColor();
             //initRefObj->addArrow(arrow);
             //finRefObj->addArrow(arrow);
-            solidLine->setZValue(-1);
-            this->addItem(solidLine);
-           // solidline->updatePosition();
-        }
 
-        setLineCreate(false);
+            if(lineTypeEnum == Solid_Line)
+            {
+                solidline *newLine = new solidline(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Dotted_Line)
+            {
+                dottedline *newLine = new dottedline(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Solid_Line_SAH)
+            {
+                //make new solid line + ah in here, just like above
+                //place code similar to above in paint function
+            }
+           // newLine->updatePosition();
+        }
         tempLine = 0;
     }
     // update/redraw the marker boxes of all item in the dragscene
@@ -221,6 +262,7 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     {
         scene_items.at(i)->paintMarkerBoxes();
     }
+    toolbar->canvasSync();
     QGraphicsScene::mouseReleaseEvent(event);
 }
 
@@ -255,6 +297,7 @@ void DragScene::drawBackground(QPainter *painter, const QRectF &rect)
         painter->drawLines(linesX.data(), linesX.size());
         painter->drawLines(linesY.data(), linesY.size());
     }
+    update();
 }
 
 

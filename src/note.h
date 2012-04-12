@@ -7,7 +7,7 @@
 
 #include "markerbox.h"
 
-class note : public icon
+class note : public Icon
 {
 
 
