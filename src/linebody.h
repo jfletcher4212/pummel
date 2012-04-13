@@ -3,7 +3,7 @@
 
 #include "basiclineobject.h"
 
-enum LineType {Solid_Line, Dotted_Line, Solid_Line_SAH};
+enum LineType {No_Line, Solid_Line, Dotted_Line, Solid_Line_SAH};
 
 class lineBody : public BasicLineObject
 {
