@@ -2,11 +2,13 @@
 #include "icon.h"
 #include "classbox.h"
 #include "ellipse.h"
-#include "globalToolbar.h"
+#include "toolbar.h"
 #include <QList>
 #include <QGraphicsSceneDragDropEvent>
 #include <QXmlStreamWriter>
 #include <QIODevice>
+
+extern Toolbar* toolbar;
 
 DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
 {
