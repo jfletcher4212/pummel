@@ -2,6 +2,9 @@
 # add your test to this list
 TARGS=test_xml_io #test_diff test_else
 
+# tests to execute
+#EXECS=./test_xml_io && ./test_diff && ./test_else
+
 # the names of the functions you want coverage on
 FUNCS=*
 
@@ -18,6 +21,7 @@ OBJECTS:=$(wildcard ../src/*.o)
 
 
 all: $(TARGS)
+	echo $(TARGS) | sed 's/test_/\.\/test_/g' | `sed 's/ / \&\& /g'`
 
 %_coverage: %
 	trucov all_report selection $(FUNCS) ./$<
