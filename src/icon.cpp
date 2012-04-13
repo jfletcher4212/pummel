@@ -27,7 +27,6 @@ Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
     // the gui things a little further.
     //m_labelBox->setPlainText("");
     m_labelBox->setPos(this->pos());
-    m_type = new QPolygon();
     m_id = m_next_id;
     m_next_id++;
 
@@ -50,7 +49,6 @@ Icon::~Icon()
     }
 
     delete m_labelBox;
-    delete m_type;
 }
 
 int Icon::getWidth()
@@ -162,10 +160,16 @@ void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     this->ungrabMouse();  // release mouse back to DragScene
 }
 
-QPolygon* Icon::getType()
+QPolygonF Icon::getType()
 {
-    return m_type;
+    return m_bound;
 }
+
+void Icon::setPolygon()
+{
+    m_bound = QPolygonF(boundingRect());
+}
+
 
 void Icon::setText(QString input)
 {
