@@ -18,10 +18,11 @@ INC=-I/usr/include -I/usr/share/qt4/mkspecs/linux-g++ -I/usr/include/qt4/QtCore 
 
 # objects for linking
 OBJECTS:=$(wildcard ../src/*.o)
+EXE=echo $(TARGS) | sed 's/test_/\.\/test_/g' | `sed 's/ / \&\& /g'`
 
 
 all: $(TARGS)
-	echo $(TARGS) | sed 's/test_/\.\/test_/g' | `sed 's/ / \&\& /g'`
+	trucov all_report selection $(FUNCS) $(EXE)
 
 %_coverage: %
 	trucov all_report selection $(FUNCS) ./$<
