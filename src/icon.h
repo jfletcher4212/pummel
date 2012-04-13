@@ -26,7 +26,7 @@ protected:
     QString m_shapetype, m_label;
 //    QString m_label;
     QGraphicsTextItem *m_labelBox;
-    QPolygon *m_type;
+    QPolygonF m_bound;
     QImage m_image;          //holds the imported image to be drawn
     int m_state; // used for zValue stacking and item selection
     MarkerBox *m_markers[4]; // resizing boxes
@@ -45,7 +45,8 @@ public:
     QString reportShapetype();
     void setShapetype(QString shapename);     // simple accessor and mutator methods for the shapetype
     int getID();    // simple accessor for getting the ID
-    QPolygon *getType();
+    QPolygonF getType();
+    void setPolygon();
     QString getLabel();
 
     // Mutators
