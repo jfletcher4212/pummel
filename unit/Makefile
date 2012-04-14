@@ -1,14 +1,12 @@
 
-# add your test to this list
-TARGS=test_xml_io #test_diff test_else
-
-# tests to execute
-#EXECS=./test_xml_io && ./test_diff && ./test_else
-
-# the names of the functions you want coverage on
+## ## ## ## ## ## ## ## ## ## ##
+##            LISTS           ##
+## ## ## ## ## ## ## ## ## ## ##
+TARGS=test_xml_io test_diff test_else
 FUNCS=*
 
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+##          touch nothing below this line                         ##
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
 
 CXX=g++
@@ -18,11 +16,13 @@ INC=-I/usr/include -I/usr/share/qt4/mkspecs/linux-g++ -I/usr/include/qt4/QtCore 
 
 # objects for linking
 OBJECTS:=$(wildcard ../src/*.o)
-EXE=echo $(TARGS) | sed 's/test_/\.\/test_/g' | `sed 's/ / \&\& /g'`
+EXE=for test in `echo test_xml_io test_diff test_else | sed 's/test_/\.\/test_/g'`; do $$test; done
 
 
 all: $(TARGS)
-	trucov all_report selection $(FUNCS) $(EXE)
+	$(EXE)
+#	trucov all_report selection $(FUNCS) $(TARGS)
+
 
 %_coverage: %
 	trucov all_report selection $(FUNCS) ./$<
