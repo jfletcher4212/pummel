@@ -2,7 +2,7 @@
 ## ## ## ## ## ## ## ## ## ## ##
 ##           MODIFY           ##
 ## ## ## ## ## ## ## ## ## ## ##
-FUNCS=
+FUNCS=write_xml parse_xml
 
 ## ## ## ## ## ## ## ## ## ## ##
 ##         VARIABLES          ##
@@ -32,6 +32,9 @@ SRC_LIBS= -L/usr/lib -lQtGui -lQtCore -lpthread -lgcov
 ## ## ## ## ## ## ## ## ## ## ##
 
 ## collection rules
+all_report: all_coverage
+	python3 push_reports.py $(TARGS)
+
 all_coverage: $(TARGS)
 	cp $(TARGS) ../src/; cd ../src/; trucov all_report --selection * '$(EXE)'; rm moc_*.svg moc_*.trucov; mv *.svg *.trucov ../unit/; rm $(TARGS)
 
@@ -39,8 +42,11 @@ all: $(TARGS)
 	$(EXE)
 
 ## individual rules
+%_report: %
+	./push_reports.py $<
+
 %_coverage: %
-	trucov all_report --srcdir ../src/ --builddir ../src/ selection $(FUNCS) ./$<
+	trucov all_report --srcdir ../src/ --builddir ../src/ selection $(FUNCS) ./$<; ./push_reports.py --log_only $<
 
 %: %.o $(OBJS)
 	$(CXX) $(INC) -o $@ $< $(OBJS) $(LIBS)
@@ -52,6 +58,7 @@ all: $(TARGS)
 	cxxtestgen --error-printer -o $@ $<
 
 ## maintenance rules
+# remove the logs?
 clean:
 	rm -rf *.o *.cpp *.trucov *.svg $(TARGS)
 
