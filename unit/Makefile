@@ -1,34 +1,49 @@
 
 ## ## ## ## ## ## ## ## ## ## ##
-##            LISTS           ##
+##           MODIFY           ##
 ## ## ## ## ## ## ## ## ## ## ##
-TARGS=test_xml_io test_diff test_else
-FUNCS=*
+FUNCS=
 
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-##          touch nothing below this line                         ##
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+## ## ## ## ## ## ## ## ## ## ##
+##         VARIABLES          ##
+## ## ## ## ## ## ## ## ## ## ##
 
+## executable list
+TESTS:=$(wildcard ./tests/*.h)
+TARGS:=$(patsubst ./tests/%.h,%,$(TESTS))
+EXE:=$(patsubst ./tests/%.h,./%;,$(TESTS))
+
+## src objects
+OBJS:=$(wildcard ../src/*.o)
+OBJS:=$(patsubst ../src/main.o,,$(OBJS))
+
+## build options
 CXX=g++
-LIBS=-L/usr/lib -lQtGui -lQtCore -lpthread 
-
+LIBS=-L/usr/lib -lQtGui -lQtCore -lpthread -lgcov
 INC=-I/usr/include -I/usr/share/qt4/mkspecs/linux-g++ -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I./tests/ -I./
 
-# objects for linking
-OBJECTS:=$(wildcard ../src/*.o)
-EXE=for test in `echo test_xml_io test_diff test_else | sed 's/test_/\.\/test_/g'`; do $$test; done
+## src build options
+SRC_DEFINES= -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED
+SRC_CXX= -pipe -O2 -Wall -W -D_REENTRANT $(SRC_DEFINES) -fprofile-arcs -ftest-coverage
+SRC_LIBS= -L/usr/lib -lQtGui -lQtCore -lpthread -lgcov
 
+## ## ## ## ## ## ## ## ## ## ##
+##           RULES            ##
+## ## ## ## ## ## ## ## ## ## ##
+
+## collection rules
+all_coverage: $(TARGS)
+	cp $(TARGS) ../src/; cd ../src/; trucov all_report --selection * '$(EXE)'; rm moc_*.svg moc_*.trucov; mv *.svg *.trucov ../unit/; rm $(TARGS)
 
 all: $(TARGS)
 	$(EXE)
-#	trucov all_report selection $(FUNCS) $(TARGS)
 
-
+## individual rules
 %_coverage: %
-	trucov all_report selection $(FUNCS) ./$<
+	trucov all_report --srcdir ../src/ --builddir ../src/ selection $(FUNCS) ./$<
 
-%: %.o $(OBJECTS)
-	$(CXX) $(INC) -o $@ $< $(OBJECTS) $(LIBS)
+%: %.o $(OBJS)
+	$(CXX) $(INC) -o $@ $< $(OBJS) $(LIBS)
 
 %.o: %.cpp
 	$(CXX) $(INC) -c $< $(LIBS)
@@ -36,11 +51,12 @@ all: $(TARGS)
 %.cpp: ./tests/%.h
 	cxxtestgen --error-printer -o $@ $<
 
+## maintenance rules
 clean:
-	rm -rf *.o *.cpp $(TARGS)
+	rm -rf *.o *.cpp *.trucov *.svg $(TARGS)
 
 setup:
-	cd ../src/; make; rm main.o
+	cd ../src/; make DEFINES='$(SRC_DEFINES)' CXXFLAGS='$(SRC_CXX)' LIBS='$(SRC_LIBS)'
 
 full_setup:
-	cd ../src/; make clean; qmake -project; qmake; make; rm main.o
+	cd ../src/; make clean; qmake -project; qmake; make DEFINES='$(SRC_DEFINES)' CXXFLAGS='$(SRC_CXX)' LIBS='$(SRC_LIBS)'
