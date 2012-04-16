@@ -10,12 +10,13 @@ class lineBody : public BasicLineObject
 public:
     lineBody(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
 
-    Icon *sourceReferenceObj() const
+    Icon* sourceReferenceObj() const
         { return mySourceReferenceObj; }
-    Icon *destinationReferenceObj() const
+    Icon* destinationReferenceObj() const
         { return myDestinationReferenceObj; }
     int type() const
             { return myLineType; }
+
 private:
 
 protected:

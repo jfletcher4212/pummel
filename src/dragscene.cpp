@@ -71,6 +71,15 @@ int DragScene::sceneItemAt(QPointF pos)
 
 void DragScene::deleteItem(Icon* item)
 {
+    for(int i = 0; i < scene_lines.size(); i++)
+    {
+        if(scene_lines.at(i)->sourceReferenceObj() == item || scene_lines.at(i)->destinationReferenceObj() == item)
+        {
+            scene_lines.removeOne(scene_lines.at(i));
+            this->removeItem(scene_lines.at(i));
+            delete scene_lines.at(i);
+        }
+    }
     scene_items.removeOne(item);
     this->removeItem(item);
     delete item;
@@ -243,12 +252,14 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
             {
                 solidline *newLine = new solidline(initRefObj, finRefObj, 0, 0);
                 this->addItem(newLine);
+                this->scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
             else if(lineTypeEnum == Dotted_Line)
             {
                 dottedline *newLine = new dottedline(initRefObj, finRefObj, 0, 0);
                 this->addItem(newLine);
+                this->scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
             else if(lineTypeEnum == Solid_Line_SAH)
