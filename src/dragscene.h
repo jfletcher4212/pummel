@@ -31,7 +31,7 @@ public:
     bool getGrid(){return grid;}
     int getGridSize(){return gridSize;}
     QList<Icon*> getObjectList(){return scene_items;}
-    QList<BasicLineObject*> getLineList(){return scene_lines;}
+    QList<lineBody*> getLineList(){return scene_lines;}
     bool getLineCreate(){return lineCreate;}
     LineType getLineCreateType(){return lineTypeEnum;}
     bool isResizing(){return m_resizing;}
@@ -76,7 +76,7 @@ private:
     bool sceneCreate; // toggle for click creation
     bool lineCreate; // toggle for line creation
     QList<Icon*> scene_items; // custom list of all the DragItem*'s (not QGraphicsItem*) in DragScene
-    QList<BasicLineObject*> scene_lines;  //custom list of all lines in DragScene
+    QList<lineBody*> scene_lines;  //custom list of all lines in DragScene
 
     QGraphicsLineItem* tempLine;
     QColor myTempLineColor;
