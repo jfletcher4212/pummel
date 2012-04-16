@@ -37,6 +37,7 @@ private:
 public:
     explicit Toolbar(QWidget *parent = 0);
     void canvasSync();
+    void setAvailableActions();
 
     //parameters for shapes
     shapeParams shape;
@@ -55,6 +56,8 @@ public slots:
 
     void addClassBox();
     void addEllipse();
+    void addRoundedSquare();
+    void addNote();
     void addNone();
 
     void addNoLine();
@@ -69,7 +72,7 @@ private:
 
     void createActions();
     void createMenus();
-    void setAvailableActions();
+
 
 
     QPushButton * shapeButton;
@@ -83,6 +86,8 @@ private:
     QAction *addNoneAct;
     QAction *addClassBoxAct;
     QAction *addEllipseAct;
+    QAction *addRoundedSquareAct;
+    QAction *addNoteAct;
 
     QMenu *lineMenu;
     QActionGroup *linesGroup;

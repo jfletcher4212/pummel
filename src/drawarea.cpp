@@ -13,6 +13,7 @@ DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth)
     view->setAcceptDrops(true);
     view->setScene(scene);
     layout->addWidget(view);
+//    type = Class;
     this->setLayout(layout);
 
 }
