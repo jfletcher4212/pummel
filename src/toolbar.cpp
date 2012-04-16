@@ -144,6 +144,28 @@ void Toolbar::createMenus(){
     gridMenu->addAction(gridOffAct);
 }
 
+//filter actions on the toolbar based on the active diagram's type
+void Toolbar::setAvailableActions()
+{
+    int PLACEHOLDER = 0;
+
+    //get rid of all actions in menu before adding new ones.
+    shapeMenu->clear();
+    shapeMenu->addAction(addNoneAct);
+
+    switch (PLACEHOLDER)
+    {
+    case 1:         // I.E. Class
+        shapeMenu->addAction(addNoneAct);
+        shapeMenu->addAction(addClassBoxAct);
+        lineMenu->addAction(addSolidLineAct);
+    case 2:         // Sequence
+    case 3:         // UseCase
+        shapeMenu->addAction(addEllipseAct);
+        lineMenu->addAction(addSolidLineAct);
+    }
+}
+
 void Toolbar::showOptions()
 {
     //    options->exec();
