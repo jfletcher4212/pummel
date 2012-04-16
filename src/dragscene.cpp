@@ -183,7 +183,7 @@ void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  ***************************************************************/
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    Icon* lastItem;
+    Icon* lastItem = NULL;
     // item currently being dragged has a state of 2, the last item clicked has a state of 1, everything else has state 0
     for(int i = 0; i < scene_items.size(); i++)
     {
@@ -215,7 +215,8 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         {
             // set the zValue of the newly dropped item to 1 more than the top item where it was dropped
             // do not alter the zValue of already present items (preserves any stacking)
-            lastItem->setZValue(scene_items.at(index)->zValue()+1);
+            if (lastItem)
+                lastItem->setZValue(scene_items.at(index)->zValue()+1);
         }
     }
     else if(lineCreate && tempLine != 0)
