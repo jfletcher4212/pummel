@@ -144,6 +144,32 @@ void Toolbar::createMenus(){
     gridMenu->addAction(gridOffAct);
 }
 
+//filter actions on the toolbar based on the active diagram's type
+void Toolbar::setAvailableActions()
+{
+    DiagramType type;
+    type = canvas.at(tabWidget->currentIndex())->getDiagramType();
+
+    //get rid of all actions in menu before adding new ones.
+    shapeMenu->clear();
+    shapeMenu->addAction(addNoneAct);
+    lineMenu->addAction(addNoLineAct);
+
+    switch (type)
+    {
+    case Class:         // I.E. Class
+        shapeMenu->addAction(addNoneAct);
+        shapeMenu->addAction(addClassBoxAct);
+        lineMenu->addAction(addSolidLineAct);
+    case StateChart:
+
+    case Sequence:         // Sequence
+    case UseCase:         // UseCase
+        shapeMenu->addAction(addEllipseAct);
+        lineMenu->addAction(addSolidLineAct);
+    }
+}
+
 void Toolbar::showOptions()
 {
     //    options->exec();

@@ -14,7 +14,7 @@
 #include "dragview.h"
 #include "basiclineobject.h"
 
-enum DiagramType { Class, Sequence, UseCase };
+enum DiagramType { Class, StateChart, Sequence, UseCase };
 
 class DrawArea : public QWidget
 {
