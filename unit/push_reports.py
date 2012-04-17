@@ -9,13 +9,10 @@ from subprocess import *
 # relative path to wiki directory holding test reports
 WIKI_PATH='../../pummel.wiki/test_reports/'
 
-# don't need date/time because that is logged in hg
-LOG_SKELETON='''
-## ## ## ## ## ## ## ## ## ## ##
-##        FILL ME OUT         ##
-## ## ## ## ## ## ## ## ## ## ##
+REPORT_DELIM='''## ## ## ## ## ## ## ## ## ## ##
+##         SECTION          ##
+## ## ## ## ## ## ## ## ## ## ##\n
 '''
-
 
 class Pummel_report:
     
@@ -39,6 +36,11 @@ class Pummel_report:
             if os.path.isfile(log):
                 reports.append(log)
 
+            # append the unit tests
+            ut = test +'_ut.txt'
+            if os.path.isfile(ut):
+                reports.append(ut)
+
             # append the coverage report
             cov = '_..##src##'+ test.replace('test_', '') +'.cpp.trucov'
             if os.path.isfile(cov):
@@ -53,14 +55,45 @@ class Pummel_report:
         
         f = open(wiki, 'w+')
         
-        for report in reports:
-            ftmp = open(report, 'r')
-            content = ftmp.read()
-            ftmp.close()
-            
-            f.write(content+ '\n\n')
-
+        # write revision number of the project
+        f.write(REPORT_DELIM.replace('SECTION', 'REVISION '))
+        
+        cmd = shlex.split('hg log -l1 ./tests/'+ which +'.h')
+        p = Popen(cmd, stdin=PIPE, stderr=PIPE, stdout=PIPE)
+        std = p.communicate()
+        
+        f.write(std[0] +'\n\n')
+                
+        #try:
+        # write misc. commends
+        f.write(REPORT_DELIM.replace('SECTION', 'COMMENTS '))
+        f.write(self.write_file(reports[0]))
+        #except:
+        #    pass
+        
+        try:
+            # write unit test results
+            f.write(REPORT_DELIM.replace('SECTION', 'UNIT TEST'))
+            f.write(self.write_file(reports[1]))
+        except:
+            pass
+        
+        try:
+            # write coverage reports
+            f.write(REPORT_DELIM.replace('SECTION', 'COVERAGE '))
+            f.write(self.write_file(reports[2]))
+        except:
+            pass
+        
         f.close()
+
+        
+    def write_file(self, filename):
+        ftmp = open(filename, 'r')
+        content = ftmp.read()
+        ftmp.close()
+        
+        return content+ '\n\n'
 
     
     def push_reports(self):
@@ -91,18 +124,12 @@ class Pummel_report:
         
         p = Popen(cmd, stdin=PIPE, stderr=PIPE, stdout=PIPE)
         
-        for std in p.communicate():
-            print(std)
-
-
-    def default_logs(self):
-        for test in self.tests:
-            name = test +'_log.txt'
-            
-            if not os.path.isfile(name):
-                f = open(name, 'w+')
-                f.write(LOG_SKELETON)
-                f.close()
+        (stderr, stdout) = p.communicate()
+        
+        print stdout
+        print stderr
+        
+        return (stderr, stdout)
 
 
 ## ## ## ## ## ## ## ## ## ## ##
@@ -114,8 +141,5 @@ if __name__ == '__main__':
     for test in sys.argv:
         monkey.append_report(test)
         
-    monkey.default_logs()
-    
-    if not '--log_only' in sys.argv:
-        monkey.build_reports()
-        monkey.push_reports()
+    monkey.build_reports()
+    monkey.push_reports()

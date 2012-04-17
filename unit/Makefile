@@ -33,7 +33,7 @@ SRC_LIBS= -L/usr/lib -lQtGui -lQtCore -lpthread -lgcov
 
 ## collection rules
 all_report: all_coverage
-	python3 push_reports.py $(TARGS)
+	./push_reports.py $(TARGS)
 
 all_coverage: $(TARGS)
 	cp $(TARGS) ../src/; cd ../src/; trucov all_report --selection * '$(EXE)'; rm moc_*.svg moc_*.trucov; mv *.svg *.trucov ../unit/; rm $(TARGS)
@@ -46,10 +46,10 @@ all: $(TARGS)
 	./push_reports.py $<
 
 %_coverage: %
-	trucov all_report --srcdir ../src/ --builddir ../src/ selection $(FUNCS) ./$<; ./push_reports.py --log_only $<
+	trucov all_report --srcdir ../src/ --builddir ../src/ selection $(FUNCS) ./$<
 
 %: %.o $(OBJS)
-	$(CXX) $(INC) -o $@ $< $(OBJS) $(LIBS)
+	$(CXX) $(INC) -o $@ $< $(OBJS) $(LIBS); ./$@ > $@_ut.txt 2>&1; touch $@_log.txt
 
 %.o: %.cpp
 	$(CXX) $(INC) -c $< $(LIBS)
@@ -58,12 +58,24 @@ all: $(TARGS)
 	cxxtestgen --error-printer -o $@ $<
 
 ## maintenance rules
-# remove the logs?
 clean:
-	rm -rf *.o *.cpp *.trucov *.svg $(TARGS)
+	rm -rf *.o *.cpp *.trucov *.svg *.ut *_log.txt *_ut.txt  $(TARGS)
 
 setup:
 	cd ../src/; make DEFINES='$(SRC_DEFINES)' CXXFLAGS='$(SRC_CXX)' LIBS='$(SRC_LIBS)'
 
 full_setup:
 	cd ../src/; make clean; qmake -project; qmake; make DEFINES='$(SRC_DEFINES)' CXXFLAGS='$(SRC_CXX)' LIBS='$(SRC_LIBS)'
+
+help:
+	#	usage: make rule
+	#
+	#	rules:
+	#
+	#	setup			- build the project with testing options (does a make)
+	#	full_setup		- build the project from scratch with testing options (make clean; make)
+	#	test_something		- build a given test (corresponds to ./tests/test_something.h)
+	#	test_something_coverage	- generage coverage reports for a given test
+	#	test_something_report	- push reports for a given test to the wiki repository
+	#	make all		- build and run all tests in the tests/ directory
+	#	make all_report		- build and run all tests and push their reports to the wiki repository
