@@ -14,7 +14,7 @@ public:
     Xml_io *test;
 
     QList<Icon*> list;
-    QString filename = "Testfile";
+    QString filename = "Testfile.ut";
     QString diagram_type = "testtype";
     
     for( int i = 0; i < size; i++ )
@@ -49,7 +49,7 @@ public:
 
   void test_parse_xml(void)
   {
-      QString filename = "Testfile";
+      QString filename = "Testfile.ut";
 
       Xml_io *test = new Xml_io();
       test->set_filename(filename);
