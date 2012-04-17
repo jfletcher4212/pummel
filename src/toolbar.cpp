@@ -27,16 +27,19 @@ Toolbar::Toolbar(QWidget *parent) :
     line.weight = 1;
 
     createActions();
-    createMenus();
+//    createMenus();
 
     QGridLayout *layout;
     layout = initButtons();
     setLayout(layout);
 
+    createMenus();
+
+/*
     shapeButton->setMenu(shapeMenu);
     lineButton->setMenu(lineMenu);
     gridButton->setMenu(gridMenu);
-
+*/
 }
 
 //create buttons and add to layout
@@ -133,6 +136,10 @@ void Toolbar::createMenus(){
     gridMenu = new QMenu(this);
     gridOnOffToggleGroup = new QActionGroup(this);
     gridOnOffToggleGroup->setExclusive(true);
+
+    shapeButton->setMenu(shapeMenu);
+    lineButton->setMenu(lineMenu);
+    gridButton->setMenu(gridMenu);
 }
 
 //filter actions on the toolbar based on the active diagram's type
@@ -145,6 +152,27 @@ void Toolbar::setAvailableActions()
     //get rid of all actions in menu before adding new ones.
     shapeMenu->clear();
     lineMenu->clear();
+    //lineMenu->removeAction(lineMenu->actions().at(0));
+    if (!shapeMenu->isEmpty())
+    {
+        shapeMenu->removeAction(shapeMenu->actions().at(1));
+        shapesGroup->removeAction(actions().at(0));
+        shapesGroup->removeAction(actions().at(1));
+    }
+    shapesGroup->actions().clear();
+    linesGroup->actions().clear();
+
+    delete shapeMenu;
+    delete shapesGroup;
+    delete lineMenu;
+    delete linesGroup;
+    delete gridMenu;
+    delete gridOnOffToggleGroup;
+    createMenus();
+
+    shapeButton->setMenu(shapeMenu);
+    lineButton->setMenu(lineMenu);
+    gridButton->setMenu(gridMenu);
 
     //None action should always be loaded
     shapesGroup->addAction(addNoneAct);
@@ -179,6 +207,7 @@ void Toolbar::setAvailableActions()
     //add grid actions
     gridOnOffToggleGroup->addAction(gridOnAct);
     gridOnOffToggleGroup->addAction(gridOffAct);
+
 
     //set group defaults
     shapesGroup->actions().at(0)->setChecked(true);

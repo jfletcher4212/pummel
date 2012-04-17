@@ -25,7 +25,6 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
     m_resizing = 0;
     sceneCreate = false;
     lineTypeEnum = No_Line;
-
 }
 
 /****************************************************************
