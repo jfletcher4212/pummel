@@ -13,12 +13,12 @@
 #include <QDialog>
 #include <QtGui>
 
-class TextDialog : public QWidget
+class ClassBoxDialog : public QWidget
 {
     Q_OBJECT
 public:
-    explicit TextDialog(ClassBox *caller = 0);
-    ~TextDialog();
+    explicit ClassBoxDialog(ClassBox *caller = 0);
+    ~ClassBoxDialog();
     //Accessors
     QString getName();
     QString getMembers();
