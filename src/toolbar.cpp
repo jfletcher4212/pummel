@@ -27,16 +27,19 @@ Toolbar::Toolbar(QWidget *parent) :
     line.weight = 1;
 
     createActions();
-    createMenus();
+//    createMenus();
 
     QGridLayout *layout;
     layout = initButtons();
     setLayout(layout);
 
+    createMenus();
+
+/*
     shapeButton->setMenu(shapeMenu);
     lineButton->setMenu(lineMenu);
     gridButton->setMenu(gridMenu);
-
+*/
 }
 
 //create buttons and add to layout
@@ -52,7 +55,7 @@ QGridLayout * Toolbar::initButtons()
 
     // connect buttons to slots
     connect(shapeButton, SIGNAL(clicked()), this, SLOT(insertShape()));
-    connect(textButton, SIGNAL(clicked()), this, SLOT(insertText()));
+    connect(textButton, SIGNAL(clicked()), this, SLOT(addNote()));
     connect(lineButton, SIGNAL(clicked()), this, SLOT(insertLine()));
     connect(optionsButton, SIGNAL(clicked()), this, SLOT(showOptions()));
 
@@ -72,6 +75,12 @@ QGridLayout * Toolbar::initButtons()
 
 void Toolbar::createActions(){
 
+    //create shape actions
+    addNoneAct = new QAction(tr("None"), this);
+    addNoneAct->setCheckable(true);
+    addNoneAct->setChecked(true);
+    connect(addNoneAct, SIGNAL(triggered()), this, SLOT(addNone()));
+
     addEllipseAct = new QAction(tr("Ellipse"), this);
     addEllipseAct->setCheckable(true);
     connect(addEllipseAct, SIGNAL(triggered()), this, SLOT(addEllipse()));
@@ -80,15 +89,13 @@ void Toolbar::createActions(){
     addClassBoxAct->setCheckable(true);
     connect(addClassBoxAct, SIGNAL(triggered()), this, SLOT(addClassBox()));
 
-    addNoneAct = new QAction(tr("None"), this);
-    addNoneAct->setCheckable(true);
-    addNoneAct->setChecked(true);
-    connect(addNoneAct, SIGNAL(triggered()), this, SLOT(addNone()));
+    addRoundedSquareAct = new QAction(tr("Rounded Square"), this);
+    addRoundedSquareAct->setCheckable(true);
+    connect(addRoundedSquareAct, SIGNAL(triggered()), this, SLOT(addRoundedSquare()));
 
-    shapesGroup = new QActionGroup(this);
-    shapesGroup->addAction(addNoneAct);
-    shapesGroup->addAction(addClassBoxAct);
-    shapesGroup->addAction(addEllipseAct);
+    addNoteAct = new QAction(tr("Note"), this);
+    addNoteAct->setCheckable(true);
+    connect(addNoteAct, SIGNAL(triggered()), this, SLOT(addNote()));
 
     addSolidLineAct = new QAction(tr("Solid Line"), this);
     addSolidLineAct->setCheckable(true);
@@ -107,12 +114,6 @@ void Toolbar::createActions(){
     addNoLineAct->setChecked(true);
     connect(addNoLineAct, SIGNAL(triggered()), this, SLOT(addNoLine()));
 
-    linesGroup = new QActionGroup(this);
-    linesGroup->addAction(addNoLineAct);
-    linesGroup->addAction(addSolidLineAct);
-    linesGroup->addAction(addDottedLineAct);
-    linesGroup->addAction(addSolidLineAHAct);
-
     gridOnAct = new QAction(tr("On"), this);
     gridOnAct->setCheckable(true);
     gridOnAct->setChecked(true);
@@ -121,53 +122,103 @@ void Toolbar::createActions(){
     gridOffAct = new QAction(tr("Off"), this);
     gridOffAct->setCheckable(true);
     connect(gridOffAct, SIGNAL(triggered()), this, SLOT(gridOff()));
-
-    gridOnOffToggleGroup = new QActionGroup(this);
-    gridOnOffToggleGroup->addAction(gridOnAct);
-    gridOnOffToggleGroup->addAction(gridOffAct);
 }
 
 void Toolbar::createMenus(){
     shapeMenu = new QMenu(this);
-    shapeMenu->addAction(addNoneAct);
-    shapeMenu->addAction(addClassBoxAct);
-    shapeMenu->addAction(addEllipseAct);
+    shapesGroup = new QActionGroup(this);
+    shapesGroup->setExclusive(true);
 
     lineMenu = new QMenu(this);
-    lineMenu->addAction(addNoLineAct);
-    lineMenu->addAction(addSolidLineAct);
-    lineMenu->addAction(addDottedLineAct);
-    lineMenu->addAction(addSolidLineAHAct);
+    linesGroup = new QActionGroup(this);
+    linesGroup->setExclusive(true);
 
     gridMenu = new QMenu(this);
-    gridMenu->addAction(gridOnAct);
-    gridMenu->addAction(gridOffAct);
+    gridOnOffToggleGroup = new QActionGroup(this);
+    gridOnOffToggleGroup->setExclusive(true);
+
+    shapeButton->setMenu(shapeMenu);
+    lineButton->setMenu(lineMenu);
+    gridButton->setMenu(gridMenu);
 }
 
 //filter actions on the toolbar based on the active diagram's type
 void Toolbar::setAvailableActions()
 {
+    //get the type of the active diagram
     DiagramType type;
     type = canvas.at(tabWidget->currentIndex())->getDiagramType();
 
     //get rid of all actions in menu before adding new ones.
     shapeMenu->clear();
-    shapeMenu->addAction(addNoneAct);
-    lineMenu->addAction(addNoLineAct);
+    lineMenu->clear();
+    //lineMenu->removeAction(lineMenu->actions().at(0));
+    if (!shapeMenu->isEmpty())
+    {
+        shapeMenu->removeAction(shapeMenu->actions().at(1));
+        shapesGroup->removeAction(actions().at(0));
+        shapesGroup->removeAction(actions().at(1));
+    }
+    shapesGroup->actions().clear();
+    linesGroup->actions().clear();
+
+    delete shapeMenu;
+    delete shapesGroup;
+    delete lineMenu;
+    delete linesGroup;
+    delete gridMenu;
+    delete gridOnOffToggleGroup;
+    createMenus();
+
+    shapeButton->setMenu(shapeMenu);
+    lineButton->setMenu(lineMenu);
+    gridButton->setMenu(gridMenu);
+
+    //None action should always be loaded
+    shapesGroup->addAction(addNoneAct);
+    linesGroup->addAction(addNoLineAct);
 
     switch (type)
     {
     case Class:         // I.E. Class
-        shapeMenu->addAction(addNoneAct);
-        shapeMenu->addAction(addClassBoxAct);
-        lineMenu->addAction(addSolidLineAct);
-    case StateChart:
-
-    case Sequence:         // Sequence
-    case UseCase:         // UseCase
-        shapeMenu->addAction(addEllipseAct);
-        lineMenu->addAction(addSolidLineAct);
+    {
+        shapesGroup->addAction(addClassBoxAct);
+        linesGroup->addAction(addSolidLineAct);
+        break;
     }
+    case StateChart:
+    {
+        shapesGroup->addAction(addRoundedSquareAct);
+        break;
+    }
+    case Sequence:         // Sequence
+    {
+        break;
+    }
+    case UseCase:         // UseCase
+    {
+        shapesGroup->addAction(addEllipseAct);
+        linesGroup->addAction(addSolidLineAct);
+        break;
+    }
+    }
+
+
+    //add grid actions
+    gridOnOffToggleGroup->addAction(gridOnAct);
+    gridOnOffToggleGroup->addAction(gridOffAct);
+
+
+    //set group defaults
+    shapesGroup->actions().at(0)->setChecked(true);
+    linesGroup->actions().at(0)->setChecked(true);
+    gridOnOffToggleGroup->actions().at(0)->setChecked(true);
+
+
+    //add QActionGroups to QMenus
+    shapeMenu->addActions(shapesGroup->actions());
+    lineMenu->addActions(linesGroup->actions());
+    gridMenu->addActions(gridOnOffToggleGroup->actions());
 }
 
 void Toolbar::showOptions()
@@ -229,6 +280,20 @@ void Toolbar::addClassBox(){
     canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_Classbox);
 }
 
+void Toolbar::addRoundedSquare()
+{
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_RoundedSquare);
+}
+
+void Toolbar::addNote()
+{
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_Note);
+}
+
 void Toolbar::addNone(){
     canvas.at(tabWidget->currentIndex())->setSceneCreate(false);
     canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
@@ -288,6 +353,7 @@ void Toolbar::canvasSync()
         {
             this->addClassBox();
             addClassBoxAct->setChecked(true);
+//            addNoneAct->setChecked(false);
             break;
         }
         case s_Ellipse:
@@ -300,6 +366,11 @@ void Toolbar::canvasSync()
         {
             this->addNone();
             addNoneAct->setChecked(true);
+            break;
+        }
+        case s_Note:
+        {
+            this->addNote();
             break;
         }
         default:

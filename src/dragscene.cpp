@@ -2,6 +2,7 @@
 #include "icon.h"
 #include "classbox.h"
 #include "ellipse.h"
+#include "note.h"
 #include "toolbar.h"
 #include <QList>
 #include <QGraphicsSceneDragDropEvent>
@@ -24,7 +25,6 @@ DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
     m_resizing = 0;
     sceneCreate = false;
     lineTypeEnum = No_Line;
-
 }
 
 /****************************************************************
@@ -108,12 +108,20 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         else
         {
             Icon *item = scene_items.at(this->sceneItemAt(event->scenePos()));
+/*
             // if there is another item selected, this will deselect it, forcing only one item selected at a time
             for(int i = 0; i < scene_items.size(); i++)
             {
                 // set every item to not selected
                 scene_items.at(i)->setSelected(false);
             }
+            //deselect all lines
+            for(int i=0; i<scene_lines.size(); i++)
+            {
+                scene_lines.at(i)->setSelected(true);
+            }
+*/
+            this->clearSelection();
             // set the clicked item to selected
             item->setSelected(true);
 
@@ -132,12 +140,16 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         tempLine = new QGraphicsLineItem(QLineF(event->scenePos(), event->scenePos()));
         tempLine->setPen(QPen(myTempLineColor, 2));
         this->addItem(tempLine);
+        this->clearSelection();
     }
-    // if there is no object under the cursor, the number of selected items is zero, and sceneCreate is true, create a new item
-    else if(this->selectedItems().size() == 0 && sceneCreate)
+    // if there is no object under the cursor, and sceneCreate is true, create a new item
+//    else if(this->selectedItems().size() == 0 && sceneCreate)
+    else if(sceneCreate)
     {
         Icon *newItem;   // create an Icon pointer
         // create abstract class based on m_shapeCreationType
+        this->clearSelection();
+
         switch(m_shapeCreationType){
         case s_Classbox:{
             newItem = new ClassBox();
@@ -148,6 +160,11 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
             break;
         }
         case s_Actor:{
+            break;
+        }
+        case s_Note:
+        {
+            newItem = new Note();
             break;
         }
         default:{
@@ -170,8 +187,16 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         }
         for(int i = 0; i < scene_lines.size(); i++)
         {
-            scene_items.at(i)->setSelected(false);
+            scene_lines.at(i)->setSelected(false);
         }
+
+        // exit selection modes
+        this->sceneCreate = false;
+        this->lineCreate = false;
+        this->m_shapeCreationType = s_None;
+        this->lineTypeEnum = No_Line;
+
+
 
         QGraphicsScene::mousePressEvent(event);
     }
@@ -235,7 +260,9 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
             // set the zValue of the newly dropped item to 1 more than the top item where it was dropped
             // do not alter the zValue of already present items (preserves any stacking)
             if (lastItem)
+            {
                 lastItem->setZValue(scene_items.at(index)->zValue()+1);
+            }
         }
     }
     else if(lineCreate && tempLine != 0)

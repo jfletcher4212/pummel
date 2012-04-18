@@ -15,7 +15,7 @@
 #include "solidline.h"
 #include "dottedline.h"
 
-enum ShapeCreationType {s_None, s_Classbox, s_Ellipse, s_Actor};
+enum ShapeCreationType {s_None, s_Actor, s_Classbox, s_Ellipse, s_Note, s_RoundedSquare};
 
 class DragScene : public QGraphicsScene
 {

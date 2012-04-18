@@ -7,7 +7,7 @@
 
 #include "markerbox.h"
 
-class note : public Icon
+class Note : public Icon
 {
 
 
@@ -25,8 +25,8 @@ private:
 
 public:
 
-    note(QGraphicsItem *parent = 0);
-    note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
+    Note(QGraphicsItem *parent = 0);
+    Note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
 
 
 };
