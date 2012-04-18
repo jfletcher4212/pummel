@@ -55,6 +55,8 @@ MainWindow::MainWindow()
 
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 {
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
     QMenu menu(this);
     menu.addAction(cutAct);
     menu.addAction(copyAct);
