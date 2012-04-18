@@ -2,6 +2,7 @@
 #define LINEBODY_H
 
 #include "basiclineobject.h"
+#include <QPolygonF>
 
 enum LineType {No_Line, Solid_Line, Dotted_Line, Solid_Line_SAH};
 
@@ -16,13 +17,15 @@ public:
         { return myDestinationReferenceObj; }
     int type() const
             { return myLineType; }
+    QPointF findIntersection (Icon *, QLineF);
+
 private:
 
 protected:
 
     void swapLineDirection();
 
-    QPointF findIntersection (Icon *, QLineF); //Find the intersection of the line and object, for determining arrow direction
+    //QPointF findIntersection (Icon *, QLineF); //Find the intersection of the line and object, for determining arrow direction
 
     double getAngle (QPointF, Icon *);//BasicLineObject line);
 
@@ -32,6 +35,8 @@ protected:
 
     Icon *mySourceReferenceObj;
     Icon *myDestinationReferenceObj;
+
+    QPolygonF myPolygon;
 
     LineType myLineType;
 };

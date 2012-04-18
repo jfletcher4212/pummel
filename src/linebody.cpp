@@ -31,30 +31,56 @@ QPointF lineBody::findIntersection(Icon *refObj, QLineF interLine) //Find the in
         //drawing the lines.
 
    //For now, we will implement the QPoly here. This will need to be a property of the icon in the future.
-   QRectF * myRect = new QRectF(qreal(refObj->x()), qreal(refObj->y()), qreal(refObj->getWidth()), qreal(refObj->getHeight()));
+    ////QRectF *myRect = new QRectF(qreal(refObj->x()), qreal(refObj->y()), qreal(refObj->getWidth()), qreal(refObj->getHeight()));
    //Why does this work, and not (& myRect);?
-   QPolygonF * tempRefPoly = new QPolygonF ((*myRect));
+    ////QPolygonF * tempRefPoly = new QPolygonF ((*myRect));
+   //QPolygonF RefPoly = mapFromItem(refObj, QRectF(qreal(refObj->x()), qreal(refObj->y()), qreal(refObj->getWidth()), qreal(refObj->getHeight())));
+   //QPolygonF *tempRefPoly = &RefPoly;
 
+    //QPolygonF RefPoly = refObj->getType();
+   //QPolygonF *tempRefPoly = &RefPoly;
 
-   QPointF startPoint = tempRefPoly->first() + refObj->pos();
+    //QPainterPath tempRefPath = refObj->shape();
+    //QPolygonF RefPoly = tempRefPath.toFillPolygon(QMatrix());
+    //QPolygonF *tempRefPoly = &RefPoly;
+
+    this->setLine(interLine);
+
+    int tempHeight = refObj->getHeight();
+    int tempWidth = refObj->getWidth();
+
+    QPointF tempObj = refObj->pos();
+    tempObj.rx() += 0.5 * refObj->getWidth();
+    tempObj.ry() += 0.5 * refObj->getHeight();
+
+    //myPolygon << QPointF(-tempHeight, -tempWidth) << QPointF (tempHeight, -tempWidth)
+    //          << QPointF(tempHeight, tempWidth) << QPointF(-tempHeight, tempWidth)
+    //          << QPointF (-tempHeight, -tempWidth);
+    myPolygon << QPointF(-100, 0) << QPointF (0, 0)
+              << QPointF(0, 100) << QPointF(-100, 100)
+              << QPointF (-100, 0);
+    QPolygonF *tempRefPoly = &myPolygon;
+
+    QPointF startPoint = tempRefPoly->first() + refObj->pos();
     QPointF endPoint;
-    QPointF interPoint;
+    QPointF *interPoint;
     QLineF tempPolyLine;
     for(int i = 1; i < tempRefPoly->count(); ++i)
     {
         endPoint = tempRefPoly->at(i) + refObj->pos();
         tempPolyLine = QLineF(startPoint, endPoint);
-        QLineF::IntersectType interBool = tempPolyLine.intersect(interLine, &interPoint);
+        QLineF::IntersectType interBool = tempPolyLine.intersect(interLine, interPoint);
         if(interBool == QLineF::BoundedIntersection)
             break;
         startPoint = endPoint;
     }
+
     //setLine(QLineF(intersectPoint, myStartItem->pos()));
     /* Here the line is drawn back from the point of intersection (where it meets the end
      * reference object) to the origin of the initial object. This should be included in the
      * drawing portion of the line. Instead we return the point of intersection.
      */
-    return interPoint;
+    return *interPoint;
 }
 
 double lineBody::getAngle (QPointF intersectPoint, Icon *myStartItem)//(BasicLineObject line)//rotateArrowHead(QPointF, DragItem)
