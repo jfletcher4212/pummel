@@ -29,6 +29,7 @@ public:
     // Accessors
     bool getSceneCreate(){return sceneCreate;}
     bool getGrid(){return grid;}
+    bool getIgnore(){return m_ignoreReleaseEvent;}
     int getGridSize(){return gridSize;}
     QList<Icon*> getObjectList(){return scene_items;}
     QList<lineBody*> getLineList(){return scene_lines;}
@@ -39,6 +40,7 @@ public:
 
     // Mutators
     void setSceneCreate(bool a){sceneCreate = a;}
+    void setIgnoreReleaseEvent(bool a){m_ignoreReleaseEvent = a;}
     void setLineCreateType(LineType newType){lineTypeEnum = newType;}
     void setLineCreate(bool a){lineCreate = a;}
     void setGrid(bool a){grid = a; update();}
@@ -70,6 +72,7 @@ protected:
 private:
     ShapeCreationType m_shapeCreationType;
     bool m_resizing; // true if an item on the scene is being resized, false otherwise
+    bool m_ignoreReleaseEvent;
     int gridSize; // pixel width of grid lines
     bool grid; // toggle for grid
     LineType lineTypeEnum;

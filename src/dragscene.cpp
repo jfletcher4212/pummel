@@ -71,14 +71,19 @@ int DragScene::sceneItemAt(QPointF pos)
 
 void DragScene::deleteItem(Icon* item)
 {
+    lineCreate = false;
+    sceneCreate = false;
     for(int i = 0; i < scene_lines.size(); i++)
     {
-        if(scene_lines.at(i)->sourceReferenceObj() == item || scene_lines.at(i)->destinationReferenceObj() == item)
+        //printf("line %d: %d ==== %d\n", i, scene_lines.at(i)->sourceReferenceObj(), scene_lines.at(i)->destinationReferenceObj());
+
+        if(scene_lines.at(i)->sourceReferenceObj()->getID() == item->getID() || scene_lines.at(i)->destinationReferenceObj()->getID() == item->getID())
         {
-            scene_lines.removeOne(scene_lines.at(i));
-            this->removeItem(scene_lines.at(i));
-            delete scene_lines.at(i);
+            //scene_lines.removeOne(scene_lines.at(i));
+            //this->removeItem(scene_lines.at(i));
+           // delete scene_lines.at(i);
         }
+
     }
     scene_items.removeOne(item);
     this->removeItem(item);
@@ -192,6 +197,11 @@ void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  ***************************************************************/
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+    if(m_ignoreReleaseEvent)
+    {
+        m_ignoreReleaseEvent = false;
+        return;
+    }
     Icon* lastItem = NULL;
     // item currently being dragged has a state of 2, the last item clicked has a state of 1, everything else has state 0
     for(int i = 0; i < scene_items.size(); i++)
