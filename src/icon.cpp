@@ -3,6 +3,7 @@
                Made by Theora Rice
   */
 #include "icon.h"
+#include <QPolygonF>
 #include <QtGui>
 
 //#include <QPointF>
@@ -13,12 +14,12 @@ Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
 {
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
-    m_width = 0;
-    m_height = 0;
+    m_width = 100;
+    m_height = 100;
     m_state = 0;
 //    m_label = "";
     m_labelBox = new QGraphicsTextItem;
-    
+
     // this is the line that causes a segfault in unit tests because
     // it needs the gui. my suggestion is to leave this member alone
     // in base class and do the text instantiation in the same method
@@ -169,7 +170,6 @@ void Icon::setPolygon()
 {
     m_bound = QPolygonF(boundingRect());
 }
-
 
 void Icon::setText(QString input)
 {
