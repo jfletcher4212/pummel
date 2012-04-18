@@ -14,7 +14,7 @@
 #include "dragview.h"
 #include "basiclineobject.h"
 
-enum DiagramType { Class, Sequence, UseCase };
+enum DiagramType { Class, StateChart, Sequence, UseCase };
 
 class DrawArea : public QWidget
 {
@@ -30,6 +30,7 @@ public:
     int getSceneGridSize(){return scene->getGridSize();}
     QList<Icon*> getObjects(){return scene->getObjectList();}
     bool getLineCreate(){return scene->getLineCreate();}
+    LineType getLineCreationType(){return scene->getLineCreateType();}
     DiagramType getDiagramType(){return type;}
     ShapeCreationType getSceneShapeCreationType(){return scene->getShapeCreationType();}
 

@@ -27,7 +27,6 @@ Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
     // the gui things a little further.
     //m_labelBox->setPlainText("");
     m_labelBox->setPos(this->pos());
-    m_type = new QPolygon();
     m_id = m_next_id;
     m_next_id++;
 
@@ -50,7 +49,6 @@ Icon::~Icon()
     }
 
     delete m_labelBox;
-    delete m_type;
 }
 
 int Icon::getWidth()
@@ -134,9 +132,6 @@ void Icon::paintMarkerBoxes()
 
 void Icon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_width; // this centers the object on the cursor
-    pos.ry() -= 0.5 * m_height;
     m_state = 2;
     this->grabMouse();  // icon will take all mouse actions
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
@@ -165,10 +160,16 @@ void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     this->ungrabMouse();  // release mouse back to DragScene
 }
 
-QPolygon* Icon::getType()
+QPolygonF Icon::getType()
 {
-    return m_type;
+    return m_bound;
 }
+
+void Icon::setPolygon()
+{
+    m_bound = QPolygonF(boundingRect());
+}
+
 
 void Icon::setText(QString input)
 {

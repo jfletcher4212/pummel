@@ -11,9 +11,12 @@
 #include <QWidget>
 #include <QDialog>
 #include <QtGui>
+#include "drawarea.h"
+#include "global.h"
 #include "optionsdialog.h"
 #include "params.h"
 #include "icon.h"
+#include "linebody.h"
 
 using namespace std;
 
@@ -33,6 +36,8 @@ private:
     QGridLayout *initButtons();
 public:
     explicit Toolbar(QWidget *parent = 0);
+    void canvasSync();
+    void setAvailableActions();
 
     //parameters for shapes
     shapeParams shape;
@@ -51,6 +56,8 @@ public slots:
 
     void addClassBox();
     void addEllipse();
+    void addRoundedSquare();
+    void addNote();
     void addNone();
 
     void addNoLine();
@@ -67,6 +74,7 @@ private:
     void createMenus();
 
 
+
     QPushButton * shapeButton;
     QPushButton * textButton;
     QPushButton * lineButton;
@@ -78,6 +86,8 @@ private:
     QAction *addNoneAct;
     QAction *addClassBoxAct;
     QAction *addEllipseAct;
+    QAction *addRoundedSquareAct;
+    QAction *addNoteAct;
 
     QMenu *lineMenu;
     QActionGroup *linesGroup;

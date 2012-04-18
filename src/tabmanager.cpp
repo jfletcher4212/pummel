@@ -2,6 +2,7 @@
 #include "global.h"
 #include "mainwindow.h"
 extern MainWindow window;
+extern Toolbar *toolbar;
 
 TabManager::TabManager(QWidget *parent) : QTabWidget(parent)
 {
@@ -11,8 +12,7 @@ TabManager::TabManager(QWidget *parent) : QTabWidget(parent)
 
 void TabManager::currentChangedSlot(int index)
 {
-    // Call toolbar update
-    // Send diagram type
-    // Restore default selection parameters for DiagramType
+    toolbar->canvasSync();
+    toolbar->setAvailableActions();
 }
 

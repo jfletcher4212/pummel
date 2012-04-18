@@ -1,5 +1,5 @@
 #include "classbox.h"
-#include "textdialog.h"
+#include "classboxdialog.h"
 
 using namespace std;
 
@@ -154,7 +154,7 @@ QRectF ClassBox::boundingRect() const
 void ClassBox::setValues()
 {
     //open dialog box for user editing
-    TextDialog *values = new TextDialog(this);
+    ClassBoxDialog *values = new ClassBoxDialog(this);
     values->show();
 
     arrangeBoxes();
