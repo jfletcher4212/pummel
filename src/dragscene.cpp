@@ -133,6 +133,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
     else if(sceneCreate)
     {
         Icon *newItem;   // create an Icon pointer
+
         // create abstract class based on m_shapeCreationType
         this->clearSelection();
 
@@ -156,6 +157,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         default:{
             printf("dragscene doesn't have a shapeCreationType defined\n");
         }
+
         }
         // add the new item to the scene
         this->addItem(newItem);

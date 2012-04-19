@@ -68,10 +68,6 @@ void Ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
 {
     m_labelBox->boundingRect().setHeight(m_height-20);
     m_labelBox->boundingRect().setWidth(m_width-20);
-    //m_labelBox->boundingRect().setX(this->pos().x()+10);
-    //m_labelBox->boundingRect().setX(this->pos().x()+10);
-    //m_labelBox->setPos(this->pos().x(), this->pos().y());
-
 
     arrangeBoxes();
 
@@ -82,20 +78,7 @@ void Ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
     }
     painter->setPen(Qt::NoPen);
 
-    //QString myPath;
-    //myPath = "icons/ellipse.png";
-    //if(!m_image.load(myPath))
-    //{std::cout <<"didnt load from in the paint func\n";}
     painter->drawImage(this->boundingRect(),m_image);
-    //painter->drawImage(this->pos().x(),this->pos().y(),m_image);
-    //painter->drawImage(QRectF(0,0,m_width+40,m_height+40), m_image);   //paints from image file
-
-    //painter->drawImage();
-    //painter->drawRect(m_labelBox->pos().x()+5, m_labelBox->pos().y()+5, m_width-10, m_height-10);
-    //painter->drawEllipse(QRectF(0,0,m_xsize,m_ysize));
-
-    //painter->drawRect(m_labelBox->pos().x()+10, m_labelBox->pos().y()+10, m_width-10, m_height-10);
-
     update();
 
 }
@@ -124,10 +107,7 @@ void Ellipse::arrangeBoxes()
 
     this->prepareGeometryChange();
 
-   // printf("boundingRect height: %i\n", (int)this->boundingRect().height());
-
     //change m_height and m_width
-    //match the width of the overall boundary rectangles to the widest one
     if(m_labelBox->boundingRect().width()+20 > m_width)
     {
            m_width = m_labelBox->boundingRect().width()+20;
