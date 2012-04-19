@@ -1,19 +1,12 @@
-/*
-  Max McKinnon
-  UIdaho 2011
-
-  Specs: see UI concept on skydrive
-
-  The menu is non funcional at this point
-  */
-
 
 #include <QtGui>
 
 #include "mainwindow.h"
 #include "borderlayout.h"
 #include "global.h"
+#include "xml_io.h"
 #include <iostream>
+#include <QFile>
 
 using namespace std;
 
@@ -165,22 +158,19 @@ void MainWindow::newTab()
 
 void MainWindow::saveAsFile()
 {
+    // dialog box for user to enter filename
     QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
-
-
+    //Xml_io writer(icon_list, filename/*, diagram_type*/);
+    
+    // write the file
+    //writer.write_xml();
+    
 
     // strip full path off filename for display
     int idx = filename.lastIndexOf("/");
     filename.remove(0, idx+1);
 
     tabWidget->setTabText(tabWidget->currentIndex(), filename );
-    /* Insert
-       * actual
-       * saving
-       * function
-       * stuff
-       * here
-       */
 }
 
 void MainWindow::openFile()

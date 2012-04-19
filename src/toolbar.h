@@ -64,6 +64,8 @@ public slots:
     void addSolidLine();
     void addDottedLine();
     void addSolidLineAH();
+    void addSolidSQLine();
+    void addDottedSQLine();
 
     void gridOn();
     void gridOff();
@@ -95,6 +97,8 @@ private:
     QAction *addSolidLineAct;
     QAction *addDottedLineAct;
     QAction *addSolidLineAHAct;
+    QAction *addSolidSQLineAct;
+    QAction *addDottedSQLineAct;
 
     QMenu *gridMenu;
     QActionGroup *gridOnOffToggleGroup;
