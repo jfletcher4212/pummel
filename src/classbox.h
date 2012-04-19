@@ -3,6 +3,7 @@
  * 3 QGraphicsTextItems for the class name, class members and class methods
  * TO-DO:   Modify double-click behavior so that the object doesn't move immediately when clicked
  */
+//
 #ifndef CLASSBOX_H
 #define CLASSBOX_H
 

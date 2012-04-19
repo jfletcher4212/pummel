@@ -47,7 +47,10 @@ private slots:
     void setParagraphSpacing();
     void about();
     void aboutQt();
-
+    
+    // MVC logic methods
+    //void write_xml(Icon **icon_list, int size, QString filename);
+    
 
 private:
 
@@ -59,6 +62,9 @@ private:
 
     void createActions();
     void createMenus();
+    
+    // helper for xml reading
+    QMap<QString, QString> parsePerson(QXmlStreamReader& xml);
 
     QMenu *fileMenu;
     QMenu *editMenu;

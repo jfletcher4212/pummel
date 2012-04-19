@@ -1,9 +1,10 @@
 #include "note.h"
 #include "markerbox.h"
+#include <iostream>
 
 
 
-note::note(QGraphicsItem *parent) : Icon(parent)
+Note::Note(QGraphicsItem *parent) : Icon(parent)
 {
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
@@ -13,7 +14,10 @@ note::note(QGraphicsItem *parent) : Icon(parent)
     m_id = m_next_id;
     m_next_id++;
 
-    m_image.load("images/note.png");  //loads the image for drawing later
+
+    if (!m_image.load("icons/note.png"))
+        std::cout << "didn't load image properly\n";  //loads the image for drawing later
+//    m_image.load("icons/note.png");  //loads the image for drawing later
 
     // selection boxes
     markers[0] = new MarkerBox();
@@ -34,7 +38,7 @@ note::note(QGraphicsItem *parent) : Icon(parent)
 
 
 
-note::note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
+Note::Note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
 {
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
@@ -46,6 +50,9 @@ note::note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Ic
     m_id = m_next_id;
     m_next_id++;
 
+    if (!m_image.load("icons/note.png"))
+        std::cout << "didn't load image properly\n";  //loads the image for drawing later
+
     // selection boxes
     markers[0] = new MarkerBox();
     markers[1] = new MarkerBox();
@@ -63,12 +70,12 @@ note::note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Ic
     markers[3]->setVisible(false);
 }
 
-QRectF note::boundingRect() const
+QRectF Note::boundingRect() const
 {
     return QRectF(0,0,m_width, m_height);
 }
 
-void note::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void Note::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     if(painter == 0)
     {
@@ -123,7 +130,7 @@ void note::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
 }
 
 
-void note::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void Note::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     event->accept();
     QPointF pos = event->scenePos();
@@ -133,7 +140,7 @@ void note::mousePressEvent(QGraphicsSceneMouseEvent *event)
     this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
 }
 
-void note::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void Note::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
@@ -143,7 +150,7 @@ void note::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     this->setPos(pos.rx(), pos.ry());
 }
 
-void note::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void Note::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     /*
      * This resets the object's coordinates to the cursor's coordinates when the

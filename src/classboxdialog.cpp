@@ -1,6 +1,6 @@
-#include "textdialog.h"
+#include "classboxdialog.h"
 
-TextDialog::TextDialog(ClassBox *origCaller) :
+ClassBoxDialog::ClassBoxDialog(ClassBox *origCaller) :
     QWidget()
 {
     this->setWindowTitle("Edit Class Box");
@@ -31,7 +31,7 @@ TextDialog::TextDialog(ClassBox *origCaller) :
     this->setLayout(layout);
 }
 
-TextDialog::~TextDialog()
+ClassBoxDialog::~ClassBoxDialog()
 {
     //delete fields
     delete m_nameField;
@@ -47,7 +47,7 @@ TextDialog::~TextDialog()
 /* copies values from caller into member variables
  * initializes other members of dialog
  */
-void TextDialog::initFields()
+void ClassBoxDialog::initFields()
 {
     //copy values from caller
     m_name = m_caller->getLabel();
@@ -64,7 +64,7 @@ void TextDialog::initFields()
 }
 
 //create buttons for closing dialog
-void TextDialog::buttonSetup()
+void ClassBoxDialog::buttonSetup()
 {
     m_okButton = new QPushButton(tr("OK"));
     connect(m_okButton, SIGNAL(clicked()), this, SLOT(acknowledge()));
@@ -73,7 +73,7 @@ void TextDialog::buttonSetup()
 }
 
 //update the member variables when 'OK' is clicked
-void TextDialog::acknowledge()
+void ClassBoxDialog::acknowledge()
 {
 
     //copy data here
@@ -89,22 +89,22 @@ void TextDialog::acknowledge()
 }
 
 //close the dialog
-void TextDialog::quit()
+void ClassBoxDialog::quit()
 {
     this->close();
 }
 
-QString TextDialog::getName()
+QString ClassBoxDialog::getName()
 {
     return m_name;
 }
 
-QString TextDialog::getMembers()
+QString ClassBoxDialog::getMembers()
 {
     return m_members;
 }
 
-QString TextDialog::getMethods()
+QString ClassBoxDialog::getMethods()
 {
     return m_members;
 }
