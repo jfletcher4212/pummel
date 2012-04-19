@@ -11,6 +11,12 @@ lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGra
     myDestinationReferenceObj = destinationReferenceObj;
 }
 
+lineBody::~lineBody()
+{
+    delete mySourceReferenceObj;
+    delete myDestinationReferenceObj;
+}
+
 //Change at which end of the line the arrow head resides.
 void lineBody::swapLineDirection()
 {

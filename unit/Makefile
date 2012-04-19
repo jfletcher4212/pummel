@@ -12,6 +12,8 @@ FUNCS=write_xml parse_xml
 TESTS:=$(wildcard ./tests/*.h)
 TARGS:=$(patsubst ./tests/%.h,%,$(TESTS))
 EXE:=$(patsubst ./tests/%.h,./%;,$(TESTS))
+COV_DEPS:=$(patsubst ./tests/%.h,%_coverage,$(TESTS))
+REP_DEPS:=$(patsubst ./tests/%.h,%_report,$(TESTS))
 
 ## src objects
 OBJS:=$(wildcard ../src/*.o)
@@ -35,8 +37,7 @@ SRC_LIBS= -L/usr/lib -lQtGui -lQtCore -lpthread -lgcov
 all_report: all_coverage
 	./push_reports.py $(TARGS)
 
-all_coverage: $(TARGS)
-	cp $(TARGS) ../src/; cd ../src/; trucov all_report --selection * '$(EXE)'; rm moc_*.svg moc_*.trucov; mv *.svg *.trucov ../unit/; rm $(TARGS)
+all_coverage: $(COV_DEPS)
 
 all: $(TARGS)
 	$(EXE)
@@ -46,7 +47,7 @@ all: $(TARGS)
 	./push_reports.py $<
 
 %_coverage: %
-	trucov all_report --srcdir ../src/ --builddir ../src/ selection $(FUNCS) ./$<
+	trucov all_report --srcdir ../src/ --builddir ../src/ selection $(FUNCS) $<
 
 %: %.o $(OBJS)
 	$(CXX) $(INC) -o $@ $< $(OBJS) $(LIBS); ./$@ > $@_ut.txt 2>&1; touch $@_log.txt
@@ -59,7 +60,7 @@ all: $(TARGS)
 
 ## maintenance rules
 clean:
-	rm -rf *.o *.cpp *.trucov *.svg *.ut *_log.txt *_ut.txt  $(TARGS)
+	rm -rf *.o *.cpp *.trucov *.svg *.ut *_log.txt *_ut.txt *~ $(TARGS)
 
 setup:
 	cd ../src/; make DEFINES='$(SRC_DEFINES)' CXXFLAGS='$(SRC_CXX)' LIBS='$(SRC_LIBS)'
@@ -79,3 +80,4 @@ help:
 	#	test_something_report	- push reports for a given test to the wiki repository
 	#	make all		- build and run all tests in the tests/ directory
 	#	make all_report		- build and run all tests and push their reports to the wiki repository
+	#	clean			- clean up all generated test files and reports

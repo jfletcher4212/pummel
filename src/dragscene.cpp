@@ -288,6 +288,15 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
                 this->addItem(newLine);
                 newLine->setZValue(-1);
             }
+            else if(lineTypeEnum == Solid_Square_Line)
+            {
+                //Dev note - memory leak here? Want to test adding this as a parameter,
+                //and then explicitly deleting to obj in dragscene's destructor to see effects on valgrind
+                //in both situations
+                solidsqline *newLine = new solidsqline(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                newLine->setZValue(-1);
+            }
            // newLine->updatePosition();
         }
         delete tempLine;
