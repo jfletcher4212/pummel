@@ -10,6 +10,12 @@ solidline::solidline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QG
     //setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
    //BasicLineObject * objMyBasicLine = new BasicLineObject(sourceReferenceObj, destinationReferenceObj);
 }
+
+solidline::~solidline()
+{
+
+}
+
 void solidline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;

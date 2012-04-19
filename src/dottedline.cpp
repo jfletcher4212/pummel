@@ -7,6 +7,12 @@ dottedline::dottedline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, 
     myLineType = Dotted_Line;
     //setPen(QPen(myColor, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
 }
+
+dottedline::~dottedline()
+{
+
+}
+
 void dottedline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
