@@ -199,8 +199,6 @@ void MainWindow::saveAsFile()
     
 
     // strip full path off filename for display
-    int idx = filename.lastIndexOf("/");
-    filename.remove(0, idx+1);
 
     tabWidget->setTabText(tabWidget->currentIndex(), filename );
     }
@@ -208,24 +206,15 @@ void MainWindow::saveAsFile()
 
 void MainWindow::openFile()
 {
-<<<<<<< local
+
   QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
   newTab(filename);
-=======
-    QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
-    newTab();
-    
-    // strip full path off filename for display
-    int idx = filename.lastIndexOf("/");
-    filename.remove(0, idx+1);
-    
-    tabWidget->setTabText(tabWidget->currentIndex(), filename);
+
     /* new tab
      * set new tab name to filename
      * load in stuff
      * profit
      * */
->>>>>>> other
 }
 
 void MainWindow::closeTab()
