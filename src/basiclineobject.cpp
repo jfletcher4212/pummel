@@ -11,6 +11,11 @@ BasicLineObject::BasicLineObject(QGraphicsItem *parent, QGraphicsScene *scene) :
     //setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 }
 
+BasicLineObject::~BasicLineObject()
+{
+
+}
+
 /*
  * Virtual Function - QGraphicsLineItem
  * The point of the boundingRect() is to define

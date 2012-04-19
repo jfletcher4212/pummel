@@ -4,12 +4,13 @@
 #include "basiclineobject.h"
 #include <QPolygonF>
 
-enum LineType {No_Line, Solid_Line, Dotted_Line, Solid_Line_SAH};
+enum LineType {No_Line, Solid_Line, Dotted_Line, Solid_Line_SAH, Solid_Square_Line};
 
 class lineBody : public BasicLineObject
 {
 public:
     lineBody(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
+    ~lineBody();
 
     Icon *sourceReferenceObj() const
         { return mySourceReferenceObj; }
