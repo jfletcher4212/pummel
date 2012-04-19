@@ -39,6 +39,7 @@ private slots:
     void openFile();
     void closeTab();
     void bold();
+    void deleteObject();
     void italic();
     void leftAlign();
     void rightAlign();
@@ -78,6 +79,7 @@ private:
     QAction *openAct;
     QAction *saveAct;
     QAction *saveAsAct;
+    QAction *deleteAct;
     QAction *printAct;
     QAction *exitAct;
     QAction *undoAct;
