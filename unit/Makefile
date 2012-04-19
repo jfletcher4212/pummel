@@ -44,7 +44,7 @@ all: $(TARGS)
 
 ## individual rules
 %_report: %
-	./push_reports.py $<
+	./.push_reports.py $<
 
 %_coverage: %
 	trucov all_report --srcdir ../src/ --builddir ../src/ selection $(FUNCS) $<
