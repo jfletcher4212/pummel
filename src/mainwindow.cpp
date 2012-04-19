@@ -144,7 +144,7 @@ void MainWindow::newTab()
 {
     int i = tabWidget->count();
     char* s = (char*)malloc(10*sizeof(char));
-    sprintf(s, "Tab %d", next_tab_num);
+    sprintf(s, "untitled" );
     next_tab_num++;
     QString q = QString(s);
     DrawArea *newCanvas = new DrawArea;
@@ -155,11 +155,43 @@ void MainWindow::newTab()
     free(s);
 }
 /*end*/
+void MainWindow::newTab(QString filename)
+{
+    int i = tabWidget->count();
+    char* s = (char*)malloc(10*sizeof(char));
+    sprintf(s, "untitled" );
+    next_tab_num++;
+    QString q = QString(s);
+    DrawArea *newCanvas = new DrawArea;
+    canvas.append(newCanvas);
+    tabWidget->insertTab(i, newCanvas, filename);
+    tabWidget->setCurrentIndex(i);
+    tabWidget->widget(i)->setVisible(true);
+    free(s);
+}
+void MainWindow::saveFile()
+{
+    QString filename = tabWidget->tabText(tabWidget->currentIndex());
+    if(filename == "untitled")
+    {
+        saveAsFile();
+    }
+    else
+    {
+    //writer.write_xml();
+    }
+}
 
 void MainWindow::saveAsFile()
 {
     // dialog box for user to enter filename
     QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
+    if( filename == "" )
+    {
+        cout << "No filename given, writing anyways" << endl;
+    }
+    else
+    {
     //Xml_io writer(icon_list, filename/*, diagram_type*/);
     
     // write the file
@@ -171,10 +203,15 @@ void MainWindow::saveAsFile()
     filename.remove(0, idx+1);
 
     tabWidget->setTabText(tabWidget->currentIndex(), filename );
+    }
 }
 
 void MainWindow::openFile()
 {
+<<<<<<< local
+  QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
+  newTab(filename);
+=======
     QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
     newTab();
     
@@ -188,6 +225,7 @@ void MainWindow::openFile()
      * load in stuff
      * profit
      * */
+>>>>>>> other
 }
 
 void MainWindow::closeTab()
@@ -260,8 +298,11 @@ void MainWindow::createActions()
     openAct = new QAction(tr("Close Tab"), this);
     connect(openAct, SIGNAL(triggered()), this, SLOT(closeTab()));
 
-    saveAct = new QAction(tr("Save as..."), this);
-    connect(saveAct, SIGNAL(triggered()), this, SLOT(saveAsFile()));
+    saveAct = new QAction(tr("Save File"), this);
+    connect(saveAct, SIGNAL(triggered()), this, SLOT(saveFile()));
+
+    saveAsAct = new QAction(tr("Save File as..."), this);
+    connect(saveAsAct, SIGNAL(triggered()), this, SLOT(saveAsFile()));
 
     printAct = new QAction(tr("Open"), this);
     connect(printAct, SIGNAL(triggered()), this, SLOT(openFile()));
@@ -378,6 +419,7 @@ void MainWindow::createMenus()
     fileMenu->addAction(newAct);
     fileMenu->addAction(openAct);
     fileMenu->addAction(saveAct);
+    fileMenu->addAction(saveAsAct);
     fileMenu->addAction(printAct);
     fileMenu->addAction(exitAct);
 
