@@ -36,6 +36,7 @@ void solidsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     this->setLine(tempAngleLine);
 
 
+
     qreal angle = line().angle();
 
    if((angle > 45 && angle < 135) || (angle > 225 && angle < 315))
