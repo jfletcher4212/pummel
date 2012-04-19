@@ -29,10 +29,29 @@ void solidsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     point4.rx() += 0.5 * myDestinationReferenceObj->getWidth();
     point4.ry() += 0.5 * myDestinationReferenceObj->getHeight();
 
-    QPointF point2 = point1;
-    point2.rx() += (point4.rx() - point1.rx())/2;
-    QPointF point3 = point2;
-    point3.ry() += point4.ry() - point1.ry();
+   QPointF point2 = point1;
+   QPointF point3;
+
+    QLineF tempAngleLine(point1, point4);
+    this->setLine(tempAngleLine);
+
+
+    qreal angle = line().angle();
+
+   if((angle > 45 && angle < 135) || (angle > 225 && angle < 315))
+   {
+       point2.ry() += (point4.ry() - point1.ry())/2;
+       point3 = point2;
+       point3.rx() += point4.rx() - point1.rx();
+   }
+
+   else
+   {
+       point2.rx() += (point4.rx() - point1.rx())/2;
+       point3 = point2;
+       point3.ry() += point4.ry() - point1.ry();
+   }
+
 
     QLineF tempLineOne(point1, point2);
     QLineF tempLineTwo(point2, point3);
