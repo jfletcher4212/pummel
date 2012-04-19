@@ -64,22 +64,30 @@ class Pummel_report:
         
         f.write(std[0] +'\n\n')
                 
-        #try:
         # write misc. commends
+        #try:
         f.write(REPORT_DELIM.replace('SECTION', 'COMMENTS '))
+        
+            # file is empty, prompt user for comment 
+        if os.stat(reports[0])[6] == 0:
+            with open(reports[0], 'w') as ftmp:
+                #ftmp = open(reports[0], 'w')
+                ftmp.write(self.usr_input(reports[0]))
+                #ftmp.close()
+                
         f.write(self.write_file(reports[0]))
         #except:
-        #    pass
+            #pass
         
+        # write unit test results
         try:
-            # write unit test results
             f.write(REPORT_DELIM.replace('SECTION', 'UNIT TEST'))
             f.write(self.write_file(reports[1]))
         except:
             pass
         
+        # write coverage reports
         try:
-            # write coverage reports
             f.write(REPORT_DELIM.replace('SECTION', 'COVERAGE '))
             f.write(self.write_file(reports[2]))
         except:
@@ -89,12 +97,24 @@ class Pummel_report:
 
         
     def write_file(self, filename):
-        ftmp = open(filename, 'r')
-        content = ftmp.read()
-        ftmp.close()
+        with open(filename, 'r') as ftmp:
+            content = ftmp.read()
         
         return content+ '\n\n'
 
+    def usr_input(self, filename):
+        print filename +' is empty. edit the file or enter comments now:'
+        
+        text = ''
+        while True:
+            line = raw_input()
+            
+            if not line:
+                break
+            
+            text += line +'\n'
+        
+        return text +'\n'
     
     def push_reports(self):
         os.chdir(WIKI_PATH)
