@@ -109,6 +109,14 @@ void Toolbar::createActions(){
     addSolidLineAHAct->setCheckable(true);
     connect(addSolidLineAHAct, SIGNAL(triggered()), this, SLOT(addSolidLineAH()));
 
+    addSolidSQLineAct = new QAction(tr("Solid Square Line"), this);
+    addSolidSQLineAct->setCheckable(true);
+    connect(addSolidSQLineAct, SIGNAL(triggered()), this, SLOT(addSolidSQLine()));
+
+    addDottedSQLineAct = new QAction(tr("Dotted Square Line"), this);
+    addDottedSQLineAct->setCheckable(true);
+    connect(addDottedSQLineAct, SIGNAL(triggered()), this, SLOT(addDottedSQLine()));
+
     addNoLineAct = new QAction(tr("None"), this);
     addNoLineAct->setCheckable(true);
     addNoLineAct->setChecked(true);
@@ -184,6 +192,8 @@ void Toolbar::setAvailableActions()
     {
         shapesGroup->addAction(addClassBoxAct);
         linesGroup->addAction(addSolidLineAct);
+        linesGroup->addAction(addSolidSQLineAct);
+        linesGroup->addAction(addDottedSQLineAct);
         break;
     }
     case StateChart:
@@ -320,6 +330,20 @@ void Toolbar::addSolidLineAH()
     canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line_SAH);
 }
 
+void Toolbar:: addSolidSQLine()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Square_Line);
+}
+
+void Toolbar:: addDottedSQLine()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Square_Line);
+}
+
 void Toolbar::addNoLine()
 {
     canvas.at(tabWidget->currentIndex())->scene->setLineCreate(false);
@@ -414,6 +438,12 @@ void Toolbar::canvasSync()
             addSolidLineAHAct->setChecked(true);
             break;
         }
+        case Solid_Square_Line:
+        {
+            this->addSolidSQLine();
+            addSolidSQLineAct->setChecked(true);
+            break;
+        }
         default:
         {
             printf("no LineType defined...\n");
@@ -427,4 +457,3 @@ void Toolbar::canvasSync()
         addNoLineAct->setChecked(true);
     }
 }
-
