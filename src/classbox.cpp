@@ -30,6 +30,42 @@ ClassBox::ClassBox()
 
 }
 
+ClassBox::ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label, QString members, QString methods)
+{
+
+    this->setPos(xpos,ypos);
+    m_width = xsize;
+    m_height = ysize;
+
+    m_labelBox->setParentItem(this);
+    m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
+    m_memberBox = new QGraphicsTextItem();
+    m_memberBox->setParentItem(this);
+    m_memberBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
+    m_methodBox = new QGraphicsTextItem();
+    m_methodBox->setParentItem(this);
+    m_methodBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
+
+    //default text
+    m_label = label;
+    m_members = members;
+    m_methods = methods;
+
+    m_labelBox->setPlainText(label);
+    m_memberBox->setPlainText(members);
+    m_methodBox->setPlainText(methods);
+
+    //set m_memberList's position below m_labelBox, and m_methodList below m_memberList
+    m_labelBox->setPos(this->pos());
+    arrangeBoxes();
+    //show text boxes
+    m_labelBox->setVisible(true);
+    m_memberBox->setVisible(true);
+    m_methodBox->setVisible(true);
+
+
+}
+
 ClassBox::~ClassBox()
 {
     delete m_memberBox;
