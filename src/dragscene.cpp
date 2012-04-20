@@ -4,6 +4,9 @@
 #include "ellipse.h"
 #include "note.h"
 #include "toolbar.h"
+#include "roundedsquare.h"
+#include "scenariostart.h"
+#include "scenarioend.h"
 #include <QList>
 #include <QGraphicsSceneDragDropEvent>
 #include <QXmlStreamWriter>
@@ -127,12 +130,13 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         tempLine->setPen(QPen(myTempLineColor, 2));
         this->addItem(tempLine);
         this->clearSelection();
+        this->m_shapeCreationType = s_None;     //stop creating shapes when lines are created
     }
     // if there is no object under the cursor, and sceneCreate is true, create a new item
     //else if(this->selectedItems().size() == 0 && sceneCreate)
     else if(sceneCreate)
     {
-        Icon *newItem;   // create an Icon pointer
+        Icon *newItem = NULL;   // create an Icon pointer
 
         // create abstract class based on m_shapeCreationType
         this->clearSelection();
@@ -153,16 +157,35 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
             newItem = new Note();
             break;
         }
+        case s_ScenarioStart:
+        {
+            newItem = new ScenarioStart();
+            break;
+        }
+        case s_RoundedSquare:
+        {
+            newItem = new RoundedSquare();
+            break;
+        }
+        case s_ScenarioEnd:
+        {
+            newItem = new ScenarioEnd();
+            break;
+        }
         default:{
             printf("dragscene doesn't have a shapeCreationType defined\n");
+            newItem = NULL;
         }
 
         }
         // add the new item to the scene
-        this->addItem(newItem);
-        newItem->setPos(event->scenePos());
-        // add new item to the custom list
-        scene_items.append(newItem);
+        if (newItem != NULL)
+        {
+            this->addItem(newItem);
+            newItem->setPos(event->scenePos());
+            // add new item to the custom list
+            scene_items.append(newItem);
+        }
         QGraphicsScene::mousePressEvent(event);
     }
     else

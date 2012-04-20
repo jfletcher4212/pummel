@@ -1,5 +1,5 @@
-#ifndef SENARIOSTATE_H
-#define SENARIOSTATE_H
+#ifndef SCENARIOSTATE_H
+#define SCENARIOSTATE_H
 
 #include "icon.h"
 #include "textboxdialog.h"
@@ -9,7 +9,7 @@
 
 #include "markerbox.h"
 
-class SenarioState : public Icon
+class ScenarioState : public Icon
 {
 
 
@@ -25,9 +25,9 @@ private:
 
 public:
 
-    SenarioState(QGraphicsItem *parent = 0);
-    SenarioState(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label);
+    ScenarioState(QGraphicsItem *parent = 0);
+    ScenarioState(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label);
 
 };
 
-#endif // SENARIOSTATE_H
+#endif // SCENARIOSTATE_H
