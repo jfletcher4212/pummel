@@ -8,6 +8,8 @@ public:
     filledAH(QGraphicsLineItem *, QGraphicsItem *, QGraphicsScene *);
 private:
 protected:
+    QGraphicsItem *fillerItem;
+    QPointF fillerPoint;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 };
 
