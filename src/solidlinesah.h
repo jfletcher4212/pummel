@@ -1,15 +1,14 @@
 #ifndef SOLIDLINESAH_H
 #define SOLIDLINESAH_H
-#include "solidline.h"
-#include "filledah.h"
+#include "linebody.h"
 
-class solidlineSAH
+class solidlineSAH : public lineBody
 {
 public:
-    solidlineSAH(QGraphicsItem *, QGraphicsScene *);
+    solidlineSAH(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
 private:
 protected:
-    void painter(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
 
 };
 

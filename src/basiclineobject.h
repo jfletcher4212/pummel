@@ -26,6 +26,7 @@ class BasicLineObject : public QGraphicsLineItem
 public:
     //Constructor for the object
     BasicLineObject(QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
+    ~BasicLineObject();
     //Overrides the default boundingRect() method inherited
     //from QGraphicsLineItem
     QRectF boundingRect() const;
