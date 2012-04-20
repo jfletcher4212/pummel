@@ -2,10 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "toolbar.h"
+#include "global.h"
 #include "optionsdialog.h"
 #include "borderlayout.h"
-#include "global.h"
+
 
 class QAction;
 class QActionGroup;
@@ -32,14 +32,12 @@ private slots:
     void cut();
     void copy();
     void paste();
+    void deleteObject();
     void newTab();
-    void newTab(QString filename);
-    void saveFile();
     void saveAsFile();
     void openFile();
     void closeTab();
     void bold();
-    void deleteObject();
     void italic();
     void leftAlign();
     void rightAlign();
@@ -57,7 +55,6 @@ private slots:
 private:
 
     QWidget *widget;
-    Toolbar *toolbar;
     BorderLayout *layout;
 
     int next_tab_num;
@@ -78,8 +75,6 @@ private:
     QAction *newAct;
     QAction *openAct;
     QAction *saveAct;
-    QAction *saveAsAct;
-    QAction *deleteAct;
     QAction *printAct;
     QAction *exitAct;
     QAction *undoAct;
@@ -87,6 +82,7 @@ private:
     QAction *cutAct;
     QAction *copyAct;
     QAction *pasteAct;
+    QAction *deleteAct;
     QAction *boldAct;
     QAction *italicAct;
     QAction *leftAlignAct;
