@@ -1,5 +1,5 @@
-#ifndef SENARIOEND_H
-#define SENARIOEND_H
+#ifndef SCENARIOSTART_H
+#define SCENARIOSTART_H
 
 #include "icon.h"
 #include <QtGui>
@@ -7,7 +7,7 @@
 #include <QImage>
 
 #include "markerbox.h"
-class SenarioEnd : public Icon
+class ScenarioStart : public Icon
 {
 
 
@@ -19,9 +19,9 @@ private:
 
 public:
 
-    SenarioEnd(QGraphicsItem *parent = 0);
-    SenarioEnd(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
+    ScenarioStart(QGraphicsItem *parent = 0);
+    ScenarioStart(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
 
 };
 
-#endif // SENARIOEND_H
+#endif // SCENARIOSTART_H

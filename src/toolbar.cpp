@@ -93,6 +93,14 @@ void Toolbar::createActions(){
     addRoundedSquareAct->setCheckable(true);
     connect(addRoundedSquareAct, SIGNAL(triggered()), this, SLOT(addRoundedSquare()));
 
+    addScenarioStartAct = new QAction(tr("Start"), this);
+    addScenarioStartAct->setCheckable(true);
+    connect(addScenarioStartAct, SIGNAL(triggered()), this, SLOT(addScenarioStart()));
+
+    addScenarioEndAct = new QAction(tr("End"), this);
+    addScenarioEndAct->setCheckable(true);
+    connect(addScenarioEndAct, SIGNAL(triggered()), this, SLOT(addScenarioEnd()));
+
     addNoteAct = new QAction(tr("Note"), this);
     addNoteAct->setCheckable(true);
     connect(addNoteAct, SIGNAL(triggered()), this, SLOT(addNote()));
@@ -158,18 +166,6 @@ void Toolbar::setAvailableActions()
     type = canvas.at(tabWidget->currentIndex())->getDiagramType();
 
     //get rid of all actions in menu before adding new ones.
-    shapeMenu->clear();
-    lineMenu->clear();
-    //lineMenu->removeAction(lineMenu->actions().at(0));
-    if (!shapeMenu->isEmpty())
-    {
-        shapeMenu->removeAction(shapeMenu->actions().at(1));
-        shapesGroup->removeAction(actions().at(0));
-        shapesGroup->removeAction(actions().at(1));
-    }
-    shapesGroup->actions().clear();
-    linesGroup->actions().clear();
-
     delete shapeMenu;
     delete shapesGroup;
     delete lineMenu;
@@ -191,14 +187,16 @@ void Toolbar::setAvailableActions()
     case Class:         // I.E. Class
     {
         shapesGroup->addAction(addClassBoxAct);
-        linesGroup->addAction(addSolidLineAct);
         linesGroup->addAction(addSolidSQLineAct);
         linesGroup->addAction(addDottedSQLineAct);
         break;
     }
     case StateChart:
     {
+        shapesGroup->addAction(addScenarioStartAct);
         shapesGroup->addAction(addRoundedSquareAct);
+        shapesGroup->addAction(addScenarioEndAct);
+        linesGroup->addAction(addSolidLineAct);
         break;
     }
     case Sequence:         // Sequence
@@ -301,7 +299,24 @@ void Toolbar::addNote()
 {
     canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
     canvas.at(tabWidget->currentIndex())->setLineCreate(false);
+    //set shape and line menus to check 'None'
+    shapesGroup->actions().at(0)->setChecked(true);
+    linesGroup->actions().at(0)->setChecked(true);
     canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_Note);
+}
+
+void Toolbar::addScenarioStart()
+{
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_ScenarioStart);
+}
+
+void Toolbar::addScenarioEnd()
+{
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_ScenarioEnd);
 }
 
 void Toolbar::addNone(){
@@ -395,6 +410,16 @@ void Toolbar::canvasSync()
         case s_Note:
         {
             this->addNote();
+            break;
+        }
+        case s_ScenarioStart:
+        {
+            this->addScenarioStart();
+            break;
+        }
+        case s_ScenarioEnd:
+        {
+            this->addScenarioEnd();
             break;
         }
         default:

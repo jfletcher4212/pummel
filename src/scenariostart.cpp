@@ -1,53 +1,53 @@
-#include "senarioend.h"
+#include "scenariostart.h"
 #include "markerbox.h"
 #include <iostream>
 #include <QString>
 
 
-SenarioEnd::SenarioEnd(QGraphicsItem *parent) : Icon(parent)
+ScenarioStart::ScenarioStart(QGraphicsItem *parent) : Icon(parent)
 {
     // allows setting of the base rectangle of dragitem
-    m_shapetype = "SenarioEnd";
+    m_shapetype = "ScenarioStart";
 
     // In general, leave this block below running for loading images
     m_width= 25;
     m_height= 25;
 
-    if (!m_image.load("icons/senarioEnd.png"))
+    if (!m_image.load("icons/scenarioStart.png"))
         std::cout << "didn't load image properly\n";  //loads the image for drawing later
 
 
     // If the relative path fails, uncomment and update the below with full path to images (example below from a mac)
-    //if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/senarioEnd.png"))
+    //if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/ScenarioStart.png"))
       //  std::cout << "didn't load image properly\n";  //loads the image for drawing later
 }
 
-SenarioEnd::SenarioEnd(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
+ScenarioStart::ScenarioStart(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
 {
     // allows setting of the base rectangle of dragitem
     m_width = xsize;
     m_height = ysize;
-    m_shapetype = "SenarioEnd";
+    m_shapetype = "ScenarioStart";
 
     this->setPos(xpos,ypos);
 
     // In general, leave this block below running for loading images
 
-    if (!m_image.load("icons/senarioEnd.png"))
+    if (!m_image.load("icons/ScenarioStart.png"))
         std::cout << "didn't load image properly\n";  //loads the image for drawing later
 
     // If the relative path fails, uncomment and update the below with full path to images (example below from a mac)
-    //if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/senarioEnd.png"))
+    //if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/ScenarioStart.png"))
     //    std::cout << "didn't load image properly\n";  //loads the image for drawing later
 
 }
 
-QRectF SenarioEnd::boundingRect() const
+QRectF ScenarioStart::boundingRect() const
 {
     return QRectF(0,0,m_width, m_height);
 }
 
-void SenarioEnd::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void ScenarioStart::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 
     if(m_width>m_height)
