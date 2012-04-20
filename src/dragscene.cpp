@@ -297,6 +297,12 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
                 this->addItem(newLine);
                 newLine->setZValue(-1);
             }
+            else if(lineTypeEnum == Dotted_Square_Line)
+            {
+                dottedsqline *newLine = new dottedsqline(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                newLine->setZValue(-1);
+            }
            // newLine->updatePosition();
         }
         delete tempLine;
@@ -351,5 +357,3 @@ void DragScene::testAction()
     // use as needed
 
 }
-
-
