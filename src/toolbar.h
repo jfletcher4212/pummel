@@ -66,6 +66,7 @@ public slots:
     void addSolidLineAH();
     void addSolidSQLine();
     void addDottedSQLine();
+    void addSelfRefLine();
 
     void gridOn();
     void gridOff();
@@ -99,6 +100,7 @@ private:
     QAction *addSolidLineAHAct;
     QAction *addSolidSQLineAct;
     QAction *addDottedSQLineAct;
+    QAction *addSelfRefLineAct;
 
     QMenu *gridMenu;
     QActionGroup *gridOnOffToggleGroup;

@@ -121,7 +121,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         }
         QGraphicsScene::mousePressEvent(event);
     }
-    else if (this->itemAt(event->scenePos()) && lineCreate)
+    else if (this->itemAt(event->scenePos()) && lineCreate && lineTypeEnum != Self_Ref_Line)
     {
         tempLine = new QGraphicsLineItem(QLineF(event->scenePos(), event->scenePos()));
         tempLine->setPen(QPen(myTempLineColor, 2));
@@ -162,6 +162,30 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         // add new item to the custom list
         scene_items.append(newItem);
         QGraphicsScene::mousePressEvent(event);
+    }
+    else if(lineCreate && lineTypeEnum == Self_Ref_Line)
+    {
+        //int indexStart, indexEnd;
+        //indexStart = sceneItemAt(tempLine->line().p1());
+        //indexEnd = sceneItemAt(tempLine->line().p2());
+
+        //Icon *initRefObj = scene_items.at(indexStart);
+        //Icon *finRefObj = scene_items.at(indexEnd);
+
+        if(this->sceneItemAt(event->scenePos()) < 0)
+        {
+            // exit routine if no source object was clicked
+            // DEV debugging indicates this routine may be entered three time.
+            //Need to discover why.
+            return;
+        }
+
+        Icon *item = scene_items.at(this->sceneItemAt(event->scenePos()));
+
+
+        selfRefLine *newLine = new selfRefLine(item, item, 0, 0);
+        this->addItem(newLine);
+        newLine->setZValue(-1);
     }
     else
     {
