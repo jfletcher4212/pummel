@@ -71,23 +71,26 @@ int DragScene::sceneItemAt(QPointF pos)
 
 void DragScene::deleteItem(Icon* item)
 {
+
     lineCreate = false;
     sceneCreate = false;
+    QList<int> lineRemovalList;
     for(int i = 0; i < scene_lines.size(); i++)
     {
-        //printf("line %d: %d ==== %d\n", i, scene_lines.at(i)->sourceReferenceObj(), scene_lines.at(i)->destinationReferenceObj());
-
         if(scene_lines.at(i)->sourceReferenceObj()->getID() == item->getID() || scene_lines.at(i)->destinationReferenceObj()->getID() == item->getID())
         {
-            //scene_lines.removeOne(scene_lines.at(i));
-            //this->removeItem(scene_lines.at(i));
-           // delete scene_lines.at(i);
+            scene_lines.at(i)->setParentItem(item);
+            lineRemovalList.append(i);
         }
-
     }
     scene_items.removeOne(item);
     this->removeItem(item);
+    for(int i = 0; i < lineRemovalList.size(); i++)
+    {
+        scene_lines.removeAt(lineRemovalList.at(i));
+    }
     delete item;
+
 }
 
 /****************************************************************
@@ -164,7 +167,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         }
         case s_Note:
         {
-            newItem = new Note();
+            //newItem = new Note();
             break;
         }
         default:{
