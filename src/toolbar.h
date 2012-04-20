@@ -58,6 +58,8 @@ public slots:
     void addEllipse();
     void addRoundedSquare();
     void addNote();
+    void addScenarioStart();
+    void addScenarioEnd();
     void addNone();
 
     void addNoLine();
@@ -89,6 +91,8 @@ private:
     QAction *addClassBoxAct;
     QAction *addEllipseAct;
     QAction *addRoundedSquareAct;
+    QAction *addScenarioStartAct;
+    QAction *addScenarioEndAct;
     QAction *addNoteAct;
 
     QMenu *lineMenu;
