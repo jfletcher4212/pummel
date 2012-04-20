@@ -2,6 +2,9 @@
 
 dottedsqline::dottedsqline(Icon *sourceReferenceObject, Icon *destinationReferenceObject, QGraphicsItem *parent=0, QGraphicsScene *scene=0) : lineBody(sourceReferenceObject, destinationReferenceObject, parent, scene)
 {
+    parent = 0;
+    scene = 0;
+    myLineType = Dotted_Square_Line;
 }
 
 dottedsqline::~dottedsqline()

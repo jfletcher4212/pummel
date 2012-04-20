@@ -117,6 +117,10 @@ void Toolbar::createActions(){
     addDottedSQLineAct->setCheckable(true);
     connect(addDottedSQLineAct, SIGNAL(triggered()), this, SLOT(addDottedSQLine()));
 
+    addSelfRefLineAct = new QAction(tr("Self Referencing Line"), this);
+    addSelfRefLineAct->setCheckable(true);
+    connect(addSelfRefLineAct, SIGNAL(triggered()), this, SLOT(addSelfRefLine()));
+
     addNoLineAct = new QAction(tr("None"), this);
     addNoLineAct->setCheckable(true);
     addNoLineAct->setChecked(true);
@@ -194,6 +198,10 @@ void Toolbar::setAvailableActions()
         linesGroup->addAction(addSolidLineAct);
         linesGroup->addAction(addSolidSQLineAct);
         linesGroup->addAction(addDottedSQLineAct);
+
+        //Will be removed at a later date
+        linesGroup->addAction(addSelfRefLineAct);
+
         break;
     }
     case StateChart:
@@ -342,6 +350,13 @@ void Toolbar:: addDottedSQLine()
     canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
     canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
     canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Square_Line);
+}
+
+void Toolbar::addSelfRefLine()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Self_Ref_Line);
 }
 
 void Toolbar::addNoLine()
