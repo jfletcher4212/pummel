@@ -23,7 +23,7 @@ Actor::Actor(QGraphicsItem *parent) : Icon(parent)
 
 
 
-Actor::Actor(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
+Actor::Actor(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString contents) : Icon(parent)
 {
     m_width = xsize;
     m_height = ysize;
@@ -34,7 +34,8 @@ Actor::Actor(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : 
     m_labelBox->setParentItem(this);
     m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
-    m_labelBox->setPlainText("Actor");
+    m_label = contents;
+    m_labelBox->setPlainText(contents);
 
     m_labelBox->setPos(this->pos());
     arrangeBoxes();

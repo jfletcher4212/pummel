@@ -1,34 +1,37 @@
+/* roundedsquare.h
+ * RoundedSquare
+ * 3 QGraphicsTextItems for the collaboration name, methods
+ */
 #ifndef ROUNDEDSQUARE_H
 #define ROUNDEDSQUARE_H
 
-#include "icon.h"
-#include <QtGui>
+#include <QWidget>
 #include <QGraphicsItem>
+#include <QtGui>
+#include <iostream>
+#include "icon.h"
 
-#include "markerbox.h"
-
-class roundedSquare : public Icon
+class RoundedSquare : public Icon
 {
-
+private:
+    QGraphicsTextItem *m_memberBox;
+    int m_titleBorder, m_memberBorder;
+    QString m_members;
+    void setRect();
+    void arrangeBoxes();
 
 protected:
-    QRectF boundingRect() const;    //sets a reference rectangle to contain it
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-
-private:
-
-    // Selection boxes for the DragItem
-    MarkerBox *markers[4];
+    QRectF boundingRect() const;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget * = 0);
+    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
+    void setValues();
 
 public:
-
-    roundedSquare(QGraphicsItem *parent = 0);
-    roundedSquare(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
-
-
+    RoundedSquare(QGraphicsItem *parent = 0);
+    RoundedSquare(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label, QString members);
+    ~RoundedSquare();
+    QString getLabel(), getMembers();
+    void setLabel(QString), setMembers(QString);
 };
 
 #endif // ROUNDEDSQUARE_H

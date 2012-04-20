@@ -29,7 +29,7 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
         std::cout << "didn't load image properly\n";  //loads the image for drawing later
 }
 
-Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
+Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label) : Icon(parent)
 {
     // allows setting of the base rectangle of dragitem
     m_width = xsize;
@@ -41,7 +41,8 @@ Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos
     m_labelBox->setParentItem(this);
     m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
-    m_labelBox->setPlainText("Ellipse");
+    m_label = label;
+    m_labelBox->setPlainText(label);
 
     m_labelBox->setPos(this->pos());
     arrangeBoxes();
