@@ -104,20 +104,11 @@ void RoundedSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
     m_labelBox->boundingRect().setHeight(lheight+(m_height-(lheight+mheight))/2);
     m_memberBox->boundingRect().setHeight(mheight+(m_height-(lheight+mheight))/2);
 
-//    int lwidth = m_labelBox->boundingRect().width();
-//    int mwidth = m_memberBox->boundingRect().width();
-//    m_labelBox->boundingRect().setWidth(lwidth+(m_width-(lwidth+mwidth))/2);
-//    m_memberBox->boundingRect().setWidth(mwidth+(m_width-(lwidth+mwidth))/2);
-
-    // draws the white background behind RoundedSquare
-//    painter->setBrush(Qt::white);
-
-    this->prepareGeometryChange();
+   this->prepareGeometryChange();
 
     //pen object for drawing different widths of line
     QPen pen(Qt::black, 2, Qt::SolidLine);
     //boundary rectangles for the text boxes
-//    QRectF labelBoundary, memberBoundary;
 
     //adjust postion of boxes before drawing
     arrangeBoxes();
@@ -158,7 +149,7 @@ void RoundedSquare::setValues()
     arrangeBoxes();
 }
 
-//The following 3 methods are accessors
+//The following 2 methods are accessors
 QString RoundedSquare::getLabel()
 {
     return m_labelBox->toPlainText();
@@ -169,7 +160,7 @@ QString RoundedSquare::getMembers()
     return m_memberBox->toPlainText();
 }
 
-//The following 3 methods are mutators
+//The following 2 methods are mutators
 void RoundedSquare::setLabel(QString value)
 {
     m_labelBox->setPlainText(value);
