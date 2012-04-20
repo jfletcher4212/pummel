@@ -14,8 +14,12 @@
 #include "icon.h"
 #include "solidline.h"
 #include "dottedline.h"
+#include "filledah.h"
+#include "solidlinesah.h"
+#include "solidsqline.h"
+#include "dottedsqline.h"
 
-enum ShapeCreationType {s_None, s_Actor, s_Classbox, s_Ellipse, s_Note, s_RoundedSquare};
+enum ShapeCreationType {s_None, s_Classbox, s_Ellipse, s_Actor, s_Note, s_RoundedSquare};
 
 class DragScene : public QGraphicsScene
 {

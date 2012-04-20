@@ -56,7 +56,8 @@ void Xml_io::write_xml()
 	saver.writeStartElement("icon");
 	saver.writeTextElement("width", QString::number(m_items[i]->getWidth()));
 	saver.writeTextElement("height", QString::number(m_items[i]->getHeight()));
-	saver.writeTextElement("id", QString::number(m_items[i]->getID()));
+	saver.writeTextElement("id", QString::number(m_items[i]->get_xPos()));
+	saver.writeTextElement("id", QString::number(m_items[i]->get_yPos()));
 	//saver.writeTextElement("label", m_items[i]->getLabel());
 	saver.writeTextElement("shapetype", m_items[i]->reportShapetype());
 	saver.writeEndElement();
@@ -112,7 +113,9 @@ void Xml_io::parse_icon(QXmlStreamReader &reader)
 {
     int width;
     int height;
-    int id;
+    int x_pos;
+    int y_pos;
+    QString label;
     QString type;
     
     Icon *ret;
@@ -139,10 +142,22 @@ void Xml_io::parse_icon(QXmlStreamReader &reader)
 		height = reader.text().toString().toInt();
 	    }
 
-	    if( reader.name() == "id")
+	    if( reader.name() == "x_pos")
 	    {
 		reader.readNext();
-		id = reader.text().toString().toInt();
+		x_pos = reader.text().toString().toInt();
+	    }
+	    
+	    if( reader.name() == "y_pos")
+	    {
+		reader.readNext();
+		y_pos = reader.text().toString().toInt();
+	    }
+
+	    if( reader.name() == "label")
+	    {
+		reader.readNext();
+		label = reader.text().toString();
 	    }
 
 	    if( reader.name() == "shapetype")
@@ -155,11 +170,23 @@ void Xml_io::parse_icon(QXmlStreamReader &reader)
 
     if ( type == "Ellipse") 
     {
-	ret = new Ellipse();
+	return new Ellipse(width, height, x_pos, y_pos, label);
     }
     if ( type == "Actor" )
     {
-	ret = new actor();
+	return new actor(width, height, x_pos, y_pos, label);
+    }
+    //if ( type == "ClassBox" )
+    //{
+    //return new ClassBox(width, height, x_pos, y_pos, label);
+    //}
+    if ( type == "RoundedSquare" )
+    {
+	return new roundedSquare(width, height, x_pos, y_pos, label);
+    }
+    if ( type == "note" )
+    {
+	return new note(width, height, x_pos, y_pos, label);
     }
     
     //return ret;
