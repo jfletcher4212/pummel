@@ -1,9 +1,9 @@
-#include "textboxdialog.h"
+#include "collaborationboxdialog.h"
 
-TextBoxDialog::TextBoxDialog(Icon *origCaller) :
+ CollaborationBoxDialog::CollaborationBoxDialog(RoundedSquare *origCaller) :
     QWidget()
 {
-    this->setWindowTitle("Edit Text Box");
+    this->setWindowTitle("Edit Collaboration Box");
     //copy the original caller to the member m_caller
     m_caller = origCaller;
 
@@ -23,27 +23,43 @@ TextBoxDialog::TextBoxDialog(Icon *origCaller) :
     buttonLayout->addWidget(m_cancelButton);
 
     //add controls to the main QFormLayout
-    layout->addRow("Label", m_nameField);
+    layout->addRow("State Label", m_nameField);
+    layout->addRow("Members", m_membersField);
     layout->addRow(buttonLayout);
 
     this->setLayout(layout);
 }
 
+CollaborationBoxDialog::~CollaborationBoxDialog()
+{
+    //delete fields
+    delete m_nameField;
+    delete m_membersField;
+
+    //delete buttons
+    delete m_okButton;
+    delete m_cancelButton;
+
+}
+
 /* copies values from caller into member variables
  * initializes other members of dialog
  */
-void TextBoxDialog::initFields()
+void CollaborationBoxDialog::initFields()
 {
     //copy values from caller
     m_name = m_caller->getLabel();
+    m_members = m_caller->getMembers();
 
     //initialize QTextEdits
     m_nameField = new QTextEdit();
     m_nameField->setText(m_name);
+    m_membersField = new QTextEdit();
+    m_membersField->setText(m_members);
 }
 
 //create buttons for closing dialog
-void TextBoxDialog::buttonSetup()
+void CollaborationBoxDialog::buttonSetup()
 {
     m_okButton = new QPushButton(tr("OK"));
     connect(m_okButton, SIGNAL(clicked()), this, SLOT(acknowledge()));
@@ -52,25 +68,31 @@ void TextBoxDialog::buttonSetup()
 }
 
 //update the member variables when 'OK' is clicked
-void TextBoxDialog::acknowledge()
+void CollaborationBoxDialog::acknowledge()
 {
 
     //copy data here
     m_name = m_nameField->toPlainText();
+    m_members = m_membersField->toPlainText();
 
-    m_caller->setText(m_name);
+    m_caller->setLabel(m_name);
+    m_caller->setMembers(m_members);
 
     quit();
 }
 
 //close the dialog
-void TextBoxDialog::quit()
+void CollaborationBoxDialog::quit()
 {
     this->close();
 }
 
-QString TextBoxDialog::getName()
+QString CollaborationBoxDialog::getName()
 {
     return m_name;
 }
 
+QString CollaborationBoxDialog::getMembers()
+{
+    return m_members;
+}
