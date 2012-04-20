@@ -4,6 +4,9 @@
 #include "ellipse.h"
 #include "note.h"
 #include "toolbar.h"
+#include "roundedsquare.h"
+#include "scenariostart.h"
+#include "scenarioend.h"
 #include <QList>
 #include <QGraphicsSceneDragDropEvent>
 #include <QXmlStreamWriter>
@@ -80,59 +83,92 @@ void DragScene::deleteItem(Icon* item)
  * mousePressEvent handles the following:
  *     - item selection/deselection
  *     - item creation
+ *     - line creation
+ *     - line selection/deselection
  ***************************************************************/
 
 void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     // this checks if an object is under the cursor and lineCreate is false, if so, select it
-    if(this->itemAt(event->scenePos()) && !lineCreate)
+    if(this->itemAt(event->scenePos()))
     {
-        if(this->sceneItemAt(event->scenePos()) < 0)
+        if (!lineCreate)
         {
-            // do nothing, index < 0 indicates a markerbox was clicked
+            if(this->sceneItemAt(event->scenePos()) < 0)
+            {
+                // do nothing, index < 0 indicates a markerbox was clicked
+            }
+            else
+            {
+                Icon *item = scene_items.at(this->sceneItemAt(event->scenePos()));
+                /**** using this->clearSelection() takes care of deselecting everything. Built in Qt func
+                // if there is another item selected, this will deselect it, forcing only one item selected at a time
+                for(int i = 0; i < scene_items.size(); i++)
+                {
+                    // set every item to not selected
+                    scene_items.at(i)->setSelected(false);
+                }
+                //deselect all lines
+                for(int i = 0; i < scene_lines.size(); i++)
+                {
+                    scene_lines.at(i)->setSelected(true);
+                }
+                */
+                this->clearSelection();
+                // set the clicked item to selected
+                item->setSelected(true);
+
+                // stop creating items once something is selected
+                this->sceneCreate = false;
+                this->lineCreate = false;
+                this->m_shapeCreationType = s_None;
+                this->lineTypeEnum = No_Line;
+                toolbar->canvasSync(); // update toolbar to changes
+
+            }
+            QGraphicsScene::mousePressEvent(event);
         }
-        else
+        else if (lineCreate && lineTypeEnum != Self_Ref_Line)
         {
-            Icon *item = scene_items.at(this->sceneItemAt(event->scenePos()));
-            /*
-            // if there is another item selected, this will deselect it, forcing only one item selected at a time
-            for(int i = 0; i < scene_items.size(); i++)
-            {
-                // set every item to not selected
-                scene_items.at(i)->setSelected(false);
-            }
-            //deselect all lines
-            for(int i = 0; i < scene_lines.size(); i++)
-            {
-                scene_lines.at(i)->setSelected(true);
-            }
-            */
+            tempLine = new QGraphicsLineItem(QLineF(event->scenePos(), event->scenePos()));
+            tempLine->setPen(QPen(myTempLineColor, 2));
+            this->addItem(tempLine);
             this->clearSelection();
-            // set the clicked item to selected
-            item->setSelected(true);
-
-            // stop creating items once something is selected
-            this->sceneCreate = false;
-            this->lineCreate = false;
-            this->m_shapeCreationType = s_None;
-            this->lineTypeEnum = No_Line;
-            toolbar->canvasSync(); // update toolbar to changes
-
+            this->m_shapeCreationType = s_None;     //stop creating shapes when lines are created
         }
-        QGraphicsScene::mousePressEvent(event);
-    }
-    else if (this->itemAt(event->scenePos()) && lineCreate && lineTypeEnum != Self_Ref_Line)
-    {
-        tempLine = new QGraphicsLineItem(QLineF(event->scenePos(), event->scenePos()));
-        tempLine->setPen(QPen(myTempLineColor, 2));
-        this->addItem(tempLine);
-        this->clearSelection();
+        else if(lineCreate && lineTypeEnum == Self_Ref_Line)
+        {
+            //int indexStart, indexEnd;
+            //indexStart = sceneItemAt(tempLine->line().p1());
+            //indexEnd = sceneItemAt(tempLine->line().p2());
+
+            //Icon *initRefObj = scene_items.at(indexStart);
+            //Icon *finRefObj = scene_items.at(indexEnd);
+
+            //unneccesary with new if-statement condition above
+    /*
+            if(this->sceneItemAt(event->scenePos()) < 0)
+            {
+                // exit routine if no source object was clicked
+                // DEV debugging indicates this routine may be entered three time.
+                //Need to discover why.
+
+                return;
+            }
+    */
+            Icon *item = scene_items.at(this->sceneItemAt(event->scenePos()));
+
+
+            selfRefLine *newLine = new selfRefLine(item, item, 0, 0);
+            this->addItem(newLine);
+            newLine->setZValue(-1);
+        }
     }
     // if there is no object under the cursor, and sceneCreate is true, create a new item
-    //else if(this->selectedItems().size() == 0 && sceneCreate)
     else if(sceneCreate)
     {
-        Icon *newItem;   // create an Icon pointer
+        Icon *newItem = NULL;   // create an Icon pointer
+
         // create abstract class based on m_shapeCreationType
         this->clearSelection();
         switch(m_shapeCreationType){
@@ -152,40 +188,36 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
             newItem = new Note();
             break;
         }
+        case s_ScenarioStart:
+        {
+            newItem = new ScenarioStart();
+            break;
+        }
+        case s_RoundedSquare:
+        {
+            newItem = new RoundedSquare();
+            break;
+        }
+        case s_ScenarioEnd:
+        {
+            newItem = new ScenarioEnd();
+            break;
+        }
         default:{
             printf("dragscene doesn't have a shapeCreationType defined\n");
+            newItem = NULL;
         }
+
         }
         // add the new item to the scene
-        this->addItem(newItem);
-        newItem->setPos(event->scenePos());
-        // add new item to the custom list
-        scene_items.append(newItem);
-        QGraphicsScene::mousePressEvent(event);
-    }
-    else if(lineCreate && lineTypeEnum == Self_Ref_Line)
-    {
-        //int indexStart, indexEnd;
-        //indexStart = sceneItemAt(tempLine->line().p1());
-        //indexEnd = sceneItemAt(tempLine->line().p2());
-
-        //Icon *initRefObj = scene_items.at(indexStart);
-        //Icon *finRefObj = scene_items.at(indexEnd);
-
-        if(this->sceneItemAt(event->scenePos()) < 0)
+        if (newItem != NULL)
         {
-            // exit routine if no source object was clicked
-            // DEV debugging indicates this routine may be entered three time.
-            //Need to discover why.
-            return;
+            this->addItem(newItem);
+            newItem->setPos(event->scenePos());
+            // add new item to the custom list
+            scene_items.append(newItem);
         }
-
-        Icon *item = scene_items.at(this->sceneItemAt(event->scenePos()));
-
-
-        selfRefLine *newLine = new selfRefLine(item, item, 0, 0);
-        this->addItem(newLine);
-        newLine->setZValue(-1);
+        QGraphicsScene::mousePressEvent(event);
     }
     else
     {
@@ -203,9 +235,11 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         this->lineCreate = false;
         this->m_shapeCreationType = s_None;
         this->lineTypeEnum = No_Line;
+        toolbar->canvasSync();
 
         QGraphicsScene::mousePressEvent(event);
     }
+
 }
 
 void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
