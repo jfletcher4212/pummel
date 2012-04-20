@@ -1,5 +1,5 @@
-#ifndef ACTOR_H
-#define ACTOR_H
+#ifndef SENARIOSTATE_H
+#define SENARIOSTATE_H
 
 #include "icon.h"
 #include "textboxdialog.h"
@@ -9,7 +9,7 @@
 
 #include "markerbox.h"
 
-class Actor : public Icon
+class SenarioState : public Icon
 {
 
 
@@ -20,14 +20,14 @@ protected:
     void setValues();
 
 private:
+
     void arrangeBoxes();
 
 public:
 
-    Actor(QGraphicsItem *parent = 0);
-    Actor(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString contents);
-
+    SenarioState(QGraphicsItem *parent = 0);
+    SenarioState(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label);
 
 };
 
-#endif // ACTOR_H
+#endif // SENARIOSTATE_H
