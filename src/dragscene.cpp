@@ -9,7 +9,7 @@
 #include <QXmlStreamWriter>
 #include <QIODevice>
 
-extern Toolbar* toolbar;
+extern Toolbar *toolbar;
 
 DragScene::DragScene(QObject* parent, int initHeight, int initWidth)
 {
@@ -111,7 +111,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         else
         {
             Icon *item = scene_items.at(this->sceneItemAt(event->scenePos()));
-/*
+            /*
             // if there is another item selected, this will deselect it, forcing only one item selected at a time
             for(int i = 0; i < scene_items.size(); i++)
             {
@@ -119,11 +119,11 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
                 scene_items.at(i)->setSelected(false);
             }
             //deselect all lines
-            for(int i=0; i<scene_lines.size(); i++)
+            for(int i = 0; i < scene_lines.size(); i++)
             {
                 scene_lines.at(i)->setSelected(true);
             }
-*/
+            */
             this->clearSelection();
             // set the clicked item to selected
             item->setSelected(true);
@@ -146,13 +146,12 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         this->clearSelection();
     }
     // if there is no object under the cursor, and sceneCreate is true, create a new item
-//    else if(this->selectedItems().size() == 0 && sceneCreate)
+    //else if(this->selectedItems().size() == 0 && sceneCreate)
     else if(sceneCreate)
     {
         Icon *newItem;   // create an Icon pointer
         // create abstract class based on m_shapeCreationType
         this->clearSelection();
-
         switch(m_shapeCreationType){
         case s_Classbox:{
             newItem = new ClassBox();
@@ -192,14 +191,11 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         {
             scene_lines.at(i)->setSelected(false);
         }
-
-        // exit selection modes
+        //exit selection modes
         this->sceneCreate = false;
         this->lineCreate = false;
         this->m_shapeCreationType = s_None;
         this->lineTypeEnum = No_Line;
-
-
 
         QGraphicsScene::mousePressEvent(event);
     }
@@ -262,7 +258,7 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         {
             // set the zValue of the newly dropped item to 1 more than the top item where it was dropped
             // do not alter the zValue of already present items (preserves any stacking)
-            if (lastItem)
+            if(lastItem)
             {
                 lastItem->setZValue(scene_items.at(index)->zValue()+1);
             }
@@ -275,7 +271,7 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         indexEnd = sceneItemAt(tempLine->line().p2());
 
         removeItem(tempLine);
-        delete tempLine;
+        //delete tempLine;
         if(indexStart == indexEnd || indexStart < 0 || indexEnd < 0)
         {
             // do nothing
@@ -306,9 +302,34 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
             {
                 //make new solid line + ah in here, just like above
                 //place code similar to above in paint function
+                //solidline *newLine = new solidline(initRefObj, finRefObj, 0, 0);
+                //this->addItem(newLine);
+                //newLine->setZValue(-1);
+
+                //filledAH *newAH = new filledAH(newLine->findIntersection(finRefObj, QLineF(initRefObj->pos(), finRefObj->pos())), initRefObj, 0, 0);
+                //this->addItem(newAH);
+                solidlineSAH *newLine = new solidlineSAH(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Solid_Square_Line)
+            {
+                //Dev note - memory leak here? Want to test adding this as a parameter,
+                //and then explicitly deleting to obj in dragscene's destructor to see effects on valgrind
+                //in both situations
+                solidsqline *newLine = new solidsqline(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Dotted_Square_Line)
+            {
+                dottedsqline *newLine = new dottedsqline(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                newLine->setZValue(-1);
             }
            // newLine->updatePosition();
         }
+        delete tempLine;
         tempLine = 0;
     }
     // update/redraw the marker boxes of all item in the dragscene
@@ -316,7 +337,7 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     {
         scene_items.at(i)->paintMarkerBoxes();
     }
-    toolbar->canvasSync();
+    ////toolbar->canvasSync();
     QGraphicsScene::mouseReleaseEvent(event);
 }
 
@@ -360,5 +381,3 @@ void DragScene::testAction()
     // use as needed
 
 }
-
-
