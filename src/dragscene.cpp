@@ -74,9 +74,26 @@ int DragScene::sceneItemAt(QPointF pos)
 
 void DragScene::deleteItem(Icon* item)
 {
+
+    lineCreate = false;
+    sceneCreate = false;
+    QList<int> lineRemovalList;
+    for(int i = 0; i < scene_lines.size(); i++)
+    {
+        if(scene_lines.at(i)->sourceReferenceObj()->getID() == item->getID() || scene_lines.at(i)->destinationReferenceObj()->getID() == item->getID())
+        {
+            scene_lines.at(i)->setParentItem(item);
+            lineRemovalList.append(i);
+        }
+    }
     scene_items.removeOne(item);
     this->removeItem(item);
+    for(int i = 0; i < lineRemovalList.size(); i++)
+    {
+        scene_lines.removeAt(lineRemovalList.at(i));
+    }
     delete item;
+
 }
 
 /****************************************************************
@@ -185,7 +202,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         }
         case s_Note:
         {
-            newItem = new Note();
+            //newItem = new Note();
             break;
         }
         case s_ScenarioStart:
@@ -262,6 +279,11 @@ void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  ***************************************************************/
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+    if(m_ignoreReleaseEvent)
+    {
+        m_ignoreReleaseEvent = false;
+        return;
+    }
     Icon* lastItem = NULL;
     // item currently being dragged has a state of 2, the last item clicked has a state of 1, everything else has state 0
     for(int i = 0; i < scene_items.size(); i++)
@@ -324,12 +346,14 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
             {
                 solidline *newLine = new solidline(initRefObj, finRefObj, 0, 0);
                 this->addItem(newLine);
+                this->scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
             else if(lineTypeEnum == Dotted_Line)
             {
                 dottedline *newLine = new dottedline(initRefObj, finRefObj, 0, 0);
                 this->addItem(newLine);
+                this->scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
             else if(lineTypeEnum == Solid_Line_SAH)
