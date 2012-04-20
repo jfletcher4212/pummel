@@ -3,6 +3,9 @@
 solidsqline::solidsqline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
     :lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
 {
+    parent = 0;
+    scene = 0;
+    myLineType = Solid_Square_Line;
 }
 
 solidsqline::~solidsqline()
@@ -34,8 +37,6 @@ void solidsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 
     QLineF tempAngleLine(point1, point4);
     this->setLine(tempAngleLine);
-
-
 
     qreal angle = line().angle();
 

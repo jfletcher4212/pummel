@@ -4,7 +4,7 @@
 #include "basiclineobject.h"
 #include <QPolygonF>
 
-enum LineType {No_Line, Solid_Line, Dotted_Line, Solid_Line_SAH, Solid_Square_Line, Dotted_Square_Line};
+enum LineType {No_Line, Solid_Line, Dotted_Line, Solid_Line_SAH, Solid_Square_Line, Dotted_Square_Line, Self_Ref_Line};
 
 class lineBody : public BasicLineObject
 {

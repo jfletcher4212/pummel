@@ -58,6 +58,8 @@ public slots:
     void addEllipse();
     void addRoundedSquare();
     void addNote();
+    void addScenarioStart();
+    void addScenarioEnd();
     void addNone();
 
     void addNoLine();
@@ -66,6 +68,7 @@ public slots:
     void addSolidLineAH();
     void addSolidSQLine();
     void addDottedSQLine();
+    void addSelfRefLine();
 
     void gridOn();
     void gridOff();
@@ -89,6 +92,8 @@ private:
     QAction *addClassBoxAct;
     QAction *addEllipseAct;
     QAction *addRoundedSquareAct;
+    QAction *addScenarioStartAct;
+    QAction *addScenarioEndAct;
     QAction *addNoteAct;
 
     QMenu *lineMenu;
@@ -99,6 +104,7 @@ private:
     QAction *addSolidLineAHAct;
     QAction *addSolidSQLineAct;
     QAction *addDottedSQLineAct;
+    QAction *addSelfRefLineAct;
 
     QMenu *gridMenu;
     QActionGroup *gridOnOffToggleGroup;
