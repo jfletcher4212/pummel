@@ -60,9 +60,9 @@ void Xml_io::write_xml()
 	saver.writeStartElement("icon");
 	saver.writeTextElement("width", QString::number(m_items[i]->getWidth()));
 	saver.writeTextElement("height", QString::number(m_items[i]->getHeight()));
-	//saver.writeTextElement("x_pos", QString::number(m_items[i]->get_xPos()));
-	//saver.writeTextElement("y_pos", QString::number(m_items[i]->get_yPos()));
-	//saver.writeTextElement("label", m_items[i]->getLabel());
+	saver.writeTextElement("x_pos", QString::number(m_items[i]->get_xPos()));
+	saver.writeTextElement("y_pos", QString::number(m_items[i]->get_yPos()));
+	saver.writeTextElement("label", m_items[i]->getLabel());
 	saver.writeTextElement("shapetype", m_items[i]->reportShapetype());
 	saver.writeEndElement();
     }

@@ -20,6 +20,8 @@ protected:
 
     int m_width;
     int m_height;
+    int m_xPos;
+    int m_yPos
     static int m_next_id;
     int m_id;
 
@@ -40,6 +42,8 @@ public:
     // Accessors
     int getWidth();
     int getHeight();
+    int get_xPos() { return m_xPos; }
+    int get_yPos() { return m_yPos; }
     int getState();
     MarkerBox* getMarkerBox(int x);
     QString reportShapetype();
@@ -54,6 +58,7 @@ public:
     void setState(int x);
     void setSize(int newXSize, int newYSize);  // simple accessor and mutator methods for the size
     void setText(QString input);		//change the value of m_labelbox
+    void set_Pos(int x, int y) { m_xPos = x; m_yPos = y; }
 
     // Utility
     void paintMarkerBoxes();
