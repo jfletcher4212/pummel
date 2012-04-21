@@ -5,6 +5,12 @@
 #include <QDebug>
 #include "actor.h"
 #include "ellipse.h"
+#include "note.h"
+#include "roundedsquare.h"
+#include "scenarioend.h"
+#include "scenariostate.h"
+#include "scenariostart.h"
+#include "scenariostart.h"
 
 
 using namespace std;
@@ -20,10 +26,10 @@ Xml_io::Xml_io()
 
 Xml_io::Xml_io(QList<Icon*> icon_list, QString filename/*, QString diagram_type*/ )
 {
-  m_items = icon_list;
+    m_items = icon_list;
 
-  m_filename = filename;
-  //m_diagram_type = diagram_type;
+    m_filename = filename;
+    //m_diagram_type = diagram_type;
 }
 
 Xml_io::~Xml_io()
@@ -47,8 +53,6 @@ void Xml_io::write_xml()
     saver.writeStartElement(m_filename);
     //saver.writeStartElement(m_diagram_type);
     
-    //Icon(int width, int height, int id, int label, int shapetype);
-    
     for ( int i = 0; i < m_items.length(); i++ )
     {
 	//QString valueAsString = QString::number(valueAsDouble);
@@ -56,8 +60,8 @@ void Xml_io::write_xml()
 	saver.writeStartElement("icon");
 	saver.writeTextElement("width", QString::number(m_items[i]->getWidth()));
 	saver.writeTextElement("height", QString::number(m_items[i]->getHeight()));
-	//saver.writeTextElement("id", QString::number(m_items[i]->get_xPos()));
-	//saver.writeTextElement("id", QString::number(m_items[i]->get_yPos()));
+	//saver.writeTextElement("x_pos", QString::number(m_items[i]->get_xPos()));
+	//saver.writeTextElement("y_pos", QString::number(m_items[i]->get_yPos()));
 	//saver.writeTextElement("label", m_items[i]->getLabel());
 	saver.writeTextElement("shapetype", m_items[i]->reportShapetype());
 	saver.writeEndElement();
@@ -77,7 +81,6 @@ void Xml_io::parse_xml()
     QXmlStreamReader reader(&infile);
 
     QList<Icon*> icons;
-    //QList< QMap<QString,QString> > icons;
     
     while ( ! reader.atEnd() && ! reader.hasError() )
     {
@@ -99,17 +102,17 @@ void Xml_io::parse_xml()
 	    if ( reader.name() == "icon" )
 	    {
 		//qDebug() << reader.name();
-		//icons.append(parse_icon(reader));
-		parse_icon(reader);
+		icons.append(parse_icon(reader));
+		//parse_icon(reader);
 	    }
-	    
+		
 	}
     }
     
-//    return icons;
+    //    return icons;
 }
 
-void Xml_io::parse_icon(QXmlStreamReader &reader)
+Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
 {
     int width;
     int height;
@@ -117,8 +120,6 @@ void Xml_io::parse_icon(QXmlStreamReader &reader)
     int y_pos;
     QString label;
     QString type;
-    
-    Icon *ret;
     
     // next element
     reader.readNext();
@@ -154,11 +155,11 @@ void Xml_io::parse_icon(QXmlStreamReader &reader)
 		y_pos = reader.text().toString().toInt();
 	    }
 
-	    //if( reader.name() == "label")
-	    //{
-	    //	reader.readNext();
-	    //	label = reader.text().toString();
-	    //}
+	    if( reader.name() == "label")
+	    {
+	    	reader.readNext();
+	    	label = reader.text().toString();
+	    }
 
 	    if( reader.name() == "shapetype")
 	    {
@@ -167,64 +168,47 @@ void Xml_io::parse_icon(QXmlStreamReader &reader)
 	    }
 	}
     }
-    /*
-    if ( type == "Ellipse") 
-    {
-	return new Ellipse(width, height, x_pos, y_pos, label);
-    }
-    if ( type == "Actor" )
-    {
-	return new actor(width, height, x_pos, y_pos, label);
-    }
-    //if ( type == "ClassBox" )
-    //{
-    //return new ClassBox(width, height, x_pos, y_pos, label);
-    //}
-    if ( type == "RoundedSquare" )
-    {
-	return new roundedSquare(width, height, x_pos, y_pos, label);
-    }
-    if ( type == "note" )
-    {
-	return new note(width, height, x_pos, y_pos, label);
-    }
-    */
-    //return ret;
+    
+    return make_icon(type, width, height, x_pos, y_pos, label);
 }
 
-QMap<QString, QString> Xml_io::parsePerson(QXmlStreamReader& xml)
+Icon * Xml_io::make_icon(QString type, int width, int height, int x_pos, int y_pos, QString label)
 {
-    QMap<QString, QString> icon;
-  
-    if ( ! (xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "coord") ) 
-	return icon;
-  
-    QXmlStreamAttributes attributes = xml.attributes();
-    /*
-    // this is for the object id
-    if(attributes.hasAttribute("icon_id")) 
+    Icon *ret = NULL;
+    
+    if ( type == "Ellipse") 
     {
-    person["icon_id"] = attributes.value("icon_id").toString();
+	ret = new Ellipse(0, width, height, x_pos, y_pos, label);
     }
-    xml.readNext();
-    */
-    /*
-    while( !(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "coord") )
+    else if ( type == "Actor" )
     {
-	if( xml.tokenType() == QXmlStreamReader::StartElement) 
-	{
-	    if( xml.name() == "x_coord" ) 
-	    {
-		this->addElementDataToMap(xml, icon);
-	    }
-	  
-	    if( xml.name() == "y_coord" ) 
-	    {
-		this->addElementDataToMap(xml, icon);
-	    }
-	}
-	xml.readNext();
+	ret = new Actor(0, width, height, x_pos, y_pos, label);
     }
-    */
-    return icon;
+    //else if ( type == "ClassBox" )
+    //{
+    //ret = new ClassBox(width, height, x_pos, y_pos, label);
+    //}
+    //else if ( type == "RoundedSquare" )
+    //{
+    //	ret = new roundedSquare(width, height, x_pos, y_pos, label);
+    //}
+    //else if ( type == "Note" )
+    //{
+//	ret = new note(width, height, x_pos, y_pos, label);
+    //}
+    //else if ( type == "ScenarioEnd" )
+    //{
+//	ret = new ScenarioEnd(width, height, x_pos, y_pos, label);
+    //}
+    //else if ( type == "ScenarioState" )
+    //{
+//	ret = new ScenarioState(width, height, x_pos, y_pos, label);
+    //}
+    //else if ( type == "ScenarioStart" )
+    //{
+//	ret = new ScenarioStart(width, height, x_pos, y_pos, label);
+    //}
+    
+    return ret;
 }
+
