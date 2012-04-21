@@ -139,12 +139,12 @@ void MainWindow::deleteObject()
  * This will only be a problem if someone makes huge amounts of Tabs (maybe... I don't know how well QList would handle it)
  * But it has been tested to handle about 20 tabs, any more than that seems overkill
  */
-
+/*Creates a new tab with a default 'untitled' filename*/
 void MainWindow::newTab()
 {
     int i = tabWidget->count();
     char* s = (char*)malloc(10*sizeof(char));
-    sprintf(s, "Tab %d", next_tab_num);
+    sprintf(s, "untitled" );
     next_tab_num++;
     QString q = QString(s);
     DrawArea *newCanvas = new DrawArea;
@@ -155,22 +155,60 @@ void MainWindow::newTab()
     free(s);
 }
 /*end*/
-
+/* Creates a new tab with the specified filename*/
+void MainWindow::newTab(QString filename)
+{
+    int i = tabWidget->count();
+    char* s = (char*)malloc(10*sizeof(char));
+    sprintf(s, "untitled" );
+    next_tab_num++;
+    QString q = QString(s);
+    DrawArea *newCanvas = new DrawArea;
+    canvas.append(newCanvas);
+    tabWidget->insertTab(i, newCanvas, filename);
+    tabWidget->setCurrentIndex(i);
+    tabWidget->widget(i)->setVisible(true);
+    free(s);
+}
+/*
+ * If a filename has been specified, saveFile will
+ * automatically save to that filename. Otherwise,
+ * it will call SaveAsFile to get a filename
+ */
+void MainWindow::saveFile()
+{
+    QString filename = tabWidget->tabText(tabWidget->currentIndex());
+    if(filename == "untitled")
+    {
+        saveAsFile();
+    }
+    else
+    {
+    //writer.write_xml();
+    }
+}
 void MainWindow::saveAsFile()
 {
     // dialog box for user to enter filename
     QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
-    //Xml_io writer(icon_list, filename/*, diagram_type*/);
-    
-    // write the file
-    //writer.write_xml();
-    
+    if(filename == "")
+    {
+        cout << "No filename given" << endl;
+    }
+    else
+    {
+        //Xml_io writer(icon_list, filename/*, diagram_type*/);
 
-    // strip full path off filename for display
-    int idx = filename.lastIndexOf("/");
-    filename.remove(0, idx+1);
+        // write the file
+        //writer.write_xml();
 
-    tabWidget->setTabText(tabWidget->currentIndex(), filename );
+
+        // strip full path off filename for display
+        int idx = filename.lastIndexOf("/");
+        filename.remove(0, idx+1);
+
+        tabWidget->setTabText(tabWidget->currentIndex(), filename );
+    }
 }
 
 void MainWindow::openFile()
@@ -260,13 +298,16 @@ void MainWindow::createActions()
     openAct = new QAction(tr("Close Tab"), this);
     connect(openAct, SIGNAL(triggered()), this, SLOT(closeTab()));
 
-    saveAct = new QAction(tr("Save as..."), this);
-    connect(saveAct, SIGNAL(triggered()), this, SLOT(saveAsFile()));
+    saveAct = new QAction(tr("Save File"), this);
+    connect(saveAct, SIGNAL(triggered()), this, SLOT(saveFile()));
+
+    saveAsAct = new QAction(tr("Save File as..."), this);
+    connect(saveAsAct, SIGNAL(triggered()), this, SLOT(saveAsFile()));
 
     printAct = new QAction(tr("Open"), this);
     connect(printAct, SIGNAL(triggered()), this, SLOT(openFile()));
 
-    exitAct = new QAction(tr("Activity"), this);
+    exitAct = new QAction(tr("Exit"), this);
 
     undoAct = new QAction(tr("&Undo"), this);
     undoAct->setShortcuts(QKeySequence::Undo);
@@ -378,6 +419,7 @@ void MainWindow::createMenus()
     fileMenu->addAction(newAct);
     fileMenu->addAction(openAct);
     fileMenu->addAction(saveAct);
+    fileMenu->addAction(saveAsAct);
     fileMenu->addAction(printAct);
     fileMenu->addAction(exitAct);
 
