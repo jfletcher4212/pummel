@@ -184,7 +184,8 @@ void MainWindow::saveFile()
     }
     else
     {
-    //writer.write_xml();
+	Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename/*, diagram_type*/);
+	writer.write_xml();
     }
 }
 void MainWindow::saveAsFile()
@@ -197,17 +198,14 @@ void MainWindow::saveAsFile()
     }
     else
     {
-        //Xml_io writer(icon_list, filename/*, diagram_type*/);
+        Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename/*, diagram_type*/);
 
         // write the file
-        //writer.write_xml();
-
-
-        // strip full path off filename for display
-        int idx = filename.lastIndexOf("/");
-        filename.remove(0, idx+1);
-
-        tabWidget->setTabText(tabWidget->currentIndex(), filename );
+	//something = canvas.getDiagramType();
+        writer.write_xml();
+	
+	// make the tab
+	tabWidget->setTabText(tabWidget->currentIndex(), filename );
     }
 }
 
@@ -216,16 +214,13 @@ void MainWindow::openFile()
     QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
     newTab();
     
-    // strip full path off filename for display
-    int idx = filename.lastIndexOf("/");
-    filename.remove(0, idx+1);
+    Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename/*, diagram_type*/);
     
+    // parse the xml
+    writer.parse_xml();
+    
+    // make the tab
     tabWidget->setTabText(tabWidget->currentIndex(), filename);
-    /* new tab
-     * set new tab name to filename
-     * load in stuff
-     * profit
-     * */
 }
 
 void MainWindow::closeTab()
