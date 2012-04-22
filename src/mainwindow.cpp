@@ -18,7 +18,7 @@ MainWindow::MainWindow()
     setCentralWidget(widget);
 
     QIcon thumbnail;                    //this sets up an image for the upper corner
-    thumbnail.addFile("icons/viking.png"); //while its running
+    //thumbnail.addFile("icons/viking.png"); //while its running
 
     toolbar = new Toolbar;
     layout = new BorderLayout;
@@ -100,7 +100,7 @@ void MainWindow::cut()
     // infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
 
     // Testing for connections below, I just needed something to click, will delete all of it
-    canvas.at(tabWidget->currentIndex())->testAction();
+    //canvas.at(tabWidget->currentIndex())->testAction();
 
 }
 
