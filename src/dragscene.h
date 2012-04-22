@@ -55,15 +55,11 @@ public:
     void deleteItem(Icon* item);
     int sceneItemAt(QPointF pos);
 
+    // file i
+    void render_icons(QList<Icon*> icons);
+    
     // Testing Fucntions
     void testAction();
-
-    /*
-    // file io
-    void writeXML(QString *filename);
-    void readXML(){};
-    */
-
 
 protected:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);

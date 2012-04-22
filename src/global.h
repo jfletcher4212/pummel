@@ -1,5 +1,6 @@
-#ifndef GLOBAL_H
-#define GLOBAL_H
+#ifndef __GLOBAL_H__
+#define __GLOBAL_H__
+
 #include "drawarea.h"
 #include "tabmanager.h"
 #include "toolbar.h"
@@ -7,4 +8,4 @@
 extern QList<DrawArea*> canvas;
 extern TabManager *tabWidget;
 
-#endif // GLOBAL_H
+#endif // __GLOBAL_H__

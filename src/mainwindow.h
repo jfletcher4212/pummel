@@ -34,7 +34,7 @@ private slots:
     void paste();
     void deleteObject();
     void newTab();
-    void newTab(QString filename);
+    void newTab(QString filename, QList<Icon*> tmplist, QString d_type);
     void saveAsFile();
     void saveFile();
     void openFile();

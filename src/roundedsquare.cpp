@@ -175,8 +175,6 @@ QString RoundedSquare::get_all()
 {
     QString delim = XML_DELIM;
     
-    qDebug() << m_labelBox->toPlainText().append(delim).append(m_memberBox->toPlainText());
-    
     //                label      +     delimiter    +        members
     return m_labelBox->toPlainText().append(delim).append(m_memberBox->toPlainText());
 }

@@ -11,6 +11,7 @@
 #include <QGraphicsSceneDragDropEvent>
 #include <QXmlStreamWriter>
 #include <QIODevice>
+#include <QWidget>
 
 extern Toolbar *toolbar;
 
@@ -414,4 +415,26 @@ void DragScene::testAction()
 {
     // use as needed
 
+}
+
+void DragScene::render_icons(QList<Icon*> icons)
+{
+    qDebug() << "start rendering.....";
+    for ( int i = 0; i < icons.length(); i++ )
+    {
+	qDebug() << "in the loop....";
+	if (icons[i] != NULL)
+	{
+	    qDebug() << "in the if....";
+	    qDebug() << icons[i]->get_all();
+
+	    this->addItem(icons[i]);
+	    
+	    // add new item to the custom list
+	    scene_items.append(icons[i]);
+	}
+    }
+    
+    qDebug() << "updating.....";
+    update();
 }

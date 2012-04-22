@@ -4,6 +4,7 @@
 #include <QString>
 #include <QDebug>
 #include "actor.h"
+#include "classbox.h"
 #include "ellipse.h"
 #include "note.h"
 #include "roundedsquare.h"
@@ -21,23 +22,47 @@ Xml_io::Xml_io()
     //m_items = NULL;
   
     m_filename = "";
-    //m_diagram_type = "";
+    m_diagram_type = "";
 }
 
-Xml_io::Xml_io(QList<Icon*> icon_list, QString filename/*, QString diagram_type*/ )
+Xml_io::Xml_io(QList<Icon*> icon_list, /*QList<BasicLineObject*> line_list,*/ QString filename, DiagramType diagram_type)
 {
     m_items = icon_list;
+    ///m_lines = line_list;
 
     m_filename = filename;
-    //m_diagram_type = diagram_type;
+    m_diagram_type = choose_type(diagram_type);
 }
 
 Xml_io::~Xml_io()
 {
 }
 
+QString Xml_io::choose_type(DiagramType d_type)
+{
+    if ( d_type == (DiagramType)Class) 
+    {
+	return (QString)"Class";
+    }
+    if ( d_type == (DiagramType)StateChart) 
+    {
+	return (QString)"StateChart";
+    }
+    if ( d_type == (DiagramType)Sequence) 
+    {
+	return (QString)"Sequence";
+    }
+    if ( d_type == (DiagramType)UseCase) 
+    {
+	return (QString)"UseCase";
+    }
+    
+    return (QString)"";
+}
+
 void Xml_io::write_xml()
 {
+    int i;
     int idx;
     QFile savefile ( m_filename );
     savefile.open(QIODevice::WriteOnly);
@@ -51,9 +76,11 @@ void Xml_io::write_xml()
     
     saver.writeStartDocument();
     saver.writeStartElement(m_filename);
-    //saver.writeStartElement(m_diagram_type);
     
-    for ( int i = 0; i < m_items.length(); i++ )
+    // diagram type
+    saver.writeTextElement("diagram_type", m_diagram_type);
+    
+    for ( i = 0; i < m_items.length(); i++ )
     {
 	//QString valueAsString = QString::number(valueAsDouble);
 	// wrapper tags coule be the object's individual ID #
@@ -66,6 +93,18 @@ void Xml_io::write_xml()
 	saver.writeTextElement("shapetype", m_items[i]->reportShapetype());
 	saver.writeEndElement();
     }
+    
+    /*
+    for ( i = 0; i < m_lines.length(); i++ )
+    {
+	saver.writeStartElement("line");
+	// write line type
+	// write begin object index
+	// write end object index
+	// write arrowhead info
+	saver.writeEndElement();
+    }
+    */
     
     saver.writeEndDocument();
     saver.setAutoFormatting(true);
@@ -99,6 +138,12 @@ void Xml_io::parse_xml()
 		continue;
 	    }
 	    
+	    if ( reader.name() == "diagram_type" )
+	    {
+		reader.readNext();
+		m_diagram_type = reader.text().toString();
+	    }
+	    
 	    if ( reader.name() == "icon" )
 	    {
 		//qDebug() << reader.name();
@@ -116,7 +161,9 @@ void Xml_io::parse_xml()
 	}
     }
     
-    //    return icons;
+    qDebug() << "returning icons";
+    m_items = icons;
+    ///m_lines = lines;
 }
 
 Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
@@ -195,26 +242,26 @@ Icon * Xml_io::make_icon(QString type, int width, int height, int x_pos, int y_p
     {
     	ret = new RoundedSquare(0, width, height, x_pos, y_pos, label);
     }
-    //else if ( type == "ClassBox" )
-    //{
-    //ret = new ClassBox(width, height, x_pos, y_pos, label);
-    //}
-    //else if ( type == "Note" )
-    //{
-//	ret = new note(width, height, x_pos, y_pos, label);
-    //}
-    //else if ( type == "ScenarioEnd" )
-    //{
-//	ret = new ScenarioEnd(width, height, x_pos, y_pos, label);
-    //}
-    //else if ( type == "ScenarioState" )
-    //{
-//	ret = new ScenarioState(width, height, x_pos, y_pos, label);
-    //}
-    //else if ( type == "ScenarioStart" )
-    //{
-//	ret = new ScenarioStart(width, height, x_pos, y_pos, label);
-    //}
+    else if ( type == "ClassBox" )
+    {
+	ret = new ClassBox(0, width, height, x_pos, y_pos, label);
+    }
+    else if ( type == "Note" )
+    {
+	ret = new Note(0, width, height, x_pos, y_pos);
+    }
+    else if ( type == "ScenarioEnd" )
+    {
+	ret = new ScenarioEnd(0, width, height, x_pos, y_pos);
+    }
+    else if ( type == "ScenarioState" )
+    {
+	ret = new ScenarioState(0, width, height, x_pos, y_pos, label);
+    }
+    else if ( type == "ScenarioStart" )
+    {
+	ret = new ScenarioStart(0, width, height, x_pos, y_pos);
+    }
     
     return ret;
 }

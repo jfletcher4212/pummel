@@ -30,9 +30,10 @@ ClassBox::ClassBox()
 
 }
 
-ClassBox::ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label, QString members, QString methods)
+ClassBox::ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString members)
 {
-
+    QStringList tmp = split_all(members);
+    
     this->setPos(xpos,ypos);
     m_width = xsize;
     m_height = ysize;
@@ -46,14 +47,16 @@ ClassBox::ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int yp
     m_methodBox->setParentItem(this);
     m_methodBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
+    
+    
     //default text
-    m_label = label;
-    m_members = members;
-    m_methods = methods;
+    m_label = tmp[0];
+    m_members = tmp[1];
+    m_methods = tmp[2];
 
-    m_labelBox->setPlainText(label);
-    m_memberBox->setPlainText(members);
-    m_methodBox->setPlainText(methods);
+    m_labelBox->setPlainText(m_label);
+    m_memberBox->setPlainText(m_members);
+    m_methodBox->setPlainText(m_methods);
 
     //set m_memberList's position below m_labelBox, and m_methodList below m_memberList
     m_labelBox->setPos(this->pos());

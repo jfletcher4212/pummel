@@ -156,14 +156,20 @@ void MainWindow::newTab()
 }
 /*end*/
 /* Creates a new tab with the specified filename*/
-void MainWindow::newTab(QString filename)
+void MainWindow::newTab(QString filename, QList<Icon*> tmplist, QString d_type)
 {
     int i = tabWidget->count();
     char* s = (char*)malloc(10*sizeof(char));
     sprintf(s, "untitled" );
     next_tab_num++;
     QString q = QString(s);
-    DrawArea *newCanvas = new DrawArea;
+    
+    qDebug() << "making new drawarea";
+    DrawArea *newCanvas = new DrawArea(0, 250, 250, tmplist, d_type);
+    
+    //newCanvas->render_icons(tmplist);
+    //newCanvas->render_lines(tmplist[1]);
+    
     canvas.append(newCanvas);
     tabWidget->insertTab(i, newCanvas, filename);
     tabWidget->setCurrentIndex(i);
@@ -184,7 +190,7 @@ void MainWindow::saveFile()
     }
     else
     {
-	Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename/*, diagram_type*/);
+	Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename, (DiagramType)canvas.at(tabWidget->currentIndex())->getDiagramType());
 	writer.write_xml();
     }
 }
@@ -198,8 +204,10 @@ void MainWindow::saveAsFile()
     }
     else
     {
-        Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename/*, diagram_type*/);
-
+	DrawArea *tmpscene = canvas.at(tabWidget->currentIndex());
+        Xml_io writer(tmpscene->getObjects(), /*tmpscene->getLines(),*/ filename, (DiagramType)tmpscene->getDiagramType());
+	//delete tmpscene;
+	
         // write the file
 	//something = canvas.getDiagramType();
         writer.write_xml();
@@ -212,15 +220,20 @@ void MainWindow::saveAsFile()
 void MainWindow::openFile()
 {
     QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
-    newTab();
     
-    Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename/*, diagram_type*/);
-    
-    // parse the xml
-    writer.parse_xml();
-    
-    // make the tab
-    tabWidget->setTabText(tabWidget->currentIndex(), filename);
+    if( filename != "" )
+    {
+	Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename, (DiagramType)-1);
+	
+	// parse the xml
+	writer.parse_xml();
+	QList<Icon*> icon_list = writer.get_items();
+	///QList<BasicLineObject*> line_list = writer.get_lines();
+	
+	// make the tab
+	newTab(filename, icon_list, /*line_list,*/ writer.get_diagram_type());
+	tabWidget->setTabText(tabWidget->currentIndex(), filename);
+    }
 }
 
 void MainWindow::closeTab()
