@@ -49,7 +49,8 @@ MainWindow::MainWindow()
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 {
     canvas.at(tabWidget->currentIndex())->setSceneCreate(false);
-    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
+    contextEventPos = canvas.at(tabWidget->currentIndex())->view->mapToScene(event->pos());
+
     QMenu menu(this);
     menu.addAction(cutAct);
     menu.addAction(copyAct);
@@ -115,6 +116,20 @@ void MainWindow::paste()
 
 void MainWindow::deleteObject()
 {
+
+    printf("clicked at %d, %d\n", (int)contextEventPos.x(), (int)contextEventPos.y());
+    printf("found item: %d\n", canvas.at(tabWidget->currentIndex())->scene->sceneItemAt(contextEventPos));
+    if(canvas.at(tabWidget->currentIndex())->scene->sceneItemAt(contextEventPos) < 0)
+    {
+        return;
+    }
+    else
+    {
+        canvas.at(tabWidget->currentIndex())->scene->deleteItem(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(canvas.at(tabWidget->currentIndex())->scene->sceneItemAt(contextEventPos)));
+    }
+
+
+    /*
     printf("items: %d\n", canvas.at(tabWidget->currentIndex())->scene->getObjectList().size());
     if(canvas.at(tabWidget->currentIndex())->scene->getObjectList().size() > 0){
         Icon* item;
@@ -128,6 +143,7 @@ void MainWindow::deleteObject()
         canvas.at(tabWidget->currentIndex())->scene->deleteItem(item);
         printf("items: %d\n", canvas.at(tabWidget->currentIndex())->scene->getObjectList().size());
     }
+    */
 }
 
 /*

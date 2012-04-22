@@ -43,12 +43,12 @@ public:
     void setDiagramType(DiagramType a){type = a;}
     void setSceneShapeCreationType(ShapeCreationType newType){scene->setShapeCreationType(newType);}
     DragScene *scene;
+    DragView *view;
 
     // Testing
     void testAction(){scene->testAction();}
 
 private:
-    DragView *view;
     QHBoxLayout *layout;
     DiagramType type;
 

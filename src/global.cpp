@@ -5,4 +5,4 @@
 QList<DrawArea*> canvas;
 TabManager *tabWidget;
 Toolbar *toolbar;
-
+QPointF contextEventPos;
