@@ -6,5 +6,6 @@
 
 extern QList<DrawArea*> canvas;
 extern TabManager *tabWidget;
+extern QPointF contextEventPos;
 
 #endif // GLOBAL_H

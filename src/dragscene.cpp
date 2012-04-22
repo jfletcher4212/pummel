@@ -86,14 +86,13 @@ void DragScene::deleteItem(Icon* item)
             lineRemovalList.append(i);
         }
     }
-    scene_items.removeOne(item);
-    this->removeItem(item);
     for(int i = 0; i < lineRemovalList.size(); i++)
     {
         scene_lines.removeAt(lineRemovalList.at(i));
     }
+    scene_items.removeOne(item);
+    this->removeItem(item);
     delete item;
-
 }
 
 /****************************************************************
