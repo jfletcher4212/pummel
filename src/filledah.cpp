@@ -2,8 +2,10 @@
 
 const qreal Pi = 3.14;
 
-filledAH::filledAH(QGraphicsLineItem *newLine, QGraphicsItem *parent, QGraphicsScene *scene) : arrowhead(newLine, parent, scene)
+filledAH::filledAH(QGraphicsLineItem *newLine, QGraphicsItem *parent, QGraphicsScene *scene) : arrowhead(fillerPoint, fillerItem, parent, scene)
 {
+    //fillerPoint = 0;
+    fillerItem = 0;
     parent = 0;
     scene = 0;
     myAHType = Solid_AH;

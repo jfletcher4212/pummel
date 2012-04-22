@@ -146,6 +146,9 @@ void Icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     pos.ry() -= 0.5 * m_height;
     update();
     this->setPos(pos);
+    
+    m_xPos = pos.rx();
+    m_yPos = pos.ry();
 }
 
 void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
@@ -173,7 +176,8 @@ void Icon::setPolygon()
 
 void Icon::setText(QString input)
 {
-    m_labelBox->setPlainText(input);
+    m_label = input;
+    m_labelBox->setPlainText(m_label);
 }
 
 int Icon::getState()
@@ -198,5 +202,17 @@ void Icon::setMarkers(MarkerBox* a, MarkerBox* b, MarkerBox* c, MarkerBox* d)
     m_markers[2] = c;
     m_markers[3] = d;
 
+}
+
+QString Icon::get_all()
+{
+    return m_labelBox->toPlainText();
+}
+
+QStringList Icon::split_all(QString value)
+{
+    QString delim = "::+::";
+    
+    return value.split(delim);
 }
 

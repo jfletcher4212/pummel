@@ -29,10 +29,10 @@ RoundedSquare::RoundedSquare(QGraphicsItem *parent) :Icon(parent)
 
 }
 
-RoundedSquare::RoundedSquare(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label, QString members) : Icon(parent)
+RoundedSquare::RoundedSquare(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString members) : Icon(parent)
 {
-
-
+    QStringList tmp = split_all(members);
+    
     m_width = xsize;
     m_height = ysize;
     m_shapetype = "RoundedSquare";
@@ -46,10 +46,10 @@ RoundedSquare::RoundedSquare(QGraphicsItem *parent, int xsize, int ysize, int xp
     m_memberBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
     //default text
-    m_label = label;
-    m_members = members;
-    m_labelBox->setPlainText(label);
-    m_memberBox->setPlainText(members);
+    m_label = tmp[0];
+    m_members = tmp[1];
+    m_labelBox->setPlainText(m_label);
+    m_memberBox->setPlainText(m_members);
 
     arrangeBoxes();
     //show text boxes
@@ -169,4 +169,21 @@ void RoundedSquare::setLabel(QString value)
 void RoundedSquare::setMembers(QString value)
 {
     m_memberBox->setPlainText(value);
+}
+
+QString RoundedSquare::get_all()
+{
+    QString delim = XML_DELIM;
+    
+    qDebug() << m_labelBox->toPlainText().append(delim).append(m_memberBox->toPlainText());
+    
+    //                label      +     delimiter    +        members
+    return m_labelBox->toPlainText().append(delim).append(m_memberBox->toPlainText());
+}
+
+QStringList RoundedSquare::split_all(QString value)
+{
+    QString delim = XML_DELIM;
+    
+    return value.split(delim);
 }
