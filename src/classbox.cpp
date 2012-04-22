@@ -227,3 +227,19 @@ void ClassBox::setMethods(QString value)
 {
     m_methodBox->setPlainText(value);
 }
+
+QString ClassBox::get_all()
+{
+    QString delim = XML_DELIM;
+    
+    //                label      +     delimiter    +     members              +         delimiter   +          methods
+    return m_labelBox->toPlainText().append(delim).append(m_memberBox->toPlainText()).append(delim).append(m_methodBox->toPlainText());
+}
+
+QStringList ClassBox::split_all(QString value)
+{
+    QString delim = XML_DELIM;
+    
+    return value.split(delim);
+}
+
