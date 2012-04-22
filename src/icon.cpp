@@ -204,3 +204,15 @@ void Icon::setMarkers(MarkerBox* a, MarkerBox* b, MarkerBox* c, MarkerBox* d)
 
 }
 
+QString Icon::get_all()
+{
+    return m_labelBox->toPlainText();
+}
+
+QStringList Icon::split_all(QString value)
+{
+    QString delim = "::+::";
+    
+    return value.split(delim);
+}
+

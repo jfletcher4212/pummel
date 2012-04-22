@@ -9,6 +9,9 @@
 #include <QPointF>
 #include "markerbox.h"
 
+// delimiter for file i/o
+#define XML_DELIM "::+::"
+
 class Icon : public QGraphicsItem
 {
 protected:
@@ -21,7 +24,7 @@ protected:
     int m_width;
     int m_height;
     int m_xPos;
-    int m_yPos
+    int m_yPos;
     static int m_next_id;
     int m_id;
 
@@ -62,6 +65,10 @@ public:
 
     // Utility
     void paintMarkerBoxes();
+    
+    // file i/o accessors
+    virtual QString get_all();
+    virtual QStringList split_all(QString value);
 };
 
 #endif // __ICON_H__

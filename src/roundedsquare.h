@@ -28,10 +28,14 @@ protected:
 
 public:
     RoundedSquare(QGraphicsItem *parent = 0);
-    RoundedSquare(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label, QString members);
+    RoundedSquare(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString members);
     ~RoundedSquare();
     QString getLabel(), getMembers();
     void setLabel(QString), setMembers(QString);
+    
+    // file i/o accessors
+    QString get_all();
+    QStringList split_all(QString value);
 };
 
 #endif // ROUNDEDSQUARE_H
