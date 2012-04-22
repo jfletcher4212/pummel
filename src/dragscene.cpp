@@ -82,6 +82,7 @@ void DragScene::deleteItem(Icon* item)
     {
         if(scene_lines.at(i)->sourceReferenceObj()->getID() == item->getID() || scene_lines.at(i)->destinationReferenceObj()->getID() == item->getID())
         {
+            printf("found a line\n");
             scene_lines.at(i)->setParentItem(item);
             lineRemovalList.append(i);
         }
