@@ -18,7 +18,7 @@ MainWindow::MainWindow()
     setCentralWidget(widget);
 
     QIcon thumbnail;                    //this sets up an image for the upper corner
-    thumbnail.addFile("icons/viking.png"); //while its running
+    //thumbnail.addFile("icons/viking.png"); //while its running
 
     toolbar = new Toolbar;
     layout = new BorderLayout;
@@ -48,6 +48,9 @@ MainWindow::MainWindow()
 
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 {
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(false);
+    contextEventPos = canvas.at(tabWidget->currentIndex())->view->mapToScene(event->pos());
+
     QMenu menu(this);
     menu.addAction(cutAct);
     menu.addAction(copyAct);
@@ -97,7 +100,7 @@ void MainWindow::cut()
     // infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
 
     // Testing for connections below, I just needed something to click, will delete all of it
-    canvas.at(tabWidget->currentIndex())->testAction();
+    //canvas.at(tabWidget->currentIndex())->testAction();
 
 }
 
@@ -113,6 +116,20 @@ void MainWindow::paste()
 
 void MainWindow::deleteObject()
 {
+
+    printf("clicked at %d, %d\n", (int)contextEventPos.x(), (int)contextEventPos.y());
+    printf("found item: %d\n", canvas.at(tabWidget->currentIndex())->scene->sceneItemAt(contextEventPos));
+    if(canvas.at(tabWidget->currentIndex())->scene->sceneItemAt(contextEventPos) < 0)
+    {
+        return;
+    }
+    else
+    {
+        canvas.at(tabWidget->currentIndex())->scene->deleteItem(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(canvas.at(tabWidget->currentIndex())->scene->sceneItemAt(contextEventPos)));
+    }
+
+
+    /*
     printf("items: %d\n", canvas.at(tabWidget->currentIndex())->scene->getObjectList().size());
     if(canvas.at(tabWidget->currentIndex())->scene->getObjectList().size() > 0){
         Icon* item;
@@ -126,6 +143,7 @@ void MainWindow::deleteObject()
         canvas.at(tabWidget->currentIndex())->scene->deleteItem(item);
         printf("items: %d\n", canvas.at(tabWidget->currentIndex())->scene->getObjectList().size());
     }
+    */
 }
 
 /*
