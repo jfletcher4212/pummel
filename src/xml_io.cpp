@@ -62,7 +62,7 @@ void Xml_io::write_xml()
 	saver.writeTextElement("height", QString::number(m_items[i]->getHeight()));
 	saver.writeTextElement("x_pos", QString::number(m_items[i]->get_xPos()));
 	saver.writeTextElement("y_pos", QString::number(m_items[i]->get_yPos()));
-	saver.writeTextElement("label", m_items[i]->getLabel());
+	saver.writeTextElement("label", m_items[i]->get_all());
 	saver.writeTextElement("shapetype", m_items[i]->reportShapetype());
 	saver.writeEndElement();
     }
@@ -105,7 +105,14 @@ void Xml_io::parse_xml()
 		icons.append(parse_icon(reader));
 		//parse_icon(reader);
 	    }
-		
+	    /*
+	    if ( reader.name() == "line" )
+	    {
+		//qDebug() << reader.name();
+		lines.append(parse_line(reader));
+		//parse_icon(reader);
+	    }	    
+	    */
 	}
     }
     
@@ -184,13 +191,13 @@ Icon * Xml_io::make_icon(QString type, int width, int height, int x_pos, int y_p
     {
 	ret = new Actor(0, width, height, x_pos, y_pos, label);
     }
+    else if ( type == "RoundedSquare" )
+    {
+    	ret = new RoundedSquare(0, width, height, x_pos, y_pos, label);
+    }
     //else if ( type == "ClassBox" )
     //{
     //ret = new ClassBox(width, height, x_pos, y_pos, label);
-    //}
-    //else if ( type == "RoundedSquare" )
-    //{
-    //	ret = new roundedSquare(width, height, x_pos, y_pos, label);
     //}
     //else if ( type == "Note" )
     //{
