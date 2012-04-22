@@ -34,6 +34,10 @@ public:
     ~ClassBox();
     QString getLabel(), getMembers(), getMethods();
     void setLabel(QString), setMembers(QString), setMethods(QString);
+    
+    // file i/o accessors
+    QString get_all();
+    QStringList split_all(QString value);
 };
 
 #endif // CLASSBOX_H

@@ -34,7 +34,9 @@ private slots:
     void paste();
     void deleteObject();
     void newTab();
+    void newTab(QString filename);
     void saveAsFile();
+    void saveFile();
     void openFile();
     void closeTab();
     void bold();
@@ -75,6 +77,7 @@ private:
     QAction *newAct;
     QAction *openAct;
     QAction *saveAct;
+    QAction *saveAsAct;
     QAction *printAct;
     QAction *exitAct;
     QAction *undoAct;
