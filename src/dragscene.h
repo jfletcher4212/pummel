@@ -16,6 +16,15 @@
 #include "dottedline.h"
 #include "filledah.h"
 #include "solidlinesah.h"
+#include "dottedlinesah.h"
+#include "solidlineeah.h"
+#include "dottedlineeah.h"
+#include "solidlinesd.h"
+#include "dottedlinesd.h"
+#include "solidlineed.h"
+#include "dottedlineed.h"
+#include "solidlinebah.h"
+#include "dottedlinebah.h"
 #include "solidsqline.h"
 #include "dottedsqline.h"
 #include "selfrefline.h"
@@ -59,7 +68,7 @@ public:
 
     // file i
     void render_icons(QList<Icon*> icons);
-    
+
     // Testing Fucntions
     void testAction();
 

@@ -4,7 +4,7 @@
 #include "basiclineobject.h"
 #include <QPolygonF>
 
-enum LineType {No_Line, Solid_Line, Dotted_Line, Solid_Line_SAH, Solid_Square_Line, Dotted_Square_Line, Self_Ref_Line};
+enum LineType {No_Line, Solid_Line, Dotted_Line, Solid_Line_SAH, Dotted_Line_SAH, Solid_Line_EAH, Dotted_Line_EAH, Solid_Line_SD, Dotted_Line_SD, Solid_Line_ED, Dotted_Line_ED, Solid_Line_BAH, Dotted_Line_BAH, Solid_Square_Line, Dotted_Square_Line, Self_Ref_Line};
 
 class lineBody : public BasicLineObject
 {
@@ -20,7 +20,7 @@ public:
             { return myLineType; }
 
     void setSourceObject(Icon* newSource);
-    void setDestObject(Icon* newDest);
+    void setDestObject(Icon *newDest);
     QPointF findIntersection (Icon *, QLineF);
 
 private:
