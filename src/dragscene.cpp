@@ -75,26 +75,27 @@ int DragScene::sceneItemAt(QPointF pos)
 
 void DragScene::deleteItem(Icon* item)
 {
-
     lineCreate = false;
     sceneCreate = false;
-    QList<int> lineRemovalList;
+
+    QList<lineBody*> lineRemovalList; // list of items to remove
     for(int i = 0; i < scene_lines.size(); i++)
     {
+        // check if the item is equal to the reference objects of an item
         if(scene_lines.at(i)->sourceReferenceObj()->getID() == item->getID() || scene_lines.at(i)->destinationReferenceObj()->getID() == item->getID())
         {
-            printf("found a line\n");
-            scene_lines.at(i)->setParentItem(item);
-            lineRemovalList.append(i);
+            scene_lines.at(i)->setParentItem(item); // set parent object to item to be deleted (so that it will be deleted with it)
+            lineRemovalList.append(scene_lines.at(i)); // add line to removal list
         }
     }
     for(int i = 0; i < lineRemovalList.size(); i++)
     {
-        scene_lines.removeAt(lineRemovalList.at(i));
+        scene_lines.removeOne(lineRemovalList.at(i)); // remove the lines from the list
+        delete lineRemovalList.at(i); // delete it
     }
-    scene_items.removeOne(item);
-    this->removeItem(item);
-    delete item;
+    scene_items.removeOne(item); // remove the item from list
+    this->removeItem(item); // remove from scene
+    delete item; // delete it
 }
 
 /****************************************************************
@@ -179,6 +180,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
             selfRefLine *newLine = new selfRefLine(item, item, 0, 0);
             this->addItem(newLine);
+            scene_lines.append(newLine);
             newLine->setZValue(-1);
         }
     }
@@ -231,7 +233,8 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         if (newItem != NULL)
         {
             this->addItem(newItem);
-            newItem->setPos(event->scenePos());
+            newItem->setPos(event->scenePos()); // underlying QT position
+            newItem->set_Pos((int)event->scenePos().x(), (int)event->scenePos().y()); // our defined member position
             // add new item to the custom list
             scene_items.append(newItem);
         }
@@ -369,6 +372,7 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
                 //this->addItem(newAH);
                 solidlineSAH *newLine = new solidlineSAH(initRefObj, finRefObj, 0, 0);
                 this->addItem(newLine);
+                scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
             else if(lineTypeEnum == Solid_Square_Line)
@@ -378,16 +382,19 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
                 //in both situations
                 solidsqline *newLine = new solidsqline(initRefObj, finRefObj, 0, 0);
                 this->addItem(newLine);
+                scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
             else if(lineTypeEnum == Dotted_Square_Line)
             {
                 dottedsqline *newLine = new dottedsqline(initRefObj, finRefObj, 0, 0);
                 this->addItem(newLine);
+                scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
            // newLine->updatePosition();
         }
+
         delete tempLine;
         tempLine = 0;
     }
@@ -447,15 +454,15 @@ void DragScene::render_icons(QList<Icon*> icons)
     for ( int i = 0; i < icons.length(); i++ )
     {
 	qDebug() << "in the loop....";
-	if (icons[i] != NULL)
+        if (icons.at(i) != NULL)
 	{
 	    qDebug() << "in the if....";
 	    qDebug() << icons[i]->get_all();
 
-	    this->addItem(icons[i]);
+            this->addItem(icons.at(i));
 	    
 	    // add new item to the custom list
-	    scene_items.append(icons[i]);
+           scene_items.append(icons.at(i));
 	}
     }
     
