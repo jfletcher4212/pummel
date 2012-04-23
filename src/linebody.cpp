@@ -5,7 +5,6 @@ const qreal Pi = 3.14;
 lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : BasicLineObject()
 {
     parent = 0;
-    scene = 0;
 
     mySourceReferenceObj = sourceReferenceObj;
     myDestinationReferenceObj = destinationReferenceObj;
@@ -13,8 +12,17 @@ lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGra
 
 lineBody::~lineBody()
 {
-    delete mySourceReferenceObj;
-    delete myDestinationReferenceObj;
+  //  delete mySourceReferenceObj;
+   // delete myDestinationReferenceObj;
+}
+
+void lineBody::setSourceObject(Icon* newSource)
+{
+    mySourceReferenceObj = newSource;
+}
+void lineBody::setDestObject(Icon* newDest)
+{
+    myDestinationReferenceObj = newDest;
 }
 
 //Change at which end of the line the arrow head resides.
