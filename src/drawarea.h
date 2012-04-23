@@ -32,7 +32,7 @@ public:
     bool getSceneGrid(){return scene->getGrid();}
     int getSceneGridSize(){return scene->getGridSize();}
     QList<Icon*> getObjects(){return scene->getObjectList();}
-    QList<BasicLineObject*> getLines() { return scene->getLineList(); }
+    QList<lineBody*> getLines() { return scene->getLineList(); }
     bool getLineCreate(){return scene->getLineCreate();}
     LineType getLineCreationType(){return scene->getLineCreateType();}
     DiagramType getDiagramType(){return type;}
@@ -47,12 +47,13 @@ public:
     void setDiagramType(DiagramType a){type = a;}
     void setSceneShapeCreationType(ShapeCreationType newType){scene->setShapeCreationType(newType);}
     DragScene *scene;
+    DragView *view;
     
     // Testing
     void testAction(){scene->testAction();}
 
 private:
-    DragView *view;
+
     QHBoxLayout *layout;
     DiagramType type;
     

@@ -146,9 +146,7 @@ void Icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     pos.ry() -= 0.5 * m_height;
     update();
     this->setPos(pos);
-    
-    m_xPos = pos.rx();
-    m_yPos = pos.ry();
+    this->set_Pos((int)pos.rx(), (int)pos.ry());
 }
 
 void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
