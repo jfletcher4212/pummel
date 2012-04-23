@@ -89,7 +89,7 @@ void Actor::setValues()
 
 void Actor::arrangeBoxes()
 {
-    m_labelBox->setPos(m_width/4, m_height);// + m_labelBox->boundingRect().height());
+    m_labelBox->setPos(m_width/4, m_height/2); // - m_labelBox->boundingRect().height());
 
 
     this->prepareGeometryChange();

@@ -30,10 +30,14 @@ protected:
 
 public:
     ClassBox();
-    ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label, QString members, QString methods);
+    ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString members);
     ~ClassBox();
     QString getLabel(), getMembers(), getMethods();
     void setLabel(QString), setMembers(QString), setMethods(QString);
+    
+    // file i/o accessors
+    QString get_all();
+    QStringList split_all(QString value);
 };
 
 #endif // CLASSBOX_H

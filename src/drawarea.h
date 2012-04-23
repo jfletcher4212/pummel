@@ -23,12 +23,16 @@ class DrawArea : public QWidget
 public:
     // Constructor specifies height/width for the DrawArea to create
     DrawArea(QWidget *parent = 0, int newHeight = 250, int newWidth = 250);
+    
+    // file i
+    DrawArea(QWidget *parent, int newHeight, int newWidth, QList<Icon*> icons, QString d_type);
 
     // Accessors
     bool getSceneCreate(){return scene->getSceneCreate();}
     bool getSceneGrid(){return scene->getGrid();}
     int getSceneGridSize(){return scene->getGridSize();}
     QList<Icon*> getObjects(){return scene->getObjectList();}
+    QList<lineBody*> getLines() { return scene->getLineList(); }
     bool getLineCreate(){return scene->getLineCreate();}
     LineType getLineCreationType(){return scene->getLineCreateType();}
     DiagramType getDiagramType(){return type;}
@@ -43,14 +47,17 @@ public:
     void setDiagramType(DiagramType a){type = a;}
     void setSceneShapeCreationType(ShapeCreationType newType){scene->setShapeCreationType(newType);}
     DragScene *scene;
-
+    DragView *view;
+    
     // Testing
     void testAction(){scene->testAction();}
 
 private:
-    DragView *view;
+
     QHBoxLayout *layout;
     DiagramType type;
+    
+    DiagramType choose_type(QString d_type);
 
 };
 

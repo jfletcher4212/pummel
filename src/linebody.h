@@ -18,6 +18,9 @@ public:
         { return myDestinationReferenceObj; }
     int type() const
             { return myLineType; }
+
+    void setSourceObject(Icon* newSource);
+    void setDestObject(Icon* newDest);
     QPointF findIntersection (Icon *, QLineF);
 
 private:
