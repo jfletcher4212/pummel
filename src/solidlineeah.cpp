@@ -1,15 +1,15 @@
-#include "solidlinesah.h"
+#include "solidlineeah.h"
 
 const qreal Pi = 3.14;
 
-solidlineSAH::solidlineSAH(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
+solidlineeah::solidlineeah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
 {
     parent = 0;
     scene = 0;
-    myLineType = Solid_Line_SAH;
+    myLineType = Solid_Line_EAH;
 }
 
-void solidlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void solidlineeah::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
     widget = 0;
@@ -19,7 +19,7 @@ void solidlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 
     qreal arrowSize = 20;
 
-    painter->setBrush(myColor);
+    painter->setBrush(Qt::white);
     painter->setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 
     QPointF obj1 = mySourceReferenceObj->pos();

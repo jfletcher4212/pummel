@@ -8,7 +8,9 @@ enum AHType{Solid_AH};
 class arrowhead : public BasicLineObject
 {
 public:
-    arrowhead(QPointF , QGraphicsItem *, QGraphicsItem *, QGraphicsScene *); //QGraphicsLineItem *
+    arrowhead(QGraphicsItem *, QGraphicsScene *); //QGraphicsLineItem *
+    QPolygonF getArrowHead(){return arrowHead;}
+
 private:
 protected:
     virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0) = 0;

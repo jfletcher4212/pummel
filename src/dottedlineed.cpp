@@ -1,15 +1,15 @@
-#include "solidlinesah.h"
+#include "dottedlineed.h"
 
 const qreal Pi = 3.14;
 
-solidlineSAH::solidlineSAH(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
+dottedlineed::dottedlineed(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
 {
     parent = 0;
     scene = 0;
-    myLineType = Solid_Line_SAH;
+    myLineType = Dotted_Line_ED;
 }
 
-void solidlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void dottedlineed::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
     widget = 0;
@@ -19,8 +19,8 @@ void solidlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 
     qreal arrowSize = 20;
 
-    painter->setBrush(myColor);
-    painter->setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    painter->setBrush(Qt::white);
+    painter->setPen(QPen(myColor, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
 
     QPointF obj1 = mySourceReferenceObj->pos();
     QPointF obj2 = myDestinationReferenceObj->pos();
@@ -33,18 +33,23 @@ void solidlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 
     QLineF tempLineOne(obj1, obj2);
 
-    QPointF interPoint = findIntersection(myDestinationReferenceObj, tempLineOne);
+    QPointF interPoint = findIntersection(mySourceReferenceObj, tempLineOne);
 
-    this->setLine(QLineF(interPoint, obj1));
+    this->setLine(QLineF(interPoint, obj2));
 
     double angle = this->getAngle(interPoint, mySourceReferenceObj);
 
     QPointF arrowP1 = line().p1() + QPointF(sin(angle + Pi / 3)*arrowSize, cos(angle + Pi / 3) *arrowSize);
     QPointF arrowP2 = line().p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
+    QPointF arrowP3 = line().p1() + QPointF(2*(sin(angle + Pi/2)*arrowSize), 2*(cos(angle + Pi/2)*arrowSize));
+
+
     arrowHead.clear();
-    arrowHead << line().p1() << arrowP1 << arrowP2;
+    arrowHead << line().p1() << arrowP1 << arrowP3 << arrowP2;
 
     painter->drawLine(line());
+
+    painter->setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 
     painter->drawPolygon(arrowHead);
 

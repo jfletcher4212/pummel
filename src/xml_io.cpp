@@ -4,7 +4,14 @@
 #include <QString>
 #include <QDebug>
 #include "actor.h"
+#include "classbox.h"
 #include "ellipse.h"
+#include "note.h"
+#include "roundedsquare.h"
+#include "scenarioend.h"
+#include "scenariostate.h"
+#include "scenariostart.h"
+#include "scenariostart.h"
 
 
 using namespace std;
@@ -15,23 +22,47 @@ Xml_io::Xml_io()
     //m_items = NULL;
   
     m_filename = "";
-    //m_diagram_type = "";
+    m_diagram_type = "";
 }
 
-Xml_io::Xml_io(QList<Icon*> icon_list, QString filename/*, QString diagram_type*/ )
+Xml_io::Xml_io(QList<Icon*> icon_list, /*QList<BasicLineObject*> line_list,*/ QString filename, DiagramType diagram_type)
 {
-  m_items = icon_list;
+    m_items = icon_list;
+    ///m_lines = line_list;
 
-  m_filename = filename;
-  //m_diagram_type = diagram_type;
+    m_filename = filename;
+    m_diagram_type = choose_type(diagram_type);
 }
 
 Xml_io::~Xml_io()
 {
 }
 
+QString Xml_io::choose_type(DiagramType d_type)
+{
+    if ( d_type == (DiagramType)Class) 
+    {
+	return (QString)"Class";
+    }
+    if ( d_type == (DiagramType)StateChart) 
+    {
+	return (QString)"StateChart";
+    }
+    if ( d_type == (DiagramType)Sequence) 
+    {
+	return (QString)"Sequence";
+    }
+    if ( d_type == (DiagramType)UseCase) 
+    {
+	return (QString)"UseCase";
+    }
+    
+    return (QString)"";
+}
+
 void Xml_io::write_xml()
 {
+    int i;
     int idx;
     QFile savefile ( m_filename );
     savefile.open(QIODevice::WriteOnly);
@@ -45,23 +76,35 @@ void Xml_io::write_xml()
     
     saver.writeStartDocument();
     saver.writeStartElement(m_filename);
-    //saver.writeStartElement(m_diagram_type);
     
-    //Icon(int width, int height, int id, int label, int shapetype);
+    // diagram type
+    saver.writeTextElement("diagram_type", m_diagram_type);
     
-    for ( int i = 0; i < m_items.length(); i++ )
+    for ( i = 0; i < m_items.length(); i++ )
     {
 	//QString valueAsString = QString::number(valueAsDouble);
 	// wrapper tags coule be the object's individual ID #
 	saver.writeStartElement("icon");
 	saver.writeTextElement("width", QString::number(m_items[i]->getWidth()));
 	saver.writeTextElement("height", QString::number(m_items[i]->getHeight()));
-	//saver.writeTextElement("id", QString::number(m_items[i]->get_xPos()));
-	//saver.writeTextElement("id", QString::number(m_items[i]->get_yPos()));
-	//saver.writeTextElement("label", m_items[i]->getLabel());
+	saver.writeTextElement("x_pos", QString::number(m_items[i]->get_xPos()));
+	saver.writeTextElement("y_pos", QString::number(m_items[i]->get_yPos()));
+	saver.writeTextElement("label", m_items[i]->get_all());
 	saver.writeTextElement("shapetype", m_items[i]->reportShapetype());
 	saver.writeEndElement();
     }
+    
+    /*
+    for ( i = 0; i < m_lines.length(); i++ )
+    {
+	saver.writeStartElement("line");
+	// write line type
+	// write begin object index
+	// write end object index
+	// write arrowhead info
+	saver.writeEndElement();
+    }
+    */
     
     saver.writeEndDocument();
     saver.setAutoFormatting(true);
@@ -77,7 +120,6 @@ void Xml_io::parse_xml()
     QXmlStreamReader reader(&infile);
 
     QList<Icon*> icons;
-    //QList< QMap<QString,QString> > icons;
     
     while ( ! reader.atEnd() && ! reader.hasError() )
     {
@@ -96,20 +138,35 @@ void Xml_io::parse_xml()
 		continue;
 	    }
 	    
+	    if ( reader.name() == "diagram_type" )
+	    {
+		reader.readNext();
+		m_diagram_type = reader.text().toString();
+	    }
+	    
 	    if ( reader.name() == "icon" )
 	    {
 		//qDebug() << reader.name();
-		//icons.append(parse_icon(reader));
-		parse_icon(reader);
+		icons.append(parse_icon(reader));
+		//parse_icon(reader);
 	    }
-	    
+	    /*
+	    if ( reader.name() == "line" )
+	    {
+		//qDebug() << reader.name();
+		lines.append(parse_line(reader));
+		//parse_icon(reader);
+	    }	    
+	    */
 	}
     }
     
-//    return icons;
+    qDebug() << "returning icons";
+    m_items = icons;
+    ///m_lines = lines;
 }
 
-void Xml_io::parse_icon(QXmlStreamReader &reader)
+Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
 {
     int width;
     int height;
@@ -117,8 +174,6 @@ void Xml_io::parse_icon(QXmlStreamReader &reader)
     int y_pos;
     QString label;
     QString type;
-    
-    Icon *ret;
     
     // next element
     reader.readNext();
@@ -154,11 +209,11 @@ void Xml_io::parse_icon(QXmlStreamReader &reader)
 		y_pos = reader.text().toString().toInt();
 	    }
 
-	    //if( reader.name() == "label")
-	    //{
-	    //	reader.readNext();
-	    //	label = reader.text().toString();
-	    //}
+	    if( reader.name() == "label")
+	    {
+	    	reader.readNext();
+	    	label = reader.text().toString();
+	    }
 
 	    if( reader.name() == "shapetype")
 	    {
@@ -167,64 +222,47 @@ void Xml_io::parse_icon(QXmlStreamReader &reader)
 	    }
 	}
     }
-    /*
-    if ( type == "Ellipse") 
-    {
-	return new Ellipse(width, height, x_pos, y_pos, label);
-    }
-    if ( type == "Actor" )
-    {
-	return new actor(width, height, x_pos, y_pos, label);
-    }
-    //if ( type == "ClassBox" )
-    //{
-    //return new ClassBox(width, height, x_pos, y_pos, label);
-    //}
-    if ( type == "RoundedSquare" )
-    {
-	return new roundedSquare(width, height, x_pos, y_pos, label);
-    }
-    if ( type == "note" )
-    {
-	return new note(width, height, x_pos, y_pos, label);
-    }
-    */
-    //return ret;
+    
+    return make_icon(type, width, height, x_pos, y_pos, label);
 }
 
-QMap<QString, QString> Xml_io::parsePerson(QXmlStreamReader& xml)
+Icon * Xml_io::make_icon(QString type, int width, int height, int x_pos, int y_pos, QString label)
 {
-    QMap<QString, QString> icon;
-  
-    if ( ! (xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "coord") ) 
-	return icon;
-  
-    QXmlStreamAttributes attributes = xml.attributes();
-    /*
-    // this is for the object id
-    if(attributes.hasAttribute("icon_id")) 
+    Icon *ret = NULL;
+    
+    if ( type == "Ellipse") 
     {
-    person["icon_id"] = attributes.value("icon_id").toString();
+	ret = new Ellipse(0, width, height, x_pos, y_pos, label);
     }
-    xml.readNext();
-    */
-    /*
-    while( !(xml.tokenType() == QXmlStreamReader::EndElement && xml.name() == "coord") )
+    else if ( type == "Actor" )
     {
-	if( xml.tokenType() == QXmlStreamReader::StartElement) 
-	{
-	    if( xml.name() == "x_coord" ) 
-	    {
-		this->addElementDataToMap(xml, icon);
-	    }
-	  
-	    if( xml.name() == "y_coord" ) 
-	    {
-		this->addElementDataToMap(xml, icon);
-	    }
-	}
-	xml.readNext();
+	ret = new Actor(0, width, height, x_pos, y_pos, label);
     }
-    */
-    return icon;
+    else if ( type == "RoundedSquare" )
+    {
+    	ret = new RoundedSquare(0, width, height, x_pos, y_pos, label);
+    }
+    else if ( type == "ClassBox" )
+    {
+	ret = new ClassBox(0, width, height, x_pos, y_pos, label);
+    }
+    else if ( type == "Note" )
+    {
+	ret = new Note(0, width, height, x_pos, y_pos);
+    }
+    else if ( type == "ScenarioEnd" )
+    {
+	ret = new ScenarioEnd(0, width, height, x_pos, y_pos);
+    }
+    else if ( type == "ScenarioState" )
+    {
+	ret = new ScenarioState(0, width, height, x_pos, y_pos, label);
+    }
+    else if ( type == "ScenarioStart" )
+    {
+	ret = new ScenarioStart(0, width, height, x_pos, y_pos);
+    }
+    
+    return ret;
 }
+
