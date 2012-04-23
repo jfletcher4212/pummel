@@ -34,9 +34,10 @@ public:
     // Accessors
     bool getSceneCreate(){return sceneCreate;}
     bool getGrid(){return grid;}
+    bool getIgnore(){return m_ignoreReleaseEvent;}
     int getGridSize(){return gridSize;}
     QList<Icon*> getObjectList(){return scene_items;}
-    QList<BasicLineObject*> getLineList(){return scene_lines;}
+    QList<lineBody*> getLineList(){return scene_lines;}
     bool getLineCreate(){return lineCreate;}
     LineType getLineCreateType(){return lineTypeEnum;}
     bool isResizing(){return m_resizing;}
@@ -44,6 +45,7 @@ public:
 
     // Mutators
     void setSceneCreate(bool a){sceneCreate = a;}
+    void setIgnoreReleaseEvent(bool a){m_ignoreReleaseEvent = a;}
     void setLineCreateType(LineType newType){lineTypeEnum = newType;}
     void setLineCreate(bool a){lineCreate = a;}
     void setGrid(bool a){grid = a; update();}
@@ -55,15 +57,11 @@ public:
     void deleteItem(Icon* item);
     int sceneItemAt(QPointF pos);
 
+    // file i
+    void render_icons(QList<Icon*> icons);
+    
     // Testing Fucntions
     void testAction();
-
-    /*
-    // file io
-    void writeXML(QString *filename);
-    void readXML(){};
-    */
-
 
 protected:
     void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
@@ -75,13 +73,14 @@ protected:
 private:
     ShapeCreationType m_shapeCreationType;
     bool m_resizing; // true if an item on the scene is being resized, false otherwise
+    bool m_ignoreReleaseEvent;
     int gridSize; // pixel width of grid lines
     bool grid; // toggle for grid
     LineType lineTypeEnum;
     bool sceneCreate; // toggle for click creation
     bool lineCreate; // toggle for line creation
     QList<Icon*> scene_items; // custom list of all the DragItem*'s (not QGraphicsItem*) in DragScene
-    QList<BasicLineObject*> scene_lines;  //custom list of all lines in DragScene
+    QList<lineBody*> scene_lines;  //custom list of all lines in DragScene
 
     QGraphicsLineItem* tempLine;
     QColor myTempLineColor;

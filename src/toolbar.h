@@ -52,7 +52,6 @@ public slots:
     void insertShape();
     void insertLine();
     void insertText();
-    void showOptions();
 
     void addClassBox();
     void addEllipse();
@@ -60,6 +59,7 @@ public slots:
     void addNote();
     void addScenarioStart();
     void addScenarioEnd();
+    void addActor();
     void addNone();
 
     void addNoLine();
@@ -83,7 +83,6 @@ private:
     QPushButton * shapeButton;
     QPushButton * textButton;
     QPushButton * lineButton;
-    QPushButton * optionsButton;
     QPushButton * gridButton;
 
     QMenu *shapeMenu;
@@ -94,6 +93,7 @@ private:
     QAction *addRoundedSquareAct;
     QAction *addScenarioStartAct;
     QAction *addScenarioEndAct;
+    QAction *addActorAct;
     QAction *addNoteAct;
 
     QMenu *lineMenu;

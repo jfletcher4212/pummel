@@ -12,7 +12,10 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
     m_labelBox->setParentItem(this);
     m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
-    m_labelBox->setPlainText("Ellipse");
+    m_height /= 1.5;
+    
+    m_label = "Ellipse";
+    m_labelBox->setPlainText(m_label);
 
     m_labelBox->setPos(this->pos());
     arrangeBoxes();
@@ -26,7 +29,7 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
 
     // If the relative path fails, uncomment and update the below with full path to images (example below from a mac)
     //if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/ellipse.png"))
-        std::cout << "didn't load image properly\n";  //loads the image for drawing later
+    //std::cout << "didn't load image properly\n";  //loads the image for drawing later
 }
 
 Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label) : Icon(parent)
@@ -36,7 +39,9 @@ Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos
     m_height = ysize;
     m_shapetype = "Ellipse";
 
-    this->setPos(xpos,ypos);
+    m_xPos = xpos;
+    m_yPos = ypos;
+    this->setPos(m_xPos,m_yPos);
 
     m_labelBox->setParentItem(this);
     m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
