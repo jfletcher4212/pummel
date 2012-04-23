@@ -18,7 +18,7 @@ MainWindow::MainWindow()
     setCentralWidget(widget);
 
     QIcon thumbnail;                    //this sets up an image for the upper corner
-    thumbnail.addFile("icons/viking.png"); //while its running
+    //thumbnail.addFile("icons/viking.png"); //while its running
 
     toolbar = new Toolbar;
     layout = new BorderLayout;
@@ -48,11 +48,13 @@ MainWindow::MainWindow()
 
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 {
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(false);
+    contextEventPos = canvas.at(tabWidget->currentIndex())->view->mapToScene(event->pos());
+
     QMenu menu(this);
     menu.addAction(cutAct);
     menu.addAction(copyAct);
     menu.addAction(pasteAct);
-    menu.addAction(deleteAct);
     menu.exec(event->globalPos());
 }
 
@@ -97,7 +99,7 @@ void MainWindow::cut()
     // infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
 
     // Testing for connections below, I just needed something to click, will delete all of it
-    canvas.at(tabWidget->currentIndex())->testAction();
+    //canvas.at(tabWidget->currentIndex())->testAction();
 
 }
 
@@ -111,20 +113,24 @@ void MainWindow::paste()
     infoLabel->setText(tr("Invoked <b>Edit|Paste</b>"));
 }
 
-void MainWindow::deleteObject()
+void MainWindow::deleteSelected()
 {
-    printf("items: %d\n", canvas.at(tabWidget->currentIndex())->scene->getObjectList().size());
-    if(canvas.at(tabWidget->currentIndex())->scene->getObjectList().size() > 0){
-        Icon* item;
-        for(int i = 0; i < canvas.at(tabWidget->currentIndex())->scene->getObjectList().size(); i++)
+    int iconSelectedIndex = -1;
+    for(int i = 0; i < canvas.at(tabWidget->currentIndex())->scene->getObjectList().size(); i++)
+    {
+        if(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(i)->isSelected())
         {
-            if(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(i)->isSelected())
-            {
-                item = canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(i);
-            }
+            iconSelectedIndex = i;
         }
-        canvas.at(tabWidget->currentIndex())->scene->deleteItem(item);
-        printf("items: %d\n", canvas.at(tabWidget->currentIndex())->scene->getObjectList().size());
+    }
+
+    if(iconSelectedIndex < 0)
+    {
+        return;
+    }
+    else
+    {
+        canvas.at(tabWidget->currentIndex())->scene->deleteItem(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(iconSelectedIndex));
     }
 }
 
@@ -139,12 +145,12 @@ void MainWindow::deleteObject()
  * This will only be a problem if someone makes huge amounts of Tabs (maybe... I don't know how well QList would handle it)
  * But it has been tested to handle about 20 tabs, any more than that seems overkill
  */
-
+/*Creates a new tab with a default 'untitled' filename*/
 void MainWindow::newTab()
 {
     int i = tabWidget->count();
     char* s = (char*)malloc(10*sizeof(char));
-    sprintf(s, "Tab %d", next_tab_num);
+    sprintf(s, "untitled" );
     next_tab_num++;
     QString q = QString(s);
     DrawArea *newCanvas = new DrawArea;
@@ -155,39 +161,85 @@ void MainWindow::newTab()
     free(s);
 }
 /*end*/
-
+/* Creates a new tab with the specified filename*/
+void MainWindow::newTab(QString filename, QList<Icon*> tmplist, QString d_type)
+{
+    int i = tabWidget->count();
+    char* s = (char*)malloc(10*sizeof(char));
+    sprintf(s, "untitled" );
+    next_tab_num++;
+    QString q = QString(s);
+    
+    qDebug() << "making new drawarea";
+    DrawArea *newCanvas = new DrawArea(0, 250, 250, tmplist, d_type);
+    
+    //newCanvas->render_icons(tmplist);
+    //newCanvas->render_lines(tmplist[1]);
+    
+    canvas.append(newCanvas);
+    tabWidget->insertTab(i, newCanvas, filename);
+    tabWidget->setCurrentIndex(i);
+    tabWidget->widget(i)->setVisible(true);
+    free(s);
+}
+/*
+ * If a filename has been specified, saveFile will
+ * automatically save to that filename. Otherwise,
+ * it will call SaveAsFile to get a filename
+ */
+void MainWindow::saveFile()
+{
+    QString filename = tabWidget->tabText(tabWidget->currentIndex());
+    if(filename == "untitled")
+    {
+        saveAsFile();
+    }
+    else
+    {
+	Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename, (DiagramType)canvas.at(tabWidget->currentIndex())->getDiagramType());
+	writer.write_xml();
+    }
+}
 void MainWindow::saveAsFile()
 {
     // dialog box for user to enter filename
     QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
-    //Xml_io writer(icon_list, filename/*, diagram_type*/);
-    
-    // write the file
-    //writer.write_xml();
-    
-
-    // strip full path off filename for display
-    int idx = filename.lastIndexOf("/");
-    filename.remove(0, idx+1);
-
-    tabWidget->setTabText(tabWidget->currentIndex(), filename );
+    if(filename == "")
+    {
+        cout << "No filename given" << endl;
+    }
+    else
+    {
+	DrawArea *tmpscene = canvas.at(tabWidget->currentIndex());
+        Xml_io writer(tmpscene->getObjects(), /*tmpscene->getLines(),*/ filename, (DiagramType)tmpscene->getDiagramType());
+	//delete tmpscene;
+	
+        // write the file
+	//something = canvas.getDiagramType();
+        writer.write_xml();
+	
+	// make the tab
+	tabWidget->setTabText(tabWidget->currentIndex(), filename );
+    }
 }
 
 void MainWindow::openFile()
 {
     QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
-    newTab();
     
-    // strip full path off filename for display
-    int idx = filename.lastIndexOf("/");
-    filename.remove(0, idx+1);
-    
-    tabWidget->setTabText(tabWidget->currentIndex(), filename);
-    /* new tab
-     * set new tab name to filename
-     * load in stuff
-     * profit
-     * */
+    if( filename != "" )
+    {
+	Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename, (DiagramType)-1);
+	
+	// parse the xml
+	writer.parse_xml();
+	QList<Icon*> icon_list = writer.get_items();
+	///QList<BasicLineObject*> line_list = writer.get_lines();
+	
+	// make the tab
+	newTab(filename, icon_list, /*line_list,*/ writer.get_diagram_type());
+	tabWidget->setTabText(tabWidget->currentIndex(), filename);
+    }
 }
 
 void MainWindow::closeTab()
@@ -260,13 +312,16 @@ void MainWindow::createActions()
     openAct = new QAction(tr("Close Tab"), this);
     connect(openAct, SIGNAL(triggered()), this, SLOT(closeTab()));
 
-    saveAct = new QAction(tr("Save as..."), this);
-    connect(saveAct, SIGNAL(triggered()), this, SLOT(saveAsFile()));
+    saveAct = new QAction(tr("Save File"), this);
+    connect(saveAct, SIGNAL(triggered()), this, SLOT(saveFile()));
+
+    saveAsAct = new QAction(tr("Save File as..."), this);
+    connect(saveAsAct, SIGNAL(triggered()), this, SLOT(saveAsFile()));
 
     printAct = new QAction(tr("Open"), this);
     connect(printAct, SIGNAL(triggered()), this, SLOT(openFile()));
 
-    exitAct = new QAction(tr("Activity"), this);
+    exitAct = new QAction(tr("Exit"), this);
 
     undoAct = new QAction(tr("&Undo"), this);
     undoAct->setShortcuts(QKeySequence::Undo);
@@ -296,9 +351,9 @@ void MainWindow::createActions()
                               "selection"));
     connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
 
-    deleteAct = new QAction(tr("&Delete"), this);
-    deleteAct->setStatusTip(tr("Delete the object"));
-    connect(deleteAct, SIGNAL(triggered()), this, SLOT(deleteObject()));
+    deleteSelectedAct = new QAction(tr("&Delete Selected"), this);
+    deleteSelectedAct->setStatusTip(tr("Delete the selected object(s)"));
+    connect(deleteSelectedAct, SIGNAL(triggered()), this, SLOT(deleteSelected()));
 
     boldAct = new QAction(tr("&Bold"), this);
     boldAct->setCheckable(true);
@@ -378,6 +433,7 @@ void MainWindow::createMenus()
     fileMenu->addAction(newAct);
     fileMenu->addAction(openAct);
     fileMenu->addAction(saveAct);
+    fileMenu->addAction(saveAsAct);
     fileMenu->addAction(printAct);
     fileMenu->addAction(exitAct);
 
@@ -388,7 +444,7 @@ void MainWindow::createMenus()
     editMenu->addAction(cutAct);
     editMenu->addAction(copyAct);
     editMenu->addAction(pasteAct);
-    editMenu->addAction(deleteAct);
+    editMenu->addAction(deleteSelectedAct);
     editMenu->addSeparator();
 
     helpMenu = menuBar()->addMenu(tr("&Help"));

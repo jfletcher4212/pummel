@@ -2,6 +2,7 @@
 #include "icon.h"
 #include "classbox.h"
 #include "ellipse.h"
+#include "actor.h"
 #include "note.h"
 #include "toolbar.h"
 #include "roundedsquare.h"
@@ -11,6 +12,7 @@
 #include <QGraphicsSceneDragDropEvent>
 #include <QXmlStreamWriter>
 #include <QIODevice>
+#include <QWidget>
 
 extern Toolbar *toolbar;
 
@@ -74,9 +76,27 @@ int DragScene::sceneItemAt(QPointF pos)
 
 void DragScene::deleteItem(Icon* item)
 {
-    scene_items.removeOne(item);
-    this->removeItem(item);
-    delete item;
+    lineCreate = false;
+    sceneCreate = false;
+
+    QList<lineBody*> lineRemovalList; // list of items to remove
+    for(int i = 0; i < scene_lines.size(); i++)
+    {
+        // check if the item is equal to the reference objects of an item
+        if(scene_lines.at(i)->sourceReferenceObj()->getID() == item->getID() || scene_lines.at(i)->destinationReferenceObj()->getID() == item->getID())
+        {
+            scene_lines.at(i)->setParentItem(item); // set parent object to item to be deleted (so that it will be deleted with it)
+            lineRemovalList.append(scene_lines.at(i)); // add line to removal list
+        }
+    }
+    for(int i = 0; i < lineRemovalList.size(); i++)
+    {
+        scene_lines.removeOne(lineRemovalList.at(i)); // remove the lines from the list
+        delete lineRemovalList.at(i); // delete it
+    }
+    scene_items.removeOne(item); // remove the item from list
+    this->removeItem(item); // remove from scene
+    delete item; // delete it
 }
 
 /****************************************************************
@@ -174,33 +194,40 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         switch(m_shapeCreationType){
         case s_Classbox:{
             newItem = new ClassBox();
+            newItem->setShapetype("Class Box");
             break;
         }
         case s_Ellipse:{
             newItem = new Ellipse();
+            newItem->setShapetype("Ellipse");
             break;
         }
         case s_Actor:{
+            newItem = new Actor();
             break;
         }
         case s_Note:
         {
             newItem = new Note();
+            newItem->setShapetype("Note");
             break;
         }
         case s_ScenarioStart:
         {
             newItem = new ScenarioStart();
+            newItem->setShapetype("Scenario Start");
             break;
         }
         case s_RoundedSquare:
         {
             newItem = new RoundedSquare();
+            newItem->setShapetype("Rounded Square");
             break;
         }
         case s_ScenarioEnd:
         {
             newItem = new ScenarioEnd();
+            newItem->setShapetype("Scenario End");
             break;
         }
         default:{
@@ -262,6 +289,11 @@ void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
  ***************************************************************/
 void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
+    if(m_ignoreReleaseEvent)
+    {
+        m_ignoreReleaseEvent = false;
+        return;
+    }
     Icon* lastItem = NULL;
     // item currently being dragged has a state of 2, the last item clicked has a state of 1, everything else has state 0
     for(int i = 0; i < scene_items.size(); i++)
@@ -324,12 +356,14 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
             {
                 solidline *newLine = new solidline(initRefObj, finRefObj, 0, 0);
                 this->addItem(newLine);
+                this->scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
             else if(lineTypeEnum == Dotted_Line)
             {
                 dottedline *newLine = new dottedline(initRefObj, finRefObj, 0, 0);
                 this->addItem(newLine);
+                this->scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
             else if(lineTypeEnum == Solid_Line_SAH)
@@ -340,10 +374,76 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
                 //this->addItem(newLine);
                 //newLine->setZValue(-1);
 
-                //filledAH *newAH = new filledAH(newLine->findIntersection(finRefObj, QLineF(initRefObj->pos(), finRefObj->pos())), initRefObj, 0, 0);
+                //filledAH *newAH = new filledAH(newLine, 0, 0);
                 //this->addItem(newAH);
+                //newAH->setZValue(-1);
+
                 solidlineSAH *newLine = new solidlineSAH(initRefObj, finRefObj, 0, 0);
                 this->addItem(newLine);
+                this->scene_lines.append(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Dotted_Line_SAH)
+            {
+                dottedlineSAH *newLine = new dottedlineSAH(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                this->scene_lines.append(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Solid_Line_EAH)
+            {
+                solidlineeah *newLine = new solidlineeah(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                this->scene_lines.append(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Dotted_Line_EAH)
+            {
+                dottedlineeah *newLine = new dottedlineeah(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                this->scene_lines.append(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Solid_Line_SD)
+            {
+                solidlineSD *newLine = new solidlineSD(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                this->scene_lines.append(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Dotted_Line_SD)
+            {
+                dottedlineSD *newLine = new dottedlineSD(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                this->scene_lines.append(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Solid_Line_ED)
+            {
+                solidlineed *newLine = new solidlineed(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                this->scene_lines.append(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Dotted_Line_ED)
+            {
+                dottedlineed *newLine = new dottedlineed(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                this->scene_lines.append(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Solid_Line_BAH)
+            {
+                solidlineBAH *newLine = new solidlineBAH(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                this->scene_lines.append(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Dotted_Line_BAH)
+            {
+                dottedlinebah *newLine = new dottedlinebah(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                this->scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
             else if(lineTypeEnum == Solid_Square_Line)
@@ -353,12 +453,14 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
                 //in both situations
                 solidsqline *newLine = new solidsqline(initRefObj, finRefObj, 0, 0);
                 this->addItem(newLine);
+                this->scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
             else if(lineTypeEnum == Dotted_Square_Line)
             {
                 dottedsqline *newLine = new dottedsqline(initRefObj, finRefObj, 0, 0);
                 this->addItem(newLine);
+                this->scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
            // newLine->updatePosition();
@@ -414,4 +516,26 @@ void DragScene::testAction()
 {
     // use as needed
 
+}
+
+void DragScene::render_icons(QList<Icon*> icons)
+{
+    qDebug() << "start rendering.....";
+    for(int i = 0; i < icons.length(); i++)
+    {
+        qDebug() << "in the loop....";
+        if(icons[i] != NULL)
+        {
+            qDebug() << "in the if....";
+            qDebug() << icons[i]->get_all();
+
+            this->addItem(icons[i]);
+
+            //add new item to the custom list
+            scene_items.append(icons[i]);
+        }
+    }
+
+    qDebug() << "updating....";
+    update();
 }

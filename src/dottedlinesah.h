@@ -1,14 +1,15 @@
-#ifndef SOLIDLINESAH_H
-#define SOLIDLINESAH_H
+#ifndef DOTTEDLINESAH_H
+#define DOTTEDLINESAH_H
 #include "linebody.h"
 
-class solidlineSAH : public lineBody
+class dottedlineSAH : public lineBody
 {
 public:
-    solidlineSAH(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
+    dottedlineSAH(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
 private:
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
+
 };
 
 #endif // SOLIDLINESAH_H
