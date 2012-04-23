@@ -353,6 +353,7 @@ void MainWindow::createActions()
 
     deleteSelectedAct = new QAction(tr("&Delete Selected"), this);
     deleteSelectedAct->setStatusTip(tr("Delete the selected object(s)"));
+    deleteSelectedAct->setShortcuts(QKeySequence::Delete);
     connect(deleteSelectedAct, SIGNAL(triggered()), this, SLOT(deleteSelected()));
 
     boldAct = new QAction(tr("&Bold"), this);
