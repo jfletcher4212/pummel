@@ -52,18 +52,30 @@ public slots:
     void insertShape();
     void insertLine();
     void insertText();
-    void showOptions();
+    //void showOptions();
 
     void addClassBox();
     void addEllipse();
     void addRoundedSquare();
     void addNote();
+    void addScenarioStart();
+    void addScenarioEnd();
+    void addActor();
     void addNone();
 
     void addNoLine();
     void addSolidLine();
     void addDottedLine();
-    void addSolidLineAH();
+    void addSolidLineSAH();
+    void addDottedLineSAH();
+    void addSolidLineEAH();
+    void addDottedLineEAH();
+    void addSolidLineSD();
+    void addDottedLineSD();
+    void addSolidLineED();
+    void addDottedLineED();
+    void addSolidLineBAH();
+    void addDottedLineBAH();
     void addSolidSQLine();
     void addDottedSQLine();
     void addSelfRefLine();
@@ -90,6 +102,9 @@ private:
     QAction *addClassBoxAct;
     QAction *addEllipseAct;
     QAction *addRoundedSquareAct;
+    QAction *addScenarioStartAct;
+    QAction *addScenarioEndAct;
+    QAction *addActorAct;
     QAction *addNoteAct;
 
     QMenu *lineMenu;
@@ -97,7 +112,16 @@ private:
     QAction *addNoLineAct;
     QAction *addSolidLineAct;
     QAction *addDottedLineAct;
-    QAction *addSolidLineAHAct;
+    QAction *addSolidLineSAHAct;
+    QAction *addDottedLineSAHAct;
+    QAction *addSolidLineEAHAct;
+    QAction *addDottedLineEAHAct;
+    QAction *addSolidLineSDAct;
+    QAction *addDottedLineSDAct;
+    QAction *addSolidLineEDAct;
+    QAction *addDottedLineEDAct;
+    QAction *addSolidLineBAHAct;
+    QAction *addDottedLineBAHAct;
     QAction *addSolidSQLineAct;
     QAction *addDottedSQLineAct;
     QAction *addSelfRefLineAct;

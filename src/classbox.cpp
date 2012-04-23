@@ -30,6 +30,45 @@ ClassBox::ClassBox()
 
 }
 
+ClassBox::ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString members)
+{
+    QStringList tmp = split_all(members);
+    
+    this->setPos(xpos,ypos);
+    m_width = xsize;
+    m_height = ysize;
+
+    m_labelBox->setParentItem(this);
+    m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
+    m_memberBox = new QGraphicsTextItem();
+    m_memberBox->setParentItem(this);
+    m_memberBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
+    m_methodBox = new QGraphicsTextItem();
+    m_methodBox->setParentItem(this);
+    m_methodBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
+
+    
+    
+    //default text
+    m_label = tmp[0];
+    m_members = tmp[1];
+    m_methods = tmp[2];
+
+    m_labelBox->setPlainText(m_label);
+    m_memberBox->setPlainText(m_members);
+    m_methodBox->setPlainText(m_methods);
+
+    //set m_memberList's position below m_labelBox, and m_methodList below m_memberList
+    m_labelBox->setPos(this->pos());
+    arrangeBoxes();
+    //show text boxes
+    m_labelBox->setVisible(true);
+    m_memberBox->setVisible(true);
+    m_methodBox->setVisible(true);
+
+
+}
+
 ClassBox::~ClassBox()
 {
     delete m_memberBox;
@@ -191,3 +230,19 @@ void ClassBox::setMethods(QString value)
 {
     m_methodBox->setPlainText(value);
 }
+
+QString ClassBox::get_all()
+{
+    QString delim = XML_DELIM;
+    
+    //                label      +     delimiter    +     members              +         delimiter   +          methods
+    return m_labelBox->toPlainText().append(delim).append(m_memberBox->toPlainText()).append(delim).append(m_methodBox->toPlainText());
+}
+
+QStringList ClassBox::split_all(QString value)
+{
+    QString delim = XML_DELIM;
+    
+    return value.split(delim);
+}
+

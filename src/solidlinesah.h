@@ -9,7 +9,6 @@ public:
 private:
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
-
 };
 
 #endif // SOLIDLINESAH_H
