@@ -54,7 +54,7 @@ QRectF Actor::boundingRect() const
 
 void Actor::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    m_labelBox->boundingRect().setHeight(m_height-20);
+    //m_labelBox->boundingRect().setHeight(m_height-20);
     m_labelBox->boundingRect().setWidth(m_width-20);
 
     arrangeBoxes();
@@ -89,8 +89,7 @@ void Actor::setValues()
 
 void Actor::arrangeBoxes()
 {
-    m_labelBox->setPos(m_width/4, m_height/2); // - m_labelBox->boundingRect().height());
-
+    m_labelBox->setPos(m_width/2 - m_labelBox->boundingRect().width()/2, m_height - m_labelBox->boundingRect().height());
 
     this->prepareGeometryChange();
 

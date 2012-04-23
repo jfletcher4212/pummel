@@ -248,7 +248,7 @@ Icon * Xml_io::make_icon(QString type, int width, int height, int x_pos, int y_p
     }
     else if ( type == "Note" )
     {
-	ret = new Note(0, width, height, x_pos, y_pos);
+        ret = new Note(0, width, height, x_pos, y_pos, label);
     }
     else if ( type == "ScenarioEnd" )
     {
