@@ -50,14 +50,12 @@ QGridLayout * Toolbar::initButtons()
     shapeButton = new QPushButton(tr("Shape"));
     textButton = new QPushButton(tr("Text"));
     lineButton = new QPushButton(tr("Line"));
-    optionsButton = new QPushButton(tr("Options"));
     gridButton = new QPushButton(tr("Grid"));
 
     // connect buttons to slots
     connect(shapeButton, SIGNAL(clicked()), this, SLOT(insertShape()));
     connect(textButton, SIGNAL(clicked()), this, SLOT(addNote()));
     connect(lineButton, SIGNAL(clicked()), this, SLOT(insertLine()));
-    connect(optionsButton, SIGNAL(clicked()), this, SLOT(showOptions()));
 
     /* add created buttons to a grid layout
      * buttons are arranged in a single column
@@ -67,8 +65,7 @@ QGridLayout * Toolbar::initButtons()
     layout->addWidget(shapeButton, 0, 0);
     layout->addWidget(lineButton, 1, 0);
     layout->addWidget(textButton, 2, 0);
-    layout->addWidget(optionsButton, 3, 0);
-    layout->addWidget(gridButton, 4, 0);
+    layout->addWidget(gridButton, 3, 0);
 
     return layout;
 }
@@ -100,6 +97,10 @@ void Toolbar::createActions(){
     addScenarioEndAct = new QAction(tr("End"), this);
     addScenarioEndAct->setCheckable(true);
     connect(addScenarioEndAct, SIGNAL(triggered()), this, SLOT(addScenarioEnd()));
+
+    addActorAct = new QAction(tr("Actor"), this);
+    addActorAct->setCheckable(true);
+    connect(addActorAct, SIGNAL(triggered()), this, SLOT(addActor()));
 
     addNoteAct = new QAction(tr("Note"), this);
     addNoteAct->setCheckable(true);
@@ -213,6 +214,7 @@ void Toolbar::setAvailableActions()
     }
     case UseCase:         // UseCase
     {
+        shapesGroup->addAction(addActorAct);
         shapesGroup->addAction(addEllipseAct);
         linesGroup->addAction(addSolidLineAct);
         break;
@@ -235,19 +237,6 @@ void Toolbar::setAvailableActions()
     shapeMenu->addActions(shapesGroup->actions());
     lineMenu->addActions(linesGroup->actions());
     gridMenu->addActions(gridOnOffToggleGroup->actions());
-}
-
-void Toolbar::showOptions()
-{
-    //    options->exec();
-    options->show();
-    shape.fillColor = options->shapeFillColor;
-    shape.weight = options->shapeWeight;
-    text.color = options->textColor;
-    text.font = options->textFont;
-    text.size = options->textSize;
-    line.color = options->lineColor;
-    line.weight = options->lineWeight;
 }
 
 /*  add a shape into the drawing area. Use the parent's
@@ -323,6 +312,15 @@ void Toolbar::addScenarioEnd()
     canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
     canvas.at(tabWidget->currentIndex())->setLineCreate(false);
     canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_ScenarioEnd);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(No_Line);
+    linesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addActor()
+{
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_Actor);
     canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(No_Line);
     linesGroup->actions().at(0)->setChecked(true);
 }

@@ -4,11 +4,12 @@
 Actor::Actor(QGraphicsItem *parent) : Icon(parent)
 {
     m_shapetype = "Actor";
+    m_label = "Actor";
 
     m_labelBox->setParentItem(this);
     m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
-    m_labelBox->setPlainText("Actor");
+    m_labelBox->setPlainText(m_label);
 
     m_labelBox->setPos(this->pos());
     arrangeBoxes();
@@ -88,7 +89,7 @@ void Actor::setValues()
 
 void Actor::arrangeBoxes()
 {
-    m_labelBox->setPos(0, m_height-m_labelBox->boundingRect().height());
+    m_labelBox->setPos(m_width/4, m_height);// + m_labelBox->boundingRect().height());
 
 
     this->prepareGeometryChange();
