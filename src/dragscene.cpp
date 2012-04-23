@@ -2,6 +2,7 @@
 #include "icon.h"
 #include "classbox.h"
 #include "ellipse.h"
+#include "actor.h"
 #include "note.h"
 #include "toolbar.h"
 #include "roundedsquare.h"
@@ -201,11 +202,12 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
             break;
         }
         case s_Actor:{
+            newItem = new Actor();
             break;
         }
         case s_Note:
         {
-            //newItem = new Note();
+            newItem = new Note();
             break;
         }
         case s_ScenarioStart:
