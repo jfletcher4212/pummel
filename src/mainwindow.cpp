@@ -18,7 +18,7 @@ MainWindow::MainWindow()
     setCentralWidget(widget);
 
     QIcon thumbnail;                    //this sets up an image for the upper corner
-    //thumbnail.addFile("icons/viking.png"); //while its running
+    thumbnail.addFile("icons/viking.png"); //while its running
 
     toolbar = new Toolbar;
     layout = new BorderLayout;

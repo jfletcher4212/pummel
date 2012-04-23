@@ -1,15 +1,15 @@
-#include "solidlinesah.h"
+#include "solidlinebah.h"
 
 const qreal Pi = 3.14;
 
-solidlineSAH::solidlineSAH(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
+solidlineBAH::solidlineBAH(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
 {
     parent = 0;
     scene = 0;
-    myLineType = Solid_Line_SAH;
+    myLineType = Solid_Line_BAH;
 }
 
-void solidlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void solidlineBAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
     widget = 0;
@@ -42,11 +42,13 @@ void solidlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     QPointF arrowP1 = line().p1() + QPointF(sin(angle + Pi / 3)*arrowSize, cos(angle + Pi / 3) *arrowSize);
     QPointF arrowP2 = line().p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
     arrowHead.clear();
-    arrowHead << line().p1() << arrowP1 << arrowP2;
+    //arrowHead << line().p1() << arrowP1 << arrowP2;
 
     painter->drawLine(line());
 
-    painter->drawPolygon(arrowHead);
+    //painter->drawPolygon(arrowHead);
+    painter->drawLine(QLineF(line().p1(), arrowP1));
+    painter->drawLine(QLineF(line().p1(), arrowP2));
 
     if (isSelected())
     {
