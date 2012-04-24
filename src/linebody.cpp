@@ -131,9 +131,21 @@ QPointF lineBody::findIntersection(Icon *refObj, QLineF interLine) //Find the in
             interPoint = tempInter4;
         }
     }
+    else if(tempStr.compare("Ellipse") == 0)
+    {
+        interPoint = refObj->pos();
+    }
+    else if(tempStr.compare("Rounded Square") == 0)
+    {
+
+    }
+    else if(tempStr.compare("Scenario End") == 0)
+    {
+
+    }
     else
     {
-        return interPoint = QPointF(NULL, NULL);
+        interPoint = QPointF(NULL, NULL);
     }
     return interPoint;
 }
