@@ -16,19 +16,16 @@
 
 using namespace std;
 
-
-Xml_io::Xml_io()
+Xml_io::Xml_io(QString filename)
 {
-    //m_items = NULL;
-  
-    m_filename = "";
-    m_diagram_type = "";
+    m_filename = filename;
+    m_diagram_type = (DiagramType)-1;
 }
 
-Xml_io::Xml_io(QList<Icon*> icon_list, /*QList<BasicLineObject*> line_list,*/ QString filename, DiagramType diagram_type)
+Xml_io::Xml_io(QList<Icon*> icon_list, QList<lineBody*> line_list, QString filename, DiagramType diagram_type)
 {
     m_items = icon_list;
-    ///m_lines = line_list;
+    m_lines = line_list;
 
     m_filename = filename;
     m_diagram_type = choose_type(diagram_type);
@@ -94,17 +91,13 @@ void Xml_io::write_xml()
 	saver.writeEndElement();
     }
     
-    /*
     for ( i = 0; i < m_lines.length(); i++ )
     {
 	saver.writeStartElement("line");
-	// write line type
-	// write begin object index
-	// write end object index
-	// write arrowhead info
+	saver.writeTextElement("idx_start", QString::number(m_lines[i]->get_idx_start()) );
+	saver.writeTextElement("idx_end", QString::number(m_lines[i]->get_idx_end()) );
 	saver.writeEndElement();
     }
-    */
     
     saver.writeEndDocument();
     saver.setAutoFormatting(true);
