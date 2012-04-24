@@ -27,6 +27,10 @@
 #include "dottedlinebah.h"
 #include "solidsqline.h"
 #include "dottedsqline.h"
+#include "solidsqlinesah.h"
+#include "dottedsqlinesah.h"
+#include "solidsqlineeah.h"
+#include "dottedsqlineeah.h"
 #include "selfrefline.h"
 
 enum ShapeCreationType {s_None, s_Classbox, s_Ellipse, s_Actor, s_Note, s_RoundedSquare, s_ScenarioStart, s_ScenarioEnd};

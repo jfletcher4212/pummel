@@ -463,7 +463,35 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
                 this->scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
-           // newLine->updatePosition();
+            else if(lineTypeEnum == Solid_Sq_Line_SAH)
+            {
+                solidsqlinesah *newLine = new solidsqlinesah(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                this->scene_lines.append(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Dotted_Sq_Line_SAH)
+            {
+                dottedsqlinesah *newLine = new dottedsqlinesah(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                this->scene_lines.append(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Solid_Sq_Line_EAH)
+            {
+                solidsqlineeah *newLine = new solidsqlineeah(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                this->scene_lines.append(newLine);
+                newLine->setZValue(-1);
+            }
+            else if(lineTypeEnum == Dotted_Sq_Line_EAH)
+            {
+                dottedsqlineeah *newLine = new dottedsqlineeah(initRefObj, finRefObj, 0, 0);
+                this->addItem(newLine);
+                this->scene_lines.append(newLine);
+                newLine->setZValue(-1);
+            }
+            // newLine->updatePosition();
         }
         delete tempLine;
         tempLine = 0;
