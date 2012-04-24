@@ -14,6 +14,12 @@ lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGra
     myDestinationReferenceObj = destinationReferenceObj;
 }
 
+lineBody::lineBody(int idx_start, int idx_end)
+{
+    m_idx_start = idx_start;
+    m_idx_end = idx_end;
+}
+
 lineBody::~lineBody()
 {
     //delete mySourceReferenceObj;

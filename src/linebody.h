@@ -23,8 +23,9 @@ class lineBody : public QGraphicsLineItem//: public BasicLineObject
 {
 public:
     lineBody(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
+    lineBody(int idx_start, int idx_end);
     ~lineBody();
-
+    
     QRectF boundingRect() const;
     QPainterPath shape() const;
     QColor setColor() const
@@ -36,7 +37,16 @@ public:
         { return myDestinationReferenceObj; }
     int type() const
             { return myLineType; }
+    
+    // index accessors
+    int get_idx_start() { return m_idx_start; }
+    int get_idx_end() { return m_idx_end; }
 
+    // mutators
+    void set_idxs(int idx_start, int idx_end) { m_idx_start = idx_start; m_idx_end = idx_end; }
+    void set_idx_start(int idx) { m_idx_start = idx; }
+    void set_idx_end(int idx) { m_idx_end = idx; }
+    
     void setSourceObject(Icon* newSource);
     void setDestObject(Icon *newDest);
     QPointF findIntersection (Icon *, QLineF);
@@ -44,6 +54,9 @@ public:
 private:
 
 protected:
+    
+    int m_idx_start;
+    int m_idx_end;
 
     void swapLineDirection();
 
