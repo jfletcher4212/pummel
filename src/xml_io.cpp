@@ -48,10 +48,6 @@ QString Xml_io::choose_type(DiagramType d_type)
     {
 	return (QString)"StateChart";
     }
-    if ( d_type == (DiagramType)Sequence) 
-    {
-	return (QString)"Sequence";
-    }
     if ( d_type == (DiagramType)UseCase) 
     {
 	return (QString)"UseCase";

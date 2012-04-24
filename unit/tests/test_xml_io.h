@@ -19,7 +19,7 @@ class ut_xml_io : public CxxTest::TestSuite {
 public:
   void test_write_xml(void)
   {
-    int size = 5;
+    int size = 1;
     Xml_io *test;
 
     QList<Icon*> list;
@@ -67,64 +67,87 @@ public:
       
       delete test;
   }
+  
+  void test_parse_icon(void)
+  {
+      Xml_io *test = new Xml_io();
+      Icon *current;
+      
+      // ellipse
+      current = new Ellipse();      
+      TS_ASSERT( help_test_parse_icon(test, current) );
+      //help_test_parse_icon(test, current);
+      delete current;
+      
+      delete test;
+  }
+  
+  int help_test_parse_icon(Xml_io *test, Icon *input)
+  {
+      int result;
+      Icon *output;
+
+      /// set icon properties
+      
+      QList<Icon*> list;
+      list.append(input);
+      QString filename = "tmpfile.ut";
+      
+      // setup
+      test->set_items(list);
+      test->set_filename(filename);
+      test->write_xml();
+      
+      QFile infile ( filename );
+      infile.open(QIODevice::ReadOnly);
+      QXmlStreamReader reader(&infile);      
+      
+      // run the test
+      output = test->parse_icon(reader);
+
+      /*
+      result = ( 
+	  (TS_ASSERT_EQUALS( input->getWidth(), output->getWidth() ))
+	  && (TS_ASSERT_EQUALS( input->getHeight(), output->getHeight() ))
+	  && (TS_ASSERT_EQUALS( input->get_xPos(), output->get_xPos() ))
+	  && (TS_ASSERT_EQUALS( input->get_yPos(), output->get_yPos() ))
+	  && (TS_ASSERT_EQUALS( input->reportShapetype(), output->reportShapetype() ))
+	  && (TS_ASSERT_EQUALS( input->get_all(), output->get_all() ))
+	  );
+      */
+      /*
+      TS_ASSERT_EQUALS( input->getWidth(), output->getWidth() );
+      TS_ASSERT_EQUALS( input->getHeight(), output->getHeight() );
+      TS_ASSERT_EQUALS( input->get_xPos(), output->get_xPos() );
+      TS_ASSERT_EQUALS( input->get_yPos(), output->get_yPos() );
+      TS_ASSERT_EQUALS( input->reportShapetype(), output->reportShapetype() );
+      TS_ASSERT_EQUALS( input->get_all(), output->get_all() );
+      */
+      result = (
+	  (input->getWidth() == output->getWidth())
+	  && (input->getHeight() == output->getHeight())
+	  && (input->get_xPos() == output->get_xPos())
+	  && (input->get_yPos() == output->get_yPos())
+	  && (input->reportShapetype() == output->reportShapetype())
+	  && (input->get_all() == output->get_all())
+	  );
+      
+      delete output;
+      return result;
+  }
+  
+  void test_choose_type(void)
+  {
+      Xml_io *test = new Xml_io();
+      
+      TS_ASSERT_EQUALS(test->choose_type((DiagramType)Class), (QString)"Class");
+      TS_ASSERT_EQUALS(test->choose_type((DiagramType)StateChart), (QString)"StateChart");
+      TS_ASSERT_EQUALS(test->choose_type((DiagramType)UseCase), (QString)"UseCase");
+      
+      // bad value: integer value not in enum
+      TS_ASSERT_EQUALS(test->choose_type((DiagramType)5), (QString)"");
+      
+      
+      delete test;
+  }
 };
-
-/*
-Things to do:
-
-mainwindow.cpp:
-   save method
-   draw_icons method
-
-xml_io.cpp
-   add icon positions
-   add icon text
-   handle classbox (multiple text boxes)
-   handle lines (line list)
-   handle diagram type
-   prompt to save on exit (low priority)
-   
-
-other:
-   icons need to have constructors that take 
-   all possible params
-
- */
-
-/*
-void MainWindow::saveAsFile()
-{
-    // dialog box for user to enter filename
-    QString filename = QFileDialog::getSaveFileName(this, "Save file", QDir::homePath(), "*.xml");
-    //Xml_io writer(icon_list, filename, diagram_type);
-    //Xml_io writer(icon_list, filename);
-    
-    // write the file
-    //writer.write_xml();
-    
-    // make a new tab
-    tabWidget->setTabText(tabWidget->currentIndex(), filename );
-}
-
-void MainWindow::openFile()
-{
-    QString filename = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath(), "*.xml" );
-    //Xml_io writer();
-    
-    // parse the xml
-    //writer.set_filename(filename);
-    //new_icons = writer.parse_xml();
-    
-    // strip full path off filename for display
-    //int idx = filename.lastIndexOf("/");
-    //filename.remove(0, idx+1);
-    
-    tabWidget->setTabText(tabWidget->currentIndex(), filename);
-    //draw_icons(new_icons);
-}
-
-void MainWindow::draw_icons()
-{
-    // draw the icons and set globals
-}
- */
