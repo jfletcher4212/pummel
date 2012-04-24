@@ -5,6 +5,12 @@
 #include "../../src/actor.h"
 #include "../../src/ellipse.h"
 #include "../../src/classbox.h"
+#include "../../src/note.h"
+#include "../../src/roundedsquare.h"
+#include "../../src/scenarioend.h"
+#include "../../src/scenariostate.h"
+#include "../../src/scenariostart.h"
+#include "../../src/scenariostart.h"
 
 class ut_xml_io : public CxxTest::TestSuite {
 public:
@@ -23,7 +29,7 @@ public:
 	
 	if ( i % 2 == 0 )
 	{
-	    temp = new actor();
+	    temp = new Actor();
 	}
 	else
 	{
