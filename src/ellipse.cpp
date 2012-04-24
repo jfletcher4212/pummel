@@ -14,8 +14,8 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
 
     m_height /= 1.5;
     
-    m_label = "Ellipse";
-    m_labelBox->setPlainText(m_label);
+    m_label = "This is temporary and intentional.";
+    //m_labelBox->setPlainText(m_label);
 
     m_labelBox->setPos(this->pos());
     arrangeBoxes();
@@ -47,7 +47,7 @@ Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos
     m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
     m_label = label;
-    m_labelBox->setPlainText(label);
+    //m_labelBox->setPlainText(label);
 
     m_labelBox->setPos(this->pos());
     arrangeBoxes();
