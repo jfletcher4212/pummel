@@ -17,6 +17,10 @@ class Xml_io
     void write_xml();
     void parse_xml();
     
+    // helpers
+    Icon * parse_icon(QXmlStreamReader &reader);
+    Icon * make_icon(QString type, int width, int height, int x_pos, int y_pos, QString label);
+    
     QString choose_type(DiagramType d_type);
     
     /* Access methods */
@@ -28,7 +32,7 @@ class Xml_io
     /* mutator methods */
     void set_items(QList<Icon*> icon_list) { m_items = icon_list; }
     void set_filename(QString filename) { m_filename = filename; }
-    //void set_diagram_type(QString diagram_type) { m_diagram_type = diagram_type; }  
+    void set_diagram_type(QString diagram_type) { m_diagram_type = diagram_type; }  
     
  private:
     int m_size; 
@@ -36,9 +40,8 @@ class Xml_io
     QString m_diagram_type;
     QList<Icon*> m_items;
     ///QList<BasicLineObject*> m_lines;
+    
 
-    Icon * parse_icon(QXmlStreamReader &reader);
-    Icon * make_icon(QString type, int width, int height, int x_pos, int y_pos, QString label);
 };
 
 
