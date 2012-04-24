@@ -1,0 +1,35 @@
+What went well with pummel?
+Team is willing to do what needs to be done, has a good work ethic.
+
+Need more communication between meetings.
+Be more consistent with sending status updates to your work via email.
+
+
+Todo
+Fix latex source or make files, ssrs and ssdd.
+
+Look through old uml diagrams and update them.
+Combine use cases into one.
+Look at class diagrams, see if we are overlooking some classes, of if there is a class interaction that is not being used or represented.
+
+
+David will put these notes into the repo, under docs. Send a copy to Dr. J
+
+Cable will present a case for switching repo to mercurial.
+
+Need to get drawing area to not duplicate an object when it is moved.
+Need to figure out how to define the object types and link them to the drawing area. Go from the definition headers to the class implementation. Which class implements the uml objects.
+
+Need to figure out file io.
+Figure out how to convert to pdf.
+Figure out how to print.
+Figure undo and redo functions.
+
+Will meet Thursdays at 5pm â- back of Library 1st floor.
+
+David and Austin will examine uml diagrams, focus on class diagrams and use case diagrams.
+Cable will repair the tex docs.
+Theora and Alex will clarify where uml drawing classes are called.
+Theora will restructure the directories, update the code.
+
+
