@@ -14,7 +14,6 @@
 #include "icon.h"
 #include "solidline.h"
 #include "dottedline.h"
-#include "filledah.h"
 #include "solidlinesah.h"
 #include "dottedlinesah.h"
 #include "solidlineeah.h"
