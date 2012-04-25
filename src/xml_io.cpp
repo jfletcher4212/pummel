@@ -82,9 +82,9 @@ void Xml_io::write_xml()
     for ( i = 0; i < m_lines.length(); i++ )
     {
 	saver.writeStartElement("line");
-	saver.writeTextElement("linetype", QString::number(m_lines[i]->type()) );
-	saver.writeTextElement("idx_start", QString::number(m_lines[i]->get_idx_start()) );
-	saver.writeTextElement("idx_end", QString::number(m_lines[i]->get_idx_end()) );
+	saver.writeTextElement("linetype", QString::number(m_lines[i]->getLinetype()) );
+	saver.writeTextElement("id_start", QString::number(m_lines[i]->get_id_start()) );
+	saver.writeTextElement("id_end", QString::number(m_lines[i]->get_id_end()) );
 	saver.writeEndElement();
     }
     
@@ -102,6 +102,7 @@ void Xml_io::parse_xml()
     QXmlStreamReader reader(&infile);
 
     QList<Icon*> icons;
+    QList<lineBody*> lines;
     
     while ( ! reader.atEnd() && ! reader.hasError() )
     {
@@ -131,19 +132,19 @@ void Xml_io::parse_xml()
 		//qDebug() << reader.name();
 		icons.append(parse_icon(reader));
 	    }
-	    /*
+	    
 	    if ( reader.name() == "line" )
 	    {
 		//qDebug() << reader.name();
 		lines.append(parse_line(reader));
 	    }	    
-	    */
+	    
 	}
     }
     
     qDebug() << "returning icons";
     m_items = icons;
-    ///m_lines = lines;
+    m_lines = lines;
 }
 
 Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
@@ -176,35 +177,30 @@ Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
 	    {
 		reader.readNext();
 		height = reader.text().toString().toInt();
-		qDebug() << height;
 	    }
 
 	    if( reader.name() == "x_pos")
 	    {
 		reader.readNext();
 		x_pos = reader.text().toString().toInt();
-		qDebug() << x_pos;
 	    }
 	    
 	    if( reader.name() == "y_pos")
 	    {
 		reader.readNext();
 		y_pos = reader.text().toString().toInt();
-		qDebug() << y_pos;
 	    }
 
 	    if( reader.name() == "label")
 	    {
 	    	reader.readNext();
 	    	label = reader.text().toString();
-		qDebug() << label;
 	    }
 
 	    if( reader.name() == "shapetype")
 	    {
 		reader.readNext();
 		type = reader.text().toString();
-		qDebug() << type;
 	    }
 	}
     }
@@ -253,12 +249,11 @@ Icon * Xml_io::make_icon(QString type, int width, int height, int x_pos, int y_p
 }
 
 
-/*
 lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
 {
     int linetype = -1;
-    int idx_start = 0;
-    int idx_end = 0;
+    int id_start = -1;
+    int id_end = -1;
     
     // next element
     reader.readNext();
@@ -276,105 +271,105 @@ lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
 		linetype = reader.text().toString().toInt();
 	    }
 	    
-	    if ( reader.name() == "idx_start" )
+	    if ( reader.name() == "id_start" )
 	    {
 		reader.readNext();
-		idx_start = reader.text().toString().toInt();		
+		id_start = reader.text().toString().toInt();		
 	    }
-	    
-	    if ( reader.name() == "idx_end" )
+
+	    if ( reader.name() == "id_end" )
 	    {
 		reader.readNext();
-		idx_end = reader.text().toString().toInt();		
+		id_end = reader.text().toString().toInt();		
 	    }
 	}
     }
     
-    return make_line(linetype, idx_start, idx_end);
+    return make_line(linetype, id_start, id_end);
 }
 
 
-lineBody * Xml_io::make_line(int linetype, int idx_start, int idx_end)
+lineBody * Xml_io::make_line(int linetype, int id_start, int id_end)
 {
     lineBody *ret = NULL;
     
     if ( linetype == (LineType)Solid_Line )
     {
-	ret = new (idx_start, idx_end);
+	ret = new solidline(id_start, id_end);
     }
     if ( linetype == (LineType)Dotted_Line )
     {
-	ret = new (idx_start, idx_end)
+	ret = new dottedline(id_start, id_end);
     }
     if ( linetype == (LineType)Solid_Line_SAH )
     {
-	ret = new (idx_start, idx_end)
+	ret = new solidlineSAH(id_start, id_end);
     }
     if ( linetype == (LineType)Dotted_Line_SAH )
     {
-	ret = new (idx_start, idx_end)
+	ret = new dottedlineSAH(id_start, id_end);
     }
     if ( linetype == (LineType)Solid_Line_EAH )
     {
-	ret = new (idx_start, idx_end)
+	ret = new solidlineeah(id_start, id_end);
     }
     if ( linetype == (LineType)Dotted_Line_EAH )
     {
-	ret = new (idx_start, idx_end)
+	ret = new dottedlineeah(id_start, id_end);
     }
     if ( linetype == (LineType)Solid_Line_SD )
     {
-	ret = new (idx_start, idx_end)
+	ret = new solidlineSD(id_start, id_end);
     }
     if ( linetype == (LineType)Dotted_Line_SD )
     {
-	ret = new (idx_start, idx_end)
+	ret = new dottedlineSD(id_start, id_end);
     }
     if ( linetype == (LineType)Solid_Line_ED )
     {
-	ret = new (idx_start, idx_end)
+	ret = new solidlineed(id_start, id_end);
     }
     if ( linetype == (LineType)Dotted_Line_ED )
     {
-	ret = new (idx_start, idx_end)
+	ret = new dottedlineed(id_start, id_end);
     }
     if ( linetype == (LineType)Solid_Line_BAH )
     {
-	ret = new (idx_start, idx_end)
+	ret = new solidlineBAH(id_start, id_end);
     }
     if ( linetype == (LineType)Dotted_Line_BAH )
     {
-	ret = new (idx_start, idx_end)
+	ret = new dottedlinebah(id_start, id_end);
     }
     if ( linetype == (LineType)Solid_Square_Line )
     {
-	ret = new (idx_start, idx_end)
+	ret = new solidsqline(id_start, id_end);
     }
     if ( linetype == (LineType)Dotted_Square_Line )
     {
-	ret = new (idx_start, idx_end)
+	ret = new dottedsqline(id_start, id_end);
     }
     if ( linetype == (LineType)Solid_Sq_Line_SAH )
     {
-	ret = new (idx_start, idx_end)
+	ret = new solidsqlinesah(id_start, id_end);
     }
     if ( linetype == (LineType)Dotted_Sq_Line_SAH )
     {
-	ret = new (idx_start, idx_end)
+	ret = new dottedsqlinesah(id_start, id_end);
     }
     if ( linetype == (LineType)Solid_Sq_Line_EAH )
     {
-	ret = new (idx_start, idx_end)
+	ret = new solidsqlineeah(id_start, id_end);
     }
     if ( linetype == (LineType)Dotted_Sq_Line_EAH )
     {
-	ret = new (idx_start, idx_end)
+	ret = new dottedsqlineeah(id_start, id_end);
     }
     if ( linetype == (LineType)Self_Ref_Line )
     {
-	ret = new (idx_start, idx_end)    
+	ret = new selfRefLine(id_start, id_end);    
     }
     
     return ret;
 }
-*/
+

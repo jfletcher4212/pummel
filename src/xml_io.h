@@ -22,6 +22,9 @@ class Xml_io
     Icon * parse_icon(QXmlStreamReader &reader);
     Icon * make_icon(QString type, int width, int height, int x_pos, int y_pos, QString label);
     
+    lineBody * parse_line(QXmlStreamReader &reader);
+    lineBody * make_line(int linetype, int idx_start, int idx_end);
+
     QString choose_type(DiagramType d_type);
     
     /* Access methods */
