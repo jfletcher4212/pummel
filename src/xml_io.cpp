@@ -3,32 +3,21 @@
 #include <iostream>
 #include <QString>
 #include <QDebug>
-#include "actor.h"
-#include "classbox.h"
-#include "ellipse.h"
-#include "note.h"
-#include "roundedsquare.h"
-#include "scenarioend.h"
-#include "scenariostate.h"
-#include "scenariostart.h"
-#include "scenariostart.h"
 
+#include "derived_types.h"
 
 using namespace std;
 
-
-Xml_io::Xml_io()
+Xml_io::Xml_io(QString filename)
 {
-    //m_items = NULL;
-  
-    m_filename = "";
-    m_diagram_type = "";
+    m_filename = filename;
+    m_diagram_type = (DiagramType)-1;
 }
 
-Xml_io::Xml_io(QList<Icon*> icon_list, /*QList<BasicLineObject*> line_list,*/ QString filename, DiagramType diagram_type)
+Xml_io::Xml_io(QList<Icon*> icon_list, QList<lineBody*> line_list, QString filename, DiagramType diagram_type)
 {
     m_items = icon_list;
-    ///m_lines = line_list;
+    m_lines = line_list;
 
     m_filename = filename;
     m_diagram_type = choose_type(diagram_type);
@@ -85,26 +74,23 @@ void Xml_io::write_xml()
 	//QString valueAsString = QString::number(valueAsDouble);
 	// wrapper tags coule be the object's individual ID #
 	saver.writeStartElement("icon");
+	saver.writeTextElement("shapetype", m_items[i]->reportShapetype());
 	saver.writeTextElement("width", QString::number(m_items[i]->getWidth()));
 	saver.writeTextElement("height", QString::number(m_items[i]->getHeight()));
 	saver.writeTextElement("x_pos", QString::number(m_items[i]->get_xPos()));
 	saver.writeTextElement("y_pos", QString::number(m_items[i]->get_yPos()));
 	saver.writeTextElement("label", m_items[i]->get_all());
-	saver.writeTextElement("shapetype", m_items[i]->reportShapetype());
 	saver.writeEndElement();
     }
     
-    /*
     for ( i = 0; i < m_lines.length(); i++ )
     {
 	saver.writeStartElement("line");
-	// write line type
-	// write begin object index
-	// write end object index
-	// write arrowhead info
+	saver.writeTextElement("linetype", QString::number(m_lines[i]->type()) );
+	saver.writeTextElement("idx_start", QString::number(m_lines[i]->get_idx_start()) );
+	saver.writeTextElement("idx_end", QString::number(m_lines[i]->get_idx_end()) );
 	saver.writeEndElement();
     }
-    */
     
     saver.writeEndDocument();
     saver.setAutoFormatting(true);
@@ -148,14 +134,12 @@ void Xml_io::parse_xml()
 	    {
 		//qDebug() << reader.name();
 		icons.append(parse_icon(reader));
-		//parse_icon(reader);
 	    }
 	    /*
 	    if ( reader.name() == "line" )
 	    {
 		//qDebug() << reader.name();
 		lines.append(parse_line(reader));
-		//parse_icon(reader);
 	    }	    
 	    */
 	}
@@ -168,12 +152,12 @@ void Xml_io::parse_xml()
 
 Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
 {
-    int width;
-    int height;
-    int x_pos;
-    int y_pos;
-    QString label;
-    QString type;
+    int width = 0;
+    int height = 0;
+    int x_pos = 0;
+    int y_pos = 0;
+    QString label = "";
+    QString type = "";
     
     // next element
     reader.readNext();
@@ -248,7 +232,7 @@ Icon * Xml_io::make_icon(QString type, int width, int height, int x_pos, int y_p
     }
     else if ( type == "Note" )
     {
-	ret = new Note(0, width, height, x_pos, y_pos);
+        ret = new Note(0, width, height, x_pos, y_pos, label);
     }
     else if ( type == "ScenarioEnd" )
     {
@@ -266,3 +250,129 @@ Icon * Xml_io::make_icon(QString type, int width, int height, int x_pos, int y_p
     return ret;
 }
 
+
+/*
+lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
+{
+    int linetype = -1;
+    int idx_start = 0;
+    int idx_end = 0;
+    
+    // next element
+    reader.readNext();
+    
+    while ( ! (reader.tokenType() == QXmlStreamReader::EndElement &&  reader.name() == "line") )
+    {
+	//read next element
+	QXmlStreamReader::TokenType token = reader.readNext();
+	
+	if ( token == QXmlStreamReader::StartElement )
+	{
+	    if ( reader.name() == "linetype" )
+	    {
+		reader.readNext();
+		linetype = reader.text().toString().toInt();
+	    }
+	    
+	    if ( reader.name() == "idx_start" )
+	    {
+		reader.readNext();
+		idx_start = reader.text().toString().toInt();		
+	    }
+	    
+	    if ( reader.name() == "idx_end" )
+	    {
+		reader.readNext();
+		idx_end = reader.text().toString().toInt();		
+	    }
+	}
+    }
+    
+    return make_line(linetype, idx_start, idx_end);
+}
+
+
+lineBody * Xml_io::make_line(int linetype, int idx_start, int idx_end)
+{
+    lineBody *ret = NULL;
+    
+    if ( linetype == (LineType)Solid_Line )
+    {
+	ret = new (idx_start, idx_end);
+    }
+    if ( linetype == (LineType)Dotted_Line )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Solid_Line_SAH )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Dotted_Line_SAH )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Solid_Line_EAH )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Dotted_Line_EAH )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Solid_Line_SD )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Dotted_Line_SD )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Solid_Line_ED )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Dotted_Line_ED )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Solid_Line_BAH )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Dotted_Line_BAH )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Solid_Square_Line )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Dotted_Square_Line )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Solid_Sq_Line_SAH )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Dotted_Sq_Line_SAH )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Solid_Sq_Line_EAH )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Dotted_Sq_Line_EAH )
+    {
+	ret = new (idx_start, idx_end)
+    }
+    if ( linetype == (LineType)Self_Ref_Line )
+    {
+	ret = new (idx_start, idx_end)    
+    }
+    
+    return ret;
+}
+*/

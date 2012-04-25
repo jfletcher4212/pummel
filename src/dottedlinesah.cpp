@@ -1,15 +1,15 @@
-#include "solidlinesah.h"
+#include "dottedlinesah.h"
 
 const qreal Pi = 3.14;
 
-solidlineSAH::solidlineSAH(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
+dottedlineSAH::dottedlineSAH(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
 {
     parent = 0;
     scene = 0;
-    myLineType = Solid_Line_SAH;
+    myLineType = Dotted_Line_SAH;
 }
 
-void solidlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void dottedlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
     widget = 0;
@@ -20,7 +20,7 @@ void solidlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     qreal arrowSize = 20;
 
     painter->setBrush(myColor);
-    painter->setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    painter->setPen(QPen(myColor, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
 
     QPointF obj1 = mySourceReferenceObj->pos();
     QPointF obj2 = myDestinationReferenceObj->pos();
@@ -45,6 +45,8 @@ void solidlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     arrowHead << line().p1() << arrowP1 << arrowP2;
 
     painter->drawLine(line());
+
+    painter->setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 
     painter->drawPolygon(arrowHead);
 
