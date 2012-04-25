@@ -16,9 +16,9 @@ ClassBox::ClassBox()
     m_methodBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
     //default text
-    m_labelBox->setPlainText("Name");
-    m_memberBox->setPlainText("Members");
-    m_methodBox->setPlainText("Methods");
+    m_label = "Name";
+    m_members = "Members";
+    m_methods = "Methods";
 
     //set m_memberList's position below m_labelBox, and m_methodList below m_memberList
     m_labelBox->setPos(this->pos());
@@ -120,6 +120,10 @@ void ClassBox::arrangeBoxes()
 //text is already handled, so paint only makes the boundary boxes
 void ClassBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+    m_labelBox->setPlainText(m_label);
+    m_memberBox->setPlainText(m_members);
+    m_methodBox->setPlainText(m_methods);
+
     m_labelBox->boundingRect().setHeight(m_height/3);
     m_memberBox->boundingRect().setHeight(m_height/3);
     m_methodBox->boundingRect().setHeight(m_height/3);
@@ -218,17 +222,20 @@ QString ClassBox::getMethods()
 //The following 3 methods are mutators
 void ClassBox::setLabel(QString value)
 {
-    m_labelBox->setPlainText(value);
+    m_label = value;
+    //m_labelBox->setPlainText(value);
 }
 
 void ClassBox::setMembers(QString value)
 {
-    m_memberBox->setPlainText(value);
+    m_members = value;
+    //Box->setPlainText(value);
 }
 
 void ClassBox::setMethods(QString value)
 {
-    m_methodBox->setPlainText(value);
+    m_methods = value;
+    //m_methodBox->setPlainText(value);
 }
 
 QString ClassBox::get_all()
