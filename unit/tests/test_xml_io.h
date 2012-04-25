@@ -1,10 +1,19 @@
 // test_xml_io.h
          
 #include <cxxtest/TestSuite.h>
+#include <iostream>
 #include "../src/xml_io.h"
 #include "../../src/actor.h"
 #include "../../src/ellipse.h"
 #include "../../src/classbox.h"
+#include "../../src/note.h"
+#include "../../src/roundedsquare.h"
+#include "../../src/scenarioend.h"
+#include "../../src/scenariostate.h"
+#include "../../src/scenariostart.h"
+#include "../../src/scenariostart.h"
+
+using namespace std;
 
 class ut_xml_io : public CxxTest::TestSuite {
 public:
@@ -21,19 +30,20 @@ public:
     {
         Icon *temp;
 	
-	if ( i % 2 == 0 )
-	{
-	    temp = new actor();
-	}
-	else
-	{
-	    temp = new Ellipse();
-	}
+	//if ( i % 2 == 0 )
+	//{
+	    //temp = new Actor();
+	//}
+	//else
+	//{
+	temp = new Ellipse();
+	    //}
 	
 	list.append(temp);
+	//delete temp;
     }
-    
-    test = new Xml_io(list, filename);
+    test = new Xml_io(filename);
+    test->set_items(list);
     //test = new Xml_io();
 
     test->write_xml();
@@ -45,17 +55,16 @@ public:
     
     delete test;
 
+
   } 
 
   void test_parse_xml(void)
   {
       QString filename = "Testfile.ut";
+      Xml_io *test = new Xml_io(filename);
 
-      Xml_io *test = new Xml_io();
       test->set_filename(filename);
-      
       test->parse_xml();
-      
       
       delete test;
   }

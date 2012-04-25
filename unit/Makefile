@@ -59,6 +59,9 @@ all: $(TARGS)
 	cxxtestgen --error-printer -o $@ $<
 
 ## maintenance rules
+full_clean: clean
+	rm -rf ../src/*gcno ../src/*gcda; cd ../src/; make clean
+
 clean:
 	rm -rf *.o *.cpp *.trucov *.svg *.ut *_log.txt *_ut.txt *~ $(TARGS)
 
@@ -81,3 +84,4 @@ help:
 	#	make all		- build and run all tests in the tests/ directory
 	#	make all_report		- build and run all tests and push their reports to the wiki repository
 	#	clean			- clean up all generated test files and reports
+	#	full_clean		- same as clean, but also cleans up src/ directory
