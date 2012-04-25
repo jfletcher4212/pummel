@@ -6,7 +6,7 @@ class solidlineeah : public lineBody
 {
 public:
     solidlineeah(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
-private:
+
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
 };
