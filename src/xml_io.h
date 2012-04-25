@@ -5,6 +5,7 @@
 #include <QXmlStreamWriter>
 #include "icon.h"
 #include "global.h"
+#include "linebody.h"
 
 class Xml_io
 {
