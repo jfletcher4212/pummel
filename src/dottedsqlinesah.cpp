@@ -1,6 +1,8 @@
-#include "solidsqline.h"
+#include "dottedsqlinesah.h"
 
-solidsqline::solidsqline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
+const qreal Pi = 3.14;
+
+dottedsqlinesah::dottedsqlinesah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
     :lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
 {
     parent = 0;
@@ -8,7 +10,7 @@ solidsqline::solidsqline(Icon *sourceReferenceObj, Icon *destinationReferenceObj
     m_LineType = Solid_Square_Line;
 }
 
-void solidsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void dottedsqlinesah::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
     widget = 0;
@@ -16,11 +18,11 @@ void solidsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     if (m_SourceReferenceObj->collidesWithItem(m_DestinationReferenceObj))
         return;
 
-    painter->setPen(QPen(m_Color, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    painter->setBrush(m_Color);
+    painter->setPen(QPen(m_Color, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
 
     QPointF point1 = findObjectCenter(m_SourceReferenceObj);
     QPointF point4 = findObjectCenter(m_DestinationReferenceObj);
-
     QPointF point2 = point1;
     QPointF point3;
 
@@ -35,9 +37,21 @@ void solidsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     QLineF lineTwo(point2, point3);
     QLineF lineThree(point3, point4);
 
+    QPointF interPoint = findIntersection(m_DestinationReferenceObj, lineThree);
+
+    this->setLine(QLineF(interPoint, point3));
+
+    double angle = this->getAngle();
+
+    makeArrowHead(angle, line());
+
     painter->drawLine(lineOne);
     painter->drawLine(lineTwo);
-    painter->drawLine(lineThree);
+    painter->drawLine(line());
+
+    painter->setPen(QPen(m_Color, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+
+    painter->drawPolygon(m_ArrowHead);
 
     update();
 }

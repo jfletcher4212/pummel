@@ -6,7 +6,7 @@ class solidlineed : public lineBody
 {
 public:
     solidlineed(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
-private:
+
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
 };

@@ -144,6 +144,7 @@ void MainWindow::deleteSelected()
     }
     else
     {
+	// this needs to also do an index shift or file loading will break
         canvas.at(tabWidget->currentIndex())->scene->deleteItem(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(iconSelectedIndex));
     }
 }
@@ -210,7 +211,10 @@ void MainWindow::saveFile()
     }
     else
     {
-	Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename, (DiagramType)canvas.at(tabWidget->currentIndex())->getDiagramType());
+	DrawArea *tmpscene = canvas.at(tabWidget->currentIndex());
+	Xml_io writer(tmpscene->getObjects(), tmpscene->getLines(), filename, (DiagramType)tmpscene->getDiagramType());
+	
+	// write the file
 	writer.write_xml();
     }
 }
@@ -225,11 +229,9 @@ void MainWindow::saveAsFile()
     else
     {
 	DrawArea *tmpscene = canvas.at(tabWidget->currentIndex());
-        Xml_io writer(tmpscene->getObjects(), /*tmpscene->getLines(),*/ filename, (DiagramType)tmpscene->getDiagramType());
-	//delete tmpscene;
+        Xml_io writer(tmpscene->getObjects(), tmpscene->getLines(), filename, (DiagramType)tmpscene->getDiagramType());
 	
         // write the file
-	//something = canvas.getDiagramType();
         writer.write_xml();
 	
 	// make the tab
@@ -243,12 +245,12 @@ void MainWindow::openFile()
     
     if( filename != "" )
     {
-	Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename, (DiagramType)-1);
+	Xml_io writer(filename);
 	
 	// parse the xml
 	writer.parse_xml();
 	QList<Icon*> icon_list = writer.get_items();
-	///QList<BasicLineObject*> line_list = writer.get_lines();
+	//QList<lineBody*> line_list = writer.get_lines();
 	
 	// make the tab
 	newTab(filename, icon_list, /*line_list,*/ writer.get_diagram_type());
