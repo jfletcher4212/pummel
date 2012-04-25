@@ -42,7 +42,8 @@ public:
 	list.append(temp);
 	//delete temp;
     }
-    test = new Xml_io(list, filename);
+    test = new Xml_io(filename);
+    test->set_items(list);
     //test = new Xml_io();
 
     test->write_xml();
@@ -60,7 +61,7 @@ public:
   void test_parse_xml(void)
   {
       QString filename = "Testfile.ut";
-      Xml_io *test = new Xml_io();
+      Xml_io *test = new Xml_io(filename);
 
       test->set_filename(filename);
       test->parse_xml();
