@@ -71,6 +71,7 @@ public:
 
     // file i
     void render_icons(QList<Icon*> icons);
+    Icon * find_icon_id(QList<Icon*> icons, int target_id);
 
     // Testing Fucntions
     void testAction();
