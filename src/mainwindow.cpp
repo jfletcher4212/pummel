@@ -55,6 +55,7 @@ void MainWindow::contextMenuEvent(QContextMenuEvent *event)
     menu.addAction(cutAct);
     menu.addAction(copyAct);
     menu.addAction(pasteAct);
+    menu.addAction(deleteObjAct);
     menu.exec(event->globalPos());
 }
 
@@ -111,6 +112,19 @@ void MainWindow::copy()
 void MainWindow::paste()
 {
     infoLabel->setText(tr("Invoked <b>Edit|Paste</b>"));
+}
+
+void MainWindow::deleteObj()
+{
+    /*
+    if(canvas.at(tabWidget->currentIndex())->scene->sceneItemAt(contextEventPos))
+    {
+        int index = canvas.at(tabWidget->currentIndex())->scene->sceneItemAt(contextEventPos);
+      //  canvas.at(tabWidget->currentIndex())->scene->deleteItem();
+        //canvas.at(tabWidget->currentIndex())->scene->getObjectList().at()
+        printf("%d\n", index);
+    }
+    */
 }
 
 void MainWindow::deleteSelected()
@@ -350,6 +364,12 @@ void MainWindow::createActions()
     pasteAct->setStatusTip(tr("Paste the clipboard's contents into the current "
                               "selection"));
     connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
+
+
+    deleteObjAct = new QAction(tr("&Delete Object"), this);
+    deleteObjAct->setStatusTip(tr("Delete the object"));
+    connect(deleteObjAct, SIGNAL(triggered()), this, SLOT(deleteObj()));
+
 
     deleteSelectedAct = new QAction(tr("&Delete Selected"), this);
     deleteSelectedAct->setStatusTip(tr("Delete the selected object(s)"));
