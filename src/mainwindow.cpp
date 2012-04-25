@@ -130,6 +130,7 @@ void MainWindow::deleteSelected()
     }
     else
     {
+	// this needs to also do an index shift or file loading will break
         canvas.at(tabWidget->currentIndex())->scene->deleteItem(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(iconSelectedIndex));
     }
 }
