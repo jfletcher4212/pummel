@@ -7,23 +7,52 @@ lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGra
 {
     parent = 0;
 
-    myColor = Qt::black;
+    m_Color = Qt::black;
     setFlag(QGraphicsItem::ItemIsSelectable, true);
 
-    mySourceReferenceObj = sourceReferenceObj;
-    myDestinationReferenceObj = destinationReferenceObj;
+    m_SourceReferenceObj = sourceReferenceObj;
+    m_DestinationReferenceObj = destinationReferenceObj;
 }
 
-lineBody::lineBody(int idx_start, int idx_end)
+lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int idx_start, int idx_end, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsLineItem(parent, scene)
 {
-    m_idx_start = idx_start;
-    m_idx_end = idx_end;
+    m_Idx_Start = idx_start;
+    m_Idx_End = idx_end;
+
+    m_SourceReferenceObj = sourceReferenceObj;
+    m_DestinationReferenceObj = destinationReferenceObj;
 }
 
-lineBody::~lineBody()
+QPointF lineBody::findObjectCenter(Icon *obj)
 {
-    //delete mySourceReferenceObj;
-    //delete myDestinationReferenceObj;
+    QPointF centerPoint = obj->pos();
+
+    centerPoint.rx() += 0.5 * obj->getWidth();
+    centerPoint.ry() += 0.5 * obj->getHeight();
+
+    return centerPoint;
+}
+
+void lineBody::squareLine(qreal angle, QPointF startPoint, QPointF endPoint, QPointF *secondPointer, QPointF *thirdPointer)
+{
+    QPointF secondPoint = *secondPointer;
+    QPointF thirdPoint =  *thirdPointer;
+
+    if((angle > 45 && angle < 135) || (angle > 225 && angle < 315))
+    {
+        secondPoint.ry() += (endPoint.ry() - startPoint.ry())/2;
+        thirdPoint = secondPoint;
+        thirdPoint.rx() += endPoint.rx() - startPoint.rx();
+    }
+    else
+    {
+        secondPoint.rx() += (endPoint.rx() - startPoint.rx())/2;
+        thirdPoint = secondPoint;
+        thirdPoint.ry() += endPoint.ry() - startPoint.ry();
+    }
+
+    *secondPointer = secondPoint;
+    *thirdPointer = thirdPoint;
 }
 
 /*
@@ -74,40 +103,24 @@ QPainterPath lineBody::shape() const
      * This line adds the shape of the arrow head to
      * the QPainterPath.
      */
-    path.addPolygon(arrowHead);
+    path.addPolygon(m_ArrowHead);
     return path;
 }
 
-void lineBody::setSourceObject(Icon* newSource)
-{
-    mySourceReferenceObj = newSource;
-}
-void lineBody::setDestObject(Icon *newDest)
-{
-    myDestinationReferenceObj = newDest;
-}
-
-//Change at which end of the line the arrow head resides.
-void lineBody::swapLineDirection()
-{
-    //Swap the source and destination reference objects
-    //Redraw
-}
-
-QPointF lineBody::findIntersection(Icon *refObj, QLineF interLine) //Find the intersection of the line and object, for determining arrow direction
+QPointF lineBody::findIntersection(Icon *obj, QLineF interLine) //Find the intersection of the line and object, for determining arrow direction
 {
     QPointF interPoint;
-    QString tempStr = refObj->reportShapetype();
-    if(tempStr.compare("Class Box") == 0)
+    QString iconType = obj->reportShapetype();
+    if(iconType.compare("Class Box") == 0)
     {
-        QPointF point1 = refObj->pos();
+        QPointF point1 = obj->pos();
         QPointF point2 = point1;
-        point2.rx() += refObj->getWidth();
+        point2.rx() += obj->getWidth();
         QPointF point3 = point1;
-        point3.ry() += refObj->getHeight();
+        point3.ry() += obj->getHeight();
         QPointF point4 = point1;
-        point4.rx() += refObj->getWidth();
-        point4.ry() += refObj->getHeight();
+        point4.rx() += obj->getWidth();
+        point4.ry() += obj->getHeight();
         QLineF topLine = QLineF(point1, point2);
         QLineF leftLine = QLineF(point1, point3);
         QLineF rightLine = QLineF(point2, point4);
@@ -137,15 +150,15 @@ QPointF lineBody::findIntersection(Icon *refObj, QLineF interLine) //Find the in
             interPoint = tempInter4;
         }
     }
-    else if(tempStr.compare("Ellipse") == 0)
+    else if(iconType.compare("Ellipse") == 0)
     {
-        interPoint = refObj->pos();
+        interPoint = obj->pos();
     }
-    else if(tempStr.compare("Rounded Square") == 0)
+    else if(iconType.compare("Rounded Square") == 0)
     {
 
     }
-    else if(tempStr.compare("Scenario End") == 0)
+    else if(iconType.compare("Scenario End") == 0)
     {
 
     }
@@ -156,9 +169,8 @@ QPointF lineBody::findIntersection(Icon *refObj, QLineF interLine) //Find the in
     return interPoint;
 }
 
-double lineBody::getAngle (QPointF intersectPoint, Icon *myStartItem)//(BasicLineObject line)//rotateArrowHead(QPointF, DragItem)
+double lineBody::getAngle ()
 {
-    //setLine(QLineF(intersectPoint, myStartItem->pos()));
     /*
      * The object's line needs to be set for line() to operate
      * properly, which is done with the line above. However,
@@ -182,10 +194,34 @@ double lineBody::getAngle (QPointF intersectPoint, Icon *myStartItem)//(BasicLin
     return angle;
 
 }
-/*
-void BasicLineObject::updatePosition();
+
+void lineBody::bareArrowHead(double angle, QLineF interLine, QPointF *firstPointer, QPointF *secondPointer)
 {
-    QLineF line(mapFromItem(myStartItem, 0, 0), mapFromItem(myEndItem, 0, 0));
-    setLine(line);
+    qreal arrowSize = 20;
+
+    *firstPointer = interLine.p1() + QPointF(sin(angle + Pi / 3)*arrowSize, cos(angle + Pi / 3) *arrowSize);
+    *secondPointer = interLine.p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
 }
-*/
+
+void lineBody::makeArrowHead(double angle, QLineF interLine)
+{
+    qreal arrowSize = 20;
+
+    QPointF arrowP1 = interLine.p1() + QPointF(sin(angle + Pi / 3)*arrowSize, cos(angle + Pi / 3) *arrowSize);
+    QPointF arrowP2 = interLine.p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
+    m_ArrowHead.clear();
+    m_ArrowHead << interLine.p1() << arrowP1 << arrowP2;
+}
+
+void lineBody::makeDiamond(double angle, QLineF interLine)
+{
+    qreal arrowSize = 20;
+
+    QPointF arrowP1 = interLine.p1() + QPointF(sin(angle + Pi / 3)*arrowSize, cos(angle + Pi / 3) *arrowSize);
+    QPointF arrowP2 = interLine.p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
+    QPointF arrowP3 = interLine.p1() + QPointF(2*(sin(angle + Pi/2)*arrowSize), 2*(cos(angle + Pi/2)*arrowSize));
+
+
+    m_ArrowHead.clear();
+    m_ArrowHead << interLine.p1() << arrowP1 << arrowP3 << arrowP2;
+}

@@ -6,7 +6,6 @@ class solidsqlinesah : public lineBody
 {
 public:
     solidsqlinesah(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
-    ~solidsqlinesah();
 
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
