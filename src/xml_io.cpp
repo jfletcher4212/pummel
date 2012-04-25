@@ -70,12 +70,12 @@ void Xml_io::write_xml()
 	//QString valueAsString = QString::number(valueAsDouble);
 	// wrapper tags coule be the object's individual ID #
 	saver.writeStartElement("icon");
-	saver.writeTextElement("shapetype", m_items[i]->reportShapetype());
 	saver.writeTextElement("width", QString::number(m_items[i]->getWidth()));
 	saver.writeTextElement("height", QString::number(m_items[i]->getHeight()));
 	saver.writeTextElement("x_pos", QString::number(m_items[i]->get_xPos()));
 	saver.writeTextElement("y_pos", QString::number(m_items[i]->get_yPos()));
 	saver.writeTextElement("label", m_items[i]->get_all());
+	saver.writeTextElement("shapetype", m_items[i]->reportShapetype() );
 	saver.writeEndElement();
     }
     
@@ -169,36 +169,42 @@ Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
 	    {
 		reader.readNext();
 		width = reader.text().toString().toInt();
+		qDebug() << width;
 	    }
 	    
 	    if( reader.name() == "height")
 	    {
 		reader.readNext();
 		height = reader.text().toString().toInt();
+		qDebug() << height;
 	    }
 
 	    if( reader.name() == "x_pos")
 	    {
 		reader.readNext();
 		x_pos = reader.text().toString().toInt();
+		qDebug() << x_pos;
 	    }
 	    
 	    if( reader.name() == "y_pos")
 	    {
 		reader.readNext();
 		y_pos = reader.text().toString().toInt();
+		qDebug() << y_pos;
 	    }
 
 	    if( reader.name() == "label")
 	    {
 	    	reader.readNext();
 	    	label = reader.text().toString();
+		qDebug() << label;
 	    }
 
 	    if( reader.name() == "shapetype")
 	    {
 		reader.readNext();
 		type = reader.text().toString();
+		qDebug() << type;
 	    }
 	}
     }
@@ -218,11 +224,11 @@ Icon * Xml_io::make_icon(QString type, int width, int height, int x_pos, int y_p
     {
 	ret = new Actor(0, width, height, x_pos, y_pos, label);
     }
-    else if ( type == "RoundedSquare" )
+    else if ( type == "Rounded Square" )
     {
     	ret = new RoundedSquare(0, width, height, x_pos, y_pos, label);
     }
-    else if ( type == "ClassBox" )
+    else if ( type == "Class Box" )
     {
 	ret = new ClassBox(0, width, height, x_pos, y_pos, label);
     }
