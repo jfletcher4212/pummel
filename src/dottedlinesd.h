@@ -6,7 +6,7 @@ class dottedlineSD : public lineBody
 {
 public:
     dottedlineSD(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
-private:
+
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
 };
