@@ -6,7 +6,6 @@ class dottedsqlinesah : public lineBody
 {
 public:
     dottedsqlinesah(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
-    ~dottedsqlinesah();
 
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
