@@ -5,6 +5,7 @@
 #include "borderlayout.h"
 #include "global.h"
 #include "xml_io.h"
+#include "saveprompt.h"
 #include <iostream>
 #include <QFile>
 
@@ -166,10 +167,7 @@ void MainWindow::newTab()
 void MainWindow::newTab(QString filename, QList<Icon*> tmplist, QString d_type)
 {
     int i = tabWidget->count();
-    char* s = (char*)malloc(10*sizeof(char));
-    sprintf(s, "untitled" );
     next_tab_num++;
-    QString q = QString(s);
     
     qDebug() << "making new drawarea";
     DrawArea *newCanvas = new DrawArea(0, 250, 250, tmplist, d_type);
@@ -181,7 +179,6 @@ void MainWindow::newTab(QString filename, QList<Icon*> tmplist, QString d_type)
     tabWidget->insertTab(i, newCanvas, filename);
     tabWidget->setCurrentIndex(i);
     tabWidget->widget(i)->setVisible(true);
-    free(s);
 }
 /*
  * If a filename has been specified, saveFile will
@@ -231,23 +228,66 @@ void MainWindow::openFile()
     
     if( filename != "" )
     {
-	Xml_io writer(filename);
+        Xml_io writer(filename);
 	
 	// parse the xml
 	writer.parse_xml();
 	QList<Icon*> icon_list = writer.get_items();
 	//QList<lineBody*> line_list = writer.get_lines();
 	
-	// make the tab
-	newTab(filename, icon_list, /*line_list,*/ writer.get_diagram_type());
-	tabWidget->setTabText(tabWidget->currentIndex(), filename);
+        // make the tab
+        newTab(filename, icon_list, /*line_list,*/ writer.get_diagram_type());
+        tabWidget->setTabText(tabWidget->currentIndex(), filename);
     }
 }
 
+/*
+ *    open a savePrompt window
+ *      with the following options:
+ *  save&quit:
+ *    run saveFile subroutine (see above)
+ *    proceed
+ *  save w/out quitting
+ *    proceed
+ *  cancel
+ *    do nothing
+ *
+ * Note: currently, this only runs when the 'close tab' button
+ * is selected from the File menu.
+ */
 void MainWindow::closeTab()
 {
-    canvas.removeAt(tabWidget->currentIndex());
-    tabWidget->removeTab(tabWidget->currentIndex());
+
+    g_savepromptval;
+    savePrompt *question = new savePrompt;
+    question->exec();
+    if(g_savepromptval == 1)
+    {
+        saveFile();
+        if( canvas.length() == 1 )
+        {
+            this->close();
+        }
+        else
+        {
+            canvas.removeAt(tabWidget->currentIndex());
+            tabWidget->removeTab(tabWidget->currentIndex());
+        }
+    }
+    if(g_savepromptval == -1)
+    {
+        if( canvas.length() == 1 )
+        {
+            this->close();
+        }
+        else
+        {
+            canvas.removeAt(tabWidget->currentIndex());
+            tabWidget->removeTab(tabWidget->currentIndex());
+        }
+    }
+
+
 
 }
 
