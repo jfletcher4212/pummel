@@ -19,12 +19,16 @@ void selfRefLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     {
         return;
     }
+    else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
+        return;
 
     painter->setPen(QPen(m_Color, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 
     int offset = 5;
 
     QPointF circleCenter = findObjectCenter(m_SourceReferenceObj);
+
+    circleCenter.rx() += (m_SourceReferenceObj->getWidth())/2;
 
     qreal radiusy = ((m_SourceReferenceObj->getHeight()) / 2 ) - offset;
     qreal radiusx = radiusy;
