@@ -272,6 +272,8 @@ void Toolbar::setAvailableActions()
         shapesGroup->addAction(addRoundedSquareAct);
         shapesGroup->addAction(addScenarioEndAct);
         linesGroup->addAction(addSolidLineAct);
+
+        linesGroup->addAction(addDottedLineEAHAct);
         break;
     }
     case Sequence:         // Sequence
@@ -283,6 +285,8 @@ void Toolbar::setAvailableActions()
         shapesGroup->addAction(addActorAct);
         shapesGroup->addAction(addEllipseAct);
         linesGroup->addAction(addSolidLineAct);
+
+        linesGroup->addAction(addDottedLineEAHAct);
         break;
     }
     }

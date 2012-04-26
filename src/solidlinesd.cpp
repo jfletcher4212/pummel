@@ -14,6 +14,8 @@ void solidlineSD::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 
     if (m_SourceReferenceObj->collidesWithItem(m_DestinationReferenceObj))
         return;
+    else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
+        return;
 
     painter->setBrush(m_Color);
     painter->setPen(QPen(m_Color, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
@@ -24,6 +26,9 @@ void solidlineSD::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     QLineF myLine(obj1, obj2);
 
     QPointF interPoint = findIntersection(m_SourceReferenceObj, myLine);
+
+    if(!checkInterPoint(interPoint))
+        return;
 
     this->setLine(QLineF(interPoint, obj2));
 

@@ -20,6 +20,8 @@ void dottedline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
     widget = 0;
     if (m_SourceReferenceObj->collidesWithItem(m_DestinationReferenceObj))
         return;
+    else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
+        return;
 
     painter->setPen(QPen(m_Color, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
 
