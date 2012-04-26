@@ -15,6 +15,8 @@ void solidsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 
     if (m_SourceReferenceObj->collidesWithItem(m_DestinationReferenceObj))
         return;
+    else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
+        return;
 
     painter->setPen(QPen(m_Color, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 

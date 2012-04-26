@@ -14,6 +14,8 @@ void dottedlinebah::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
 
     if (m_SourceReferenceObj->collidesWithItem(m_DestinationReferenceObj))
         return;
+    else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
+        return;
 
     painter->setBrush(m_Color);
     painter->setPen(QPen(m_Color, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
@@ -23,6 +25,9 @@ void dottedlinebah::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
     QLineF myLine(obj1, obj2);
 
     QPointF interPoint = findIntersection(m_DestinationReferenceObj, myLine);
+
+    if(!checkInterPoint(interPoint))
+        return;
 
     this->setLine(QLineF(interPoint, obj1));
 
