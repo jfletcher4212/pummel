@@ -8,5 +8,5 @@
 extern QList<DrawArea*> canvas;
 extern TabManager *tabWidget;
 extern QPointF contextEventPos;
-
+extern int g_savepromptval;
 #endif // __GLOBAL_H__
