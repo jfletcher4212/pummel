@@ -32,6 +32,7 @@ private slots:
     void cut();
     void copy();
     void paste();
+    void deleteObj();
     void deleteSelected();
     void newTab();
     void newTab(QString filename, QList<Icon*> tmplist, QString d_type);
@@ -85,6 +86,7 @@ private:
     QAction *cutAct;
     QAction *copyAct;
     QAction *pasteAct;
+    QAction *deleteObjAct;
     QAction *deleteSelectedAct;
     QAction *boldAct;
     QAction *italicAct;
