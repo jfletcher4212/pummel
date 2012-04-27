@@ -6,7 +6,7 @@ class dottedlineeah : public lineBody
 {
 public:
     dottedlineeah(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
-private:
+
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
 };

@@ -5,6 +5,7 @@
 #include "borderlayout.h"
 #include "global.h"
 #include "xml_io.h"
+#include "saveprompt.h"
 #include <iostream>
 #include <QFile>
 
@@ -55,6 +56,7 @@ void MainWindow::contextMenuEvent(QContextMenuEvent *event)
     menu.addAction(cutAct);
     menu.addAction(copyAct);
     menu.addAction(pasteAct);
+    menu.addAction(deleteObjAct);
     menu.exec(event->globalPos());
 }
 
@@ -113,6 +115,19 @@ void MainWindow::paste()
     infoLabel->setText(tr("Invoked <b>Edit|Paste</b>"));
 }
 
+void MainWindow::deleteObj()
+{
+    /*
+    if(canvas.at(tabWidget->currentIndex())->scene->sceneItemAt(contextEventPos))
+    {
+        int index = canvas.at(tabWidget->currentIndex())->scene->sceneItemAt(contextEventPos);
+      //  canvas.at(tabWidget->currentIndex())->scene->deleteItem();
+        //canvas.at(tabWidget->currentIndex())->scene->getObjectList().at()
+        printf("%d\n", index);
+    }
+    */
+}
+
 void MainWindow::deleteSelected()
 {
     int iconSelectedIndex = -1;
@@ -130,6 +145,7 @@ void MainWindow::deleteSelected()
     }
     else
     {
+	// this needs to also do an index shift or file loading will break
         canvas.at(tabWidget->currentIndex())->scene->deleteItem(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(iconSelectedIndex));
     }
 }
@@ -165,10 +181,7 @@ void MainWindow::newTab()
 void MainWindow::newTab(QString filename, QList<Icon*> tmplist, QString d_type)
 {
     int i = tabWidget->count();
-    char* s = (char*)malloc(10*sizeof(char));
-    sprintf(s, "untitled" );
     next_tab_num++;
-    QString q = QString(s);
     
     qDebug() << "making new drawarea";
     DrawArea *newCanvas = new DrawArea(0, 250, 250, tmplist, d_type);
@@ -180,7 +193,6 @@ void MainWindow::newTab(QString filename, QList<Icon*> tmplist, QString d_type)
     tabWidget->insertTab(i, newCanvas, filename);
     tabWidget->setCurrentIndex(i);
     tabWidget->widget(i)->setVisible(true);
-    free(s);
 }
 /*
  * If a filename has been specified, saveFile will
@@ -196,7 +208,10 @@ void MainWindow::saveFile()
     }
     else
     {
-	Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename, (DiagramType)canvas.at(tabWidget->currentIndex())->getDiagramType());
+	DrawArea *tmpscene = canvas.at(tabWidget->currentIndex());
+	Xml_io writer(tmpscene->getObjects(), tmpscene->getLines(), filename, (DiagramType)tmpscene->getDiagramType());
+	
+	// write the file
 	writer.write_xml();
     }
 }
@@ -211,11 +226,9 @@ void MainWindow::saveAsFile()
     else
     {
 	DrawArea *tmpscene = canvas.at(tabWidget->currentIndex());
-        Xml_io writer(tmpscene->getObjects(), /*tmpscene->getLines(),*/ filename, (DiagramType)tmpscene->getDiagramType());
-	//delete tmpscene;
+        Xml_io writer(tmpscene->getObjects(), tmpscene->getLines(), filename, (DiagramType)tmpscene->getDiagramType());
 	
         // write the file
-	//something = canvas.getDiagramType();
         writer.write_xml();
 	
 	// make the tab
@@ -229,23 +242,66 @@ void MainWindow::openFile()
     
     if( filename != "" )
     {
-	Xml_io writer(canvas.at(tabWidget->currentIndex())->getObjects(), filename, (DiagramType)-1);
+        Xml_io writer(filename);
 	
 	// parse the xml
 	writer.parse_xml();
 	QList<Icon*> icon_list = writer.get_items();
-	///QList<BasicLineObject*> line_list = writer.get_lines();
+	//QList<lineBody*> line_list = writer.get_lines();
 	
-	// make the tab
-	newTab(filename, icon_list, /*line_list,*/ writer.get_diagram_type());
-	tabWidget->setTabText(tabWidget->currentIndex(), filename);
+        // make the tab
+        newTab(filename, icon_list, /*line_list,*/ writer.get_diagram_type());
+        tabWidget->setTabText(tabWidget->currentIndex(), filename);
     }
 }
 
+/*
+ *    open a savePrompt window
+ *      with the following options:
+ *  save&quit:
+ *    run saveFile subroutine (see above)
+ *    proceed
+ *  save w/out quitting
+ *    proceed
+ *  cancel
+ *    do nothing
+ *
+ * Note: currently, this only runs when the 'close tab' button
+ * is selected from the File menu.
+ */
 void MainWindow::closeTab()
 {
-    canvas.removeAt(tabWidget->currentIndex());
-    tabWidget->removeTab(tabWidget->currentIndex());
+
+    g_savepromptval;
+    savePrompt *question = new savePrompt;
+    question->exec();
+    if(g_savepromptval == 1)
+    {
+        saveFile();
+        if( canvas.length() == 1 )
+        {
+            this->close();
+        }
+        else
+        {
+            canvas.removeAt(tabWidget->currentIndex());
+            tabWidget->removeTab(tabWidget->currentIndex());
+        }
+    }
+    if(g_savepromptval == -1)
+    {
+        if( canvas.length() == 1 )
+        {
+            this->close();
+        }
+        else
+        {
+            canvas.removeAt(tabWidget->currentIndex());
+            tabWidget->removeTab(tabWidget->currentIndex());
+        }
+    }
+
+
 
 }
 
@@ -351,8 +407,15 @@ void MainWindow::createActions()
                               "selection"));
     connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
 
+
+    deleteObjAct = new QAction(tr("&Delete Object"), this);
+    deleteObjAct->setStatusTip(tr("Delete the object"));
+    connect(deleteObjAct, SIGNAL(triggered()), this, SLOT(deleteObj()));
+
+
     deleteSelectedAct = new QAction(tr("&Delete Selected"), this);
     deleteSelectedAct->setStatusTip(tr("Delete the selected object(s)"));
+    deleteSelectedAct->setShortcuts(QKeySequence::Delete);
     connect(deleteSelectedAct, SIGNAL(triggered()), this, SLOT(deleteSelected()));
 
     boldAct = new QAction(tr("&Bold"), this);

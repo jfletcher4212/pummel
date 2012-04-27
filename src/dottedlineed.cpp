@@ -1,12 +1,10 @@
 #include "dottedlineed.h"
 
-const qreal Pi = 3.14;
-
 dottedlineed::dottedlineed(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
 {
     parent = 0;
     scene = 0;
-    myLineType = Dotted_Line_ED;
+    m_LineType = Dotted_Line_ED;
 }
 
 void dottedlineed::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -14,49 +12,40 @@ void dottedlineed::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     option = 0;
     widget = 0;
 
-    if (mySourceReferenceObj->collidesWithItem(myDestinationReferenceObj))
+    if (m_SourceReferenceObj->collidesWithItem(m_DestinationReferenceObj))
+        return;
+    else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
         return;
 
-    qreal arrowSize = 20;
-
     painter->setBrush(Qt::white);
-    painter->setPen(QPen(myColor, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
+    painter->setPen(QPen(m_Color, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
 
-    QPointF obj1 = mySourceReferenceObj->pos();
-    QPointF obj2 = myDestinationReferenceObj->pos();
+    QPointF obj1 = findObjectCenter(m_SourceReferenceObj);
+    QPointF obj2 = findObjectCenter(m_DestinationReferenceObj);
 
-    obj1.rx() += 0.5 * mySourceReferenceObj->getWidth();
-    obj1.ry() += 0.5 * mySourceReferenceObj->getHeight();
+    QLineF myLine(obj1, obj2);
 
-    obj2.rx() += 0.5 * myDestinationReferenceObj->getWidth();
-    obj2.ry() += 0.5 * myDestinationReferenceObj->getHeight();
+    QPointF interPoint = findIntersection(m_SourceReferenceObj, myLine);
 
-    QLineF tempLineOne(obj1, obj2);
-
-    QPointF interPoint = findIntersection(mySourceReferenceObj, tempLineOne);
+    if(!checkInterPoint(interPoint))
+        return;
 
     this->setLine(QLineF(interPoint, obj2));
 
-    double angle = this->getAngle(interPoint, mySourceReferenceObj);
+    double angle = this->getAngle();
 
-    QPointF arrowP1 = line().p1() + QPointF(sin(angle + Pi / 3)*arrowSize, cos(angle + Pi / 3) *arrowSize);
-    QPointF arrowP2 = line().p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
-    QPointF arrowP3 = line().p1() + QPointF(2*(sin(angle + Pi/2)*arrowSize), 2*(cos(angle + Pi/2)*arrowSize));
-
-
-    arrowHead.clear();
-    arrowHead << line().p1() << arrowP1 << arrowP3 << arrowP2;
+    makeDiamond(angle, line());
 
     painter->drawLine(line());
 
-    painter->setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    painter->setPen(QPen(m_Color, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 
-    painter->drawPolygon(arrowHead);
+    painter->drawPolygon(m_ArrowHead);
 
     if (isSelected())
     {
         QLineF myLine = line();
-        painter->setPen(QPen(myColor, 1, Qt::DashLine));
+        painter->setPen(QPen(m_Color, 1, Qt::DashLine));
         myLine.translate(0, 4.0);
         painter->drawLine(myLine);
         myLine.translate(0,-8.0);

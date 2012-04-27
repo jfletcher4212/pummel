@@ -1,13 +1,16 @@
-#include "dottedsqline.h"
+#include "dottedsqlinesah.h"
 
-dottedsqline::dottedsqline(Icon *sourceReferenceObject, Icon *destinationReferenceObject, QGraphicsItem *parent=0, QGraphicsScene *scene=0) : lineBody(sourceReferenceObject, destinationReferenceObject, parent, scene)
+const qreal Pi = 3.14;
+
+dottedsqlinesah::dottedsqlinesah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
+    :lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
 {
     parent = 0;
     scene = 0;
-    m_LineType = Dotted_Square_Line;
+    m_LineType = Solid_Square_Line;
 }
 
-void dottedsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void dottedsqlinesah::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
     widget = 0;
@@ -17,11 +20,11 @@ void dottedsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
         return;
 
+    painter->setBrush(m_Color);
     painter->setPen(QPen(m_Color, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
 
     QPointF point1 = findObjectCenter(m_SourceReferenceObj);
     QPointF point4 = findObjectCenter(m_DestinationReferenceObj);
-
     QPointF point2 = point1;
     QPointF point3;
 
@@ -36,10 +39,24 @@ void dottedsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     QLineF lineTwo(point2, point3);
     QLineF lineThree(point3, point4);
 
+    QPointF interPoint = findIntersection(m_DestinationReferenceObj, lineThree);
+
+    if(!checkInterPoint(interPoint))
+        return;
+
+    this->setLine(QLineF(interPoint, point3));
+
+    double angle = this->getAngle();
+
+    makeArrowHead(angle, line());
+
     painter->drawLine(lineOne);
     painter->drawLine(lineTwo);
-    painter->drawLine(lineThree);
+    painter->drawLine(line());
 
+    painter->setPen(QPen(m_Color, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+
+    painter->drawPolygon(m_ArrowHead);
 
     update();
 }

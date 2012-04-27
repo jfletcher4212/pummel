@@ -4,85 +4,40 @@ dottedline::dottedline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, 
 {
     parent = 0;
     scene = 0;
-    myLineType = Dotted_Line;
-    //setPen(QPen(myColor, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
+    m_LineType = Dotted_Line;
 }
 
-dottedline::~dottedline()
+dottedline::dottedline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int idx_start, int idx_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, idx_start, idx_end, parent, scene)
 {
-
+    parent = 0;
+    scene = 0;
+    m_LineType = Dotted_Line;
 }
 
 void dottedline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
     widget = 0;
-    if (mySourceReferenceObj->collidesWithItem(myDestinationReferenceObj))
+    if (m_SourceReferenceObj->collidesWithItem(m_DestinationReferenceObj))
         return;
-    //qreal arrowSize = 20;
-    //painter->setPen(QPen(myColor, 2));
-    //setLinePen();
-    painter->setPen(QPen(myColor, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
+    else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
+        return;
 
-    QPointF obj1 = mySourceReferenceObj->pos();
-    QPointF obj2 = myDestinationReferenceObj->pos();
+    painter->setPen(QPen(m_Color, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
 
-    obj1.rx() += 0.5 * mySourceReferenceObj->getWidth();
-    obj1.ry() += 0.5 * mySourceReferenceObj->getHeight();
+    QPointF obj1 = findObjectCenter(m_SourceReferenceObj);
+    QPointF obj2 = findObjectCenter(m_DestinationReferenceObj);
 
-    obj2.rx() += 0.5 * myDestinationReferenceObj->getWidth();
-    obj2.ry() += 0.5 * myDestinationReferenceObj->getHeight();
+    QLineF myLine(obj1, obj2);
 
-    QLineF tempLineOne(obj1, obj2);
+    this->setLine(myLine);
 
+    painter->drawLine(line());
 
-    //QLineF tempLineOne(mySourceReferenceObj->pos(), myDestinationReferenceObj->pos());
-
-    this->setLine(tempLineOne);
-/*
-    QPolygonF endPolygon = myEndItem->polygon();
-    QPointF p1 = endPolygon.first() + myEndItem->pos();
-    QPointF p2;
-    QPointF intersectPoint;
-    QLineF polyLine;
-    for (int i = 1; i < endPolygon.count(); ++i) {
-    p2 = endPolygon.at(i) + myEndItem->pos();
-    polyLine = QLineF(p1, p2);
-    QLineF::IntersectType intersectType =
-        polyLine.intersect(centerLine, &intersectPoint);
-    if (intersectType == QLineF::BoundedIntersection)
-        break;
-        p1 = p2;
-    }
-*/
-    //The above block of code was originally used
-    //to determine the intersect point of the line
-    //and final reference object.
-    //QPointF interPoint;
-    //interPoint = findIntersection(myDestinationReferenceObj, tempLineOne);
-    //setLine(QLineF(interPoint, mySourceReferenceObj->pos()));
-/*
-    double angle = ::acos(line().dx() / line().length());
-    if (line().dy() >= 0)
-        angle = (Pi * 2) - angle;
-*/
-    //The above block of code was originally used
-    //to determine the angle to draw the arrowhead at.
-    //This isn't needed for drawing the line
-/*
-    QPointF arrowP1 = line().p1() + QPointF(sin(angle + Pi / 3) * arrowSize, cos(angle + Pi / 3) * arrowSize);
-    QPointF arrowP2 = line().p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
-*/
-    //The Above block of code is used to draw
-    //the arrow head. This isn't needed for the line
-    //arrowHead.clear();
-    //arrowHead << line().p1() << arrowP1 << arrowP2;
-    painter->drawLine(tempLineOne);
-    //painter->drawPolygon(arrowHead);
     if (isSelected())
     {
         QLineF myLine = line();
-        painter->setPen(QPen(myColor, 1, Qt::DashLine));
+        painter->setPen(QPen(m_Color, 1, Qt::DashLine));
         myLine.translate(0, 4.0);
         painter->drawLine(myLine);
         myLine.translate(0,-8.0);

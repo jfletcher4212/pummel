@@ -7,12 +7,7 @@ selfRefLine::selfRefLine(Icon *sourceReferenceObj, Icon *destinationReferenceObj
 {
     parent = 0;
     scene = 0;
-    myLineType = Self_Ref_Line;
-}
-
-selfRefLine::~selfRefLine()
-{
-
+    m_LineType = Self_Ref_Line;
 }
 
 void selfRefLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -20,21 +15,22 @@ void selfRefLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     option = 0;
     widget = 0;
 
-    if(mySourceReferenceObj != myDestinationReferenceObj)
+    if(m_SourceReferenceObj != m_DestinationReferenceObj)
     {
         return;
     }
+    else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
+        return;
 
-    painter->setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    painter->setPen(QPen(m_Color, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 
     int offset = 5;
 
-    QPointF circleCenter = mySourceReferenceObj->pos();
+    QPointF circleCenter = findObjectCenter(m_SourceReferenceObj);
 
-    circleCenter.rx() += mySourceReferenceObj->getWidth();
-    circleCenter.ry() += (mySourceReferenceObj->getHeight())/2;
+    circleCenter.rx() += (m_SourceReferenceObj->getWidth())/2;
 
-    qreal radiusy = ((mySourceReferenceObj->getHeight()) / 2 ) - offset;
+    qreal radiusy = ((m_SourceReferenceObj->getHeight()) / 2 ) - offset;
     qreal radiusx = radiusy;
 
     QPointF arrowP1 = circleCenter;
@@ -46,14 +42,14 @@ void selfRefLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     QPointF arrowP2 = arrowP1 + QPointF(sin(angle + Pi / 3) * arrowSize, cos(angle + Pi / 3) * arrowSize);
     QPointF arrowP3 = arrowP1 + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
 
-    arrowHead.clear();
-    arrowHead << arrowP1 << arrowP2 << arrowP3;
+    m_ArrowHead.clear();
+    m_ArrowHead << arrowP1 << arrowP2 << arrowP3;
 
     painter->drawEllipse(circleCenter, radiusx, radiusy);
 
     painter->setBrush(Qt::black);
 
-    painter->drawPolygon(arrowHead);
+    painter->drawPolygon(m_ArrowHead);
 
     update();
 }

@@ -1,6 +1,6 @@
-#include "solidsqline.h"
+#include "solidsqlineeah.h"
 
-solidsqline::solidsqline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
+solidsqlineeah::solidsqlineeah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
     :lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
 {
     parent = 0;
@@ -8,7 +8,7 @@ solidsqline::solidsqline(Icon *sourceReferenceObj, Icon *destinationReferenceObj
     m_LineType = Solid_Square_Line;
 }
 
-void solidsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void solidsqlineeah::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
     widget = 0;
@@ -18,6 +18,7 @@ void solidsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
         return;
 
+    painter->setBrush(Qt::white);
     painter->setPen(QPen(m_Color, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 
     QPointF point1 = findObjectCenter(m_SourceReferenceObj);
@@ -37,9 +38,21 @@ void solidsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     QLineF lineTwo(point2, point3);
     QLineF lineThree(point3, point4);
 
+    QPointF interPoint = findIntersection(m_DestinationReferenceObj, lineThree);
+
+    if(!checkInterPoint(interPoint))
+        return;
+
+    this->setLine(QLineF(interPoint, point3));
+
+    double angle = this->getAngle();
+
+    makeArrowHead(angle, line());
+
     painter->drawLine(lineOne);
     painter->drawLine(lineTwo);
-    painter->drawLine(lineThree);
+    painter->drawLine(line());
+    painter->drawPolygon(m_ArrowHead);
 
     update();
 }

@@ -6,7 +6,7 @@ dottedlineSAH::dottedlineSAH(Icon *sourceReferenceObj, Icon *destinationReferenc
 {
     parent = 0;
     scene = 0;
-    myLineType = Dotted_Line_SAH;
+    m_LineType = Dotted_Line_SAH;
 }
 
 void dottedlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
@@ -14,46 +14,40 @@ void dottedlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
     option = 0;
     widget = 0;
 
-    if (mySourceReferenceObj->collidesWithItem(myDestinationReferenceObj))
+    if (m_SourceReferenceObj->collidesWithItem(m_DestinationReferenceObj))
+        return;
+    else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
         return;
 
-    qreal arrowSize = 20;
+    painter->setBrush(m_Color);
+    painter->setPen(QPen(m_Color, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
 
-    painter->setBrush(myColor);
-    painter->setPen(QPen(myColor, 2, Qt::DashLine, Qt::RoundCap, Qt::RoundJoin));
+    QPointF obj1 = findObjectCenter(m_SourceReferenceObj);
+    QPointF obj2 = findObjectCenter(m_DestinationReferenceObj);
 
-    QPointF obj1 = mySourceReferenceObj->pos();
-    QPointF obj2 = myDestinationReferenceObj->pos();
+    QLineF myLine(obj1, obj2);
 
-    obj1.rx() += 0.5 * mySourceReferenceObj->getWidth();
-    obj1.ry() += 0.5 * mySourceReferenceObj->getHeight();
+    QPointF interPoint = findIntersection(m_DestinationReferenceObj, myLine);
 
-    obj2.rx() += 0.5 * myDestinationReferenceObj->getWidth();
-    obj2.ry() += 0.5 * myDestinationReferenceObj->getHeight();
-
-    QLineF tempLineOne(obj1, obj2);
-
-    QPointF interPoint = findIntersection(myDestinationReferenceObj, tempLineOne);
+    if(!checkInterPoint(interPoint))
+        return;
 
     this->setLine(QLineF(interPoint, obj1));
 
-    double angle = this->getAngle(interPoint, mySourceReferenceObj);
+    double angle = this->getAngle();
 
-    QPointF arrowP1 = line().p1() + QPointF(sin(angle + Pi / 3)*arrowSize, cos(angle + Pi / 3) *arrowSize);
-    QPointF arrowP2 = line().p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
-    arrowHead.clear();
-    arrowHead << line().p1() << arrowP1 << arrowP2;
+    makeArrowHead(angle, line());
 
     painter->drawLine(line());
 
-    painter->setPen(QPen(myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    painter->setPen(QPen(m_Color, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 
-    painter->drawPolygon(arrowHead);
+    painter->drawPolygon(m_ArrowHead);
 
     if (isSelected())
     {
         QLineF myLine = line();
-        painter->setPen(QPen(myColor, 1, Qt::DashLine));
+        painter->setPen(QPen(m_Color, 1, Qt::DashLine));
         myLine.translate(0, 4.0);
         painter->drawLine(myLine);
         myLine.translate(0,-8.0);

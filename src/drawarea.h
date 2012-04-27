@@ -12,7 +12,6 @@
 #include <QWidget>
 #include "dragscene.h"
 #include "dragview.h"
-#include "basiclineobject.h"
 
 enum DiagramType { Class, StateChart, Sequence, UseCase };
 
@@ -23,7 +22,7 @@ class DrawArea : public QWidget
 public:
     // Constructor specifies height/width for the DrawArea to create
     DrawArea(QWidget *parent = 0, int newHeight = 250, int newWidth = 250);
-    
+
     // file i
     DrawArea(QWidget *parent, int newHeight, int newWidth, QList<Icon*> icons, QString d_type);
 
@@ -48,7 +47,7 @@ public:
     void setSceneShapeCreationType(ShapeCreationType newType){scene->setShapeCreationType(newType);}
     DragScene *scene;
     DragView *view;
-    
+
     // Testing
     void testAction(){scene->testAction();}
 
@@ -56,7 +55,7 @@ private:
 
     QHBoxLayout *layout;
     DiagramType type;
-    
+
     DiagramType choose_type(QString d_type);
 
 };
