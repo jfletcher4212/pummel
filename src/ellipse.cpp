@@ -14,8 +14,10 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
 
     m_height /= 1.5;
     
-    m_label = "This is temporary and intentional.";
+    m_label = "Ellipse Text";
     //m_labelBox->setPlainText(m_label);
+
+    m_labelheight = m_labelwidth = 20;
 
     //m_labelBox->setPos(this->pos());
     arrangeBoxes();
@@ -48,6 +50,7 @@ Ellipse::Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos
 
     m_label = label;
     //m_labelBox->setPlainText(label);
+    m_labelheight = m_labelwidth = 20;
 
     //m_labelBox->setPos(this->pos());
     arrangeBoxes();
@@ -77,10 +80,17 @@ void Ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
 
     m_labelBox->setVisible(true);
 
+
+    m_labelwidth = m_width -20;
+    m_labelheight = m_height -20;
+
     m_labelBox->boundingRect().setHeight(m_height-20);
     m_labelBox->boundingRect().setWidth(m_width-20);
 
     m_labelBox->setPlainText(m_label);
+
+    m_labelwidth = m_labelBox->boundingRect().width();
+    m_labelheight = m_labelBox->boundingRect().height();
 
     arrangeBoxes();
 
@@ -111,6 +121,8 @@ void Ellipse::setValues()
     TextBoxDialog *values = new TextBoxDialog(this);
     values->show();
 
+    m_labelwidth = m_labelBox->boundingRect().width();
+    m_labelheight = m_labelBox->boundingRect().height();
     arrangeBoxes();
 }
 
@@ -124,13 +136,13 @@ void Ellipse::arrangeBoxes()
     this->prepareGeometryChange();
 
     //change m_height and m_width
-    if(m_labelBox->boundingRect().width()+20 > m_width)
+    if(m_labelwidth +20 > m_width)
     {
-           m_width = m_labelBox->boundingRect().width()+20;
+           m_width = m_labelwidth +20;
     }
-    if(m_labelBox->boundingRect().height()+20 > m_height)
+    if(m_labelheight +20 > m_height)
     {
-          m_height = m_labelBox->boundingRect().height() +20;
+          m_height = m_labelheight +20;
     }
     paintMarkerBoxes();
     update();
