@@ -14,10 +14,10 @@ lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGra
     m_DestinationReferenceObj = destinationReferenceObj;
 }
 
-lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int idx_start, int idx_end, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsLineItem(parent, scene)
+lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsLineItem(parent, scene)
 {
-    m_Idx_Start = idx_start;
-    m_Idx_End = idx_end;
+    m_Id_Start = id_start;
+    m_Id_End = id_end;
 
     m_SourceReferenceObj = sourceReferenceObj;
     m_DestinationReferenceObj = destinationReferenceObj;
@@ -31,6 +31,31 @@ QPointF lineBody::findObjectCenter(Icon *obj)
     centerPoint.ry() += 0.5 * obj->getHeight();
 
     return centerPoint;
+}
+
+QPointF lineBody::findSRLCenter(Icon *obj)
+{
+    QPointF centerPoint = findObjectCenter(obj);
+
+    centerPoint.rx() += (obj->getWidth())/2;
+
+    return centerPoint;
+
+}
+
+qreal lineBody::calcSRRadius(Icon *obj)
+{
+    int offset = 5;
+
+    return ((obj->getHeight()) / 2) - offset;
+}
+
+QPointF lineBody::calcSRArrowPoint(QPointF centerPoint, qreal radius)
+{
+    QPointF arrowP = centerPoint;
+    arrowP.ry() += radius;
+
+    return arrowP;
 }
 
 bool lineBody::checkReferences(Icon *obj1, Icon *obj2)
@@ -117,9 +142,9 @@ QPainterPath lineBody::shape() const
     QPainterPath path = QGraphicsLineItem::shape();
     /*
      * This line adds the shape of the arrow head to
-     * the QPainterPath.
+     * the QPainterPath. Causes the program to crash when an arrowhead is clicked
      */
-    path.addPolygon(m_ArrowHead);
+    //path.addPolygon(m_ArrowHead);
     return path;
 }
 
@@ -246,6 +271,16 @@ void lineBody::makeArrowHead(double angle, QLineF interLine)
     QPointF arrowP2 = interLine.p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
     m_ArrowHead.clear();
     m_ArrowHead << interLine.p1() << arrowP1 << arrowP2;
+}
+
+void lineBody::makeArrowHead(double angle, QPointF arrowP1)
+{
+    qreal arrowSize = 20;
+
+    QPointF arrowP2 = arrowP1 + QPointF(sin(angle + Pi / 3)*arrowSize, cos(angle + Pi / 3) *arrowSize);
+    QPointF arrowP3 = arrowP1 + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
+    m_ArrowHead.clear();
+    m_ArrowHead << arrowP1 << arrowP2 << arrowP3;
 }
 
 void lineBody::makeDiamond(double angle, QLineF interLine)

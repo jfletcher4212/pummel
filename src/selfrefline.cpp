@@ -10,6 +10,13 @@ selfRefLine::selfRefLine(Icon *sourceReferenceObj, Icon *destinationReferenceObj
     m_LineType = Self_Ref_Line;
 }
 
+selfRefLine::selfRefLine(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
+{
+    parent = 0;
+    scene = 0;
+    m_LineType = Self_Ref_Line;
+}
+
 void selfRefLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
@@ -24,26 +31,14 @@ void selfRefLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 
     painter->setPen(QPen(m_Color, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 
-    int offset = 5;
+    QPointF circleCenter = findSRLCenter(m_SourceReferenceObj);
 
-    QPointF circleCenter = findObjectCenter(m_SourceReferenceObj);
-
-    circleCenter.rx() += (m_SourceReferenceObj->getWidth())/2;
-
-    qreal radiusy = ((m_SourceReferenceObj->getHeight()) / 2 ) - offset;
+    qreal radiusy = calcSRRadius(m_SourceReferenceObj);
     qreal radiusx = radiusy;
 
-    QPointF arrowP1 = circleCenter;
-    arrowP1.ry() += radiusy;
+    QPointF arrowP1 = calcSRArrowPoint(circleCenter, radiusy);
 
-    double angle = 0;
-    qreal arrowSize = 20;
-
-    QPointF arrowP2 = arrowP1 + QPointF(sin(angle + Pi / 3) * arrowSize, cos(angle + Pi / 3) * arrowSize);
-    QPointF arrowP3 = arrowP1 + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
-
-    m_ArrowHead.clear();
-    m_ArrowHead << arrowP1 << arrowP2 << arrowP3;
+    makeArrowHead(0, arrowP1);
 
     painter->drawEllipse(circleCenter, radiusx, radiusy);
 
