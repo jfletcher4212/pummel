@@ -24,6 +24,7 @@ class lineBody : public QGraphicsLineItem
 public:
     lineBody(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
     lineBody(Icon *, Icon *, int, int, QGraphicsItem *, QGraphicsScene *);
+    lineBody(int id_start, int id_end);
 
     QRectF boundingRect() const;
     QPainterPath shape() const;
@@ -43,7 +44,7 @@ public:
         { return m_Color; }
 
     //mutators
-    void set_idxs(int id_start, int id_end)
+    void set_ids(int id_start, int id_end)
         { m_Id_Start = id_start; m_Id_End = id_end; }
     void set_id_start(int id)
         { m_Id_Start = id; }
