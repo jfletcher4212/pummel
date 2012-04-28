@@ -33,6 +33,22 @@ QPointF lineBody::findObjectCenter(Icon *obj)
     return centerPoint;
 }
 
+bool lineBody::checkReferences(Icon *obj1, Icon *obj2)
+{
+    if(obj1 == NULL || obj2 == NULL)
+        return false;
+    else
+        return true;
+}
+
+bool lineBody::checkInterPoint(QPointF interPoint)
+{
+    if(interPoint.rx() == NULL || interPoint.ry() == NULL)
+        return false;
+    else
+        return true;
+}
+
 void lineBody::squareLine(qreal angle, QPointF startPoint, QPointF endPoint, QPointF *secondPointer, QPointF *thirdPointer)
 {
     QPointF secondPoint = *secondPointer;
@@ -111,7 +127,7 @@ QPointF lineBody::findIntersection(Icon *obj, QLineF interLine) //Find the inter
 {
     QPointF interPoint;
     QString iconType = obj->reportShapetype();
-    if(iconType.compare("Class Box") == 0)
+    if(iconType.compare("Class Box") == 0 || iconType.compare("Rounded Square") == 0)
     {
         QPointF point1 = obj->pos();
         QPointF point2 = point1;
@@ -152,15 +168,34 @@ QPointF lineBody::findIntersection(Icon *obj, QLineF interLine) //Find the inter
     }
     else if(iconType.compare("Ellipse") == 0)
     {
-        interPoint = obj->pos();
-    }
-    else if(iconType.compare("Rounded Square") == 0)
-    {
+        interPoint = findObjectCenter(obj);
 
+        double radiusA = (obj->getWidth())/2;
+        double radiusB = (obj->getHeight())/2;
+
+        double angleDeg = interLine.angle();
+        double angleRad = -angleDeg * (Pi/180);
+
+        double xCo = radiusA * cos(angleRad);
+        double yCo = radiusB * sin(angleRad);
+
+        interPoint.rx() -= xCo;
+        interPoint.ry() -= yCo;
     }
     else if(iconType.compare("Scenario End") == 0)
     {
+        interPoint = findObjectCenter(obj);
 
+        double radius = (obj->getHeight())/2;
+
+        double angleDeg = interLine.angle();
+        double angleRad = -angleDeg * (Pi/180);
+
+        double xCo = radius * cos(angleRad);
+        double yCo = radius * sin(angleRad);
+
+        interPoint.rx() -= xCo;
+        interPoint.ry() -= yCo;
     }
     else
     {
