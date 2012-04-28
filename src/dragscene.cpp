@@ -573,7 +573,7 @@ void DragScene::testAction()
 
 }
 
-void DragScene::render_icons(QList<Icon*> icons/*, QList<lineBody*> lines*/)
+void DragScene::render_icons(QList<Icon*> icons, QList<lineBody*> lines)
 {
     int i;
     Icon *tmp_start;
@@ -582,15 +582,11 @@ void DragScene::render_icons(QList<Icon*> icons/*, QList<lineBody*> lines*/)
     // draw the icons
     for ( i = 0; i < icons.length(); i++ )
     {
-        qDebug() << "in the loop....";
         if(icons[i] != NULL)
         {
-            qDebug() << "in the if....";
-            qDebug() << icons[i]->get_all();
-
-            this->addItem(icons[i]);
-
-            //add new item to the custom list
+	    this->addItem(icons[i]);
+	    
+	    //add new item to the custom list
             scene_items.append(icons[i]);
         }
     }
@@ -598,9 +594,11 @@ void DragScene::render_icons(QList<Icon*> icons/*, QList<lineBody*> lines*/)
     // draw the lines
     for ( i = 0; i < lines.length(); i++ )
     {
+	qDebug() << "in the loop....";
 	if ( lines[i] != NULL )
 	{
-	    // get the right icons
+	    qDebug() << "in the if....";
+            // get the right icons
 	    tmp_start = find_icon_id(icons, lines[i]->get_id_start());
 	    tmp_end = find_icon_id(icons, lines[i]->get_id_end());
 	    

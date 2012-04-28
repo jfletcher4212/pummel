@@ -35,7 +35,7 @@ private slots:
     void deleteObj();
     void deleteSelected();
     void newTab();
-    void newTab(QString filename, QList<Icon*> tmplist, QString d_type);
+    void newTab(QString filename, QList<Icon*> item_list, QList<lineBody*> line_list, QString d_type);
     void saveAsFile();
     void saveFile();
     void openFile();
