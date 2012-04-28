@@ -78,7 +78,7 @@ void Xml_io::write_xml()
 	saver.writeTextElement("shapetype", m_items[i]->reportShapetype() );
 	saver.writeEndElement();
     }
-    
+    /*
     for ( i = 0; i < m_lines.length(); i++ )
     {
 	saver.writeStartElement("line");
@@ -87,7 +87,7 @@ void Xml_io::write_xml()
 	saver.writeTextElement("id_end", QString::number(m_lines[i]->get_id_end()) );
 	saver.writeEndElement();
     }
-    
+    */
     saver.writeEndDocument();
     saver.setAutoFormatting(true);
     savefile.close();
@@ -132,13 +132,13 @@ void Xml_io::parse_xml()
 		//qDebug() << reader.name();
 		icons.append(parse_icon(reader));
 	    }
-	    
+	    /*
 	    if ( reader.name() == "line" )
 	    {
 		//qDebug() << reader.name();
 		lines.append(parse_line(reader));
 	    }	    
-	    
+	    */
 	}
     }
     
@@ -248,7 +248,7 @@ Icon * Xml_io::make_icon(QString type, int width, int height, int x_pos, int y_p
     return ret;
 }
 
-
+/*
 lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
 {
     int linetype = -1;
@@ -373,3 +373,4 @@ lineBody * Xml_io::make_line(int linetype, int id_start, int id_end)
     return ret;
 }
 
+*/
