@@ -35,20 +35,20 @@ public:
         { return m_DestinationReferenceObj; }
     int getLinetype() const
         { return m_LineType; }
-    int get_idx_start() const
-        { return m_Idx_Start; }
-    int get_idx_end() const
-        { return m_Idx_End; }
+    int get_id_start() const
+        { return m_Id_Start; }
+    int get_id_end() const
+        { return m_Id_End; }
     QColor getColor() const
         { return m_Color; }
 
     //mutators
-    void set_idxs(int idx_start, int idx_end)
-        { m_Idx_Start = idx_start; m_Idx_End = idx_end; }
-    void set_idx_start(int idx)
-        { m_Idx_Start = idx; }
-    void set_idx_end(int idx)
-        { m_Idx_End = idx; }
+    void set_idxs(int id_start, int id_end)
+        { m_Id_Start = id_start; m_Id_End = id_end; }
+    void set_id_start(int id)
+        { m_Id_Start = id; }
+    void set_id_end(int id)
+        { m_Id_End = id; }
     void setSourceObject(Icon* newSource)
         { m_SourceReferenceObj = newSource; }
     void setDestObject(Icon *newDest)
@@ -62,18 +62,22 @@ protected:
     LineType m_LineType;
     QColor m_Color;
     QPolygonF m_ArrowHead;
-    int m_Idx_Start;
-    int m_Idx_End;
+    int m_Id_Start;
+    int m_Id_End;
 
     double getAngle ();
     QPointF findIntersection (Icon *, QLineF);
     QPointF findObjectCenter(Icon *);
+    QPointF findSRLCenter(Icon *);
+    qreal calcSRRadius(Icon *);
+    QPointF calcSRArrowPoint(QPointF, qreal);
     void squareLine(qreal, QPointF, QPointF, QPointF *, QPointF *);
 
     bool checkReferences(Icon *, Icon *);
     bool checkInterPoint(QPointF);
 
     void bareArrowHead(double, QLineF, QPointF *, QPointF *);
+    void makeArrowHead(double, QPointF);
     void makeArrowHead(double, QLineF);
     void makeDiamond(double, QLineF);
 

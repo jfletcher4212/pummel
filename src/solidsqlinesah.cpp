@@ -8,6 +8,13 @@ solidsqlinesah::solidsqlinesah(Icon *sourceReferenceObj, Icon *destinationRefere
     m_LineType = Solid_Square_Line;
 }
 
+solidsqlinesah::solidsqlinesah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
+{
+    parent = 0;
+    scene = 0;
+    m_LineType = Solid_Line;
+}
+
 void solidsqlinesah::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;

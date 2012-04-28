@@ -7,7 +7,14 @@ dottedsqlinesah::dottedsqlinesah(Icon *sourceReferenceObj, Icon *destinationRefe
 {
     parent = 0;
     scene = 0;
-    m_LineType = Solid_Square_Line;
+    m_LineType = Dotted_Sq_Line_SAH;
+}
+
+dottedsqlinesah::dottedsqlinesah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
+{
+    parent = 0;
+    scene = 0;
+    m_LineType = Dotted_Sq_Line_SAH;
 }
 
 void dottedsqlinesah::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)

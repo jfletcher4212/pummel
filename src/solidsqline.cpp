@@ -8,6 +8,13 @@ solidsqline::solidsqline(Icon *sourceReferenceObj, Icon *destinationReferenceObj
     m_LineType = Solid_Square_Line;
 }
 
+solidsqline::solidsqline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
+{
+    parent = 0;
+    scene = 0;
+    m_LineType = Solid_Square_Line;
+}
+
 void solidsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
