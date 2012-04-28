@@ -7,6 +7,11 @@ solidlineBAH::solidlineBAH(Icon *sourceReferenceObj, Icon *destinationReferenceO
     m_LineType = Solid_Line_BAH;
 }
 
+solidlineBAH::solidlineBAH(int id_start, int id_end) : lineBody(id_start, id_end)
+{
+    set_ids(id_start, id_end);
+}
+
 solidlineBAH::solidlineBAH(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
 {
     parent = 0;
