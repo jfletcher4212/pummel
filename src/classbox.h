@@ -23,7 +23,7 @@ private:
     void arrangeBoxes();
 
 protected:
-    QRectF boundingRect() const;
+
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget * = 0);
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
     void setValues();
@@ -33,6 +33,7 @@ public:
     ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString members);
     ~ClassBox();
     QString getLabel(), getMembers(), getMethods();
+    QRectF boundingRect() const;
     void setLabel(QString), setMembers(QString), setMethods(QString);
     int setWidthsManually(int labelWidth, int memberWidth, int methodWidth);
     

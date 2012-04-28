@@ -221,17 +221,20 @@ void ClassBox::setValues()
 //The following 3 methods are accessors
 QString ClassBox::getLabel()
 {
-    return m_labelBox->toPlainText();
+    return m_label;
+//    return m_labelBox->toPlainText();
 }
 
 QString ClassBox::getMembers()
 {
-    return m_memberBox->toPlainText();
+    return m_members;
+//    return m_memberBox->toPlainText();
 }
 
 QString ClassBox::getMethods()
 {
-    return m_methodBox->toPlainText();
+    return m_methods;
+//    return m_methodBox->toPlainText();
 }
 
 //The following 3 methods are mutators
