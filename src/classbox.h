@@ -34,6 +34,7 @@ public:
     ~ClassBox();
     QString getLabel(), getMembers(), getMethods();
     void setLabel(QString), setMembers(QString), setMethods(QString);
+    int setWidthsManually(int labelWidth, int memberWidth, int methodWidth);
     
     // file i/o accessors
     QString get_all();
