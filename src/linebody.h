@@ -70,6 +70,9 @@ protected:
     QPointF findObjectCenter(Icon *);
     void squareLine(qreal, QPointF, QPointF, QPointF *, QPointF *);
 
+    bool checkReferences(Icon *, Icon *);
+    bool checkInterPoint(QPointF);
+
     void bareArrowHead(double, QLineF, QPointF *, QPointF *);
     void makeArrowHead(double, QLineF);
     void makeDiamond(double, QLineF);
