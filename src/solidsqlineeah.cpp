@@ -5,7 +5,14 @@ solidsqlineeah::solidsqlineeah(Icon *sourceReferenceObj, Icon *destinationRefere
 {
     parent = 0;
     scene = 0;
-    m_LineType = Solid_Square_Line;
+    m_LineType = Solid_Sq_Line_EAH;
+}
+
+solidsqlineeah::solidsqlineeah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
+{
+    parent = 0;
+    scene = 0;
+    m_LineType = Solid_Sq_Line_EAH;
 }
 
 void solidsqlineeah::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
