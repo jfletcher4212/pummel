@@ -7,7 +7,7 @@ dottedline::dottedline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, 
     m_LineType = Dotted_Line;
 }
 
-dottedline::dottedline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int idx_start, int idx_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, idx_start, idx_end, parent, scene)
+dottedline::dottedline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
 {
     parent = 0;
     scene = 0;

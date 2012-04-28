@@ -7,6 +7,13 @@ dottedlineed::dottedlineed(Icon *sourceReferenceObj, Icon *destinationReferenceO
     m_LineType = Dotted_Line_ED;
 }
 
+dottedlineed::dottedlineed(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
+{
+    parent = 0;
+    scene = 0;
+    m_LineType = Dotted_Line_ED;
+}
+
 void dottedlineed::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
