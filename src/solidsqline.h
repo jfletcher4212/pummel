@@ -7,6 +7,7 @@ class solidsqline : public lineBody
 {
 public:
     solidsqline(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
+    solidsqline(Icon *, Icon *, int,  int, QGraphicsItem *, QGraphicsScene *);
 
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);

@@ -7,6 +7,7 @@ class selfRefLine : public lineBody
 {
 public:
     selfRefLine(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
+    selfRefLine(Icon *, Icon *, int,  int, QGraphicsItem *, QGraphicsScene *);
 
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
