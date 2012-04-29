@@ -14,6 +14,11 @@ lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGra
     m_DestinationReferenceObj = destinationReferenceObj;
 }
 
+lineBody::lineBody(int id_start, int id_end)
+{
+    set_ids(id_start, id_end);
+}
+
 lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsLineItem(parent, scene)
 {
     m_Id_Start = id_start;

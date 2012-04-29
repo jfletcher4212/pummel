@@ -10,6 +10,11 @@ dottedsqlinesah::dottedsqlinesah(Icon *sourceReferenceObj, Icon *destinationRefe
     m_LineType = Dotted_Sq_Line_SAH;
 }
 
+dottedsqlinesah::dottedsqlinesah(int id_start, int id_end) : lineBody(id_start, id_end)
+{
+    set_ids(id_start, id_end);
+}
+
 dottedsqlinesah::dottedsqlinesah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
 {
     parent = 0;
