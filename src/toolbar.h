@@ -37,6 +37,7 @@ private:
 public:
     explicit Toolbar(QWidget *parent = 0);
     void canvasSync();
+    void setAvailableActions();
 
     //parameters for shapes
     shapeParams shape;
@@ -51,16 +52,37 @@ public slots:
     void insertShape();
     void insertLine();
     void insertText();
-    void showOptions();
+    //void showOptions();
 
     void addClassBox();
     void addEllipse();
+    void addRoundedSquare();
+    void addNote();
+    void addScenarioStart();
+    void addScenarioEnd();
+    void addActor();
     void addNone();
 
     void addNoLine();
     void addSolidLine();
     void addDottedLine();
-    void addSolidLineAH();
+    void addSolidLineSAH();
+    void addDottedLineSAH();
+    void addSolidLineEAH();
+    void addDottedLineEAH();
+    void addSolidLineSD();
+    void addDottedLineSD();
+    void addSolidLineED();
+    void addDottedLineED();
+    void addSolidLineBAH();
+    void addDottedLineBAH();
+    void addSolidSQLine();
+    void addDottedSQLine();
+    void addSolidSQLineSAH();
+    void addDottedSQLineSAH();
+    void addSolidSQLineEAH();
+    void addDottedSQLineEAH();
+    void addSelfRefLine();
 
     void gridOn();
     void gridOff();
@@ -69,6 +91,7 @@ private:
 
     void createActions();
     void createMenus();
+
 
 
     QPushButton * shapeButton;
@@ -82,13 +105,34 @@ private:
     QAction *addNoneAct;
     QAction *addClassBoxAct;
     QAction *addEllipseAct;
+    QAction *addRoundedSquareAct;
+    QAction *addScenarioStartAct;
+    QAction *addScenarioEndAct;
+    QAction *addActorAct;
+    QAction *addNoteAct;
 
     QMenu *lineMenu;
     QActionGroup *linesGroup;
     QAction *addNoLineAct;
     QAction *addSolidLineAct;
     QAction *addDottedLineAct;
-    QAction *addSolidLineAHAct;
+    QAction *addSolidLineSAHAct;
+    QAction *addDottedLineSAHAct;
+    QAction *addSolidLineEAHAct;
+    QAction *addDottedLineEAHAct;
+    QAction *addSolidLineSDAct;
+    QAction *addDottedLineSDAct;
+    QAction *addSolidLineEDAct;
+    QAction *addDottedLineEDAct;
+    QAction *addSolidLineBAHAct;
+    QAction *addDottedLineBAHAct;
+    QAction *addSolidSQLineAct;
+    QAction *addDottedSQLineAct;
+    QAction *addSolidSQLineSAHAct;
+    QAction *addDottedSQLineSAHAct;
+    QAction *addSolidSQLineEAHAct;
+    QAction *addDottedSQLineEAHAct;
+    QAction *addSelfRefLineAct;
 
     QMenu *gridMenu;
     QActionGroup *gridOnOffToggleGroup;
