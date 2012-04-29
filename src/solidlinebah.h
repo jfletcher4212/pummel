@@ -7,6 +7,7 @@ class solidlineBAH : public lineBody
 public:
     solidlineBAH(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
     solidlineBAH(Icon *, Icon *, int,  int, QGraphicsItem *, QGraphicsScene *);
+    solidlineBAH(int id_start, int id_end);
 
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
