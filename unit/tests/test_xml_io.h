@@ -24,7 +24,7 @@ public:
     QList<Icon*> list;
     QString filename = "Testfile.ut";
     QString diagram_type = "testtype";
-    Icon *temp;    
+    Icon *tmp;    
 
     // actor
     tmp = new Actor(0, 23, 23, 23, 23, (QString)"test_actor");
@@ -43,7 +43,7 @@ public:
     list.append(tmp);
         
     // roundedsquare
-    tmp = new RoundedSquare(0, 23, 23, 23, 23, (QString)"test::+::roundedsquare")
+    tmp = new RoundedSquare(0, 23, 23, 23, 23, (QString)"test::+::roundedsquare");
     list.append(tmp);
         
     // scenariostart
