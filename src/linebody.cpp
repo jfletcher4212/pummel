@@ -1,65 +1,236 @@
 #include "linebody.h"
+#include <math.h>
 
 const qreal Pi = 3.14;
 
-lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : BasicLineObject()
+lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsLineItem(parent, scene)
 {
     parent = 0;
-    scene = 0;
 
-    mySourceReferenceObj = sourceReferenceObj;
-    myDestinationReferenceObj = destinationReferenceObj;
+    m_Color = Qt::black;
+    setFlag(QGraphicsItem::ItemIsSelectable, true);
+
+    m_SourceReferenceObj = sourceReferenceObj;
+    m_DestinationReferenceObj = destinationReferenceObj;
 }
 
-//Change at which end of the line the arrow head resides.
-void lineBody::swapLineDirection()
+lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsLineItem(parent, scene)
 {
-    //Swap the source and destination reference objects
-    //Redraw
+    m_Id_Start = id_start;
+    m_Id_End = id_end;
+
+    m_SourceReferenceObj = sourceReferenceObj;
+    m_DestinationReferenceObj = destinationReferenceObj;
 }
 
-QPointF lineBody::findIntersection(Icon *refObj, QLineF interLine) //Find the intersection of the line and object, for determining arrow direction
+QPointF lineBody::findObjectCenter(Icon *obj)
 {
-    //QLineF centerLine(myStartItem->pos(), myEndItem->pos());
-        //Here a line object is constructed that "represents" a line between the position of myStartItem and myEndItem
-        /*How pos() works: Returns the position of the item in "parent coordinates" or
-         * scene coordinates if the item has no parent. The position describes it origin (local
-         * coordinates (0,0)) in parent coordinates [this funct returns the same as mapToParent(0,0).
-         * You can use scenePos() to determine the scene coordinates regardless of the parent.
-         */
-        //This line isn't neccisary for this portion of the code -> should be placed in a function for
-        //drawing the lines.
+    QPointF centerPoint = obj->pos();
 
-   //For now, we will implement the QPoly here. This will need to be a property of the icon in the future.
-   QRectF * myRect = new QRectF(qreal(refObj->x()), qreal(refObj->y()), qreal(refObj->getWidth()), qreal(refObj->getHeight()));
-   //Why does this work, and not (& myRect);?
-   QPolygonF * tempRefPoly = new QPolygonF ((*myRect));
+    centerPoint.rx() += 0.5 * obj->getWidth();
+    centerPoint.ry() += 0.5 * obj->getHeight();
 
+    return centerPoint;
+}
 
-   QPointF startPoint = tempRefPoly->first() + refObj->pos();
-    QPointF endPoint;
-    QPointF interPoint;
-    QLineF tempPolyLine;
-    for(int i = 1; i < tempRefPoly->count(); ++i)
+QPointF lineBody::findSRLCenter(Icon *obj)
+{
+    QPointF centerPoint = findObjectCenter(obj);
+
+    centerPoint.rx() += (obj->getWidth())/2;
+
+    return centerPoint;
+
+}
+
+qreal lineBody::calcSRRadius(Icon *obj)
+{
+    int offset = 5;
+
+    return ((obj->getHeight()) / 2) - offset;
+}
+
+QPointF lineBody::calcSRArrowPoint(QPointF centerPoint, qreal radius)
+{
+    QPointF arrowP = centerPoint;
+    arrowP.ry() += radius;
+
+    return arrowP;
+}
+
+bool lineBody::checkReferences(Icon *obj1, Icon *obj2)
+{
+    if(obj1 == NULL || obj2 == NULL)
+        return false;
+    else
+        return true;
+}
+
+bool lineBody::checkInterPoint(QPointF interPoint)
+{
+    if(interPoint.rx() == NULL || interPoint.ry() == NULL)
+        return false;
+    else
+        return true;
+}
+
+void lineBody::squareLine(qreal angle, QPointF startPoint, QPointF endPoint, QPointF *secondPointer, QPointF *thirdPointer)
+{
+    QPointF secondPoint = *secondPointer;
+    QPointF thirdPoint =  *thirdPointer;
+
+    if((angle > 45 && angle < 135) || (angle > 225 && angle < 315))
     {
-        endPoint = tempRefPoly->at(i) + refObj->pos();
-        tempPolyLine = QLineF(startPoint, endPoint);
-        QLineF::IntersectType interBool = tempPolyLine.intersect(interLine, &interPoint);
-        if(interBool == QLineF::BoundedIntersection)
-            break;
-        startPoint = endPoint;
+        secondPoint.ry() += (endPoint.ry() - startPoint.ry())/2;
+        thirdPoint = secondPoint;
+        thirdPoint.rx() += endPoint.rx() - startPoint.rx();
     }
-    //setLine(QLineF(intersectPoint, myStartItem->pos()));
-    /* Here the line is drawn back from the point of intersection (where it meets the end
-     * reference object) to the origin of the initial object. This should be included in the
-     * drawing portion of the line. Instead we return the point of intersection.
+    else
+    {
+        secondPoint.rx() += (endPoint.rx() - startPoint.rx())/2;
+        thirdPoint = secondPoint;
+        thirdPoint.ry() += endPoint.ry() - startPoint.ry();
+    }
+
+    *secondPointer = secondPoint;
+    *thirdPointer = thirdPoint;
+}
+
+/*
+ * Virtual Function - QGraphicsLineItem
+ * The point of the boundingRect() is to define
+ * the outer bounds of an item as a rectangle;
+ * in which all painting must take place.
+ */
+QRectF lineBody::boundingRect() const
+{
+    /*
+     * Sets the local variable extra equal to the width of the pen
+     * (line width) plus a little bit more.
      */
+    qreal extra = (pen().width() + 20) / 2.0;
+    /*
+     * Sets the new bounding rectangle's top left corner
+     * equal to the end reference object. It then sets
+     * the length equal to the line and the width will
+     * end up equaling 1.
+     */
+    return QRectF(line().p1(), QSizeF(line().p2().x() - line().p1().x(), line().p2().y() - line().p1().y()))
+    /*
+     * This line ensures that the rectangle generated above
+     * does not have any negative coordinates.
+     */
+        .normalized()
+    /*
+     * This line widens the rectangle so that it encompasses
+     * the line
+     */
+        .adjusted(-extra, -extra, extra, extra);
+}
+/*
+ * Virtual Function - QGraphicsItem
+ * The shape of an object is used for many things
+ * (such as collision detection, hit tests, etc.)
+ * and is returned as a QPainterPath in local coordinates.
+*/
+QPainterPath lineBody::shape() const
+{
+    /*
+     * This first line declares the QPainterPath and
+     * assigns the shape of a basic line to it.
+     */
+    QPainterPath path = QGraphicsLineItem::shape();
+    /*
+     * This line adds the shape of the arrow head to
+     * the QPainterPath. Causes the program to crash when an arrowhead is clicked
+     */
+    //path.addPolygon(m_ArrowHead);
+    return path;
+}
+
+QPointF lineBody::findIntersection(Icon *obj, QLineF interLine) //Find the intersection of the line and object, for determining arrow direction
+{
+    QPointF interPoint;
+    QString iconType = obj->reportShapetype();
+    if(iconType.compare("Class Box") == 0 || iconType.compare("Rounded Square") == 0)
+    {
+        QPointF point1 = obj->pos();
+        QPointF point2 = point1;
+        point2.rx() += obj->getWidth();
+        QPointF point3 = point1;
+        point3.ry() += obj->getHeight();
+        QPointF point4 = point1;
+        point4.rx() += obj->getWidth();
+        point4.ry() += obj->getHeight();
+        QLineF topLine = QLineF(point1, point2);
+        QLineF leftLine = QLineF(point1, point3);
+        QLineF rightLine = QLineF(point2, point4);
+        QLineF bottomLine = QLineF(point3, point4);
+        QPointF tempInter1;
+        QPointF tempInter2;
+        QPointF tempInter3;
+        QPointF tempInter4;
+        QLineF::IntersectType intersectType1 = topLine.intersect(interLine, &tempInter1);
+        QLineF::IntersectType intersectType2 = leftLine.intersect(interLine, &tempInter2);
+        QLineF::IntersectType intersectType3 = rightLine.intersect(interLine, &tempInter3);
+        QLineF::IntersectType intersectType4 = bottomLine.intersect(interLine, &tempInter4);
+        if(intersectType1 == QLineF::BoundedIntersection)
+        {
+            interPoint = tempInter1;
+        }
+        else if(intersectType2 == QLineF::BoundedIntersection)
+        {
+            interPoint = tempInter2;
+        }
+        else if(intersectType3 == QLineF::BoundedIntersection)
+        {
+            interPoint = tempInter3;
+        }
+        else if(intersectType4 == QLineF::BoundedIntersection)
+        {
+            interPoint = tempInter4;
+        }
+    }
+    else if(iconType.compare("Ellipse") == 0)
+    {
+        interPoint = findObjectCenter(obj);
+
+        double radiusA = (obj->getWidth())/2;
+        double radiusB = (obj->getHeight())/2;
+
+        double angleDeg = interLine.angle();
+        double angleRad = -angleDeg * (Pi/180);
+
+        double xCo = radiusA * cos(angleRad);
+        double yCo = radiusB * sin(angleRad);
+
+        interPoint.rx() -= xCo;
+        interPoint.ry() -= yCo;
+    }
+    else if(iconType.compare("Scenario End") == 0)
+    {
+        interPoint = findObjectCenter(obj);
+
+        double radius = (obj->getHeight())/2;
+
+        double angleDeg = interLine.angle();
+        double angleRad = -angleDeg * (Pi/180);
+
+        double xCo = radius * cos(angleRad);
+        double yCo = radius * sin(angleRad);
+
+        interPoint.rx() -= xCo;
+        interPoint.ry() -= yCo;
+    }
+    else
+    {
+        interPoint = QPointF(NULL, NULL);
+    }
     return interPoint;
 }
 
-double lineBody::getAngle (QPointF intersectPoint, Icon *myStartItem)//(BasicLineObject line)//rotateArrowHead(QPointF, DragItem)
+double lineBody::getAngle ()
 {
-    setLine(QLineF(intersectPoint, myStartItem->pos()));
     /*
      * The object's line needs to be set for line() to operate
      * properly, which is done with the line above. However,
@@ -83,10 +254,44 @@ double lineBody::getAngle (QPointF intersectPoint, Icon *myStartItem)//(BasicLin
     return angle;
 
 }
-/*
-void BasicLineObject::updatePosition();
+
+void lineBody::bareArrowHead(double angle, QLineF interLine, QPointF *firstPointer, QPointF *secondPointer)
 {
-    QLineF line(mapFromItem(myStartItem, 0, 0), mapFromItem(myEndItem, 0, 0));
-    setLine(line);
+    qreal arrowSize = 20;
+
+    *firstPointer = interLine.p1() + QPointF(sin(angle + Pi / 3)*arrowSize, cos(angle + Pi / 3) *arrowSize);
+    *secondPointer = interLine.p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
 }
-*/
+
+void lineBody::makeArrowHead(double angle, QLineF interLine)
+{
+    qreal arrowSize = 20;
+
+    QPointF arrowP1 = interLine.p1() + QPointF(sin(angle + Pi / 3)*arrowSize, cos(angle + Pi / 3) *arrowSize);
+    QPointF arrowP2 = interLine.p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
+    m_ArrowHead.clear();
+    m_ArrowHead << interLine.p1() << arrowP1 << arrowP2;
+}
+
+void lineBody::makeArrowHead(double angle, QPointF arrowP1)
+{
+    qreal arrowSize = 20;
+
+    QPointF arrowP2 = arrowP1 + QPointF(sin(angle + Pi / 3)*arrowSize, cos(angle + Pi / 3) *arrowSize);
+    QPointF arrowP3 = arrowP1 + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
+    m_ArrowHead.clear();
+    m_ArrowHead << arrowP1 << arrowP2 << arrowP3;
+}
+
+void lineBody::makeDiamond(double angle, QLineF interLine)
+{
+    qreal arrowSize = 20;
+
+    QPointF arrowP1 = interLine.p1() + QPointF(sin(angle + Pi / 3)*arrowSize, cos(angle + Pi / 3) *arrowSize);
+    QPointF arrowP2 = interLine.p1() + QPointF(sin(angle + Pi - Pi / 3) * arrowSize, cos(angle + Pi - Pi / 3) * arrowSize);
+    QPointF arrowP3 = interLine.p1() + QPointF(2*(sin(angle + Pi/2)*arrowSize), 2*(cos(angle + Pi/2)*arrowSize));
+
+
+    m_ArrowHead.clear();
+    m_ArrowHead << interLine.p1() << arrowP1 << arrowP3 << arrowP2;
+}

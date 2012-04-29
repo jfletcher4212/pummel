@@ -1,75 +1,82 @@
 #include "note.h"
 #include "markerbox.h"
+#include <iostream>
+#include <QString>
 
 
-
-note::note(QGraphicsItem *parent) : Icon(parent)
+Note::Note(QGraphicsItem *parent) : Icon(parent)
 {
-    setFlag(QGraphicsItem::ItemIsMovable);
-    setFlag(QGraphicsItem::ItemIsSelectable);
     // allows setting of the base rectangle of dragitem
-    //base = QRectF(0,0,0,0);
     m_shapetype = "Note";
-    m_id = m_next_id;
-    m_next_id++;
 
-    m_image.load("images/note.png");  //loads the image for drawing later
+    m_labelBox->setParentItem(this);
+    m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
-    // selection boxes
-    markers[0] = new MarkerBox();
-    markers[1] = new MarkerBox();
-    markers[2] = new MarkerBox();
-    markers[3] = new MarkerBox();
+    m_height /= 1.5;
 
-    markers[0]->setParentItem(this);
-    markers[1]->setParentItem(this);
-    markers[2]->setParentItem(this);
-    markers[3]->setParentItem(this);
+    m_label = "Text";
+    m_labelBox->setPlainText(m_label);
 
-    markers[0]->setVisible(false);
-    markers[1]->setVisible(false);
-    markers[2]->setVisible(false);
-    markers[3]->setVisible(false);
+    m_labelBox->setPos(this->pos());
+    arrangeBoxes();
+
+    m_labelBox->setVisible(true);
+    // In general, leave this block below running for loading images
+
+    if (!m_image.load("icons/note.png"))
+        std::cout << "didn't load image properly\n";  //loads the image for drawing later
+
+
+    // If the relative path fails, uncomment and update the below with full path to images (example below from a mac)
+    //if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/note.png"))
+    //std::cout << "didn't load image properly\n";  //loads the image for drawing later
 }
 
-
-
-note::note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
+Note::Note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label) : Icon(parent)
 {
-    setFlag(QGraphicsItem::ItemIsMovable);
-    setFlag(QGraphicsItem::ItemIsSelectable);
     // allows setting of the base rectangle of dragitem
-    //base = QRectF(0,0,0,0);
     m_width = xsize;
     m_height = ysize;
     m_shapetype = "Note";
-    m_id = m_next_id;
-    m_next_id++;
 
-    // selection boxes
-    markers[0] = new MarkerBox();
-    markers[1] = new MarkerBox();
-    markers[2] = new MarkerBox();
-    markers[3] = new MarkerBox();
+    m_xPos = xpos;
+    m_yPos = ypos;
+    this->setPos(m_xPos,m_yPos);
 
-    markers[0]->setParentItem(this);
-    markers[1]->setParentItem(this);
-    markers[2]->setParentItem(this);
-    markers[3]->setParentItem(this);
+    m_labelBox->setParentItem(this);
+    m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
-    markers[0]->setVisible(false);
-    markers[1]->setVisible(false);
-    markers[2]->setVisible(false);
-    markers[3]->setVisible(false);
+    m_label = label;
+    m_labelBox->setPlainText(label);
+
+    m_labelBox->setPos(this->pos());
+    arrangeBoxes();
+
+    m_labelBox->setVisible(true);
+
+    // In general, leave this block below running for loading images
+
+    if (!m_image.load("icons/note.png"))
+           std::cout << "didn't load image properly\n";  //loads the image for drawing later
+
+    // If the relative path fails, uncomment and update the below with full path to images (example below from a mac)
+    //if (!m_image.load("/Users/mac/Desktop/Rev78-build-desktop-Desktop_Qt_4_7_4_for_GCC__Qt_SDK__Debug/icons/note.png"))
+    //    std::cout << "didn't load image properly\n";  //loads the image for drawing later
+
 }
 
-QRectF note::boundingRect() const
+QRectF Note::boundingRect() const
 {
     return QRectF(0,0,m_width, m_height);
 }
 
-void note::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void Note::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+    m_labelBox->boundingRect().setHeight(m_height-20);
+    m_labelBox->boundingRect().setWidth(m_width-20);
+
+    arrangeBoxes();
+
     if(painter == 0)
     {
         // make a painter if none exists
@@ -77,88 +84,42 @@ void note::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     }
     painter->setPen(Qt::NoPen);
 
-    if(this->isSelected())
-    {
-        QPointF pos;
-        // properly sets the marker boxes around selected objects
-        painter->setBrush(Qt::red);
-        markers[0]->setVisible(true);
-        markers[1]->setVisible(true);
-        markers[2]->setVisible(true);
-        markers[3]->setVisible(true);
-
-        pos = this->scenePos(); // sets position to the upper left pixel
-        pos.rx() = -8;
-        pos.ry() = -8;
-        markers[0]->setPos(pos);
-
-        pos = this->scenePos();
-        pos.rx() = m_width+3;
-        pos.ry() = -8;
-        markers[1]->setPos(pos);
-
-        pos = this->scenePos();
-        pos.rx() = -8;
-        pos.ry() = m_height+3;
-        markers[2]->setPos(pos);
-
-        pos = this->scenePos();
-        pos.rx() = m_width+3;
-        pos.ry() = m_height+3;
-        markers[3]->setPos(pos);
-
-    }
-    else
-    {
-        // if not selected, make the boxes invisible
-        painter->setBrush(Qt::black);
-        markers[0]->setVisible(false);
-        markers[1]->setVisible(false);
-        markers[2]->setVisible(false);
-        markers[3]->setVisible(false);
-    }
-
-    painter->drawImage(QRectF(0,0,m_width,m_height), m_image);   //paints from image file
+    painter->drawImage(this->boundingRect(),m_image);
+    update();
 
 }
 
-
-void note::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void Note::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
 {
     event->accept();
-    QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_width;
-    pos.ry() -= 0.5 * m_height;
-    this->grabMouse();  // DragItem will take all mouse actions
-    this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
+    setValues();
 }
 
-void note::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+void Note::setValues()
 {
+    //open dialog box for user editing
+    TextBoxDialog *values = new TextBoxDialog(this);
+    values->show();
 
-    // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
-    QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_width;
-    pos.ry() -= 0.5 * m_height;
-    this->setPos(pos.rx(), pos.ry());
+    arrangeBoxes();
 }
 
-void note::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+void Note::arrangeBoxes()
 {
-    /*
-     * This resets the object's coordinates to the cursor's coordinates when the
-     * mouse is released, as opposed to creating a new object and then deleting the old one.
-     * Also puts opacity back to normal.
-     */
+    m_labelBox->setPos(((m_width*0.5)-(m_labelBox->boundingRect().width()*0.5)), ((m_height*0.5)-(m_labelBox->boundingRect().height()*0.5)));
 
-    // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
-    QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_width;
-    pos.ry() -= 0.5 * m_height;
-    this->setPos(pos.rx(),pos.ry());
-    this->setOpacity(1.0);
-    this->ungrabMouse();  // release mouse back to DragScene
+    this->prepareGeometryChange();
+
+    //change m_height and m_width
+    if(m_labelBox->boundingRect().width()+20 > m_width)
+    {
+           m_width = m_labelBox->boundingRect().width()+20;
+    }
+    if(m_labelBox->boundingRect().height()+20 > m_height)
+    {
+          m_height = m_labelBox->boundingRect().height() +20;
+    }
+    paintMarkerBoxes();
+    update();
 }
-
-
 

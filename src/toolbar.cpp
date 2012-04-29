@@ -27,16 +27,19 @@ Toolbar::Toolbar(QWidget *parent) :
     line.weight = 1;
 
     createActions();
-    createMenus();
+//    createMenus();
 
     QGridLayout *layout;
     layout = initButtons();
     setLayout(layout);
 
+    createMenus();
+
+/*
     shapeButton->setMenu(shapeMenu);
     lineButton->setMenu(lineMenu);
     gridButton->setMenu(gridMenu);
-
+*/
 }
 
 //create buttons and add to layout
@@ -47,14 +50,12 @@ QGridLayout * Toolbar::initButtons()
     shapeButton = new QPushButton(tr("Shape"));
     textButton = new QPushButton(tr("Text"));
     lineButton = new QPushButton(tr("Line"));
-    optionsButton = new QPushButton(tr("Options"));
     gridButton = new QPushButton(tr("Grid"));
 
     // connect buttons to slots
     connect(shapeButton, SIGNAL(clicked()), this, SLOT(insertShape()));
-    connect(textButton, SIGNAL(clicked()), this, SLOT(insertText()));
+    connect(textButton, SIGNAL(clicked()), this, SLOT(addNote()));
     connect(lineButton, SIGNAL(clicked()), this, SLOT(insertLine()));
-    connect(optionsButton, SIGNAL(clicked()), this, SLOT(showOptions()));
 
     /* add created buttons to a grid layout
      * buttons are arranged in a single column
@@ -64,13 +65,18 @@ QGridLayout * Toolbar::initButtons()
     layout->addWidget(shapeButton, 0, 0);
     layout->addWidget(lineButton, 1, 0);
     layout->addWidget(textButton, 2, 0);
-    layout->addWidget(optionsButton, 3, 0);
-    layout->addWidget(gridButton, 4, 0);
+    layout->addWidget(gridButton, 3, 0);
 
     return layout;
 }
 
 void Toolbar::createActions(){
+
+    //create shape actions
+    addNoneAct = new QAction(tr("None"), this);
+    addNoneAct->setCheckable(true);
+    addNoneAct->setChecked(true);
+    connect(addNoneAct, SIGNAL(triggered()), this, SLOT(addNone()));
 
     addEllipseAct = new QAction(tr("Ellipse"), this);
     addEllipseAct->setCheckable(true);
@@ -80,15 +86,25 @@ void Toolbar::createActions(){
     addClassBoxAct->setCheckable(true);
     connect(addClassBoxAct, SIGNAL(triggered()), this, SLOT(addClassBox()));
 
-    addNoneAct = new QAction(tr("None"), this);
-    addNoneAct->setCheckable(true);
-    addNoneAct->setChecked(true);
-    connect(addNoneAct, SIGNAL(triggered()), this, SLOT(addNone()));
+    addRoundedSquareAct = new QAction(tr("Rounded Square"), this);
+    addRoundedSquareAct->setCheckable(true);
+    connect(addRoundedSquareAct, SIGNAL(triggered()), this, SLOT(addRoundedSquare()));
 
-    shapesGroup = new QActionGroup(this);
-    shapesGroup->addAction(addNoneAct);
-    shapesGroup->addAction(addClassBoxAct);
-    shapesGroup->addAction(addEllipseAct);
+    addScenarioStartAct = new QAction(tr("Start"), this);
+    addScenarioStartAct->setCheckable(true);
+    connect(addScenarioStartAct, SIGNAL(triggered()), this, SLOT(addScenarioStart()));
+
+    addScenarioEndAct = new QAction(tr("End"), this);
+    addScenarioEndAct->setCheckable(true);
+    connect(addScenarioEndAct, SIGNAL(triggered()), this, SLOT(addScenarioEnd()));
+
+    addActorAct = new QAction(tr("Actor"), this);
+    addActorAct->setCheckable(true);
+    connect(addActorAct, SIGNAL(triggered()), this, SLOT(addActor()));
+
+    addNoteAct = new QAction(tr("Note"), this);
+    addNoteAct->setCheckable(true);
+    connect(addNoteAct, SIGNAL(triggered()), this, SLOT(addNote()));
 
     addSolidLineAct = new QAction(tr("Solid Line"), this);
     addSolidLineAct->setCheckable(true);
@@ -98,20 +114,78 @@ void Toolbar::createActions(){
     addDottedLineAct->setCheckable(true);
     connect(addDottedLineAct, SIGNAL(triggered()), this, SLOT(addDottedLine()));
 
-    addSolidLineAHAct = new QAction(tr("Solid line w/solid arrow head"), this);
-    addSolidLineAHAct->setCheckable(true);
-    connect(addSolidLineAHAct, SIGNAL(triggered()), this, SLOT(addSolidLineAH()));
+    addSolidLineSAHAct = new QAction(tr("Solid line w/solid arrow head"), this);
+    addSolidLineSAHAct->setCheckable(true);
+    connect(addSolidLineSAHAct, SIGNAL(triggered()), this, SLOT(addSolidLineSAH()));
+
+    addDottedLineSAHAct = new QAction(tr("Dotted line w/solid arrow head"), this);
+    addDottedLineSAHAct->setCheckable(true);
+    connect(addDottedLineSAHAct, SIGNAL(triggered()), this, SLOT(addDottedLineSAH()));
+
+    addSolidLineEAHAct = new QAction(tr("Solid line w/empty arrow head"), this);
+    addSolidLineEAHAct->setCheckable(true);
+    connect(addSolidLineEAHAct, SIGNAL(triggered()), this, SLOT(addSolidLineEAH()));
+
+    addDottedLineEAHAct = new QAction(tr("Dotted line w/empty arrow head"), this);
+    addDottedLineEAHAct->setCheckable(true);
+    connect(addDottedLineEAHAct, SIGNAL(triggered()), this, SLOT(addDottedLineEAH()));
+
+    addSolidLineSDAct = new QAction(tr("Solid line w/solid diamond"), this);
+    addSolidLineSDAct->setCheckable(true);
+    connect(addSolidLineSDAct, SIGNAL(triggered()), this, SLOT(addSolidLineSD()));
+
+    addDottedLineSDAct = new QAction(tr("Dotted line w/solid diamond"), this);
+    addDottedLineSDAct->setCheckable(true);
+    connect(addDottedLineSDAct, SIGNAL(triggered()), this, SLOT(addDottedLineSD()));
+
+    addSolidLineEDAct = new QAction(tr("Solid line w/empty diamond"), this);
+    addSolidLineEDAct->setCheckable(true);
+    connect(addSolidLineEDAct, SIGNAL(triggered()), this, SLOT(addSolidLineED()));
+
+    addDottedLineEDAct = new QAction(tr("Dotted line w/empty diamond"), this);
+    addDottedLineEDAct->setCheckable(true);
+    connect(addDottedLineEDAct, SIGNAL(triggered()), this, SLOT(addDottedLineED()));
+
+    addSolidLineBAHAct = new QAction(tr("Solid line w/bare arrow head"), this);
+    addSolidLineBAHAct->setCheckable(true);
+    connect(addSolidLineBAHAct, SIGNAL(triggered()), this, SLOT(addSolidLineBAH()));
+
+    addDottedLineBAHAct = new QAction(tr("Dotted line w/bare arrow head"), this);
+    addDottedLineBAHAct->setCheckable(true);
+    connect(addDottedLineBAHAct, SIGNAL(triggered()), this, SLOT(addDottedLineBAH()));
+
+    addSolidSQLineAct = new QAction(tr("Solid Square Line"), this);
+    addSolidSQLineAct->setCheckable(true);
+    connect(addSolidSQLineAct, SIGNAL(triggered()), this, SLOT(addSolidSQLine()));
+
+    addDottedSQLineAct = new QAction(tr("Dotted Square Line"), this);
+    addDottedSQLineAct->setCheckable(true);
+    connect(addDottedSQLineAct, SIGNAL(triggered()), this, SLOT(addDottedSQLine()));
+
+    addSolidSQLineSAHAct = new QAction(tr("Solid Square Line w/sold arrow head"), this);
+    addSolidSQLineSAHAct->setCheckable(true);
+    connect(addSolidSQLineSAHAct, SIGNAL(triggered()), this, SLOT(addSolidSQLineSAH()));
+
+    addDottedSQLineSAHAct = new QAction(tr("Dotted Square Line w/solid arrow head"), this);
+    addDottedSQLineSAHAct->setCheckable(true);
+    connect(addDottedSQLineSAHAct, SIGNAL(triggered()), this, SLOT(addDottedSQLineSAH()));
+
+    addSolidSQLineEAHAct = new QAction(tr("Solid Square Line w/empty arrow head"), this);
+    addSolidSQLineEAHAct->setCheckable(true);
+    connect(addSolidSQLineEAHAct, SIGNAL(triggered()), this, SLOT(addSolidSQLineEAH()));
+
+    addDottedSQLineEAHAct = new QAction(tr("Dotted Square Line w/empty arrow head"), this);
+    addDottedSQLineEAHAct->setCheckable(true);
+    connect(addDottedSQLineEAHAct, SIGNAL(triggered()), this, SLOT(addDottedSQLineEAH()));
+
+    addSelfRefLineAct = new QAction(tr("Self Referencing Line"), this);
+    addSelfRefLineAct->setCheckable(true);
+    connect(addSelfRefLineAct, SIGNAL(triggered()), this, SLOT(addSelfRefLine()));
 
     addNoLineAct = new QAction(tr("None"), this);
     addNoLineAct->setCheckable(true);
     addNoLineAct->setChecked(true);
     connect(addNoLineAct, SIGNAL(triggered()), this, SLOT(addNoLine()));
-
-    linesGroup = new QActionGroup(this);
-    linesGroup->addAction(addNoLineAct);
-    linesGroup->addAction(addSolidLineAct);
-    linesGroup->addAction(addDottedLineAct);
-    linesGroup->addAction(addSolidLineAHAct);
 
     gridOnAct = new QAction(tr("On"), this);
     gridOnAct->setCheckable(true);
@@ -121,40 +195,118 @@ void Toolbar::createActions(){
     gridOffAct = new QAction(tr("Off"), this);
     gridOffAct->setCheckable(true);
     connect(gridOffAct, SIGNAL(triggered()), this, SLOT(gridOff()));
-
-    gridOnOffToggleGroup = new QActionGroup(this);
-    gridOnOffToggleGroup->addAction(gridOnAct);
-    gridOnOffToggleGroup->addAction(gridOffAct);
 }
 
 void Toolbar::createMenus(){
     shapeMenu = new QMenu(this);
-    shapeMenu->addAction(addNoneAct);
-    shapeMenu->addAction(addClassBoxAct);
-    shapeMenu->addAction(addEllipseAct);
+    shapesGroup = new QActionGroup(this);
+    shapesGroup->setExclusive(true);
 
     lineMenu = new QMenu(this);
-    lineMenu->addAction(addNoLineAct);
-    lineMenu->addAction(addSolidLineAct);
-    lineMenu->addAction(addDottedLineAct);
-    lineMenu->addAction(addSolidLineAHAct);
+    linesGroup = new QActionGroup(this);
+    linesGroup->setExclusive(true);
 
     gridMenu = new QMenu(this);
-    gridMenu->addAction(gridOnAct);
-    gridMenu->addAction(gridOffAct);
+    gridOnOffToggleGroup = new QActionGroup(this);
+    gridOnOffToggleGroup->setExclusive(true);
+
+    shapeButton->setMenu(shapeMenu);
+    lineButton->setMenu(lineMenu);
+    gridButton->setMenu(gridMenu);
 }
 
-void Toolbar::showOptions()
+//filter actions on the toolbar based on the active diagram's type
+void Toolbar::setAvailableActions()
 {
-    //    options->exec();
-    options->show();
-    shape.fillColor = options->shapeFillColor;
-    shape.weight = options->shapeWeight;
-    text.color = options->textColor;
-    text.font = options->textFont;
-    text.size = options->textSize;
-    line.color = options->lineColor;
-    line.weight = options->lineWeight;
+    //get the type of the active diagram
+    DiagramType type;
+    type = canvas.at(tabWidget->currentIndex())->getDiagramType();
+
+    //get rid of all actions in menu before adding new ones.
+    delete shapeMenu;
+    delete shapesGroup;
+    delete lineMenu;
+    delete linesGroup;
+    delete gridMenu;
+    delete gridOnOffToggleGroup;
+    createMenus();
+
+    shapeButton->setMenu(shapeMenu);
+    lineButton->setMenu(lineMenu);
+    gridButton->setMenu(gridMenu);
+
+    //None action should always be loaded
+    shapesGroup->addAction(addNoneAct);
+    linesGroup->addAction(addNoLineAct);
+
+    switch (type)
+    {
+    case Class:         // I.E. Class
+    {
+        shapesGroup->addAction(addClassBoxAct);
+        linesGroup->addAction(addSolidSQLineAct);
+        linesGroup->addAction(addDottedSQLineAct);
+
+        //Will be removed at a later date
+        linesGroup->addAction(addSelfRefLineAct);
+        linesGroup->addAction(addSolidLineSAHAct);
+        linesGroup->addAction(addDottedLineSAHAct);
+        linesGroup->addAction(addSolidLineEAHAct);
+        linesGroup->addAction(addDottedLineEAHAct);
+        linesGroup->addAction(addSolidLineSDAct);
+        linesGroup->addAction(addDottedLineSDAct);
+        linesGroup->addAction(addSolidLineBAHAct);
+        linesGroup->addAction(addDottedLineBAHAct);
+        linesGroup->addAction(addSolidLineEDAct);
+        linesGroup->addAction(addDottedLineEDAct);
+        linesGroup->addAction(addSolidSQLineSAHAct);
+        linesGroup->addAction(addDottedSQLineSAHAct);
+        linesGroup->addAction(addSolidSQLineEAHAct);
+        linesGroup->addAction(addDottedSQLineEAHAct);
+
+        break;
+    }
+    case StateChart:
+    {
+        shapesGroup->addAction(addScenarioStartAct);
+        shapesGroup->addAction(addRoundedSquareAct);
+        shapesGroup->addAction(addScenarioEndAct);
+        linesGroup->addAction(addSolidLineAct);
+
+        linesGroup->addAction(addDottedLineEAHAct);
+        break;
+    }
+    case Sequence:         // Sequence
+    {
+        break;
+    }
+    case UseCase:         // UseCase
+    {
+        shapesGroup->addAction(addActorAct);
+        shapesGroup->addAction(addEllipseAct);
+        linesGroup->addAction(addSolidLineAct);
+
+        linesGroup->addAction(addDottedLineEAHAct);
+        break;
+    }
+    }
+
+
+    //add grid actions
+    gridOnOffToggleGroup->addAction(gridOnAct);
+    gridOnOffToggleGroup->addAction(gridOffAct);
+
+
+    //set group defaults
+    shapesGroup->actions().at(0)->setChecked(true);
+    linesGroup->actions().at(0)->setChecked(true);
+    gridOnOffToggleGroup->actions().at(0)->setChecked(true);
+
+
+    //add QActionGroups to QMenus
+    shapeMenu->addActions(shapesGroup->actions());
+    lineMenu->addActions(linesGroup->actions());
+    gridMenu->addActions(gridOnOffToggleGroup->actions());
 }
 
 /*  add a shape into the drawing area. Use the parent's
@@ -195,12 +347,52 @@ void Toolbar::addEllipse(){
     canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
     canvas.at(tabWidget->currentIndex())->setLineCreate(false);
     canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_Ellipse);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(No_Line);
+    linesGroup->actions().at(0)->setChecked(true);
 }
 
 void Toolbar::addClassBox(){
     canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
     canvas.at(tabWidget->currentIndex())->setLineCreate(false);
     canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_Classbox);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(No_Line);
+    linesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addRoundedSquare()
+{
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_RoundedSquare);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(No_Line);
+    linesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addScenarioStart()
+{
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_ScenarioStart);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(No_Line);
+    linesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addScenarioEnd()
+{
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_ScenarioEnd);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(No_Line);
+    linesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addActor()
+{
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_Actor);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(No_Line);
+    linesGroup->actions().at(0)->setChecked(true);
 }
 
 void Toolbar::addNone(){
@@ -208,11 +400,23 @@ void Toolbar::addNone(){
     canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
 }
 
+void Toolbar::addNote()
+{
+    canvas.at(tabWidget->currentIndex())->setSceneCreate(true);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
+    //set shape and line menus to check 'None'
+    shapesGroup->actions().at(0)->setChecked(true);
+    linesGroup->actions().at(0)->setChecked(true);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_Note);
+}
+
 void Toolbar::addSolidLine()
 {
     canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
     canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
     canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
 }
 
 void Toolbar::addDottedLine()
@@ -220,19 +424,167 @@ void Toolbar::addDottedLine()
     canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
     canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
     canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Line);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
 }
 
-void Toolbar::addSolidLineAH()
+void Toolbar::addSolidLineSAH()
 {
     canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
     canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
     canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line_SAH);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addDottedLineSAH()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Line_SAH);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addSolidLineEAH()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line_EAH);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addDottedLineEAH()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Line_EAH);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addSolidLineSD()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line_SD);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addDottedLineSD()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Line_SD);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addSolidLineED()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line_ED);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addDottedLineED()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Line_ED);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addSolidLineBAH()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line_BAH);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addDottedLineBAH()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Line_BAH);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar:: addSolidSQLine()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Square_Line);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar:: addDottedSQLine()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Square_Line);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar:: addSolidSQLineSAH()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Sq_Line_SAH);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar:: addDottedSQLineSAH()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Sq_Line_SAH);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar:: addSolidSQLineEAH()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Sq_Line_EAH);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar:: addDottedSQLineEAH()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Dotted_Sq_Line_EAH);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
+}
+
+void Toolbar::addSelfRefLine()
+{
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
+    canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Self_Ref_Line);
+    canvas.at(tabWidget->currentIndex())->setSceneShapeCreationType(s_None);
+    shapesGroup->actions().at(0)->setChecked(true);
 }
 
 void Toolbar::addNoLine()
 {
     canvas.at(tabWidget->currentIndex())->scene->setLineCreate(false);
-    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
+    canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(No_Line);
 }
 
 void Toolbar::gridOn(){
@@ -262,6 +614,7 @@ void Toolbar::canvasSync()
         {
             this->addClassBox();
             addClassBoxAct->setChecked(true);
+//            addNoneAct->setChecked(false);
             break;
         }
         case s_Ellipse:
@@ -274,6 +627,21 @@ void Toolbar::canvasSync()
         {
             this->addNone();
             addNoneAct->setChecked(true);
+            break;
+        }
+        case s_Note:
+        {
+            this->addNote();
+            break;
+        }
+        case s_ScenarioStart:
+        {
+            this->addScenarioStart();
+            break;
+        }
+        case s_ScenarioEnd:
+        {
+            this->addScenarioEnd();
             break;
         }
         default:
@@ -313,8 +681,92 @@ void Toolbar::canvasSync()
         }
         case Solid_Line_SAH:
         {
-            this->addSolidLineAH();
-            addSolidLineAHAct->setChecked(true);
+            this->addSolidLineSAH();
+            addSolidLineSAHAct->setChecked(true);
+            break;
+        }
+        case Dotted_Line_SAH:
+        {
+            this->addDottedLineSAH();
+            addDottedLineSAHAct->setChecked(true);
+            break;
+        }
+        case Solid_Line_EAH:
+        {
+            this->addSolidLineEAH();
+            addSolidLineEAHAct->setChecked(true);
+            break;
+        }
+        case Dotted_Line_EAH:
+        {
+            this->addDottedLineEAH();
+            addDottedLineEAHAct->setChecked(true);
+            break;
+        }
+        case Solid_Line_SD:
+        {
+            this->addSolidLineSD();
+            addSolidLineSDAct->setChecked(true);
+            break;
+        }
+        case Dotted_Line_SD:
+        {
+            this->addDottedLineSD();
+            addDottedLineSDAct->setChecked(true);
+            break;
+        }
+        case Solid_Line_ED:
+        {
+            this->addSolidLineED();
+            addSolidLineEDAct->setChecked(true);
+            break;
+        }
+        case Dotted_Line_ED:
+        {
+            this->addDottedLineED();
+            addDottedLineEDAct->setChecked(true);
+            break;
+        }
+        case Solid_Square_Line:
+        {
+            this->addSolidSQLine();
+            addSolidSQLineAct->setChecked(true);
+            break;
+        }
+        case Dotted_Square_Line:
+        {
+            this->addDottedSQLine();
+            addSolidSQLineAct->setChecked(true);
+            break;
+        }
+        case Solid_Sq_Line_SAH:
+        {
+            this->addSolidSQLineSAH();
+            addSolidSQLineAct->setChecked(true);
+            break;
+        }
+        case Dotted_Sq_Line_SAH:
+        {
+            this->addDottedSQLineSAH();
+            addSolidSQLineAct->setChecked(true);
+            break;
+        }
+        case Solid_Sq_Line_EAH:
+        {
+            this->addSolidSQLineEAH();
+            addSolidSQLineAct->setChecked(true);
+            break;
+        }
+        case Dotted_Sq_Line_EAH:
+        {
+            this->addDottedSQLineEAH();
+            addSolidSQLineAct->setChecked(true);
+            break;
+        }
+        case Self_Ref_Line:
+        {
+            this->addSelfRefLine();
+            addSelfRefLineAct->setChecked(true);
             break;
         }
         default:
@@ -330,4 +782,3 @@ void Toolbar::canvasSync()
         addNoLineAct->setChecked(true);
     }
 }
-

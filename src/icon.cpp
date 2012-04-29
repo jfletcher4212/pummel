@@ -3,6 +3,7 @@
                Made by Theora Rice
   */
 #include "icon.h"
+#include <QPolygonF>
 #include <QtGui>
 
 //#include <QPointF>
@@ -13,12 +14,12 @@ Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
 {
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
-    m_width = 0;
-    m_height = 0;
+    m_width = 100;
+    m_height = 100;
     m_state = 0;
 //    m_label = "";
     m_labelBox = new QGraphicsTextItem;
-    
+
     // this is the line that causes a segfault in unit tests because
     // it needs the gui. my suggestion is to leave this member alone
     // in base class and do the text instantiation in the same method
@@ -27,7 +28,6 @@ Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
     // the gui things a little further.
     //m_labelBox->setPlainText("");
     m_labelBox->setPos(this->pos());
-    m_type = new QPolygon();
     m_id = m_next_id;
     m_next_id++;
 
@@ -50,7 +50,6 @@ Icon::~Icon()
     }
 
     delete m_labelBox;
-    delete m_type;
 }
 
 int Icon::getWidth()
@@ -147,6 +146,7 @@ void Icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
     pos.ry() -= 0.5 * m_height;
     update();
     this->setPos(pos);
+    this->set_Pos((int)pos.rx(), (int)pos.ry());
 }
 
 void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
@@ -162,14 +162,20 @@ void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     this->ungrabMouse();  // release mouse back to DragScene
 }
 
-QPolygon* Icon::getType()
+QPolygonF Icon::getType()
 {
-    return m_type;
+    return m_bound;
+}
+
+void Icon::setPolygon()
+{
+    m_bound = QPolygonF(boundingRect());
 }
 
 void Icon::setText(QString input)
 {
-    m_labelBox->setPlainText(input);
+    m_label = input;
+    m_labelBox->setPlainText(m_label);
 }
 
 int Icon::getState()
@@ -194,5 +200,17 @@ void Icon::setMarkers(MarkerBox* a, MarkerBox* b, MarkerBox* c, MarkerBox* d)
     m_markers[2] = c;
     m_markers[3] = d;
 
+}
+
+QString Icon::get_all()
+{
+    return m_labelBox->toPlainText();
+}
+
+QStringList Icon::split_all(QString value)
+{
+    QString delim = "::+::";
+    
+    return value.split(delim);
 }
 

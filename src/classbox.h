@@ -3,6 +3,7 @@
  * 3 QGraphicsTextItems for the class name, class members and class methods
  * TO-DO:   Modify double-click behavior so that the object doesn't move immediately when clicked
  */
+//
 #ifndef CLASSBOX_H
 #define CLASSBOX_H
 
@@ -22,16 +23,23 @@ private:
     void arrangeBoxes();
 
 protected:
-    QRectF boundingRect() const;
+
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget * = 0);
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
     void setValues();
 
 public:
     ClassBox();
+    ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString members);
     ~ClassBox();
     QString getLabel(), getMembers(), getMethods();
+    QRectF boundingRect() const;
     void setLabel(QString), setMembers(QString), setMethods(QString);
+    int setWidthsManually(int labelWidth, int memberWidth, int methodWidth);
+    
+    // file i/o accessors
+    QString get_all();
+    QStringList split_all(QString value);
 };
 
 #endif // CLASSBOX_H

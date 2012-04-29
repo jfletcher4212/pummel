@@ -32,9 +32,12 @@ private slots:
     void cut();
     void copy();
     void paste();
-    void deleteObject();
+    void deleteObj();
+    void deleteSelected();
     void newTab();
+    void newTab(QString filename, QList<Icon*> tmplist, QString d_type);
     void saveAsFile();
+    void saveFile();
     void openFile();
     void closeTab();
     void bold();
@@ -47,7 +50,10 @@ private slots:
     void setParagraphSpacing();
     void about();
     void aboutQt();
-
+    
+    // MVC logic methods
+    //void write_xml(Icon **icon_list, int size, QString filename);
+    
 
 private:
 
@@ -59,6 +65,9 @@ private:
 
     void createActions();
     void createMenus();
+    
+    // helper for xml reading
+    QMap<QString, QString> parsePerson(QXmlStreamReader& xml);
 
     QMenu *fileMenu;
     QMenu *editMenu;
@@ -69,6 +78,7 @@ private:
     QAction *newAct;
     QAction *openAct;
     QAction *saveAct;
+    QAction *saveAsAct;
     QAction *printAct;
     QAction *exitAct;
     QAction *undoAct;
@@ -76,7 +86,8 @@ private:
     QAction *cutAct;
     QAction *copyAct;
     QAction *pasteAct;
-    QAction *deleteAct;
+    QAction *deleteObjAct;
+    QAction *deleteSelectedAct;
     QAction *boldAct;
     QAction *italicAct;
     QAction *leftAlignAct;

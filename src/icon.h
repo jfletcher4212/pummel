@@ -9,6 +9,9 @@
 #include <QPointF>
 #include "markerbox.h"
 
+// delimiter for file i/o
+#define XML_DELIM "::+::"
+
 class Icon : public QGraphicsItem
 {
 protected:
@@ -20,13 +23,15 @@ protected:
 
     int m_width;
     int m_height;
+    int m_xPos;
+    int m_yPos;
     static int m_next_id;
     int m_id;
 
     QString m_shapetype, m_label;
 //    QString m_label;
     QGraphicsTextItem *m_labelBox;
-    QPolygon *m_type;
+    QPolygonF m_bound;
     QImage m_image;          //holds the imported image to be drawn
     int m_state; // used for zValue stacking and item selection
     MarkerBox *m_markers[4]; // resizing boxes
@@ -40,12 +45,15 @@ public:
     // Accessors
     int getWidth();
     int getHeight();
+    int get_xPos() { return m_xPos; }
+    int get_yPos() { return m_yPos; }
     int getState();
     MarkerBox* getMarkerBox(int x);
     QString reportShapetype();
     void setShapetype(QString shapename);     // simple accessor and mutator methods for the shapetype
     int getID();    // simple accessor for getting the ID
-    QPolygon *getType();
+    QPolygonF getType();
+    void setPolygon();
     QString getLabel();
 
     // Mutators
@@ -53,9 +61,14 @@ public:
     void setState(int x);
     void setSize(int newXSize, int newYSize);  // simple accessor and mutator methods for the size
     void setText(QString input);		//change the value of m_labelbox
+    void set_Pos(int x, int y) { m_xPos = x; m_yPos = y; }
 
     // Utility
     void paintMarkerBoxes();
+    
+    // file i/o accessors
+    virtual QString get_all();
+    virtual QStringList split_all(QString value);
 };
 
 #endif // __ICON_H__

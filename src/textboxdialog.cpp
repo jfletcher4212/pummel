@@ -23,7 +23,7 @@ TextBoxDialog::TextBoxDialog(Icon *origCaller) :
     buttonLayout->addWidget(m_cancelButton);
 
     //add controls to the main QFormLayout
-    layout->addRow("Class Label", m_nameField);
+    layout->addRow("Label", m_nameField);
     layout->addRow(buttonLayout);
 
     this->setLayout(layout);

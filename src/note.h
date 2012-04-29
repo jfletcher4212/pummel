@@ -2,32 +2,31 @@
 #define NOTE_H
 
 #include "icon.h"
+#include "textboxdialog.h"
 #include <QtGui>
 #include <QGraphicsItem>
-
+#include <QImage>
 #include "markerbox.h"
 
-class note : public Icon
+class Note : public Icon
 {
 
 
 protected:
     QRectF boundingRect() const;    //sets a reference rectangle to contain it
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
-    void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
-    void mousePressEvent(QGraphicsSceneMouseEvent *event);
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
+    void setValues();
 
 private:
 
-    // Selection boxes for the DragItem
-    MarkerBox *markers[4];
+    void arrangeBoxes();
 
 public:
 
-    note(QGraphicsItem *parent = 0);
-    note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
-
+    Note(QGraphicsItem *parent = 0);
+    Note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label);
 
 };
+
 #endif // NOTE_H
