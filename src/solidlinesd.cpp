@@ -7,6 +7,13 @@ solidlineSD::solidlineSD(Icon *sourceReferenceObj, Icon *destinationReferenceObj
     m_LineType = Solid_Line_SD;
 }
 
+solidlineSD::solidlineSD(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
+{
+    parent = 0;
+    scene = 0;
+    m_LineType = Solid_Line_SD;
+}
+
 void solidlineSD::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;

@@ -181,6 +181,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
             selfRefLine *newLine = new selfRefLine(item, item, 0, 0);
             newLine->set_idxs(self_idx, self_idx);
+            this->scene_lines.append(newLine);
             this->addItem(newLine);
             newLine->setZValue(-1);
         }

@@ -13,7 +13,7 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
     m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
     m_height /= 1.5;
-    
+
     m_label = "This is temporary and intentional.";
     //m_labelBox->setPlainText(m_label);
 
@@ -125,4 +125,3 @@ void Ellipse::arrangeBoxes()
     paintMarkerBoxes();
     update();
 }
-
