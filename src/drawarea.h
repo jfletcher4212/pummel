@@ -24,7 +24,7 @@ public:
     DrawArea(QWidget *parent = 0, int newHeight = 250, int newWidth = 250);
 
     // file i
-    DrawArea(QWidget *parent, int newHeight, int newWidth, QList<Icon*> icons, QString d_type);
+    DrawArea(QWidget *parent, int newHeight, int newWidth, QList<Icon*> icons, QList<lineBody*> lines, QString d_type);
 
     // Accessors
     bool getSceneCreate(){return scene->getSceneCreate();}
