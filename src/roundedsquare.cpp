@@ -15,7 +15,7 @@ RoundedSquare::RoundedSquare(QGraphicsItem *parent) :Icon(parent)
     m_memberBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
     //default text
-    m_labelBox->setPlainText("Rounded Square");
+    m_labelBox->setPlainText("State Name");
     m_memberBox->setPlainText("Details");
 
     arrangeBoxes();

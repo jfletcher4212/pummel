@@ -4,6 +4,19 @@ solidlineSAH::solidlineSAH(Icon *sourceReferenceObj, Icon *destinationReferenceO
 {
     parent = 0;
     scene = 0;
+
+    m_LineType = Solid_Line_SAH;
+}
+
+solidlineSAH::solidlineSAH(int id_start, int id_end) : lineBody(id_start, id_end)
+{
+    set_ids(id_start, id_end);
+}
+
+solidlineSAH::solidlineSAH(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
+{
+    parent = 0;
+    scene = 0;
     m_LineType = Solid_Line_SAH;
 }
 
@@ -52,3 +65,8 @@ void solidlineSAH::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
 
     update();
 }
+
+//void solidlineSAH::mousePressEvent(QGraphicsSceneMouseEvent *event)
+//{
+//    event->ignore();
+//}
