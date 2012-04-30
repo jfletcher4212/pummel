@@ -7,6 +7,18 @@ dottedlineeah::dottedlineeah(Icon *sourceReferenceObj, Icon *destinationReferenc
     m_LineType = Dotted_Line_EAH;
 }
 
+dottedlineeah::dottedlineeah(int id_start, int id_end) : lineBody(id_start, id_end)
+{
+    set_ids(id_start, id_end);
+}
+
+dottedlineeah::dottedlineeah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
+{
+    parent = 0;
+    scene = 0;
+    m_LineType = Dotted_Line_EAH;
+}
+
 void dottedlineeah::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;

@@ -26,7 +26,7 @@ DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth)
     type = selector->getType();
 }
 
-DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth, QList<Icon*> icons, QString d_type)
+DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth, QList<Icon*> icons,  QList<lineBody*> lines, QString d_type)
 {
     parent = 0;
     scene = new DragScene(0, newHeight, newWidth);
@@ -39,9 +39,9 @@ DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth, QList<Icon*> ic
     
     type = choose_type(d_type);
     
-    qDebug() << "rendering the icons from drawarea";
+    //qDebug() << "rendering the icons from drawarea";
     // draw the icons
-    scene->render_icons(icons);
+    scene->render_icons(icons, lines);
 }
 
 // Class, StateChart, Sequence, UseCase 

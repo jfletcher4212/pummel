@@ -1,26 +1,21 @@
-#include "solidsqlineeah.h"
+#include "solidsqlinebah.h"
 
-solidsqlineeah::solidsqlineeah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
+solidsqlinebah::solidsqlinebah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent = 0, QGraphicsScene *scene = 0)
     :lineBody(sourceReferenceObj, destinationReferenceObj, parent, scene)
 {
     parent = 0;
     scene = 0;
-    m_LineType = Solid_Sq_Line_EAH;
+    m_LineType = Solid_Sq_Line_BAH;
 }
 
-solidsqlineeah::solidsqlineeah(int id_start, int id_end) : lineBody(id_start, id_end)
-{
-    set_ids(id_start, id_end);
-}
-
-solidsqlineeah::solidsqlineeah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
+solidsqlinebah::solidsqlinebah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
 {
     parent = 0;
     scene = 0;
-    m_LineType = Solid_Sq_Line_EAH;
+    m_LineType = Solid_Sq_Line_BAH;
 }
 
-void solidsqlineeah::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void solidsqlinebah::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;
     widget = 0;
@@ -30,7 +25,7 @@ void solidsqlineeah::paint(QPainter *painter, const QStyleOptionGraphicsItem *op
     else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
         return;
 
-    painter->setBrush(Qt::white);
+    painter->setBrush(m_Color);
     painter->setPen(QPen(m_Color, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 
     QPointF point1 = findObjectCenter(m_SourceReferenceObj);
@@ -59,12 +54,17 @@ void solidsqlineeah::paint(QPainter *painter, const QStyleOptionGraphicsItem *op
 
     double angle = this->getAngle();
 
-    makeArrowHead(angle, line());
+    QPointF arrowP1;
+    QPointF arrowP2;
+
+    bareArrowHead(angle, line(), &arrowP1, &arrowP2);
 
     painter->drawLine(lineOne);
     painter->drawLine(lineTwo);
     painter->drawLine(line());
-    painter->drawPolygon(m_ArrowHead);
+
+    painter->drawLine(QLineF(line().p1(), arrowP1));
+    painter->drawLine(QLineF(line().p1(), arrowP2));
 
     update();
 }
