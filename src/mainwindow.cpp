@@ -178,13 +178,13 @@ void MainWindow::newTab()
 }
 /*end*/
 /* Creates a new tab with the specified filename*/
-void MainWindow::newTab(QString filename, QList<Icon*> tmplist, QString d_type)
+void MainWindow::newTab(QString filename, QList<Icon*> item_list,  QList<lineBody*> line_list, QString d_type)
 {
     int i = tabWidget->count();
     next_tab_num++;
     
-    qDebug() << "making new drawarea";
-    DrawArea *newCanvas = new DrawArea(0, 250, 250, tmplist, d_type);
+    //qDebug() << "making new drawarea";
+    DrawArea *newCanvas = new DrawArea(0, 250, 250, item_list,  line_list, d_type);
     
     //newCanvas->render_icons(tmplist);
     //newCanvas->render_lines(tmplist[1]);
@@ -247,10 +247,10 @@ void MainWindow::openFile()
 	// parse the xml
 	writer.parse_xml();
 	QList<Icon*> icon_list = writer.get_items();
-	//QList<lineBody*> line_list = writer.get_lines();
+	QList<lineBody*> line_list = writer.get_lines();
 	
         // make the tab
-        newTab(filename, icon_list, /*line_list,*/ writer.get_diagram_type());
+        newTab(filename, icon_list, line_list, writer.get_diagram_type());
         tabWidget->setTabText(tabWidget->currentIndex(), filename);
     }
 }
