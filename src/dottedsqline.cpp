@@ -7,6 +7,18 @@ dottedsqline::dottedsqline(Icon *sourceReferenceObject, Icon *destinationReferen
     m_LineType = Dotted_Square_Line;
 }
 
+dottedsqline::dottedsqline(int id_start, int id_end) : lineBody(id_start, id_end)
+{
+    set_ids(id_start, id_end);
+}
+
+dottedsqline::dottedsqline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
+{
+    parent = 0;
+    scene = 0;
+    m_LineType = Dotted_Square_Line;
+}
+
 void dottedsqline::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option = 0;

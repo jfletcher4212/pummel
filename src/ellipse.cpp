@@ -15,6 +15,7 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
     m_height /= 1.5;
     
     m_label = "Ellipse Text";
+
     //m_labelBox->setPlainText(m_label);
 
     m_labelheight = m_labelwidth = 20;
@@ -86,6 +87,8 @@ void Ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
 
     m_labelBox->boundingRect().setHeight(m_height-20);
     m_labelBox->boundingRect().setWidth(m_width-20);
+    m_labelBox->setPlainText(m_label);
+
 
     m_labelBox->setPlainText(m_label);
 
@@ -147,4 +150,3 @@ void Ellipse::arrangeBoxes()
     paintMarkerBoxes();
     update();
 }
-
