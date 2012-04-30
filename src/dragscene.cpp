@@ -238,7 +238,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
             printf("dragscene doesn't have a shapeCreationType defined\n");
             newItem = NULL;
         }
-
+	    
         }
         // add the new item to the scene
         if (newItem != NULL)
@@ -584,38 +584,42 @@ void DragScene::render_icons(QList<Icon*> icons, QList<lineBody*> lines)
     {
         if(icons[i] != NULL)
         {
-	    this->addItem(icons[i]);
 	    
+	    //qDebug() << "before rendering: " << icons[i]->get_xPos();
+	    //qDebug() << "before rendering: " << icons[i]->get_yPos();
+	    
+	    this->addItem(icons[i]);
+	    //icons[i]->setPos(event->scenePos());
 	    //add new item to the custom list
             scene_items.append(icons[i]);
         }
     }
-    
+    /*
     // draw the lines
     for ( i = 0; i < lines.length(); i++ )
     {
-	qDebug() << "in the loop....";
+	//qDebug() << "in the loop....";
 	if ( lines[i] != NULL )
 	{
-	    qDebug() << "in the if....";
+	    //qDebug() << "in the if....";
             // get the right icons
 	    tmp_start = find_icon_id(icons, lines[i]->get_id_start());
 	    tmp_end = find_icon_id(icons, lines[i]->get_id_end());
 
-	    qDebug() << "setting icons....";
+	    //qDebug() << "setting icons....";
 	    // set the icons
 	    lines[i]->setSourceObject(tmp_start);
 	    lines[i]->setDestObject(tmp_end);
 	    
-	    qDebug() << "drawing....";
+	    //qDebug() << "drawing....";
 	    // draw the line
 	    this->addItem(lines[i]);
 	    this->scene_lines.append(lines[i]);
 	    lines[i]->setZValue(-1);
 	}
     }
-    
-    qDebug() << "updating....";
+    */
+    //qDebug() << "updating....";
     update();
 }
 

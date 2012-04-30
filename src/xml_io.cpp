@@ -132,13 +132,13 @@ void Xml_io::parse_xml()
 
 	    if ( reader.name() == "icon" )
 	    {
-		//qDebug() << reader.name();
+		////qDebug() << reader.name();
 		icons.append(parse_icon(reader));
 	    }
         
 	    if ( reader.name() == "line" )
 	    {
-		//qDebug() << reader.name();
+		////qDebug() << reader.name();
 		lines.append(parse_line(reader));
 	    }
         
@@ -172,7 +172,7 @@ Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
 	    {
 		reader.readNext();
 		width = reader.text().toString().toInt();
-		qDebug() << width;
+		//qDebug() << width;
 	    }
 
 	    if( reader.name() == "height")
@@ -247,6 +247,9 @@ Icon * Xml_io::make_icon(QString type, int width, int height, int x_pos, int y_p
 	ret = new ScenarioStart(0, width, height, x_pos, y_pos);
     }
 
+
+    //qDebug() << "just made: " << ret->get_xPos();
+    //qDebug() << "just made: " << ret->get_yPos();
     return ret;
 }
 
@@ -265,7 +268,7 @@ lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
 	//read next element
 	QXmlStreamReader::TokenType token = reader.readNext();
 	
-	qDebug() << reader.name();
+	//qDebug() << reader.name();
 	
 	if ( token == QXmlStreamReader::StartElement )
 	{

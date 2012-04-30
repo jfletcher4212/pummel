@@ -183,7 +183,7 @@ void MainWindow::newTab(QString filename, QList<Icon*> item_list,  QList<lineBod
     int i = tabWidget->count();
     next_tab_num++;
     
-    qDebug() << "making new drawarea";
+    //qDebug() << "making new drawarea";
     DrawArea *newCanvas = new DrawArea(0, 250, 250, item_list,  line_list, d_type);
     
     //newCanvas->render_icons(tmplist);
