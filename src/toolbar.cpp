@@ -78,7 +78,7 @@ void Toolbar::createActions(){
     addNoneAct->setChecked(true);
     connect(addNoneAct, SIGNAL(triggered()), this, SLOT(addNone()));
 
-    addEllipseAct = new QAction(tr("Ellipse"), this);
+    addEllipseAct = new QAction(tr("Use Case"), this);
     addEllipseAct->setCheckable(true);
     connect(addEllipseAct, SIGNAL(triggered()), this, SLOT(addEllipse()));
 
@@ -86,7 +86,7 @@ void Toolbar::createActions(){
     addClassBoxAct->setCheckable(true);
     connect(addClassBoxAct, SIGNAL(triggered()), this, SLOT(addClassBox()));
 
-    addRoundedSquareAct = new QAction(tr("Rounded Square"), this);
+    addRoundedSquareAct = new QAction(tr("State"), this);
     addRoundedSquareAct->setCheckable(true);
     connect(addRoundedSquareAct, SIGNAL(triggered()), this, SLOT(addRoundedSquare()));
 
@@ -279,6 +279,7 @@ void Toolbar::setAvailableActions()
         shapesGroup->addAction(addRoundedSquareAct);
         shapesGroup->addAction(addScenarioEndAct);
         linesGroup->addAction(addSolidLineBAHAct);
+        linesGroup->addAction(addSelfRefLineAct);
 
         break;
     }

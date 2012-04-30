@@ -24,6 +24,7 @@ class lineBody : public QGraphicsLineItem
 public:
     lineBody(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
     lineBody(Icon *, Icon *, int, int, QGraphicsItem *, QGraphicsScene *);
+    lineBody(int, int);
 
     QRectF boundingRect() const;
     QPainterPath shape() const;
