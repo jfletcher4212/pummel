@@ -39,6 +39,9 @@ ClassBox::ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int yp
     QStringList tmp = split_all(members);
     
     this->setPos(xpos,ypos);
+    m_xPos = xpos;
+    m_yPos = ypos;
+    
     m_width = xsize;
     m_height = ysize;
 
@@ -51,7 +54,9 @@ ClassBox::ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int yp
     m_methodBox->setParentItem(this);
     m_methodBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
-    
+    m_height = m_labelBox->boundingRect().height()
+             + m_memberBox->boundingRect().height()
+             + m_methodBox->boundingRect().height();
     
     //default text
     m_label = tmp[0];
@@ -65,8 +70,6 @@ ClassBox::ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int yp
     m_labelBox->setVisible(true);
     m_memberBox->setVisible(true);
     m_methodBox->setVisible(true);
-
-
 }
 
 ClassBox::~ClassBox()
