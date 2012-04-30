@@ -14,7 +14,7 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
 
     m_height /= 1.5;
 
-    m_label = "This is temporary and intentional.";
+    m_label = "Use Case";
     //m_labelBox->setPlainText(m_label);
 
     m_labelBox->setPos(this->pos());
@@ -74,6 +74,8 @@ void Ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
 {
     m_labelBox->boundingRect().setHeight(m_height-20);
     m_labelBox->boundingRect().setWidth(m_width-20);
+    m_labelBox->setPlainText(m_label);
+
 
     arrangeBoxes();
 
