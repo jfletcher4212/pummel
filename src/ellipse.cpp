@@ -14,7 +14,7 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
 
     m_height /= 1.5;
     
-    m_label = "Ellipse Text";
+    m_label = "Use Case";
 
     //m_labelBox->setPlainText(m_label);
 
