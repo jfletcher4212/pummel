@@ -83,11 +83,11 @@ void Xml_io::write_xml()
     
     for ( i = 0; i < m_lines.length(); i++ )
     {
-    saver.writeStartElement("line");
-	saver.writeTextElement("linetype", QString::number(m_lines[i]->getLinetype()) );
+	saver.writeStartElement("line");
 	saver.writeTextElement("id_start", QString::number(m_lines[i]->get_id_start()) );
 	saver.writeTextElement("id_end", QString::number(m_lines[i]->get_id_end()) );
-    saver.writeEndElement();
+	saver.writeTextElement("linetype", QString::number(m_lines[i]->getLinetype()) );
+	saver.writeEndElement();
     }
     
     saver.writeEndDocument();
@@ -109,43 +109,42 @@ void Xml_io::parse_xml()
 
     while ( ! reader.atEnd() && ! reader.hasError() )
     {
-    //read next element
-    QXmlStreamReader::TokenType token = reader.readNext();
+	//read next element
+	QXmlStreamReader::TokenType token = reader.readNext();
 
-    if ( token == QXmlStreamReader::StartDocument )
-    {
-        continue;
-    }
+	if ( token == QXmlStreamReader::StartDocument )
+	{
+	    continue;
+	}
 
-    if ( token == QXmlStreamReader::StartElement )
-    {
-        if ( reader.name() == m_filename )
-        {
-        continue;
-        }
+	if ( token == QXmlStreamReader::StartElement )
+	{
+	    if ( reader.name() == m_filename )
+	    {
+		continue;
+	    }
 
-        if ( reader.name() == "diagram_type" )
-        {
-	    reader.readNext();
-	    m_diagram_type = reader.text().toString();
-        }
+	    if ( reader.name() == "diagram_type" )
+	    {
+		reader.readNext();
+		m_diagram_type = reader.text().toString();
+	    }
 
-        if ( reader.name() == "icon" )
-        {
-	    //qDebug() << reader.name();
-	    icons.append(parse_icon(reader));
-        }
+	    if ( reader.name() == "icon" )
+	    {
+		//qDebug() << reader.name();
+		icons.append(parse_icon(reader));
+	    }
         
-        if ( reader.name() == "line" )
-        {
-	    //qDebug() << reader.name();
-	    lines.append(parse_line(reader));
-        }
+	    if ( reader.name() == "line" )
+	    {
+		//qDebug() << reader.name();
+		lines.append(parse_line(reader));
+	    }
         
+	}
     }
-    }
-
-    qDebug() << "returning icons";
+    
     m_items = icons;
     m_lines = lines;
 }
@@ -265,15 +264,11 @@ lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
     {
 	//read next element
 	QXmlStreamReader::TokenType token = reader.readNext();
-
+	
+	qDebug() << reader.name();
+	
 	if ( token == QXmlStreamReader::StartElement )
 	{
-	    if ( reader.name() == "linetype" )
-	    {
-		reader.readNext();
-		linetype = reader.text().toString().toInt();
-	    }
-
 	    if ( reader.name() == "id_start" )
 	    {
 		reader.readNext();
@@ -284,6 +279,12 @@ lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
 	    {
 		reader.readNext();
 		id_end = reader.text().toString().toInt();		
+	    }
+
+	    if ( reader.name() == "linetype" )
+	    {
+		reader.readNext();
+		linetype = reader.text().toString().toInt();
 	    }
 	}
     }
