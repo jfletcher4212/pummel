@@ -279,6 +279,7 @@ void Toolbar::setAvailableActions()
         shapesGroup->addAction(addRoundedSquareAct);
         shapesGroup->addAction(addScenarioEndAct);
         linesGroup->addAction(addSolidLineBAHAct);
+        linesGroup->addAction(addSelfRefLineAct);
 
         break;
     }
