@@ -26,7 +26,7 @@ private:
 public:
 
     Actor(QGraphicsItem *parent = 0);
-    Actor(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString contents);
+    Actor(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString contents);
 
 
 };

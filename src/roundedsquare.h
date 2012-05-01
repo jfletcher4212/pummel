@@ -28,7 +28,7 @@ protected:
 
 public:
     RoundedSquare(QGraphicsItem *parent = 0);
-    RoundedSquare(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString members);
+    RoundedSquare(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString members);
     ~RoundedSquare();
     QString getLabel(), getMembers();
     void setLabel(QString), setMembers(QString);
