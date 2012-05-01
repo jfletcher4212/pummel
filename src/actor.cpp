@@ -24,8 +24,9 @@ Actor::Actor(QGraphicsItem *parent) : Icon(parent)
 
 
 
-Actor::Actor(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString contents) : Icon(parent)
+Actor::Actor(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString contents) : Icon(parent)
 {
+    m_id = id;
     m_width = xsize;
     m_height = ysize;
     m_shapetype = "Actor";

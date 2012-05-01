@@ -22,9 +22,10 @@ ScenarioEnd::ScenarioEnd(QGraphicsItem *parent) : Icon(parent)
       //  std::cout << "didn't load image properly\n";  //loads the image for drawing later
 }
 
-ScenarioEnd::ScenarioEnd(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
+ScenarioEnd::ScenarioEnd(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
 {
     // allows setting of the base rectangle of dragitem
+    m_id = id;
     m_width = xsize;
     m_height = ysize;
     m_shapetype = "ScenarioEnd";

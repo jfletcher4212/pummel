@@ -29,10 +29,11 @@ RoundedSquare::RoundedSquare(QGraphicsItem *parent) :Icon(parent)
 
 }
 
-RoundedSquare::RoundedSquare(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString members) : Icon(parent)
+RoundedSquare::RoundedSquare(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString members) : Icon(parent)
 {
     QStringList tmp = split_all(members);
     
+    m_id = id;
     m_width = xsize;
     m_height = ysize;
     m_shapetype = "RoundedSquare";
