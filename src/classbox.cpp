@@ -64,7 +64,8 @@ ClassBox::ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int yp
     m_methods = tmp[2];
 
     //set m_memberList's position below m_labelBox, and m_methodList below m_memberList
-    m_labelBox->setPos(this->pos());
+    //m_labelBox->setPos(this->pos());
+    m_labelBox->setPos(m_xPos, m_yPos);
     arrangeBoxes();
     //show text boxes
     m_labelBox->setVisible(true);
