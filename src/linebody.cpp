@@ -26,7 +26,7 @@ lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int 
 //ADRIAN: MODIFY THIS TO DO SOMETHING...
 lineBody::lineBody(int id_start, int id_end) : QGraphicsLineItem()
 {
-
+    set_ids(id_start, id_end);
 }
 
 QPointF lineBody::findObjectCenter(Icon *obj)

@@ -72,6 +72,7 @@ void Xml_io::write_xml()
     //QString valueAsString = QString::number(valueAsDouble);
     // wrapper tags coule be the object's individual ID #
     saver.writeStartElement("icon");
+    saver.writeTextElement("id", QString::number(m_items[i]->getID()));
     saver.writeTextElement("width", QString::number(m_items[i]->getWidth()));
     saver.writeTextElement("height", QString::number(m_items[i]->getHeight()));
     saver.writeTextElement("x_pos", QString::number(m_items[i]->get_xPos()));
@@ -151,6 +152,7 @@ void Xml_io::parse_xml()
 
 Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
 {
+    int id = 0;
     int width = 0;
     int height = 0;
     int x_pos = 0;
@@ -168,6 +170,13 @@ Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
 
 	if ( token == QXmlStreamReader::StartElement )
 	{
+	    if( reader.name() == "id")
+	    {
+		reader.readNext();
+		id = reader.text().toString().toInt();
+		//qDebug() << width;
+	    }
+
 	    if( reader.name() == "width")
 	    {
 		reader.readNext();
@@ -207,28 +216,28 @@ Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
 	}
     }
 
-    return make_icon(type, width, height, x_pos, y_pos, label);
+    return make_icon(type, id, width, height, x_pos, y_pos, label);
 }
 
-Icon * Xml_io::make_icon(QString type, int width, int height, int x_pos, int y_pos, QString label)
+Icon * Xml_io::make_icon(QString type, int id, int width, int height, int x_pos, int y_pos, QString label)
 {
     Icon *ret = NULL;
 
     if ( type == "Ellipse")
     {
-	ret = new Ellipse(0, width, height, x_pos, y_pos, label);
+	ret = new Ellipse(0, id, width, height, x_pos, y_pos, label);
     }
     else if ( type == "Actor" )
     {
-	ret = new Actor(0, width, height, x_pos, y_pos, label);
+	ret = new Actor(0, id, width, height, x_pos, y_pos, label);
     }
     else if ( type == "Rounded Square" )
     {
-        ret = new RoundedSquare(0, width, height, x_pos, y_pos, label);
+        ret = new RoundedSquare(0, id, width, height, x_pos, y_pos, label);
     }
     else if ( type == "Class Box" )
     {
-	ret = new ClassBox(0, width, height, x_pos, y_pos, label);
+	ret = new ClassBox(0, id, width, height, x_pos, y_pos, label);
     }
     else if ( type == "Note" )
     {
@@ -236,15 +245,11 @@ Icon * Xml_io::make_icon(QString type, int width, int height, int x_pos, int y_p
     }
     else if ( type == "ScenarioEnd" )
     {
-	ret = new ScenarioEnd(0, width, height, x_pos, y_pos);
-    }
-    else if ( type == "ScenarioState" )
-    {
-	ret = new ScenarioState(0, width, height, x_pos, y_pos, label);
+	ret = new ScenarioEnd(0, id, width, height, x_pos, y_pos);
     }
     else if ( type == "ScenarioStart" )
     {
-	ret = new ScenarioStart(0, width, height, x_pos, y_pos);
+	ret = new ScenarioStart(0, id, width, height, x_pos, y_pos);
     }
 
 

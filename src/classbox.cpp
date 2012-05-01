@@ -34,11 +34,12 @@ ClassBox::ClassBox()
 
 }
 
-ClassBox::ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString members)
+ClassBox::ClassBox(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString members)
 {
     QStringList tmp = split_all(members);
     
     this->setPos(xpos,ypos);
+    m_id = id;
     m_xPos = xpos;
     m_yPos = ypos;
     
