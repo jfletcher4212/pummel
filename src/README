@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#to build on linux:
+qmake -project -unix
+mv src.pro puml.pro
+qmake
+make
+./puml &
