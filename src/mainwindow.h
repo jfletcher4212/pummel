@@ -19,7 +19,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow();
-    ~MainWindow();
+//    ~MainWindow();
 
 protected:
     void contextMenuEvent(QContextMenuEvent *event);
