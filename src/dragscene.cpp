@@ -635,17 +635,18 @@ void DragScene::render_icons(QList<Icon*> icons, QList<lineBody*> lines)
             // get the right icons
 	    tmp_start = find_icon_id(icons, lines[i]->get_id_start());
 	    tmp_end = find_icon_id(icons, lines[i]->get_id_end());
-	    
-	    //qDebug() << "setting icons....";
+
 	    // set the icons
-	    lines[i]->setSourceObject(tmp_start);
-	    lines[i]->setDestObject(tmp_end);
-	    /*
-	    //qDebug() << "drawing....";
-	    // draw the line
-	    this->addItem(lines[i]);
-	    this->scene_lines.append(lines[i]);
-	    lines[i]->setZValue(-1);*/
+	    if ( tmp_start and tmp_end )
+	    {
+		lines[i]->setSourceObject(tmp_start);
+		lines[i]->setDestObject(tmp_end);
+	    
+		// draw the line
+		this->addItem(lines[i]);
+		this->scene_lines.append(lines[i]);
+		lines[i]->setZValue(-1);
+	    }
 	}
     }
 
@@ -657,10 +658,13 @@ Icon * DragScene::find_icon_id(QList<Icon*> icons, int target_id)
 {
     int i;
 
+    //qDebug() << target_id;
+    
     for ( i = 0; i < icons.length(); i++ )
     {
 	if ( icons[i]->getID() == target_id )
 	{
+	    //qDebug() << "here";
 	    return icons[i];
 	}
     }
