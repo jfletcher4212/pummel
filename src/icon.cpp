@@ -135,7 +135,6 @@ void Icon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     m_state = 2;
     this->grabMouse();  // icon will take all mouse actions
-    this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
 }
 
 void Icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -158,7 +157,6 @@ void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
      */
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
-    this->setOpacity(1.0);
     this->ungrabMouse();  // release mouse back to DragScene
 }
 
