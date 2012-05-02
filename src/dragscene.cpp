@@ -197,41 +197,41 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         this->clearSelection();
         switch(m_shapeCreationType){
         case s_Classbox:{
-            newItem = new ClassBox();
+            newItem = new ClassBox(event->scenePos());
             newItem->setShapetype("Class Box");
             break;
         }
         case s_Ellipse:{
-            newItem = new Ellipse();
+            newItem = new Ellipse(event->scenePos());
             newItem->setShapetype("Ellipse");
             break;
         }
         case s_Actor:{
-            newItem = new Actor();
+            newItem = new Actor(event->scenePos());
             newItem->setShapetype("Actor");
             break;
         }
         case s_Note:
         {
-            newItem = new Note();
+            newItem = new Note(event->scenePos());
             newItem->setShapetype("Note");
             break;
         }
         case s_ScenarioStart:
         {
-            newItem = new ScenarioStart();
+            newItem = new ScenarioStart(event->scenePos());
             newItem->setShapetype("Scenario Start");
             break;
         }
         case s_RoundedSquare:
         {
-            newItem = new RoundedSquare();
+            newItem = new RoundedSquare(event->scenePos());
             newItem->setShapetype("Rounded Square");
             break;
         }
         case s_ScenarioEnd:
         {
-            newItem = new ScenarioEnd();
+            newItem = new ScenarioEnd(event->scenePos());
             newItem->setShapetype("Scenario End");
             break;
         }
