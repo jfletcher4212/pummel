@@ -18,6 +18,7 @@ protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
     void setValues();
+    int m_labelheight, m_labelwidth;
 
 private:
     void arrangeBoxes();
@@ -25,7 +26,7 @@ private:
 public:
 
     Actor(QGraphicsItem *parent = 0);
-    Actor(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString contents);
+    Actor(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString contents);
 
 
 };
