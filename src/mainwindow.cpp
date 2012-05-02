@@ -301,61 +301,36 @@ void MainWindow::closeTab()
         }
     }
 
-
-
 }
 
-void MainWindow::bold()
-{
-    infoLabel->setText(tr("Invoked <b>Edit|Format|Bold</b>"));
-}
+void MainWindow::bold(){}
 
-void MainWindow::italic()
-{
-    infoLabel->setText(tr("Invoked <b>Edit|Format|Italic</b>"));
-}
+void MainWindow::italic(){}
 
-void MainWindow::leftAlign()
-{
-    infoLabel->setText(tr("Invoked <b>Edit|Format|Left Align</b>"));
-}
+void MainWindow::leftAlign(){}
 
-void MainWindow::rightAlign()
-{
-    infoLabel->setText(tr("Invoked <b>Edit|Format|Right Align</b>"));
-}
+void MainWindow::rightAlign(){}
 
-void MainWindow::justify()
-{
-    infoLabel->setText(tr("Invoked <b>Edit|Format|Justify</b>"));
-}
+void MainWindow::justify(){}
 
-void MainWindow::center()
-{
-    infoLabel->setText(tr("Invoked <b>Edit|Format|Center</b>"));
-}
+void MainWindow::center(){}
 
-void MainWindow::setLineSpacing()
-{
-    infoLabel->setText(tr("Invoked <b>Edit|Format|Set Line Spacing</b>"));
-}
+void MainWindow::setLineSpacing(){}
 
-void MainWindow::setParagraphSpacing()
-{
-    infoLabel->setText(tr("Invoked <b>Edit|Format|Set Paragraph Spacing</b>"));
-}
+void MainWindow::setParagraphSpacing(){}
 
 void MainWindow::about()
 {
-    infoLabel->setText(tr("Invoked <b>Help|About</b>"));
-    QMessageBox::about(this, tr("About Menu"),
-                       tr("The <b>Menu</b> example shows how to create "
-                          "menu-bar menus and context menus."));
+    QMessageBox::about(this, tr("About PUML/Pummel"),
+                       tr("PUML is a UML diagram editor"
+                          "created by Team Pummel"
+                          "for CS384."));
 }
 
-void MainWindow::aboutQt()
+void MainWindow::aboutQt(){}
+void MainWindow::exit()
 {
-    infoLabel->setText(tr("Invoked <b>Help|About Qt</b>"));
+    close();
 }
 
 void MainWindow::createActions()
@@ -363,21 +338,29 @@ void MainWindow::createActions()
     QFont boldFont;
     QFont italicFont;
     newAct = new QAction(tr("New Tab"), this);
+    newAct->setShortcut(QKeySequence::New);
     connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
 
-    openAct = new QAction(tr("Close Tab"), this);
-    connect(openAct, SIGNAL(triggered()), this, SLOT(closeTab()));
+    closeAct = new QAction(tr("Close Tab"), this);
+    closeAct->setShortcut(QKeySequence::Cut);
+    connect(closeAct, SIGNAL(triggered()), this, SLOT(closeTab()));
 
     saveAct = new QAction(tr("Save File"), this);
+    saveAct->setShortcut(QKeySequence::Save);
     connect(saveAct, SIGNAL(triggered()), this, SLOT(saveFile()));
 
     saveAsAct = new QAction(tr("Save File as..."), this);
+    saveAsAct->setShortcut(QKeySequence::SaveAs);
     connect(saveAsAct, SIGNAL(triggered()), this, SLOT(saveAsFile()));
 
-    printAct = new QAction(tr("Open"), this);
-    connect(printAct, SIGNAL(triggered()), this, SLOT(openFile()));
+    openAct = new QAction(tr("Open"), this);
+    openAct->setShortcut(QKeySequence::Open);
+    connect(openAct, SIGNAL(triggered()), this, SLOT(openFile()));
 
     exitAct = new QAction(tr("Exit"), this);
+    exitAct->setShortcuts(QKeySequence::Close);
+    exitAct->setStatusTip(tr("Closes the entire program"));
+    connect(exitAct, SIGNAL(triggered()), this, SLOT(exit()));
 
     undoAct = new QAction(tr("&Undo"), this);
     undoAct->setShortcuts(QKeySequence::Undo);
@@ -390,7 +373,6 @@ void MainWindow::createActions()
     connect(redoAct, SIGNAL(triggered()), this, SLOT(redo()));
 
     cutAct = new QAction(tr("Cu&t"), this);
-    cutAct->setShortcuts(QKeySequence::Cut);
     cutAct->setStatusTip(tr("Cut the current selection's contents to the "
                             "clipboard"));
     connect(cutAct, SIGNAL(triggered()), this, SLOT(cut()));
@@ -494,19 +476,20 @@ void MainWindow::createMenus()
 {
     fileMenu = menuBar()->addMenu(tr("File"));
     fileMenu->addAction(newAct);
-    fileMenu->addAction(openAct);
+    fileMenu->addAction(closeAct);
     fileMenu->addAction(saveAct);
     fileMenu->addAction(saveAsAct);
-    fileMenu->addAction(printAct);
+    fileMenu->addAction(openAct);
     fileMenu->addAction(exitAct);
 
+    /*commented out lines will be added at a later time*/
     editMenu = menuBar()->addMenu(tr("&Edit"));
-    editMenu->addAction(undoAct);
-    editMenu->addAction(redoAct);
+//    editMenu->addAction(undoAct);
+//    editMenu->addAction(redoAct);
     editMenu->addSeparator();
-    editMenu->addAction(cutAct);
-    editMenu->addAction(copyAct);
-    editMenu->addAction(pasteAct);
+//    editMenu->addAction(cutAct);
+//    editMenu->addAction(copyAct);
+//    editMenu->addAction(pasteAct);
     editMenu->addAction(deleteSelectedAct);
     editMenu->addSeparator();
 
@@ -514,7 +497,7 @@ void MainWindow::createMenus()
     helpMenu->addAction(aboutAct);
     helpMenu->addAction(aboutQtAct);
 
-    formatMenu = editMenu->addMenu(tr("&Format"));
+/*    formatMenu = editMenu->addMenu(tr("&Format"));
     formatMenu->addAction(boldAct);
     formatMenu->addAction(italicAct);
     formatMenu->addSeparator()->setText(tr("Alignment"));
@@ -524,6 +507,6 @@ void MainWindow::createMenus()
     formatMenu->addAction(centerAct);
     formatMenu->addSeparator();
     formatMenu->addAction(setLineSpacingAct);
-    formatMenu->addAction(setParagraphSpacingAct);
+    formatMenu->addAction(setParagraphSpacingAct);*/
 
 }
