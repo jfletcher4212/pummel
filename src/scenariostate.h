@@ -25,7 +25,7 @@ private:
 
 public:
 
-    ScenarioState(QGraphicsItem *parent = 0);
+    ScenarioState(QPointF = QPointF(0,0), QGraphicsItem *parent = 0);
     ScenarioState(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label);
 
 };

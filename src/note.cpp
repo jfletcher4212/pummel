@@ -4,7 +4,7 @@
 #include <QString>
 
 
-Note::Note(QGraphicsItem *parent) : Icon(parent)
+Note::Note(QPointF location, QGraphicsItem *parent) : Icon(location, parent)
 {
     // allows setting of the base rectangle of dragitem
     m_shapetype = "Note";
@@ -32,7 +32,7 @@ Note::Note(QGraphicsItem *parent) : Icon(parent)
     //std::cout << "didn't load image properly\n";  //loads the image for drawing later
 }
 
-Note::Note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label) : Icon(parent)
+Note::Note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label) : Icon(QPointF(xpos, ypos), parent)
 {
     // allows setting of the base rectangle of dragitem
     m_width = xsize;

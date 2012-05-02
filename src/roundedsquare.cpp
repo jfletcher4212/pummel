@@ -4,7 +4,7 @@
 
 using namespace std;
 
-RoundedSquare::RoundedSquare(QGraphicsItem *parent) :Icon(parent)
+RoundedSquare::RoundedSquare(QPointF location, QGraphicsItem *parent ) :Icon(location, parent)
 {
 
     std::cout <<"beggining the constructor";
@@ -29,7 +29,7 @@ RoundedSquare::RoundedSquare(QGraphicsItem *parent) :Icon(parent)
 
 }
 
-RoundedSquare::RoundedSquare(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString members) : Icon(parent)
+RoundedSquare::RoundedSquare(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString members) : Icon(QPointF(xpos, ypos), parent)
 {
     QStringList tmp = split_all(members);
     

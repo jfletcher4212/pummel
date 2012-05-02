@@ -10,7 +10,7 @@
 
 int Icon::m_next_id = 1;
 
-Icon::Icon(QGraphicsItem *parent, QPointF location) : QGraphicsItem(parent)
+Icon::Icon(QPointF location, QGraphicsItem *parent) : QGraphicsItem(parent)
 {
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
