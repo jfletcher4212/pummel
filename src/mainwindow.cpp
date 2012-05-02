@@ -50,71 +50,42 @@ MainWindow::MainWindow()
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 {
     canvas.at(tabWidget->currentIndex())->setSceneCreate(false);
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
+
     contextEventPos = canvas.at(tabWidget->currentIndex())->view->mapToScene(event->pos());
 
-    QMenu menu(this);
-    menu.addAction(cutAct);
-    menu.addAction(copyAct);
-    menu.addAction(pasteAct);
-    menu.addAction(deleteObjAct);
-    menu.exec(event->globalPos());
 }
 
 void MainWindow::newFile()
 {
-    /* for some reason, this next line prevented the
-     * project from working correctly (ie, it would
-     * crash as soon as newFile() was called, even if
-     * newTab() was commented out)*/
-    //infoLabel->setText(tr("Invoked <b>File|New</b>"));
     newTab();
 }
 
-void MainWindow::open()
-{
-    infoLabel->setText(tr("Invoked <b>File|Open</b>"));
-}
+//marked for deletion
+void MainWindow::open(){}
 
-void MainWindow::save()
-{
-    infoLabel->setText(tr("Invoked <b>File|Save</b>"));
-}
+//marked for deletion
+void MainWindow::save(){}
 
-void MainWindow::print()
-{
-    infoLabel->setText(tr("Invoked <b>File|Print</b>"));
-}
+//marked for deletion
+void MainWindow::print(){}
 
-void MainWindow::undo()
-{
-    infoLabel->setText(tr("Invoked <b>Edit|Undo</b>"));
-}
+//marked for deletion
+void MainWindow::undo(){}
 
-void MainWindow::redo()
-{
-    infoLabel->setText(tr("Invoked <b>Edit|Redo</b>"));
-}
+//marked for deletion
+void MainWindow::redo(){}
 
-void MainWindow::cut()
-{
-    // whatever this line is crashes it
-    // infoLabel->setText(tr("Invoked <b>Edit|Cut</b>"));
+//marked for deletion
+void MainWindow::cut(){}
 
-    // Testing for connections below, I just needed something to click, will delete all of it
-    //canvas.at(tabWidget->currentIndex())->testAction();
+//marked for deletion
+void MainWindow::copy(){}
 
-}
+//marked for deletion
+void MainWindow::paste(){}
 
-void MainWindow::copy()
-{
-    infoLabel->setText(tr("Invoked <b>Edit|Copy</b>"));
-}
-
-void MainWindow::paste()
-{
-    infoLabel->setText(tr("Invoked <b>Edit|Paste</b>"));
-}
-
+//marked for deletion...does this serve any purpose?
 void MainWindow::deleteObj()
 {
     /*
@@ -155,7 +126,7 @@ void MainWindow::deleteSelected()
  * Should be invoked by new-file and open-file.
  *
  * For differentiating between unsaved and saved files,
- * perhaps a 'filename' argument should be passed in.
+ * 'filename' argument should be passed in.
  *
  * The tabs and canvas have an index number when they are created, Tab 1 =  Canvas 1, etc.
  * This will only be a problem if someone makes huge amounts of Tabs (maybe... I don't know how well QList would handle it)
@@ -176,7 +147,6 @@ void MainWindow::newTab()
     tabWidget->widget(i)->setVisible(true);
     free(s);
 }
-/*end*/
 /* Creates a new tab with the specified filename*/
 void MainWindow::newTab(QString filename, QList<Icon*> item_list,  QList<lineBody*> line_list, QString d_type)
 {
@@ -225,7 +195,7 @@ void MainWindow::saveAsFile()
     }
     else
     {
-	DrawArea *tmpscene = canvas.at(tabWidget->currentIndex());
+        DrawArea *tmpscene = canvas.at(tabWidget->currentIndex());
         Xml_io writer(tmpscene->getObjects(), tmpscene->getLines(), filename, (DiagramType)tmpscene->getDiagramType());
 	
         // write the file
@@ -267,11 +237,11 @@ void MainWindow::openFile()
  *    do nothing
  *
  * Note: currently, this only runs when the 'close tab' button
- * is selected from the File menu.
+ * is selected from the File menu. Other methods of exiting,
+ * such as the Exit button in the File menu, will not prompt for saving!
  */
 void MainWindow::closeTab()
 {
-
     g_savepromptval;
     savePrompt *question = new savePrompt;
     question->exec();
@@ -303,27 +273,28 @@ void MainWindow::closeTab()
 
 }
 
+//marked for deletion
 void MainWindow::bold(){}
-
+//marked for deletion
 void MainWindow::italic(){}
-
+//marked for deletion
 void MainWindow::leftAlign(){}
-
+//marked for deletion
 void MainWindow::rightAlign(){}
-
+//marked for deletion
 void MainWindow::justify(){}
-
+//marked for deletion
 void MainWindow::center(){}
-
+//marked for deletion
 void MainWindow::setLineSpacing(){}
-
+//marked for deletion
 void MainWindow::setParagraphSpacing(){}
 
 void MainWindow::about()
 {
     QMessageBox::about(this, tr("About PUML/Pummel"),
-                       tr("PUML is a UML diagram editor"
-                          "created by Team Pummel"
+                       tr("PUML is a UML diagram editor "
+                          "created by Team Pummel "
                           "for CS384."));
 }
 
@@ -339,50 +310,69 @@ void MainWindow::createActions()
     QFont italicFont;
     newAct = new QAction(tr("New Tab"), this);
     newAct->setShortcut(QKeySequence::New);
+    newAct->setStatusTip(tr("Create a new diagram"));
     connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
 
     closeAct = new QAction(tr("Close Tab"), this);
     closeAct->setShortcut(QKeySequence::Cut);
+    closeAct->setStatusTip(tr("Close the current diagram"));
     connect(closeAct, SIGNAL(triggered()), this, SLOT(closeTab()));
 
     saveAct = new QAction(tr("Save File"), this);
     saveAct->setShortcut(QKeySequence::Save);
+    saveAct->setStatusTip(tr("Save with the current diagram"));
     connect(saveAct, SIGNAL(triggered()), this, SLOT(saveFile()));
 
     saveAsAct = new QAction(tr("Save File as..."), this);
     saveAsAct->setShortcut(QKeySequence::SaveAs);
+    saveAsAct->setStatusTip(tr("Save the current diagram with a specified filename"));
     connect(saveAsAct, SIGNAL(triggered()), this, SLOT(saveAsFile()));
 
     openAct = new QAction(tr("Open"), this);
     openAct->setShortcut(QKeySequence::Open);
+    openAct->setStatusTip(tr("Open a new file"));
     connect(openAct, SIGNAL(triggered()), this, SLOT(openFile()));
 
     exitAct = new QAction(tr("Exit"), this);
     exitAct->setShortcuts(QKeySequence::Close);
-    exitAct->setStatusTip(tr("Closes the entire program"));
+    exitAct->setStatusTip(tr("Close the entire program"));
     connect(exitAct, SIGNAL(triggered()), this, SLOT(exit()));
 
+    aboutAct = new QAction(tr("&About"), this);
+    aboutAct->setStatusTip(tr("Show the application's About box"));
+    connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
+
+    aboutQtAct = new QAction(tr("About &Qt"), this);
+    aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
+    connect(aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect(aboutQtAct, SIGNAL(triggered()), this, SLOT(aboutQt()));
+
+    //marked for deletion
     undoAct = new QAction(tr("&Undo"), this);
     undoAct->setShortcuts(QKeySequence::Undo);
     undoAct->setStatusTip(tr("Undo the last operation"));
     connect(undoAct, SIGNAL(triggered()), this, SLOT(undo()));
 
+    //marked for deletion
     redoAct = new QAction(tr("&Redo"), this);
     redoAct->setShortcuts(QKeySequence::Redo);
     redoAct->setStatusTip(tr("Redo the last operation"));
     connect(redoAct, SIGNAL(triggered()), this, SLOT(redo()));
 
+    //marked for deletion
     cutAct = new QAction(tr("Cu&t"), this);
     cutAct->setStatusTip(tr("Cut the current selection's contents to the "
                             "clipboard"));
     connect(cutAct, SIGNAL(triggered()), this, SLOT(cut()));
 
+    //marked for deletion
     copyAct = new QAction(tr("&Copy"), this);
     copyAct->setShortcuts(QKeySequence::Copy);
     copyAct->setStatusTip(tr("Copy the current selection's contents to the "
                              "clipboard"));
     connect(copyAct, SIGNAL(triggered()), this, SLOT(copy()));
 
+    //marked for deletion
     pasteAct = new QAction(tr("&Paste"), this);
     pasteAct->setShortcuts(QKeySequence::Paste);
     pasteAct->setStatusTip(tr("Paste the clipboard's contents into the current "
@@ -400,26 +390,31 @@ void MainWindow::createActions()
     deleteSelectedAct->setShortcuts(QKeySequence::Delete);
     connect(deleteSelectedAct, SIGNAL(triggered()), this, SLOT(deleteSelected()));
 
+    //marked for deletion
     boldAct = new QAction(tr("&Bold"), this);
     boldAct->setCheckable(true);
     boldAct->setShortcut(QKeySequence::Bold);
     boldAct->setStatusTip(tr("Make the text bold"));
     connect(boldAct, SIGNAL(triggered()), this, SLOT(bold()));
 
+    //marked for deletion
     boldFont = boldAct->font();
     boldFont.setBold(true);
     boldAct->setFont(boldFont);
 
+    //marked for deletion
     italicAct = new QAction(tr("&Italic"), this);
     italicAct->setCheckable(true);
     italicAct->setShortcut(QKeySequence::Italic);
     italicAct->setStatusTip(tr("Make the text italic"));
     connect(italicAct, SIGNAL(triggered()), this, SLOT(italic()));
 
+    //marked for deletion
     italicFont = italicAct->font();
     italicFont.setItalic(true);
     italicAct->setFont(italicFont);
 
+    //marked for deletion
     setLineSpacingAct = new QAction(tr("Set &Line Spacing..."), this);
     setLineSpacingAct->setStatusTip(tr("Change the gap between the lines of a "
                                        "paragraph"));
@@ -430,14 +425,7 @@ void MainWindow::createActions()
     connect(setParagraphSpacingAct, SIGNAL(triggered()),
             this, SLOT(setParagraphSpacing()));
 
-    aboutAct = new QAction(tr("&About"), this);
-    aboutAct->setStatusTip(tr("Show the application's About box"));
-    connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 
-    aboutQtAct = new QAction(tr("About &Qt"), this);
-    aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
-    connect(aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
-    connect(aboutQtAct, SIGNAL(triggered()), this, SLOT(aboutQt()));
 
     leftAlignAct = new QAction(tr("&Left Align"), this);
     leftAlignAct->setCheckable(true);
@@ -469,7 +457,7 @@ void MainWindow::createActions()
     alignmentGroup->addAction(justifyAct);
     alignmentGroup->addAction(centerAct);
     leftAlignAct->setChecked(true);
-
+//all this ^^^ marked for deletion
 }
 
 void MainWindow::createMenus()
@@ -481,32 +469,9 @@ void MainWindow::createMenus()
     fileMenu->addAction(saveAsAct);
     fileMenu->addAction(openAct);
     fileMenu->addAction(exitAct);
-
-    /*commented out lines will be added at a later time*/
-    editMenu = menuBar()->addMenu(tr("&Edit"));
-//    editMenu->addAction(undoAct);
-//    editMenu->addAction(redoAct);
-    editMenu->addSeparator();
-//    editMenu->addAction(cutAct);
-//    editMenu->addAction(copyAct);
-//    editMenu->addAction(pasteAct);
-    editMenu->addAction(deleteSelectedAct);
-    editMenu->addSeparator();
-
     helpMenu = menuBar()->addMenu(tr("&Help"));
     helpMenu->addAction(aboutAct);
     helpMenu->addAction(aboutQtAct);
 
-/*    formatMenu = editMenu->addMenu(tr("&Format"));
-    formatMenu->addAction(boldAct);
-    formatMenu->addAction(italicAct);
-    formatMenu->addSeparator()->setText(tr("Alignment"));
-    formatMenu->addAction(leftAlignAct);
-    formatMenu->addAction(rightAlignAct);
-    formatMenu->addAction(justifyAct);
-    formatMenu->addAction(centerAct);
-    formatMenu->addSeparator();
-    formatMenu->addAction(setLineSpacingAct);
-    formatMenu->addAction(setParagraphSpacingAct);*/
 
 }
