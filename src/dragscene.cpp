@@ -178,7 +178,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
     */
             int self_idx = this->sceneItemAt(event->scenePos());
             Icon *item = scene_items.at(self_idx);
-        int self_id = item->getID();
+	    int self_id = item->getID();
 
             selfRefLine *newLine = new selfRefLine(item, item, 0, 0);
             newLine->set_ids(self_id, self_id);
@@ -342,10 +342,15 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         indexStart = sceneItemAt(tempLine->line().p1());
         indexEnd = sceneItemAt(tempLine->line().p2());
 
-    // id saving
-    int id_start, id_end;
-    id_start = scene_items.at(indexStart)->getID();
-    id_end = scene_items.at(indexEnd)->getID();
+	// id saving
+	int id_start, id_end = -1;
+	id_start = scene_items.at(indexStart)->getID();
+	
+	if ( indexEnd > 0 )
+	{
+	    id_end = scene_items.at(indexEnd)->getID();
+	}
+	
 
         removeItem(tempLine);
         //delete tempLine;
