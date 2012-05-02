@@ -5,6 +5,7 @@
 #include "global.h"
 #include "optionsdialog.h"
 #include "borderlayout.h"
+#include "hintbox.h"
 
 
 class QAction;
@@ -18,6 +19,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow();
+    ~MainWindow();
 
 protected:
     void contextMenuEvent(QContextMenuEvent *event);
@@ -49,6 +51,7 @@ private slots:
     void setLineSpacing();
     void setParagraphSpacing();
     void about();
+    void hints();
     void aboutQt();
     void exit();
     // MVC logic methods
@@ -98,8 +101,12 @@ private:
     QAction *setParagraphSpacingAct;
     QAction *aboutAct;
     QAction *aboutQtAct;
+    QAction *hintAct;
 
     QLabel *infoLabel;
+
+    HintBox *hintDialog;
+
 };
 
 #endif
