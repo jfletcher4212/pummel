@@ -19,6 +19,7 @@ private:
     QString m_members;
     void setRect();
     void arrangeBoxes();
+    int m_labelheight, m_labelwidth, m_memberheight, m_memberwidth;
 
 protected:
     QRectF boundingRect() const;
