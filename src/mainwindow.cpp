@@ -6,6 +6,7 @@
 #include "global.h"
 #include "xml_io.h"
 #include "saveprompt.h"
+#include "hintbox.h"
 #include <iostream>
 #include <QFile>
 
@@ -45,6 +46,47 @@ MainWindow::MainWindow()
     setMinimumSize(160, 160);
     resize(600, 500);
     this->newTab();
+}
+
+MainWindow::~MainWindow()
+{
+    delete widget;
+    delete layout;
+
+    delete fileMenu;
+    delete editMenu;
+    delete formatMenu;
+    delete helpMenu;
+    delete objectsMenu;
+    delete alignmentGroup;
+    delete newAct;
+    delete closeAct;
+    delete saveAct;
+    delete saveAsAct;
+    delete openAct;
+    delete exitAct;
+    delete undoAct;
+    delete redoAct;
+    delete cutAct;
+    delete copyAct;
+    delete pasteAct;
+    delete deleteObjAct;
+    delete deleteSelectedAct;
+    delete boldAct;
+    delete italicAct;
+    delete leftAlignAct;
+    delete rightAlignAct;
+    delete justifyAct;
+    delete centerAct;
+    delete setLineSpacingAct;
+    delete setParagraphSpacingAct;
+    delete aboutAct;
+    delete aboutQtAct;
+    delete hintAct;
+
+    delete infoLabel;
+
+    delete hintDialog;
 }
 
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
@@ -327,9 +369,15 @@ void MainWindow::about()
                           "for CS384."));
 }
 
+void MainWindow::hints()
+{
+    hintDialog->show();
+}
+
 void MainWindow::aboutQt(){}
 void MainWindow::exit()
 {
+    hintDialog->close();
     close();
 }
 
@@ -345,12 +393,14 @@ void MainWindow::createActions()
     closeAct->setShortcut(QKeySequence::Cut);
     connect(closeAct, SIGNAL(triggered()), this, SLOT(closeTab()));
 
-    saveAct = new QAction(tr("Save File"), this);
+    saveAct = new QAction(tr("Save Diagram"), this);
     saveAct->setShortcut(QKeySequence::Save);
+    saveAct->setStatusTip(tr("Save with the current diagram"));
     connect(saveAct, SIGNAL(triggered()), this, SLOT(saveFile()));
 
-    saveAsAct = new QAction(tr("Save File as..."), this);
+    saveAsAct = new QAction(tr("Save Diagram as..."), this);
     saveAsAct->setShortcut(QKeySequence::SaveAs);
+    saveAsAct->setStatusTip(tr("Save the current diagram with a specified filename"));
     connect(saveAsAct, SIGNAL(triggered()), this, SLOT(saveAsFile()));
 
     openAct = new QAction(tr("Open"), this);
@@ -362,6 +412,22 @@ void MainWindow::createActions()
     exitAct->setStatusTip(tr("Closes the entire program"));
     connect(exitAct, SIGNAL(triggered()), this, SLOT(exit()));
 
+    aboutAct = new QAction(tr("&About"), this);
+    aboutAct->setStatusTip(tr("Show the application's About box"));
+    connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
+
+    aboutQtAct = new QAction(tr("About &Qt"), this);
+    aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
+    connect(aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect(aboutQtAct, SIGNAL(triggered()), this, SLOT(aboutQt()));
+
+    hintDialog = new HintBox;
+    hintAct = new QAction(tr("Hints and Tips"), this);
+    hintAct->setStatusTip(tr("Show a small tips dialog"));
+    connect(hintAct, SIGNAL(triggered()), this, SLOT(hints()));
+
+
+    //marked for deletion
     undoAct = new QAction(tr("&Undo"), this);
     undoAct->setShortcuts(QKeySequence::Undo);
     undoAct->setStatusTip(tr("Undo the last operation"));
@@ -469,7 +535,7 @@ void MainWindow::createActions()
     alignmentGroup->addAction(justifyAct);
     alignmentGroup->addAction(centerAct);
     leftAlignAct->setChecked(true);
-
+//all this ^^^ marked for deletion
 }
 
 void MainWindow::createMenus()
@@ -481,19 +547,8 @@ void MainWindow::createMenus()
     fileMenu->addAction(saveAsAct);
     fileMenu->addAction(openAct);
     fileMenu->addAction(exitAct);
-
-    /*commented out lines will be added at a later time*/
-    editMenu = menuBar()->addMenu(tr("&Edit"));
-//    editMenu->addAction(undoAct);
-//    editMenu->addAction(redoAct);
-    editMenu->addSeparator();
-//    editMenu->addAction(cutAct);
-//    editMenu->addAction(copyAct);
-//    editMenu->addAction(pasteAct);
-    editMenu->addAction(deleteSelectedAct);
-    editMenu->addSeparator();
-
     helpMenu = menuBar()->addMenu(tr("&Help"));
+    helpMenu->addAction(hintAct);
     helpMenu->addAction(aboutAct);
     helpMenu->addAction(aboutQtAct);
 
