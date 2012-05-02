@@ -34,7 +34,8 @@ void HintBox::initMembers()
     QString hints = "";
 
     hints.append("1. To exit line insertion mode, click on an empty portion of the canvas.\n");
-    hints.append("2. Future hints will be here!\n");
+    hints.append("2. Exit using File->Exit\n");
+    hints.append("3. Future hints go here!");
 
     m_textBox->setPlainText(hints);
 }
