@@ -87,6 +87,8 @@ public slots:
     void addSolidSQLineSD();
     void addSolidSQLineED();
 
+    void deleteSelected();
+
     void gridOn();
     void gridOff();
 
@@ -101,6 +103,7 @@ private:
     QPushButton * textButton;
     QPushButton * lineButton;
     QPushButton * optionsButton;
+    QPushButton * deleteButton;
     QPushButton * gridButton;
 
     QMenu *shapeMenu;
