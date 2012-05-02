@@ -48,6 +48,7 @@ MainWindow::MainWindow()
     this->newTab();
 }
 
+/*
 MainWindow::~MainWindow()
 {
     delete widget;
@@ -88,6 +89,7 @@ MainWindow::~MainWindow()
 
     delete hintDialog;
 }
+*/
 
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 {
@@ -377,7 +379,7 @@ void MainWindow::hints()
 void MainWindow::aboutQt(){}
 void MainWindow::exit()
 {
-    hintDialog->close();
+//    hintDialog->close();
     close();
 }
 
