@@ -34,11 +34,12 @@ ClassBox::ClassBox()
 
 }
 
-ClassBox::ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString members)
+ClassBox::ClassBox(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString members)
 {
     QStringList tmp = split_all(members);
     
     this->setPos(xpos,ypos);
+    m_id = id;
     m_xPos = xpos;
     m_yPos = ypos;
     
@@ -64,7 +65,8 @@ ClassBox::ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int yp
     m_methods = tmp[2];
 
     //set m_memberList's position below m_labelBox, and m_methodList below m_memberList
-    m_labelBox->setPos(this->pos());
+    //m_labelBox->setPos(this->pos());
+    m_labelBox->setPos(m_xPos, m_yPos);
     arrangeBoxes();
     //show text boxes
     m_labelBox->setVisible(true);
