@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#to build on linux:
+# to build on linux:
+# you can execute this file
 qmake -project -unix
 mv src.pro puml.pro
 qmake
