@@ -20,8 +20,6 @@ DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth)
 
     DiagramTypeSelector *selector = new DiagramTypeSelector();
     selector->exec();
-    while (selector->isVisible())
-    {}
 
     type = selector->getType();
 }
