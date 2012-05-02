@@ -43,21 +43,14 @@ MainWindow::MainWindow()
     setWindowTitle(tr("pUML"));
     setWindowIcon(thumbnail);
     setMinimumSize(160, 160);
-    resize(600, 500);
+    resize(800, 500);
     this->newTab();
 }
 
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 {
     canvas.at(tabWidget->currentIndex())->setSceneCreate(false);
-    contextEventPos = canvas.at(tabWidget->currentIndex())->view->mapToScene(event->pos());
-
-    QMenu menu(this);
-    menu.addAction(cutAct);
-    menu.addAction(copyAct);
-    menu.addAction(pasteAct);
-    menu.addAction(deleteObjAct);
-    menu.exec(event->globalPos());
+    canvas.at(tabWidget->currentIndex())->setLineCreate(false);
 }
 
 void MainWindow::newFile()
