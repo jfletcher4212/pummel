@@ -29,7 +29,7 @@ protected:
     void setValues();
 
 public:
-    ClassBox();
+    ClassBox(QPointF);
     ClassBox(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString members);
     ~ClassBox();
     QString getLabel(), getMembers(), getMethods();

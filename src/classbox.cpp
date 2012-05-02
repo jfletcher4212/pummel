@@ -3,8 +3,11 @@
 
 using namespace std;
 
-ClassBox::ClassBox()
+ClassBox::ClassBox(QPointF location)
 {
+    m_xPos = location.x();
+    m_yPos = location.y();
+    this->setPos(m_xPos, m_yPos);
 
     m_labelBox->setParentItem(this);
     m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
@@ -25,7 +28,7 @@ ClassBox::ClassBox()
              + m_methodBox->boundingRect().height();
 
     //set m_memberList's position below m_labelBox, and m_methodList below m_memberList
-    m_labelBox->setPos(this->pos());
+    m_labelBox->setPos(0,0);
     arrangeBoxes();
     //show text boxes
     m_labelBox->setVisible(true);
@@ -66,7 +69,7 @@ ClassBox::ClassBox(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos
 
     //set m_memberList's position below m_labelBox, and m_methodList below m_memberList
     //m_labelBox->setPos(this->pos());
-    m_labelBox->setPos(m_xPos, m_yPos);
+    m_labelBox->setPos(0,0);
     arrangeBoxes();
     //show text boxes
     m_labelBox->setVisible(true);
