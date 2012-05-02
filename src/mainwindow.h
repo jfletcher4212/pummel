@@ -50,7 +50,7 @@ private slots:
     void setParagraphSpacing();
     void about();
     void aboutQt();
-    
+    void exit();
     // MVC logic methods
     //void write_xml(Icon **icon_list, int size, QString filename);
     
@@ -76,10 +76,10 @@ private:
     QMenu *objectsMenu;
     QActionGroup *alignmentGroup;
     QAction *newAct;
-    QAction *openAct;
+    QAction *closeAct;
     QAction *saveAct;
     QAction *saveAsAct;
-    QAction *printAct;
+    QAction *openAct;
     QAction *exitAct;
     QAction *undoAct;
     QAction *redoAct;
