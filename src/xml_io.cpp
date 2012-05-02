@@ -72,13 +72,13 @@ void Xml_io::write_xml()
     //QString valueAsString = QString::number(valueAsDouble);
     // wrapper tags coule be the object's individual ID #
     saver.writeStartElement("icon");
-    saver.writeTextElement("id", QString::number(m_items[i]->getID()));
     saver.writeTextElement("width", QString::number(m_items[i]->getWidth()));
     saver.writeTextElement("height", QString::number(m_items[i]->getHeight()));
     saver.writeTextElement("x_pos", QString::number(m_items[i]->get_xPos()));
     saver.writeTextElement("y_pos", QString::number(m_items[i]->get_yPos()));
     saver.writeTextElement("label", m_items[i]->get_all());
-	saver.writeTextElement("shapetype", m_items[i]->reportShapetype() );
+    saver.writeTextElement("id", QString::number(m_items[i]->getID()));
+    saver.writeTextElement("shapetype", m_items[i]->reportShapetype() );
     saver.writeEndElement();
     }
     
@@ -86,6 +86,7 @@ void Xml_io::write_xml()
     {
 	saver.writeStartElement("line");
 	saver.writeTextElement("id_start", QString::number(m_lines[i]->get_id_start()) );
+	//qDebug() << "writing: " << m_lines[i]->get_id_start();
 	saver.writeTextElement("id_end", QString::number(m_lines[i]->get_id_end()) );
 	saver.writeTextElement("linetype", QString::number(m_lines[i]->getLinetype()) );
 	saver.writeEndElement();
@@ -170,13 +171,6 @@ Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
 
 	if ( token == QXmlStreamReader::StartElement )
 	{
-	    if( reader.name() == "id")
-	    {
-		reader.readNext();
-		id = reader.text().toString().toInt();
-		//qDebug() << width;
-	    }
-
 	    if( reader.name() == "width")
 	    {
 		reader.readNext();
@@ -206,6 +200,12 @@ Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
 	    {
 		reader.readNext();
 		label = reader.text().toString();
+	    }
+
+	    if( reader.name() == "id")
+	    {
+		reader.readNext();
+		id = reader.text().toString().toInt();
 	    }
 
 	    if( reader.name() == "shapetype")
@@ -253,8 +253,7 @@ Icon * Xml_io::make_icon(QString type, int id, int width, int height, int x_pos,
     }
 
 
-    //qDebug() << "just made: " << ret->get_xPos();
-    //qDebug() << "just made: " << ret->get_yPos();
+    //qDebug() << "just made: " << ret->getID();
     return ret;
 }
 
@@ -280,7 +279,8 @@ lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
 	    if ( reader.name() == "id_start" )
 	    {
 		reader.readNext();
-		id_start = reader.text().toString().toInt();		
+		id_start = reader.text().toString().toInt();
+		//qDebug() << "reading: " << id_start;
 	    }
 
 	    if ( reader.name() == "id_end" )
