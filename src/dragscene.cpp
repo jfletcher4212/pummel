@@ -197,7 +197,7 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         this->clearSelection();
         switch(m_shapeCreationType){
         case s_Classbox:{
-            newItem = new ClassBox();
+            newItem = new ClassBox(event->scenePos());
             newItem->setShapetype("Class Box");
             break;
         }
