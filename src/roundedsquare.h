@@ -20,6 +20,7 @@ private:
     void setRect();
     void arrangeBoxes();
     int m_labelheight, m_labelwidth, m_memberheight, m_memberwidth;
+    QFont m_lfont;
 
 protected:
     QRectF boundingRect() const;
