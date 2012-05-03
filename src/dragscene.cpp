@@ -197,41 +197,41 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         this->clearSelection();
         switch(m_shapeCreationType){
         case s_Classbox:{
-            newItem = new ClassBox();
+            newItem = new ClassBox(event->scenePos());
             newItem->setShapetype("Class Box");
             break;
         }
         case s_Ellipse:{
-            newItem = new Ellipse();
+            newItem = new Ellipse(event->scenePos());
             newItem->setShapetype("Ellipse");
             break;
         }
         case s_Actor:{
-            newItem = new Actor();
+            newItem = new Actor(event->scenePos());
             newItem->setShapetype("Actor");
             break;
         }
         case s_Note:
         {
-            newItem = new Note();
+            newItem = new Note(event->scenePos());
             newItem->setShapetype("Note");
             break;
         }
         case s_ScenarioStart:
         {
-            newItem = new ScenarioStart();
+            newItem = new ScenarioStart(event->scenePos());
             newItem->setShapetype("Scenario Start");
             break;
         }
         case s_RoundedSquare:
         {
-            newItem = new RoundedSquare();
+            newItem = new RoundedSquare(event->scenePos());
             newItem->setShapetype("Rounded Square");
             break;
         }
         case s_ScenarioEnd:
         {
-            newItem = new ScenarioEnd();
+            newItem = new ScenarioEnd(event->scenePos());
             newItem->setShapetype("Scenario End");
             break;
         }
@@ -635,17 +635,20 @@ void DragScene::render_icons(QList<Icon*> icons, QList<lineBody*> lines)
             // get the right icons
 	    tmp_start = find_icon_id(icons, lines[i]->get_id_start());
 	    tmp_end = find_icon_id(icons, lines[i]->get_id_end());
-	    
-	    //qDebug() << "setting icons....";
+
 	    // set the icons
-	    lines[i]->setSourceObject(tmp_start);
-	    lines[i]->setDestObject(tmp_end);
-	    /*
-	    //qDebug() << "drawing....";
-	    // draw the line
-	    this->addItem(lines[i]);
-	    this->scene_lines.append(lines[i]);
-	    lines[i]->setZValue(-1);*/
+	    if ( tmp_start and tmp_end )
+	    {
+		qDebug() << tmp_start->getID();
+		qDebug() << tmp_end->getID();
+		lines[i]->setSourceObject(tmp_start);
+		lines[i]->setDestObject(tmp_end);
+		
+		// draw the line
+		this->addItem(lines[i]);
+		this->scene_lines.append(lines[i]);
+		lines[i]->setZValue(-1);
+	    }
 	}
     }
 
@@ -657,10 +660,13 @@ Icon * DragScene::find_icon_id(QList<Icon*> icons, int target_id)
 {
     int i;
 
+    //qDebug() << target_id;
+    
     for ( i = 0; i < icons.length(); i++ )
     {
 	if ( icons[i]->getID() == target_id )
 	{
+	    //qDebug() << "here";
 	    return icons[i];
 	}
     }

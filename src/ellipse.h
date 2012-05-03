@@ -25,7 +25,7 @@ private:
 
 public:
 
-    Ellipse(QGraphicsItem *parent = 0);
+    Ellipse(QPointF = QPointF(0,0), QGraphicsItem *parent = 0);
     Ellipse(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString label);
 
 };
