@@ -86,7 +86,7 @@ void Xml_io::write_xml()
     {
 	saver.writeStartElement("line");
 	saver.writeTextElement("id_start", QString::number(m_lines[i]->get_id_start()) );
-	qDebug() << "writing: " << m_lines[i]->get_id_start();
+	//qDebug() << "writing: " << m_lines[i]->get_id_start();
 	saver.writeTextElement("id_end", QString::number(m_lines[i]->get_id_end()) );
 	saver.writeTextElement("linetype", QString::number(m_lines[i]->getLinetype()) );
 	saver.writeEndElement();
@@ -382,7 +382,7 @@ lineBody * Xml_io::make_line(int linetype, int id_start, int id_end)
     {
 	ret = new selfRefLine(id_start, id_end);    
     }
-
+    
     return ret;
 }
 

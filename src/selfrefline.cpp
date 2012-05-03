@@ -13,6 +13,10 @@ selfRefLine::selfRefLine(Icon *sourceReferenceObj, Icon *destinationReferenceObj
 selfRefLine::selfRefLine(int id_start, int id_end) : lineBody(id_start, id_end)
 {
     set_ids(id_start, id_end);
+    m_LineType = Self_Ref_Line;
+    
+    m_Color = Qt::black;
+    setFlag(QGraphicsItem::ItemIsSelectable, true);
 }
 
 selfRefLine::selfRefLine(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
