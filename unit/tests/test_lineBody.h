@@ -20,9 +20,9 @@ public:
 		Icon *TestCB = new ClassBox (tmpQPoint);
 		lineBody *testLB = new solidline(TestCB, TestCB, 0, 0);
 		//findObjectCenter is protected in linebody.h
-		tmpQPoint = testLB->findObjectCenter(TestCB);
+		//tmpQPoint = testLB->findObjectCenter(TestCB);
 	
-		cout<<"\ntestCenter is: " << tmpQPoint.x() << ", " << tmpQPoint.y() << "\n";
+		//cout<<"\ntestCenter is: " << tmpQPoint.x() << ", " << tmpQPoint.y() << "\n";
 
 	}
 
