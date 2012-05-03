@@ -86,7 +86,7 @@ void Xml_io::write_xml()
     {
 	saver.writeStartElement("line");
 	saver.writeTextElement("id_start", QString::number(m_lines[i]->get_id_start()) );
-	//qDebug() << "writing: " << m_lines[i]->get_id_start();
+	qDebug() << "writing: " << m_lines[i]->get_id_start();
 	saver.writeTextElement("id_end", QString::number(m_lines[i]->get_id_end()) );
 	saver.writeTextElement("linetype", QString::number(m_lines[i]->getLinetype()) );
 	saver.writeEndElement();
@@ -265,7 +265,7 @@ lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
     int id_end = -1;
 
     // next element
-    reader.readNext();
+    //reader.readNext();
 
     while ( ! (reader.tokenType() == QXmlStreamReader::EndElement &&  reader.name() == "line") )
     {
@@ -276,6 +276,7 @@ lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
 	
 	if ( token == QXmlStreamReader::StartElement )
 	{
+	    //qDebug() << reader.name();
 	    if ( reader.name() == "id_start" )
 	    {
 		reader.readNext();
@@ -296,7 +297,7 @@ lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
 	    }
 	}
     }
-
+    
     return make_line(linetype, id_start, id_end);
 }
 

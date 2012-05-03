@@ -7,7 +7,7 @@ using namespace std;
 RoundedSquare::RoundedSquare(QPointF location, QGraphicsItem *parent ) :Icon(location, parent)
 {
 
-    std::cout <<"beggining the constructor";
+    //std::cout <<"beggining the constructor";
     m_shapetype = "RoundedSquare";
 
     m_memberBox = new QGraphicsTextItem();
