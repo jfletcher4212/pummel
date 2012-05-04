@@ -3,24 +3,34 @@
                Made by Theora Rice
   */
 #include "icon.h"
+#include <QPolygonF>
 #include <QtGui>
 
 //#include <QPointF>
 
 int Icon::m_next_id = 1;
 
-Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
+Icon::Icon(QPointF location, QGraphicsItem *parent) : QGraphicsItem(parent)
 {
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
-    m_width = 0;
-    m_height = 0;
+    m_width = 100;
+    m_height = 100;
     m_state = 0;
+    m_xPos = location.x();
+    m_yPos = location.y();
+
 //    m_label = "";
-    m_labelbox = new QGraphicsTextItem;
-    m_labelbox->setPlainText("");
-    m_labelbox->setPos(this->pos());
-    m_type = new QPolygon();
+    m_labelBox = new QGraphicsTextItem;
+
+    // this is the line that causes a segfault in unit tests because
+    // it needs the gui. my suggestion is to leave this member alone
+    // in base class and do the text instantiation in the same method
+    // (or called by the same method) as paintEvent in the children.
+    // might as well set the text RIGHT before we draw it to isolate
+    // the gui things a little further.
+    //m_labelBox->setPlainText("");
+    m_labelBox->setPos(this->pos());
     m_id = m_next_id;
     m_next_id++;
 
@@ -34,6 +44,17 @@ Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
     }
 }
 
+Icon::~Icon()
+{
+    //delete marker boxes
+    for (int i = 0; i<4; i++)
+    {
+        delete m_markers[i];
+    }
+
+    delete m_labelBox;
+}
+
 int Icon::getWidth()
 {
     return m_width;
@@ -44,10 +65,16 @@ int Icon::getHeight()
     return m_height;
 }
 
+QString Icon::getLabel()
+{
+    return m_label;
+}
+
 void Icon::setSize(int newWidth, int newHeight)
 {
     m_width = newWidth;
     m_height = newHeight;
+    update();
 }
 
 QString Icon::reportShapetype()
@@ -74,8 +101,7 @@ void Icon::paintMarkerBoxes()
         m_markers[1]->setVisible(true);
         m_markers[2]->setVisible(true);
         m_markers[3]->setVisible(true);
-
-        // this next section grabs the scenePos of the object and offsets its markerboxes 3 pixels away from the corners of the obejcts
+        // this next section grabs the scenePos of the object and offsets its markerboxes 3 pixels away from the corners of the objects
         // boundingRect
         QPointF pos = this->scenePos(); // sets position to the upper left pixel
         pos.rx() = -8;
@@ -96,7 +122,6 @@ void Icon::paintMarkerBoxes()
         pos.rx() = m_width+3;
         pos.ry() = m_height+3;
         m_markers[3]->setPos(pos); // lower right
-
     }
     else
     {
@@ -106,26 +131,25 @@ void Icon::paintMarkerBoxes()
         m_markers[2]->setVisible(false);
         m_markers[3]->setVisible(false);
     }
+    update();
 }
 
 void Icon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_width; // this centers the object on the cursor
-    pos.ry() -= 0.5 * m_height;
     m_state = 2;
-    this->grabMouse();  // icon will take all mouse actions
-    this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
+    //not needed.  This causes the icon to become "sticky"
+//    this->grabMouse();  // icon will take all mouse actions
 }
 
 void Icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
-
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     QPointF pos = event->scenePos();
     pos.rx() -= 0.5 * m_width;
     pos.ry() -= 0.5 * m_height;
+    update();
     this->setPos(pos);
+    this->set_Pos((int)pos.rx(), (int)pos.ry());
 }
 
 void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
@@ -138,24 +162,25 @@ void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
      */
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
-    QPointF pos = event->scenePos();
-    pos.rx() -= 0.5 * m_width;
-    pos.ry() -= 0.5 * m_height;
-    this->setPos(pos);
-    this->setOpacity(1.0);
     this->ungrabMouse();  // release mouse back to DragScene
     update();
     //printf("%d, %d ///// %d, %d\n", (int)this->x(), (int)this->y(), (int)event->pos().x(), (int)event->pos().y());
 }
 
-QPolygon* Icon::getType()
+QPolygonF Icon::getType()
 {
-    return m_type;
+    return m_bound;
+}
+
+void Icon::setPolygon()
+{
+    m_bound = QPolygonF(boundingRect());
 }
 
 void Icon::setText(QString input)
 {
-    m_labelbox->setPlainText(input);
+    m_label = input;
+    m_labelBox->setPlainText(m_label);
 }
 
 int Icon::getState()
@@ -180,5 +205,17 @@ void Icon::setMarkers(MarkerBox* a, MarkerBox* b, MarkerBox* c, MarkerBox* d)
     m_markers[2] = c;
     m_markers[3] = d;
 
+}
+
+QString Icon::get_all()
+{
+    return m_labelBox->toPlainText();
+}
+
+QStringList Icon::split_all(QString value)
+{
+    QString delim = "::+::";
+    
+    return value.split(delim);
 }
 
