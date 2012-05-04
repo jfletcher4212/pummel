@@ -11,7 +11,7 @@ class ut_classbox : public CxxTest::TestSuite
 public:
 	void test_instance(void)
 	{
-		ClassBox box;
+		ClassBox box(QPointF(0,0));
 
 		cout << endl << "***CLASSBOX INSTANTIATION***" << endl;
 		//check on initial size
@@ -31,7 +31,7 @@ public:
 
 		cout << endl << "***CLASSBOX AUTO-RESIZING***" << endl;
 
-		ClassBox box;
+		ClassBox box(QPointF(0,0));
 		int boxWidth[3];
 
 		boxWidth[0] = box.setWidthsManually(300, 150, 299);
