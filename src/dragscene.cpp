@@ -122,19 +122,8 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
             else
             {
                 Icon *item = scene_items.at(this->sceneItemAt(event->scenePos()));
-                /**** using this->clearSelection() takes care of deselecting everything. Built in Qt func
-                // if there is another item selected, this will deselect it, forcing only one item selected at a time
-                for(int i = 0; i < scene_items.size(); i++)
-                {
-                    // set every item to not selected
-                    scene_items.at(i)->setSelected(false);
-                }
-                //deselect all lines
-                for(int i = 0; i < scene_lines.size(); i++)
-                {
-                    scene_lines.at(i)->setSelected(true);
-                }
-                */
+                // using this->clearSelection() takes care of deselecting everything. Built in Qt func
+
                 this->clearSelection();
                 // set the clicked item to selected
                 item->setSelected(true);
@@ -159,24 +148,6 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
         }
         else if(lineCreate && lineTypeEnum == Self_Ref_Line)
         {
-            //int indexStart, indexEnd;
-            //indexStart = sceneItemAt(tempLine->line().p1());
-            //indexEnd = sceneItemAt(tempLine->line().p2());
-
-            //Icon *initRefObj = scene_items.at(indexStart);
-            //Icon *finRefObj = scene_items.at(indexEnd);
-
-            //unneccesary with new if-statement condition above
-    /*
-            if(this->sceneItemAt(event->scenePos()) < 0)
-            {
-                // exit routine if no source object was clicked
-                // DEV debugging indicates this routine may be entered three time.
-                //Need to discover why.
-
-                return;
-            }
-    */
             int self_idx = this->sceneItemAt(event->scenePos());
             Icon *item = scene_items.at(self_idx);
 	    int self_id = item->getID();
@@ -594,13 +565,6 @@ void DragScene::drawBackground(QPainter *painter, const QRectF &rect)
         painter->drawLines(linesY.data(), linesY.size());
     }
     update();
-}
-
-
-void DragScene::testAction()
-{
-    // use as needed
-
 }
 
 void DragScene::render_icons(QList<Icon*> icons, QList<lineBody*> lines)

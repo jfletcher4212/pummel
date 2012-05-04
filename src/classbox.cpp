@@ -39,6 +39,7 @@ ClassBox::ClassBox(QPointF location)
 
 ClassBox::ClassBox(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString members)
 {
+    parent = 0;
     QStringList tmp = split_all(members);
     
     this->setPos(xpos,ypos);
@@ -91,7 +92,6 @@ void ClassBox::arrangeBoxes()
     m_methodBox->setPos(m_labelBox->pos().x(), m_memberBox->pos().y() + m_memberBox->boundingRect().height());
     this->prepareGeometryChange();
 
-   // printf("boundingRect height: %i\n", (int)this->boundingRect().height());
 
     //change m_height and m_width
     //match the width of the overall boundary rectangles to the widest one
@@ -114,20 +114,6 @@ void ClassBox::arrangeBoxes()
             m_width = m_labelBox->boundingRect().width();
         }
     }
-    /*
-    if(m_width < m_labelBox->boundingRect().width())
-    {
-        m_width = m_labelBox->boundingRect().width();
-    }
-    if(m_width < m_memberBox->boundingRect().width())
-    {
-        m_width = m_memberBox->boundingRect().width();
-    }
-    if(m_width < m_methodBox->boundingRect().width())
-    {
-        m_width = m_methodBox->boundingRect().width();
-    }
-    */
 
     if((m_labelBox->boundingRect().height()
             + m_memberBox->boundingRect().height()
@@ -148,11 +134,6 @@ void ClassBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     m_memberBox->setPlainText(m_members);
     m_methodBox->setPlainText(m_methods);
 
-/*
-    m_labelBox->boundingRect().setHeight(m_height/3);
-    m_memberBox->boundingRect().setHeight(m_height/3);
-    m_methodBox->boundingRect().setHeight(m_height/3);
-*/
     // draws the white background behind classbox
     painter->setBrush(Qt::white);
 
@@ -181,26 +162,11 @@ void ClassBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 
     //draw bounding rectangles
     painter->setPen(pen);
-    /*
-    painter->drawRect(m_labelBox->pos().x(), m_labelBox->pos().y(), m_width, (m_height/3));
-    painter->drawRect(m_memberBox->pos().x(), (int)m_labelBox->pos().y() + (m_height/3), m_width, (m_height/3));
-    painter->drawRect(m_methodBox->pos().x(), (int)m_labelBox->pos().y() + (2*(m_height/3)), m_width, (m_height/3));
-    */
+
     painter->drawRect(m_labelBox->pos().x(), (int)m_labelBox->pos().y(), m_width, m_labelBox->boundingRect().height());
     painter->drawRect(m_memberBox->pos().x(), (int)m_memberBox->pos().y(), m_width, m_memberBox->boundingRect().height());
     painter->drawRect(m_methodBox->pos().x(), (int)m_methodBox->pos().y(), m_width, m_methodBox->boundingRect().height());
-/*
-    painter->drawRect(m_memberBox->pos().x(), m_memberBox->pos().y(), m_width, memberBoundary.height());
-    painter->drawRect(m_methodBox->pos().x(), m_methodBox->pos().y(), m_width, methodBoundary.height());
-    painter->drawRect(m_labelBox->pos().x(), m_labelBox->pos().y(), m_width, labelBoundary.height());
-*/
-/*
-    QRectF mine = this->boundingRect();
-    pen.setColor(Qt::red);
-    painter->setPen(pen);
-//    painter->drawRect(this->pos().x(), this->pos().y(), mine.width(), mine.height());
-    painter->drawRect(mine);
-*/
+
     update();
 }
 
@@ -216,7 +182,6 @@ void ClassBox::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 void ClassBox::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    printf("classbox event\n");
     Icon::mouseReleaseEvent(event);
 }
 
