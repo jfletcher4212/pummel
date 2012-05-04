@@ -635,13 +635,18 @@ void DragScene::render_icons(QList<Icon*> icons, QList<lineBody*> lines)
             // get the right icons
 	    tmp_start = find_icon_id(icons, lines[i]->get_id_start());
 	    tmp_end = find_icon_id(icons, lines[i]->get_id_end());
-
+	    
 	    // set the icons
 	    if ( tmp_start and tmp_end )
 	    {
+		//qDebug() << tmp_start->getID();
+		//qDebug() << tmp_end->getID();
 		lines[i]->setSourceObject(tmp_start);
 		lines[i]->setDestObject(tmp_end);
-	    
+		
+		//qDebug() << lines[i]->getDestinationReferenceObj();
+		//qDebug() << lines[i]->getSourceReferenceObj();
+		
 		// draw the line
 		this->addItem(lines[i]);
 		this->scene_lines.append(lines[i]);
