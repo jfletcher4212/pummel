@@ -60,6 +60,9 @@ QRectF Ellipse::boundingRect() const
 
 void Ellipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+    option = 0;
+    widget = 0;
+
     m_labelBox->setParentItem(this);
     m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 

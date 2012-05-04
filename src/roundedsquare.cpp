@@ -9,7 +9,7 @@ RoundedSquare::RoundedSquare(QPointF location, QGraphicsItem *parent ) :Icon(loc
 
     //std::cout <<"beggining the constructor";
     m_shapetype = "RoundedSquare";
-
+    m_lfont.setBold(true);
     m_memberBox = new QGraphicsTextItem();
 
     m_height /= 1.5;
@@ -36,13 +36,16 @@ RoundedSquare::RoundedSquare(QGraphicsItem *parent, int id, int xsize, int ysize
     m_id = id;
     m_width = xsize;
     m_height = ysize;
-    m_shapetype = "RoundedSquare";
+    m_shapetype = "Rounded Square";
 
+    m_xPos = xpos;
+    m_yPos = ypos;
     this->setPos(xpos,ypos);
 
     m_memberBox = new QGraphicsTextItem();
 
     //default text
+    m_lfont.setBold(true);
     m_label = tmp[0];
     m_members = tmp[1];
     m_labelheight = m_labelwidth = 20;
@@ -91,6 +94,8 @@ void RoundedSquare::arrangeBoxes()
 //text is already handled, so paint only makes the boundary boxes
 void RoundedSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+    option = 0;
+    widget = 0;
 
     m_labelBox->setParentItem(this);
     m_memberBox->setParentItem(this);
@@ -106,6 +111,7 @@ void RoundedSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *opt
     m_labelBox->boundingRect().setWidth(m_width);
     m_memberBox->boundingRect().setWidth(m_width);
 
+    m_labelBox->setFont(m_lfont);
     m_labelBox->setPlainText(m_label);
     m_memberBox->setPlainText(m_members);
 

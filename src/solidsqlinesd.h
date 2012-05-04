@@ -6,6 +6,7 @@ class solidsqlinesd : public lineBody
 {
 public:
     solidsqlinesd(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
+    solidsqlinesd(int id_start, int id_end);
     solidsqlinesd(Icon *, Icon *, int,  int, QGraphicsItem *, QGraphicsScene *);
 
 protected:

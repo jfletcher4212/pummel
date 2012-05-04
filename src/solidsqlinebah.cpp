@@ -8,6 +8,15 @@ solidsqlinebah::solidsqlinebah(Icon *sourceReferenceObj, Icon *destinationRefere
     m_LineType = Solid_Sq_Line_BAH;
 }
 
+solidsqlinebah::solidsqlinebah(int id_start, int id_end) : lineBody(id_start, id_end)
+{
+    set_ids(id_start, id_end);
+    m_LineType = Solid_Sq_Line_BAH;
+    
+    m_Color = Qt::black;
+    setFlag(QGraphicsItem::ItemIsSelectable, true);
+}
+
 solidsqlinebah::solidsqlinebah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
 {
     parent = 0;
@@ -19,7 +28,7 @@ void solidsqlinebah::paint(QPainter *painter, const QStyleOptionGraphicsItem *op
 {
     option = 0;
     widget = 0;
-
+    
     if (m_SourceReferenceObj->collidesWithItem(m_DestinationReferenceObj))
         return;
     else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
