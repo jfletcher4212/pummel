@@ -37,7 +37,7 @@ Icon::Icon(QPointF location, QGraphicsItem *parent) : QGraphicsItem(parent)
     // selection boxes configuration
     for(int i = 0; i < 4; i++)
     {
-        m_markers[i] = new MarkerBox();
+        m_markers[i] = new MarkerBox(this);
         m_markers[i]->setParentItem(this);
         m_markers[i]->setVisible(false);
         m_markers[i]->setId(i);
@@ -136,9 +136,8 @@ void Icon::paintMarkerBoxes()
 
 void Icon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
+    event->accept();
     m_state = 2;
-    //not needed.  This causes the icon to become "sticky"
-//    this->grabMouse();  // icon will take all mouse actions
 }
 
 void Icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -154,17 +153,10 @@ void Icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 
 void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    printf("icon event\n");
-    /*
-     * This resets the object's coordinates to the cursor's coordinates when the
-     * mouse is released, as opposed to creating a new object and then deleting the old one.
-     * Also puts opacity back to normal.
-     */
-
+    event->accept();
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     this->ungrabMouse();  // release mouse back to DragScene
     update();
-    //printf("%d, %d ///// %d, %d\n", (int)this->x(), (int)this->y(), (int)event->pos().x(), (int)event->pos().y());
 }
 
 QPolygonF Icon::getType()
