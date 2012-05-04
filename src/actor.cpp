@@ -89,6 +89,9 @@ void Actor::setValues()
     TextBoxDialog *values = new TextBoxDialog(this);
     values->show();
 
+    m_labelwidth = m_labelBox->boundingRect().width();
+    m_labelheight = m_labelBox->boundingRect().height();
+
     arrangeBoxes();
 }
 
@@ -98,13 +101,13 @@ void Actor::arrangeBoxes()
 
     this->prepareGeometryChange();
 
-    if(m_labelwidth > m_width)
+    if(m_labelwidth + 20 > m_width)
     {
            m_width = m_labelwidth +20;
     }
-    if(m_labelheight +30 > m_height)
+    if(m_labelheight +60 > m_height)
     {
-          m_height = m_labelheight +30;
+          m_height = m_labelheight +60;
     }
 
     paintMarkerBoxes();
