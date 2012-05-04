@@ -1,7 +1,7 @@
 #include "actor.h"
 #include "markerbox.h"
 
-Actor::Actor(QGraphicsItem *parent) : Icon(parent)
+Actor::Actor(QPointF location, QGraphicsItem *parent) : Icon(location, parent)
 {
     m_shapetype = "Actor";
     m_label = "Actor";
@@ -24,7 +24,7 @@ Actor::Actor(QGraphicsItem *parent) : Icon(parent)
 
 
 
-Actor::Actor(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString contents) : Icon(parent)
+Actor::Actor(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString contents) : Icon(QPointF(xpos, ypos), parent)
 {
     m_id = id;
     m_width = xsize;

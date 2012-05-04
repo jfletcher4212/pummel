@@ -16,18 +16,13 @@ public:
   void test_findObjectCenter(void)
 	{
 
-		//QString tmpString = "Testfile.ut";
-		//Icon *MyTestClassbox = new ClassBox (0, 5, 5, 0, 0, tmpString);
-		//Icon *testCB = NULL; 
-		lineBody *testLB = NULL;
-
-		testLB = new solidline(NULL, NULL, 0, 0);
-
-		//lineBody->findObjectCenter(testCB);
+		QPointF tmpQPoint;//creates the point at 0,0 
+		Icon *TestCB = new ClassBox (tmpQPoint);
+		lineBody *testLB = new solidline(TestCB, TestCB, 0, 0);
+		//findObjectCenter is protected in linebody.h
+		//tmpQPoint = testLB->findObjectCenter(TestCB);
 	
-		//QPointF testCenter = MyTestLine->findObjectCenter (MyTestClassbox);	
-
-		//cout<<"\ntestCenter is: " << testCenter << "\n";
+		//cout<<"\ntestCenter is: " << tmpQPoint.x() << ", " << tmpQPoint.y() << "\n";
 
 	}
 

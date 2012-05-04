@@ -19,7 +19,7 @@ private:
 
 public:
 
-    ScenarioEnd(QGraphicsItem *parent = 0);
+    ScenarioEnd(QPointF = QPointF(0,0), QGraphicsItem *parent = 0);
     ScenarioEnd(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos);
 
 };

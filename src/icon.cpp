@@ -10,13 +10,16 @@
 
 int Icon::m_next_id = 1;
 
-Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
+Icon::Icon(QPointF location, QGraphicsItem *parent) : QGraphicsItem(parent)
 {
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
     m_width = 100;
     m_height = 100;
     m_state = 0;
+    m_xPos = location.x();
+    m_yPos = location.y();
+
 //    m_label = "";
     m_labelBox = new QGraphicsTextItem;
 
@@ -134,7 +137,8 @@ void Icon::paintMarkerBoxes()
 void Icon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     m_state = 2;
-    this->grabMouse();  // icon will take all mouse actions
+    //not needed.  This causes the icon to become "sticky"
+//    this->grabMouse();  // icon will take all mouse actions
 }
 
 void Icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
