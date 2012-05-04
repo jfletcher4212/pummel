@@ -6,6 +6,8 @@ Actor::Actor(QPointF location, QGraphicsItem *parent) : Icon(location, parent)
     m_shapetype = "Actor";
     m_label = "Actor";
 
+
+    m_labelheight = m_labelwidth = 20;
     arrangeBoxes();
 
     m_width = 80;
@@ -29,7 +31,7 @@ Actor::Actor(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int 
     m_yPos = ypos;
 
     m_label = contents;
-
+    m_labelwidth = m_labelheight = 20;
     arrangeBoxes();
 
 
