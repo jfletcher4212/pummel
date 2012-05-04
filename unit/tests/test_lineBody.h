@@ -43,5 +43,30 @@ public:
 		result = line->checkReferences(box1, box2);
 		TS_ASSERT_EQUALS(result, true);
 	}
+
+	void test_checkInterPoint(void)
+	{
+		Icon *box2 = new ClassBox(QPointF(30,30));
+		lineBody *line = new solidline(box2, box2, 0, 0);
+		QPointF dummy;
+		bool result;
+
+		dummy.setX(NULL);
+		dummy.setY(NULL);
+		result = line->checkInterPoint(dummy);
+		TS_ASSERT_EQUALS(result, false);
+		dummy.setX(15);
+		dummy.setY(NULL);
+		result = line->checkInterPoint(dummy);
+		TS_ASSERT_EQUALS(result, false);
+		dummy.setX(NULL);
+		dummy.setY(15);
+		result = line->checkInterPoint(dummy);
+		TS_ASSERT_EQUALS(result, false);
+		dummy.setX(15);
+		dummy.setY(15);
+		result = line->checkInterPoint(dummy);
+		TS_ASSERT_EQUALS(result, true);
+	}
 };
 
