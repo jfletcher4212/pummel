@@ -48,6 +48,9 @@ ClassBox::ClassBox(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos
     m_xPos = xpos;
     m_yPos = ypos;
     
+    // shapetype MUST be set
+    m_shapetype = "Class Box";
+    
     m_width = xsize;
     m_height = ysize;
 
