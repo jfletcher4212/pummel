@@ -382,6 +382,18 @@ lineBody * Xml_io::make_line(int linetype, int id_start, int id_end)
     {
 	ret = new selfRefLine(id_start, id_end);    
     }
+    if ( linetype == (LineType)Solid_Sq_Line_BAH )
+    {
+	ret = new solidsqlinebah(id_start, id_end);    
+    }
+    if ( linetype == (LineType)Solid_Sq_Line_SD )
+    {
+	ret = new solidsqlinesd(id_start, id_end);    
+    }
+    if ( linetype == (LineType)Solid_Sq_Line_ED )
+    {
+	ret = new solidsqlineed(id_start, id_end);    
+    }
     
     return ret;
 }
