@@ -36,8 +36,10 @@ RoundedSquare::RoundedSquare(QGraphicsItem *parent, int id, int xsize, int ysize
     m_id = id;
     m_width = xsize;
     m_height = ysize;
-    m_shapetype = "RoundedSquare";
+    m_shapetype = "Rounded Square";
 
+    m_xPos = xpos;
+    m_yPos = ypos;
     this->setPos(xpos,ypos);
 
     m_memberBox = new QGraphicsTextItem();

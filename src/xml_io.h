@@ -12,10 +12,8 @@ class Xml_io
 
  public:
 
-// unit testing    
-#ifdef _UNIT_TEST_
+    // unit testing    
     friend class test_xml_io;
-#endif
     
     Xml_io(QString filename);
     Xml_io(QList<Icon*> icon_list, QList<lineBody*> line_list, QString filename, DiagramType diagram_type=(DiagramType)-1 );
