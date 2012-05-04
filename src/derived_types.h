@@ -8,7 +8,6 @@
 #include "note.h"
 #include "roundedsquare.h"
 #include "scenarioend.h"
-#include "scenariostate.h"
 #include "scenariostart.h"
 #include "scenariostart.h"
 
