@@ -21,6 +21,7 @@ protected:
 private:
 
     void arrangeBoxes();
+    int m_labelheight, m_labelwidth;
 
 public:
 

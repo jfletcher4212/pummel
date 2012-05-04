@@ -6,6 +6,7 @@ class solidsqlinebah : public lineBody
 {
 public:
     solidsqlinebah(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
+    solidsqlinebah(int id_start, int id_end);
     solidsqlinebah(Icon *, Icon *, int,  int, QGraphicsItem *, QGraphicsScene *);
 
 protected:

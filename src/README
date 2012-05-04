@@ -1,9 +1,19 @@
 #!/bin/bash
 
+# you can execute this file or walk through the following steps
 # to build on linux:
-# you can execute this file
+
+# generage the .pro file
 qmake -project -unix
+
+# rename the .pro file to the desired executable name
 mv src.pro puml.pro
+
+# generage the makefile
 qmake
+
+# build the project
 make
+
+# run the application in the background
 ./puml &

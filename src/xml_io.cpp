@@ -265,7 +265,7 @@ lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
     int id_end = -1;
 
     // next element
-    reader.readNext();
+    //reader.readNext();
 
     while ( ! (reader.tokenType() == QXmlStreamReader::EndElement &&  reader.name() == "line") )
     {
@@ -276,6 +276,7 @@ lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
 	
 	if ( token == QXmlStreamReader::StartElement )
 	{
+	    //qDebug() << reader.name();
 	    if ( reader.name() == "id_start" )
 	    {
 		reader.readNext();
@@ -296,7 +297,7 @@ lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
 	    }
 	}
     }
-
+    
     return make_line(linetype, id_start, id_end);
 }
 
@@ -381,7 +382,19 @@ lineBody * Xml_io::make_line(int linetype, int id_start, int id_end)
     {
 	ret = new selfRefLine(id_start, id_end);    
     }
-
+    if ( linetype == (LineType)Solid_Sq_Line_BAH )
+    {
+	ret = new solidsqlinebah(id_start, id_end);    
+    }
+    if ( linetype == (LineType)Solid_Sq_Line_SD )
+    {
+	ret = new solidsqlinesd(id_start, id_end);    
+    }
+    if ( linetype == (LineType)Solid_Sq_Line_ED )
+    {
+	ret = new solidsqlineed(id_start, id_end);    
+    }
+    
     return ret;
 }
 

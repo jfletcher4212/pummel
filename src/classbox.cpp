@@ -23,6 +23,8 @@ ClassBox::ClassBox(QPointF location)
     m_members = "Members";
     m_methods = "Methods";
 
+    m_lfont.setBold(true);
+
     m_height = m_labelBox->boundingRect().height()
              + m_memberBox->boundingRect().height()
              + m_methodBox->boundingRect().height();
@@ -46,6 +48,9 @@ ClassBox::ClassBox(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos
     m_xPos = xpos;
     m_yPos = ypos;
     
+    // shapetype MUST be set
+    m_shapetype = "Class Box";
+    
     m_width = xsize;
     m_height = ysize;
 
@@ -63,6 +68,7 @@ ClassBox::ClassBox(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos
              + m_methodBox->boundingRect().height();
     
     //default text
+    m_lfont.setBold(true);
     m_label = tmp[0];
     m_members = tmp[1];
     m_methods = tmp[2];
@@ -144,6 +150,10 @@ void ClassBox::arrangeBoxes()
 //text is already handled, so paint only makes the boundary boxes
 void ClassBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+    option =0;
+    widget =0;
+
+    m_labelBox->setFont(m_lfont);
     m_labelBox->setPlainText(m_label);
     m_memberBox->setPlainText(m_members);
     m_methodBox->setPlainText(m_methods);
