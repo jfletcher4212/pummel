@@ -8,7 +8,6 @@
 #include <QImage>
 
 #include "markerbox.h"
-
 class Actor : public Icon
 {
 
@@ -21,6 +20,7 @@ protected:
     int m_labelheight, m_labelwidth;
 
 private:
+
     void arrangeBoxes();
 
 public:
