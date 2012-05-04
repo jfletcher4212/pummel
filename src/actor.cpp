@@ -6,15 +6,7 @@ Actor::Actor(QPointF location, QGraphicsItem *parent) : Icon(location, parent)
     m_shapetype = "Actor";
     m_label = "Actor";
 
-    //m_labelBox->setParentItem(this);
-    //m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
-
-    //m_labelBox->setPlainText(m_label);
-
-    //m_labelBox->setPos(this->pos());
     arrangeBoxes();
-
-    //m_labelBox->setVisible(true);
 
     m_width = 80;
     m_height = 100;
@@ -33,16 +25,13 @@ Actor::Actor(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int 
 
     this->setPos(xpos,ypos);
 
-    //m_labelBox->setParentItem(this);
-    //m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
+    m_xPos = xpos;
+    m_yPos = ypos;
 
     m_label = contents;
-    //m_labelBox->setPlainText(contents);
 
-    //m_labelBox->setPos(this->pos());
     arrangeBoxes();
 
-    //m_labelBox->setVisible(true);
 
     m_image.load("icons/actor.png");  //loads the image for drawing later
 
@@ -55,6 +44,9 @@ QRectF Actor::boundingRect() const
 
 void Actor::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+
+    option = 0;
+    widget = 0;
 
     m_labelBox->setParentItem(this);
     m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
@@ -97,6 +89,9 @@ void Actor::setValues()
     TextBoxDialog *values = new TextBoxDialog(this);
     values->show();
 
+    m_labelwidth = m_labelBox->boundingRect().width();
+    m_labelheight = m_labelBox->boundingRect().height();
+
     arrangeBoxes();
 }
 
@@ -106,13 +101,13 @@ void Actor::arrangeBoxes()
 
     this->prepareGeometryChange();
 
-    if(m_labelwidth > m_width)
+    if(m_labelwidth + 20 > m_width)
     {
            m_width = m_labelwidth +20;
     }
-    if(m_labelheight +30 > m_height)
+    if(m_labelheight +60 > m_height)
     {
-          m_height = m_labelheight +30;
+          m_height = m_labelheight +60;
     }
 
     paintMarkerBoxes();

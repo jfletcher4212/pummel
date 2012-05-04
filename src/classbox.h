@@ -21,6 +21,7 @@ private:
     QString m_members, m_methods;
     void setRect();
     void arrangeBoxes();
+    QFont m_lfont;
 
 protected:
 

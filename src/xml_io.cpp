@@ -31,17 +31,15 @@ QString Xml_io::choose_type(DiagramType d_type)
 {
     if ( d_type == (DiagramType)Class)
     {
-    return (QString)"Class";
+	return (QString)"Class";
     }
     if ( d_type == (DiagramType)StateChart)
     {
-    return (QString)"StateChart";
+	return (QString)"StateChart";
     }
-    if ( d_type == (DiagramType)Sequence)
-    return (QString)"Sequence";
     if ( d_type == (DiagramType)UseCase)
     {
-    return (QString)"UseCase";
+	return (QString)"UseCase";
     }
 
     return (QString)"";
@@ -86,7 +84,7 @@ void Xml_io::write_xml()
     {
 	saver.writeStartElement("line");
 	saver.writeTextElement("id_start", QString::number(m_lines[i]->get_id_start()) );
-	qDebug() << "writing: " << m_lines[i]->get_id_start();
+	//qDebug() << "writing: " << m_lines[i]->get_id_start();
 	saver.writeTextElement("id_end", QString::number(m_lines[i]->get_id_end()) );
 	saver.writeTextElement("linetype", QString::number(m_lines[i]->getLinetype()) );
 	saver.writeEndElement();
@@ -243,11 +241,11 @@ Icon * Xml_io::make_icon(QString type, int id, int width, int height, int x_pos,
     {
         ret = new Note(0, width, height, x_pos, y_pos, label);
     }
-    else if ( type == "ScenarioEnd" )
+    else if ( type == "Scenario End" )
     {
 	ret = new ScenarioEnd(0, id, width, height, x_pos, y_pos);
     }
-    else if ( type == "ScenarioStart" )
+    else if ( type == "Scenario Start" )
     {
 	ret = new ScenarioStart(0, id, width, height, x_pos, y_pos);
     }
@@ -382,7 +380,19 @@ lineBody * Xml_io::make_line(int linetype, int id_start, int id_end)
     {
 	ret = new selfRefLine(id_start, id_end);    
     }
-
+    if ( linetype == (LineType)Solid_Sq_Line_BAH )
+    {
+	ret = new solidsqlinebah(id_start, id_end);    
+    }
+    if ( linetype == (LineType)Solid_Sq_Line_SD )
+    {
+	ret = new solidsqlinesd(id_start, id_end);    
+    }
+    if ( linetype == (LineType)Solid_Sq_Line_ED )
+    {
+	ret = new solidsqlineed(id_start, id_end);    
+    }
+    
     return ret;
 }
 

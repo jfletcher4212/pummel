@@ -11,6 +11,10 @@ solidsqline::solidsqline(Icon *sourceReferenceObj, Icon *destinationReferenceObj
 solidsqline::solidsqline(int id_start, int id_end) : lineBody(id_start, id_end)
 {
     set_ids(id_start, id_end);
+    m_LineType = Solid_Square_Line;
+    
+    m_Color = Qt::black;
+    setFlag(QGraphicsItem::ItemIsSelectable, true);
 }
 
 solidsqline::solidsqline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
