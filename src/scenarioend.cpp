@@ -51,6 +51,9 @@ QRectF ScenarioEnd::boundingRect() const
 void ScenarioEnd::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
 
+    option = 0;
+    widget = 0;
+
     if(m_width>m_height)
     {
         m_height=m_width;
