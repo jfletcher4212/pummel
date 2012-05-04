@@ -4,7 +4,7 @@
 #include <QString>
 
 
-ScenarioState::ScenarioState(QGraphicsItem *parent) : Icon(parent)
+ScenarioState::ScenarioState(QPointF location, QGraphicsItem *parent) : Icon(location, parent)
 {
     // allows setting of the base rectangle of dragitem
     m_shapetype = "ScenarioState";
@@ -30,7 +30,7 @@ ScenarioState::ScenarioState(QGraphicsItem *parent) : Icon(parent)
       //  std::cout << "didn't load image properly\n";  //loads the image for drawing later
 }
 
-ScenarioState::ScenarioState(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label) : Icon(parent)
+ScenarioState::ScenarioState(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label) : Icon(QPointF(xpos, ypos), parent)
 {
     // allows setting of the base rectangle of dragitem
     m_width = xsize;

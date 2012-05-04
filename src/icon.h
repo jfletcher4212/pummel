@@ -39,7 +39,7 @@ protected:
 
 public:
 
-    Icon(QGraphicsItem *parent = 0);
+    Icon(QPointF = QPointF(0,0), QGraphicsItem *parent = 0);
     ~Icon();
 
     // Accessors

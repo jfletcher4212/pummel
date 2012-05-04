@@ -10,6 +10,10 @@ solidlineeah::solidlineeah(Icon *sourceReferenceObj, Icon *destinationReferenceO
 solidlineeah::solidlineeah(int id_start, int id_end) : lineBody(id_start, id_end)
 {
     set_ids(id_start, id_end);
+    m_LineType = Solid_Line_EAH;
+    
+    m_Color = Qt::black;
+    setFlag(QGraphicsItem::ItemIsSelectable, true);
 }
 
 solidlineeah::solidlineeah(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
