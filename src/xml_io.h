@@ -11,6 +11,12 @@ class Xml_io
 {
 
  public:
+
+// unit testing    
+#ifdef _UNIT_TEST_
+    friend class test_xml_io;
+#endif
+    
     Xml_io(QString filename);
     Xml_io(QList<Icon*> icon_list, QList<lineBody*> line_list, QString filename, DiagramType diagram_type=(DiagramType)-1 );
     ~Xml_io();
@@ -39,7 +45,7 @@ class Xml_io
     void set_filename(QString filename) { m_filename = filename; }
     void set_diagram_type(QString diagram_type) { m_diagram_type = diagram_type; }
 
- private:
+ protected:
     int m_size;
     QString m_filename;
     QString m_diagram_type;

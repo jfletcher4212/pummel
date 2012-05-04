@@ -1,20 +1,12 @@
 #include "actor.h"
 #include "markerbox.h"
 
-Actor::Actor(QGraphicsItem *parent) : Icon(parent)
+Actor::Actor(QPointF location, QGraphicsItem *parent) : Icon(location, parent)
 {
     m_shapetype = "Actor";
     m_label = "Actor";
 
-    //m_labelBox->setParentItem(this);
-    //m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
-
-    //m_labelBox->setPlainText(m_label);
-
-    //m_labelBox->setPos(this->pos());
     arrangeBoxes();
-
-    //m_labelBox->setVisible(true);
 
     m_width = 80;
     m_height = 100;
@@ -24,7 +16,7 @@ Actor::Actor(QGraphicsItem *parent) : Icon(parent)
 
 
 
-Actor::Actor(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString contents) : Icon(parent)
+Actor::Actor(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString contents) : Icon(QPointF(xpos, ypos), parent)
 {
     m_id = id;
     m_width = xsize;
@@ -33,16 +25,13 @@ Actor::Actor(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int 
 
     this->setPos(xpos,ypos);
 
-    //m_labelBox->setParentItem(this);
-    //m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
+    m_xPos = xpos;
+    m_yPos = ypos;
 
     m_label = contents;
-    //m_labelBox->setPlainText(contents);
 
-    //m_labelBox->setPos(this->pos());
     arrangeBoxes();
 
-    //m_labelBox->setVisible(true);
 
     m_image.load("icons/actor.png");  //loads the image for drawing later
 

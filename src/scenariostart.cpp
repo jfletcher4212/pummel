@@ -4,7 +4,7 @@
 #include <QString>
 
 
-ScenarioStart::ScenarioStart(QGraphicsItem *parent) : Icon(parent)
+ScenarioStart::ScenarioStart(QPointF location, QGraphicsItem *parent) : Icon(location, parent)
 {
     // allows setting of the base rectangle of dragitem
     m_shapetype = "ScenarioStart";
@@ -22,12 +22,12 @@ ScenarioStart::ScenarioStart(QGraphicsItem *parent) : Icon(parent)
       //  std::cout << "didn't load image properly\n";  //loads the image for drawing later
 }
 
-ScenarioStart::ScenarioStart(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
+ScenarioStart::ScenarioStart(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos) : Icon(QPointF(xpos, ypos), parent)
 {
     // allows setting of the base rectangle of dragitem
     m_id = id;
-    m_width = xsize;
-    m_height = ysize;
+    m_width = 25;
+    m_height = 25;
     m_shapetype = "ScenarioStart";
 
 

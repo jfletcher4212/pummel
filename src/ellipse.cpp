@@ -4,7 +4,7 @@
 #include <QString>
 
 
-Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
+Ellipse::Ellipse(QPointF location, QGraphicsItem *parent) : Icon(location, parent)
 {
     // allows setting of the base rectangle of dragitem
     m_shapetype = "Ellipse";
@@ -25,7 +25,7 @@ Ellipse::Ellipse(QGraphicsItem *parent) : Icon(parent)
     //std::cout << "didn't load image properly\n";  //loads the image for drawing later
 }
 
-Ellipse::Ellipse(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString label) : Icon(parent)
+Ellipse::Ellipse(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString label) : Icon(QPointF(xpos, ypos), parent)
 {
     // allows setting of the base rectangle of dragitem
     m_id = id;

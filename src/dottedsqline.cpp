@@ -10,6 +10,10 @@ dottedsqline::dottedsqline(Icon *sourceReferenceObject, Icon *destinationReferen
 dottedsqline::dottedsqline(int id_start, int id_end) : lineBody(id_start, id_end)
 {
     set_ids(id_start, id_end);
+    m_LineType = Dotted_Square_Line;
+    
+    m_Color = Qt::black;
+    setFlag(QGraphicsItem::ItemIsSelectable, true);
 }
 
 dottedsqline::dottedsqline(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int id_start, int id_end, QGraphicsItem *parent, QGraphicsScene *scene) : lineBody(sourceReferenceObj, destinationReferenceObj, id_start, id_end, parent, scene)
