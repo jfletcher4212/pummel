@@ -30,6 +30,7 @@ ScenarioStart::ScenarioStart(QGraphicsItem *parent, int id, int xsize, int ysize
     m_height = ysize;
     m_shapetype = "ScenarioStart";
 
+
     this->setPos(xpos,ypos);
 
     // In general, leave this block below running for loading images
@@ -50,6 +51,9 @@ QRectF ScenarioStart::boundingRect() const
 
 void ScenarioStart::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+
+    option = 0;
+    widget = 0;
 
     if(m_width>m_height)
     {
