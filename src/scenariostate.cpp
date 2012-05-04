@@ -68,6 +68,10 @@ QRectF ScenarioState::boundingRect() const
 
 void ScenarioState::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+
+    option = 0;
+    widget = 0;
+
     m_labelBox->boundingRect().setHeight(m_height-20);
     m_labelBox->boundingRect().setWidth(m_width-20);
 
