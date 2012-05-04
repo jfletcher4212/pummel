@@ -31,17 +31,15 @@ QString Xml_io::choose_type(DiagramType d_type)
 {
     if ( d_type == (DiagramType)Class)
     {
-    return (QString)"Class";
+	return (QString)"Class";
     }
     if ( d_type == (DiagramType)StateChart)
     {
-    return (QString)"StateChart";
+	return (QString)"StateChart";
     }
-    if ( d_type == (DiagramType)Sequence)
-    return (QString)"Sequence";
     if ( d_type == (DiagramType)UseCase)
     {
-    return (QString)"UseCase";
+	return (QString)"UseCase";
     }
 
     return (QString)"";
@@ -243,11 +241,11 @@ Icon * Xml_io::make_icon(QString type, int id, int width, int height, int x_pos,
     {
         ret = new Note(0, width, height, x_pos, y_pos, label);
     }
-    else if ( type == "ScenarioEnd" )
+    else if ( type == "Scenario End" )
     {
 	ret = new ScenarioEnd(0, id, width, height, x_pos, y_pos);
     }
-    else if ( type == "ScenarioStart" )
+    else if ( type == "Scenario Start" )
     {
 	ret = new ScenarioStart(0, id, width, height, x_pos, y_pos);
     }

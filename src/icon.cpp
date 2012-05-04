@@ -211,7 +211,7 @@ QString Icon::get_all()
 
 QStringList Icon::split_all(QString value)
 {
-    QString delim = "::+::";
+    QString delim = XML_DELIM;
     
     return value.split(delim);
 }
