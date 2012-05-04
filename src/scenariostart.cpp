@@ -7,7 +7,7 @@
 ScenarioStart::ScenarioStart(QPointF location, QGraphicsItem *parent) : Icon(location, parent)
 {
     // allows setting of the base rectangle of dragitem
-    m_shapetype = "ScenarioStart";
+    m_shapetype = "Scenario Start";
 
     // In general, leave this block below running for loading images
     m_width= 25;
@@ -28,7 +28,7 @@ ScenarioStart::ScenarioStart(QGraphicsItem *parent, int id, int xsize, int ysize
     m_id = id;
     m_width = 25;
     m_height = 25;
-    m_shapetype = "ScenarioStart";
+    m_shapetype = "Scenario Start";
 
 
     this->setPos(xpos,ypos);

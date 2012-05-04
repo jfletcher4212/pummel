@@ -7,7 +7,7 @@
 ScenarioEnd::ScenarioEnd(QPointF location, QGraphicsItem *parent) : Icon(location, parent)
 {
     // allows setting of the base rectangle of dragitem
-    m_shapetype = "ScenarioEnd";
+    m_shapetype = "Scenario End";
 
     // In general, leave this block below running for loading images
     m_width= 25;
@@ -28,7 +28,7 @@ ScenarioEnd::ScenarioEnd(QGraphicsItem *parent, int id, int xsize, int ysize, in
     m_id = id;
     m_width = 25;
     m_height = 25;
-    m_shapetype = "ScenarioEnd";
+    m_shapetype = "Scenario End";
 
     this->setPos(xpos,ypos);
 
