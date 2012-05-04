@@ -26,8 +26,8 @@ ScenarioStart::ScenarioStart(QGraphicsItem *parent, int id, int xsize, int ysize
 {
     // allows setting of the base rectangle of dragitem
     m_id = id;
-    m_width = xsize;
-    m_height = ysize;
+    m_width = 25;
+    m_height = 25;
     m_shapetype = "ScenarioStart";
 
 

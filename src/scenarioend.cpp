@@ -26,8 +26,8 @@ ScenarioEnd::ScenarioEnd(QGraphicsItem *parent, int id, int xsize, int ysize, in
 {
     // allows setting of the base rectangle of dragitem
     m_id = id;
-    m_width = xsize;
-    m_height = ysize;
+    m_width = 25;
+    m_height = 25;
     m_shapetype = "ScenarioEnd";
 
     this->setPos(xpos,ypos);
