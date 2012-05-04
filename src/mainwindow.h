@@ -2,10 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "toolbar.h"
+#include "global.h"
 #include "optionsdialog.h"
 #include "borderlayout.h"
-#include "global.h"
+#include "hintbox.h"
+
 
 class QAction;
 class QActionGroup;
@@ -18,6 +19,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow();
+//    ~MainWindow();
 
 protected:
     void contextMenuEvent(QContextMenuEvent *event);
@@ -32,8 +34,12 @@ private slots:
     void cut();
     void copy();
     void paste();
+    void deleteObj();
+    void deleteSelected();
     void newTab();
+    void newTab(QString filename, QList<Icon*> item_list, QList<lineBody*> line_list, QString d_type);
     void saveAsFile();
+    void saveFile();
     void openFile();
     void closeTab();
     void bold();
@@ -45,13 +51,16 @@ private slots:
     void setLineSpacing();
     void setParagraphSpacing();
     void about();
+    void hints();
     void aboutQt();
-
+    void exit();
+    // MVC logic methods
+    //void write_xml(Icon **icon_list, int size, QString filename);
+    
 
 private:
 
     QWidget *widget;
-    Toolbar *toolbar;
     BorderLayout *layout;
 
     int next_tab_num;
@@ -59,6 +68,9 @@ private:
 
     void createActions();
     void createMenus();
+    
+    // helper for xml reading
+    QMap<QString, QString> parsePerson(QXmlStreamReader& xml);
 
     QMenu *fileMenu;
     QMenu *editMenu;
@@ -67,15 +79,18 @@ private:
     QMenu *objectsMenu;
     QActionGroup *alignmentGroup;
     QAction *newAct;
-    QAction *openAct;
+    QAction *closeAct;
     QAction *saveAct;
-    QAction *printAct;
+    QAction *saveAsAct;
+    QAction *openAct;
     QAction *exitAct;
     QAction *undoAct;
     QAction *redoAct;
     QAction *cutAct;
     QAction *copyAct;
     QAction *pasteAct;
+    QAction *deleteObjAct;
+    QAction *deleteSelectedAct;
     QAction *boldAct;
     QAction *italicAct;
     QAction *leftAlignAct;
@@ -86,8 +101,12 @@ private:
     QAction *setParagraphSpacingAct;
     QAction *aboutAct;
     QAction *aboutQtAct;
+    QAction *hintAct;
 
     QLabel *infoLabel;
+
+    HintBox *hintDialog;
+
 };
 
 #endif
