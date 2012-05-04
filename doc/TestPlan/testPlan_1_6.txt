@@ -1,0 +1,43 @@
+INTRODUCTION
+This test plan is designed to test and evaluate functionality in the Pummel UML editor.  It will address GUI elements, file operations, and diagram error checking.
+
+TEST ITEMS
+	Functions To Be Tested
+		Icon Selection (including selecting multiple icons)
+		Icon Insertion
+		Icon Deletion (keyboard, GUI, and right-click)
+		Changing Icon Properties
+		Copy Icon (keyboard, GUI)
+		Cut (keyboard, GUI)
+		Paste(Keyboard, GUI)
+		Moving Icons
+		Icon Scaling
+		Drawing Connecting Lines
+		Deleting Connecting Lines
+		Labeling Lines
+		Toggle Grid On/Off
+		Change Insertion Options
+
+SOFTWARE RISK ISSUES
+	No known risk issues at this time
+
+FEATURES TO BE TESTED
+	High Priority:
+		Icon Insertion
+		Icon Selection (including selecting multiple icons)
+		Icon Deletion (keyboard, GUI, and right-click)
+		Changing Icon Properties
+	Medium Priority:
+		Change Insertion Options
+		Moving Icons
+		Icon Scaling
+		Drawing Connecting Lines
+		Deleting Connecting Lines
+		Labeling Lines
+	Low Priority:
+		Toggle Grid On/Off
+		Copy Icon (keyboard, GUI)
+		Cut (keyboard, GUI)
+		Paste(Keyboard, GUI)
+		Undo
+		Redo
