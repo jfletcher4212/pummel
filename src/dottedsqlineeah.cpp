@@ -5,13 +5,13 @@ dottedsqlineeah::dottedsqlineeah(Icon *sourceReferenceObj, Icon *destinationRefe
 {
     parent = 0;
     scene = 0;
-    m_LineType = Solid_Sq_Line_EAH;
+    m_LineType = Dotted_Sq_Line_EAH;
 }
 
 dottedsqlineeah::dottedsqlineeah(int id_start, int id_end) : lineBody(id_start, id_end)
 {
     set_ids(id_start, id_end);
-    m_LineType = Solid_Sq_Line_EAH;
+    m_LineType = Dotted_Sq_Line_EAH;
     
     m_Color = Qt::black;
     setFlag(QGraphicsItem::ItemIsSelectable, true);
