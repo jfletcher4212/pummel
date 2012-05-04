@@ -35,7 +35,7 @@ ScenarioStart::ScenarioStart(QGraphicsItem *parent, int id, int xsize, int ysize
 
     // In general, leave this block below running for loading images
 
-    if (!m_image.load("icons/ScenarioStart.png"))
+    if (!m_image.load("icons/scenarioStart.png"))
         std::cout << "didn't load image properly\n";  //loads the image for drawing later
 
     // If the relative path fails, uncomment and update the below with full path to images (example below from a mac)
