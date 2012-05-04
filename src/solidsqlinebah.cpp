@@ -28,7 +28,7 @@ void solidsqlinebah::paint(QPainter *painter, const QStyleOptionGraphicsItem *op
 {
     option = 0;
     widget = 0;
-
+    
     if (m_SourceReferenceObj->collidesWithItem(m_DestinationReferenceObj))
         return;
     else if (!checkReferences(m_SourceReferenceObj, m_DestinationReferenceObj))
