@@ -17,13 +17,17 @@ public:
 	void test_findObjectCenter(void)
 	{
 
-		QPointF tmpQPoint;//creates the point at 0,0 
-		Icon *TestCB = new ClassBox (tmpQPoint);
-		lineBody *testLB = new solidline(TestCB, TestCB, 0, 0);
-		//findObjectCenter is protected in linebody.h
-		//tmpQPoint = testLB->findObjectCenter(TestCB);
-	
-		//cout<<"\ntestCenter is: " << tmpQPoint.x() << ", " << tmpQPoint.y() << "\n";
+		cout << "Testing findObjectCenter.\n";
+
+		Icon *TestCB1 = new ClassBox (QPointF(0,0));
+		Icon *TestCB2 = new ClassBox (QPointF(10,10));
+		lineBody *testLB = new solidline(TestCB1, TestCB2, 0, 0);
+		TestCB1->setSize(100,100);		
+
+		QPointF result;
+		result = testLB->findObjectCenter(TestCB1);
+
+		TS_ASSERT((result.x() == 50) && (result.y() == 50));	
 
 	}
 
