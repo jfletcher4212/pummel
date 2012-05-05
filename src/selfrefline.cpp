@@ -42,7 +42,7 @@ void selfRefLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
 
     QPointF circleCenter = findSRLCenter(m_SourceReferenceObj);
 
-    qreal radiusy = calcSRRadius(m_SourceReferenceObj);
+    qreal radiusy = calcSRLRadius(m_SourceReferenceObj);
     qreal radiusx = radiusy;
 
     QPointF arrowP1 = calcSRArrowPoint(circleCenter, radiusy);
