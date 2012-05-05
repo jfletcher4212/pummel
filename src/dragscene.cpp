@@ -614,13 +614,8 @@ void DragScene::render_icons(QList<Icon*> icons, QList<lineBody*> lines)
     {
         if(icons[i] != NULL)
         {
-
-	    //qDebug() << "before rendering: " << icons[i]->get_xPos();
-	    //qDebug() << "before rendering: " << icons[i]->get_yPos();
-
+	    // if valid icon, add it to the canvas
 	    this->addItem(icons[i]);
-	    //icons[i]->setPos(event->scenePos());
-	    //add new item to the custom list
 	    scene_items.append(icons[i]);
         }
     }
@@ -628,24 +623,17 @@ void DragScene::render_icons(QList<Icon*> icons, QList<lineBody*> lines)
     // draw the lines
     for ( i = 0; i < lines.length(); i++ )
     {
-	//qDebug() << "in the loop....";
 	if ( lines[i] != NULL )
 	{
-	    //qDebug() << "in the if....";
-            // get the right icons
+            // get the correct start and end icons
 	    tmp_start = find_icon_id(icons, lines[i]->get_id_start());
 	    tmp_end = find_icon_id(icons, lines[i]->get_id_end());
 	    
-	    // set the icons
 	    if ( tmp_start and tmp_end )
 	    {
-		//qDebug() << tmp_start->getID();
-		//qDebug() << tmp_end->getID();
+		// pass the icons to the line through mutators
 		lines[i]->setSourceObject(tmp_start);
 		lines[i]->setDestObject(tmp_end);
-		
-		//qDebug() << lines[i]->getDestinationReferenceObj();
-		//qDebug() << lines[i]->getSourceReferenceObj();
 		
 		// draw the line
 		this->addItem(lines[i]);
@@ -655,7 +643,7 @@ void DragScene::render_icons(QList<Icon*> icons, QList<lineBody*> lines)
 	}
     }
 
-    //qDebug() << "updating....";
+    // update the canvas
     update();
 }
 
@@ -663,13 +651,12 @@ Icon * DragScene::find_icon_id(QList<Icon*> icons, int target_id)
 {
     int i;
 
-    //qDebug() << target_id;
-    
     for ( i = 0; i < icons.length(); i++ )
     {
 	if ( icons[i]->getID() == target_id )
 	{
-	    //qDebug() << "here";
+	    // icon's id matches target id, so
+	    // return icon at this index
 	    return icons[i];
 	}
     }
