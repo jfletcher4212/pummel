@@ -35,14 +35,23 @@ public:
 		
 		int id = 1;
 		int width = 140;
-		int height = 0;
-		int x_pos = 76;
-		int y_pos = 23;
+		int height = 60;
+		int xpos = 76;
+		int ypos = 23;
 		QString label = "Name$:^:&+&:^:$Members\nMember2$:^:&+&:^:$Methods";
 
-		ClassBox box(0, id, width, height, x_pos, y_pos, label);
+		ClassBox box(0, id, width, height, xpos, ypos, label);
 
 		cout << "ClassBox loaded.  Checking parameters." << endl;
+
+		TS_ASSERT_EQUALS(box.m_id, id);
+		TS_ASSERT_EQUALS(box.m_width, width);
+//		box.boundingRect().setHeight(height);
+		TS_ASSERT_EQUALS(box.m_height, height);
+		TS_ASSERT_EQUALS(box.m_xPos, xpos);
+		TS_ASSERT_EQUALS(box.m_yPos, ypos);
+		TS_ASSERT_EQUALS(box.m_width, width);
+		
 
 		QString quick;
 		quick = box.getLabel();
@@ -52,11 +61,16 @@ public:
 		quick = box.getMethods();
 		TS_ASSERT(quick.compare("Methods") == 0);
 
+		box.arrangeBoxes();
+//		box.paint(0,0,0);
+//		box.m_labelBox->setPlainText("giggity");
+//		cout << box.m_labelBox->toPlainText() << endl;
 		//check dimensions
-		m_height = m_labelBox->boundingRect().height
-			+ m_memberBox->boundingRect().height
-			+ m_methodBox->boundingRect().height();
-
+		int new_height;
+		new_height = box.m_labelBox->boundingRect().height()
+			+ box.m_memberBox->boundingRect().height()
+			+ box.m_methodBox->boundingRect().height() + 60;
+		TS_ASSERT_EQUALS(box.m_height, new_height);
 	}
 	//this test does not work. No feasible way to resize individual boxes.
 	void test_arrangeBoxes(void)
