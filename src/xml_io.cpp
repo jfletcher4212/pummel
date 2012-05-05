@@ -27,6 +27,9 @@ Xml_io::~Xml_io()
 {
 }
 
+//////////////////////////////////////////////////////////////////////
+// the method returns the string value corresponding to the
+// diagram type enum value
 QString Xml_io::choose_type(DiagramType d_type)
 {
     if ( d_type == (DiagramType)Class)
@@ -45,6 +48,9 @@ QString Xml_io::choose_type(DiagramType d_type)
     return (QString)"";
 }
 
+//////////////////////////////////////////////////////////////////////
+// writes the contents of m_items (icons in the diagram) and 
+// m_lines (lines in the diagram) as well as diagram type and filename
 void Xml_io::write_xml()
 {
     int i;
@@ -65,26 +71,27 @@ void Xml_io::write_xml()
     // diagram type
     saver.writeTextElement("diagram_type", m_diagram_type);
 
+    // write the icons
     for ( i = 0; i < m_items.length(); i++ )
     {
-    //QString valueAsString = QString::number(valueAsDouble);
-    // wrapper tags coule be the object's individual ID #
-    saver.writeStartElement("icon");
-    saver.writeTextElement("width", QString::number(m_items[i]->getWidth()));
-    saver.writeTextElement("height", QString::number(m_items[i]->getHeight()));
-    saver.writeTextElement("x_pos", QString::number(m_items[i]->get_xPos()));
-    saver.writeTextElement("y_pos", QString::number(m_items[i]->get_yPos()));
-    saver.writeTextElement("label", m_items[i]->get_all());
-    saver.writeTextElement("id", QString::number(m_items[i]->getID()));
-    saver.writeTextElement("shapetype", m_items[i]->reportShapetype() );
-    saver.writeEndElement();
+	//QString valueAsString = QString::number(valueAsDouble);
+	// wrapper tags coule be the object's individual ID #
+	saver.writeStartElement("icon");
+	saver.writeTextElement("width", QString::number(m_items[i]->getWidth()));
+	saver.writeTextElement("height", QString::number(m_items[i]->getHeight()));
+	saver.writeTextElement("x_pos", QString::number(m_items[i]->get_xPos()));
+	saver.writeTextElement("y_pos", QString::number(m_items[i]->get_yPos()));
+	saver.writeTextElement("label", m_items[i]->get_all());
+	saver.writeTextElement("id", QString::number(m_items[i]->getID()));
+	saver.writeTextElement("shapetype", m_items[i]->reportShapetype() );
+	saver.writeEndElement();
     }
     
+    // write the lines
     for ( i = 0; i < m_lines.length(); i++ )
     {
 	saver.writeStartElement("line");
 	saver.writeTextElement("id_start", QString::number(m_lines[i]->get_id_start()) );
-	//qDebug() << "writing: " << m_lines[i]->get_id_start();
 	saver.writeTextElement("id_end", QString::number(m_lines[i]->get_id_end()) );
 	saver.writeTextElement("linetype", QString::number(m_lines[i]->getLinetype()) );
 	saver.writeEndElement();
@@ -95,6 +102,11 @@ void Xml_io::write_xml()
     savefile.close();
 }
 
+//////////////////////////////////////////////////////////////////////
+// parses out all data needed to recreate the diagram from scratch:
+// filename, diagram type, icon properties and line properties
+// based on icon and line properties is able to create list of icons
+// and lines and saves them
 void Xml_io::parse_xml()
 {
     // do a check to ensure the file exists first
@@ -111,37 +123,38 @@ void Xml_io::parse_xml()
     {
 	//read next element
 	QXmlStreamReader::TokenType token = reader.readNext();
-
+	
 	if ( token == QXmlStreamReader::StartDocument )
 	{
 	    continue;
 	}
-
+	
 	if ( token == QXmlStreamReader::StartElement )
 	{
 	    if ( reader.name() == m_filename )
 	    {
 		continue;
 	    }
-
+	    
 	    if ( reader.name() == "diagram_type" )
 	    {
+		// save the diagram type
 		reader.readNext();
 		m_diagram_type = reader.text().toString();
 	    }
-
+	    
 	    if ( reader.name() == "icon" )
 	    {
-		////qDebug() << reader.name();
+		// append found icon to the list
 		icons.append(parse_icon(reader));
 	    }
         
 	    if ( reader.name() == "line" )
 	    {
-		////qDebug() << reader.name();
+		// append found line to the list
 		lines.append(parse_line(reader));
 	    }
-        
+	    
 	}
     }
     
@@ -149,8 +162,13 @@ void Xml_io::parse_xml()
     m_lines = lines;
 }
 
+//////////////////////////////////////////////////////////////////////
+// handles a given icon portion of the xml file. takes the reader
+// as input and parses the icon properties and returns the result
+// of make_icon passing the found properties as input
 Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
 {
+    // default values
     int id = 0;
     int width = 0;
     int height = 0;
@@ -171,52 +189,63 @@ Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
 	{
 	    if( reader.name() == "width")
 	    {
+		// read the width
 		reader.readNext();
 		width = reader.text().toString().toInt();
-		//qDebug() << width;
 	    }
 
 	    if( reader.name() == "height")
 	    {
+		// read the height
 		reader.readNext();
 		height = reader.text().toString().toInt();
 	    }
 
 	    if( reader.name() == "x_pos")
 	    {
+		// read the x position
 		reader.readNext();
 		x_pos = reader.text().toString().toInt();
 	    }
 
 	    if( reader.name() == "y_pos")
 	    {
+		// read the y position
 		reader.readNext();
 		y_pos = reader.text().toString().toInt();
 	    }
 
 	    if( reader.name() == "label")
 	    {
+		// read the icon label
 		reader.readNext();
 		label = reader.text().toString();
 	    }
 
 	    if( reader.name() == "id")
 	    {
+		// read the icon id
 		reader.readNext();
 		id = reader.text().toString().toInt();
 	    }
 
 	    if( reader.name() == "shapetype")
 	    {
+		// read the shapetype
 		reader.readNext();
 		type = reader.text().toString();
 	    }
 	}
     }
-
+    
+    // return a new icon with found properties
     return make_icon(type, id, width, height, x_pos, y_pos, label);
 }
 
+//////////////////////////////////////////////////////////////////////
+// takes a set of icon properties and returns a new icon based
+// on the shapetype value, passing all other values to the icon
+// on instantiation.
 Icon * Xml_io::make_icon(QString type, int id, int width, int height, int x_pos, int y_pos, QString label)
 {
     Icon *ret = NULL;
@@ -241,6 +270,8 @@ Icon * Xml_io::make_icon(QString type, int id, int width, int height, int x_pos,
     {
         ret = new Note(0, width, height, x_pos, y_pos, label);
     }
+    
+    // scenario icons do not hold labels
     else if ( type == "Scenario End" )
     {
 	ret = new ScenarioEnd(0, id, width, height, x_pos, y_pos);
@@ -249,21 +280,21 @@ Icon * Xml_io::make_icon(QString type, int id, int width, int height, int x_pos,
     {
 	ret = new ScenarioStart(0, id, width, height, x_pos, y_pos);
     }
-
-
-    //qDebug() << "just made: " << ret->getID();
+    
+    
     return ret;
 }
 
-
+//////////////////////////////////////////////////////////////////////
+// handles a given line portion of the xml file. takes the reader
+// as input and parses the line properties and returns the result
+// of make_line passing the found properties as input
 lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
 {
+    // default values
     int linetype = -1;
     int id_start = -1;
     int id_end = -1;
-
-    // next element
-    //reader.readNext();
 
     while ( ! (reader.tokenType() == QXmlStreamReader::EndElement &&  reader.name() == "line") )
     {
@@ -274,22 +305,23 @@ lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
 	
 	if ( token == QXmlStreamReader::StartElement )
 	{
-	    //qDebug() << reader.name();
 	    if ( reader.name() == "id_start" )
 	    {
+		// read the id of the line's source icon
 		reader.readNext();
 		id_start = reader.text().toString().toInt();
-		//qDebug() << "reading: " << id_start;
 	    }
-
+	    
 	    if ( reader.name() == "id_end" )
 	    {
+		// read the id of the line's destination icon
 		reader.readNext();
 		id_end = reader.text().toString().toInt();		
 	    }
 
 	    if ( reader.name() == "linetype" )
 	    {
+		// read the line type (enum value)
 		reader.readNext();
 		linetype = reader.text().toString().toInt();
 	    }
@@ -299,7 +331,10 @@ lineBody * Xml_io::parse_line(QXmlStreamReader &reader)
     return make_line(linetype, id_start, id_end);
 }
 
-
+//////////////////////////////////////////////////////////////////////
+// takes a set of line properties and returns a new line based
+// on the linetype value, passing all other values to the line
+// on instantiation.
 lineBody * Xml_io::make_line(int linetype, int id_start, int id_end)
 {
     lineBody *ret = NULL;
