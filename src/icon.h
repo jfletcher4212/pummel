@@ -12,7 +12,7 @@
 // delimiter for multiple icon strings in file i/o
 // should be either super unique or a hash of some kind
 // however it's a low priority
-#define XML_DELIM "$:^:&+&:^:$"
+#define XML_DELIM "::+::"
 
 class Icon : public QGraphicsItem
 {
