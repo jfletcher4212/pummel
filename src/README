@@ -17,3 +17,7 @@ make
 
 # run the application in the background
 ./puml &
+
+
+# note is not available in any diagram type. needs to
+# be available in all types
