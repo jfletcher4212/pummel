@@ -71,7 +71,7 @@ protected:
     QPointF findIntersection (Icon *, QLineF);
     QPointF findObjectCenter(Icon *);
     QPointF findSRLCenter(Icon *);
-    qreal calcSRRadius(Icon *);
+    qreal calcSRLRadius(Icon *);
     QPointF calcSRArrowPoint(QPointF, qreal);
     void squareLine(qreal, QPointF, QPointF, QPointF *, QPointF *);
 
