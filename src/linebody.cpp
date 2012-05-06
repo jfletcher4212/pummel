@@ -49,7 +49,7 @@ QPointF lineBody::findSRLCenter(Icon *obj)
 
 }
 
-qreal lineBody::calcSRRadius(Icon *obj)
+qreal lineBody::calcSRLRadius(Icon *obj)
 {
     int offset = 5;
 
