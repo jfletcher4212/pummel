@@ -30,7 +30,11 @@ public:
 		int height = 60;
 		int xpos = 76;
 		int ypos = 23;
-		QString label = "Name$:^:&+&:^:$Members\nMember2$:^:&+&:^:$Methods";
+		QString label = "Name";
+		label.append(XML_DELIM);
+		label.append("Members\nMember2");
+		label.append(XML_DELIM);
+		label.append("Methods");
 
 		ClassBox box(0, id, width, height, xpos, ypos, label);
 
