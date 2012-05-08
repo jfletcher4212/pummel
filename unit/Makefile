@@ -2,7 +2,7 @@
 ## ## ## ## ## ## ## ## ## ## ##
 ##           MODIFY           ##
 ## ## ## ## ## ## ## ## ## ## ##
-FUNCS=test_simple_instance
+FUNCS=test_simple_instance test_load_instance
 
 ## ## ## ## ## ## ## ## ## ## ##
 ##         VARIABLES          ##
