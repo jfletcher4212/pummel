@@ -1,0 +1,33 @@
+#ifndef ELLIPSE_H
+#define ELLIPSE_H
+
+#include "icon.h"
+#include "textboxdialog.h"
+#include <QtGui>
+#include <QGraphicsItem>
+#include <QImage>
+
+#include "markerbox.h"
+class Ellipse : public Icon
+{
+
+
+protected:
+    QRectF boundingRect() const;    //sets a reference rectangle to contain it
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
+    void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
+    void setValues();
+    int m_labelheight, m_labelwidth;
+
+private:
+
+    void arrangeBoxes();
+
+public:
+
+    Ellipse(QPointF = QPointF(0,0), QGraphicsItem *parent = 0);
+    Ellipse(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString label);
+
+};
+
+#endif // ELLIPSE_H
