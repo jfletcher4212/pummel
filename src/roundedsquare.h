@@ -19,6 +19,8 @@ private:
     QString m_members;
     void setRect();
     void arrangeBoxes();
+    int m_labelheight, m_labelwidth, m_memberheight, m_memberwidth;
+    QFont m_lfont;
 
 protected:
     QRectF boundingRect() const;
@@ -27,8 +29,8 @@ protected:
     void setValues();
 
 public:
-    RoundedSquare(QGraphicsItem *parent = 0);
-    RoundedSquare(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString members);
+    RoundedSquare(QPointF = QPointF(0,0), QGraphicsItem *parent = 0);
+    RoundedSquare(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString members);
     ~RoundedSquare();
     QString getLabel(), getMembers();
     void setLabel(QString), setMembers(QString);

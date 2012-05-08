@@ -23,6 +23,12 @@ lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int 
     m_DestinationReferenceObj = destinationReferenceObj;
 }
 
+//ADRIAN: MODIFY THIS TO DO SOMETHING...
+lineBody::lineBody(int id_start, int id_end) : QGraphicsLineItem()
+{
+    set_ids(id_start, id_end);
+}
+
 QPointF lineBody::findObjectCenter(Icon *obj)
 {
     QPointF centerPoint = obj->pos();
@@ -43,7 +49,7 @@ QPointF lineBody::findSRLCenter(Icon *obj)
 
 }
 
-qreal lineBody::calcSRRadius(Icon *obj)
+qreal lineBody::calcSRLRadius(Icon *obj)
 {
     int offset = 5;
 

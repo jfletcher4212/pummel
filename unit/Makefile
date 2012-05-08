@@ -32,6 +32,9 @@ SRC_LIBS= -L/usr/lib -lQtGui -lQtCore -lpthread -lgcov
 ## ## ## ## ## ## ## ## ## ## ##
 ##           RULES            ##
 ## ## ## ## ## ## ## ## ## ## ##
+## default rule: not allowed
+"": 
+	# please specify a rule. for a list of rules run 'make help'
 
 ## collection rules
 all_report: all_coverage

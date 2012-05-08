@@ -4,10 +4,10 @@
 #include <QString>
 
 
-ScenarioEnd::ScenarioEnd(QGraphicsItem *parent) : Icon(parent)
+ScenarioEnd::ScenarioEnd(QPointF location, QGraphicsItem *parent) : Icon(location, parent)
 {
     // allows setting of the base rectangle of dragitem
-    m_shapetype = "ScenarioEnd";
+    m_shapetype = "Scenario End";
 
     // In general, leave this block below running for loading images
     m_width= 25;
@@ -22,18 +22,19 @@ ScenarioEnd::ScenarioEnd(QGraphicsItem *parent) : Icon(parent)
       //  std::cout << "didn't load image properly\n";  //loads the image for drawing later
 }
 
-ScenarioEnd::ScenarioEnd(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos) : Icon(parent)
+ScenarioEnd::ScenarioEnd(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos) : Icon(QPointF(xpos, ypos), parent)
 {
     // allows setting of the base rectangle of dragitem
-    m_width = xsize;
-    m_height = ysize;
-    m_shapetype = "ScenarioEnd";
+    m_id = id;
+    m_width = 25;
+    m_height = 25;
+    m_shapetype = "Scenario End";
 
     this->setPos(xpos,ypos);
 
     // In general, leave this block below running for loading images
 
-    if (!m_image.load("icons/ScenarioEnd.png"))
+    if (!m_image.load("icons/scenarioEnd.png"))
         std::cout << "didn't load image properly\n";  //loads the image for drawing later
 
     // If the relative path fails, uncomment and update the below with full path to images (example below from a mac)
@@ -49,6 +50,9 @@ QRectF ScenarioEnd::boundingRect() const
 
 void ScenarioEnd::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
+
+    option = 0;
+    widget = 0;
 
     if(m_width>m_height)
     {

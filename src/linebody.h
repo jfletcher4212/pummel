@@ -22,8 +22,10 @@ enum LineType {No_Line, Solid_Line, Dotted_Line, Solid_Line_SAH, Dotted_Line_SAH
 class lineBody : public QGraphicsLineItem
 {
 public:
-    lineBody(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
+    friend class ut_lineBody;
+	lineBody(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
     lineBody(Icon *, Icon *, int, int, QGraphicsItem *, QGraphicsScene *);
+    lineBody(int, int);
 
     QRectF boundingRect() const;
     QPainterPath shape() const;
@@ -69,7 +71,7 @@ protected:
     QPointF findIntersection (Icon *, QLineF);
     QPointF findObjectCenter(Icon *);
     QPointF findSRLCenter(Icon *);
-    qreal calcSRRadius(Icon *);
+    qreal calcSRLRadius(Icon *);
     QPointF calcSRArrowPoint(QPointF, qreal);
     void squareLine(qreal, QPointF, QPointF, QPointF *, QPointF *);
 

@@ -20,8 +20,6 @@ DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth)
 
     DiagramTypeSelector *selector = new DiagramTypeSelector();
     selector->exec();
-    while (selector->isVisible())
-    {}
 
     type = selector->getType();
 }
@@ -39,7 +37,6 @@ DrawArea::DrawArea(QWidget *parent, int newHeight, int newWidth, QList<Icon*> ic
     
     type = choose_type(d_type);
     
-    //qDebug() << "rendering the icons from drawarea";
     // draw the icons
     scene->render_icons(icons, lines);
 }

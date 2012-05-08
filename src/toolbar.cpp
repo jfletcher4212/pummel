@@ -51,11 +51,13 @@ QGridLayout * Toolbar::initButtons()
     textButton = new QPushButton(tr("Text"));
     lineButton = new QPushButton(tr("Line"));
     gridButton = new QPushButton(tr("Grid"));
+    deleteButton = new QPushButton(tr("Delete Selected"));
 
     // connect buttons to slots
     connect(shapeButton, SIGNAL(clicked()), this, SLOT(insertShape()));
     connect(textButton, SIGNAL(clicked()), this, SLOT(addNote()));
     connect(lineButton, SIGNAL(clicked()), this, SLOT(insertLine()));
+    connect(deleteButton, SIGNAL(clicked()), this, SLOT(deleteSelected()));
 
     /* add created buttons to a grid layout
      * buttons are arranged in a single column
@@ -66,6 +68,7 @@ QGridLayout * Toolbar::initButtons()
     layout->addWidget(lineButton, 1, 0);
     layout->addWidget(textButton, 2, 0);
     layout->addWidget(gridButton, 3, 0);
+    layout->addWidget(deleteButton, 4, 0);
 
     return layout;
 }
@@ -78,7 +81,7 @@ void Toolbar::createActions(){
     addNoneAct->setChecked(true);
     connect(addNoneAct, SIGNAL(triggered()), this, SLOT(addNone()));
 
-    addEllipseAct = new QAction(tr("Ellipse"), this);
+    addEllipseAct = new QAction(tr("Use Case"), this);
     addEllipseAct->setCheckable(true);
     connect(addEllipseAct, SIGNAL(triggered()), this, SLOT(addEllipse()));
 
@@ -86,7 +89,7 @@ void Toolbar::createActions(){
     addClassBoxAct->setCheckable(true);
     connect(addClassBoxAct, SIGNAL(triggered()), this, SLOT(addClassBox()));
 
-    addRoundedSquareAct = new QAction(tr("Rounded Square"), this);
+    addRoundedSquareAct = new QAction(tr("State"), this);
     addRoundedSquareAct->setCheckable(true);
     connect(addRoundedSquareAct, SIGNAL(triggered()), this, SLOT(addRoundedSquare()));
 
@@ -215,6 +218,8 @@ void Toolbar::createActions(){
     gridOffAct = new QAction(tr("Off"), this);
     gridOffAct->setCheckable(true);
     connect(gridOffAct, SIGNAL(triggered()), this, SLOT(gridOff()));
+
+
 }
 
 void Toolbar::createMenus(){
@@ -233,6 +238,7 @@ void Toolbar::createMenus(){
     shapeButton->setMenu(shapeMenu);
     lineButton->setMenu(lineMenu);
     gridButton->setMenu(gridMenu);
+
 }
 
 //filter actions on the toolbar based on the active diagram's type
@@ -279,6 +285,7 @@ void Toolbar::setAvailableActions()
         shapesGroup->addAction(addRoundedSquareAct);
         shapesGroup->addAction(addScenarioEndAct);
         linesGroup->addAction(addSolidLineBAHAct);
+        linesGroup->addAction(addSelfRefLineAct);
 
         break;
     }
@@ -321,6 +328,28 @@ void Toolbar::setAvailableActions()
  * DrawArea object.  Use drawArea.insertShape, and pass in
  * the shape struct
  */
+
+void Toolbar::deleteSelected()
+{
+    int iconSelectedIndex = -1;
+    for(int i = 0; i < canvas.at(tabWidget->currentIndex())->scene->getObjectList().size(); i++)
+    {
+        if(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(i)->isSelected())
+        {
+            iconSelectedIndex = i;
+        }
+    }
+
+    if(iconSelectedIndex < 0)
+    {
+        return;
+    }
+    else
+    {
+        // this needs to also do an index shift or file loading will break
+        canvas.at(tabWidget->currentIndex())->scene->deleteItem(canvas.at(tabWidget->currentIndex())->scene->getObjectList().at(iconSelectedIndex));
+    }
+}
 
 void Toolbar::insertShape(){
     shapeButton->showMenu();

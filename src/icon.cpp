@@ -10,13 +10,16 @@
 
 int Icon::m_next_id = 1;
 
-Icon::Icon(QGraphicsItem *parent) : QGraphicsItem(parent)
+Icon::Icon(QPointF location, QGraphicsItem *parent) : QGraphicsItem(parent)
 {
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
     m_width = 100;
     m_height = 100;
     m_state = 0;
+    m_xPos = location.x();
+    m_yPos = location.y();
+
 //    m_label = "";
     m_labelBox = new QGraphicsTextItem;
 
@@ -134,8 +137,8 @@ void Icon::paintMarkerBoxes()
 void Icon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     m_state = 2;
-    this->grabMouse();  // icon will take all mouse actions
-    this->setOpacity(0.5); // Dims the object when dragging to indicate dragging
+    //not needed.  This causes the icon to become "sticky"
+//    this->grabMouse();  // icon will take all mouse actions
 }
 
 void Icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -158,7 +161,6 @@ void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
      */
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
-    this->setOpacity(1.0);
     this->ungrabMouse();  // release mouse back to DragScene
 }
 
@@ -209,7 +211,7 @@ QString Icon::get_all()
 
 QStringList Icon::split_all(QString value)
 {
-    QString delim = "::+::";
+    QString delim = XML_DELIM;
     
     return value.split(delim);
 }

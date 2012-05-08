@@ -9,7 +9,9 @@
 #include <QPointF>
 #include "markerbox.h"
 
-// delimiter for file i/o
+// delimiter for multiple icon strings in file i/o
+// should be either super unique or a hash of some kind
+// however it's a low priority
 #define XML_DELIM "::+::"
 
 class Icon : public QGraphicsItem
@@ -39,7 +41,7 @@ protected:
 
 public:
 
-    Icon(QGraphicsItem *parent = 0);
+    Icon(QPointF = QPointF(0,0), QGraphicsItem *parent = 0);
     ~Icon();
 
     // Accessors

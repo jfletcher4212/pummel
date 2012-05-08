@@ -5,6 +5,7 @@
 #include "global.h"
 #include "optionsdialog.h"
 #include "borderlayout.h"
+#include "hintbox.h"
 
 
 class QAction;
@@ -18,6 +19,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow();
+//    ~MainWindow();
 
 protected:
     void contextMenuEvent(QContextMenuEvent *event);
@@ -49,8 +51,9 @@ private slots:
     void setLineSpacing();
     void setParagraphSpacing();
     void about();
+    void hints();
     void aboutQt();
-    
+    void exit();
     // MVC logic methods
     //void write_xml(Icon **icon_list, int size, QString filename);
     
@@ -76,10 +79,10 @@ private:
     QMenu *objectsMenu;
     QActionGroup *alignmentGroup;
     QAction *newAct;
-    QAction *openAct;
+    QAction *closeAct;
     QAction *saveAct;
     QAction *saveAsAct;
-    QAction *printAct;
+    QAction *openAct;
     QAction *exitAct;
     QAction *undoAct;
     QAction *redoAct;
@@ -98,8 +101,12 @@ private:
     QAction *setParagraphSpacingAct;
     QAction *aboutAct;
     QAction *aboutQtAct;
+    QAction *hintAct;
 
     QLabel *infoLabel;
+
+    HintBox *hintDialog;
+
 };
 
 #endif

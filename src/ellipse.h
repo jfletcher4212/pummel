@@ -17,6 +17,7 @@ protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
     void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
     void setValues();
+    int m_labelheight, m_labelwidth;
 
 private:
 
@@ -24,8 +25,8 @@ private:
 
 public:
 
-    Ellipse(QGraphicsItem *parent = 0);
-    Ellipse(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label);
+    Ellipse(QPointF = QPointF(0,0), QGraphicsItem *parent = 0);
+    Ellipse(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString label);
 
 };
 

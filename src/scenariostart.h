@@ -19,8 +19,8 @@ private:
 
 public:
 
-    ScenarioStart(QGraphicsItem *parent = 0);
-    ScenarioStart(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos);
+    ScenarioStart(QPointF = QPointF(0,0), QGraphicsItem *parent = 0);
+    ScenarioStart(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos);
 
 };
 

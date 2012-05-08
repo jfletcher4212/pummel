@@ -21,6 +21,7 @@ private:
     QString m_members, m_methods;
     void setRect();
     void arrangeBoxes();
+    QFont m_lfont;
 
 protected:
 
@@ -29,9 +30,10 @@ protected:
     void setValues();
 
 public:
-    ClassBox();
-    ClassBox(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString members);
+    ClassBox(QPointF);
+    ClassBox(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString members);
     ~ClassBox();
+	friend class ut_classbox;
     QString getLabel(), getMembers(), getMethods();
     QRectF boundingRect() const;
     void setLabel(QString), setMembers(QString), setMethods(QString);

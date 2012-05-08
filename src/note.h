@@ -21,10 +21,11 @@ protected:
 private:
 
     void arrangeBoxes();
+    int m_labelheight, m_labelwidth;
 
 public:
 
-    Note(QGraphicsItem *parent = 0);
+    Note(QPointF = QPointF(0,0), QGraphicsItem *parent = 0);
     Note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QString label);
 
 };
