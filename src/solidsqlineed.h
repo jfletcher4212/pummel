@@ -5,6 +5,7 @@
 class solidsqlineed : public lineBody
 {
 public:
+    //Constructors
     solidsqlineed(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
     solidsqlineed(int id_start, int id_end);
     solidsqlineed(Icon *, Icon *, int,  int, QGraphicsItem *, QGraphicsScene *);
