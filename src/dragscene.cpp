@@ -149,38 +149,30 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
             }
             QGraphicsScene::mousePressEvent(event);
         }
+        //For creating every other type of line
         else if (lineCreate && lineTypeEnum != Self_Ref_Line)
         {
+            //Creates the temporary line between the two reference objects
+            //that is used to determine if the line should exist.
             tempLine = new QGraphicsLineItem(QLineF(event->scenePos(), event->scenePos()));
             tempLine->setPen(QPen(myTempLineColor, 2));
             this->addItem(tempLine);
+
             this->clearSelection();
-            this->m_shapeCreationType = s_None;     //stop creating shapes when lines are created
+
+            //Stop creating shapes when lines are created
+            this->m_shapeCreationType = s_None;
         }
+        //For creating self referencing lines
         else if(lineCreate && lineTypeEnum == Self_Ref_Line)
         {
-            //int indexStart, indexEnd;
-            //indexStart = sceneItemAt(tempLine->line().p1());
-            //indexEnd = sceneItemAt(tempLine->line().p2());
-
-            //Icon *initRefObj = scene_items.at(indexStart);
-            //Icon *finRefObj = scene_items.at(indexEnd);
-
-            //unneccesary with new if-statement condition above
-    /*
-            if(this->sceneItemAt(event->scenePos()) < 0)
-            {
-                // exit routine if no source object was clicked
-                // DEV debugging indicates this routine may be entered three time.
-                //Need to discover why.
-
-                return;
-            }
-    */
+            //Retrieves the icon's id and list index
             int self_idx = this->sceneItemAt(event->scenePos());
             Icon *item = scene_items.at(self_idx);
-        int self_id = item->getID();
+            int self_id = item->getID();
 
+            //Creates the self reference line, sets its icon ids,
+            //and adds it to the list of lines.
             selfRefLine *newLine = new selfRefLine(item, item, 0, 0);
             newLine->set_ids(self_id, self_id);
             this->scene_lines.append(newLine);
@@ -276,6 +268,9 @@ void DragScene::mousePressEvent(QGraphicsSceneMouseEvent *event)
 
 void DragScene::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
+    //If your line exists then a temporary black line that can
+    //be observed is drawn until the user releases the mouse.
+    //Otherwise you perform standard mouse move events.
     if(lineCreate && tempLine != 0)
     {
         QLineF newLine(tempLine->line().p1(), event->scenePos());
@@ -339,34 +334,42 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     }
     else if(lineCreate && tempLine != 0)
     {
+        //Get the source and reference destination object's
+        //list index
         int indexStart, indexEnd;
         indexStart = sceneItemAt(tempLine->line().p1());
         indexEnd = sceneItemAt(tempLine->line().p2());
 
-    // id saving
-    int id_start, id_end = -1;
-    id_start = scene_items.at(indexStart)->getID();
+        // id saving
+        int id_start, id_end = -1;
+        id_start = scene_items.at(indexStart)->getID();
 
-    if ( indexEnd > 0 )
-    {
-        id_end = scene_items.at(indexEnd)->getID();
-    }
+        //Makes sure that the destination reference objects
+        //id is not a garbage value.
+        if ( indexEnd > 0 )
+        {
+            id_end = scene_items.at(indexEnd)->getID();
+        }
 
-
+        //Removes our black temporary line from the scene
         removeItem(tempLine);
-        //delete tempLine;
+
         if(indexStart == indexEnd || indexStart < 0 || indexEnd < 0)
         {
             // do nothing
         }
         else
         {
+            //Create pointers to the source and destination
+            //reference objects.
             Icon *initRefObj = scene_items.at(indexStart);
             Icon *finRefObj = scene_items.at(indexEnd);
-            //newLine->setColor();
-            //initRefObj->addArrow(arrow);
-            //finRefObj->addArrow(arrow);
 
+            //Determine the type of line you are creating,
+            //create that line using it's source and destination
+            //reference objects, set its reference object ids,
+            //add the item to the scene and the line list, and set
+            //its z value.
             if(lineTypeEnum == Solid_Line)
             {
                 solidline *newLine = new solidline(initRefObj, finRefObj, 0, 0);
@@ -439,11 +442,13 @@ void DragScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
                 this->scene_lines.append(newLine);
                 newLine->setZValue(-1);
             }
-            // newLine->updatePosition();
         }
+
+        //Delete the temp line and reset it back to 0.
         delete tempLine;
         tempLine = 0;
     }
+
     // update/redraw the marker boxes of all item in the dragscene
     for(int i = 0; i < scene_items.size(); i++)
     {
