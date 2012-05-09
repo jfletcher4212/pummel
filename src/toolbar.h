@@ -40,19 +40,17 @@ public:
     void setAvailableActions();
 
     //parameters for shapes
-    shapeParams shape;
+//    shapeParams shape;
 
     //parameters for lines
-    lineParams line;
+//    lineParams line;
 
     //parameters for text
-    textParams text;
+//    textParams text;
 
 public slots:
     void insertShape();
     void insertLine();
-    void insertText();
-    //void showOptions();
 
     void addClassBox();
     void addEllipse();

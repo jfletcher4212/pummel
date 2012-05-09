@@ -15,38 +15,19 @@ Toolbar::Toolbar(QWidget *parent) :
     this->setWindowModality(Qt::NonModal);
     options = new OptionsDialog;
 
-    /* set defaults for Param variables
-      */
-    shape.fillColor = "black";
-    shape.name = "pill";
-    shape.weight = 1;
-    text.color = "black";
-    text.font = "Times New Roman";
-    text.size = 1;
-    line.color = "black";
-    line.weight = 1;
-
     createActions();
-//    createMenus();
 
     QGridLayout *layout;
     layout = initButtons();
     setLayout(layout);
 
     createMenus();
-
-/*
-    shapeButton->setMenu(shapeMenu);
-    lineButton->setMenu(lineMenu);
-    gridButton->setMenu(gridMenu);
-*/
 }
 
 //create buttons and add to layout
 QGridLayout * Toolbar::initButtons()
 {
     //create buttons
-    //shapeButton = new QPushButton(tr("Shape"), this);
     shapeButton = new QPushButton(tr("Shape"));
     textButton = new QPushButton(tr("Text"));
     lineButton = new QPushButton(tr("Line"));
@@ -278,7 +259,6 @@ void Toolbar::setAvailableActions()
  * DrawArea object.  Use drawArea.insertShape, and pass in
  * the shape struct
  */
-
 void Toolbar::deleteSelected()
 {
     int iconSelectedIndex = -1;
@@ -301,33 +281,14 @@ void Toolbar::deleteSelected()
     }
 }
 
-void Toolbar::insertShape(){
+void Toolbar::insertShape()
+{
     shapeButton->showMenu();
 }
 
-/*  add text into the drawing area. Use the parent's
- * DrawArea object.  Use drawArea.insertText, and pass in
- * the text struct
- */
-void Toolbar::insertText()
-{
-
-}
-
-/*  add a line into the drawing area. Use the parent's
- * DrawArea object.  Use drawArea.insertLine, and pass in
- * the line struct.  Then call drawArea.lineConnect()?
- */
 void Toolbar::insertLine()
 {
-    //Retrieve a pointer to the source icon
-    //DragItem *sourceObj = mou
-    //Retrieve a pointer to the target icon
-    //Create an instance of solidline using these
     lineButton->showMenu();
-    //canvas.at(tabWidget->currentIndex())->scene->setLineCreate(true);
-    //canvas.at(tabWidget->currentIndex())->scene->setSceneCreate(false);
-    //canvas.at(tabWidget->currentIndex())->scene->setLineCreateType(Solid_Line);
 }
 
 void Toolbar::addEllipse(){
@@ -500,7 +461,6 @@ void Toolbar::gridOff(){
 
 void Toolbar::canvasSync()
 {
-    DiagramType d_type = canvas.at(tabWidget->currentIndex())->getDiagramType();
     ShapeCreationType s_type = canvas.at(tabWidget->currentIndex())->getSceneShapeCreationType();
     LineType l_type = canvas.at(tabWidget->currentIndex())->getLineCreationType();
 
@@ -515,49 +475,53 @@ void Toolbar::canvasSync()
         switch(s_type){
         case s_Classbox:
         {
-            this->addClassBox();
-            addClassBoxAct->setChecked(true);
-//            addNoneAct->setChecked(false);
+			addClassBoxAct->activate(QAction::Trigger);
             break;
         }
         case s_Ellipse:
         {
-            this->addEllipse();
-            addEllipseAct->setChecked(true);
+            addEllipseAct->activate(QAction::Trigger);
             break;
         }
         case s_None:
         {
-            this->addNone();
-            addNoneAct->setChecked(true);
+            addNoneAct->activate(QAction::Trigger);
             break;
         }
         case s_Note:
         {
-            this->addNote();
+            addNoteAct->activate(QAction::Trigger);
             break;
         }
         case s_ScenarioStart:
         {
-            this->addScenarioStart();
+            addScenarioStartAct->activate(QAction::Trigger);
             break;
         }
         case s_ScenarioEnd:
         {
-            this->addScenarioEnd();
+           addScenarioEndAct->activate(QAction::Trigger);
             break;
         }
+		case s_RoundedSquare:
+		{
+			addRoundedSquareAct->activate(QAction::Trigger);
+			break;
+		}
+		case s_Actor:
+		{
+			addActorAct->activate(QAction::Trigger);
+			break;
+		}
         default:
         {
             printf("no ShapeCreationType defined...\n");
-            exit(1);
         }
         }
     }
     else
     {
-        this->addNone();
-        addNoneAct->setChecked(true);
+        addNoneAct->activate(QAction::Trigger);
     }
 
     // if the line creation mode is off, set the menu to No Line
@@ -566,68 +530,57 @@ void Toolbar::canvasSync()
         switch(l_type){
         case No_Line:
         {
-            this->addNoLine();
-            addNoLineAct->setChecked(true);
+            addNoLineAct->activate(QAction::Trigger);
             break;
         }
         case Solid_Line:
         {
-            this->addSolidLine();
-            addSolidLineAct->setChecked(true);
+            addSolidLineAct->activate(QAction::Trigger);
             break;
         }
         case Solid_Line_EAH:
         {
-            this->addSolidLineEAH();
-            addSolidLineEAHAct->setChecked(true);
+            addSolidLineEAHAct->activate(QAction::Trigger);
             break;
         }
         case Solid_Sq_Line_EAH:
         {
-            this->addSolidSQLineEAH();
-            addSolidSQLineEAHAct->setChecked(true);
+            addSolidSQLineEAHAct->activate(QAction::Trigger);
             break;
         }
         case Dotted_Sq_Line_EAH:
         {
-            this->addDottedSQLineEAH();
-            addDottedSQLineEAHAct->setChecked(true);
+            addDottedSQLineEAHAct->activate(QAction::Trigger);
             break;
         }
         case Self_Ref_Line:
         {
-            this->addSelfRefLine();
-            addSelfRefLineAct->setChecked(true);
+            addSelfRefLineAct->activate(QAction::Trigger);
             break;
         }
         case Solid_Sq_Line_BAH:
         {
-            this->addSolidSQLineBAH();
-            addSolidSQLineBAHAct->setChecked(true);
+            addSolidSQLineBAHAct->activate(QAction::Trigger);
             break;
         }
         case Solid_Sq_Line_SD:
         {
-            this->addSolidSQLineSD();
-            addSolidSQLineSDAct->setChecked(true);
+            addSolidSQLineSDAct->activate(QAction::Trigger);
             break;
         }
         case Solid_Sq_Line_ED:
         {
-            this->addSolidSQLineED();
-            addSolidSQLineEDAct->setChecked(true);
+            addSolidSQLineEDAct->activate(QAction::Trigger);
             break;
         }
         default:
         {
             printf("no LineType defined...\n");
-            exit(1);
         }
         }
     }
     else
     {
-        this->addNoLine();
-        addNoLineAct->setChecked(true);
+        addNoLineAct->activate(QAction::Trigger);
     }
 }
