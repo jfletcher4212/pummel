@@ -2,6 +2,7 @@
 
 #include <cxxtest/TestSuite.h>
 #include <iostream>
+#include <QString>
 #include "../../src/classbox.h"
 
 using namespace std;
@@ -9,43 +10,84 @@ using namespace std;
 class ut_classbox : public CxxTest::TestSuite
 {
 public:
-	void test_instance(void)
+	void test_simple_instance(void)
 	{
 		ClassBox box(QPointF(0,0));
 
 		cout << endl << "***CLASSBOX INSTANTIATION***" << endl;
-		//check on initial size
-		cout << "\nBOUNDING RECT INITIAL MEASUREMENTS\nHeight: " << box.boundingRect().height() << ". Width: " << box.boundingRect().width() << endl;
-		cout << "m_height: " << box.getHeight() << ". m_width: " << box.getWidth() << endl;
-
 		//check initial contents
-		cout << "\nINITIAL VALUES\nLabel:\t\t'" << box.getLabel().toStdString() 
-			<< "'\nMembers:\t'" << box.getMembers().toStdString() 
-			<< "'\nMethods:\t'" << box.getMethods().toStdString() << "'" << endl;
-
+		TS_ASSERT(box.getLabel().compare("Name") == 0);
+		TS_ASSERT(box.getMembers().compare("Members") == 0);
+		TS_ASSERT(box.getMethods().compare("Methods") == 0);
 	}
 
-	//this test does not work. No feasible way to resize individual boxes.
-	void test_arrangeBoxes(void)
+	void test_load_instance(void)
 	{
+		cout << endl << "***CLASSBOX LOADING***" << endl;
+		
+		int id = 1;
+		int width = 140;
+		int height = 60;
+		int xpos = 76;
+		int ypos = 23;
+		QString label = "Name";
+		label.append(XML_DELIM);
+		label.append("Members\nMember2");
+		label.append(XML_DELIM);
+		label.append("Methods");
 
-		cout << endl << "***CLASSBOX AUTO-RESIZING***" << endl;
+		ClassBox box(0, id, width, height, xpos, ypos, label);
 
-		ClassBox box(QPointF(0,0));
-		int boxWidth[3];
+		cout << "ClassBox loaded.  Checking parameters." << endl;
 
-		boxWidth[0] = box.setWidthsManually(300, 150, 299);
-		boxWidth[1] = box.setWidthsManually(299, 350, 299);
-		boxWidth[2] = box.setWidthsManually(299, 299, 300);
+		TS_ASSERT_EQUALS(box.m_id, id);
+		TS_ASSERT_EQUALS(box.m_width, width);
+		TS_ASSERT_EQUALS(box.m_height, height);
+		TS_ASSERT_EQUALS(box.m_xPos, xpos);
+		TS_ASSERT_EQUALS(box.m_yPos, ypos);
+		TS_ASSERT_EQUALS(box.m_width, width);
+		
 
-		//print boxWidths
-		for (int i=0; i<=2; i++)
-		{
-			cout << "Label width = 300. m_width = " << box.setWidthsManually(300, 150, 299) << endl;
-			
-			cout << "Memberbox width = 350. m_width = " << boxWidth[1] << endl;
-			cout << "Methodbox width = 300. m_width = " << boxWidth[2] << endl;
-		}
+		QString quick;
+		quick = box.getLabel();
+		TS_ASSERT(quick.compare("Name") == 0);
+		quick = box.getMembers();
+		TS_ASSERT(quick.compare("Members\nMember2") == 0);
+		quick = box.getMethods();
+		TS_ASSERT(quick.compare("Methods") == 0);
+
+		box.arrangeBoxes();
+		//check dimensions
+		int new_height;
+		new_height = box.m_labelBox->boundingRect().height()
+			+ box.m_memberBox->boundingRect().height()
+			+ box.m_methodBox->boundingRect().height() + 60;
+		TS_ASSERT_EQUALS(box.m_height, new_height);
 	}
 
+	void test_get_split_all(void)
+	{
+	    int id = 1;
+	    int width = 140;
+	    int height = 60;
+	    int xpos = 76;
+	    int ypos = 23;
+	    QString label = "Name";
+	    label.append(XML_DELIM);
+	    label.append("Members");
+	    label.append(XML_DELIM);
+	    label.append("Methods");
+	    
+	    Icon *box = new ClassBox(0, id, width, height, xpos, ypos, label);
+	    
+	    QString result_str = box->get_all();
+	    QStringList result_lis = box->split_all(label);
+	    
+	    TS_ASSERT_EQUALS(result_str, label);
+	    TS_ASSERT_EQUALS(result_lis[0], "Name");
+	    TS_ASSERT_EQUALS(result_lis[1], "Members");
+	    TS_ASSERT_EQUALS(result_lis[2], "Methods");
+	    
+	    delete box;
+	}
 };

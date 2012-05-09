@@ -12,7 +12,7 @@
 // delimiter for multiple icon strings in file i/o
 // should be either super unique or a hash of some kind
 // however it's a low priority
-#define XML_DELIM "$:^:&+&:^:$"
+#define XML_DELIM "::+::"
 
 class Icon : public QGraphicsItem
 {
@@ -44,6 +44,8 @@ public:
     Icon(QPointF = QPointF(0,0), QGraphicsItem *parent = 0);
     ~Icon();
 
+    friend class test_xml_io;
+    
     // Accessors
     int getWidth();
     int getHeight();

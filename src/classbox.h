@@ -33,6 +33,10 @@ public:
     ClassBox(QPointF);
     ClassBox(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString members);
     ~ClassBox();
+    
+    friend class ut_classbox;
+    friend class test_xml_io;
+    
     QString getLabel(), getMembers(), getMethods();
     QRectF boundingRect() const;
     void setLabel(QString), setMembers(QString), setMethods(QString);
