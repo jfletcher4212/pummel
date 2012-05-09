@@ -7,7 +7,7 @@
 #include "toolbar.h"
 #include "roundedsquare.h"
 #include "scenariostart.h"
-#include "solidlineed.h"
+//#include "solidlineed.h"
 #include "scenarioend.h"
 #include <QList>
 #include <QGraphicsSceneDragDropEvent>
