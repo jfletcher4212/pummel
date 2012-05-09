@@ -206,7 +206,7 @@ QString RoundedSquare::get_all()
     QString delim = XML_DELIM;
     
     //                label      +     delimiter    +        members
-    return m_labelBox->toPlainText().append(delim).append(m_memberBox->toPlainText());
+    return m_label.append(delim).append(m_members);
 }
 
 QStringList RoundedSquare::split_all(QString value)
