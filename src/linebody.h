@@ -17,13 +17,16 @@ class QPainterPath;
 class QPointF;
 QT_END_NAMESPACE
 
+//Enum for every line type
 enum LineType {No_Line, Solid_Line, Dotted_Line, Solid_Line_SAH, Dotted_Line_SAH, Solid_Line_EAH, Dotted_Line_EAH, Solid_Line_SD, Dotted_Line_SD, Solid_Line_ED, Dotted_Line_ED, Solid_Line_BAH, Dotted_Line_BAH, Solid_Square_Line, Dotted_Square_Line, Solid_Sq_Line_SAH, Dotted_Sq_Line_SAH, Solid_Sq_Line_EAH, Dotted_Sq_Line_EAH, Self_Ref_Line, Solid_Sq_Line_BAH, Solid_Sq_Line_SD, Solid_Sq_Line_ED};
 
 class lineBody : public QGraphicsLineItem
 {
 public:
+    //Friend class for unit testing
     friend class ut_lineBody;
-	lineBody(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
+    //Constructors
+    lineBody(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
     lineBody(Icon *, Icon *, int, int, QGraphicsItem *, QGraphicsScene *);
     lineBody(int, int);
 
@@ -59,6 +62,7 @@ public:
 protected:
 
 
+    //Member variables
     Icon *m_SourceReferenceObj;
     Icon *m_DestinationReferenceObj;
     LineType m_LineType;
