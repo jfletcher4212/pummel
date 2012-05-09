@@ -12,7 +12,7 @@ TabManager::TabManager(QWidget *parent) : QTabWidget(parent)
 
 void TabManager::currentChangedSlot(int index)
 {
-    toolbar->canvasSync();
     toolbar->setAvailableActions();
+    toolbar->canvasSync();
 }
 

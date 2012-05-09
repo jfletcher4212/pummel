@@ -343,41 +343,9 @@ lineBody * Xml_io::make_line(int linetype, int id_start, int id_end)
     {
 	ret = new solidline(id_start, id_end);
     }
-    if ( linetype == (LineType)Dotted_Line )
-    {
-	ret = new dottedline(id_start, id_end);
-    }
-    if ( linetype == (LineType)Solid_Line_SAH )
-    {
-	ret = new solidlineSAH(id_start, id_end);
-    }
-    if ( linetype == (LineType)Dotted_Line_SAH )
-    {
-	ret = new dottedlineSAH(id_start, id_end);
-    }
     if ( linetype == (LineType)Solid_Line_EAH )
     {
 	ret = new solidlineeah(id_start, id_end);
-    }
-    if ( linetype == (LineType)Dotted_Line_EAH )
-    {
-	ret = new dottedlineeah(id_start, id_end);
-    }
-    if ( linetype == (LineType)Solid_Line_SD )
-    {
-	ret = new solidlineSD(id_start, id_end);
-    }
-    if ( linetype == (LineType)Dotted_Line_SD )
-    {
-	ret = new dottedlineSD(id_start, id_end);
-    }
-    if ( linetype == (LineType)Solid_Line_ED )
-    {
-	ret = new solidlineed(id_start, id_end);
-    }
-    if ( linetype == (LineType)Dotted_Line_ED )
-    {
-	ret = new dottedlineed(id_start, id_end);
     }
     if ( linetype == (LineType)Solid_Line_BAH )
     {
@@ -386,22 +354,6 @@ lineBody * Xml_io::make_line(int linetype, int id_start, int id_end)
     if ( linetype == (LineType)Dotted_Line_BAH )
     {
 	ret = new dottedlinebah(id_start, id_end);
-    }
-    if ( linetype == (LineType)Solid_Square_Line )
-    {
-	ret = new solidsqline(id_start, id_end);
-    }
-    if ( linetype == (LineType)Dotted_Square_Line )
-    {
-	ret = new dottedsqline(id_start, id_end);
-    }
-    if ( linetype == (LineType)Solid_Sq_Line_SAH )
-    {
-	ret = new solidsqlinesah(id_start, id_end);
-    }
-    if ( linetype == (LineType)Dotted_Sq_Line_SAH )
-    {
-	ret = new dottedsqlinesah(id_start, id_end);
     }
     if ( linetype == (LineType)Solid_Sq_Line_EAH )
     {
