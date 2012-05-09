@@ -12,8 +12,11 @@ mv src.pro puml.pro
 # generage the makefile
 qmake
 
-# build the project and run the application in the background
-make && ./puml &
+# build the project and 
+make 
+
+# run the application in the background
+./puml &
 
 
 # note is not available in any diagram type. needs to
