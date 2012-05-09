@@ -1,8 +1,12 @@
 #include "linebody.h"
 #include <math.h>
 
+//Pi constant for mathematics
 const qreal Pi = 3.14;
 
+/*
+ *Constructors used to set various member variables.
+ */
 lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsLineItem(parent, scene)
 {
     parent = 0;
@@ -23,12 +27,14 @@ lineBody::lineBody(Icon *sourceReferenceObj, Icon *destinationReferenceObj, int 
     m_DestinationReferenceObj = destinationReferenceObj;
 }
 
-//ADRIAN: MODIFY THIS TO DO SOMETHING...
 lineBody::lineBody(int id_start, int id_end) : QGraphicsLineItem()
 {
     set_ids(id_start, id_end);
 }
 
+/*
+ *Uses an objects width and height to calculate it's respective center.
+ */
 QPointF lineBody::findObjectCenter(Icon *obj)
 {
     QPointF centerPoint = obj->pos();
@@ -39,6 +45,9 @@ QPointF lineBody::findObjectCenter(Icon *obj)
     return centerPoint;
 }
 
+/*
+ *Calculates the center of the right side of an object.
+ */
 QPointF lineBody::findSRLCenter(Icon *obj)
 {
     QPointF centerPoint = findObjectCenter(obj);
@@ -49,6 +58,9 @@ QPointF lineBody::findSRLCenter(Icon *obj)
 
 }
 
+/*
+ *Calculates the size of a self referencing line
+ */
 qreal lineBody::calcSRLRadius(Icon *obj)
 {
     int offset = 5;
@@ -56,6 +68,10 @@ qreal lineBody::calcSRLRadius(Icon *obj)
     return ((obj->getHeight()) / 2) - offset;
 }
 
+/*
+ *Determines where the arrowhead for a self
+ *referencing line should start being drawn.
+ */
 QPointF lineBody::calcSRArrowPoint(QPointF centerPoint, qreal radius)
 {
     QPointF arrowP = centerPoint;
@@ -64,6 +80,9 @@ QPointF lineBody::calcSRArrowPoint(QPointF centerPoint, qreal radius)
     return arrowP;
 }
 
+/*
+ *Checks to make sure that a line's reference objects exist.
+ */
 bool lineBody::checkReferences(Icon *obj1, Icon *obj2)
 {
     if(obj1 == NULL || obj2 == NULL)
@@ -72,14 +91,23 @@ bool lineBody::checkReferences(Icon *obj1, Icon *obj2)
         return true;
 }
 
+/*
+ *Makes sure that an arrowhead is capable
+ *of being drawn on this object.
+ */
 bool lineBody::checkInterPoint(QPointF interPoint)
 {
-    if(interPoint.rx() == NULL || interPoint.ry() == NULL)
+    if(interPoint.rx() == 0 || interPoint.ry() == 0)
         return false;
     else
         return true;
 }
 
+/*
+ *Determines the second and third point for a squared line
+ *based upon which quadrant the destination reference objec
+ *falls in to.
+ */
 void lineBody::squareLine(qreal angle, QPointF startPoint, QPointF endPoint, QPointF *secondPointer, QPointF *thirdPointer)
 {
     QPointF secondPoint = *secondPointer;
@@ -133,6 +161,7 @@ QRectF lineBody::boundingRect() const
      */
         .adjusted(-extra, -extra, extra, extra);
 }
+
 /*
  * Virtual Function - QGraphicsItem
  * The shape of an object is used for many things
@@ -142,19 +171,21 @@ QRectF lineBody::boundingRect() const
 QPainterPath lineBody::shape() const
 {
     /*
-     * This first line declares the QPainterPath and
+     * This line declares the QPainterPath and
      * assigns the shape of a basic line to it.
      */
     QPainterPath path = QGraphicsLineItem::shape();
-    /*
-     * This line adds the shape of the arrow head to
-     * the QPainterPath. Causes the program to crash when an arrowhead is clicked
-     */
-    //path.addPolygon(m_ArrowHead);
+
     return path;
 }
 
-QPointF lineBody::findIntersection(Icon *obj, QLineF interLine) //Find the intersection of the line and object, for determining arrow direction
+/*
+ *Checks to make sure that the object is defined to have
+ *an arrowhead drawn on it. If it is then it will determine
+ *what point the interLine intersects with the object and
+ *return that point.
+ */
+QPointF lineBody::findIntersection(Icon *obj, QLineF interLine)
 {
     QPointF interPoint;
     QString iconType = obj->reportShapetype();
@@ -235,18 +266,11 @@ QPointF lineBody::findIntersection(Icon *obj, QLineF interLine) //Find the inter
     return interPoint;
 }
 
+/*
+ *Custom function for determining the angle of a line.
+ */
 double lineBody::getAngle ()
 {
-    /*
-     * The object's line needs to be set for line() to operate
-     * properly, which is done with the line above. However,
-     * not sure whether or not this line has to be set
-     * locally.
-     * Calculates the angle the line makes with the x axis.
-     * line()
-     * acos() is part of the math.h library
-     * dx() and dy() are part of the QLineF class
-     */
     double angle = ::acos(line().dx() / line().length());
     /*
      * Checks to see if the lines vertical component is
@@ -261,6 +285,11 @@ double lineBody::getAngle ()
 
 }
 
+/*
+ *The next four functions calculate where the arrowhead and diamond
+ *points are respectively and either sets pointers equal to them
+ *or feeds the points in to m_ArrowHead.
+ */
 void lineBody::bareArrowHead(double angle, QLineF interLine, QPointF *firstPointer, QPointF *secondPointer)
 {
     qreal arrowSize = 20;
