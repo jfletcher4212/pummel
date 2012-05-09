@@ -475,41 +475,42 @@ void Toolbar::canvasSync()
         switch(s_type){
         case s_Classbox:
         {
-            this->addClassBox();
-            addNoneAct->setChecked(false);
-            addClassBoxAct->setChecked(true);
+			addClassBoxAct->activate(QAction::Trigger);
             break;
         }
         case s_Ellipse:
         {
-            this->addEllipse();
-            addEllipseAct->setChecked(true);
+            addEllipseAct->activate(QAction::Trigger);
             break;
         }
         case s_None:
         {
-            this->addNone();
-            addNoneAct->setChecked(true);
+            addNoneAct->activate(QAction::Trigger);
             break;
         }
         case s_Note:
         {
-            this->addNote();
+            addNoteAct->activate(QAction::Trigger);
             break;
         }
         case s_ScenarioStart:
         {
-            this->addScenarioStart();
+            addScenarioStartAct->activate(QAction::Trigger);
             break;
         }
         case s_ScenarioEnd:
         {
-            this->addScenarioEnd();
+           addScenarioEndAct->activate(QAction::Trigger);
             break;
         }
 		case s_RoundedSquare:
 		{
-			this->addRoundedSquare();
+			addRoundedSquareAct->activate(QAction::Trigger);
+			break;
+		}
+		case s_Actor:
+		{
+			addActorAct->activate(QAction::Trigger);
 			break;
 		}
         default:
@@ -520,8 +521,7 @@ void Toolbar::canvasSync()
     }
     else
     {
-        this->addNone();
-        addNoneAct->setChecked(true);
+        addNoneAct->activate(QAction::Trigger);
     }
 
     // if the line creation mode is off, set the menu to No Line
@@ -530,56 +530,47 @@ void Toolbar::canvasSync()
         switch(l_type){
         case No_Line:
         {
-            this->addNoLine();
-            addNoLineAct->setChecked(true);
+            addNoLineAct->activate(QAction::Trigger);
             break;
         }
         case Solid_Line:
         {
-            this->addSolidLine();
-            addSolidLineAct->setChecked(true);
+            addSolidLineAct->activate(QAction::Trigger);
             break;
         }
         case Solid_Line_EAH:
         {
-            this->addSolidLineEAH();
-            addSolidLineEAHAct->setChecked(true);
+            addSolidLineEAHAct->activate(QAction::Trigger);
             break;
         }
         case Solid_Sq_Line_EAH:
         {
-            this->addSolidSQLineEAH();
-            addSolidSQLineEAHAct->setChecked(true);
+            addSolidSQLineEAHAct->activate(QAction::Trigger);
             break;
         }
         case Dotted_Sq_Line_EAH:
         {
-            this->addDottedSQLineEAH();
-            addDottedSQLineEAHAct->setChecked(true);
+            addDottedSQLineEAHAct->activate(QAction::Trigger);
             break;
         }
         case Self_Ref_Line:
         {
-            this->addSelfRefLine();
-            addSelfRefLineAct->setChecked(true);
+            addSelfRefLineAct->activate(QAction::Trigger);
             break;
         }
         case Solid_Sq_Line_BAH:
         {
-            this->addSolidSQLineBAH();
-            addSolidSQLineBAHAct->setChecked(true);
+            addSolidSQLineBAHAct->activate(QAction::Trigger);
             break;
         }
         case Solid_Sq_Line_SD:
         {
-            this->addSolidSQLineSD();
-            addSolidSQLineSDAct->setChecked(true);
+            addSolidSQLineSDAct->activate(QAction::Trigger);
             break;
         }
         case Solid_Sq_Line_ED:
         {
-            this->addSolidSQLineED();
-            addSolidSQLineEDAct->setChecked(true);
+            addSolidSQLineEDAct->activate(QAction::Trigger);
             break;
         }
         default:
@@ -590,7 +581,6 @@ void Toolbar::canvasSync()
     }
     else
     {
-        this->addNoLine();
-        addNoLineAct->setChecked(true);
+        addNoLineAct->activate(QAction::Trigger);
     }
 }
