@@ -1,3 +1,4 @@
+
 #include "classbox.h"
 #include "classboxdialog.h"
 
@@ -235,7 +236,7 @@ QString ClassBox::get_all()
     QString delim = XML_DELIM;
     
     //                label      +     delimiter    +     members              +         delimiter   +          methods
-    return m_labelBox->toPlainText().append(delim).append(m_memberBox->toPlainText()).append(delim).append(m_methodBox->toPlainText());
+    return m_label.append(delim).append(m_members).append(delim).append(m_methods);
 }
 
 QStringList ClassBox::split_all(QString value)
