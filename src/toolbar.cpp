@@ -677,8 +677,8 @@ void Toolbar::canvasSync()
         case s_Classbox:
         {
             this->addClassBox();
+            addNoneAct->setChecked(false);
             addClassBoxAct->setChecked(true);
-//            addNoneAct->setChecked(false);
             break;
         }
         case s_Ellipse:
@@ -711,7 +711,7 @@ void Toolbar::canvasSync()
         default:
         {
             printf("no ShapeCreationType defined...\n");
-            exit(1);
+//            exit(1);
         }
         }
     }
@@ -854,7 +854,7 @@ void Toolbar::canvasSync()
         default:
         {
             printf("no LineType defined...\n");
-            exit(1);
+//            exit(1);
         }
         }
     }
