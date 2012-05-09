@@ -29,6 +29,8 @@ ScenarioEnd::ScenarioEnd(QGraphicsItem *parent, int id, int xsize, int ysize, in
     m_width = 25;
     m_height = 25;
     m_shapetype = "Scenario End";
+    int x = xsize;
+    x = ysize;
 
     this->setPos(xpos,ypos);
 
