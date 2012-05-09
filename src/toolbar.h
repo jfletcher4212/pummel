@@ -65,27 +65,15 @@ public slots:
 
     void addNoLine();
     void addSolidLine();
-    void addDottedLine();
-    void addSolidLineSAH();
-    void addDottedLineSAH();
-    void addSolidLineEAH();
-    void addDottedLineEAH();
-    void addSolidLineSD();
-    void addDottedLineSD();
-    void addSolidLineED();
-    void addDottedLineED();
     void addSolidLineBAH();
     void addDottedLineBAH();
-    void addSolidSQLine();
-    void addDottedSQLine();
-    void addSolidSQLineSAH();
-    void addDottedSQLineSAH();
-    void addSolidSQLineEAH();
-    void addDottedSQLineEAH();
-    void addSelfRefLine();
     void addSolidSQLineBAH();
     void addSolidSQLineSD();
     void addSolidSQLineED();
+    void addSolidSQLineEAH();
+    void addDottedSQLineEAH();
+    void addSelfRefLine();
+    void addSolidLineEAH();
 
     void deleteSelected();
 
@@ -121,27 +109,15 @@ private:
     QActionGroup *linesGroup;
     QAction *addNoLineAct;
     QAction *addSolidLineAct;
-    QAction *addDottedLineAct;
-    QAction *addSolidLineSAHAct;
-    QAction *addDottedLineSAHAct;
-    QAction *addSolidLineEAHAct;
-    QAction *addDottedLineEAHAct;
-    QAction *addSolidLineSDAct;
-    QAction *addDottedLineSDAct;
-    QAction *addSolidLineEDAct;
-    QAction *addDottedLineEDAct;
     QAction *addSolidLineBAHAct;
     QAction *addDottedLineBAHAct;
-    QAction *addSolidSQLineAct;
-    QAction *addDottedSQLineAct;
-    QAction *addSolidSQLineSAHAct;
-    QAction *addDottedSQLineSAHAct;
-    QAction *addSolidSQLineEAHAct;
-    QAction *addDottedSQLineEAHAct;
-    QAction *addSelfRefLineAct;
     QAction *addSolidSQLineBAHAct;
     QAction *addSolidSQLineSDAct;
     QAction *addSolidSQLineEDAct;
+    QAction *addSolidLineEAHAct;
+    QAction *addSelfRefLineAct;
+    QAction *addSolidSQLineEAHAct;
+    QAction *addDottedSQLineEAHAct;
 
     QAction *addExtendDLBAHAct;
     QAction *addIncludeDLBAHAct;
