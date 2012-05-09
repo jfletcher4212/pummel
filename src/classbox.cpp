@@ -42,7 +42,7 @@ ClassBox::ClassBox(QPointF location)
 ClassBox::ClassBox(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos, int ypos, QString members)
 {
     QStringList tmp = split_all(members);
-    
+ 
     this->setPos(xpos,ypos);
     m_id = id;
     m_xPos = xpos;
@@ -74,7 +74,6 @@ ClassBox::ClassBox(QGraphicsItem *parent, int id, int xsize, int ysize, int xpos
     m_methods = tmp[2];
 
     //set m_memberList's position below m_labelBox, and m_methodList below m_memberList
-    //m_labelBox->setPos(this->pos());
     m_labelBox->setPos(0,0);
     arrangeBoxes();
     //show text boxes
@@ -100,8 +99,7 @@ void ClassBox::arrangeBoxes()
    // printf("boundingRect height: %i\n", (int)this->boundingRect().height());
 
     //change m_height and m_width
-    //match the width of the overall boundary rectangles to the widest one
-    
+    //match the width of the overall boundary rectangle to the widest one
     if(m_width < m_memberBox->boundingRect().width() || m_width < m_methodBox->boundingRect().width()
             || m_width < m_labelBox->boundingRect().width())
     {
@@ -120,20 +118,6 @@ void ClassBox::arrangeBoxes()
             m_width = m_labelBox->boundingRect().width();
         }
     }
-    /*
-    if(m_width < m_labelBox->boundingRect().width())
-    {
-        m_width = m_labelBox->boundingRect().width();
-    }
-    if(m_width < m_memberBox->boundingRect().width())
-    {
-        m_width = m_memberBox->boundingRect().width();
-    }
-    if(m_width < m_methodBox->boundingRect().width())
-    {
-        m_width = m_methodBox->boundingRect().width();
-    }
-    */
 
     if((m_labelBox->boundingRect().height()
             + m_memberBox->boundingRect().height()
@@ -147,7 +131,7 @@ void ClassBox::arrangeBoxes()
     update();
 }
 
-//text is already handled, so paint only makes the boundary boxes
+//set the labelBox text, and paint the boundary boxes
 void ClassBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     option =0;
@@ -158,11 +142,6 @@ void ClassBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     m_memberBox->setPlainText(m_members);
     m_methodBox->setPlainText(m_methods);
 
-/*
-    m_labelBox->boundingRect().setHeight(m_height/3);
-    m_memberBox->boundingRect().setHeight(m_height/3);
-    m_methodBox->boundingRect().setHeight(m_height/3);
-*/
     // draws the white background behind classbox
     painter->setBrush(Qt::white);
 
@@ -191,26 +170,9 @@ void ClassBox::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 
     //draw bounding rectangles
     painter->setPen(pen);
-    /*
-    painter->drawRect(m_labelBox->pos().x(), m_labelBox->pos().y(), m_width, (m_height/3));
-    painter->drawRect(m_memberBox->pos().x(), (int)m_labelBox->pos().y() + (m_height/3), m_width, (m_height/3));
-    painter->drawRect(m_methodBox->pos().x(), (int)m_labelBox->pos().y() + (2*(m_height/3)), m_width, (m_height/3));
-    */
     painter->drawRect(m_labelBox->pos().x(), (int)m_labelBox->pos().y(), m_width, m_labelBox->boundingRect().height());
     painter->drawRect(m_memberBox->pos().x(), (int)m_memberBox->pos().y(), m_width, m_memberBox->boundingRect().height());
     painter->drawRect(m_methodBox->pos().x(), (int)m_methodBox->pos().y(), m_width, m_methodBox->boundingRect().height());
-/*
-    painter->drawRect(m_memberBox->pos().x(), m_memberBox->pos().y(), m_width, memberBoundary.height());
-    painter->drawRect(m_methodBox->pos().x(), m_methodBox->pos().y(), m_width, methodBoundary.height());
-    painter->drawRect(m_labelBox->pos().x(), m_labelBox->pos().y(), m_width, labelBoundary.height());
-*/
-/*
-    QRectF mine = this->boundingRect();
-    pen.setColor(Qt::red);
-    painter->setPen(pen);
-//    painter->drawRect(this->pos().x(), this->pos().y(), mine.width(), mine.height());
-    painter->drawRect(mine);
-*/
     update();
 }
 
@@ -240,38 +202,32 @@ void ClassBox::setValues()
 QString ClassBox::getLabel()
 {
     return m_label;
-//    return m_labelBox->toPlainText();
 }
 
 QString ClassBox::getMembers()
 {
     return m_members;
-//    return m_memberBox->toPlainText();
 }
 
 QString ClassBox::getMethods()
 {
     return m_methods;
-//    return m_methodBox->toPlainText();
 }
 
 //The following 3 methods are mutators
 void ClassBox::setLabel(QString value)
 {
     m_label = value;
-    //m_labelBox->setPlainText(value);
 }
 
 void ClassBox::setMembers(QString value)
 {
     m_members = value;
-    //Box->setPlainText(value);
 }
 
 void ClassBox::setMethods(QString value)
 {
     m_methods = value;
-    //m_methodBox->setPlainText(value);
 }
 
 QString ClassBox::get_all()
