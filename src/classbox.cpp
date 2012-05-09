@@ -235,7 +235,7 @@ QString ClassBox::get_all()
 {
     QString delim = XML_DELIM;
     
-    //                label      +     delimiter    +     members              +         delimiter   +          methods
+    //        label +  delimiter  +     members   +  delimiter   +      methods
     return m_label.append(delim).append(m_members).append(delim).append(m_methods);
 }
 

@@ -44,6 +44,8 @@ public:
     Icon(QPointF = QPointF(0,0), QGraphicsItem *parent = 0);
     ~Icon();
 
+    friend class test_xml_io;
+    
     // Accessors
     int getWidth();
     int getHeight();
