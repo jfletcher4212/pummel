@@ -4,7 +4,7 @@
 # to build on linux:
 
 # generage the .pro file
-qmake -project -unix
+qmake -project -norecursive
 
 # rename the .pro file to the desired executable name
 mv src.pro puml.pro
@@ -12,8 +12,12 @@ mv src.pro puml.pro
 # generage the makefile
 qmake
 
-# build the project
-make
+# build the project and 
+make 
 
 # run the application in the background
 ./puml &
+
+
+# note is not available in any diagram type. needs to
+# be available in all types

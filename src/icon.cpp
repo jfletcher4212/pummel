@@ -206,7 +206,7 @@ void Icon::setMarkers(MarkerBox* a, MarkerBox* b, MarkerBox* c, MarkerBox* d)
 
 QString Icon::get_all()
 {
-    return m_labelBox->toPlainText();
+    return m_label;
 }
 
 QStringList Icon::split_all(QString value)

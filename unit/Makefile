@@ -2,7 +2,7 @@
 ## ## ## ## ## ## ## ## ## ## ##
 ##           MODIFY           ##
 ## ## ## ## ## ## ## ## ## ## ##
-FUNCS=write_xml parse_xml
+FUNCS=ClassBox arrangeBoxes
 
 ## ## ## ## ## ## ## ## ## ## ##
 ##         VARIABLES          ##

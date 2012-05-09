@@ -204,9 +204,20 @@ void RoundedSquare::setMembers(QString value)
 QString RoundedSquare::get_all()
 {
     QString delim = XML_DELIM;
+    QString tmp_label;
+    QString ret;
     
-    //                label      +     delimiter    +        members
-    return m_labelBox->toPlainText().append(delim).append(m_memberBox->toPlainText());
+    // save label
+    tmp_label = m_label;
+    
+    // make return string
+    //        label +  delimiter  +     members   +  delimiter   +      methods    
+    ret = m_label.append(delim).append(m_members);
+    
+    // reset the label
+    m_label = tmp_label;
+    
+    return ret;
 }
 
 QStringList RoundedSquare::split_all(QString value)
