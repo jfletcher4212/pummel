@@ -5,6 +5,7 @@
 class solidlineeah : public lineBody
 {
 public:
+    //Constructors
     solidlineeah(Icon *, Icon *, QGraphicsItem *, QGraphicsScene *);
     solidlineeah(Icon *, Icon *, int,  int, QGraphicsItem *, QGraphicsScene *);
     solidlineeah(int id_start, int id_end);
