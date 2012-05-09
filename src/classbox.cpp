@@ -234,9 +234,23 @@ void ClassBox::setMethods(QString value)
 QString ClassBox::get_all()
 {
     QString delim = XML_DELIM;
+    QString tmp_label;
+    QString ret;
     
-    //        label +  delimiter  +     members   +  delimiter   +      methods
-    return m_label.append(delim).append(m_members).append(delim).append(m_methods);
+    // save label
+    tmp_label = m_label;
+    
+    // make return string
+    //        label +  delimiter  +     members   +  delimiter   +      methods    
+    ret = m_label.append(delim).append(m_members).append(delim).append(m_methods);
+    
+    // reset the label
+    m_label = tmp_label;
+    
+    return ret;
+    
+
+    //return m_label.append(delim).append(m_members).append(delim).append(m_methods);
 }
 
 QStringList ClassBox::split_all(QString value)
