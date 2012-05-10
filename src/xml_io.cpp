@@ -178,7 +178,7 @@ Icon * Xml_io::parse_icon(QXmlStreamReader &reader)
     QString type = "";
 
     // next element
-    reader.readNext();
+    //reader.readNext();
 
     while ( ! (reader.tokenType() == QXmlStreamReader::EndElement &&  reader.name() == "icon") )
     {
