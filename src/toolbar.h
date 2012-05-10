@@ -61,6 +61,7 @@ public slots:
     void addActor();
     void addNone();
 
+    //Slots for adding in lines
     void addNoLine();
     void addSolidLine();
     void addSolidLineBAH();
@@ -103,6 +104,7 @@ private:
     QAction *addActorAct;
     QAction *addNoteAct;
 
+    //Menu and actions for adding in lines
     QMenu *lineMenu;
     QActionGroup *linesGroup;
     QAction *addNoLineAct;

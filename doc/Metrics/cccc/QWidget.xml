@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Detailed report on module QWidget-->
+<CCCC_Project>
+<module_summary>
+<lines_of_code value="0" level="0" />
+<lines_of_code_per_member_function value="******" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<McCabes_cyclomatic_complexity_per_member_function value="******" level="0" />
+<lines_of_code value="0" level="0" />
+<lines_of_code_per_member_function value="********" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+<weighted_methods_per_class_unity value="0" level="0" />
+<weighted_methods_per_class_visibility value="0" level="0" />
+<depth_of_inheritance_tree value="0" level="0" />
+<number_of_children value="5" level="0" />
+<coupling_between_objects value="28" level="0" />
+<IF4 value="0" level="0" />
+<IF4_per_member_function value="********" level="0" />
+<IF4_visible value="0" level="0" />
+<IF4_visible_per_member_function value="********" level="0" />
+<IF4_concrete value="0" level="0" />
+<IF4_concrete_per_member_function value="********" level="0" />
+</module_summary>
+<module_detail>
+</module_detail>
+<procedural_detail>
+</procedural_detail>
+<structural_detail>
+<module>
+<name>QWidget</name>
+<client_module>
+<name>Actor</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/actor.h" line="17" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/actor.cpp" line="47" />
+</extent>
+<name>BorderLayout</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/borderlayout.h" line="53" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/borderlayout.h" line="58" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/borderlayout.cpp" line="45" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/borderlayout.cpp" line="69" />
+</extent>
+<name>ClassBox</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/classbox.h" line="28" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/classbox.cpp" line="136" />
+</extent>
+<name>ClassBoxDialog</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>inheritance</description>
+<source_reference file="../pummel/src/classboxdialog.h" line="16" />
+</extent>
+<name>CollaborationBoxDialog</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>inheritance</description>
+<source_reference file="../pummel/src/collaborationboxdialog.h" line="14" />
+</extent>
+<name>DragView</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragview.h" line="16" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragview.cpp" line="3" />
+</extent>
+<name>DrawArea</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>inheritance</description>
+<source_reference file="../pummel/src/drawarea.h" line="18" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/drawarea.cpp" line="9" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/drawarea.cpp" line="27" />
+</extent>
+<name>Ellipse</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/ellipse.h" line="17" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/ellipse.cpp" line="61" />
+</extent>
+<name>HintBox</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>inheritance</description>
+<source_reference file="../pummel/src/hintbox.h" line="7" />
+</extent>
+<name>MarkerBox</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/markerbox.h" line="12" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/markerbox.cpp" line="16" />
+</extent>
+<name>Note</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/note.h" line="17" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/note.cpp" line="69" />
+</extent>
+<name>OptionsDialog</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/optionsdialog.cpp" line="7" />
+</extent>
+<name>RoundedSquare</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/roundedsquare.h" line="27" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/roundedsquare.cpp" line="95" />
+</extent>
+<name>ScenarioEnd</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/scenarioend.h" line="16" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/scenarioend.cpp" line="53" />
+</extent>
+<name>ScenarioStart</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/scenariostart.h" line="16" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/scenariostart.cpp" line="53" />
+</extent>
+<name>TabManager</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/tabmanager.cpp" line="7" />
+</extent>
+<name>TextBoxDialog</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>inheritance</description>
+<source_reference file="../pummel/src/textboxdialog.h" line="17" />
+</extent>
+<name>Toolbar</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/toolbar.cpp" line="12" />
+</extent>
+<name>dottedlinebah</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dottedlinebah.h" line="14" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dottedlinebah.cpp" line="36" />
+</extent>
+<name>dottedsqlineeah</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dottedsqlineeah.h" line="14" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dottedsqlineeah.cpp" line="37" />
+</extent>
+<name>selfRefLine</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/selfrefline.h" line="14" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/selfrefline.cpp" line="37" />
+</extent>
+<name>solidline</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidline.h" line="13" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidline.cpp" line="27" />
+</extent>
+<name>solidlineBAH</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidlinebah.h" line="14" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidlinebah.cpp" line="36" />
+</extent>
+<name>solidlineeah</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidlineeah.h" line="14" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidlineeah.cpp" line="36" />
+</extent>
+<name>solidsqlinebah</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidsqlinebah.h" line="14" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidsqlinebah.cpp" line="37" />
+</extent>
+<name>solidsqlineeah</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidsqlineeah.h" line="14" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidsqlineeah.cpp" line="37" />
+</extent>
+<name>solidsqlineed</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidsqlineed.h" line="14" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidsqlineed.cpp" line="37" />
+</extent>
+<name>solidsqlinesd</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidsqlinesd.h" line="14" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/solidsqlinesd.cpp" line="38" />
+</extent>
+</client_module>
+<supplier_module>
+</supplier_module>
+</module>
+</structural_detail>
+</CCCC_Project>

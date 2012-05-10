@@ -42,7 +42,7 @@ Note::Note(QGraphicsItem *parent, int xsize, int ysize, int xpos, int ypos, QStr
     m_labelBox->setFlag(QGraphicsItem::ItemIsSelectable, false);
 
     m_label = label;
-    m_labelBox->setPlainText(label);
+    //m_labelBox->setPlainText(label);
     m_labelheight = m_labelwidth = 20;
 
     m_labelBox->setPos(this->pos());

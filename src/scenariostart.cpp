@@ -29,7 +29,8 @@ ScenarioStart::ScenarioStart(QGraphicsItem *parent, int id, int xsize, int ysize
     m_width = 25;
     m_height = 25;
     m_shapetype = "Scenario Start";
-
+    int x = xsize;
+    x= ysize;
 
     this->setPos(xpos,ypos);
 
