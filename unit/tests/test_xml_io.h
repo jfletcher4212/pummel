@@ -197,12 +197,10 @@ public:
       output = test->parse_icon(reader);
       
       // can't test width/height because they are set based on text
-      TS_ASSERT(input->getWidth() == output->getWidth());
-      TS_ASSERT(input->getHeight() == output->getHeight());
       TS_ASSERT(input->get_xPos() == output->get_xPos());
       TS_ASSERT(input->get_yPos() == output->get_yPos());
       TS_ASSERT(input->reportShapetype() == output->reportShapetype());
-      //TS_ASSERT(input->get_all() == output->get_all());
+      TS_ASSERT(input->get_all() == output->get_all());
 
       // cleanup
       delete output;
@@ -268,9 +266,8 @@ public:
       current = test->make_icon(type, id, width, height, xpos, ypos, label);
       
       // check results
-      TS_ASSERT_EQUALS(current->getID(), id);
-      TS_ASSERT_EQUALS(current->getWidth(), width);
-      TS_ASSERT_EQUALS(current->getHeight(), height);
+      if ( type != "Note" )
+	  TS_ASSERT_EQUALS(current->getID(), id);
       TS_ASSERT_EQUALS(current->get_xPos(), xpos);
       TS_ASSERT_EQUALS(current->get_yPos(), ypos);
       
