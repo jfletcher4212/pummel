@@ -128,8 +128,6 @@ void Icon::paintMarkerBoxes()
 void Icon::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     m_state = 2;
-    //not needed.  This causes the icon to become "sticky"
-//    this->grabMouse();  // icon will take all mouse actions
 }
 
 void Icon::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
@@ -153,16 +151,6 @@ void Icon::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
     // Centers the cursor while dragging, as opposed to dragging by the top-left most pixel
     this->ungrabMouse();  // release mouse back to DragScene
-}
-
-QPolygonF Icon::getType()
-{
-    return m_bound;
-}
-
-void Icon::setPolygon()
-{
-    m_bound = QPolygonF(boundingRect());
 }
 
 int Icon::getState()
