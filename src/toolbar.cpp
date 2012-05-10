@@ -29,7 +29,7 @@ QGridLayout * Toolbar::initButtons()
 {
     //create buttons
     shapeButton = new QPushButton(tr("Shape"));
-    textButton = new QPushButton(tr("Text"));
+    textButton = new QPushButton(tr("Note"));
     lineButton = new QPushButton(tr("Line"));
     gridButton = new QPushButton(tr("Grid"));
     deleteButton = new QPushButton(tr("Delete Selected"));
@@ -90,6 +90,7 @@ void Toolbar::createActions(){
     addNoteAct->setCheckable(true);
     connect(addNoteAct, SIGNAL(triggered()), this, SLOT(addNote()));
 
+    //Menu actions for adding in lines.
     addSolidLineAct = new QAction(tr("Interaction"), this);
     addSolidLineAct->setCheckable(true);
     connect(addSolidLineAct, SIGNAL(triggered()), this, SLOT(addSolidLine()));
@@ -475,7 +476,7 @@ void Toolbar::canvasSync()
         switch(s_type){
         case s_Classbox:
         {
-			addClassBoxAct->activate(QAction::Trigger);
+            addClassBoxAct->activate(QAction::Trigger);
             break;
         }
         case s_Ellipse:
@@ -503,16 +504,16 @@ void Toolbar::canvasSync()
            addScenarioEndAct->activate(QAction::Trigger);
             break;
         }
-		case s_RoundedSquare:
-		{
-			addRoundedSquareAct->activate(QAction::Trigger);
-			break;
-		}
-		case s_Actor:
-		{
-			addActorAct->activate(QAction::Trigger);
-			break;
-		}
+        case s_RoundedSquare:
+        {
+            addRoundedSquareAct->activate(QAction::Trigger);
+            break;
+        }
+        case s_Actor:
+        {
+            addActorAct->activate(QAction::Trigger);
+            break;
+        }
         default:
         {
             printf("no ShapeCreationType defined...\n");

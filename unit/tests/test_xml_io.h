@@ -5,14 +5,7 @@
 #include "../../src/global.h"
 #include "../../src/xml_io.h"
 #include "../../src/icon.h"
-#include "../../src/actor.h"
-#include "../../src/ellipse.h"
-#include "../../src/classbox.h"
-#include "../../src/note.h"
-#include "../../src/roundedsquare.h"
-#include "../../src/scenarioend.h"
-#include "../../src/scenariostart.h"
-#include "../../src/scenariostart.h"
+#include "../../src/derived_types.h"
 
 using namespace std;
 
@@ -21,61 +14,102 @@ class test_xml_io : public CxxTest::TestSuite
 public:
   void test_write_xml(void)
   {
-    int size = 0;
     Xml_io *test;
-
-    QList<Icon*> list;
+    
+    int id_start = 0, id_end = 0;
+    
+    QList<Icon*> icons;
+    QList<lineBody*> lines;
     QString filename = "Testfile.ut";
     QString diagram_type = "testtype";
-    Icon *tmp;    
-
+    Icon *tmp_icon;
+    lineBody *tmp_line;
+    
+    ////////////////////////////////////////////////////////////
+    // make the icons
     // actor
-    tmp = new Actor(0, 0, 23, 23, 23, 23, (QString)"test_actor");
-    list.append(tmp);
-    size++;
-    
+    tmp_icon = new Actor(0, 0, 23, 23, 23, 23, (QString)"test_actor");
+    icons.append(tmp_icon);
+        
     // ellipse
-    tmp = new Ellipse(0, 0, 23, 23, 23, 23, (QString)"test_ellipse");
-    list.append(tmp);
-    size++;
-    
+    tmp_icon = new Ellipse(0, 0, 23, 23, 23, 23, (QString)"test_ellipse");
+    icons.append(tmp_icon);
+        
     // classbox
-    tmp = new ClassBox(0, 0, 23, 23, 23, 23, (QString)"test_classbox::+::and::+::this");
-    list.append(tmp);
-    size++;
-        
+    tmp_icon = new ClassBox(0, 0, 23, 23, 23, 23, (QString)"test_classbox::+::and::+::this");
+    icons.append(tmp_icon);
+            
     // note
-    //tmp = new Note(0, 0, 23, 23, 23, 23, (QString)"test_note");
-    //list.append(tmp);
-    
-    // roundedsquare
-    tmp = new RoundedSquare(0, 0, 23, 23, 23, 23, (QString)"test::+::roundedsquare");
-    list.append(tmp);
-    size++;
-
-    // scenariostart
-    tmp = new ScenarioStart(0, 0, 23, 23, 23, 23);
-    list.append(tmp);
-    size++;
+    tmp_icon = new Note(0, 23, 23, 23, 23, (QString)"test_note");
+    icons.append(tmp_icon);
         
+    // roundedsquare
+    tmp_icon = new RoundedSquare(0, 0, 23, 23, 23, 23, (QString)"test::+::roundedsquare");
+    icons.append(tmp_icon);
+    
+    // scenariostart
+    tmp_icon = new ScenarioStart(0, 0, 23, 23, 23, 23);
+    icons.append(tmp_icon);
+            
     // scenarioend
-    tmp = new ScenarioEnd(0, 0, 23, 23, 23, 23);      
-    list.append(tmp);
-    size++;
+    tmp_icon = new ScenarioEnd(0, 0, 23, 23, 23, 23);      
+    icons.append(tmp_icon);
     
+    ////////////////////////////////////////////////////////////
+    // make the lines
+    // solid line
+    tmp_line = new solidline(id_start, id_end);
+    lines.append(tmp_line);
+    
+    // solid line empty ah
+    tmp_line = new solidlineeah(id_start, id_end);
+    lines.append(tmp_line);
+    
+    // solid line bare ah
+    tmp_line = new solidlineBAH(id_start, id_end);
+    lines.append(tmp_line);
+    
+    // dotted line bare ah
+    tmp_line = new dottedlinebah(id_start, id_end);
+    lines.append(tmp_line);
+    
+    // solid sq line empty ah
+    tmp_line = new solidsqlineeah(id_start, id_end);
+    lines.append(tmp_line);
+    
+    // dotted sq line empty ah
+    tmp_line = new dottedsqlineeah(id_start, id_end);
+    lines.append(tmp_line);
+    
+    // self ref line
+    tmp_line = new selfRefLine(id_start, id_end);
+    lines.append(tmp_line);
+    
+    // solid sq line bare ah
+    tmp_line = new solidsqlinebah(id_start, id_end);
+    lines.append(tmp_line);
+    
+    // solid sq line sd
+    tmp_line = new solidsqlinesd(id_start, id_end);
+    lines.append(tmp_line);
+    
+    // solid sq line ed
+    tmp_line = new solidsqlineed(id_start, id_end);
+    lines.append(tmp_line);
+    
+    ////////////////////////////////////////////////////////////
+    // make the xml guy
     test = new Xml_io(filename);
-    test->set_items(list);
-    size++;
+    test->set_items(icons);
+    test->set_lines(lines);
     
+    ////////////////////////////////////////////////////////////
     // run the test
     test->write_xml();
     
-    // write an expected file and diff?
-    // or verify things can be read out?
-    
-    for (int i = 0; i < size-1; i++ )
+    for (int i = 0; i < icons.length(); i++ )
     {
-	delete list[i];
+	delete icons[i];
     }
     
     delete test;
@@ -95,7 +129,6 @@ public:
       delete test;
   }
   
-  // do instantiation better per class
   void test_parse_icon(void)
   {
       
@@ -113,15 +146,15 @@ public:
       help_test_parse_icon(test, current);
       delete current;
 
-      // classbox $:^:&+&:^:$
+      // classbox
       current = new ClassBox(0, 0, 23, 23, 23, 23, (QString)"test_classbox::+::and::+::this");
       help_test_parse_icon(test, current);
       delete current;
 
       // note
-      //current = new Note(0, 0, 23, 23, 23, 23, (QString)"test_note");
-      //help_test_parse_icon(test, current);
-      //delete current;
+      current = new Note(0, 23, 23, 23, 23, (QString)"test_note");
+      help_test_parse_icon(test, current);
+      delete current;
 
       // roundedsquare
       current = new RoundedSquare(0, 0, 23, 23, 23, 23, (QString)"test_rounded::+::square");
@@ -163,12 +196,13 @@ public:
       // run the test
       output = test->parse_icon(reader);
       
+      // can't test width/height because they are set based on text
       TS_ASSERT(input->getWidth() == output->getWidth());
       TS_ASSERT(input->getHeight() == output->getHeight());
       TS_ASSERT(input->get_xPos() == output->get_xPos());
       TS_ASSERT(input->get_yPos() == output->get_yPos());
       TS_ASSERT(input->reportShapetype() == output->reportShapetype());
-      TS_ASSERT(input->get_all() == output->get_all());
+      //TS_ASSERT(input->get_all() == output->get_all());
 
       // cleanup
       delete output;
@@ -200,6 +234,11 @@ public:
       // roundedsquare
       type = "Rounded Square";
       label = "test_rounded::+::square";
+      help_test_make_icon(test, type, label);
+
+      // note
+      type = "Note";
+      label = "some notes";
       help_test_make_icon(test, type, label);
 
       // scenariostart
@@ -240,6 +279,11 @@ public:
       
       delete current;      
   }
+  
+  //void test_parse_line(void)
+  //{
+  //    
+  //}
   
   void test_choose_type(void)
   {

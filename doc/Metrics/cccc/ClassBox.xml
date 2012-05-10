@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Detailed report on module ClassBox-->
+<CCCC_Project>
+<module_summary>
+<lines_of_code value="211" level="0" />
+<lines_of_code_per_member_function value="******" level="0" />
+<McCabes_cyclomatic_complexity value="16" level="0" />
+<McCabes_cyclomatic_complexity_per_member_function value="******" level="2" />
+<lines_of_code value="34" level="0" />
+<lines_of_code_per_member_function value="********" level="2" />
+<lines_of_code_per_line_of_comment value="6.206" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.471" level="0" />
+<weighted_methods_per_class_unity value="18" level="0" />
+<weighted_methods_per_class_visibility value="6" level="0" />
+<depth_of_inheritance_tree value="2" level="0" />
+<number_of_children value="0" level="0" />
+<coupling_between_objects value="11" level="0" />
+<IF4 value="100" level="0" />
+<IF4_per_member_function value="********" level="2" />
+<IF4_visible value="64" level="1" />
+<IF4_visible_per_member_function value="********" level="2" />
+<IF4_concrete value="0" level="0" />
+<IF4_concrete_per_member_function value="********" level="0" />
+</module_summary>
+<module_detail>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.h" line="16" />
+<lines_of_code value="16" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="6" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</module_detail>
+<procedural_detail>
+<member_function>
+<name>ClassBox(QGraphicsItem *,int,int,int,int,int,QString)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/classbox.h" line="34" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="43" />
+</extent>
+<lines_of_code value="32" level="1" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="4" level="0" />
+<lines_of_code_per_line_of_comment value="8.000" level="1" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>ClassBox(QPointF)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/classbox.h" line="33" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="7" />
+</extent>
+<lines_of_code value="27" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="3" level="0" />
+<lines_of_code_per_line_of_comment value="9.000" level="1" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>arrangeBoxes()</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/classbox.h" line="23" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="94" />
+</extent>
+<lines_of_code value="35" level="1" />
+<McCabes_cyclomatic_complexity value="8" level="0" />
+<lines_of_comment value="4" level="0" />
+<lines_of_code_per_line_of_comment value="8.750" level="1" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="2.000" level="0" />
+</member_function>
+<member_function>
+<name>boundingRect()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="187" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>getLabel()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="203" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="1" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>getMembers()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="208" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>getMethods()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="213" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>get_all()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="234" />
+</extent>
+<lines_of_code value="10" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="5" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>mouseDoubleClickEvent(QGraphicsSceneMouseEvent *)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/classbox.h" line="29" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="181" />
+</extent>
+<lines_of_code value="6" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="1" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>paint(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/classbox.h" line="28" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="136" />
+</extent>
+<lines_of_code value="30" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="7" level="0" />
+<lines_of_code_per_line_of_comment value="4.286" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setLabel(QString)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="219" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="1" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setMembers(QString)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="224" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setMethods(QString)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="229" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setRect()</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/classbox.h" line="22" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setValues()</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/classbox.h" line="30" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="193" />
+</extent>
+<lines_of_code value="7" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="2" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setWidthsManually(int,int,int)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="263" />
+</extent>
+<lines_of_code value="8" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>split_all(QString)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="256" />
+</extent>
+<lines_of_code value="5" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>~ClassBox()</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/classbox.h" line="35" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/classbox.cpp" line="86" />
+</extent>
+<lines_of_code value="6" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+</procedural_detail>
+<structural_detail>
+<module>
+<name>ClassBox</name>
+<client_module>
+<name>ClassBoxDialog</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/classboxdialog.cpp" line="3" />
+</extent>
+</client_module>
+<supplier_module>
+<name>Icon</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>inheritance</description>
+<source_reference file="../pummel/src/classbox.h" line="16" />
+</extent>
+<name>QFont</name>
+<visible>false</visible>
+<concrete>true</concrete>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/classbox.h" line="24" />
+</extent>
+<name>QGraphicsItem</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/classbox.h" line="34" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/classbox.cpp" line="43" />
+</extent>
+<name>QGraphicsSceneMouseEvent</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/classbox.h" line="29" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/classbox.cpp" line="181" />
+</extent>
+<name>QGraphicsTextItem</name>
+<visible>false</visible>
+<concrete>false</concrete>
+<extent>
+<description>has by reference</description>
+<source_reference file="../pummel/src/classbox.h" line="19" />
+</extent>
+<name>QPainter</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/classbox.h" line="28" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/classbox.cpp" line="136" />
+</extent>
+<name>QPointF</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/classbox.h" line="33" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/classbox.cpp" line="7" />
+</extent>
+<name>QString</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/classbox.h" line="21" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/classbox.h" line="34" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/classbox.cpp" line="43" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/classbox.cpp" line="219" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/classbox.cpp" line="224" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/classbox.cpp" line="229" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/classbox.cpp" line="256" />
+</extent>
+<name>QStyleOptionGraphicsItem</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/classbox.h" line="28" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/classbox.cpp" line="136" />
+</extent>
+<name>QWidget</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/classbox.h" line="28" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/classbox.cpp" line="136" />
+</extent>
+</supplier_module>
+</module>
+</structural_detail>
+</CCCC_Project>

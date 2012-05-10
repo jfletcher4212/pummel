@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Detailed report on module DragScene-->
+<CCCC_Project>
+<module_summary>
+<lines_of_code value="448" level="0" />
+<lines_of_code_per_member_function value="******" level="0" />
+<McCabes_cyclomatic_complexity value="81" level="0" />
+<McCabes_cyclomatic_complexity_per_member_function value="******" level="2" />
+<lines_of_code value="133" level="0" />
+<lines_of_code_per_member_function value="********" level="2" />
+<lines_of_code_per_line_of_comment value="3.368" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.609" level="0" />
+<weighted_methods_per_class_unity value="29" level="0" />
+<weighted_methods_per_class_visibility value="29" level="0" />
+<depth_of_inheritance_tree value="1" level="0" />
+<number_of_children value="0" level="0" />
+<coupling_between_objects value="12" level="0" />
+<IF4 value="0" level="0" />
+<IF4_per_member_function value="********" level="0" />
+<IF4_visible value="0" level="0" />
+<IF4_visible_per_member_function value="********" level="0" />
+<IF4_concrete value="0" level="0" />
+<IF4_concrete_per_member_function value="********" level="0" />
+</module_summary>
+<module_detail>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="28" />
+<lines_of_code value="18" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="7" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</module_detail>
+<procedural_detail>
+<member_function>
+<name>DragScene(QObject *,int,int)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/dragscene.h" line="35" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="20" />
+</extent>
+<lines_of_code value="16" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="4" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>deleteItem(Icon *)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/dragscene.h" line="60" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="78" />
+</extent>
+<lines_of_code value="23" level="0" />
+<McCabes_cyclomatic_complexity value="4" level="0" />
+<lines_of_comment value="10" level="0" />
+<lines_of_code_per_line_of_comment value="2.300" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>drawBackground(QPainter *,const QRectF &amp;)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/dragscene.h" line="75" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="469" />
+</extent>
+<lines_of_code value="25" level="0" />
+<McCabes_cyclomatic_complexity value="3" level="0" />
+<lines_of_comment value="5" level="0" />
+<lines_of_code_per_line_of_comment value="5.000" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>find_icon_id(QList,int)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/dragscene.h" line="65" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="546" />
+</extent>
+<lines_of_code value="13" level="0" />
+<McCabes_cyclomatic_complexity value="4" level="0" />
+<lines_of_comment value="2" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>getGrid()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="39" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>getGridSize()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="41" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>getIgnore()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="40" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>getLineCreate()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="44" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>getLineCreateType()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="45" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>getLineList()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="43" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>getObjectList()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="42" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>getSceneCreate()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="38" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="1" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>getShapeCreationType()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="47" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>isResizing()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="46" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>mouseDoubleClickEvent(QGraphicsSceneMouseEvent *)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/dragscene.h" line="74" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="461" />
+</extent>
+<lines_of_code value="5" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>mouseMoveEvent(QGraphicsSceneMouseEvent *)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/dragscene.h" line="71" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="269" />
+</extent>
+<lines_of_code value="13" level="0" />
+<McCabes_cyclomatic_complexity value="2" level="0" />
+<lines_of_comment value="3" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>mousePressEvent(QGraphicsSceneMouseEvent *)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/dragscene.h" line="72" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="111" />
+</extent>
+<lines_of_code value="118" level="2" />
+<McCabes_cyclomatic_complexity value="19" level="1" />
+<lines_of_comment value="40" level="0" />
+<lines_of_code_per_line_of_comment value="2.950" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.475" level="0" />
+</member_function>
+<member_function>
+<name>mouseReleaseEvent(QGraphicsSceneMouseEvent *)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/dragscene.h" line="73" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="290" />
+</extent>
+<lines_of_code value="138" level="2" />
+<McCabes_cyclomatic_complexity value="25" level="1" />
+<lines_of_comment value="31" level="0" />
+<lines_of_code_per_line_of_comment value="4.452" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.806" level="0" />
+</member_function>
+<member_function>
+<name>render_icons(QList,QList)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/dragscene.h" line="64" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="502" />
+</extent>
+<lines_of_code value="32" level="1" />
+<McCabes_cyclomatic_complexity value="5" level="0" />
+<lines_of_comment value="8" level="0" />
+<lines_of_code_per_line_of_comment value="4.000" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.625" level="0" />
+</member_function>
+<member_function>
+<name>sceneItemAt(QPointF)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/dragscene.h" line="61" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="44" />
+</extent>
+<lines_of_code value="25" level="0" />
+<McCabes_cyclomatic_complexity value="9" level="0" />
+<lines_of_comment value="19" level="0" />
+<lines_of_code_per_line_of_comment value="1.316" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.474" level="0" />
+</member_function>
+<member_function>
+<name>setGrid(bool)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="54" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setGridSize(int)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="55" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setIgnoreReleaseEvent(bool)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="51" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setLineCreate(bool)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="53" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setLineCreateType(LineType)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="52" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setResizing(bool)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="56" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setSceneCreate(bool)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="50" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="1" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>setShapeCreationType(ShapeCreationType)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.h" line="57" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>testAction()</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/dragscene.h" line="68" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="496" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="2" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+</procedural_detail>
+<structural_detail>
+<module>
+<name>DragScene</name>
+<client_module>
+</client_module>
+<supplier_module>
+<name>Icon</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.h" line="60" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="78" />
+</extent>
+<name>LineType</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="52" />
+</extent>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="83" />
+</extent>
+<name>QColor</name>
+<visible>false</visible>
+<concrete>true</concrete>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="90" />
+</extent>
+<name>QGraphicsLineItem</name>
+<visible>false</visible>
+<concrete>false</concrete>
+<extent>
+<description>has by reference</description>
+<source_reference file="../pummel/src/dragscene.h" line="89" />
+</extent>
+<name>QGraphicsScene</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>inheritance</description>
+<source_reference file="../pummel/src/dragscene.h" line="28" />
+</extent>
+<name>QGraphicsSceneMouseEvent</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.h" line="71" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.h" line="72" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.h" line="73" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.h" line="74" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="111" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="269" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="290" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="461" />
+</extent>
+<name>QList</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="64" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="64" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="65" />
+</extent>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="86" />
+</extent>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="87" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="502" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="502" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="546" />
+</extent>
+<name>QObject</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.h" line="35" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="20" />
+</extent>
+<name>QPainter</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.h" line="75" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="469" />
+</extent>
+<name>QPointF</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="61" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="44" />
+</extent>
+<name>QRectF</name>
+<visible>true</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.h" line="75" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/dragscene.cpp" line="469" />
+</extent>
+<name>bool</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="50" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="51" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="53" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="54" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="56" />
+</extent>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="79" />
+</extent>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="80" />
+</extent>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="82" />
+</extent>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="84" />
+</extent>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/dragscene.h" line="85" />
+</extent>
+</supplier_module>
+</module>
+</structural_detail>
+</CCCC_Project>
