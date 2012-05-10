@@ -64,7 +64,6 @@ public:
     void setMarkers(MarkerBox* a, MarkerBox* b, MarkerBox* c, MarkerBox* d);
     void setState(int x);
     void setSize(int newXSize, int newYSize);  // simple accessor and mutator methods for the size
-    void setText(QString input);		//change the value of m_labelbox
     void set_Pos(int x, int y) { m_xPos = x; m_yPos = y; }
 
     // Utility
