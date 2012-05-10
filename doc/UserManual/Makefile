@@ -1,6 +1,6 @@
 # run make pdf to explicitly generate .pdf gtom .tex
 
-FILE = PUML_Test_Plan
+FILE = Usermanual
 
 $(FILE).pdf: $(FILE).tex
 	pdflatex $(FILE).tex
