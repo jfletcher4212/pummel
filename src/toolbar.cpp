@@ -29,7 +29,7 @@ QGridLayout * Toolbar::initButtons()
 {
     //create buttons
     shapeButton = new QPushButton(tr("Shape"));
-    textButton = new QPushButton(tr("Text"));
+    textButton = new QPushButton(tr("Note"));
     lineButton = new QPushButton(tr("Line"));
     gridButton = new QPushButton(tr("Grid"));
     deleteButton = new QPushButton(tr("Delete Selected"));
