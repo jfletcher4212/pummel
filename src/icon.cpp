@@ -177,6 +177,12 @@ void Icon::setMarkers(MarkerBox* a, MarkerBox* b, MarkerBox* c, MarkerBox* d)
 
 }
 
+void Icon::setText(QString input)
+{
+    m_label = input;
+    m_labelBox->setPlainText(m_label);
+}
+
 QString Icon::get_all()
 {
     return m_label;
