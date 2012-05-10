@@ -1,0 +1,1789 @@
+CCCC_Module@Actor@class@
+CCCC_ModExt@Actor@class@../pummel/src/actor.h@11@definition@F???0@LOC:7 COM:0 MVG:0@0@d@
+CCCC_Module@Arrows@struct@
+CCCC_ModExt@Arrows@struct@../pummel/src/shapes.h@26@definition@????0@LOC:11 COM:1 MVG:0@0@d@
+CCCC_Module@BorderLayout@class@
+CCCC_ModExt@BorderLayout@class@../pummel/src/borderlayout.h@48@definition@T???0@LOC:8 COM:38 MVG:0@0@d@
+CCCC_Module@ClassBox@class@
+CCCC_ModExt@ClassBox@class@../pummel/src/classbox.h@16@definition@F???0@LOC:16 COM:6 MVG:0@0@d@
+CCCC_Module@ClassBoxDialog@class@
+CCCC_ModExt@ClassBoxDialog@class@../pummel/src/classboxdialog.h@16@definition@????0@LOC:22 COM:6 MVG:0@0@d@
+CCCC_Module@CollaborationBoxDialog@class@
+CCCC_ModExt@CollaborationBoxDialog@class@../pummel/src/collaborationboxdialog.h@14@definition@????0@LOC:21 COM:4 MVG:0@0@d@
+CCCC_Module@DiagramType@enum@
+CCCC_ModExt@DiagramType@enum@../pummel/src/drawarea.h@16@definition@?????@LOC:0 COM:0 MVG:0@?@d@
+CCCC_Module@DiagramTypeSelector@class@
+CCCC_ModExt@DiagramTypeSelector@class@../pummel/src/diagramtypeselector.h@9@definition@????0@LOC:9 COM:0 MVG:1@0@d@
+CCCC_Module@DragScene@class@
+CCCC_ModExt@DragScene@class@../pummel/src/dragscene.h@28@definition@F???0@LOC:18 COM:7 MVG:0@0@d@
+CCCC_Module@DragView@class@
+CCCC_ModExt@DragView@class@../pummel/src/dragview.h@13@definition@F???0@LOC:4 COM:4 MVG:0@0@d@
+CCCC_Module@DrawArea@class@
+CCCC_ModExt@DrawArea@class@../pummel/src/drawarea.h@18@definition@????0@LOC:7 COM:3 MVG:1@0@d@
+CCCC_Module@Ellipse@class@
+CCCC_ModExt@Ellipse@class@../pummel/src/ellipse.h@11@definition@F???0@LOC:7 COM:0 MVG:0@0@d@
+CCCC_Module@HintBox@class@
+CCCC_ModExt@HintBox@class@../pummel/src/hintbox.h@7@definition@????0@LOC:13 COM:0 MVG:0@0@d@
+CCCC_Module@Icon@class@
+CCCC_ModExt@Icon@class@../pummel/src/icon.h@17@definition@FT?T0@LOC:17 COM:9 MVG:0@0@d@
+CCCC_Module@ItemWrapper@struct@
+CCCC_ModExt@ItemWrapper@struct@../pummel/src/borderlayout.h@71@definition@F???0@LOC:5 COM:0 MVG:0@0@d@
+CCCC_Module@LineType@@
+CCCC_Module@MainWindow@class@
+CCCC_ModExt@MainWindow@class@../pummel/src/mainwindow.h@16@definition@????0@LOC:77 COM:4 MVG:0@0@d@
+CCCC_Module@MarkerBox@class@
+CCCC_ModExt@MarkerBox@class@../pummel/src/markerbox.h@7@definition@F???0@LOC:11 COM:6 MVG:0@0@d@
+CCCC_Module@Note@class@
+CCCC_ModExt@Note@class@../pummel/src/note.h@11@definition@F???0@LOC:7 COM:0 MVG:0@0@d@
+CCCC_Module@ObStruct@struct@
+CCCC_ModExt@ObStruct@struct@../pummel/src/shapes.h@14@definition@????0@LOC:10 COM:1 MVG:0@0@d@
+CCCC_Module@OptionsDialog@@
+CCCC_Module@Position@enum@
+CCCC_ModExt@Position@enum@../pummel/src/borderlayout.h@51@definition@????0@LOC:0 COM:0 MVG:0@0@d@
+CCCC_Module@QAction@class@
+CCCC_ModExt@QAction@class@../pummel/src/mainwindow.h@11@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@QActionGroup@class@
+CCCC_ModExt@QActionGroup@class@../pummel/src/mainwindow.h@12@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@QColor@@
+CCCC_Module@QContextMenuEvent@@
+CCCC_Module@QDialog@@
+CCCC_Module@QErrorMessage@class@
+CCCC_ModExt@QErrorMessage@class@../pummel/src/optionsdialog.h@17@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_ModExt@QErrorMessage@class@../pummel/src/toolbar.h@26@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@QFont@@
+CCCC_Module@QGraphicsItem@@
+CCCC_Module@QGraphicsLineItem@class@
+CCCC_ModExt@QGraphicsLineItem@class@../pummel/src/linebody.h@12@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@QGraphicsScene@class@
+CCCC_ModExt@QGraphicsScene@class@../pummel/src/linebody.h@13@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@QGraphicsSceneMouseEvent@class@
+CCCC_ModExt@QGraphicsSceneMouseEvent@class@../pummel/src/linebody.h@15@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@QGraphicsTextItem@@
+CCCC_Module@QGraphicsView@@
+CCCC_Module@QGridLayout@class@
+CCCC_ModExt@QGridLayout@class@../pummel/src/optionsdialog.h@18@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_ModExt@QGridLayout@class@../pummel/src/toolbar.h@28@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@QImage@@
+CCCC_Module@QLabel@class@
+CCCC_ModExt@QLabel@class@../pummel/src/mainwindow.h@13@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_ModExt@QLabel@class@../pummel/src/optionsdialog.h@16@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_ModExt@QLabel@class@../pummel/src/toolbar.h@25@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@QLayout@@
+CCCC_Module@QLayoutItem@@
+CCCC_Module@QLineF@@
+CCCC_Module@QList@@
+CCCC_Module@QMainWindow@@
+CCCC_Module@QMenu@class@
+CCCC_ModExt@QMenu@class@../pummel/src/mainwindow.h@14@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@QObject@@
+CCCC_Module@QPainter@@
+CCCC_Module@QPainterPath@class@
+CCCC_ModExt@QPainterPath@class@../pummel/src/linebody.h@16@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@QPointF@class@
+CCCC_ModExt@QPointF@class@../pummel/src/linebody.h@17@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@QPolygonF@@
+CCCC_Module@QRect@@
+CCCC_Module@QRectF@class@
+CCCC_ModExt@QRectF@class@../pummel/src/linebody.h@14@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@QString@@
+CCCC_Module@QStyleOptionGraphicsItem@@
+CCCC_Module@QTabWidget@@
+CCCC_Module@QTextEdit@class@
+CCCC_ModExt@QTextEdit@class@../pummel/src/toolbar.h@27@declaration@????2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@QWidget@@
+CCCC_Module@QXmlStreamReader@@
+CCCC_Module@RoundedSquare@class@
+CCCC_ModExt@RoundedSquare@class@../pummel/src/roundedsquare.h@14@definition@F???0@LOC:15 COM:4 MVG:0@0@d@
+CCCC_Module@ScenarioEnd@class@
+CCCC_ModExt@ScenarioEnd@class@../pummel/src/scenarioend.h@10@definition@F???0@LOC:6 COM:0 MVG:0@0@d@
+CCCC_Module@ScenarioStart@class@
+CCCC_ModExt@ScenarioStart@class@../pummel/src/scenariostart.h@10@definition@F???0@LOC:6 COM:0 MVG:0@0@d@
+CCCC_Module@ShapeCreationType@enum@
+CCCC_ModExt@ShapeCreationType@enum@../pummel/src/dragscene.h@26@definition@?????@LOC:0 COM:0 MVG:0@?@d@
+CCCC_Module@SizeType@enum@
+CCCC_ModExt@SizeType@enum@../pummel/src/borderlayout.h@83@definition@F???0@LOC:0 COM:0 MVG:0@0@d@
+CCCC_Module@TabManager@class@
+CCCC_ModExt@TabManager@class@../pummel/src/tabmanager.h@6@definition@????0@LOC:8 COM:0 MVG:0@0@d@
+CCCC_Module@TextBoxDialog@class@
+CCCC_ModExt@TextBoxDialog@class@../pummel/src/textboxdialog.h@17@definition@????0@LOC:19 COM:6 MVG:0@0@d@
+CCCC_Module@Toolbar@@
+CCCC_Module@Xml_io@class@
+CCCC_ModExt@Xml_io@class@../pummel/src/xml_io.h@10@definition@F???2@LOC:10 COM:0 MVG:0@2@d@
+CCCC_Module@anonymous@@
+CCCC_Module@bool@@
+CCCC_Module@char@builtin@
+CCCC_ModExt@char@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@dottedlinebah@class@
+CCCC_ModExt@dottedlinebah@class@../pummel/src/dottedlinebah.h@5@definition@F???0@LOC:5 COM:0 MVG:0@0@d@
+CCCC_Module@dottedsqlineeah@class@
+CCCC_ModExt@dottedsqlineeah@class@../pummel/src/dottedsqlineeah.h@5@definition@F???0@LOC:5 COM:0 MVG:0@0@d@
+CCCC_Module@double@builtin@
+CCCC_ModExt@double@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@float@builtin@
+CCCC_ModExt@float@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@int@builtin@
+CCCC_ModExt@int@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@lineBody@@
+CCCC_Module@lineParams@struct@
+CCCC_ModExt@lineParams@struct@../pummel/src/params.h@18@definition@????0@LOC:5 COM:1 MVG:0@0@d@
+CCCC_Module@long@builtin@
+CCCC_ModExt@long@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@qreal@@
+CCCC_Module@savePrompt@class@
+CCCC_ModExt@savePrompt@class@../pummel/src/saveprompt.h@19@definition@????0@LOC:14 COM:10 MVG:0@0@d@
+CCCC_Module@selfRefLine@class@
+CCCC_ModExt@selfRefLine@class@../pummel/src/selfrefline.h@5@definition@F???0@LOC:5 COM:0 MVG:0@0@d@
+CCCC_Module@shapeParams@struct@
+CCCC_ModExt@shapeParams@struct@../pummel/src/params.h@10@definition@????0@LOC:6 COM:1 MVG:0@0@d@
+CCCC_Module@shapes@class@
+CCCC_ModExt@shapes@class@../pummel/src/shapes.h@9@definition@F???2@LOC:5 COM:2 MVG:0@2@d@
+CCCC_Module@solidline@class@
+CCCC_ModExt@solidline@class@../pummel/src/solidline.h@5@definition@F???0@LOC:5 COM:0 MVG:0@0@d@
+CCCC_Module@solidlineBAH@class@
+CCCC_ModExt@solidlineBAH@class@../pummel/src/solidlinebah.h@5@definition@F???0@LOC:5 COM:0 MVG:0@0@d@
+CCCC_Module@solidlineeah@class@
+CCCC_ModExt@solidlineeah@class@../pummel/src/solidlineeah.h@5@definition@F???0@LOC:5 COM:0 MVG:0@0@d@
+CCCC_Module@solidsqlinebah@class@
+CCCC_ModExt@solidsqlinebah@class@../pummel/src/solidsqlinebah.h@5@definition@F???0@LOC:5 COM:0 MVG:0@0@d@
+CCCC_Module@solidsqlineeah@class@
+CCCC_ModExt@solidsqlineeah@class@../pummel/src/solidsqlineeah.h@5@definition@F???0@LOC:5 COM:0 MVG:0@0@d@
+CCCC_Module@solidsqlineed@class@
+CCCC_ModExt@solidsqlineed@class@../pummel/src/solidsqlineed.h@5@definition@F???0@LOC:5 COM:0 MVG:0@0@d@
+CCCC_Module@solidsqlinesd@class@
+CCCC_ModExt@solidsqlinesd@class@../pummel/src/solidsqlinesd.h@5@definition@F???0@LOC:5 COM:0 MVG:0@0@d@
+CCCC_Module@string@@
+CCCC_Module@test_xml_io@class@
+CCCC_ModExt@test_xml_io@class@../pummel/src/classbox.h@38@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_ModExt@test_xml_io@class@../pummel/src/icon.h@47@declaration@FT??2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_ModExt@test_xml_io@class@../pummel/src/xml_io.h@16@declaration@????2@LOC:1 COM:1 MVG:0@2@D@
+CCCC_Module@textParams@struct@
+CCCC_ModExt@textParams@struct@../pummel/src/params.h@25@definition@????0@LOC:6 COM:1 MVG:0@0@d@
+CCCC_Module@ut_classbox@class@
+CCCC_ModExt@ut_classbox@class@../pummel/src/classbox.h@37@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Module@void@builtin@
+CCCC_ModExt@void@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Member@Actor@Actor@@(...)@
+CCCC_MemExt@Actor@Actor@@(...)@../pummel/src/actor.h@28@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_Member@Actor@Actor@@(QGraphicsItem *,int,int,int,int,int,QString)@
+CCCC_MemExt@Actor@Actor@@(QGraphicsItem *,int,int,int,int,int,QString)@../pummel/src/actor.h@29@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@Actor@Actor@@(QGraphicsItem *,int,int,int,int,int,QString)@../pummel/src/actor.cpp@21@definition@F????@LOC:14 COM:1 MVG:0@?@d@
+CCCC_Member@Actor@Actor@@(QPointF,QGraphicsItem *)@
+CCCC_MemExt@Actor@Actor@@(QPointF,QGraphicsItem *)@../pummel/src/actor.cpp@4@definition@F????@LOC:10 COM:1 MVG:0@?@d@
+CCCC_Member@Actor@arrangeBoxes@@()@
+CCCC_MemExt@Actor@arrangeBoxes@@()@../pummel/src/actor.h@24@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Actor@arrangeBoxes@@()@../pummel/src/actor.cpp@100@definition@F????@LOC:14 COM:1 MVG:2@?@d@
+CCCC_Member@Actor@boundingRect@@()@
+CCCC_MemExt@Actor@boundingRect@@()@../pummel/src/actor.h@16@declaration@T???1@LOC:1 COM:1 MVG:0@1@D@
+CCCC_MemExt@Actor@boundingRect@@()@../pummel/src/actor.cpp@42@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@Actor@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@Actor@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/actor.h@18@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@Actor@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/actor.cpp@82@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@Actor@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@Actor@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/actor.h@17@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@Actor@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/actor.cpp@47@definition@F????@LOC:21 COM:1 MVG:1@?@d@
+CCCC_Member@Actor@setValues@@()@
+CCCC_MemExt@Actor@setValues@@()@../pummel/src/actor.h@19@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@Actor@setValues@@()@../pummel/src/actor.cpp@88@definition@F????@LOC:8 COM:1 MVG:0@?@d@
+CCCC_Member@BorderLayout@BorderLayout@@(QWidget *,int,int)@
+CCCC_MemExt@BorderLayout@BorderLayout@@(QWidget *,int,int)@../pummel/src/borderlayout.h@53@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@BorderLayout@BorderLayout@@(QWidget *,int,int)@../pummel/src/borderlayout.cpp@45@definition@F????@LOC:6 COM:38 MVG:0@?@d@
+CCCC_Member@BorderLayout@BorderLayout@@(int)@
+CCCC_MemExt@BorderLayout@BorderLayout@@(int)@../pummel/src/borderlayout.h@54@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@BorderLayout@BorderLayout@@(int)@../pummel/src/borderlayout.cpp@52@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@BorderLayout@add@@(QLayoutItem *,Position)@
+CCCC_MemExt@BorderLayout@add@@(QLayoutItem *,Position)@../pummel/src/borderlayout.h@68@declaration@F????@LOC:1 COM:0 MVG:0@?@D@
+CCCC_MemExt@BorderLayout@add@@(QLayoutItem *,Position)@../pummel/src/borderlayout.cpp@197@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@BorderLayout@addItem@@(QLayoutItem *)@
+CCCC_MemExt@BorderLayout@addItem@@(QLayoutItem *)@../pummel/src/borderlayout.h@57@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@BorderLayout@addItem@@(QLayoutItem *)@../pummel/src/borderlayout.cpp@64@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@BorderLayout@addWidget@@(QWidget *,Position)@
+CCCC_MemExt@BorderLayout@addWidget@@(QWidget *,Position)@../pummel/src/borderlayout.h@58@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@BorderLayout@addWidget@@(QWidget *,Position)@../pummel/src/borderlayout.cpp@69@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@BorderLayout@calculateSize@@(SizeType)@
+CCCC_MemExt@BorderLayout@calculateSize@@(SizeType)@../pummel/src/borderlayout.h@84@declaration@T???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@BorderLayout@calculateSize@@(SizeType)@../pummel/src/borderlayout.cpp@202@definition@T????@LOC:19 COM:1 MVG:9@?@d@
+CCCC_Member@BorderLayout@count@@()@
+CCCC_MemExt@BorderLayout@count@@()@../pummel/src/borderlayout.h@61@declaration@T????@LOC:1 COM:0 MVG:0@?@D@
+CCCC_MemExt@BorderLayout@count@@()@../pummel/src/borderlayout.cpp@84@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@BorderLayout@expandingDirections@@()@
+CCCC_MemExt@BorderLayout@expandingDirections@@()@../pummel/src/borderlayout.h@59@declaration@T????@LOC:1 COM:0 MVG:0@?@D@
+CCCC_MemExt@BorderLayout@expandingDirections@@()@../pummel/src/borderlayout.cpp@74@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@BorderLayout@hasHeightForWidth@@()@
+CCCC_MemExt@BorderLayout@hasHeightForWidth@@()@../pummel/src/borderlayout.h@60@declaration@T????@LOC:1 COM:0 MVG:0@?@D@
+CCCC_MemExt@BorderLayout@hasHeightForWidth@@()@../pummel/src/borderlayout.cpp@79@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@BorderLayout@itemAt@@(int)@
+CCCC_MemExt@BorderLayout@itemAt@@(int)@../pummel/src/borderlayout.h@62@declaration@T????@LOC:1 COM:0 MVG:0@?@D@
+CCCC_MemExt@BorderLayout@itemAt@@(int)@../pummel/src/borderlayout.cpp@89@definition@T????@LOC:8 COM:0 MVG:3@?@d@
+CCCC_Member@BorderLayout@minimumSize@@()@
+CCCC_MemExt@BorderLayout@minimumSize@@()@../pummel/src/borderlayout.h@63@declaration@T????@LOC:1 COM:0 MVG:0@?@D@
+CCCC_MemExt@BorderLayout@minimumSize@@()@../pummel/src/borderlayout.cpp@98@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@BorderLayout@setGeometry@@(const QRect &)@
+CCCC_MemExt@BorderLayout@setGeometry@@(const QRect &)@../pummel/src/borderlayout.h@64@declaration@F????@LOC:1 COM:0 MVG:0@?@D@
+CCCC_MemExt@BorderLayout@setGeometry@@(const QRect &)@../pummel/src/borderlayout.cpp@103@definition@F????@LOC:65 COM:0 MVG:8@?@d@
+CCCC_Member@BorderLayout@sizeHint@@()@
+CCCC_MemExt@BorderLayout@sizeHint@@()@../pummel/src/borderlayout.h@65@declaration@T????@LOC:1 COM:0 MVG:0@?@D@
+CCCC_MemExt@BorderLayout@sizeHint@@()@../pummel/src/borderlayout.cpp@182@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@BorderLayout@takeAt@@(int)@
+CCCC_MemExt@BorderLayout@takeAt@@(int)@../pummel/src/borderlayout.h@66@declaration@F????@LOC:1 COM:0 MVG:0@?@D@
+CCCC_MemExt@BorderLayout@takeAt@@(int)@../pummel/src/borderlayout.cpp@187@definition@F????@LOC:9 COM:0 MVG:4@?@d@
+CCCC_Member@BorderLayout@~BorderLayout@@()@
+CCCC_MemExt@BorderLayout@~BorderLayout@@()@../pummel/src/borderlayout.h@55@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@BorderLayout@~BorderLayout@@()@../pummel/src/borderlayout.cpp@57@definition@F????@LOC:6 COM:0 MVG:1@?@d@
+CCCC_Member@ClassBox@ClassBox@@(QGraphicsItem *,int,int,int,int,int,QString)@
+CCCC_MemExt@ClassBox@ClassBox@@(QGraphicsItem *,int,int,int,int,int,QString)@../pummel/src/classbox.h@34@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@ClassBox@ClassBox@@(QGraphicsItem *,int,int,int,int,int,QString)@../pummel/src/classbox.cpp@43@definition@F????@LOC:31 COM:4 MVG:0@?@d@
+CCCC_Member@ClassBox@ClassBox@@(QPointF)@
+CCCC_MemExt@ClassBox@ClassBox@@(QPointF)@../pummel/src/classbox.h@33@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@ClassBox@ClassBox@@(QPointF)@../pummel/src/classbox.cpp@7@definition@F????@LOC:26 COM:3 MVG:0@?@d@
+CCCC_Member@ClassBox@arrangeBoxes@@()@
+CCCC_MemExt@ClassBox@arrangeBoxes@@()@../pummel/src/classbox.h@23@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@ClassBox@arrangeBoxes@@()@../pummel/src/classbox.cpp@94@definition@F????@LOC:34 COM:4 MVG:8@?@d@
+CCCC_Member@ClassBox@boundingRect@@()@
+CCCC_MemExt@ClassBox@boundingRect@@()@../pummel/src/classbox.cpp@187@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@ClassBox@getLabel@@()@
+CCCC_MemExt@ClassBox@getLabel@@()@../pummel/src/classbox.cpp@203@definition@F????@LOC:4 COM:1 MVG:1@?@d@
+CCCC_Member@ClassBox@getMembers@@()@
+CCCC_MemExt@ClassBox@getMembers@@()@../pummel/src/classbox.cpp@208@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@ClassBox@getMethods@@()@
+CCCC_MemExt@ClassBox@getMethods@@()@../pummel/src/classbox.cpp@213@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@ClassBox@get_all@@()@
+CCCC_MemExt@ClassBox@get_all@@()@../pummel/src/classbox.cpp@234@definition@F????@LOC:10 COM:5 MVG:1@?@d@
+CCCC_Member@ClassBox@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@ClassBox@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/classbox.h@29@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@ClassBox@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/classbox.cpp@181@definition@F????@LOC:5 COM:1 MVG:0@?@d@
+CCCC_Member@ClassBox@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@ClassBox@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/classbox.h@28@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@ClassBox@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/classbox.cpp@136@definition@F????@LOC:29 COM:7 MVG:1@?@d@
+CCCC_Member@ClassBox@setLabel@@(QString)@
+CCCC_MemExt@ClassBox@setLabel@@(QString)@../pummel/src/classbox.cpp@219@definition@F????@LOC:4 COM:1 MVG:0@?@d@
+CCCC_Member@ClassBox@setMembers@@(QString)@
+CCCC_MemExt@ClassBox@setMembers@@(QString)@../pummel/src/classbox.cpp@224@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@ClassBox@setMethods@@(QString)@
+CCCC_MemExt@ClassBox@setMethods@@(QString)@../pummel/src/classbox.cpp@229@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@ClassBox@setRect@@()@
+CCCC_MemExt@ClassBox@setRect@@()@../pummel/src/classbox.h@22@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Member@ClassBox@setValues@@()@
+CCCC_MemExt@ClassBox@setValues@@()@../pummel/src/classbox.h@30@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@ClassBox@setValues@@()@../pummel/src/classbox.cpp@193@definition@F????@LOC:6 COM:2 MVG:0@?@d@
+CCCC_Member@ClassBox@setWidthsManually@@(int,int,int)@
+CCCC_MemExt@ClassBox@setWidthsManually@@(int,int,int)@../pummel/src/classbox.cpp@263@definition@F????@LOC:8 COM:0 MVG:1@?@d@
+CCCC_Member@ClassBox@split_all@@(QString)@
+CCCC_MemExt@ClassBox@split_all@@(QString)@../pummel/src/classbox.cpp@256@definition@F????@LOC:5 COM:0 MVG:1@?@d@
+CCCC_Member@ClassBox@~ClassBox@@()@
+CCCC_MemExt@ClassBox@~ClassBox@@()@../pummel/src/classbox.h@35@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@ClassBox@~ClassBox@@()@../pummel/src/classbox.cpp@86@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@ClassBoxDialog@ClassBoxDialog@@(ClassBox *)@
+CCCC_MemExt@ClassBoxDialog@ClassBoxDialog@@(ClassBox *)@../pummel/src/classboxdialog.cpp@3@definition@F????@LOC:18 COM:6 MVG:0@?@d@
+CCCC_Member@ClassBoxDialog@acknowledge@@()@
+CCCC_MemExt@ClassBoxDialog@acknowledge@@()@../pummel/src/classboxdialog.cpp@76@definition@F????@LOC:10 COM:2 MVG:0@?@d@
+CCCC_Member@ClassBoxDialog@buttonSetup@@()@
+CCCC_MemExt@ClassBoxDialog@buttonSetup@@()@../pummel/src/classboxdialog.cpp@67@definition@F????@LOC:7 COM:1 MVG:0@?@d@
+CCCC_Member@ClassBoxDialog@getMembers@@()@
+CCCC_MemExt@ClassBoxDialog@getMembers@@()@../pummel/src/classboxdialog.cpp@102@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@ClassBoxDialog@getMethods@@()@
+CCCC_MemExt@ClassBoxDialog@getMethods@@()@../pummel/src/classboxdialog.cpp@107@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@ClassBoxDialog@getName@@()@
+CCCC_MemExt@ClassBoxDialog@getName@@()@../pummel/src/classboxdialog.cpp@97@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@ClassBoxDialog@initFields@@()@
+CCCC_MemExt@ClassBoxDialog@initFields@@()@../pummel/src/classboxdialog.cpp@50@definition@F????@LOC:12 COM:5 MVG:0@?@d@
+CCCC_Member@ClassBoxDialog@quit@@()@
+CCCC_MemExt@ClassBoxDialog@quit@@()@../pummel/src/classboxdialog.cpp@92@definition@F????@LOC:4 COM:1 MVG:0@?@d@
+CCCC_Member@ClassBoxDialog@~ClassBoxDialog@@()@
+CCCC_MemExt@ClassBoxDialog@~ClassBoxDialog@@()@../pummel/src/classboxdialog.cpp@34@definition@F????@LOC:8 COM:2 MVG:0@?@d@
+CCCC_Member@CollaborationBoxDialog@CollaborationBoxDialog@@(RoundedSquare *)@
+CCCC_MemExt@CollaborationBoxDialog@CollaborationBoxDialog@@(RoundedSquare *)@../pummel/src/collaborationboxdialog.cpp@3@definition@F????@LOC:17 COM:6 MVG:0@?@d@
+CCCC_Member@CollaborationBoxDialog@acknowledge@@()@
+CCCC_MemExt@CollaborationBoxDialog@acknowledge@@()@../pummel/src/collaborationboxdialog.cpp@71@definition@F????@LOC:8 COM:2 MVG:0@?@d@
+CCCC_Member@CollaborationBoxDialog@buttonSetup@@()@
+CCCC_MemExt@CollaborationBoxDialog@buttonSetup@@()@../pummel/src/collaborationboxdialog.cpp@62@definition@F????@LOC:7 COM:1 MVG:0@?@d@
+CCCC_Member@CollaborationBoxDialog@getMembers@@()@
+CCCC_MemExt@CollaborationBoxDialog@getMembers@@()@../pummel/src/collaborationboxdialog.cpp@95@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@CollaborationBoxDialog@getName@@()@
+CCCC_MemExt@CollaborationBoxDialog@getName@@()@../pummel/src/collaborationboxdialog.cpp@90@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@CollaborationBoxDialog@initFields@@()@
+CCCC_MemExt@CollaborationBoxDialog@initFields@@()@../pummel/src/collaborationboxdialog.cpp@48@definition@F????@LOC:9 COM:5 MVG:0@?@d@
+CCCC_Member@CollaborationBoxDialog@quit@@()@
+CCCC_MemExt@CollaborationBoxDialog@quit@@()@../pummel/src/collaborationboxdialog.cpp@85@definition@F????@LOC:4 COM:1 MVG:0@?@d@
+CCCC_Member@CollaborationBoxDialog@~CollaborationBoxDialog@@()@
+CCCC_MemExt@CollaborationBoxDialog@~CollaborationBoxDialog@@()@../pummel/src/collaborationboxdialog.cpp@33@definition@F????@LOC:7 COM:2 MVG:0@?@d@
+CCCC_Member@DiagramTypeSelector@DiagramTypeSelector@@()@
+CCCC_MemExt@DiagramTypeSelector@DiagramTypeSelector@@()@../pummel/src/diagramtypeselector.cpp@3@definition@F????@LOC:15 COM:0 MVG:0@?@d@
+CCCC_Member@DiagramTypeSelector@acknowledge@@()@
+CCCC_MemExt@DiagramTypeSelector@acknowledge@@()@../pummel/src/diagramtypeselector.cpp@42@definition@F????@LOC:13 COM:3 MVG:3@?@d@
+CCCC_Member@DiagramTypeSelector@init@@()@
+CCCC_MemExt@DiagramTypeSelector@init@@()@../pummel/src/diagramtypeselector.cpp@32@definition@F????@LOC:8 COM:1 MVG:0@?@d@
+CCCC_Member@DiagramTypeSelector@quit@@()@
+CCCC_MemExt@DiagramTypeSelector@quit@@()@../pummel/src/diagramtypeselector.cpp@60@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@DiagramTypeSelector@~DiagramTypeSelector@@()@
+CCCC_MemExt@DiagramTypeSelector@~DiagramTypeSelector@@()@../pummel/src/diagramtypeselector.cpp@26@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@DragScene@DragScene@@(QObject *,int,int)@
+CCCC_MemExt@DragScene@DragScene@@(QObject *,int,int)@../pummel/src/dragscene.h@35@declaration@F???0@LOC:1 COM:4 MVG:0@0@D@
+CCCC_MemExt@DragScene@DragScene@@(QObject *,int,int)@../pummel/src/dragscene.cpp@20@definition@F????@LOC:15 COM:0 MVG:0@?@d@
+CCCC_Member@DragScene@deleteItem@@(Icon *)@
+CCCC_MemExt@DragScene@deleteItem@@(Icon *)@../pummel/src/dragscene.h@60@declaration@F???0@LOC:1 COM:1 MVG:0@0@D@
+CCCC_MemExt@DragScene@deleteItem@@(Icon *)@../pummel/src/dragscene.cpp@78@definition@F????@LOC:22 COM:9 MVG:4@?@d@
+CCCC_Member@DragScene@drawBackground@@(QPainter *,const QRectF &)@
+CCCC_MemExt@DragScene@drawBackground@@(QPainter *,const QRectF &)@../pummel/src/dragscene.h@75@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@DragScene@drawBackground@@(QPainter *,const QRectF &)@../pummel/src/dragscene.cpp@469@definition@F????@LOC:24 COM:5 MVG:3@?@d@
+CCCC_Member@DragScene@find_icon_id@@(QList,int)@
+CCCC_MemExt@DragScene@find_icon_id@@(QList,int)@../pummel/src/dragscene.h@65@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@DragScene@find_icon_id@@(QList,int)@../pummel/src/dragscene.cpp@546@definition@F????@LOC:12 COM:2 MVG:4@?@d@
+CCCC_Member@DragScene@getGrid@@()@
+CCCC_MemExt@DragScene@getGrid@@()@../pummel/src/dragscene.h@39@definition@F???0@LOC:1 COM:0 MVG:1@0@d@
+CCCC_Member@DragScene@getGridSize@@()@
+CCCC_MemExt@DragScene@getGridSize@@()@../pummel/src/dragscene.h@41@definition@F???0@LOC:1 COM:0 MVG:1@0@d@
+CCCC_Member@DragScene@getIgnore@@()@
+CCCC_MemExt@DragScene@getIgnore@@()@../pummel/src/dragscene.h@40@definition@F???0@LOC:1 COM:0 MVG:1@0@d@
+CCCC_Member@DragScene@getLineCreate@@()@
+CCCC_MemExt@DragScene@getLineCreate@@()@../pummel/src/dragscene.h@44@definition@F???0@LOC:1 COM:0 MVG:1@0@d@
+CCCC_Member@DragScene@getLineCreateType@@()@
+CCCC_MemExt@DragScene@getLineCreateType@@()@../pummel/src/dragscene.h@45@definition@F???0@LOC:1 COM:0 MVG:1@0@d@
+CCCC_Member@DragScene@getLineList@@()@
+CCCC_MemExt@DragScene@getLineList@@()@../pummel/src/dragscene.h@43@definition@F???0@LOC:1 COM:0 MVG:1@0@d@
+CCCC_Member@DragScene@getObjectList@@()@
+CCCC_MemExt@DragScene@getObjectList@@()@../pummel/src/dragscene.h@42@definition@F???0@LOC:1 COM:0 MVG:1@0@d@
+CCCC_Member@DragScene@getSceneCreate@@()@
+CCCC_MemExt@DragScene@getSceneCreate@@()@../pummel/src/dragscene.h@38@definition@F???0@LOC:1 COM:1 MVG:1@0@d@
+CCCC_Member@DragScene@getShapeCreationType@@()@
+CCCC_MemExt@DragScene@getShapeCreationType@@()@../pummel/src/dragscene.h@47@definition@F???0@LOC:1 COM:0 MVG:1@0@d@
+CCCC_Member@DragScene@isResizing@@()@
+CCCC_MemExt@DragScene@isResizing@@()@../pummel/src/dragscene.h@46@definition@F???0@LOC:1 COM:0 MVG:1@0@d@
+CCCC_Member@DragScene@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@DragScene@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/dragscene.h@74@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@DragScene@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/dragscene.cpp@461@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@DragScene@mouseMoveEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@DragScene@mouseMoveEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/dragscene.h@71@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@DragScene@mouseMoveEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/dragscene.cpp@269@definition@F????@LOC:12 COM:3 MVG:2@?@d@
+CCCC_Member@DragScene@mousePressEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@DragScene@mousePressEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/dragscene.h@72@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@DragScene@mousePressEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/dragscene.cpp@111@definition@F????@LOC:117 COM:40 MVG:19@?@d@
+CCCC_Member@DragScene@mouseReleaseEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@DragScene@mouseReleaseEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/dragscene.h@73@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@DragScene@mouseReleaseEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/dragscene.cpp@290@definition@F????@LOC:137 COM:31 MVG:25@?@d@
+CCCC_Member@DragScene@render_icons@@(QList,QList)@
+CCCC_MemExt@DragScene@render_icons@@(QList,QList)@../pummel/src/dragscene.h@64@declaration@F???0@LOC:1 COM:1 MVG:0@0@D@
+CCCC_MemExt@DragScene@render_icons@@(QList,QList)@../pummel/src/dragscene.cpp@502@definition@F????@LOC:31 COM:7 MVG:5@?@d@
+CCCC_Member@DragScene@sceneItemAt@@(QPointF)@
+CCCC_MemExt@DragScene@sceneItemAt@@(QPointF)@../pummel/src/dragscene.h@61@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@DragScene@sceneItemAt@@(QPointF)@../pummel/src/dragscene.cpp@44@definition@F????@LOC:24 COM:19 MVG:9@?@d@
+CCCC_Member@DragScene@setGrid@@(bool)@
+CCCC_MemExt@DragScene@setGrid@@(bool)@../pummel/src/dragscene.h@54@definition@F???0@LOC:1 COM:0 MVG:0@0@d@
+CCCC_Member@DragScene@setGridSize@@(int)@
+CCCC_MemExt@DragScene@setGridSize@@(int)@../pummel/src/dragscene.h@55@definition@F???0@LOC:1 COM:0 MVG:0@0@d@
+CCCC_Member@DragScene@setIgnoreReleaseEvent@@(bool)@
+CCCC_MemExt@DragScene@setIgnoreReleaseEvent@@(bool)@../pummel/src/dragscene.h@51@definition@F???0@LOC:1 COM:0 MVG:0@0@d@
+CCCC_Member@DragScene@setLineCreate@@(bool)@
+CCCC_MemExt@DragScene@setLineCreate@@(bool)@../pummel/src/dragscene.h@53@definition@F???0@LOC:1 COM:0 MVG:0@0@d@
+CCCC_Member@DragScene@setLineCreateType@@(LineType)@
+CCCC_MemExt@DragScene@setLineCreateType@@(LineType)@../pummel/src/dragscene.h@52@definition@F???0@LOC:1 COM:0 MVG:0@0@d@
+CCCC_Member@DragScene@setResizing@@(bool)@
+CCCC_MemExt@DragScene@setResizing@@(bool)@../pummel/src/dragscene.h@56@definition@F???0@LOC:1 COM:0 MVG:0@0@d@
+CCCC_Member@DragScene@setSceneCreate@@(bool)@
+CCCC_MemExt@DragScene@setSceneCreate@@(bool)@../pummel/src/dragscene.h@50@definition@F???0@LOC:1 COM:1 MVG:0@0@d@
+CCCC_Member@DragScene@setShapeCreationType@@(ShapeCreationType)@
+CCCC_MemExt@DragScene@setShapeCreationType@@(ShapeCreationType)@../pummel/src/dragscene.h@57@definition@F???0@LOC:1 COM:0 MVG:0@0@d@
+CCCC_Member@DragScene@testAction@@()@
+CCCC_MemExt@DragScene@testAction@@()@../pummel/src/dragscene.h@68@declaration@F???0@LOC:1 COM:1 MVG:0@0@D@
+CCCC_MemExt@DragScene@testAction@@()@../pummel/src/dragscene.cpp@496@definition@F????@LOC:3 COM:1 MVG:0@?@d@
+CCCC_Member@DragView@DragView@@(QWidget *)@
+CCCC_MemExt@DragView@DragView@@(QWidget *)@../pummel/src/dragview.h@16@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@DragView@DragView@@(QWidget *)@../pummel/src/dragview.cpp@3@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@DrawArea@DrawArea@@(QWidget *,int,int)@
+CCCC_MemExt@DrawArea@DrawArea@@(QWidget *,int,int)@../pummel/src/drawarea.cpp@9@definition@F????@LOC:14 COM:1 MVG:0@?@d@
+CCCC_Member@DrawArea@DrawArea@@(QWidget *,int,int,QList,QList,QString)@
+CCCC_MemExt@DrawArea@DrawArea@@(QWidget *,int,int,QList,QList,QString)@../pummel/src/drawarea.cpp@27@definition@F????@LOC:13 COM:1 MVG:0@?@d@
+CCCC_Member@DrawArea@choose_type@@(QString)@
+CCCC_MemExt@DrawArea@choose_type@@(QString)@../pummel/src/drawarea.cpp@45@definition@F????@LOC:21 COM:1 MVG:5@?@d@
+CCCC_Member@Ellipse@Ellipse@@(...)@
+CCCC_MemExt@Ellipse@Ellipse@@(...)@../pummel/src/ellipse.h@28@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_Member@Ellipse@Ellipse@@(QGraphicsItem *,int,int,int,int,int,QString)@
+CCCC_MemExt@Ellipse@Ellipse@@(QGraphicsItem *,int,int,int,int,int,QString)@../pummel/src/ellipse.h@29@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@Ellipse@Ellipse@@(QGraphicsItem *,int,int,int,int,int,QString)@../pummel/src/ellipse.cpp@28@definition@F????@LOC:15 COM:6 MVG:1@?@d@
+CCCC_Member@Ellipse@Ellipse@@(QPointF,QGraphicsItem *)@
+CCCC_MemExt@Ellipse@Ellipse@@(QPointF,QGraphicsItem *)@../pummel/src/ellipse.cpp@7@definition@F????@LOC:10 COM:6 MVG:1@?@d@
+CCCC_Member@Ellipse@arrangeBoxes@@()@
+CCCC_MemExt@Ellipse@arrangeBoxes@@()@../pummel/src/ellipse.h@24@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Ellipse@arrangeBoxes@@()@../pummel/src/ellipse.cpp@117@definition@F????@LOC:14 COM:1 MVG:2@?@d@
+CCCC_Member@Ellipse@boundingRect@@()@
+CCCC_MemExt@Ellipse@boundingRect@@()@../pummel/src/ellipse.h@16@declaration@T???1@LOC:1 COM:1 MVG:0@1@D@
+CCCC_MemExt@Ellipse@boundingRect@@()@../pummel/src/ellipse.cpp@56@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@Ellipse@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@Ellipse@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/ellipse.h@18@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@Ellipse@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/ellipse.cpp@100@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@Ellipse@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@Ellipse@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/ellipse.h@17@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@Ellipse@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/ellipse.cpp@61@definition@F????@LOC:24 COM:1 MVG:1@?@d@
+CCCC_Member@Ellipse@setValues@@()@
+CCCC_MemExt@Ellipse@setValues@@()@../pummel/src/ellipse.h@19@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@Ellipse@setValues@@()@../pummel/src/ellipse.cpp@106@definition@F????@LOC:8 COM:1 MVG:0@?@d@
+CCCC_Member@HintBox@HintBox@@()@
+CCCC_MemExt@HintBox@HintBox@@()@../pummel/src/hintbox.cpp@3@definition@F????@LOC:10 COM:1 MVG:0@?@d@
+CCCC_Member@HintBox@acknowledge@@()@
+CCCC_MemExt@HintBox@acknowledge@@()@../pummel/src/hintbox.cpp@45@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@HintBox@initMembers@@()@
+CCCC_MemExt@HintBox@initMembers@@()@../pummel/src/hintbox.cpp@26@definition@F????@LOC:14 COM:0 MVG:0@?@d@
+CCCC_Member@HintBox@~HintBox@@()@
+CCCC_MemExt@HintBox@~HintBox@@()@../pummel/src/hintbox.cpp@20@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@Icon@Icon@@(...)@
+CCCC_MemExt@Icon@Icon@@(...)@../pummel/src/icon.h@44@declaration@FT??0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_Member@Icon@Icon@@(QPointF,QGraphicsItem *)@
+CCCC_MemExt@Icon@Icon@@(QPointF,QGraphicsItem *)@../pummel/src/icon.cpp@13@definition@F????@LOC:21 COM:9 MVG:1@?@d@
+CCCC_Member@Icon@boundingRect@@()@
+CCCC_MemExt@Icon@boundingRect@@()@../pummel/src/icon.h@21@definition@T???1@LOC:1 COM:0 MVG:1@1@d@
+CCCC_Member@Icon@getHeight@@()@
+CCCC_MemExt@Icon@getHeight@@()@../pummel/src/icon.h@51@declaration@FT??2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Icon@getHeight@@()@../pummel/src/icon.cpp@63@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@Icon@getID@@()@
+CCCC_MemExt@Icon@getID@@()@../pummel/src/icon.h@58@declaration@FT??2@LOC:1 COM:1 MVG:0@2@D@
+CCCC_MemExt@Icon@getID@@()@../pummel/src/icon.cpp@90@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@Icon@getLabel@@()@
+CCCC_MemExt@Icon@getLabel@@()@../pummel/src/icon.h@61@declaration@FT??2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Icon@getLabel@@()@../pummel/src/icon.cpp@68@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@Icon@getMarkerBox@@(int)@
+CCCC_MemExt@Icon@getMarkerBox@@(int)@../pummel/src/icon.h@55@declaration@FT??2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Icon@getMarkerBox@@(int)@../pummel/src/icon.cpp@188@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@Icon@getState@@()@
+CCCC_MemExt@Icon@getState@@()@../pummel/src/icon.h@54@declaration@FT??2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Icon@getState@@()@../pummel/src/icon.cpp@183@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@Icon@getType@@()@
+CCCC_MemExt@Icon@getType@@()@../pummel/src/icon.h@59@declaration@FT??2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Icon@getType@@()@../pummel/src/icon.cpp@167@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@Icon@getWidth@@()@
+CCCC_MemExt@Icon@getWidth@@()@../pummel/src/icon.h@50@declaration@FT??2@LOC:1 COM:1 MVG:0@2@D@
+CCCC_MemExt@Icon@getWidth@@()@../pummel/src/icon.cpp@58@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@Icon@get_all@@()@
+CCCC_MemExt@Icon@get_all@@()@../pummel/src/icon.h@74@declaration@FT?T2@LOC:1 COM:1 MVG:0@2@D@
+CCCC_MemExt@Icon@get_all@@()@../pummel/src/icon.cpp@207@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@Icon@get_xPos@@()@
+CCCC_MemExt@Icon@get_xPos@@()@../pummel/src/icon.h@52@definition@FT??2@LOC:1 COM:0 MVG:1@2@d@
+CCCC_Member@Icon@get_yPos@@()@
+CCCC_MemExt@Icon@get_yPos@@()@../pummel/src/icon.h@53@definition@FT??2@LOC:1 COM:0 MVG:1@2@d@
+CCCC_Member@Icon@mouseMoveEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@Icon@mouseMoveEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/icon.h@23@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@Icon@mouseMoveEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/icon.cpp@144@definition@F????@LOC:9 COM:1 MVG:0@?@d@
+CCCC_Member@Icon@mousePressEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@Icon@mousePressEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/icon.h@22@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@Icon@mousePressEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/icon.cpp@137@definition@F????@LOC:4 COM:2 MVG:0@?@d@
+CCCC_Member@Icon@mouseReleaseEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@Icon@mouseReleaseEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/icon.h@24@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@Icon@mouseReleaseEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/icon.cpp@155@definition@F????@LOC:4 COM:7 MVG:0@?@d@
+CCCC_Member@Icon@paintMarkerBoxes@@()@
+CCCC_MemExt@Icon@paintMarkerBoxes@@()@../pummel/src/icon.h@71@declaration@FT??2@LOC:1 COM:1 MVG:0@2@D@
+CCCC_MemExt@Icon@paintMarkerBoxes@@()@../pummel/src/icon.cpp@95@definition@F????@LOC:34 COM:9 MVG:1@?@d@
+CCCC_Member@Icon@reportShapetype@@()@
+CCCC_MemExt@Icon@reportShapetype@@()@../pummel/src/icon.h@56@declaration@FT??2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Icon@reportShapetype@@()@../pummel/src/icon.cpp@80@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@Icon@setMarkers@@(MarkerBox *,MarkerBox *,MarkerBox *,MarkerBox *)@
+CCCC_MemExt@Icon@setMarkers@@(MarkerBox *,MarkerBox *,MarkerBox *,MarkerBox *)@../pummel/src/icon.h@64@declaration@FT??2@LOC:1 COM:1 MVG:0@2@D@
+CCCC_MemExt@Icon@setMarkers@@(MarkerBox *,MarkerBox *,MarkerBox *,MarkerBox *)@../pummel/src/icon.cpp@198@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@Icon@setPolygon@@()@
+CCCC_MemExt@Icon@setPolygon@@()@../pummel/src/icon.h@60@declaration@FT??2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Icon@setPolygon@@()@../pummel/src/icon.cpp@172@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@Icon@setShapetype@@(QString)@
+CCCC_MemExt@Icon@setShapetype@@(QString)@../pummel/src/icon.h@57@declaration@FT??2@LOC:1 COM:1 MVG:0@2@D@
+CCCC_MemExt@Icon@setShapetype@@(QString)@../pummel/src/icon.cpp@85@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@Icon@setSize@@(int,int)@
+CCCC_MemExt@Icon@setSize@@(int,int)@../pummel/src/icon.h@66@declaration@FT??2@LOC:1 COM:1 MVG:0@2@D@
+CCCC_MemExt@Icon@setSize@@(int,int)@../pummel/src/icon.cpp@73@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@Icon@setState@@(int)@
+CCCC_MemExt@Icon@setState@@(int)@../pummel/src/icon.h@65@declaration@FT??2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Icon@setState@@(int)@../pummel/src/icon.cpp@193@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@Icon@setText@@(QString)@
+CCCC_MemExt@Icon@setText@@(QString)@../pummel/src/icon.h@67@declaration@FT??2@LOC:1 COM:1 MVG:0@2@D@
+CCCC_MemExt@Icon@setText@@(QString)@../pummel/src/icon.cpp@177@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@Icon@set_Pos@@(int,int)@
+CCCC_MemExt@Icon@set_Pos@@(int,int)@../pummel/src/icon.h@68@definition@FT??2@LOC:1 COM:0 MVG:0@2@d@
+CCCC_Member@Icon@split_all@@(QString)@
+CCCC_MemExt@Icon@split_all@@(QString)@../pummel/src/icon.h@75@declaration@FT?T2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Icon@split_all@@(QString)@../pummel/src/icon.cpp@212@definition@F????@LOC:5 COM:0 MVG:1@?@d@
+CCCC_Member@Icon@~Icon@@()@
+CCCC_MemExt@Icon@~Icon@@()@../pummel/src/icon.h@45@declaration@FT??0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@Icon@~Icon@@()@../pummel/src/icon.cpp@47@definition@F????@LOC:8 COM:1 MVG:1@?@d@
+CCCC_Member@ItemWrapper@ItemWrapper@@(QLayoutItem *,Position)@
+CCCC_MemExt@ItemWrapper@ItemWrapper@@(QLayoutItem *,Position)@../pummel/src/borderlayout.h@73@definition@F???0@LOC:5 COM:0 MVG:0@0@d@
+CCCC_Member@MainWindow@MainWindow@@()@
+CCCC_MemExt@MainWindow@MainWindow@@()@../pummel/src/mainwindow.cpp@17@definition@F????@LOC:24 COM:6 MVG:0@?@d@
+CCCC_Member@MainWindow@about@@()@
+CCCC_MemExt@MainWindow@about@@()@../pummel/src/mainwindow.cpp@362@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@aboutQt@@()@
+CCCC_MemExt@MainWindow@aboutQt@@()@../pummel/src/mainwindow.cpp@375@definition@F????@LOC:1 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@bold@@()@
+CCCC_MemExt@MainWindow@bold@@()@../pummel/src/mainwindow.cpp@346@definition@F????@LOC:1 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@center@@()@
+CCCC_MemExt@MainWindow@center@@()@../pummel/src/mainwindow.cpp@356@definition@F????@LOC:1 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@closeTab@@()@
+CCCC_MemExt@MainWindow@closeTab@@()@../pummel/src/mainwindow.cpp@312@definition@F????@LOC:31 COM:14 MVG:4@?@d@
+CCCC_Member@MainWindow@contextMenuEvent@@(QContextMenuEvent *)@
+CCCC_MemExt@MainWindow@contextMenuEvent@@(QContextMenuEvent *)@../pummel/src/mainwindow.cpp@94@definition@F????@LOC:11 COM:42 MVG:0@?@d@
+CCCC_Member@MainWindow@copy@@()@
+CCCC_MemExt@MainWindow@copy@@()@../pummel/src/mainwindow.cpp@152@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@createActions@@()@
+CCCC_MemExt@MainWindow@createActions@@()@../pummel/src/mainwindow.cpp@382@definition@F????@LOC:123 COM:2 MVG:0@?@d@
+CCCC_Member@MainWindow@createMenus@@()@
+CCCC_MemExt@MainWindow@createMenus@@()@../pummel/src/mainwindow.cpp@539@definition@F????@LOC:14 COM:11 MVG:0@?@d@
+CCCC_Member@MainWindow@cut@@()@
+CCCC_MemExt@MainWindow@cut@@()@../pummel/src/mainwindow.cpp@142@definition@F????@LOC:3 COM:4 MVG:0@?@d@
+CCCC_Member@MainWindow@deleteObj@@()@
+CCCC_MemExt@MainWindow@deleteObj@@()@../pummel/src/mainwindow.cpp@162@definition@F????@LOC:3 COM:9 MVG:0@?@d@
+CCCC_Member@MainWindow@deleteSelected@@()@
+CCCC_MemExt@MainWindow@deleteSelected@@()@../pummel/src/mainwindow.cpp@175@definition@F????@LOC:19 COM:1 MVG:4@?@d@
+CCCC_Member@MainWindow@exit@@()@
+CCCC_MemExt@MainWindow@exit@@()@../pummel/src/mainwindow.cpp@376@definition@F????@LOC:4 COM:1 MVG:0@?@d@
+CCCC_Member@MainWindow@hints@@()@
+CCCC_MemExt@MainWindow@hints@@()@../pummel/src/mainwindow.cpp@370@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@italic@@()@
+CCCC_MemExt@MainWindow@italic@@()@../pummel/src/mainwindow.cpp@348@definition@F????@LOC:1 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@justify@@()@
+CCCC_MemExt@MainWindow@justify@@()@../pummel/src/mainwindow.cpp@354@definition@F????@LOC:1 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@leftAlign@@()@
+CCCC_MemExt@MainWindow@leftAlign@@()@../pummel/src/mainwindow.cpp@350@definition@F????@LOC:1 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@newFile@@()@
+CCCC_MemExt@MainWindow@newFile@@()@../pummel/src/mainwindow.cpp@107@definition@F????@LOC:4 COM:5 MVG:0@?@d@
+CCCC_Member@MainWindow@newTab@@()@
+CCCC_MemExt@MainWindow@newTab@@()@../pummel/src/mainwindow.cpp@209@definition@F????@LOC:14 COM:12 MVG:0@?@d@
+CCCC_Member@MainWindow@newTab@@(QString,QList,QList,QString)@
+CCCC_MemExt@MainWindow@newTab@@(QString,QList,QList,QString)@../pummel/src/mainwindow.cpp@225@definition@F????@LOC:10 COM:2 MVG:0@?@d@
+CCCC_Member@MainWindow@open@@()@
+CCCC_MemExt@MainWindow@open@@()@../pummel/src/mainwindow.cpp@117@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@openFile@@()@
+CCCC_MemExt@MainWindow@openFile@@()@../pummel/src/mainwindow.cpp@279@definition@F????@LOC:13 COM:2 MVG:1@?@d@
+CCCC_Member@MainWindow@paste@@()@
+CCCC_MemExt@MainWindow@paste@@()@../pummel/src/mainwindow.cpp@157@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@print@@()@
+CCCC_MemExt@MainWindow@print@@()@../pummel/src/mainwindow.cpp@127@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@redo@@()@
+CCCC_MemExt@MainWindow@redo@@()@../pummel/src/mainwindow.cpp@137@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@rightAlign@@()@
+CCCC_MemExt@MainWindow@rightAlign@@()@../pummel/src/mainwindow.cpp@352@definition@F????@LOC:1 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@save@@()@
+CCCC_MemExt@MainWindow@save@@()@../pummel/src/mainwindow.cpp@122@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@saveAsFile@@()@
+CCCC_MemExt@MainWindow@saveAsFile@@()@../pummel/src/mainwindow.cpp@258@definition@F????@LOC:15 COM:3 MVG:1@?@d@
+CCCC_Member@MainWindow@saveFile@@()@
+CCCC_MemExt@MainWindow@saveFile@@()@../pummel/src/mainwindow.cpp@242@definition@F????@LOC:14 COM:6 MVG:1@?@d@
+CCCC_Member@MainWindow@setLineSpacing@@()@
+CCCC_MemExt@MainWindow@setLineSpacing@@()@../pummel/src/mainwindow.cpp@358@definition@F????@LOC:1 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@setParagraphSpacing@@()@
+CCCC_MemExt@MainWindow@setParagraphSpacing@@()@../pummel/src/mainwindow.cpp@360@definition@F????@LOC:1 COM:0 MVG:0@?@d@
+CCCC_Member@MainWindow@undo@@()@
+CCCC_MemExt@MainWindow@undo@@()@../pummel/src/mainwindow.cpp@132@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@MarkerBox@MarkerBox@@(QGraphicsItem *)@
+CCCC_MemExt@MarkerBox@MarkerBox@@(QGraphicsItem *)@../pummel/src/markerbox.h@10@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@MarkerBox@MarkerBox@@(QGraphicsItem *)@../pummel/src/markerbox.cpp@5@definition@F????@LOC:10 COM:0 MVG:0@?@d@
+CCCC_Member@MarkerBox@boundingRect@@()@
+CCCC_MemExt@MarkerBox@boundingRect@@()@../pummel/src/markerbox.h@11@definition@T???0@LOC:1 COM:0 MVG:1@0@d@
+CCCC_Member@MarkerBox@mouseMoveEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@MarkerBox@mouseMoveEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/markerbox.h@14@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@MarkerBox@mouseMoveEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/markerbox.cpp@48@definition@F????@LOC:3 COM:0 MVG:0@?@d@
+CCCC_Member@MarkerBox@mousePressEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@MarkerBox@mousePressEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/markerbox.h@13@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@MarkerBox@mousePressEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/markerbox.cpp@34@definition@F????@LOC:13 COM:5 MVG:3@?@d@
+CCCC_Member@MarkerBox@mouseReleaseEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@MarkerBox@mouseReleaseEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/markerbox.h@15@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@MarkerBox@mouseReleaseEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/markerbox.cpp@57@definition@F????@LOC:44 COM:5 MVG:6@?@d@
+CCCC_Member@MarkerBox@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@MarkerBox@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/markerbox.h@12@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@MarkerBox@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/markerbox.cpp@16@definition@F????@LOC:11 COM:1 MVG:1@?@d@
+CCCC_Member@MarkerBox@setId@@(int)@
+CCCC_MemExt@MarkerBox@setId@@(int)@../pummel/src/markerbox.h@18@definition@F???0@LOC:1 COM:1 MVG:0@0@d@
+CCCC_Member@Note@Note@@(...)@
+CCCC_MemExt@Note@Note@@(...)@../pummel/src/note.h@28@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_Member@Note@Note@@(QGraphicsItem *,int,int,int,int,QString)@
+CCCC_MemExt@Note@Note@@(QGraphicsItem *,int,int,int,int,QString)@../pummel/src/note.h@29@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@Note@Note@@(QGraphicsItem *,int,int,int,int,QString)@../pummel/src/note.cpp@30@definition@F????@LOC:18 COM:7 MVG:1@?@d@
+CCCC_Member@Note@Note@@(QPointF,QGraphicsItem *)@
+CCCC_MemExt@Note@Note@@(QPointF,QGraphicsItem *)@../pummel/src/note.cpp@7@definition@F????@LOC:10 COM:6 MVG:1@?@d@
+CCCC_Member@Note@arrangeBoxes@@()@
+CCCC_MemExt@Note@arrangeBoxes@@()@../pummel/src/note.h@23@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Note@arrangeBoxes@@()@../pummel/src/note.cpp@123@definition@F????@LOC:14 COM:1 MVG:2@?@d@
+CCCC_Member@Note@boundingRect@@()@
+CCCC_MemExt@Note@boundingRect@@()@../pummel/src/note.h@16@declaration@T???1@LOC:1 COM:1 MVG:0@1@D@
+CCCC_MemExt@Note@boundingRect@@()@../pummel/src/note.cpp@64@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@Note@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@Note@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/note.h@18@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@Note@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/note.cpp@105@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@Note@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@Note@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/note.h@17@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@Note@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/note.cpp@69@definition@F????@LOC:23 COM:1 MVG:1@?@d@
+CCCC_Member@Note@setValues@@()@
+CCCC_MemExt@Note@setValues@@()@../pummel/src/note.h@19@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@Note@setValues@@()@../pummel/src/note.cpp@111@definition@F????@LOC:8 COM:1 MVG:0@?@d@
+CCCC_Member@OptionsDialog@OptionsDialog@@(QWidget *)@
+CCCC_MemExt@OptionsDialog@OptionsDialog@@(QWidget *)@../pummel/src/optionsdialog.cpp@7@definition@F????@LOC:23 COM:6 MVG:0@?@d@
+CCCC_Member@OptionsDialog@acknowledge@@()@
+CCCC_MemExt@OptionsDialog@acknowledge@@()@../pummel/src/optionsdialog.cpp@166@definition@F????@LOC:11 COM:7 MVG:0@?@d@
+CCCC_Member@OptionsDialog@buttonSetup@@()@
+CCCC_MemExt@OptionsDialog@buttonSetup@@()@../pummel/src/optionsdialog.cpp@55@definition@F????@LOC:7 COM:1 MVG:0@?@d@
+CCCC_Member@OptionsDialog@initValues@@()@
+CCCC_MemExt@OptionsDialog@initValues@@()@../pummel/src/optionsdialog.cpp@38@definition@F????@LOC:10 COM:3 MVG:0@?@d@
+CCCC_Member@OptionsDialog@lineTabSetup@@()@
+CCCC_MemExt@OptionsDialog@lineTabSetup@@()@../pummel/src/optionsdialog.cpp@96@definition@F????@LOC:22 COM:5 MVG:0@?@d@
+CCCC_Member@OptionsDialog@quit@@()@
+CCCC_MemExt@OptionsDialog@quit@@()@../pummel/src/optionsdialog.cpp@185@definition@F????@LOC:4 COM:2 MVG:0@?@d@
+CCCC_Member@OptionsDialog@shapeTabSetup@@()@
+CCCC_MemExt@OptionsDialog@shapeTabSetup@@()@../pummel/src/optionsdialog.cpp@64@definition@F????@LOC:21 COM:8 MVG:0@?@d@
+CCCC_Member@OptionsDialog@textTabSetup@@()@
+CCCC_MemExt@OptionsDialog@textTabSetup@@()@../pummel/src/optionsdialog.cpp@126@definition@F????@LOC:28 COM:6 MVG:0@?@d@
+CCCC_Member@RoundedSquare@RoundedSquare@@(...)@
+CCCC_MemExt@RoundedSquare@RoundedSquare@@(...)@../pummel/src/roundedsquare.h@32@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_Member@RoundedSquare@RoundedSquare@@(QGraphicsItem *,int,int,int,int,int,QString)@
+CCCC_MemExt@RoundedSquare@RoundedSquare@@(QGraphicsItem *,int,int,int,int,int,QString)@../pummel/src/roundedsquare.h@33@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@RoundedSquare@RoundedSquare@@(QGraphicsItem *,int,int,int,int,int,QString)@../pummel/src/roundedsquare.cpp@32@definition@F????@LOC:20 COM:2 MVG:1@?@d@
+CCCC_Member@RoundedSquare@RoundedSquare@@(QPointF,QGraphicsItem *)@
+CCCC_MemExt@RoundedSquare@RoundedSquare@@(QPointF,QGraphicsItem *)@../pummel/src/roundedsquare.cpp@7@definition@F????@LOC:14 COM:3 MVG:1@?@d@
+CCCC_Member@RoundedSquare@arrangeBoxes@@()@
+CCCC_MemExt@RoundedSquare@arrangeBoxes@@()@../pummel/src/roundedsquare.h@21@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@RoundedSquare@arrangeBoxes@@()@../pummel/src/roundedsquare.cpp@69@definition@F????@LOC:21 COM:3 MVG:4@?@d@
+CCCC_Member@RoundedSquare@boundingRect@@()@
+CCCC_MemExt@RoundedSquare@boundingRect@@()@../pummel/src/roundedsquare.h@26@declaration@T???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@RoundedSquare@boundingRect@@()@../pummel/src/roundedsquare.cpp@159@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@RoundedSquare@getLabel@@()@
+CCCC_MemExt@RoundedSquare@getLabel@@()@../pummel/src/roundedsquare.cpp@181@definition@F????@LOC:4 COM:1 MVG:1@?@d@
+CCCC_Member@RoundedSquare@getMembers@@()@
+CCCC_MemExt@RoundedSquare@getMembers@@()@../pummel/src/roundedsquare.cpp@186@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@RoundedSquare@get_all@@()@
+CCCC_MemExt@RoundedSquare@get_all@@()@../pummel/src/roundedsquare.cpp@204@definition@F????@LOC:10 COM:4 MVG:1@?@d@
+CCCC_Member@RoundedSquare@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@
+CCCC_MemExt@RoundedSquare@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/roundedsquare.h@28@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@RoundedSquare@mouseDoubleClickEvent@@(QGraphicsSceneMouseEvent *)@../pummel/src/roundedsquare.cpp@153@definition@F????@LOC:5 COM:1 MVG:0@?@d@
+CCCC_Member@RoundedSquare@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@RoundedSquare@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/roundedsquare.h@27@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@RoundedSquare@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/roundedsquare.cpp@95@definition@F????@LOC:36 COM:6 MVG:1@?@d@
+CCCC_Member@RoundedSquare@setLabel@@(QString)@
+CCCC_MemExt@RoundedSquare@setLabel@@(QString)@../pummel/src/roundedsquare.cpp@192@definition@F????@LOC:5 COM:1 MVG:0@?@d@
+CCCC_Member@RoundedSquare@setMembers@@(QString)@
+CCCC_MemExt@RoundedSquare@setMembers@@(QString)@../pummel/src/roundedsquare.cpp@198@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@RoundedSquare@setRect@@()@
+CCCC_MemExt@RoundedSquare@setRect@@()@../pummel/src/roundedsquare.h@20@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Member@RoundedSquare@setValues@@()@
+CCCC_MemExt@RoundedSquare@setValues@@()@../pummel/src/roundedsquare.h@29@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@RoundedSquare@setValues@@()@../pummel/src/roundedsquare.cpp@165@definition@F????@LOC:10 COM:2 MVG:0@?@d@
+CCCC_Member@RoundedSquare@split_all@@(QString)@
+CCCC_MemExt@RoundedSquare@split_all@@(QString)@../pummel/src/roundedsquare.cpp@223@definition@F????@LOC:5 COM:0 MVG:1@?@d@
+CCCC_Member@RoundedSquare@~RoundedSquare@@()@
+CCCC_MemExt@RoundedSquare@~RoundedSquare@@()@../pummel/src/roundedsquare.h@34@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@RoundedSquare@~RoundedSquare@@()@../pummel/src/roundedsquare.cpp@62@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@ScenarioEnd@ScenarioEnd@@(...)@
+CCCC_MemExt@ScenarioEnd@ScenarioEnd@@(...)@../pummel/src/scenarioend.h@22@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_Member@ScenarioEnd@ScenarioEnd@@(QGraphicsItem *,int,int,int,int,int)@
+CCCC_MemExt@ScenarioEnd@ScenarioEnd@@(QGraphicsItem *,int,int,int,int,int)@../pummel/src/scenarioend.h@23@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@ScenarioEnd@ScenarioEnd@@(QGraphicsItem *,int,int,int,int,int)@../pummel/src/scenarioend.cpp@25@definition@F????@LOC:12 COM:6 MVG:1@?@d@
+CCCC_Member@ScenarioEnd@ScenarioEnd@@(QPointF,QGraphicsItem *)@
+CCCC_MemExt@ScenarioEnd@ScenarioEnd@@(QPointF,QGraphicsItem *)@../pummel/src/scenarioend.cpp@7@definition@F????@LOC:8 COM:6 MVG:1@?@d@
+CCCC_Member@ScenarioEnd@boundingRect@@()@
+CCCC_MemExt@ScenarioEnd@boundingRect@@()@../pummel/src/scenarioend.h@15@declaration@T???1@LOC:1 COM:1 MVG:0@1@D@
+CCCC_MemExt@ScenarioEnd@boundingRect@@()@../pummel/src/scenarioend.cpp@48@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@ScenarioEnd@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@ScenarioEnd@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/scenarioend.h@16@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@ScenarioEnd@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/scenarioend.cpp@53@definition@F????@LOC:20 COM:1 MVG:2@?@d@
+CCCC_Member@ScenarioStart@ScenarioStart@@(...)@
+CCCC_MemExt@ScenarioStart@ScenarioStart@@(...)@../pummel/src/scenariostart.h@22@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_Member@ScenarioStart@ScenarioStart@@(QGraphicsItem *,int,int,int,int,int)@
+CCCC_MemExt@ScenarioStart@ScenarioStart@@(QGraphicsItem *,int,int,int,int,int)@../pummel/src/scenariostart.h@23@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@ScenarioStart@ScenarioStart@@(QGraphicsItem *,int,int,int,int,int)@../pummel/src/scenariostart.cpp@25@definition@F????@LOC:12 COM:6 MVG:1@?@d@
+CCCC_Member@ScenarioStart@ScenarioStart@@(QPointF,QGraphicsItem *)@
+CCCC_MemExt@ScenarioStart@ScenarioStart@@(QPointF,QGraphicsItem *)@../pummel/src/scenariostart.cpp@7@definition@F????@LOC:8 COM:6 MVG:1@?@d@
+CCCC_Member@ScenarioStart@boundingRect@@()@
+CCCC_MemExt@ScenarioStart@boundingRect@@()@../pummel/src/scenariostart.h@15@declaration@T???1@LOC:1 COM:1 MVG:0@1@D@
+CCCC_MemExt@ScenarioStart@boundingRect@@()@../pummel/src/scenariostart.cpp@48@definition@T????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@ScenarioStart@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@ScenarioStart@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/scenariostart.h@16@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@ScenarioStart@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/scenariostart.cpp@53@definition@F????@LOC:20 COM:1 MVG:2@?@d@
+CCCC_Member@TabManager@TabManager@@(QWidget *)@
+CCCC_MemExt@TabManager@TabManager@@(QWidget *)@../pummel/src/tabmanager.cpp@7@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@TabManager@currentChangedSlot@@(int)@
+CCCC_MemExt@TabManager@currentChangedSlot@@(int)@../pummel/src/tabmanager.cpp@13@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@TextBoxDialog@TextBoxDialog@@(Icon *)@
+CCCC_MemExt@TextBoxDialog@TextBoxDialog@@(Icon *)@../pummel/src/textboxdialog.cpp@3@definition@F????@LOC:16 COM:6 MVG:0@?@d@
+CCCC_Member@TextBoxDialog@acknowledge@@()@
+CCCC_MemExt@TextBoxDialog@acknowledge@@()@../pummel/src/textboxdialog.cpp@55@definition@F????@LOC:6 COM:2 MVG:0@?@d@
+CCCC_Member@TextBoxDialog@buttonSetup@@()@
+CCCC_MemExt@TextBoxDialog@buttonSetup@@()@../pummel/src/textboxdialog.cpp@46@definition@F????@LOC:7 COM:1 MVG:0@?@d@
+CCCC_Member@TextBoxDialog@getName@@()@
+CCCC_MemExt@TextBoxDialog@getName@@()@../pummel/src/textboxdialog.cpp@72@definition@F????@LOC:4 COM:0 MVG:1@?@d@
+CCCC_Member@TextBoxDialog@initFields@@()@
+CCCC_MemExt@TextBoxDialog@initFields@@()@../pummel/src/textboxdialog.cpp@35@definition@F????@LOC:6 COM:5 MVG:0@?@d@
+CCCC_Member@TextBoxDialog@quit@@()@
+CCCC_MemExt@TextBoxDialog@quit@@()@../pummel/src/textboxdialog.cpp@67@definition@F????@LOC:4 COM:1 MVG:0@?@d@
+CCCC_Member@Toolbar@Toolbar@@(QWidget *)@
+CCCC_MemExt@Toolbar@Toolbar@@(QWidget *)@../pummel/src/toolbar.cpp@12@definition@F????@LOC:11 COM:3 MVG:0@?@d@
+CCCC_Member@Toolbar@addActor@@()@
+CCCC_MemExt@Toolbar@addActor@@()@../pummel/src/toolbar.cpp@338@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addClassBox@@()@
+CCCC_MemExt@Toolbar@addClassBox@@()@../pummel/src/toolbar.cpp@303@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addDottedLineBAH@@()@
+CCCC_MemExt@Toolbar@addDottedLineBAH@@()@../pummel/src/toolbar.cpp@387@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addDottedSQLineEAH@@()@
+CCCC_MemExt@Toolbar@addDottedSQLineEAH@@()@../pummel/src/toolbar.cpp@404@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addEllipse@@()@
+CCCC_MemExt@Toolbar@addEllipse@@()@../pummel/src/toolbar.cpp@295@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addNoLine@@()@
+CCCC_MemExt@Toolbar@addNoLine@@()@../pummel/src/toolbar.cpp@449@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addNone@@()@
+CCCC_MemExt@Toolbar@addNone@@()@../pummel/src/toolbar.cpp@347@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addNote@@()@
+CCCC_MemExt@Toolbar@addNote@@()@../pummel/src/toolbar.cpp@352@definition@F????@LOC:8 COM:1 MVG:0@?@d@
+CCCC_Member@Toolbar@addRoundedSquare@@()@
+CCCC_MemExt@Toolbar@addRoundedSquare@@()@../pummel/src/toolbar.cpp@311@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addScenarioEnd@@()@
+CCCC_MemExt@Toolbar@addScenarioEnd@@()@../pummel/src/toolbar.cpp@329@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addScenarioStart@@()@
+CCCC_MemExt@Toolbar@addScenarioStart@@()@../pummel/src/toolbar.cpp@320@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addSelfRefLine@@()@
+CCCC_MemExt@Toolbar@addSelfRefLine@@()@../pummel/src/toolbar.cpp@413@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addSolidLine@@()@
+CCCC_MemExt@Toolbar@addSolidLine@@()@../pummel/src/toolbar.cpp@362@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addSolidLineBAH@@()@
+CCCC_MemExt@Toolbar@addSolidLineBAH@@()@../pummel/src/toolbar.cpp@378@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addSolidLineEAH@@()@
+CCCC_MemExt@Toolbar@addSolidLineEAH@@()@../pummel/src/toolbar.cpp@370@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addSolidSQLineBAH@@()@
+CCCC_MemExt@Toolbar@addSolidSQLineBAH@@()@../pummel/src/toolbar.cpp@422@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addSolidSQLineEAH@@()@
+CCCC_MemExt@Toolbar@addSolidSQLineEAH@@()@../pummel/src/toolbar.cpp@395@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addSolidSQLineED@@()@
+CCCC_MemExt@Toolbar@addSolidSQLineED@@()@../pummel/src/toolbar.cpp@440@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@addSolidSQLineSD@@()@
+CCCC_MemExt@Toolbar@addSolidSQLineSD@@()@../pummel/src/toolbar.cpp@431@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@canvasSync@@()@
+CCCC_MemExt@Toolbar@canvasSync@@()@../pummel/src/toolbar.cpp@463@definition@F????@LOC:120 COM:2 MVG:23@?@d@
+CCCC_Member@Toolbar@createActions@@()@
+CCCC_MemExt@Toolbar@createActions@@()@../pummel/src/toolbar.cpp@57@definition@F????@LOC:74 COM:2 MVG:0@?@d@
+CCCC_Member@Toolbar@createMenus@@()@
+CCCC_MemExt@Toolbar@createMenus@@()@../pummel/src/toolbar.cpp@157@definition@F????@LOC:14 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@deleteSelected@@()@
+CCCC_MemExt@Toolbar@deleteSelected@@()@../pummel/src/toolbar.cpp@263@definition@F????@LOC:19 COM:5 MVG:4@?@d@
+CCCC_Member@Toolbar@gridOff@@()@
+CCCC_MemExt@Toolbar@gridOff@@()@../pummel/src/toolbar.cpp@459@definition@F????@LOC:3 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@gridOn@@()@
+CCCC_MemExt@Toolbar@gridOn@@()@../pummel/src/toolbar.cpp@455@definition@F????@LOC:3 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@initButtons@@()@
+CCCC_MemExt@Toolbar@initButtons@@()@../pummel/src/toolbar.cpp@28@definition@F????@LOC:20 COM:6 MVG:1@?@d@
+CCCC_Member@Toolbar@insertLine@@()@
+CCCC_MemExt@Toolbar@insertLine@@()@../pummel/src/toolbar.cpp@290@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@insertShape@@()@
+CCCC_MemExt@Toolbar@insertShape@@()@../pummel/src/toolbar.cpp@285@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@Toolbar@setAvailableActions@@()@
+CCCC_MemExt@Toolbar@setAvailableActions@@()@../pummel/src/toolbar.cpp@177@definition@F????@LOC:62 COM:10 MVG:5@?@d@
+CCCC_Member@Xml_io@Xml_io@@(...)@
+CCCC_MemExt@Xml_io@Xml_io@@(...)@../pummel/src/xml_io.h@19@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_Member@Xml_io@Xml_io@@(QList,QList,QString,DiagramType)@
+CCCC_MemExt@Xml_io@Xml_io@@(QList,QList,QString,DiagramType)@../pummel/src/xml_io.cpp@17@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@Xml_io@Xml_io@@(QString)@
+CCCC_MemExt@Xml_io@Xml_io@@(QString)@../pummel/src/xml_io.h@18@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Xml_io@Xml_io@@(QString)@../pummel/src/xml_io.cpp@11@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@Xml_io@choose_type@@(DiagramType)@
+CCCC_MemExt@Xml_io@choose_type@@(DiagramType)@../pummel/src/xml_io.h@32@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Xml_io@choose_type@@(DiagramType)@../pummel/src/xml_io.cpp@33@definition@F????@LOC:16 COM:3 MVG:7@?@d@
+CCCC_Member@Xml_io@get_diagram_type@@()@
+CCCC_MemExt@Xml_io@get_diagram_type@@()@../pummel/src/xml_io.h@38@definition@F???2@LOC:1 COM:0 MVG:1@2@d@
+CCCC_Member@Xml_io@get_filename@@()@
+CCCC_MemExt@Xml_io@get_filename@@()@../pummel/src/xml_io.h@37@definition@F???2@LOC:1 COM:0 MVG:1@2@d@
+CCCC_Member@Xml_io@get_items@@()@
+CCCC_MemExt@Xml_io@get_items@@()@../pummel/src/xml_io.h@35@definition@F???2@LOC:1 COM:1 MVG:1@2@d@
+CCCC_Member@Xml_io@get_lines@@()@
+CCCC_MemExt@Xml_io@get_lines@@()@../pummel/src/xml_io.h@36@definition@F???2@LOC:1 COM:0 MVG:1@2@d@
+CCCC_Member@Xml_io@make_icon@@(QString,int,int,int,int,int,QString)@
+CCCC_MemExt@Xml_io@make_icon@@(QString,int,int,int,int,int,QString)@../pummel/src/xml_io.h@27@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Xml_io@make_icon@@(QString,int,int,int,int,int,QString)@../pummel/src/xml_io.cpp@249@definition@F????@LOC:33 COM:5 MVG:8@?@d@
+CCCC_Member@Xml_io@make_line@@(int,int,int)@
+CCCC_MemExt@Xml_io@make_line@@(int,int,int)@../pummel/src/xml_io.h@30@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Xml_io@make_line@@(int,int,int)@../pummel/src/xml_io.cpp@338@definition@F????@LOC:45 COM:4 MVG:11@?@d@
+CCCC_Member@Xml_io@parse_icon@@(QXmlStreamReader &)@
+CCCC_MemExt@Xml_io@parse_icon@@(QXmlStreamReader &)@../pummel/src/xml_io.h@26@declaration@F???2@LOC:1 COM:1 MVG:0@2@D@
+CCCC_MemExt@Xml_io@parse_icon@@(QXmlStreamReader &)@../pummel/src/xml_io.cpp@169@definition@F????@LOC:54 COM:15 MVG:11@?@d@
+CCCC_Member@Xml_io@parse_line@@(QXmlStreamReader &)@
+CCCC_MemExt@Xml_io@parse_line@@(QXmlStreamReader &)@../pummel/src/xml_io.h@29@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Xml_io@parse_line@@(QXmlStreamReader &)@../pummel/src/xml_io.cpp@292@definition@F????@LOC:29 COM:10 MVG:7@?@d@
+CCCC_Member@Xml_io@parse_xml@@()@
+CCCC_MemExt@Xml_io@parse_xml@@()@../pummel/src/xml_io.h@23@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Xml_io@parse_xml@@()@../pummel/src/xml_io.cpp@110@definition@F????@LOC:38 COM:11 MVG:8@?@d@
+CCCC_Member@Xml_io@set_diagram_type@@(QString)@
+CCCC_MemExt@Xml_io@set_diagram_type@@(QString)@../pummel/src/xml_io.h@44@definition@F???2@LOC:1 COM:0 MVG:0@2@d@
+CCCC_Member@Xml_io@set_filename@@(QString)@
+CCCC_MemExt@Xml_io@set_filename@@(QString)@../pummel/src/xml_io.h@43@definition@F???2@LOC:1 COM:0 MVG:0@2@d@
+CCCC_Member@Xml_io@set_items@@(QList)@
+CCCC_MemExt@Xml_io@set_items@@(QList)@../pummel/src/xml_io.h@41@definition@F???2@LOC:1 COM:1 MVG:0@2@d@
+CCCC_Member@Xml_io@set_lines@@(QList)@
+CCCC_MemExt@Xml_io@set_lines@@(QList)@../pummel/src/xml_io.h@42@definition@F???2@LOC:1 COM:0 MVG:0@2@d@
+CCCC_Member@Xml_io@write_xml@@()@
+CCCC_MemExt@Xml_io@write_xml@@()@../pummel/src/xml_io.h@22@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Xml_io@write_xml@@()@../pummel/src/xml_io.cpp@54@definition@F????@LOC:36 COM:10 MVG:2@?@d@
+CCCC_Member@Xml_io@~Xml_io@@()@
+CCCC_MemExt@Xml_io@~Xml_io@@()@../pummel/src/xml_io.h@20@declaration@F???2@LOC:1 COM:0 MVG:0@2@D@
+CCCC_MemExt@Xml_io@~Xml_io@@()@../pummel/src/xml_io.cpp@26@definition@F????@LOC:3 COM:0 MVG:0@?@d@
+CCCC_Member@anonymous@main@@(...)@
+CCCC_MemExt@anonymous@main@@(...)@../pummel/src/main.cpp@7@definition@F????@LOC:7 COM:1 MVG:1@?@d@
+CCCC_Member@dottedlinebah@dottedlinebah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@dottedlinebah@dottedlinebah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/dottedlinebah.h@9@declaration@F???0@LOC:1 COM:1 MVG:0@0@D@
+CCCC_MemExt@dottedlinebah@dottedlinebah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/dottedlinebah.cpp@8@definition@F????@LOC:6 COM:5 MVG:0@?@d@
+CCCC_Member@dottedlinebah@dottedlinebah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@dottedlinebah@dottedlinebah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/dottedlinebah.h@10@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@dottedlinebah@dottedlinebah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/dottedlinebah.cpp@24@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@dottedlinebah@dottedlinebah@@(int,int)@
+CCCC_MemExt@dottedlinebah@dottedlinebah@@(int,int)@../pummel/src/dottedlinebah.h@11@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@dottedlinebah@dottedlinebah@@(int,int)@../pummel/src/dottedlinebah.cpp@15@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@dottedlinebah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@dottedlinebah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/dottedlinebah.h@14@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@dottedlinebah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/dottedlinebah.cpp@36@definition@F????@LOC:36 COM:18 MVG:7@?@d@
+CCCC_Member@dottedsqlineeah@dottedsqlineeah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@dottedsqlineeah@dottedsqlineeah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/dottedsqlineeah.h@9@declaration@F???0@LOC:1 COM:1 MVG:0@0@D@
+CCCC_MemExt@dottedsqlineeah@dottedsqlineeah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/dottedsqlineeah.cpp@8@definition@F????@LOC:7 COM:5 MVG:0@?@d@
+CCCC_Member@dottedsqlineeah@dottedsqlineeah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@dottedsqlineeah@dottedsqlineeah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/dottedsqlineeah.h@10@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@dottedsqlineeah@dottedsqlineeah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/dottedsqlineeah.cpp@25@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@dottedsqlineeah@dottedsqlineeah@@(int,int)@
+CCCC_MemExt@dottedsqlineeah@dottedsqlineeah@@(int,int)@../pummel/src/dottedsqlineeah.h@11@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@dottedsqlineeah@dottedsqlineeah@@(int,int)@../pummel/src/dottedsqlineeah.cpp@16@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@dottedsqlineeah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@dottedsqlineeah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/dottedsqlineeah.h@14@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@dottedsqlineeah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/dottedsqlineeah.cpp@37@definition@F????@LOC:34 COM:27 MVG:6@?@d@
+CCCC_Member@lineBody@bareArrowHead@@(double,QLineF,QPointF *,QPointF *)@
+CCCC_MemExt@lineBody@bareArrowHead@@(double,QLineF,QPointF *,QPointF *)@../pummel/src/linebody.cpp@293@definition@F????@LOC:6 COM:5 MVG:0@?@d@
+CCCC_Member@lineBody@boundingRect@@()@
+CCCC_MemExt@lineBody@boundingRect@@()@../pummel/src/linebody.cpp@139@definition@T????@LOC:7 COM:24 MVG:1@?@d@
+CCCC_Member@lineBody@calcSRArrowPoint@@(QPointF,qreal)@
+CCCC_MemExt@lineBody@calcSRArrowPoint@@(QPointF,qreal)@../pummel/src/linebody.cpp@75@definition@F????@LOC:6 COM:4 MVG:1@?@d@
+CCCC_Member@lineBody@calcSRLRadius@@(Icon *)@
+CCCC_MemExt@lineBody@calcSRLRadius@@(Icon *)@../pummel/src/linebody.cpp@64@definition@F????@LOC:5 COM:3 MVG:1@?@d@
+CCCC_Member@lineBody@checkInterPoint@@(QPointF)@
+CCCC_MemExt@lineBody@checkInterPoint@@(QPointF)@../pummel/src/linebody.cpp@98@definition@F????@LOC:7 COM:4 MVG:4@?@d@
+CCCC_Member@lineBody@checkReferences@@(Icon *,Icon *)@
+CCCC_MemExt@lineBody@checkReferences@@(Icon *,Icon *)@../pummel/src/linebody.cpp@86@definition@F????@LOC:7 COM:3 MVG:4@?@d@
+CCCC_Member@lineBody@findIntersection@@(Icon *,QLineF)@
+CCCC_MemExt@lineBody@findIntersection@@(Icon *,QLineF)@../pummel/src/linebody.cpp@188@definition@F????@LOC:72 COM:6 MVG:9@?@d@
+CCCC_Member@lineBody@findObjectCenter@@(Icon *)@
+CCCC_MemExt@lineBody@findObjectCenter@@(Icon *)@../pummel/src/linebody.cpp@38@definition@F????@LOC:7 COM:3 MVG:1@?@d@
+CCCC_Member@lineBody@findSRLCenter@@(Icon *)@
+CCCC_MemExt@lineBody@findSRLCenter@@(Icon *)@../pummel/src/linebody.cpp@51@definition@F????@LOC:6 COM:3 MVG:1@?@d@
+CCCC_Member@lineBody@getAngle@@()@
+CCCC_MemExt@lineBody@getAngle@@()@../pummel/src/linebody.cpp@272@definition@F????@LOC:7 COM:10 MVG:2@?@d@
+CCCC_Member@lineBody@lineBody@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@lineBody@lineBody@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/linebody.cpp@10@definition@F????@LOC:8 COM:3 MVG:0@?@d@
+CCCC_Member@lineBody@lineBody@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@lineBody@lineBody@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/linebody.cpp@21@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@lineBody@lineBody@@(int,int)@
+CCCC_MemExt@lineBody@lineBody@@(int,int)@../pummel/src/linebody.cpp@30@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@lineBody@makeArrowHead@@(double,QLineF)@
+CCCC_MemExt@lineBody@makeArrowHead@@(double,QLineF)@../pummel/src/linebody.cpp@301@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@lineBody@makeArrowHead@@(double,QPointF)@
+CCCC_MemExt@lineBody@makeArrowHead@@(double,QPointF)@../pummel/src/linebody.cpp@311@definition@F????@LOC:8 COM:0 MVG:0@?@d@
+CCCC_Member@lineBody@makeDiamond@@(double,QLineF)@
+CCCC_MemExt@lineBody@makeDiamond@@(double,QLineF)@../pummel/src/linebody.cpp@321@definition@F????@LOC:9 COM:0 MVG:0@?@d@
+CCCC_Member@lineBody@shape@@()@
+CCCC_MemExt@lineBody@shape@@()@../pummel/src/linebody.cpp@171@definition@T????@LOC:5 COM:10 MVG:1@?@d@
+CCCC_Member@lineBody@squareLine@@(qreal,QPointF,QPointF,QPointF *,QPointF *)@
+CCCC_MemExt@lineBody@squareLine@@(qreal,QPointF,QPointF,QPointF *,QPointF *)@../pummel/src/linebody.cpp@111@definition@F????@LOC:19 COM:5 MVG:4@?@d@
+CCCC_Member@savePrompt@cancel@@()@
+CCCC_MemExt@savePrompt@cancel@@()@../pummel/src/saveprompt.cpp@71@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@savePrompt@init@@()@
+CCCC_MemExt@savePrompt@init@@()@../pummel/src/saveprompt.cpp@50@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@savePrompt@quit@@()@
+CCCC_MemExt@savePrompt@quit@@()@../pummel/src/saveprompt.cpp@65@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@savePrompt@savePrompt@@()@
+CCCC_MemExt@savePrompt@savePrompt@@()@../pummel/src/saveprompt.cpp@18@definition@F????@LOC:22 COM:10 MVG:0@?@d@
+CCCC_Member@savePrompt@saveQuit@@()@
+CCCC_MemExt@savePrompt@saveQuit@@()@../pummel/src/saveprompt.cpp@59@definition@F????@LOC:5 COM:0 MVG:0@?@d@
+CCCC_Member@savePrompt@~savePrompt@@()@
+CCCC_MemExt@savePrompt@~savePrompt@@()@../pummel/src/saveprompt.cpp@77@definition@F????@LOC:4 COM:0 MVG:0@?@d@
+CCCC_Member@selfRefLine@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@selfRefLine@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/selfrefline.h@14@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@selfRefLine@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/selfrefline.cpp@37@definition@F????@LOC:21 COM:17 MVG:4@?@d@
+CCCC_Member@selfRefLine@selfRefLine@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@selfRefLine@selfRefLine@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/selfrefline.h@9@declaration@F???0@LOC:1 COM:1 MVG:0@0@D@
+CCCC_MemExt@selfRefLine@selfRefLine@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/selfrefline.cpp@8@definition@F????@LOC:7 COM:5 MVG:0@?@d@
+CCCC_Member@selfRefLine@selfRefLine@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@selfRefLine@selfRefLine@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/selfrefline.h@10@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@selfRefLine@selfRefLine@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/selfrefline.cpp@25@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@selfRefLine@selfRefLine@@(int,int)@
+CCCC_MemExt@selfRefLine@selfRefLine@@(int,int)@../pummel/src/selfrefline.h@11@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@selfRefLine@selfRefLine@@(int,int)@../pummel/src/selfrefline.cpp@16@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@shapes@createActor@@()@
+CCCC_MemExt@shapes@createActor@@()@../pummel/src/shapes.h@45@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@shapes@createActor@@()@../pummel/src/shapes.cpp@90@definition@F????@LOC:11 COM:1 MVG:0@?@d@
+CCCC_Member@shapes@createArrow@@()@
+CCCC_MemExt@shapes@createArrow@@()@../pummel/src/shapes.h@41@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@shapes@createArrow@@()@../pummel/src/shapes.cpp@31@definition@F????@LOC:12 COM:1 MVG:0@?@d@
+CCCC_Member@shapes@createDashedArrow@@()@
+CCCC_MemExt@shapes@createDashedArrow@@()@../pummel/src/shapes.h@42@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@shapes@createDashedArrow@@()@../pummel/src/shapes.cpp@45@definition@F????@LOC:12 COM:1 MVG:0@?@d@
+CCCC_Member@shapes@createEllipse@@()@
+CCCC_MemExt@shapes@createEllipse@@()@../pummel/src/shapes.h@40@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@shapes@createEllipse@@()@../pummel/src/shapes.cpp@13@definition@F????@LOC:15 COM:1 MVG:0@?@d@
+CCCC_Member@shapes@createField@@()@
+CCCC_MemExt@shapes@createField@@()@../pummel/src/shapes.h@44@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@shapes@createField@@()@../pummel/src/shapes.cpp@77@definition@F????@LOC:11 COM:1 MVG:0@?@d@
+CCCC_Member@shapes@createLine@@()@
+CCCC_MemExt@shapes@createLine@@()@../pummel/src/shapes.h@43@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@shapes@createLine@@()@../pummel/src/shapes.cpp@59@definition@F????@LOC:15 COM:1 MVG:0@?@d@
+CCCC_Member@shapes@shapes@@()@
+CCCC_MemExt@shapes@shapes@@()@../pummel/src/shapes.h@39@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@shapes@shapes@@()@../pummel/src/shapes.cpp@9@definition@F????@LOC:3 COM:3 MVG:0@?@d@
+CCCC_Member@solidline@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@solidline@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidline.h@13@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@solidline@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidline.cpp@27@definition@F????@LOC:25 COM:0 MVG:5@?@d@
+CCCC_Member@solidline@solidline@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidline@solidline@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidline.h@8@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidline@solidline@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidline.cpp@3@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@solidline@solidline@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidline@solidline@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidline.h@9@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidline@solidline@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidline.cpp@20@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@solidline@solidline@@(int,int)@
+CCCC_MemExt@solidline@solidline@@(int,int)@../pummel/src/solidline.h@10@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidline@solidline@@(int,int)@../pummel/src/solidline.cpp@11@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@solidlineBAH@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@solidlineBAH@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidlinebah.h@14@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@solidlineBAH@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidlinebah.cpp@36@definition@F????@LOC:35 COM:18 MVG:7@?@d@
+CCCC_Member@solidlineBAH@solidlineBAH@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidlineBAH@solidlineBAH@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidlinebah.h@9@declaration@F???0@LOC:1 COM:1 MVG:0@0@D@
+CCCC_MemExt@solidlineBAH@solidlineBAH@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidlinebah.cpp@8@definition@F????@LOC:6 COM:5 MVG:0@?@d@
+CCCC_Member@solidlineBAH@solidlineBAH@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidlineBAH@solidlineBAH@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidlinebah.h@10@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidlineBAH@solidlineBAH@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidlinebah.cpp@24@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@solidlineBAH@solidlineBAH@@(int,int)@
+CCCC_MemExt@solidlineBAH@solidlineBAH@@(int,int)@../pummel/src/solidlinebah.h@11@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidlineBAH@solidlineBAH@@(int,int)@../pummel/src/solidlinebah.cpp@15@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@solidlineeah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@solidlineeah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidlineeah.h@14@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@solidlineeah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidlineeah.cpp@36@definition@F????@LOC:32 COM:19 MVG:7@?@d@
+CCCC_Member@solidlineeah@solidlineeah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidlineeah@solidlineeah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidlineeah.h@9@declaration@F???0@LOC:1 COM:1 MVG:0@0@D@
+CCCC_MemExt@solidlineeah@solidlineeah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidlineeah.cpp@8@definition@F????@LOC:6 COM:5 MVG:0@?@d@
+CCCC_Member@solidlineeah@solidlineeah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidlineeah@solidlineeah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidlineeah.h@10@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidlineeah@solidlineeah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidlineeah.cpp@24@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@solidlineeah@solidlineeah@@(int,int)@
+CCCC_MemExt@solidlineeah@solidlineeah@@(int,int)@../pummel/src/solidlineeah.h@11@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidlineeah@solidlineeah@@(int,int)@../pummel/src/solidlineeah.cpp@15@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@solidsqlinebah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@solidsqlinebah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidsqlinebah.h@14@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@solidsqlinebah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidsqlinebah.cpp@37@definition@F????@LOC:36 COM:23 MVG:6@?@d@
+CCCC_Member@solidsqlinebah@solidsqlinebah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidsqlinebah@solidsqlinebah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlinebah.h@9@declaration@F???0@LOC:1 COM:1 MVG:0@0@D@
+CCCC_MemExt@solidsqlinebah@solidsqlinebah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlinebah.cpp@8@definition@F????@LOC:7 COM:5 MVG:0@?@d@
+CCCC_Member@solidsqlinebah@solidsqlinebah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidsqlinebah@solidsqlinebah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlinebah.h@11@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidsqlinebah@solidsqlinebah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlinebah.cpp@25@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@solidsqlinebah@solidsqlinebah@@(int,int)@
+CCCC_MemExt@solidsqlinebah@solidsqlinebah@@(int,int)@../pummel/src/solidsqlinebah.h@10@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidsqlinebah@solidsqlinebah@@(int,int)@../pummel/src/solidsqlinebah.cpp@16@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@solidsqlineeah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@solidsqlineeah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidsqlineeah.h@14@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@solidsqlineeah@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidsqlineeah.cpp@37@definition@F????@LOC:33 COM:25 MVG:6@?@d@
+CCCC_Member@solidsqlineeah@solidsqlineeah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidsqlineeah@solidsqlineeah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlineeah.h@9@declaration@F???0@LOC:1 COM:1 MVG:0@0@D@
+CCCC_MemExt@solidsqlineeah@solidsqlineeah@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlineeah.cpp@8@definition@F????@LOC:7 COM:5 MVG:0@?@d@
+CCCC_Member@solidsqlineeah@solidsqlineeah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidsqlineeah@solidsqlineeah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlineeah.h@10@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidsqlineeah@solidsqlineeah@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlineeah.cpp@25@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@solidsqlineeah@solidsqlineeah@@(int,int)@
+CCCC_MemExt@solidsqlineeah@solidsqlineeah@@(int,int)@../pummel/src/solidsqlineeah.h@11@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidsqlineeah@solidsqlineeah@@(int,int)@../pummel/src/solidsqlineeah.cpp@16@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@solidsqlineed@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@solidsqlineed@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidsqlineed.h@14@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@solidsqlineed@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidsqlineed.cpp@37@definition@F????@LOC:33 COM:25 MVG:6@?@d@
+CCCC_Member@solidsqlineed@solidsqlineed@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidsqlineed@solidsqlineed@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlineed.h@9@declaration@F???0@LOC:1 COM:1 MVG:0@0@D@
+CCCC_MemExt@solidsqlineed@solidsqlineed@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlineed.cpp@8@definition@F????@LOC:7 COM:5 MVG:0@?@d@
+CCCC_Member@solidsqlineed@solidsqlineed@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidsqlineed@solidsqlineed@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlineed.h@11@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidsqlineed@solidsqlineed@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlineed.cpp@25@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@solidsqlineed@solidsqlineed@@(int,int)@
+CCCC_MemExt@solidsqlineed@solidsqlineed@@(int,int)@../pummel/src/solidsqlineed.h@10@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidsqlineed@solidsqlineed@@(int,int)@../pummel/src/solidsqlineed.cpp@16@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_Member@solidsqlinesd@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@
+CCCC_MemExt@solidsqlinesd@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidsqlinesd.h@14@declaration@F???1@LOC:1 COM:0 MVG:0@1@D@
+CCCC_MemExt@solidsqlinesd@paint@@(QPainter *,const QStyleOptionGraphicsItem *,QWidget *)@../pummel/src/solidsqlinesd.cpp@38@definition@F????@LOC:33 COM:25 MVG:6@?@d@
+CCCC_Member@solidsqlinesd@solidsqlinesd@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidsqlinesd@solidsqlinesd@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlinesd.h@9@declaration@F???0@LOC:1 COM:1 MVG:0@0@D@
+CCCC_MemExt@solidsqlinesd@solidsqlinesd@@(Icon *,Icon *,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlinesd.cpp@8@definition@F????@LOC:7 COM:5 MVG:0@?@d@
+CCCC_Member@solidsqlinesd@solidsqlinesd@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@
+CCCC_MemExt@solidsqlinesd@solidsqlinesd@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlinesd.h@11@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidsqlinesd@solidsqlinesd@@(Icon *,Icon *,int,int,QGraphicsItem *,QGraphicsScene *)@../pummel/src/solidsqlinesd.cpp@26@definition@F????@LOC:6 COM:0 MVG:0@?@d@
+CCCC_Member@solidsqlinesd@solidsqlinesd@@(int,int)@
+CCCC_MemExt@solidsqlinesd@solidsqlinesd@@(int,int)@../pummel/src/solidsqlinesd.h@10@declaration@F???0@LOC:1 COM:0 MVG:0@0@D@
+CCCC_MemExt@solidsqlinesd@solidsqlinesd@@(int,int)@../pummel/src/solidsqlinesd.cpp@16@definition@F????@LOC:7 COM:0 MVG:0@?@d@
+CCCC_UseRel@Icon@Actor@
+CCCC_UseExt@Icon@Actor@../pummel/src/actor.h@11@inheritance@????0@*@0@I@
+CCCC_UseRel@QGraphicsItem@Actor@
+CCCC_UseExt@QGraphicsItem@Actor@../pummel/src/actor.h@29@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@Actor@../pummel/src/actor.cpp@4@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@Actor@../pummel/src/actor.cpp@21@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsSceneMouseEvent@Actor@
+CCCC_UseExt@QGraphicsSceneMouseEvent@Actor@../pummel/src/actor.h@18@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@Actor@../pummel/src/actor.cpp@82@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@Actor@
+CCCC_UseExt@QPainter@Actor@../pummel/src/actor.h@17@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@Actor@../pummel/src/actor.cpp@47@pass by reference@T????@*@?@p@
+CCCC_UseRel@QPointF@Actor@
+CCCC_UseExt@QPointF@Actor@../pummel/src/actor.cpp@4@pass by value@?????@*@?@P@
+CCCC_UseRel@QString@Actor@
+CCCC_UseExt@QString@Actor@../pummel/src/actor.h@29@pass by value@F???0@*@0@P@
+CCCC_UseExt@QString@Actor@../pummel/src/actor.cpp@21@pass by value@F????@*@?@P@
+CCCC_UseRel@QStyleOptionGraphicsItem@Actor@
+CCCC_UseExt@QStyleOptionGraphicsItem@Actor@../pummel/src/actor.h@17@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@Actor@../pummel/src/actor.cpp@47@pass by reference@T????@*@?@p@
+CCCC_UseRel@QWidget@Actor@
+CCCC_UseExt@QWidget@Actor@../pummel/src/actor.h@17@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@Actor@../pummel/src/actor.cpp@47@pass by reference@T????@*@?@p@
+CCCC_UseRel@QLayout@BorderLayout@
+CCCC_UseExt@QLayout@BorderLayout@../pummel/src/borderlayout.h@48@inheritance@????0@*@0@I@
+CCCC_UseRel@QLayoutItem@BorderLayout@
+CCCC_UseExt@QLayoutItem@BorderLayout@../pummel/src/borderlayout.h@57@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QLayoutItem@BorderLayout@../pummel/src/borderlayout.h@68@pass by reference@F????@*@?@p@
+CCCC_UseExt@QLayoutItem@BorderLayout@../pummel/src/borderlayout.cpp@64@pass by reference@F????@*@?@p@
+CCCC_UseExt@QLayoutItem@BorderLayout@../pummel/src/borderlayout.cpp@197@pass by reference@F????@*@?@p@
+CCCC_UseRel@QList@BorderLayout@
+CCCC_UseExt@QList@BorderLayout@../pummel/src/borderlayout.h@86@has by value@T???0@LOC:0 COM:0 MVG:0@0@H@
+CCCC_UseRel@QRect@BorderLayout@
+CCCC_UseExt@QRect@BorderLayout@../pummel/src/borderlayout.h@64@pass by reference@F????@*@?@p@
+CCCC_UseExt@QRect@BorderLayout@../pummel/src/borderlayout.cpp@103@pass by reference@T????@*@?@p@
+CCCC_UseRel@QWidget@BorderLayout@
+CCCC_UseExt@QWidget@BorderLayout@../pummel/src/borderlayout.h@53@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QWidget@BorderLayout@../pummel/src/borderlayout.h@58@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QWidget@BorderLayout@../pummel/src/borderlayout.cpp@45@pass by reference@?????@*@?@p@
+CCCC_UseExt@QWidget@BorderLayout@../pummel/src/borderlayout.cpp@69@pass by reference@F????@*@?@p@
+CCCC_UseRel@Icon@ClassBox@
+CCCC_UseExt@Icon@ClassBox@../pummel/src/classbox.h@16@inheritance@????0@*@0@I@
+CCCC_UseRel@QFont@ClassBox@
+CCCC_UseExt@QFont@ClassBox@../pummel/src/classbox.h@24@has by value@F???2@LOC:0 COM:0 MVG:0@2@H@
+CCCC_UseRel@QGraphicsItem@ClassBox@
+CCCC_UseExt@QGraphicsItem@ClassBox@../pummel/src/classbox.h@34@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@ClassBox@../pummel/src/classbox.cpp@43@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsSceneMouseEvent@ClassBox@
+CCCC_UseExt@QGraphicsSceneMouseEvent@ClassBox@../pummel/src/classbox.h@29@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@ClassBox@../pummel/src/classbox.cpp@181@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsTextItem@ClassBox@
+CCCC_UseExt@QGraphicsTextItem@ClassBox@../pummel/src/classbox.h@19@has by reference@????2@LOC:0 COM:0 MVG:0@2@h@
+CCCC_UseRel@QPainter@ClassBox@
+CCCC_UseExt@QPainter@ClassBox@../pummel/src/classbox.h@28@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@ClassBox@../pummel/src/classbox.cpp@136@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPointF@ClassBox@
+CCCC_UseExt@QPointF@ClassBox@../pummel/src/classbox.h@33@pass by value@F???0@*@0@P@
+CCCC_UseExt@QPointF@ClassBox@../pummel/src/classbox.cpp@7@pass by value@?????@*@?@P@
+CCCC_UseRel@QString@ClassBox@
+CCCC_UseExt@QString@ClassBox@../pummel/src/classbox.h@21@has by value@????2@LOC:0 COM:0 MVG:0@2@H@
+CCCC_UseExt@QString@ClassBox@../pummel/src/classbox.h@34@pass by value@F???0@*@0@P@
+CCCC_UseExt@QString@ClassBox@../pummel/src/classbox.cpp@43@pass by value@F????@*@?@P@
+CCCC_UseExt@QString@ClassBox@../pummel/src/classbox.cpp@219@pass by value@F????@*@?@P@
+CCCC_UseExt@QString@ClassBox@../pummel/src/classbox.cpp@224@pass by value@F????@*@?@P@
+CCCC_UseExt@QString@ClassBox@../pummel/src/classbox.cpp@229@pass by value@F????@*@?@P@
+CCCC_UseExt@QString@ClassBox@../pummel/src/classbox.cpp@256@pass by value@F????@*@?@P@
+CCCC_UseRel@QStyleOptionGraphicsItem@ClassBox@
+CCCC_UseExt@QStyleOptionGraphicsItem@ClassBox@../pummel/src/classbox.h@28@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@ClassBox@../pummel/src/classbox.cpp@136@pass by reference@F????@*@?@p@
+CCCC_UseRel@QWidget@ClassBox@
+CCCC_UseExt@QWidget@ClassBox@../pummel/src/classbox.h@28@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@ClassBox@../pummel/src/classbox.cpp@136@pass by reference@F????@*@?@p@
+CCCC_UseRel@ClassBox@ClassBoxDialog@
+CCCC_UseExt@ClassBox@ClassBoxDialog@../pummel/src/classboxdialog.cpp@3@pass by reference@?????@*@?@p@
+CCCC_UseRel@QWidget@ClassBoxDialog@
+CCCC_UseExt@QWidget@ClassBoxDialog@../pummel/src/classboxdialog.h@16@inheritance@????0@*@0@I@
+CCCC_UseRel@QWidget@CollaborationBoxDialog@
+CCCC_UseExt@QWidget@CollaborationBoxDialog@../pummel/src/collaborationboxdialog.h@14@inheritance@????0@*@0@I@
+CCCC_UseRel@RoundedSquare@CollaborationBoxDialog@
+CCCC_UseExt@RoundedSquare@CollaborationBoxDialog@../pummel/src/collaborationboxdialog.cpp@3@pass by reference@?????@*@?@p@
+CCCC_UseRel@QDialog@DiagramTypeSelector@
+CCCC_UseExt@QDialog@DiagramTypeSelector@../pummel/src/diagramtypeselector.h@9@inheritance@????0@*@0@I@
+CCCC_UseRel@Icon@DragScene@
+CCCC_UseExt@Icon@DragScene@../pummel/src/dragscene.h@60@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@DragScene@../pummel/src/dragscene.cpp@78@pass by reference@F????@*@?@p@
+CCCC_UseRel@LineType@DragScene@
+CCCC_UseExt@LineType@DragScene@../pummel/src/dragscene.h@52@pass by value@F???0@*@0@P@
+CCCC_UseExt@LineType@DragScene@../pummel/src/dragscene.h@83@has by value@F???2@LOC:0 COM:0 MVG:0@2@H@
+CCCC_UseRel@QColor@DragScene@
+CCCC_UseExt@QColor@DragScene@../pummel/src/dragscene.h@90@has by value@F???2@LOC:0 COM:0 MVG:0@2@H@
+CCCC_UseRel@QGraphicsLineItem@DragScene@
+CCCC_UseExt@QGraphicsLineItem@DragScene@../pummel/src/dragscene.h@89@has by reference@F???2@LOC:0 COM:0 MVG:0@2@h@
+CCCC_UseRel@QGraphicsScene@DragScene@
+CCCC_UseExt@QGraphicsScene@DragScene@../pummel/src/dragscene.h@28@inheritance@????0@*@0@I@
+CCCC_UseRel@QGraphicsSceneMouseEvent@DragScene@
+CCCC_UseExt@QGraphicsSceneMouseEvent@DragScene@../pummel/src/dragscene.h@71@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@DragScene@../pummel/src/dragscene.h@72@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@DragScene@../pummel/src/dragscene.h@73@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@DragScene@../pummel/src/dragscene.h@74@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@DragScene@../pummel/src/dragscene.cpp@111@pass by reference@F????@*@?@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@DragScene@../pummel/src/dragscene.cpp@269@pass by reference@F????@*@?@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@DragScene@../pummel/src/dragscene.cpp@290@pass by reference@F????@*@?@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@DragScene@../pummel/src/dragscene.cpp@461@pass by reference@F????@*@?@p@
+CCCC_UseRel@QList@DragScene@
+CCCC_UseExt@QList@DragScene@../pummel/src/dragscene.h@64@pass by value@F???0@*@0@P@
+CCCC_UseExt@QList@DragScene@../pummel/src/dragscene.h@64@pass by value@F???0@*@0@P@
+CCCC_UseExt@QList@DragScene@../pummel/src/dragscene.h@65@pass by value@F???0@*@0@P@
+CCCC_UseExt@QList@DragScene@../pummel/src/dragscene.h@86@has by value@F???2@LOC:0 COM:0 MVG:0@2@H@
+CCCC_UseExt@QList@DragScene@../pummel/src/dragscene.h@87@has by value@F???2@LOC:0 COM:0 MVG:0@2@H@
+CCCC_UseExt@QList@DragScene@../pummel/src/dragscene.cpp@502@pass by value@F????@*@?@P@
+CCCC_UseExt@QList@DragScene@../pummel/src/dragscene.cpp@502@pass by value@F????@*@?@P@
+CCCC_UseExt@QList@DragScene@../pummel/src/dragscene.cpp@546@pass by value@F????@*@?@P@
+CCCC_UseRel@QObject@DragScene@
+CCCC_UseExt@QObject@DragScene@../pummel/src/dragscene.h@35@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QObject@DragScene@../pummel/src/dragscene.cpp@20@pass by reference@?????@*@?@p@
+CCCC_UseRel@QPainter@DragScene@
+CCCC_UseExt@QPainter@DragScene@../pummel/src/dragscene.h@75@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@DragScene@../pummel/src/dragscene.cpp@469@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPointF@DragScene@
+CCCC_UseExt@QPointF@DragScene@../pummel/src/dragscene.h@61@pass by value@F???0@*@0@P@
+CCCC_UseExt@QPointF@DragScene@../pummel/src/dragscene.cpp@44@pass by value@F????@*@?@P@
+CCCC_UseRel@QRectF@DragScene@
+CCCC_UseExt@QRectF@DragScene@../pummel/src/dragscene.h@75@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QRectF@DragScene@../pummel/src/dragscene.cpp@469@pass by reference@F????@*@?@p@
+CCCC_UseRel@bool@DragScene@
+CCCC_UseExt@bool@DragScene@../pummel/src/dragscene.h@50@pass by value@F???0@*@0@P@
+CCCC_UseExt@bool@DragScene@../pummel/src/dragscene.h@51@pass by value@F???0@*@0@P@
+CCCC_UseExt@bool@DragScene@../pummel/src/dragscene.h@53@pass by value@F???0@*@0@P@
+CCCC_UseExt@bool@DragScene@../pummel/src/dragscene.h@54@pass by value@F???0@*@0@P@
+CCCC_UseExt@bool@DragScene@../pummel/src/dragscene.h@56@pass by value@F???0@*@0@P@
+CCCC_UseExt@bool@DragScene@../pummel/src/dragscene.h@79@has by value@F???2@LOC:0 COM:0 MVG:0@2@H@
+CCCC_UseExt@bool@DragScene@../pummel/src/dragscene.h@80@has by value@F???2@LOC:0 COM:0 MVG:0@2@H@
+CCCC_UseExt@bool@DragScene@../pummel/src/dragscene.h@82@has by value@F???2@LOC:0 COM:0 MVG:0@2@H@
+CCCC_UseExt@bool@DragScene@../pummel/src/dragscene.h@84@has by value@F???2@LOC:0 COM:0 MVG:0@2@H@
+CCCC_UseExt@bool@DragScene@../pummel/src/dragscene.h@85@has by value@F???2@LOC:0 COM:0 MVG:0@2@H@
+CCCC_UseRel@QGraphicsView@DragView@
+CCCC_UseExt@QGraphicsView@DragView@../pummel/src/dragview.h@13@inheritance@????0@*@0@I@
+CCCC_UseRel@QWidget@DragView@
+CCCC_UseExt@QWidget@DragView@../pummel/src/dragview.h@16@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QWidget@DragView@../pummel/src/dragview.cpp@3@pass by reference@?????@*@?@p@
+CCCC_UseRel@QList@DrawArea@
+CCCC_UseExt@QList@DrawArea@../pummel/src/drawarea.cpp@27@pass by value@F????@*@?@P@
+CCCC_UseExt@QList@DrawArea@../pummel/src/drawarea.cpp@27@pass by value@F????@*@?@P@
+CCCC_UseRel@QString@DrawArea@
+CCCC_UseExt@QString@DrawArea@../pummel/src/drawarea.cpp@27@pass by value@F????@*@?@P@
+CCCC_UseExt@QString@DrawArea@../pummel/src/drawarea.cpp@45@pass by value@F????@*@?@P@
+CCCC_UseRel@QWidget@DrawArea@
+CCCC_UseExt@QWidget@DrawArea@../pummel/src/drawarea.h@18@inheritance@????0@*@0@I@
+CCCC_UseExt@QWidget@DrawArea@../pummel/src/drawarea.cpp@9@pass by reference@?????@*@?@p@
+CCCC_UseExt@QWidget@DrawArea@../pummel/src/drawarea.cpp@27@pass by reference@F????@*@?@p@
+CCCC_UseRel@Icon@Ellipse@
+CCCC_UseExt@Icon@Ellipse@../pummel/src/ellipse.h@11@inheritance@????0@*@0@I@
+CCCC_UseRel@QGraphicsItem@Ellipse@
+CCCC_UseExt@QGraphicsItem@Ellipse@../pummel/src/ellipse.h@29@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@Ellipse@../pummel/src/ellipse.cpp@7@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@Ellipse@../pummel/src/ellipse.cpp@28@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsSceneMouseEvent@Ellipse@
+CCCC_UseExt@QGraphicsSceneMouseEvent@Ellipse@../pummel/src/ellipse.h@18@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@Ellipse@../pummel/src/ellipse.cpp@100@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@Ellipse@
+CCCC_UseExt@QPainter@Ellipse@../pummel/src/ellipse.h@17@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@Ellipse@../pummel/src/ellipse.cpp@61@pass by reference@T????@*@?@p@
+CCCC_UseRel@QPointF@Ellipse@
+CCCC_UseExt@QPointF@Ellipse@../pummel/src/ellipse.cpp@7@pass by value@?????@*@?@P@
+CCCC_UseRel@QString@Ellipse@
+CCCC_UseExt@QString@Ellipse@../pummel/src/ellipse.h@29@pass by value@F???0@*@0@P@
+CCCC_UseExt@QString@Ellipse@../pummel/src/ellipse.cpp@28@pass by value@F????@*@?@P@
+CCCC_UseRel@QStyleOptionGraphicsItem@Ellipse@
+CCCC_UseExt@QStyleOptionGraphicsItem@Ellipse@../pummel/src/ellipse.h@17@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@Ellipse@../pummel/src/ellipse.cpp@61@pass by reference@T????@*@?@p@
+CCCC_UseRel@QWidget@Ellipse@
+CCCC_UseExt@QWidget@Ellipse@../pummel/src/ellipse.h@17@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@Ellipse@../pummel/src/ellipse.cpp@61@pass by reference@T????@*@?@p@
+CCCC_UseRel@QWidget@HintBox@
+CCCC_UseExt@QWidget@HintBox@../pummel/src/hintbox.h@7@inheritance@????0@*@0@I@
+CCCC_UseRel@MarkerBox@Icon@
+CCCC_UseExt@MarkerBox@Icon@../pummel/src/icon.h@39@has by reference@FT??1@LOC:0 COM:0 MVG:0@1@h@
+CCCC_UseExt@MarkerBox@Icon@../pummel/src/icon.h@64@pass by reference@FT??2@*@2@p@
+CCCC_UseExt@MarkerBox@Icon@../pummel/src/icon.h@64@pass by reference@FT??2@*@2@p@
+CCCC_UseExt@MarkerBox@Icon@../pummel/src/icon.h@64@pass by reference@FT??2@*@2@p@
+CCCC_UseExt@MarkerBox@Icon@../pummel/src/icon.h@64@pass by reference@FT??2@*@2@p@
+CCCC_UseExt@MarkerBox@Icon@../pummel/src/icon.cpp@198@pass by reference@F????@*@?@p@
+CCCC_UseExt@MarkerBox@Icon@../pummel/src/icon.cpp@198@pass by reference@F????@*@?@p@
+CCCC_UseExt@MarkerBox@Icon@../pummel/src/icon.cpp@198@pass by reference@F????@*@?@p@
+CCCC_UseExt@MarkerBox@Icon@../pummel/src/icon.cpp@198@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsItem@Icon@
+CCCC_UseExt@QGraphicsItem@Icon@../pummel/src/icon.h@17@inheritance@????0@*@0@I@
+CCCC_UseExt@QGraphicsItem@Icon@../pummel/src/icon.cpp@13@pass by reference@?????@*@?@p@
+CCCC_UseRel@QGraphicsSceneMouseEvent@Icon@
+CCCC_UseExt@QGraphicsSceneMouseEvent@Icon@../pummel/src/icon.h@22@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@Icon@../pummel/src/icon.h@23@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@Icon@../pummel/src/icon.h@24@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@Icon@../pummel/src/icon.cpp@137@pass by reference@F????@*@?@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@Icon@../pummel/src/icon.cpp@144@pass by reference@F????@*@?@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@Icon@../pummel/src/icon.cpp@155@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsTextItem@Icon@
+CCCC_UseExt@QGraphicsTextItem@Icon@../pummel/src/icon.h@35@has by reference@FT??1@LOC:0 COM:0 MVG:0@1@h@
+CCCC_UseRel@QImage@Icon@
+CCCC_UseExt@QImage@Icon@../pummel/src/icon.h@37@has by value@FT??1@LOC:0 COM:0 MVG:0@1@H@
+CCCC_UseRel@QPointF@Icon@
+CCCC_UseExt@QPointF@Icon@../pummel/src/icon.cpp@13@pass by value@?????@*@?@P@
+CCCC_UseRel@QPolygonF@Icon@
+CCCC_UseExt@QPolygonF@Icon@../pummel/src/icon.h@36@has by value@FT??1@LOC:0 COM:0 MVG:0@1@H@
+CCCC_UseRel@QString@Icon@
+CCCC_UseExt@QString@Icon@../pummel/src/icon.h@33@has by value@FT??1@LOC:0 COM:0 MVG:0@1@H@
+CCCC_UseExt@QString@Icon@../pummel/src/icon.h@57@pass by value@FT??2@*@2@P@
+CCCC_UseExt@QString@Icon@../pummel/src/icon.h@67@pass by value@FT??2@*@2@P@
+CCCC_UseExt@QString@Icon@../pummel/src/icon.h@75@pass by value@FT?T2@*@2@P@
+CCCC_UseExt@QString@Icon@../pummel/src/icon.cpp@85@pass by value@F????@*@?@P@
+CCCC_UseExt@QString@Icon@../pummel/src/icon.cpp@177@pass by value@F????@*@?@P@
+CCCC_UseExt@QString@Icon@../pummel/src/icon.cpp@212@pass by value@F????@*@?@P@
+CCCC_UseRel@QContextMenuEvent@MainWindow@
+CCCC_UseExt@QContextMenuEvent@MainWindow@../pummel/src/mainwindow.cpp@94@pass by reference@F????@*@?@p@
+CCCC_UseRel@QList@MainWindow@
+CCCC_UseExt@QList@MainWindow@../pummel/src/mainwindow.cpp@225@pass by value@F????@*@?@P@
+CCCC_UseExt@QList@MainWindow@../pummel/src/mainwindow.cpp@225@pass by value@F????@*@?@P@
+CCCC_UseRel@QMainWindow@MainWindow@
+CCCC_UseExt@QMainWindow@MainWindow@../pummel/src/mainwindow.h@16@inheritance@????0@*@0@I@
+CCCC_UseRel@QString@MainWindow@
+CCCC_UseExt@QString@MainWindow@../pummel/src/mainwindow.cpp@225@pass by value@F????@*@?@P@
+CCCC_UseExt@QString@MainWindow@../pummel/src/mainwindow.cpp@225@pass by value@F????@*@?@P@
+CCCC_UseRel@QGraphicsItem@MarkerBox@
+CCCC_UseExt@QGraphicsItem@MarkerBox@../pummel/src/markerbox.h@7@inheritance@????0@*@0@I@
+CCCC_UseExt@QGraphicsItem@MarkerBox@../pummel/src/markerbox.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@MarkerBox@../pummel/src/markerbox.cpp@5@pass by reference@?????@*@?@p@
+CCCC_UseRel@QGraphicsSceneMouseEvent@MarkerBox@
+CCCC_UseExt@QGraphicsSceneMouseEvent@MarkerBox@../pummel/src/markerbox.h@13@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@MarkerBox@../pummel/src/markerbox.h@14@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@MarkerBox@../pummel/src/markerbox.h@15@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@MarkerBox@../pummel/src/markerbox.cpp@34@pass by reference@F????@*@?@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@MarkerBox@../pummel/src/markerbox.cpp@48@pass by reference@F????@*@?@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@MarkerBox@../pummel/src/markerbox.cpp@57@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@MarkerBox@
+CCCC_UseExt@QPainter@MarkerBox@../pummel/src/markerbox.h@12@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QPainter@MarkerBox@../pummel/src/markerbox.cpp@16@pass by reference@F????@*@?@p@
+CCCC_UseRel@QStyleOptionGraphicsItem@MarkerBox@
+CCCC_UseExt@QStyleOptionGraphicsItem@MarkerBox@../pummel/src/markerbox.h@12@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@MarkerBox@../pummel/src/markerbox.cpp@16@pass by reference@F????@*@?@p@
+CCCC_UseRel@QWidget@MarkerBox@
+CCCC_UseExt@QWidget@MarkerBox@../pummel/src/markerbox.h@12@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QWidget@MarkerBox@../pummel/src/markerbox.cpp@16@pass by reference@F????@*@?@p@
+CCCC_UseRel@Icon@Note@
+CCCC_UseExt@Icon@Note@../pummel/src/note.h@11@inheritance@????0@*@0@I@
+CCCC_UseRel@QGraphicsItem@Note@
+CCCC_UseExt@QGraphicsItem@Note@../pummel/src/note.h@29@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@Note@../pummel/src/note.cpp@7@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@Note@../pummel/src/note.cpp@30@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsSceneMouseEvent@Note@
+CCCC_UseExt@QGraphicsSceneMouseEvent@Note@../pummel/src/note.h@18@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@Note@../pummel/src/note.cpp@105@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@Note@
+CCCC_UseExt@QPainter@Note@../pummel/src/note.h@17@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@Note@../pummel/src/note.cpp@69@pass by reference@T????@*@?@p@
+CCCC_UseRel@QPointF@Note@
+CCCC_UseExt@QPointF@Note@../pummel/src/note.cpp@7@pass by value@?????@*@?@P@
+CCCC_UseRel@QString@Note@
+CCCC_UseExt@QString@Note@../pummel/src/note.h@29@pass by value@F???0@*@0@P@
+CCCC_UseExt@QString@Note@../pummel/src/note.cpp@30@pass by value@F????@*@?@P@
+CCCC_UseRel@QStyleOptionGraphicsItem@Note@
+CCCC_UseExt@QStyleOptionGraphicsItem@Note@../pummel/src/note.h@17@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@Note@../pummel/src/note.cpp@69@pass by reference@T????@*@?@p@
+CCCC_UseRel@QWidget@Note@
+CCCC_UseExt@QWidget@Note@../pummel/src/note.h@17@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@Note@../pummel/src/note.cpp@69@pass by reference@T????@*@?@p@
+CCCC_UseRel@QWidget@OptionsDialog@
+CCCC_UseExt@QWidget@OptionsDialog@../pummel/src/optionsdialog.cpp@7@pass by reference@?????@*@?@p@
+CCCC_UseRel@Icon@RoundedSquare@
+CCCC_UseExt@Icon@RoundedSquare@../pummel/src/roundedsquare.h@14@inheritance@????0@*@0@I@
+CCCC_UseRel@QFont@RoundedSquare@
+CCCC_UseExt@QFont@RoundedSquare@../pummel/src/roundedsquare.h@23@has by value@F???2@LOC:0 COM:0 MVG:0@2@H@
+CCCC_UseRel@QGraphicsItem@RoundedSquare@
+CCCC_UseExt@QGraphicsItem@RoundedSquare@../pummel/src/roundedsquare.h@33@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@RoundedSquare@../pummel/src/roundedsquare.cpp@7@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@RoundedSquare@../pummel/src/roundedsquare.cpp@32@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsSceneMouseEvent@RoundedSquare@
+CCCC_UseExt@QGraphicsSceneMouseEvent@RoundedSquare@../pummel/src/roundedsquare.h@28@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QGraphicsSceneMouseEvent@RoundedSquare@../pummel/src/roundedsquare.cpp@153@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsTextItem@RoundedSquare@
+CCCC_UseExt@QGraphicsTextItem@RoundedSquare@../pummel/src/roundedsquare.h@17@has by reference@????2@LOC:0 COM:0 MVG:0@2@h@
+CCCC_UseRel@QPainter@RoundedSquare@
+CCCC_UseExt@QPainter@RoundedSquare@../pummel/src/roundedsquare.h@27@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@RoundedSquare@../pummel/src/roundedsquare.cpp@95@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPointF@RoundedSquare@
+CCCC_UseExt@QPointF@RoundedSquare@../pummel/src/roundedsquare.cpp@7@pass by value@?????@*@?@P@
+CCCC_UseRel@QString@RoundedSquare@
+CCCC_UseExt@QString@RoundedSquare@../pummel/src/roundedsquare.h@19@has by value@????2@LOC:0 COM:0 MVG:0@2@H@
+CCCC_UseExt@QString@RoundedSquare@../pummel/src/roundedsquare.h@33@pass by value@F???0@*@0@P@
+CCCC_UseExt@QString@RoundedSquare@../pummel/src/roundedsquare.cpp@32@pass by value@F????@*@?@P@
+CCCC_UseExt@QString@RoundedSquare@../pummel/src/roundedsquare.cpp@192@pass by value@F????@*@?@P@
+CCCC_UseExt@QString@RoundedSquare@../pummel/src/roundedsquare.cpp@198@pass by value@F????@*@?@P@
+CCCC_UseExt@QString@RoundedSquare@../pummel/src/roundedsquare.cpp@223@pass by value@F????@*@?@P@
+CCCC_UseRel@QStyleOptionGraphicsItem@RoundedSquare@
+CCCC_UseExt@QStyleOptionGraphicsItem@RoundedSquare@../pummel/src/roundedsquare.h@27@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@RoundedSquare@../pummel/src/roundedsquare.cpp@95@pass by reference@F????@*@?@p@
+CCCC_UseRel@QWidget@RoundedSquare@
+CCCC_UseExt@QWidget@RoundedSquare@../pummel/src/roundedsquare.h@27@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@RoundedSquare@../pummel/src/roundedsquare.cpp@95@pass by reference@F????@*@?@p@
+CCCC_UseRel@Icon@ScenarioEnd@
+CCCC_UseExt@Icon@ScenarioEnd@../pummel/src/scenarioend.h@10@inheritance@????0@*@0@I@
+CCCC_UseRel@QGraphicsItem@ScenarioEnd@
+CCCC_UseExt@QGraphicsItem@ScenarioEnd@../pummel/src/scenarioend.h@23@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@ScenarioEnd@../pummel/src/scenarioend.cpp@7@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@ScenarioEnd@../pummel/src/scenarioend.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@ScenarioEnd@
+CCCC_UseExt@QPainter@ScenarioEnd@../pummel/src/scenarioend.h@16@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@ScenarioEnd@../pummel/src/scenarioend.cpp@53@pass by reference@T????@*@?@p@
+CCCC_UseRel@QPointF@ScenarioEnd@
+CCCC_UseExt@QPointF@ScenarioEnd@../pummel/src/scenarioend.cpp@7@pass by value@?????@*@?@P@
+CCCC_UseRel@QStyleOptionGraphicsItem@ScenarioEnd@
+CCCC_UseExt@QStyleOptionGraphicsItem@ScenarioEnd@../pummel/src/scenarioend.h@16@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@ScenarioEnd@../pummel/src/scenarioend.cpp@53@pass by reference@T????@*@?@p@
+CCCC_UseRel@QWidget@ScenarioEnd@
+CCCC_UseExt@QWidget@ScenarioEnd@../pummel/src/scenarioend.h@16@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@ScenarioEnd@../pummel/src/scenarioend.cpp@53@pass by reference@T????@*@?@p@
+CCCC_UseRel@Icon@ScenarioStart@
+CCCC_UseExt@Icon@ScenarioStart@../pummel/src/scenariostart.h@10@inheritance@????0@*@0@I@
+CCCC_UseRel@QGraphicsItem@ScenarioStart@
+CCCC_UseExt@QGraphicsItem@ScenarioStart@../pummel/src/scenariostart.h@23@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@ScenarioStart@../pummel/src/scenariostart.cpp@7@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@ScenarioStart@../pummel/src/scenariostart.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@ScenarioStart@
+CCCC_UseExt@QPainter@ScenarioStart@../pummel/src/scenariostart.h@16@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@ScenarioStart@../pummel/src/scenariostart.cpp@53@pass by reference@T????@*@?@p@
+CCCC_UseRel@QPointF@ScenarioStart@
+CCCC_UseExt@QPointF@ScenarioStart@../pummel/src/scenariostart.cpp@7@pass by value@?????@*@?@P@
+CCCC_UseRel@QStyleOptionGraphicsItem@ScenarioStart@
+CCCC_UseExt@QStyleOptionGraphicsItem@ScenarioStart@../pummel/src/scenariostart.h@16@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@ScenarioStart@../pummel/src/scenariostart.cpp@53@pass by reference@T????@*@?@p@
+CCCC_UseRel@QWidget@ScenarioStart@
+CCCC_UseExt@QWidget@ScenarioStart@../pummel/src/scenariostart.h@16@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@ScenarioStart@../pummel/src/scenariostart.cpp@53@pass by reference@T????@*@?@p@
+CCCC_UseRel@QTabWidget@TabManager@
+CCCC_UseExt@QTabWidget@TabManager@../pummel/src/tabmanager.h@6@inheritance@????0@*@0@I@
+CCCC_UseRel@QWidget@TabManager@
+CCCC_UseExt@QWidget@TabManager@../pummel/src/tabmanager.cpp@7@pass by reference@?????@*@?@p@
+CCCC_UseRel@Icon@TextBoxDialog@
+CCCC_UseExt@Icon@TextBoxDialog@../pummel/src/textboxdialog.cpp@3@pass by reference@?????@*@?@p@
+CCCC_UseRel@QWidget@TextBoxDialog@
+CCCC_UseExt@QWidget@TextBoxDialog@../pummel/src/textboxdialog.h@17@inheritance@????0@*@0@I@
+CCCC_UseRel@QWidget@Toolbar@
+CCCC_UseExt@QWidget@Toolbar@../pummel/src/toolbar.cpp@12@pass by reference@?????@*@?@p@
+CCCC_UseRel@QList@Xml_io@
+CCCC_UseExt@QList@Xml_io@../pummel/src/xml_io.h@41@pass by value@F???2@*@2@P@
+CCCC_UseExt@QList@Xml_io@../pummel/src/xml_io.h@42@pass by value@F???2@*@2@P@
+CCCC_UseExt@QList@Xml_io@../pummel/src/xml_io.h@50@has by value@F???1@LOC:0 COM:0 MVG:0@1@H@
+CCCC_UseExt@QList@Xml_io@../pummel/src/xml_io.h@51@has by value@F???1@LOC:0 COM:0 MVG:0@1@H@
+CCCC_UseExt@QList@Xml_io@../pummel/src/xml_io.cpp@17@pass by value@F????@*@?@P@
+CCCC_UseExt@QList@Xml_io@../pummel/src/xml_io.cpp@17@pass by value@F????@*@?@P@
+CCCC_UseRel@QString@Xml_io@
+CCCC_UseExt@QString@Xml_io@../pummel/src/xml_io.h@18@pass by value@F???2@*@2@P@
+CCCC_UseExt@QString@Xml_io@../pummel/src/xml_io.h@27@pass by value@F???2@*@2@P@
+CCCC_UseExt@QString@Xml_io@../pummel/src/xml_io.h@27@pass by value@F???2@*@2@P@
+CCCC_UseExt@QString@Xml_io@../pummel/src/xml_io.h@43@pass by value@F???2@*@2@P@
+CCCC_UseExt@QString@Xml_io@../pummel/src/xml_io.h@44@pass by value@F???2@*@2@P@
+CCCC_UseExt@QString@Xml_io@../pummel/src/xml_io.h@48@has by value@F???1@LOC:0 COM:0 MVG:0@1@H@
+CCCC_UseExt@QString@Xml_io@../pummel/src/xml_io.h@49@has by value@F???1@LOC:0 COM:0 MVG:0@1@H@
+CCCC_UseExt@QString@Xml_io@../pummel/src/xml_io.cpp@11@pass by value@?????@*@?@P@
+CCCC_UseExt@QString@Xml_io@../pummel/src/xml_io.cpp@17@pass by value@F????@*@?@P@
+CCCC_UseExt@QString@Xml_io@../pummel/src/xml_io.cpp@249@pass by value@F????@*@?@P@
+CCCC_UseExt@QString@Xml_io@../pummel/src/xml_io.cpp@249@pass by value@F????@*@?@P@
+CCCC_UseRel@QXmlStreamReader@Xml_io@
+CCCC_UseExt@QXmlStreamReader@Xml_io@../pummel/src/xml_io.h@26@pass by reference@F???2@*@2@p@
+CCCC_UseExt@QXmlStreamReader@Xml_io@../pummel/src/xml_io.h@29@pass by reference@F???2@*@2@p@
+CCCC_UseExt@QXmlStreamReader@Xml_io@../pummel/src/xml_io.cpp@169@pass by reference@F????@*@?@p@
+CCCC_UseExt@QXmlStreamReader@Xml_io@../pummel/src/xml_io.cpp@292@pass by reference@F????@*@?@p@
+CCCC_UseRel@Icon@dottedlinebah@
+CCCC_UseExt@Icon@dottedlinebah@../pummel/src/dottedlinebah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@dottedlinebah@../pummel/src/dottedlinebah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@dottedlinebah@../pummel/src/dottedlinebah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@dottedlinebah@../pummel/src/dottedlinebah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@dottedlinebah@../pummel/src/dottedlinebah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@dottedlinebah@../pummel/src/dottedlinebah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@dottedlinebah@../pummel/src/dottedlinebah.cpp@24@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@dottedlinebah@../pummel/src/dottedlinebah.cpp@24@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsItem@dottedlinebah@
+CCCC_UseExt@QGraphicsItem@dottedlinebah@../pummel/src/dottedlinebah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@dottedlinebah@../pummel/src/dottedlinebah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@dottedlinebah@../pummel/src/dottedlinebah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@dottedlinebah@../pummel/src/dottedlinebah.cpp@24@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsScene@dottedlinebah@
+CCCC_UseExt@QGraphicsScene@dottedlinebah@../pummel/src/dottedlinebah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@dottedlinebah@../pummel/src/dottedlinebah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@dottedlinebah@../pummel/src/dottedlinebah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsScene@dottedlinebah@../pummel/src/dottedlinebah.cpp@24@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@dottedlinebah@
+CCCC_UseExt@QPainter@dottedlinebah@../pummel/src/dottedlinebah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@dottedlinebah@../pummel/src/dottedlinebah.cpp@36@pass by reference@F????@*@?@p@
+CCCC_UseRel@QStyleOptionGraphicsItem@dottedlinebah@
+CCCC_UseExt@QStyleOptionGraphicsItem@dottedlinebah@../pummel/src/dottedlinebah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@dottedlinebah@../pummel/src/dottedlinebah.cpp@36@pass by reference@F????@*@?@p@
+CCCC_UseRel@QWidget@dottedlinebah@
+CCCC_UseExt@QWidget@dottedlinebah@../pummel/src/dottedlinebah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@dottedlinebah@../pummel/src/dottedlinebah.cpp@36@pass by reference@F????@*@?@p@
+CCCC_UseRel@lineBody@dottedlinebah@
+CCCC_UseExt@lineBody@dottedlinebah@../pummel/src/dottedlinebah.h@5@inheritance@????0@*@0@I@
+CCCC_UseRel@Icon@dottedsqlineeah@
+CCCC_UseExt@Icon@dottedsqlineeah@../pummel/src/dottedsqlineeah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@dottedsqlineeah@../pummel/src/dottedsqlineeah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@dottedsqlineeah@../pummel/src/dottedsqlineeah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@dottedsqlineeah@../pummel/src/dottedsqlineeah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@dottedsqlineeah@../pummel/src/dottedsqlineeah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@dottedsqlineeah@../pummel/src/dottedsqlineeah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@dottedsqlineeah@../pummel/src/dottedsqlineeah.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@dottedsqlineeah@../pummel/src/dottedsqlineeah.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsItem@dottedsqlineeah@
+CCCC_UseExt@QGraphicsItem@dottedsqlineeah@../pummel/src/dottedsqlineeah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@dottedsqlineeah@../pummel/src/dottedsqlineeah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@dottedsqlineeah@../pummel/src/dottedsqlineeah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@dottedsqlineeah@../pummel/src/dottedsqlineeah.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsScene@dottedsqlineeah@
+CCCC_UseExt@QGraphicsScene@dottedsqlineeah@../pummel/src/dottedsqlineeah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@dottedsqlineeah@../pummel/src/dottedsqlineeah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@dottedsqlineeah@../pummel/src/dottedsqlineeah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsScene@dottedsqlineeah@../pummel/src/dottedsqlineeah.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@dottedsqlineeah@
+CCCC_UseExt@QPainter@dottedsqlineeah@../pummel/src/dottedsqlineeah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@dottedsqlineeah@../pummel/src/dottedsqlineeah.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@QStyleOptionGraphicsItem@dottedsqlineeah@
+CCCC_UseExt@QStyleOptionGraphicsItem@dottedsqlineeah@../pummel/src/dottedsqlineeah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@dottedsqlineeah@../pummel/src/dottedsqlineeah.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@QWidget@dottedsqlineeah@
+CCCC_UseExt@QWidget@dottedsqlineeah@../pummel/src/dottedsqlineeah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@dottedsqlineeah@../pummel/src/dottedsqlineeah.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@lineBody@dottedsqlineeah@
+CCCC_UseExt@lineBody@dottedsqlineeah@../pummel/src/dottedsqlineeah.h@5@inheritance@????0@*@0@I@
+CCCC_UseRel@Icon@lineBody@
+CCCC_UseExt@Icon@lineBody@../pummel/src/linebody.cpp@10@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@lineBody@../pummel/src/linebody.cpp@10@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@lineBody@../pummel/src/linebody.cpp@21@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@lineBody@../pummel/src/linebody.cpp@21@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@lineBody@../pummel/src/linebody.cpp@38@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@lineBody@../pummel/src/linebody.cpp@51@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@lineBody@../pummel/src/linebody.cpp@64@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@lineBody@../pummel/src/linebody.cpp@86@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@lineBody@../pummel/src/linebody.cpp@86@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@lineBody@../pummel/src/linebody.cpp@188@pass by reference@T????@*@?@p@
+CCCC_UseRel@QGraphicsItem@lineBody@
+CCCC_UseExt@QGraphicsItem@lineBody@../pummel/src/linebody.cpp@10@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@lineBody@../pummel/src/linebody.cpp@21@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsScene@lineBody@
+CCCC_UseExt@QGraphicsScene@lineBody@../pummel/src/linebody.cpp@10@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsScene@lineBody@../pummel/src/linebody.cpp@21@pass by reference@F????@*@?@p@
+CCCC_UseRel@QLineF@lineBody@
+CCCC_UseExt@QLineF@lineBody@../pummel/src/linebody.cpp@188@pass by value@T????@*@?@P@
+CCCC_UseExt@QLineF@lineBody@../pummel/src/linebody.cpp@293@pass by value@F????@*@?@P@
+CCCC_UseExt@QLineF@lineBody@../pummel/src/linebody.cpp@301@pass by value@F????@*@?@P@
+CCCC_UseExt@QLineF@lineBody@../pummel/src/linebody.cpp@321@pass by value@F????@*@?@P@
+CCCC_UseRel@QPointF@lineBody@
+CCCC_UseExt@QPointF@lineBody@../pummel/src/linebody.cpp@75@pass by value@F????@*@?@P@
+CCCC_UseExt@QPointF@lineBody@../pummel/src/linebody.cpp@98@pass by value@F????@*@?@P@
+CCCC_UseExt@QPointF@lineBody@../pummel/src/linebody.cpp@111@pass by value@F????@*@?@P@
+CCCC_UseExt@QPointF@lineBody@../pummel/src/linebody.cpp@111@pass by value@F????@*@?@P@
+CCCC_UseExt@QPointF@lineBody@../pummel/src/linebody.cpp@111@pass by reference@F????@*@?@p@
+CCCC_UseExt@QPointF@lineBody@../pummel/src/linebody.cpp@111@pass by reference@F????@*@?@p@
+CCCC_UseExt@QPointF@lineBody@../pummel/src/linebody.cpp@293@pass by reference@F????@*@?@p@
+CCCC_UseExt@QPointF@lineBody@../pummel/src/linebody.cpp@293@pass by reference@F????@*@?@p@
+CCCC_UseExt@QPointF@lineBody@../pummel/src/linebody.cpp@311@pass by value@F????@*@?@P@
+CCCC_UseRel@qreal@lineBody@
+CCCC_UseExt@qreal@lineBody@../pummel/src/linebody.cpp@75@pass by value@F????@*@?@P@
+CCCC_UseExt@qreal@lineBody@../pummel/src/linebody.cpp@111@pass by value@F????@*@?@P@
+CCCC_UseRel@QDialog@savePrompt@
+CCCC_UseExt@QDialog@savePrompt@../pummel/src/saveprompt.h@19@inheritance@????0@*@0@I@
+CCCC_UseRel@Icon@selfRefLine@
+CCCC_UseExt@Icon@selfRefLine@../pummel/src/selfrefline.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@selfRefLine@../pummel/src/selfrefline.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@selfRefLine@../pummel/src/selfrefline.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@selfRefLine@../pummel/src/selfrefline.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@selfRefLine@../pummel/src/selfrefline.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@selfRefLine@../pummel/src/selfrefline.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@selfRefLine@../pummel/src/selfrefline.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@selfRefLine@../pummel/src/selfrefline.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsItem@selfRefLine@
+CCCC_UseExt@QGraphicsItem@selfRefLine@../pummel/src/selfrefline.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@selfRefLine@../pummel/src/selfrefline.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@selfRefLine@../pummel/src/selfrefline.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@selfRefLine@../pummel/src/selfrefline.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsScene@selfRefLine@
+CCCC_UseExt@QGraphicsScene@selfRefLine@../pummel/src/selfrefline.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@selfRefLine@../pummel/src/selfrefline.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@selfRefLine@../pummel/src/selfrefline.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsScene@selfRefLine@../pummel/src/selfrefline.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@selfRefLine@
+CCCC_UseExt@QPainter@selfRefLine@../pummel/src/selfrefline.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@selfRefLine@../pummel/src/selfrefline.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@QStyleOptionGraphicsItem@selfRefLine@
+CCCC_UseExt@QStyleOptionGraphicsItem@selfRefLine@../pummel/src/selfrefline.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@selfRefLine@../pummel/src/selfrefline.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@QWidget@selfRefLine@
+CCCC_UseExt@QWidget@selfRefLine@../pummel/src/selfrefline.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@selfRefLine@../pummel/src/selfrefline.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@lineBody@selfRefLine@
+CCCC_UseExt@lineBody@selfRefLine@../pummel/src/selfrefline.h@5@inheritance@????0@*@0@I@
+CCCC_UseRel@Icon@solidline@
+CCCC_UseExt@Icon@solidline@../pummel/src/solidline.h@8@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidline@../pummel/src/solidline.h@8@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidline@../pummel/src/solidline.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidline@../pummel/src/solidline.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidline@../pummel/src/solidline.cpp@3@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidline@../pummel/src/solidline.cpp@3@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidline@../pummel/src/solidline.cpp@20@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@solidline@../pummel/src/solidline.cpp@20@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsItem@solidline@
+CCCC_UseExt@QGraphicsItem@solidline@../pummel/src/solidline.h@8@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidline@../pummel/src/solidline.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidline@../pummel/src/solidline.cpp@3@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@solidline@../pummel/src/solidline.cpp@20@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsScene@solidline@
+CCCC_UseExt@QGraphicsScene@solidline@../pummel/src/solidline.h@8@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidline@../pummel/src/solidline.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidline@../pummel/src/solidline.cpp@3@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsScene@solidline@../pummel/src/solidline.cpp@20@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@solidline@
+CCCC_UseExt@QPainter@solidline@../pummel/src/solidline.h@13@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@solidline@../pummel/src/solidline.cpp@27@pass by reference@F????@*@?@p@
+CCCC_UseRel@QStyleOptionGraphicsItem@solidline@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidline@../pummel/src/solidline.h@13@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidline@../pummel/src/solidline.cpp@27@pass by reference@F????@*@?@p@
+CCCC_UseRel@QWidget@solidline@
+CCCC_UseExt@QWidget@solidline@../pummel/src/solidline.h@13@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@solidline@../pummel/src/solidline.cpp@27@pass by reference@F????@*@?@p@
+CCCC_UseRel@lineBody@solidline@
+CCCC_UseExt@lineBody@solidline@../pummel/src/solidline.h@5@inheritance@????0@*@0@I@
+CCCC_UseRel@Icon@solidlineBAH@
+CCCC_UseExt@Icon@solidlineBAH@../pummel/src/solidlinebah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidlineBAH@../pummel/src/solidlinebah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidlineBAH@../pummel/src/solidlinebah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidlineBAH@../pummel/src/solidlinebah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidlineBAH@../pummel/src/solidlinebah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidlineBAH@../pummel/src/solidlinebah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidlineBAH@../pummel/src/solidlinebah.cpp@24@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@solidlineBAH@../pummel/src/solidlinebah.cpp@24@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsItem@solidlineBAH@
+CCCC_UseExt@QGraphicsItem@solidlineBAH@../pummel/src/solidlinebah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidlineBAH@../pummel/src/solidlinebah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidlineBAH@../pummel/src/solidlinebah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@solidlineBAH@../pummel/src/solidlinebah.cpp@24@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsScene@solidlineBAH@
+CCCC_UseExt@QGraphicsScene@solidlineBAH@../pummel/src/solidlinebah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidlineBAH@../pummel/src/solidlinebah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidlineBAH@../pummel/src/solidlinebah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsScene@solidlineBAH@../pummel/src/solidlinebah.cpp@24@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@solidlineBAH@
+CCCC_UseExt@QPainter@solidlineBAH@../pummel/src/solidlinebah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@solidlineBAH@../pummel/src/solidlinebah.cpp@36@pass by reference@F????@*@?@p@
+CCCC_UseRel@QStyleOptionGraphicsItem@solidlineBAH@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidlineBAH@../pummel/src/solidlinebah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidlineBAH@../pummel/src/solidlinebah.cpp@36@pass by reference@F????@*@?@p@
+CCCC_UseRel@QWidget@solidlineBAH@
+CCCC_UseExt@QWidget@solidlineBAH@../pummel/src/solidlinebah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@solidlineBAH@../pummel/src/solidlinebah.cpp@36@pass by reference@F????@*@?@p@
+CCCC_UseRel@lineBody@solidlineBAH@
+CCCC_UseExt@lineBody@solidlineBAH@../pummel/src/solidlinebah.h@5@inheritance@????0@*@0@I@
+CCCC_UseRel@Icon@solidlineeah@
+CCCC_UseExt@Icon@solidlineeah@../pummel/src/solidlineeah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidlineeah@../pummel/src/solidlineeah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidlineeah@../pummel/src/solidlineeah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidlineeah@../pummel/src/solidlineeah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidlineeah@../pummel/src/solidlineeah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidlineeah@../pummel/src/solidlineeah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidlineeah@../pummel/src/solidlineeah.cpp@24@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@solidlineeah@../pummel/src/solidlineeah.cpp@24@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsItem@solidlineeah@
+CCCC_UseExt@QGraphicsItem@solidlineeah@../pummel/src/solidlineeah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidlineeah@../pummel/src/solidlineeah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidlineeah@../pummel/src/solidlineeah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@solidlineeah@../pummel/src/solidlineeah.cpp@24@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsScene@solidlineeah@
+CCCC_UseExt@QGraphicsScene@solidlineeah@../pummel/src/solidlineeah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidlineeah@../pummel/src/solidlineeah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidlineeah@../pummel/src/solidlineeah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsScene@solidlineeah@../pummel/src/solidlineeah.cpp@24@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@solidlineeah@
+CCCC_UseExt@QPainter@solidlineeah@../pummel/src/solidlineeah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@solidlineeah@../pummel/src/solidlineeah.cpp@36@pass by reference@F????@*@?@p@
+CCCC_UseRel@QStyleOptionGraphicsItem@solidlineeah@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidlineeah@../pummel/src/solidlineeah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidlineeah@../pummel/src/solidlineeah.cpp@36@pass by reference@F????@*@?@p@
+CCCC_UseRel@QWidget@solidlineeah@
+CCCC_UseExt@QWidget@solidlineeah@../pummel/src/solidlineeah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@solidlineeah@../pummel/src/solidlineeah.cpp@36@pass by reference@F????@*@?@p@
+CCCC_UseRel@lineBody@solidlineeah@
+CCCC_UseExt@lineBody@solidlineeah@../pummel/src/solidlineeah.h@5@inheritance@????0@*@0@I@
+CCCC_UseRel@Icon@solidsqlinebah@
+CCCC_UseExt@Icon@solidsqlinebah@../pummel/src/solidsqlinebah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlinebah@../pummel/src/solidsqlinebah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlinebah@../pummel/src/solidsqlinebah.h@11@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlinebah@../pummel/src/solidsqlinebah.h@11@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlinebah@../pummel/src/solidsqlinebah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidsqlinebah@../pummel/src/solidsqlinebah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidsqlinebah@../pummel/src/solidsqlinebah.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@solidsqlinebah@../pummel/src/solidsqlinebah.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsItem@solidsqlinebah@
+CCCC_UseExt@QGraphicsItem@solidsqlinebah@../pummel/src/solidsqlinebah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidsqlinebah@../pummel/src/solidsqlinebah.h@11@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidsqlinebah@../pummel/src/solidsqlinebah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@solidsqlinebah@../pummel/src/solidsqlinebah.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsScene@solidsqlinebah@
+CCCC_UseExt@QGraphicsScene@solidsqlinebah@../pummel/src/solidsqlinebah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidsqlinebah@../pummel/src/solidsqlinebah.h@11@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidsqlinebah@../pummel/src/solidsqlinebah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsScene@solidsqlinebah@../pummel/src/solidsqlinebah.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@solidsqlinebah@
+CCCC_UseExt@QPainter@solidsqlinebah@../pummel/src/solidsqlinebah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@solidsqlinebah@../pummel/src/solidsqlinebah.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@QStyleOptionGraphicsItem@solidsqlinebah@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidsqlinebah@../pummel/src/solidsqlinebah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidsqlinebah@../pummel/src/solidsqlinebah.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@QWidget@solidsqlinebah@
+CCCC_UseExt@QWidget@solidsqlinebah@../pummel/src/solidsqlinebah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@solidsqlinebah@../pummel/src/solidsqlinebah.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@lineBody@solidsqlinebah@
+CCCC_UseExt@lineBody@solidsqlinebah@../pummel/src/solidsqlinebah.h@5@inheritance@????0@*@0@I@
+CCCC_UseRel@Icon@solidsqlineeah@
+CCCC_UseExt@Icon@solidsqlineeah@../pummel/src/solidsqlineeah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlineeah@../pummel/src/solidsqlineeah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlineeah@../pummel/src/solidsqlineeah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlineeah@../pummel/src/solidsqlineeah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlineeah@../pummel/src/solidsqlineeah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidsqlineeah@../pummel/src/solidsqlineeah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidsqlineeah@../pummel/src/solidsqlineeah.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@solidsqlineeah@../pummel/src/solidsqlineeah.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsItem@solidsqlineeah@
+CCCC_UseExt@QGraphicsItem@solidsqlineeah@../pummel/src/solidsqlineeah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidsqlineeah@../pummel/src/solidsqlineeah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidsqlineeah@../pummel/src/solidsqlineeah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@solidsqlineeah@../pummel/src/solidsqlineeah.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsScene@solidsqlineeah@
+CCCC_UseExt@QGraphicsScene@solidsqlineeah@../pummel/src/solidsqlineeah.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidsqlineeah@../pummel/src/solidsqlineeah.h@10@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidsqlineeah@../pummel/src/solidsqlineeah.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsScene@solidsqlineeah@../pummel/src/solidsqlineeah.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@solidsqlineeah@
+CCCC_UseExt@QPainter@solidsqlineeah@../pummel/src/solidsqlineeah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@solidsqlineeah@../pummel/src/solidsqlineeah.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@QStyleOptionGraphicsItem@solidsqlineeah@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidsqlineeah@../pummel/src/solidsqlineeah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidsqlineeah@../pummel/src/solidsqlineeah.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@QWidget@solidsqlineeah@
+CCCC_UseExt@QWidget@solidsqlineeah@../pummel/src/solidsqlineeah.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@solidsqlineeah@../pummel/src/solidsqlineeah.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@lineBody@solidsqlineeah@
+CCCC_UseExt@lineBody@solidsqlineeah@../pummel/src/solidsqlineeah.h@5@inheritance@????0@*@0@I@
+CCCC_UseRel@Icon@solidsqlineed@
+CCCC_UseExt@Icon@solidsqlineed@../pummel/src/solidsqlineed.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlineed@../pummel/src/solidsqlineed.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlineed@../pummel/src/solidsqlineed.h@11@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlineed@../pummel/src/solidsqlineed.h@11@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlineed@../pummel/src/solidsqlineed.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidsqlineed@../pummel/src/solidsqlineed.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidsqlineed@../pummel/src/solidsqlineed.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@solidsqlineed@../pummel/src/solidsqlineed.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsItem@solidsqlineed@
+CCCC_UseExt@QGraphicsItem@solidsqlineed@../pummel/src/solidsqlineed.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidsqlineed@../pummel/src/solidsqlineed.h@11@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidsqlineed@../pummel/src/solidsqlineed.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@solidsqlineed@../pummel/src/solidsqlineed.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsScene@solidsqlineed@
+CCCC_UseExt@QGraphicsScene@solidsqlineed@../pummel/src/solidsqlineed.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidsqlineed@../pummel/src/solidsqlineed.h@11@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidsqlineed@../pummel/src/solidsqlineed.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsScene@solidsqlineed@../pummel/src/solidsqlineed.cpp@25@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@solidsqlineed@
+CCCC_UseExt@QPainter@solidsqlineed@../pummel/src/solidsqlineed.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@solidsqlineed@../pummel/src/solidsqlineed.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@QStyleOptionGraphicsItem@solidsqlineed@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidsqlineed@../pummel/src/solidsqlineed.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidsqlineed@../pummel/src/solidsqlineed.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@QWidget@solidsqlineed@
+CCCC_UseExt@QWidget@solidsqlineed@../pummel/src/solidsqlineed.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@solidsqlineed@../pummel/src/solidsqlineed.cpp@37@pass by reference@F????@*@?@p@
+CCCC_UseRel@lineBody@solidsqlineed@
+CCCC_UseExt@lineBody@solidsqlineed@../pummel/src/solidsqlineed.h@5@inheritance@????0@*@0@I@
+CCCC_UseRel@Icon@solidsqlinesd@
+CCCC_UseExt@Icon@solidsqlinesd@../pummel/src/solidsqlinesd.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlinesd@../pummel/src/solidsqlinesd.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlinesd@../pummel/src/solidsqlinesd.h@11@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlinesd@../pummel/src/solidsqlinesd.h@11@pass by reference@F???0@*@0@p@
+CCCC_UseExt@Icon@solidsqlinesd@../pummel/src/solidsqlinesd.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidsqlinesd@../pummel/src/solidsqlinesd.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@Icon@solidsqlinesd@../pummel/src/solidsqlinesd.cpp@26@pass by reference@F????@*@?@p@
+CCCC_UseExt@Icon@solidsqlinesd@../pummel/src/solidsqlinesd.cpp@26@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsItem@solidsqlinesd@
+CCCC_UseExt@QGraphicsItem@solidsqlinesd@../pummel/src/solidsqlinesd.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidsqlinesd@../pummel/src/solidsqlinesd.h@11@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsItem@solidsqlinesd@../pummel/src/solidsqlinesd.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsItem@solidsqlinesd@../pummel/src/solidsqlinesd.cpp@26@pass by reference@F????@*@?@p@
+CCCC_UseRel@QGraphicsScene@solidsqlinesd@
+CCCC_UseExt@QGraphicsScene@solidsqlinesd@../pummel/src/solidsqlinesd.h@9@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidsqlinesd@../pummel/src/solidsqlinesd.h@11@pass by reference@F???0@*@0@p@
+CCCC_UseExt@QGraphicsScene@solidsqlinesd@../pummel/src/solidsqlinesd.cpp@8@pass by reference@?????@*@?@p@
+CCCC_UseExt@QGraphicsScene@solidsqlinesd@../pummel/src/solidsqlinesd.cpp@26@pass by reference@F????@*@?@p@
+CCCC_UseRel@QPainter@solidsqlinesd@
+CCCC_UseExt@QPainter@solidsqlinesd@../pummel/src/solidsqlinesd.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QPainter@solidsqlinesd@../pummel/src/solidsqlinesd.cpp@38@pass by reference@F????@*@?@p@
+CCCC_UseRel@QStyleOptionGraphicsItem@solidsqlinesd@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidsqlinesd@../pummel/src/solidsqlinesd.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QStyleOptionGraphicsItem@solidsqlinesd@../pummel/src/solidsqlinesd.cpp@38@pass by reference@F????@*@?@p@
+CCCC_UseRel@QWidget@solidsqlinesd@
+CCCC_UseExt@QWidget@solidsqlinesd@../pummel/src/solidsqlinesd.h@14@pass by reference@F???1@*@1@p@
+CCCC_UseExt@QWidget@solidsqlinesd@../pummel/src/solidsqlinesd.cpp@38@pass by reference@F????@*@?@p@
+CCCC_UseRel@lineBody@solidsqlinesd@
+CCCC_UseExt@lineBody@solidsqlinesd@../pummel/src/solidsqlinesd.h@5@inheritance@????0@*@0@I@
+CCCC_RejExt@../pummel/src/actor.h@1@<file scope items>@F???0@LOC:0 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/borderlayout.h@1@<file scope items>@T???0@LOC:1 COM:1 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/classbox.h@1@<file scope items>@F???0@LOC:1 COM:1 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/classboxdialog.h@1@<file scope items>@????0@LOC:1 COM:1 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/collaborationboxdialog.h@1@<file scope items>@????0@LOC:1 COM:1 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/derived_types.h@1@<file scope items>@?????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/dottedlinebah.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/dottedsqlineeah.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/dragscene.h@1@<file scope items>@F???0@LOC:2 COM:5 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/dragview.h@1@<file scope items>@F???0@LOC:1 COM:1 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/ellipse.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/global.h@1@<file scope items>@?????@LOC:5 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/hintbox.h@1@<file scope items>@????0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/icon.h@1@<file scope items>@FT?T0@LOC:1 COM:1 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/linebody.h@10@QT_BEGIN_NAMESPACE class QGraphicsPolygonItem @?????@LOC:2 COM:1 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/linebody.h@18@QT_END_NAMESPACE enum LineType @????2@LOC:2 COM:1 MVG:0@2@r@
+CCCC_RejExt@../pummel/src/linebody.h@23@lineBody : public @????2@LOC:54 COM:5 MVG:6@2@r@
+CCCC_RejExt@../pummel/src/linebody.h@1@<file scope items>@????2@LOC:1 COM:0 MVG:0@2@r@
+CCCC_RejExt@../pummel/src/mainwindow.h@1@<file scope items>@????0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/markerbox.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/note.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/optionsdialog.h@14@QT_BEGIN_NAMESPACE class QCheckBox @?????@LOC:2 COM:4 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/optionsdialog.h@19@QT_END_NAMESPACE class OptionsDialog @????2@LOC:26 COM:1 MVG:0@2@r@
+CCCC_RejExt@../pummel/src/optionsdialog.h@1@<file scope items>@????2@LOC:1 COM:1 MVG:0@2@r@
+CCCC_RejExt@../pummel/src/params.h@1@<file scope items>@????0@LOC:2 COM:3 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/roundedsquare.h@1@<file scope items>@F???0@LOC:1 COM:1 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/saveprompt.h@1@<file scope items>@????0@LOC:1 COM:1 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/scenarioend.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/scenariostart.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/selfrefline.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/shapes.h@1@<file scope items>@F???2@LOC:1 COM:1 MVG:0@2@r@
+CCCC_RejExt@../pummel/src/solidline.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/solidlinebah.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/solidlineeah.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/solidsqlinebah.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/solidsqlineeah.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/solidsqlineed.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/solidsqlinesd.h@1@<file scope items>@F???0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/tabmanager.h@1@<file scope items>@????0@LOC:1 COM:0 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/textboxdialog.h@1@<file scope items>@????0@LOC:1 COM:1 MVG:0@0@r@
+CCCC_RejExt@../pummel/src/toolbar.h@23@QT_BEGIN_NAMESPACE class QCheckBox @?????@LOC:2 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/toolbar.h@29@QT_END_NAMESPACE class Toolbar @????2@LOC:75 COM:8 MVG:0@2@r@
+CCCC_RejExt@../pummel/src/toolbar.h@1@<file scope items>@????2@LOC:2 COM:6 MVG:0@2@r@
+CCCC_RejExt@../pummel/src/xml_io.h@1@<file scope items>@F???2@LOC:1 COM:0 MVG:0@2@r@
+CCCC_RejExt@../pummel/src/actor.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/borderlayout.cpp@1@<file scope items>@T????@LOC:1 COM:1 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/classbox.cpp@1@<file scope items>@F????@LOC:2 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/classboxdialog.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/collaborationboxdialog.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/diagramtypeselector.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/dottedlinebah.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/dottedsqlineeah.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/dragscene.cpp@1@<file scope items>@F????@LOC:2 COM:1 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/dragview.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/drawarea.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/ellipse.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/global.cpp@1@<file scope items>@?????@LOC:6 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/hintbox.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/icon.cpp@1@<file scope items>@F????@LOC:2 COM:5 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/linebody.cpp@1@<file scope items>@F????@LOC:2 COM:1 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/main.cpp@1@<file scope items>@F????@LOC:1 COM:1 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/mainwindow.cpp@1@<file scope items>@F????@LOC:3 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/markerbox.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/note.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/optionsdialog.cpp@1@<file scope items>@F????@LOC:1 COM:1 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/roundedsquare.cpp@1@<file scope items>@F????@LOC:2 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/saveprompt.cpp@1@<file scope items>@F????@LOC:1 COM:1 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/scenarioend.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/scenariostart.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/selfrefline.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/shapes.cpp@1@<file scope items>@F????@LOC:1 COM:1 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/solidline.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/solidlinebah.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/solidlineeah.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/solidsqlinebah.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/solidsqlineeah.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/solidsqlineed.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/solidsqlinesd.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/tabmanager.cpp@1@<file scope items>@F????@LOC:3 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/textboxdialog.cpp@1@<file scope items>@F????@LOC:1 COM:0 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/toolbar.cpp@1@<file scope items>@F????@LOC:1 COM:1 MVG:0@?@r@
+CCCC_RejExt@../pummel/src/xml_io.cpp@1@<file scope items>@F????@LOC:2 COM:0 MVG:0@?@r@
