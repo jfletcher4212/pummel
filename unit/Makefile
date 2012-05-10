@@ -66,13 +66,13 @@ full_clean: clean
 	rm -rf ../src/*gcno ../src/*gcda; cd ../src/; make clean
 
 clean:
-	rm -rf *.o *.cpp *.trucov *.svg *.ut *_log.txt *_ut.txt *~ $(TARGS)
+	rm -rf *.o *.cpp *.trucov *.svg *.ut *_ut.txt *~ $(TARGS)
 
 setup:
 	cd ../src/; make DEFINES='$(SRC_DEFINES)' CXXFLAGS='$(SRC_CXX)' LIBS='$(SRC_LIBS)'
 
 full_setup:
-	cd ../src/; make clean; qmake -project; qmake; make DEFINES='$(SRC_DEFINES)' CXXFLAGS='$(SRC_CXX)' LIBS='$(SRC_LIBS)'
+	cd ../src/; make clean; qmake -project; mv src.pro puml.pro; qmake; make DEFINES='$(SRC_DEFINES)' CXXFLAGS='$(SRC_CXX)' LIBS='$(SRC_LIBS)'
 
 help:
 	#	usage: make rule
