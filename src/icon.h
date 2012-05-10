@@ -52,6 +52,7 @@ public:
     MarkerBox* getMarkerBox(int x);
     QString reportShapetype();
     void setShapetype(QString shapename);     // simple accessor and mutator methods for the shapetype
+    void setText(QString input);
     int getID();    // simple accessor for getting the ID
     QString getLabel();
 
