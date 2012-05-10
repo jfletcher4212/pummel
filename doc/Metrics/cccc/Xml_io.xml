@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Detailed report on module Xml_io-->
+<CCCC_Project>
+<module_summary>
+<lines_of_code value="294" level="0" />
+<lines_of_code_per_member_function value="******" level="0" />
+<McCabes_cyclomatic_complexity value="58" level="0" />
+<McCabes_cyclomatic_complexity_per_member_function value="******" level="2" />
+<lines_of_code value="61" level="0" />
+<lines_of_code_per_member_function value="********" level="2" />
+<lines_of_code_per_line_of_comment value="4.820" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.951" level="0" />
+<weighted_methods_per_class_unity value="19" level="0" />
+<weighted_methods_per_class_visibility value="0" level="0" />
+<depth_of_inheritance_tree value="0" level="0" />
+<number_of_children value="0" level="0" />
+<coupling_between_objects value="3" level="0" />
+<IF4 value="0" level="0" />
+<IF4_per_member_function value="********" level="0" />
+<IF4_visible value="0" level="0" />
+<IF4_visible_per_member_function value="********" level="0" />
+<IF4_concrete value="0" level="0" />
+<IF4_concrete_per_member_function value="********" level="0" />
+</module_summary>
+<module_detail>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.h" line="10" />
+<lines_of_code value="10" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</module_detail>
+<procedural_detail>
+<member_function>
+<name>Xml_io(...)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/xml_io.h" line="19" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>Xml_io(QList,QList,QString,DiagramType)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="17" />
+</extent>
+<lines_of_code value="7" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>Xml_io(QString)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/xml_io.h" line="18" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="11" />
+</extent>
+<lines_of_code value="6" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>choose_type(DiagramType)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/xml_io.h" line="32" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="33" />
+</extent>
+<lines_of_code value="17" level="0" />
+<McCabes_cyclomatic_complexity value="7" level="0" />
+<lines_of_comment value="3" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="2.333" level="0" />
+</member_function>
+<member_function>
+<name>get_diagram_type()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.h" line="38" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>get_filename()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.h" line="37" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>get_items()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.h" line="35" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="1" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>get_lines()</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.h" line="36" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>make_icon(QString,int,int,int,int,int,QString)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/xml_io.h" line="27" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="249" />
+</extent>
+<lines_of_code value="34" level="1" />
+<McCabes_cyclomatic_complexity value="8" level="0" />
+<lines_of_comment value="5" level="0" />
+<lines_of_code_per_line_of_comment value="6.800" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="1.600" level="0" />
+</member_function>
+<member_function>
+<name>make_line(int,int,int)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/xml_io.h" line="30" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="338" />
+</extent>
+<lines_of_code value="46" level="1" />
+<McCabes_cyclomatic_complexity value="11" level="1" />
+<lines_of_comment value="4" level="0" />
+<lines_of_code_per_line_of_comment value="11.500" level="1" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="2.750" level="0" />
+</member_function>
+<member_function>
+<name>parse_icon(QXmlStreamReader &amp;)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/xml_io.h" line="26" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="169" />
+</extent>
+<lines_of_code value="55" level="1" />
+<McCabes_cyclomatic_complexity value="11" level="1" />
+<lines_of_comment value="16" level="0" />
+<lines_of_code_per_line_of_comment value="3.437" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.687" level="0" />
+</member_function>
+<member_function>
+<name>parse_line(QXmlStreamReader &amp;)</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/xml_io.h" line="29" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="292" />
+</extent>
+<lines_of_code value="30" level="0" />
+<McCabes_cyclomatic_complexity value="7" level="0" />
+<lines_of_comment value="10" level="0" />
+<lines_of_code_per_line_of_comment value="3.000" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.700" level="0" />
+</member_function>
+<member_function>
+<name>parse_xml()</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/xml_io.h" line="23" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="110" />
+</extent>
+<lines_of_code value="39" level="1" />
+<McCabes_cyclomatic_complexity value="8" level="0" />
+<lines_of_comment value="11" level="0" />
+<lines_of_code_per_line_of_comment value="3.545" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.727" level="0" />
+</member_function>
+<member_function>
+<name>set_diagram_type(QString)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.h" line="44" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>set_filename(QString)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.h" line="43" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>set_items(QList)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.h" line="41" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="1" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>set_lines(QList)</name>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.h" line="42" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>write_xml()</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/xml_io.h" line="22" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="54" />
+</extent>
+<lines_of_code value="37" level="1" />
+<McCabes_cyclomatic_complexity value="2" level="0" />
+<lines_of_comment value="10" level="0" />
+<lines_of_code_per_line_of_comment value="3.700" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>~Xml_io()</name>
+<extent>
+<description>declaration</description>
+<source_reference file="../pummel/src/xml_io.h" line="20" />
+</extent>
+<extent>
+<description>definition</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="26" />
+</extent>
+<lines_of_code value="4" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="0" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+</procedural_detail>
+<structural_detail>
+<module>
+<name>Xml_io</name>
+<client_module>
+</client_module>
+<supplier_module>
+<name>QList</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/xml_io.h" line="41" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/xml_io.h" line="42" />
+</extent>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/xml_io.h" line="50" />
+</extent>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/xml_io.h" line="51" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="17" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="17" />
+</extent>
+<name>QString</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/xml_io.h" line="18" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/xml_io.h" line="27" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/xml_io.h" line="27" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/xml_io.h" line="43" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/xml_io.h" line="44" />
+</extent>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/xml_io.h" line="48" />
+</extent>
+<extent>
+<description>has by value</description>
+<source_reference file="../pummel/src/xml_io.h" line="49" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="11" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="17" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="249" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="249" />
+</extent>
+<name>QXmlStreamReader</name>
+<visible>false</visible>
+<concrete>false</concrete>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/xml_io.h" line="26" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/xml_io.h" line="29" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="169" />
+</extent>
+<extent>
+<description>pass by reference</description>
+<source_reference file="../pummel/src/xml_io.cpp" line="292" />
+</extent>
+</supplier_module>
+</module>
+</structural_detail>
+</CCCC_Project>

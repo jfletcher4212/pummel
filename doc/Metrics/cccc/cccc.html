@@ -1,0 +1,1325 @@
+<HTML><HEAD><TITLE>
+Report on software metrics
+</TITLE>
+</HEAD>
+<BODY>
+<TABLE BORDER WIDTH=100%>
+<TR><TH COLSPAN=2>
+CCCC Software Metrics Report
+<BR> generated Wed May  9 17:21:53 2012
+
+</TR>
+<TR>
+<TH><H4><A HREF="#projsum">Project Summary</A></H4></TH>
+<TD>
+Summary table of high level measures summed over all files processed in the current run.
+</TR>
+<TR>
+<TH><H4><A HREF="#procsum">Procedural Metrics Summary</A></H4></TH>
+<TD>
+Table of procedural measures (i.e. lines of code, lines of comment, McCabe's cyclomatic complexity summed over each module.
+</TR>
+<TR>
+<TH><H4><A HREF="#oodesign">Object Oriented Design</A></H4></TH>
+<TD>
+Table of four of the 6 metrics proposed by Chidamber and Kemerer in their various papers on 'a metrics suite for object oriented design'.
+</TR>
+<TR>
+<TH><H4><A HREF="#structsum">Structural Metrics Summary</A></H4></TH>
+<TD>
+Structural metrics based on the relationships of each module with others.  Includes fan-out (i.e. number of other modules the current module uses), fan-in (number of other modules which use the current module), and the Information Flow measure suggested by Henry and Kafura, which combines these to give a measure of coupling for the module.
+</TR>
+<TR>
+<TH><H4><A HREF="#other">Other Extents</A></H4></TH>
+<TD>
+Lexical counts for parts of submitted source files which the analyser was unable to assign to a module. Each record in this table relates to either a part of the code which triggered a parse failure, or to the residual lexical counts relating to parts of a file not associated with a specific module.
+</TR>
+<TR>
+<TH><H4><A HREF="#infocccc">About CCCC</A></H4></TH>
+<TD>
+A description of the CCCC program.
+</TR>
+</TR></TABLE>
+<H1><A NAME="projsum">Project Summary</A></H1>
+This table shows measures over the project as a whole.
+<UL>
+<LI>NOM = Number of modules<BR>
+Number of non-trivial modules identified by the analyser.  Non-trivial modules include all classes, and any other module for which member functions are identified.
+<LI>LOC = Lines of Code<BR>
+Number of non-blank, non-comment lines of source code counted by the analyser.
+<LI>COM = Lines of Comments<BR>
+Number of lines of comment identified by the analyser
+<LI>MVG = McCabe's Cyclomatic Complexity<BR>
+A measure of the decision complexity of the functions which make up the program.The strict definition of this measure is that it is the number of linearly independent routes through a directed acyclic graph which maps the flow of control of a subprogram.  The analyser counts this by recording the number of distinct decision outcomes contained within each function, which yields a good approximation to the formally defined version of the measure.
+<LI>L_C = Lines of code per line of comment<BR>
+Indicates density of comments with respect to textual size of program
+<LI>M_C = Cyclomatic Complexity per line of comment<BR>
+Indicates density of comments with respect to logical complexity of program
+<LI>IF4 = Information Flow measure<BR>
+Measure of information flow between modules suggested by Henry and Kafura. The analyser makes an approximate count of this by counting inter-module couplings identified in the module interfaces.
+</UL>
+Two variants on the information flow measure IF4 are also presented, one (IF4v) calculated using only relationships in the visible part of the module interface, and the other (IF4c) calculated using only those relationships which imply that changes to the client must be recompiled of the supplier's definition changes.
+
+<TABLE BORDER WIDTH=100%>
+<TR>
+<TH BGCOLOR="AQUA" WIDTH=70%>Metric</TH><TH BGCOLOR="AQUA" WIDTH=10%>Tag</TH><TH BGCOLOR="AQUA" WIDTH=10%>Overall</TH><TH BGCOLOR="AQUA" WIDTH=10%>Per Module</TH></TR>
+<TR>
+<TD>Number of modules</TD><TD>NOM</TD><TD ALIGN=RIGHT>    78</TD><TD>&nbsp;</TD></TR>
+<TR>
+<TD WIDTH=700%>Lines of Code</TD><TD WIDTH=120%>LOC</TD><TD ALIGN=RIGHT>  4713</TD><TD ALIGN=RIGHT>60.423</TD></TR>
+<TR>
+<TD>McCabe's Cyclomatic Number</TD><TD>MVG</TD><TD ALIGN=RIGHT>   406</TD><TD ALIGN=RIGHT> 5.205</TD></TR>
+<TR>
+<TD>Lines of Comment</TD><TD>COM</TD><TD ALIGN=RIGHT>  1164</TD><TD ALIGN=RIGHT>14.923</TD></TR>
+<TR>
+<TD>LOC/COM</TD><TD>L_C</TD><TD ALIGN=RIGHT> 4.049</TD><TD>&nbsp;</TD></TR>
+<TR>
+<TD>MVG/COM</TD><TD>M_C</TD><TD ALIGN=RIGHT> 0.349</TD><TD>&nbsp;</TD></TR>
+<TR>
+<TD>Information Flow measure ( &nbsp;inclusive&nbsp;)</TD><TD>IF4</TD><TD ALIGN=RIGHT> 29425</TD><TD ALIGN=RIGHT> 377.244</TD></TR>
+<TR>
+<TD>Information Flow measure ( &nbsp;visible&nbsp;)</TD><TD>IF4v</TD><TD ALIGN=RIGHT> 29353</TD><TD ALIGN=RIGHT> 376.321</TD></TR>
+<TR>
+<TD>Information Flow measure ( &nbsp;concrete&nbsp;)</TD><TD>IF4c</TD><TD ALIGN=RIGHT>  2125</TD><TD ALIGN=RIGHT>  27.244</TD></TR>
+<TR>
+<TD>Lines of Code rejected by parser</TD><TD>REJ</TD><TD ALIGN=RIGHT>   259</TD><TD>&nbsp;</TD></TR>
+</TABLE>
+<H1><A NAME="procsum">Procedural Metrics Summary</A></H1>
+For descriptions of each of these metrics see the information preceding the project summary table.
+
+The label cell for each row in this table provides a link to the functions table in the detailed report for the module in question
+<TABLE BORDER WIDTH=100%>
+<TR>
+<TH BGCOLOR="AQUA">Module Name</TH><TH BGCOLOR="AQUA" WIDTH=8%>LOC</TH><TH BGCOLOR="AQUA" WIDTH=8%>MVG</TH><TH BGCOLOR="AQUA" WIDTH=8%>COM</TH><TH BGCOLOR="AQUA" WIDTH=8%>L_C</TH><TH BGCOLOR="AQUA" WIDTH=8%>M_C</TH></TR>
+<TR>
+<TD><A HREF="Actor.html#procdet">
+Actor</A>
+</TD><TD ALIGN=RIGHT>    90</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>15.000</EM></TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="BorderLayout.html#procdet">
+BorderLayout</A>
+</TD><TD ALIGN=RIGHT>   172</TD><TD ALIGN=RIGHT>    30</TD><TD ALIGN=RIGHT>    77</TD><TD ALIGN=RIGHT> 2.234</TD><TD ALIGN=RIGHT> 0.390</TD></TR>
+<TR>
+<TD><A HREF="ClassBox.html#procdet">
+ClassBox</A>
+</TD><TD ALIGN=RIGHT>   211</TD><TD ALIGN=RIGHT>    16</TD><TD ALIGN=RIGHT>    34</TD><TD ALIGN=RIGHT> 6.206</TD><TD ALIGN=RIGHT> 0.471</TD></TR>
+<TR>
+<TD><A HREF="ClassBoxDialog.html#procdet">
+ClassBoxDialog</A>
+</TD><TD ALIGN=RIGHT>    93</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>    23</TD><TD ALIGN=RIGHT> 4.043</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="CollaborationBoxDialog.html#procdet">
+CollaborationBoxDialog</A>
+</TD><TD ALIGN=RIGHT>    81</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>    21</TD><TD ALIGN=RIGHT> 3.857</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="DiagramTypeSelector.html#procdet">
+DiagramTypeSelector</A>
+</TD><TD ALIGN=RIGHT>    53</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>13.250</EM></TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="DragScene.html#procdet">
+DragScene</A>
+</TD><TD ALIGN=RIGHT>   448</TD><TD ALIGN=RIGHT>    81</TD><TD ALIGN=RIGHT>   133</TD><TD ALIGN=RIGHT> 3.368</TD><TD ALIGN=RIGHT> 0.609</TD></TR>
+<TR>
+<TD><A HREF="DragView.html#procdet">
+DragView</A>
+</TD><TD ALIGN=RIGHT>     9</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="DrawArea.html#procdet">
+DrawArea</A>
+</TD><TD ALIGN=RIGHT>    55</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM> 9.167</EM></TD><TD ALIGN=RIGHT> 1.000</TD></TR>
+<TR>
+<TD><A HREF="Ellipse.html#procdet">
+Ellipse</A>
+</TD><TD ALIGN=RIGHT>    94</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>    16</TD><TD ALIGN=RIGHT> 5.875</TD><TD ALIGN=RIGHT> 0.375</TD></TR>
+<TR>
+<TD><A HREF="HintBox.html#procdet">
+HintBox</A>
+</TD><TD ALIGN=RIGHT>    46</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG>46.000</STRONG></TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="Icon.html#procdet">
+Icon</A>
+</TD><TD ALIGN=RIGHT>   194</TD><TD ALIGN=RIGHT>    16</TD><TD ALIGN=RIGHT>    46</TD><TD ALIGN=RIGHT> 4.217</TD><TD ALIGN=RIGHT> 0.348</TD></TR>
+<TR>
+<TD><A HREF="LineType.html#procdet">
+LineType</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="MainWindow.html#procdet">
+MainWindow</A>
+</TD><TD ALIGN=RIGHT>   427</TD><TD ALIGN=RIGHT>    11</TD><TD ALIGN=RIGHT>   124</TD><TD ALIGN=RIGHT> 3.444</TD><TD ALIGN=RIGHT> 0.089</TD></TR>
+<TR>
+<TD><A HREF="MarkerBox.html#procdet">
+MarkerBox</A>
+</TD><TD ALIGN=RIGHT>    99</TD><TD ALIGN=RIGHT>    11</TD><TD ALIGN=RIGHT>    18</TD><TD ALIGN=RIGHT> 5.500</TD><TD ALIGN=RIGHT> 0.611</TD></TR>
+<TR>
+<TD><A HREF="Note.html#procdet">
+Note</A>
+</TD><TD ALIGN=RIGHT>    96</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>    17</TD><TD ALIGN=RIGHT> 5.647</TD><TD ALIGN=RIGHT> 0.353</TD></TR>
+<TR>
+<TD><A HREF="OptionsDialog.html#procdet">
+OptionsDialog</A>
+</TD><TD ALIGN=RIGHT>   126</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>    38</TD><TD ALIGN=RIGHT> 3.316</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QAction.html#procdet">
+QAction</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QActionGroup.html#procdet">
+QActionGroup</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QColor.html#procdet">
+QColor</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QContextMenuEvent.html#procdet">
+QContextMenuEvent</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QDialog.html#procdet">
+QDialog</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QErrorMessage.html#procdet">
+QErrorMessage</A>
+</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QFont.html#procdet">
+QFont</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsItem.html#procdet">
+QGraphicsItem</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsLineItem.html#procdet">
+QGraphicsLineItem</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsScene.html#procdet">
+QGraphicsScene</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsSceneMouseEvent.html#procdet">
+QGraphicsSceneMouseEvent</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsTextItem.html#procdet">
+QGraphicsTextItem</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsView.html#procdet">
+QGraphicsView</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QGridLayout.html#procdet">
+QGridLayout</A>
+</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QImage.html#procdet">
+QImage</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QLabel.html#procdet">
+QLabel</A>
+</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QLayout.html#procdet">
+QLayout</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QLayoutItem.html#procdet">
+QLayoutItem</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QLineF.html#procdet">
+QLineF</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QList.html#procdet">
+QList</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QMainWindow.html#procdet">
+QMainWindow</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QMenu.html#procdet">
+QMenu</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QObject.html#procdet">
+QObject</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QPainter.html#procdet">
+QPainter</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QPainterPath.html#procdet">
+QPainterPath</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QPointF.html#procdet">
+QPointF</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QPolygonF.html#procdet">
+QPolygonF</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QRect.html#procdet">
+QRect</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QRectF.html#procdet">
+QRectF</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QString.html#procdet">
+QString</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QStyleOptionGraphicsItem.html#procdet">
+QStyleOptionGraphicsItem</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QTabWidget.html#procdet">
+QTabWidget</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QTextEdit.html#procdet">
+QTextEdit</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QWidget.html#procdet">
+QWidget</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="QXmlStreamReader.html#procdet">
+QXmlStreamReader</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="RoundedSquare.html#procdet">
+RoundedSquare</A>
+</TD><TD ALIGN=RIGHT>   171</TD><TD ALIGN=RIGHT>    12</TD><TD ALIGN=RIGHT>    27</TD><TD ALIGN=RIGHT> 6.333</TD><TD ALIGN=RIGHT> 0.444</TD></TR>
+<TR>
+<TD><A HREF="ScenarioEnd.html#procdet">
+ScenarioEnd</A>
+</TD><TD ALIGN=RIGHT>    54</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>    14</TD><TD ALIGN=RIGHT> 3.857</TD><TD ALIGN=RIGHT> 0.357</TD></TR>
+<TR>
+<TD><A HREF="ScenarioStart.html#procdet">
+ScenarioStart</A>
+</TD><TD ALIGN=RIGHT>    54</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>    14</TD><TD ALIGN=RIGHT> 3.857</TD><TD ALIGN=RIGHT> 0.357</TD></TR>
+<TR>
+<TD><A HREF="TabManager.html#procdet">
+TabManager</A>
+</TD><TD ALIGN=RIGHT>    17</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="TextBoxDialog.html#procdet">
+TextBoxDialog</A>
+</TD><TD ALIGN=RIGHT>    62</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>    21</TD><TD ALIGN=RIGHT> 2.952</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="Toolbar.html#procdet">
+Toolbar</A>
+</TD><TD ALIGN=RIGHT>   477</TD><TD ALIGN=RIGHT>    33</TD><TD ALIGN=RIGHT>    29</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>16.448</EM></TD><TD ALIGN=RIGHT> 1.138</TD></TR>
+<TR>
+<TD><A HREF="Xml_io.html#procdet">
+Xml_io</A>
+</TD><TD ALIGN=RIGHT>   294</TD><TD ALIGN=RIGHT>    58</TD><TD ALIGN=RIGHT>    61</TD><TD ALIGN=RIGHT> 4.820</TD><TD ALIGN=RIGHT> 0.951</TD></TR>
+<TR>
+<TD><A HREF="anonymous.html#procdet">
+anonymous</A>
+</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="bool.html#procdet">
+bool</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="dottedlinebah.html#procdet">
+dottedlinebah</A>
+</TD><TD ALIGN=RIGHT>    64</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>    24</TD><TD ALIGN=RIGHT> 2.667</TD><TD ALIGN=RIGHT> 0.292</TD></TR>
+<TR>
+<TD><A HREF="dottedsqlineeah.html#procdet">
+dottedsqlineeah</A>
+</TD><TD ALIGN=RIGHT>    63</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>    33</TD><TD ALIGN=RIGHT> 1.909</TD><TD ALIGN=RIGHT> 0.182</TD></TR>
+<TR>
+<TD><A HREF="lineBody.html#procdet">
+lineBody</A>
+</TD><TD ALIGN=RIGHT>   198</TD><TD ALIGN=RIGHT>    29</TD><TD ALIGN=RIGHT>    83</TD><TD ALIGN=RIGHT> 2.386</TD><TD ALIGN=RIGHT> 0.349</TD></TR>
+<TR>
+<TD><A HREF="qreal.html#procdet">
+qreal</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="savePrompt.html#procdet">
+savePrompt</A>
+</TD><TD ALIGN=RIGHT>    61</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>    20</TD><TD ALIGN=RIGHT> 3.050</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="selfRefLine.html#procdet">
+selfRefLine</A>
+</TD><TD ALIGN=RIGHT>    50</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>    23</TD><TD ALIGN=RIGHT> 2.174</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="shapes.html#procdet">
+shapes</A>
+</TD><TD ALIGN=RIGHT>    91</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>    11</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM> 8.273</EM></TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="solidline.html#procdet">
+solidline</A>
+</TD><TD ALIGN=RIGHT>    54</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG>******</STRONG></TD><TD ALIGN=RIGHT>******</TD></TR>
+<TR>
+<TD><A HREF="solidlineBAH.html#procdet">
+solidlineBAH</A>
+</TD><TD ALIGN=RIGHT>    63</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>    24</TD><TD ALIGN=RIGHT> 2.625</TD><TD ALIGN=RIGHT> 0.292</TD></TR>
+<TR>
+<TD><A HREF="solidlineeah.html#procdet">
+solidlineeah</A>
+</TD><TD ALIGN=RIGHT>    60</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>    25</TD><TD ALIGN=RIGHT> 2.400</TD><TD ALIGN=RIGHT> 0.280</TD></TR>
+<TR>
+<TD><A HREF="solidsqlinebah.html#procdet">
+solidsqlinebah</A>
+</TD><TD ALIGN=RIGHT>    65</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>    29</TD><TD ALIGN=RIGHT> 2.241</TD><TD ALIGN=RIGHT> 0.207</TD></TR>
+<TR>
+<TD><A HREF="solidsqlineeah.html#procdet">
+solidsqlineeah</A>
+</TD><TD ALIGN=RIGHT>    62</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>    31</TD><TD ALIGN=RIGHT> 2.000</TD><TD ALIGN=RIGHT> 0.194</TD></TR>
+<TR>
+<TD><A HREF="solidsqlineed.html#procdet">
+solidsqlineed</A>
+</TD><TD ALIGN=RIGHT>    62</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>    31</TD><TD ALIGN=RIGHT> 2.000</TD><TD ALIGN=RIGHT> 0.194</TD></TR>
+<TR>
+<TD><A HREF="solidsqlinesd.html#procdet">
+solidsqlinesd</A>
+</TD><TD ALIGN=RIGHT>    62</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>    31</TD><TD ALIGN=RIGHT> 2.000</TD><TD ALIGN=RIGHT> 0.194</TD></TR>
+<TR>
+<TD><A HREF="string.html#procdet">
+string</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="test_xml_io.html#procdet">
+test_xml_io</A>
+</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+<TR>
+<TD><A HREF="ut_classbox.html#procdet">
+ut_classbox</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>------</TD><TD ALIGN=RIGHT>------</TD></TR>
+</TABLE>
+<H1><A NAME="oodesign">Object Oriented Design</A></H1>
+<UL>
+<LI>WMC = Weighted methods per class<BR>
+The sum of a weighting function over the functions of the module.  Two different weighting functions are applied: WMC1 uses the nominal weight of 1 for each function, and hence measures the number of functions, WMCv uses a weighting function which is 1 for functions accessible to other modules, 0 for private functions.
+<LI>DIT = Depth of inheritance tree<BR>
+The length of the longest path of inheritance ending at the current module.  The deeper the inheritance tree for a module, the harder it may be to predict its behaviour.  On the other hand, increasing depth gives the potential of greater reuse by the current module of behaviour defined for ancestor classes.
+<LI>NOC = Number of children<BR>
+The number of modules which inherit directly from the current module.  Moderate values of this measure indicate scope for reuse, however high values may indicate an inappropriate abstraction in the design.
+<LI>CBO = Coupling between objects<BR>
+The number of other modules which are coupled to the current module either as a client or a supplier. Excessive coupling indicates weakness of module encapsulation and may inhibit reuse.
+</UL>
+
+The label cell for each row in this table provides a link to the module summary table in the detailed report for the module in question
+<TABLE BORDER WIDTH=100%>
+<TR>
+<TH BGCOLOR="AQUA" WIDTH=50%>Module Name</TH><TH BGCOLOR="AQUA" WIDTH=10%>WMC1</TH><TH BGCOLOR="AQUA" WIDTH=10%>WMCv</TH><TH BGCOLOR="AQUA" WIDTH=10%>DIT</TH><TH BGCOLOR="AQUA" WIDTH=10%>NOC</TH><TH BGCOLOR="AQUA" WIDTH=10%>CBO</TH></TR>
+<TR>
+<TD><A HREF="Actor.html#summary">
+Actor</A>
+</TD><TD ALIGN=RIGHT>     8</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     8</TD></TR>
+<TR>
+<TD><A HREF="BorderLayout.html#summary">
+BorderLayout</A>
+</TD><TD ALIGN=RIGHT>    15</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     5</TD></TR>
+<TR>
+<TD><A HREF="ClassBox.html#summary">
+ClassBox</A>
+</TD><TD ALIGN=RIGHT>    18</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>    11</TD></TR>
+<TR>
+<TD><A HREF="ClassBoxDialog.html#summary">
+ClassBoxDialog</A>
+</TD><TD ALIGN=RIGHT>     9</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD></TR>
+<TR>
+<TD><A HREF="CollaborationBoxDialog.html#summary">
+CollaborationBoxDialog</A>
+</TD><TD ALIGN=RIGHT>     8</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD></TR>
+<TR>
+<TD><A HREF="DiagramTypeSelector.html#summary">
+DiagramTypeSelector</A>
+</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="DragScene.html#summary">
+DragScene</A>
+</TD><TD ALIGN=RIGHT>    29</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    29</EM></TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>    12</TD></TR>
+<TR>
+<TD><A HREF="DragView.html#summary">
+DragView</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD></TR>
+<TR>
+<TD><A HREF="DrawArea.html#summary">
+DrawArea</A>
+</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     3</TD></TR>
+<TR>
+<TD><A HREF="Ellipse.html#summary">
+Ellipse</A>
+</TD><TD ALIGN=RIGHT>     8</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     8</TD></TR>
+<TR>
+<TD><A HREF="HintBox.html#summary">
+HintBox</A>
+</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="Icon.html#summary">
+Icon</A>
+</TD><TD ALIGN=RIGHT>    27</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     7</EM></TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    28</EM></TD></TR>
+<TR>
+<TD><A HREF="LineType.html#summary">
+LineType</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="MainWindow.html#summary">
+MainWindow</A>
+</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    33</EM></TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     4</TD></TR>
+<TR>
+<TD><A HREF="MarkerBox.html#summary">
+MarkerBox</A>
+</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     6</TD></TR>
+<TR>
+<TD><A HREF="Note.html#summary">
+Note</A>
+</TD><TD ALIGN=RIGHT>     8</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     8</TD></TR>
+<TR>
+<TD><A HREF="OptionsDialog.html#summary">
+OptionsDialog</A>
+</TD><TD ALIGN=RIGHT>     8</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QAction.html#summary">
+QAction</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QActionGroup.html#summary">
+QActionGroup</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QColor.html#summary">
+QColor</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QContextMenuEvent.html#summary">
+QContextMenuEvent</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QDialog.html#summary">
+QDialog</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     2</TD></TR>
+<TR>
+<TD><A HREF="QErrorMessage.html#summary">
+QErrorMessage</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QFont.html#summary">
+QFont</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsItem.html#summary">
+QGraphicsItem</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    20</EM></TD></TR>
+<TR>
+<TD><A HREF="QGraphicsLineItem.html#summary">
+QGraphicsLineItem</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsScene.html#summary">
+QGraphicsScene</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>    12</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsSceneMouseEvent.html#summary">
+QGraphicsSceneMouseEvent</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     8</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsTextItem.html#summary">
+QGraphicsTextItem</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     3</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsView.html#summary">
+QGraphicsView</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QGridLayout.html#summary">
+QGridLayout</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QImage.html#summary">
+QImage</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QLabel.html#summary">
+QLabel</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QLayout.html#summary">
+QLayout</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QLayoutItem.html#summary">
+QLayoutItem</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QLineF.html#summary">
+QLineF</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QList.html#summary">
+QList</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     5</TD></TR>
+<TR>
+<TD><A HREF="QMainWindow.html#summary">
+QMainWindow</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QMenu.html#summary">
+QMenu</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QObject.html#summary">
+QObject</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QPainter.html#summary">
+QPainter</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    19</EM></TD></TR>
+<TR>
+<TD><A HREF="QPainterPath.html#summary">
+QPainterPath</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QPointF.html#summary">
+QPointF</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>    10</TD></TR>
+<TR>
+<TD><A HREF="QPolygonF.html#summary">
+QPolygonF</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QRect.html#summary">
+QRect</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QRectF.html#summary">
+QRectF</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QString.html#summary">
+QString</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     9</TD></TR>
+<TR>
+<TD><A HREF="QStyleOptionGraphicsItem.html#summary">
+QStyleOptionGraphicsItem</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    18</EM></TD></TR>
+<TR>
+<TD><A HREF="QTabWidget.html#summary">
+QTabWidget</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="QTextEdit.html#summary">
+QTextEdit</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QWidget.html#summary">
+QWidget</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     5</EM></TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    28</EM></TD></TR>
+<TR>
+<TD><A HREF="QXmlStreamReader.html#summary">
+QXmlStreamReader</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="RoundedSquare.html#summary">
+RoundedSquare</A>
+</TD><TD ALIGN=RIGHT>    16</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>    11</TD></TR>
+<TR>
+<TD><A HREF="ScenarioEnd.html#summary">
+ScenarioEnd</A>
+</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     6</TD></TR>
+<TR>
+<TD><A HREF="ScenarioStart.html#summary">
+ScenarioStart</A>
+</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     6</TD></TR>
+<TR>
+<TD><A HREF="TabManager.html#summary">
+TabManager</A>
+</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD></TR>
+<TR>
+<TD><A HREF="TextBoxDialog.html#summary">
+TextBoxDialog</A>
+</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD></TR>
+<TR>
+<TD><A HREF="Toolbar.html#summary">
+Toolbar</A>
+</TD><TD ALIGN=RIGHT>    30</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="Xml_io.html#summary">
+Xml_io</A>
+</TD><TD ALIGN=RIGHT>    19</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     3</TD></TR>
+<TR>
+<TD><A HREF="anonymous.html#summary">
+anonymous</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="bool.html#summary">
+bool</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="dottedlinebah.html#summary">
+dottedlinebah</A>
+</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     7</TD></TR>
+<TR>
+<TD><A HREF="dottedsqlineeah.html#summary">
+dottedsqlineeah</A>
+</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     7</TD></TR>
+<TR>
+<TD><A HREF="lineBody.html#summary">
+lineBody</A>
+</TD><TD ALIGN=RIGHT>    18</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    10</EM></TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    16</EM></TD></TR>
+<TR>
+<TD><A HREF="qreal.html#summary">
+qreal</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="savePrompt.html#summary">
+savePrompt</A>
+</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD></TR>
+<TR>
+<TD><A HREF="selfRefLine.html#summary">
+selfRefLine</A>
+</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     7</TD></TR>
+<TR>
+<TD><A HREF="shapes.html#summary">
+shapes</A>
+</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="solidline.html#summary">
+solidline</A>
+</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     7</TD></TR>
+<TR>
+<TD><A HREF="solidlineBAH.html#summary">
+solidlineBAH</A>
+</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     7</TD></TR>
+<TR>
+<TD><A HREF="solidlineeah.html#summary">
+solidlineeah</A>
+</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     7</TD></TR>
+<TR>
+<TD><A HREF="solidsqlinebah.html#summary">
+solidsqlinebah</A>
+</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     7</TD></TR>
+<TR>
+<TD><A HREF="solidsqlineeah.html#summary">
+solidsqlineeah</A>
+</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     7</TD></TR>
+<TR>
+<TD><A HREF="solidsqlineed.html#summary">
+solidsqlineed</A>
+</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     7</TD></TR>
+<TR>
+<TD><A HREF="solidsqlinesd.html#summary">
+solidsqlinesd</A>
+</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     7</TD></TR>
+<TR>
+<TD><A HREF="string.html#summary">
+string</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="test_xml_io.html#summary">
+test_xml_io</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="ut_classbox.html#summary">
+ut_classbox</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+</TABLE>
+<H1><A NAME="structsum">Structural Metrics Summary</A></H1>
+<UL>
+<LI>FI = Fan-in<BR>
+The number of other modules which pass information into the current module.
+<LI>FO = Fan-out<BR>
+The number of other modules into which the current module passes information
+<LI>IF4 = Information Flow measure<BR>
+A composite measure of structural complexity, calculated as the square of the product of the fan-in and fan-out of a single module.  Proposed by Henry and Kafura.
+</UL>
+Note that the fan-in and fan-out are calculated by examining the interface of each module.  As noted above, three variants of each each of these measures are presented: a count restricted to the part of the interface which is externally visible, a count which only includes relationships which imply the client module needs to be recompiled if the supplier's implementation changes, and an inclusive count
+
+The label cell for each row in this table provides a link to the relationships table in the detailed report for the module in question
+
+<TABLE BORDER WIDTH=100%>
+<TR>
+<TH BGCOLOR=AQUA ROWSPAN=2>Module Name</TH>
+<TH BGCOLOR=AQUA COLSPAN=3>Fan-out</TH>
+<TH BGCOLOR=AQUA COLSPAN=3>Fan-in</TH>
+<TH BGCOLOR=AQUA COLSPAN=3>IF4</TH>
+</TR>
+<TH BGCOLOR="AQUA" WIDTH=7%>vis</TH><TH BGCOLOR="AQUA" WIDTH=7%>con</TH><TH BGCOLOR="AQUA" WIDTH=7%>inc</TH><TH BGCOLOR="AQUA" WIDTH=7%>vis</TH><TH BGCOLOR="AQUA" WIDTH=7%>con</TH><TH BGCOLOR="AQUA" WIDTH=7%>incl</TH><TH BGCOLOR="AQUA" WIDTH=7%>vis</TH><TH BGCOLOR="AQUA" WIDTH=7%>con</TH><TH BGCOLOR="AQUA" WIDTH=7%>inc</TH></TR>
+<TR>
+<TD><A HREF="Actor.html#structdet">
+Actor</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     8</EM></TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     8</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="BorderLayout.html#structdet">
+BorderLayout</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="ClassBox.html#structdet">
+ClassBox</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     8</EM></TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>    10</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    64</EM></TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>   100</TD></TR>
+<TR>
+<TD><A HREF="ClassBoxDialog.html#structdet">
+ClassBoxDialog</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="CollaborationBoxDialog.html#structdet">
+CollaborationBoxDialog</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="DiagramTypeSelector.html#structdet">
+DiagramTypeSelector</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="DragScene.html#structdet">
+DragScene</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    10</EM></TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>    12</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="DragView.html#structdet">
+DragView</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="DrawArea.html#structdet">
+DrawArea</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="Ellipse.html#structdet">
+Ellipse</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     8</EM></TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     8</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="HintBox.html#structdet">
+HintBox</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="Icon.html#structdet">
+Icon</A>
+</TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG>    20</STRONG></TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     7</EM></TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    20</EM></TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     8</EM></TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     8</TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG> 25600</STRONG></TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG>  1225</STRONG></TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG> 25600</STRONG></TD></TR>
+<TR>
+<TD><A HREF="LineType.html#structdet">
+LineType</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="MainWindow.html#structdet">
+MainWindow</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="MarkerBox.html#structdet">
+MarkerBox</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>    25</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>    25</TD></TR>
+<TR>
+<TD><A HREF="Note.html#structdet">
+Note</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     8</EM></TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     8</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="OptionsDialog.html#structdet">
+OptionsDialog</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QAction.html#structdet">
+QAction</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QActionGroup.html#structdet">
+QActionGroup</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QColor.html#structdet">
+QColor</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QContextMenuEvent.html#structdet">
+QContextMenuEvent</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QDialog.html#structdet">
+QDialog</A>
+</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QErrorMessage.html#structdet">
+QErrorMessage</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QFont.html#structdet">
+QFont</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsItem.html#structdet">
+QGraphicsItem</A>
+</TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG>    20</STRONG></TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    20</EM></TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsLineItem.html#structdet">
+QGraphicsLineItem</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsScene.html#structdet">
+QGraphicsScene</A>
+</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    12</EM></TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>    12</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsSceneMouseEvent.html#structdet">
+QGraphicsSceneMouseEvent</A>
+</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     8</EM></TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     8</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsTextItem.html#structdet">
+QGraphicsTextItem</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QGraphicsView.html#structdet">
+QGraphicsView</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QGridLayout.html#structdet">
+QGridLayout</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QImage.html#structdet">
+QImage</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QLabel.html#structdet">
+QLabel</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QLayout.html#structdet">
+QLayout</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QLayoutItem.html#structdet">
+QLayoutItem</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QLineF.html#structdet">
+QLineF</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QList.html#structdet">
+QList</A>
+</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QMainWindow.html#structdet">
+QMainWindow</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QMenu.html#structdet">
+QMenu</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QObject.html#structdet">
+QObject</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QPainter.html#structdet">
+QPainter</A>
+</TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG>    19</STRONG></TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    19</EM></TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QPainterPath.html#structdet">
+QPainterPath</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QPointF.html#structdet">
+QPointF</A>
+</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    10</EM></TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    10</EM></TD><TD ALIGN=RIGHT>    10</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QPolygonF.html#structdet">
+QPolygonF</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QRect.html#structdet">
+QRect</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QRectF.html#structdet">
+QRectF</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QString.html#structdet">
+QString</A>
+</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     9</EM></TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     9</EM></TD><TD ALIGN=RIGHT>     9</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QStyleOptionGraphicsItem.html#structdet">
+QStyleOptionGraphicsItem</A>
+</TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG>    18</STRONG></TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    18</EM></TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QTabWidget.html#structdet">
+QTabWidget</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QTextEdit.html#structdet">
+QTextEdit</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QWidget.html#structdet">
+QWidget</A>
+</TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG>    28</STRONG></TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG>    28</STRONG></TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="QXmlStreamReader.html#structdet">
+QXmlStreamReader</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="RoundedSquare.html#structdet">
+RoundedSquare</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     8</EM></TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>    10</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    64</EM></TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>   100</TD></TR>
+<TR>
+<TD><A HREF="ScenarioEnd.html#structdet">
+ScenarioEnd</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="ScenarioStart.html#structdet">
+ScenarioStart</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="TabManager.html#structdet">
+TabManager</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="TextBoxDialog.html#structdet">
+TextBoxDialog</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="Toolbar.html#structdet">
+Toolbar</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="Xml_io.html#structdet">
+Xml_io</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="anonymous.html#structdet">
+anonymous</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="bool.html#structdet">
+bool</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="dottedlinebah.html#structdet">
+dottedlinebah</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     7</EM></TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="dottedsqlineeah.html#structdet">
+dottedsqlineeah</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     7</EM></TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="lineBody.html#structdet">
+lineBody</A>
+</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    10</EM></TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>    10</EM></TD><TD ALIGN=RIGHT>    10</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG>  3600</STRONG></TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG>   900</STRONG></TD><TD ALIGN=RIGHT BGCOLOR="RED"><STRONG>  3600</STRONG></TD></TR>
+<TR>
+<TD><A HREF="qreal.html#structdet">
+qreal</A>
+</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="savePrompt.html#structdet">
+savePrompt</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="selfRefLine.html#structdet">
+selfRefLine</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     7</EM></TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="shapes.html#structdet">
+shapes</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="solidline.html#structdet">
+solidline</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     7</EM></TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="solidlineBAH.html#structdet">
+solidlineBAH</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     7</EM></TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="solidlineeah.html#structdet">
+solidlineeah</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     7</EM></TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="solidsqlinebah.html#structdet">
+solidsqlinebah</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     7</EM></TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="solidsqlineeah.html#structdet">
+solidsqlineeah</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     7</EM></TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="solidsqlineed.html#structdet">
+solidsqlineed</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     7</EM></TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="solidsqlinesd.html#structdet">
+solidsqlinesd</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT BGCOLOR="YELLOW"><EM>     7</EM></TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     7</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="string.html#structdet">
+string</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="test_xml_io.html#structdet">
+test_xml_io</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR>
+<TD><A HREF="ut_classbox.html#structdet">
+ut_classbox</A>
+</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+</TABLE>
+<H1><A NAME="other">Other Extents</A></H1>
+<TABLE BORDER WIDTH=100%>
+<TR>
+<TH BGCOLOR="AQUA" WIDTH=25%>Location</TH><TH BGCOLOR="AQUA" WIDTH=45%>Text</TH><TH BGCOLOR="AQUA" WIDTH=10%>LOC</TH><TH BGCOLOR="AQUA" WIDTH=10%>COM</TH><TH BGCOLOR="AQUA" WIDTH=10%>MVG</TH></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/actor.h:         1">../pummel/src/actor.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/borderlayout.h:         1">../pummel/src/borderlayout.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/classbox.h:         1">../pummel/src/classbox.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/classboxdialog.h:         1">../pummel/src/classboxdialog.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/collaborationboxdialog.h:         1">../pummel/src/collaborationboxdialog.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/derived_types.h:         1">../pummel/src/derived_types.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/dottedlinebah.h:         1">../pummel/src/dottedlinebah.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/dottedsqlineeah.h:         1">../pummel/src/dottedsqlineeah.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/dragscene.h:         1">../pummel/src/dragscene.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/dragview.h:         1">../pummel/src/dragview.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/ellipse.h:         1">../pummel/src/ellipse.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/global.h:         1">../pummel/src/global.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/hintbox.h:         1">../pummel/src/hintbox.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/icon.h:         1">../pummel/src/icon.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/linebody.h:        10">../pummel/src/linebody.h:10</A></CODE><BR>
+</TD>
+<TD>QT_BEGIN_NAMESPACE class QGraphicsPolygonItem </TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/linebody.h:        18">../pummel/src/linebody.h:18</A></CODE><BR>
+</TD>
+<TD>QT_END_NAMESPACE enum LineType </TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/linebody.h:        23">../pummel/src/linebody.h:23</A></CODE><BR>
+</TD>
+<TD>lineBody : public </TD><TD ALIGN=RIGHT>    54</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     6</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/linebody.h:         1">../pummel/src/linebody.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/mainwindow.h:         1">../pummel/src/mainwindow.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/markerbox.h:         1">../pummel/src/markerbox.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/note.h:         1">../pummel/src/note.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/optionsdialog.h:        14">../pummel/src/optionsdialog.h:14</A></CODE><BR>
+</TD>
+<TD>QT_BEGIN_NAMESPACE class QCheckBox </TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     4</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/optionsdialog.h:        19">../pummel/src/optionsdialog.h:19</A></CODE><BR>
+</TD>
+<TD>QT_END_NAMESPACE class OptionsDialog </TD><TD ALIGN=RIGHT>    26</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/optionsdialog.h:         1">../pummel/src/optionsdialog.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/params.h:         1">../pummel/src/params.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/roundedsquare.h:         1">../pummel/src/roundedsquare.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/saveprompt.h:         1">../pummel/src/saveprompt.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/scenarioend.h:         1">../pummel/src/scenarioend.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/scenariostart.h:         1">../pummel/src/scenariostart.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/selfrefline.h:         1">../pummel/src/selfrefline.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/shapes.h:         1">../pummel/src/shapes.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidline.h:         1">../pummel/src/solidline.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidlinebah.h:         1">../pummel/src/solidlinebah.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidlineeah.h:         1">../pummel/src/solidlineeah.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidsqlinebah.h:         1">../pummel/src/solidsqlinebah.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidsqlineeah.h:         1">../pummel/src/solidsqlineeah.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidsqlineed.h:         1">../pummel/src/solidsqlineed.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidsqlinesd.h:         1">../pummel/src/solidsqlinesd.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/tabmanager.h:         1">../pummel/src/tabmanager.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/textboxdialog.h:         1">../pummel/src/textboxdialog.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/toolbar.h:        23">../pummel/src/toolbar.h:23</A></CODE><BR>
+</TD>
+<TD>QT_BEGIN_NAMESPACE class QCheckBox </TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/toolbar.h:        29">../pummel/src/toolbar.h:29</A></CODE><BR>
+</TD>
+<TD>QT_END_NAMESPACE class Toolbar </TD><TD ALIGN=RIGHT>    75</TD><TD ALIGN=RIGHT>     8</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/toolbar.h:         1">../pummel/src/toolbar.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/xml_io.h:         1">../pummel/src/xml_io.h:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/actor.cpp:         1">../pummel/src/actor.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/borderlayout.cpp:         1">../pummel/src/borderlayout.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/classbox.cpp:         1">../pummel/src/classbox.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/classboxdialog.cpp:         1">../pummel/src/classboxdialog.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/collaborationboxdialog.cpp:         1">../pummel/src/collaborationboxdialog.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/diagramtypeselector.cpp:         1">../pummel/src/diagramtypeselector.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/dottedlinebah.cpp:         1">../pummel/src/dottedlinebah.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/dottedsqlineeah.cpp:         1">../pummel/src/dottedsqlineeah.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/dragscene.cpp:         1">../pummel/src/dragscene.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/dragview.cpp:         1">../pummel/src/dragview.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/drawarea.cpp:         1">../pummel/src/drawarea.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/ellipse.cpp:         1">../pummel/src/ellipse.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/global.cpp:         1">../pummel/src/global.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     6</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/hintbox.cpp:         1">../pummel/src/hintbox.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/icon.cpp:         1">../pummel/src/icon.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     5</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/linebody.cpp:         1">../pummel/src/linebody.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/main.cpp:         1">../pummel/src/main.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/mainwindow.cpp:         1">../pummel/src/mainwindow.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/markerbox.cpp:         1">../pummel/src/markerbox.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/note.cpp:         1">../pummel/src/note.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/optionsdialog.cpp:         1">../pummel/src/optionsdialog.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/roundedsquare.cpp:         1">../pummel/src/roundedsquare.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/saveprompt.cpp:         1">../pummel/src/saveprompt.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/scenarioend.cpp:         1">../pummel/src/scenarioend.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/scenariostart.cpp:         1">../pummel/src/scenariostart.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/selfrefline.cpp:         1">../pummel/src/selfrefline.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/shapes.cpp:         1">../pummel/src/shapes.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidline.cpp:         1">../pummel/src/solidline.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidlinebah.cpp:         1">../pummel/src/solidlinebah.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidlineeah.cpp:         1">../pummel/src/solidlineeah.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidsqlinebah.cpp:         1">../pummel/src/solidsqlinebah.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidsqlineeah.cpp:         1">../pummel/src/solidsqlineeah.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidsqlineed.cpp:         1">../pummel/src/solidsqlineed.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/solidsqlinesd.cpp:         1">../pummel/src/solidsqlinesd.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/tabmanager.cpp:         1">../pummel/src/tabmanager.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     3</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/textboxdialog.cpp:         1">../pummel/src/textboxdialog.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/toolbar.cpp:         1">../pummel/src/toolbar.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     1</TD><TD ALIGN=RIGHT>     0</TD></TR>
+<TR><TD><CODE><A HREF="cccc_src.html#../pummel/src/xml_io.cpp:         1">../pummel/src/xml_io.cpp:1</A></CODE><BR>
+</TD>
+<TD>&lt;file scope items&gt;</TD><TD ALIGN=RIGHT>     2</TD><TD ALIGN=RIGHT>     0</TD><TD ALIGN=RIGHT>     0</TD></TR>
+</TABLE>
+<H1><A NAME="infocccc">About CCCC</A></H1>
+<P>This report was generated by the program CCCC, which is FREELY REDISTRIBUTABLE but carries NO WARRANTY.
+<P>CCCC was developed by Tim Littlefair. 
+as part of a PhD research project. This project is now completed and descriptions of the findings can be accessed at <A HREF=http://www.chs.ecu.edu.au/~tlittlef>http://www.chs.ecu.edu.au/~tlittlef</A>. <P>User support for CCCC can be obtained by <A HREF=mailto:cccc-users@lists.sourceforge.net>mailing the list cccc-users@lists.sourceforge.net</A>.<P>Please also visit the CCCC development website at <A HREF=http://cccc.sourceforge.net>http://cccc.sourceforge.net</A>.
+</BODY></HTML>
