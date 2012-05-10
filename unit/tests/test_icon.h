@@ -15,32 +15,21 @@ class test_icon : public CxxTest::TestSuite
 public:
    void test_boundingRect()
    {
-/*
-     QRectF expected = QRectF(0,0,5,5);
-     Icon* actual;
-     QRectF actual1 = actual->boundingRect(); 
-     TS_ASSERT( actual1 == expected );
-     TS_ASSERT_EQUALS( actual1, expected );
- 
-     delete actual;
-*/
    }
    void test_getWidth_setSize()
    {
-/*
      int expected = 5;
-     Icon* example;
+     Icon* example = new Ellipse;
      example->setSize(expected,0);
 
      TS_ASSERT( example->getWidth() == expected );
      TS_ASSERT_EQUALS( expected, example->getWidth() ); 
 
      delete example;
-*/
    } 
+
    void test_getHeight_setSize()
    { 
-/*
      int actual;
      int expected = 5;
      Icon* example = new Ellipse;
@@ -51,14 +40,13 @@ public:
      TS_ASSERT_EQUALS( actual, expected  );
 
      delete example;
-*/
    } 
+
    void test_set_Pos_get_XPos()
    {
-/*
      int actual;
      int expected = 5;
-     Icon* example;
+     Icon* example = new Ellipse;
      example->set_Pos(expected, 1);
      actual = example->get_xPos();
 
@@ -66,14 +54,13 @@ public:
      TS_ASSERT_EQUALS( actual, expected  );
 
      delete example;
-*/
    }
+
    void test_set_Pos_get_YPos()
    {
-/*
      int actual;
      int expected = 5;
-     Icon *example;
+     Icon *example = new Ellipse;
      example->set_Pos(1, expected);
      actual = example->get_yPos();
 
@@ -81,11 +68,10 @@ public:
      TS_ASSERT_EQUALS( actual, expected  );
 
      delete example;
-*/
    }
+
    void test_setState_getState()
    {
-/*
      int actual;
      int expected = 1;
      Icon* example = new Ellipse;
@@ -96,12 +82,10 @@ public:
      TS_ASSERT_EQUALS( actual, expected  );
 
      delete example;
-*/
     }
 
    void test_setShapetype_reportShapetype()
    {
-/*
      QString expected = "testShape!";
 
      Icon* example = new Ellipse;
@@ -112,21 +96,9 @@ public:
      TS_ASSERT_EQUALS( actual, expected);
      
      delete example;
-*/
    }
+
    void test_setText_getLabel()
    {
-/*
-     QString expected = "test text string!!";
-     
-     Icon* example = new Ellipse;
-     example->setText(expected);
-     QString actual = example->getLabel();
-
-     TS_ASSERT( actual == expected );
-     TS_ASSERT_EQUALS( actual, expected);
-     
-     delete example;
-*/
    }
 };
