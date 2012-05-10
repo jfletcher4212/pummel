@@ -577,55 +577,33 @@ Section\ \ Page}
 \bigskip
 
 \bigskip
+
 \setcounter{page}{1}\pagestyle{Convertiv}
 
 \section[IDENTIFIER]{\selectlanguage{english}\bfseries\color{black}
 TEST PLAN IDENTIFIER}
-
-{\selectlanguage{english}\itshape\color{black}
-Some type of unique company generated number to identify this test
-plan, its level and the level of software that it is related
-to. Preferably the test plan level will be the same as the related
-software level. The number may also identify whether the test plan is
-a Master plan, a Level plan, an integration plan or whichever plan
-level it represents. This is to assist in coordinating software and
-testware versions within configuration management.
-}
-
 {\selectlanguage{english}\color{black}
-[Insert text here.]}
+PUML\_V1\_CS384
+}
 
 
 \section[REFERENCES]{\selectlanguage{english}\bfseries\color{black}
 REFERENCES}
-
-{\selectlanguage{english}\itshape\color{black}
-List all documents that support this test plan. Refer to the actual
-version/release number of the document as stored in the configuration
-management system. Do not duplicate the text from other documents as
-this will reduce the viability of this document and increase the
-maintenance effort.
-}
-
 {\selectlanguage{english}\color{black}
-[Insert text here.]}
-
-
+\begin{list}{-}{ }
+\item \textbf{SYSTEMS AND SOFTWARE REQUIREMENTS SPECIFICATION (SSRS) FOR
+PUML : Project UML} Version 1.1
+\item \textbf{SYSTEM AND SOFTWARE DESIGN DESCRIPTION (SSDD): Incorporating
+Architectural Views and Detailed Design Criteria FOR Project: UML} Version 1.1
+\end{list}
+}
 
 \section[INTRODUCTION]{\bfseries\color{black} INTRODUCTION}
 {\selectlanguage{english}\color{black}
-This test plan is designed to test and evaluate functionality in the Pummel UML editor. It describes a lower level test design. GUI elements, file operations, and diagram error checking will be addressed.
+This test plan is designed to test and evaluate functionality in the Pummel UML editor. It describes a master test design. GUI elements, file operations, and diagram error checking will be addressed.
 }
 
 \section[TEST ITEMS]{\bfseries\color{black} TEST ITEMS}
-
-{\selectlanguage{english}\itshape\color{black}
-These are things you intend to test within the scope of this test
-plan. Essentially, something you will test, a list of what is to be
-tested. This can be developed from the software application
-inventories as well as other sources of documentation and information.
-}
-
 {\selectlanguage{english}\color{black}
 {\bfseries\color{black} Functions To Be Tested}
 \begin{list}{-}{ }
@@ -665,13 +643,6 @@ Due to the scholarly nature of this work, it may be hard to update this UML edit
 }
 
 \section[FEATURES TO BE TESTED]{\bfseries\color{black} FEATURES TO BE TESTED}
-{\selectlanguage{english}\itshape\color{black}
-
-This is a listing of what is to be tested from the USERS viewpoint of
-what the system does. This is not a technical description of the
-software, but a USERS view of the functions.
-
-}
 {\selectlanguage{english}\color{black}
 \begin{list}{-}{ }
 \item High Priority:
@@ -703,32 +674,14 @@ software, but a USERS view of the functions.
 
 \section[FEATURES NOT TO BE TESTED]{\bfseries\color{black}
 	 FEATURES NOT TO BE TESTED}
-{\selectlanguage{english}\itshape\color{black}
-
-This is a listing of what is NOT to be tested from both the Users
-viewpoint of what the system does and a configuration
-management/version control view. This is not a technical description
-of the software, but a USERS view of the functions.
-
-}
 {\selectlanguage{english}\color{black}
-[Insert text here.]}
+\begin{list}{-}{ }
+\item Undo/Redo - Have been removed from the 1.0 feature list.
+\item Some individual icons will not be as rigorously tested, as they are all based on the same format.
+\end{list}
+}
 
 \section[APPROACH]{\bfseries\color{black} APPROACH}
-{\selectlanguage{english}\itshape\color{black}
-
-This is your overall test strategy for this test plan; it should be
-appropriate to the level of the plan (master, acceptance, etc.) and
-should be in agreement with all higher and lower levels of
-plans. Overall rules and processes should be identified. 
-
-\begin{itemize}
-\item Are any special tools to be used? What are they?
-\item What metrics will be collected for this test?
-\item How many configurations/platforms are to be tested?
-\item How will elements in the design deemed "untestable" be processed?
-\end{itemize}
-}
 {\selectlanguage{english}\color{black}
 We use three different phases of testing for the entire project:
 
@@ -739,177 +692,165 @@ We use three different phases of testing for the entire project:
 \end{enumerate}
 
 \subsection{Unit Testing}
-Since the project is almost entirely GUI based, satisfactory unit testing can be a difficult task. Our code allows for a rigorous Model View Control implementation. This was accomplished by separating the logical and GUI based code, as they cannot be tested in the same manner.
+Since the project is almost entirely GUI based, satisfactory unit testing can be a difficult task. To account for this, we refactored our code to follow a more rigorous Model View Control implementation. This was accomplished by separating the logical parts of the code from the code that invokes GUI events (which cannot be truly unit tested).
+Take the saveAsFile method as an example. This method is composed of three parts:
 
-Using the saveAsFile method as an example, this method is composed of three parts: invoking a dialogue box to enter the filename, writing the current diagram into XML, and opening a new tab. The first and third parts are invoking GUI events, which means this method cannot be fully unit tested independent of the GUI itself. This means it can only truly be tested during an integration test. However, since writing the XML document contains all the logic of the method (branching, loops, etc.) with no GUI interaction, it can be moved to a helper method and unit tested completely independent of GUI events. The GUI events can be tested in the later integration testing phase. Thus, we can confidently conclude that the saveFileAs process is tested to a satisfactory level.
+\begin{list}{-}{ }
+\item Invoking a dialogue box to enter the filename
+\item Writing the current diagram into XML
+\item Opening a new tab
+\end{list}
 
-In order to actually unit test these methods, we will use the CxxTest framework. To write a test for a given class or file, the class and function definitions are written in a header file. From that header file is generated a .cpp file which is compiled individually and linked with the project, producing an executable unit test. Because every building step is automated by an in-house written makefile, the only training needed to use the tool is covered by the also in-house example template that displays proper class syntax and test macro calls.
+Since the first and third parts are invoking GUI events, this method cannot be fully unit tested independently of the GUI itself. It can only be tested during an integration test. However, since XML writing contains all the logic of the method (branching, loops, etc.) with no GUI interaction, it can be moved to a helper method and be unit tested independently of GUI events. At that point, when GUI events have been tested in the integration testing phase, and the logical portion is independently unit tested, we can conclude that the saveFileAs process is tested to a satisfactory level.\newline
+
+In order to perform thorough unit testing, two things must be achieved: data coverage and branch coverage. The tool we use for data coverage is CXXTest. This is the framework that will test the logical portions of the code and supply a variety of data to test all possible inputs.\newline
+The tool used for coverage testing is Trucov. Coverage testing is done on both the logical portions of the code as well as the GUI event portions. To test for coverage on the logical portions, the tool is run over the unit tests. The GUI event coverage testing is automated with a tool called Open HMI Tester, which is simply a GUI recorder that will launch the program and walk through a series of actions within the GUI.
 
 \subsection{Integration Testing}
-NEEDS EDITING
-This is the phase where the actual GUI events are tested. During this phase, all of the use cases will be walked through manually while confirming that the right events are being invoked based on input. For these individual use case tests, each test must be run as independently as possible, with minimal set-up. This is to observe the behaviour of each use case completely independent of the others.
+In this phase the actual GUI events are tested. During this phase, all of the use cases will be walked through manually while confirming that the right events are being invoked based on input. For these individual use case tests, each test must be run as independently as possible, with minimal setup. This is to observe the behaviour of each use case completely independent of the others.\newline
+As these individual test cases are walked through, the GUI events taking place are recorded with a GUI recorder (Open HMI Tester). This way the process of rerunning the test cases is automated so that as adjustments are made one could simply launch a script and let the integration tests happen by themselves. Since the test cases are automated, coverage testing is also run over the project as the integration tests are executed. In this manner we are able to get coverage reports on the GUI portions of the code that could not be unit tested. Unit testing coverage in addition to this style of integration testing coverage results in the ability to get coverage on the entire project and leave no line of code untouched.\newline
+The integration testing phase tests GUI events. During this phase, the application is fully assembled. All integration tests will be run on the full application. The testers will follow the test cases included in this test plan. Each test case draws from a use case from the Use Case diagram. Each test case contains its own setup instructions, and its own criteria for success.
 
 \subsection{Functional Testing}
-NEEDS EDITING
 The functional phase is where the usage of the UML editor is tested to a much higher degree. Rather than testing each use case individually, there will be a variety of users selected to attempt to produce UML diagrams of different types and magnitudes. This will produce a very large variety of permutations of use cases, and allow us to observe how the use cases behave when used together.
+The functional testers will have a minimum set of tasks that must be performed within the application for it to be considered a thorough enough run. These minimum requirements include:
+\begin{list}{-}{ }
+\item At least one of every icon available
+\item At least ten icons total
+\item At least one of every line available
+\item At least one note icon
+\item Must save the diagram at least one time
+\item Must re-open the diagram after exiting for the first time
+\item Must attempt all above criteria with each available diagram type
+\end{list}
+\begin{itemize}
+\item \textbf{Tools}
+\begin{itemize}
+\item CXX unit testing tool
+\end{itemize}
+\item \textbf{Platforms}
+\begin{itemize}
+\item Windows 7
+\item Ubuntu Linux
+\item Mac OS X
+\end{itemize}
+\end{itemize}
 }
 
 \section[ITEM PASS/FAIL CRITERIA]{\bfseries\color{black}
 	 ITEM PASS/FAIL CRITERIA}
-{\selectlanguage{english}\itshape\color{black}
-What are the Completion criteria for this plan? This is a critical
-aspect of any test plan and should be appropriate to the level of the plan.
-}
 {\selectlanguage{english}\color{black}
-[Insert text here.]}
+The completion criteria for this plan are as follows:
+\begin{list}{-}{ }
+\item All Unit Tests complete with 95 percent success rate.
+\item All Unit Tests report 95 percent coverage, barring documented exceptions. 
+\item All Integration tests complete with 95 percent success rate, barring documented exceptions.
+\item Functional tests are completed by users who report no large problems, for a 95 percent effectiveness rating. 
+\end{list}
+}
 
 \section[SUSPENSION CRITERIA]{\bfseries\color{black}
 	 SUSPENSION CRITERIA AND RESUMPTION REQUIREMENTS}
-{\selectlanguage{english}\itshape\color{black}
-If the number or type of defects reaches a point where the follow on
-testing has no value, it makes no sense to continue the test; you are
-just wasting resources.
 
-Specify what constitutes stoppage for a test or series of tests and
-what is the acceptable level of defects that will allow the testing to
-proceed past the defects. 
-}
 {\selectlanguage{english}\color{black}
-[Insert text here.]}
+\begin{list}{-}{ }
+\item Unit Testing
+\begin{list}{-}{ }
+\item Stopping a series of tests: More than 80 percent failure.
+\item Acceptable level of defects is 20 percent failure for continued testing before refactoring.
+\end{list}
+\item Integration Testing
+\begin{list}{-}{ }
+\item Stopping a series of tests: More than 80 percent failure.
+\item Acceptable level of defects is 20 percent failure for continued testing before refactoring.
+\end{list}
+\item Functional Testing
+\begin{list}{-}{ }
+\item Stopping a series of tests: Users report errors that render program useless.
+\item Acceptable defects include problems with graphical interface or rules, that still allow user to continue using program. These will later be refactored.
+\end{list}
+
+\end{list}
+}
 
 \section[TEST DELIVERABLES]{\bfseries\color{black} TEST DELIVERABLES}
-{\selectlanguage{english}\itshape\color{black}
-What is to be delivered as part of this plan?
-
+{\selectlanguage{english}\color{black}
 \begin{itemize}
 \item Test plan document
-\item Test cases
-\item Relevant error logs or problem reports
+\item Test cases 
+\item Error log of failed tests
+\begin{itemize}
+\item Actions Taken
 \end{itemize}
-One thing that is not a test deliverable is the software itself that
-is listed under test items and is delivered by development.
+\end{itemize}
 }
-{\selectlanguage{english}\color{black}
-[Insert text here.]}
 
 \section[REMAINING TEST TASKS]{\bfseries\color{black} REMAINING TEST TASKS}
-{\selectlanguage{english}\itshape\color{black}
-If this is a multi-phase process or if the application is to be
-released in increments there may be parts of the application that this
-plan does not address. These areas need to be identified to avoid any
-confusion should defects be reported back on those future
-functions. This will also allow the users and testers to avoid
-incomplete functions and prevent waste of resources chasing non-defects.
-}
 {\selectlanguage{english}\color{black}
-[Insert text here.]}
+\begin{list}{-}{ }
+\item Undo/Redo have been postponed until Version .01
+\item Further diagrams will be added to future versions, and are not to be sought out in the current edition.
+\end{list}
+}
 
 \section[ENVIRONMENTAL NEEDS]{\bfseries\color{black} ENVIRONMENTAL NEEDS}
-{\selectlanguage{english}\itshape\color{black}
-Are there any special requirements for this test plan, such as:
-
-\begin{itemize}
-\item Special hardware such as simulators, static generators etc.
-\item How will test data be provided. Are there special collection
-	requirements or specific ranges of data that must be provided? 
-\end{itemize}
-
-}
 {\selectlanguage{english}\color{black}
-[Insert text here.]}
+For this small scale of testing there are very little as far as outside needs. All tests will be conducted on local machines on a variety of platform, using manual insertion, and GUI testing tools. Testing will continue on each part until the results match the desired results for each respective part.
+
+\begin{list}{-}{ }
+\item Software
+\begin{list}{-}{ }
+\item CXXTest
+\item Valgrind
+\item Trucov
+\item Wiki Knowledge
+\item Qt Framework
+\end{list}
+\end{list}
+}
 
 \section[STAFFING AND TRAINING NEEDS]{\bfseries\color{black}
 	 STAFFING AND TRAINING NEEDS}
-{\selectlanguage{english}\itshape\color{black}
-Training on the application/system.
-
-Training for any test tools to be used. 
-}
 {\selectlanguage{english}\color{black}
-[Insert text here.]}
+Training will be required for the members of the team doing the testing to be able to work the testing software. Also any outside testers that are brought on will have to be trained on the workings of the program.
+
+We designed the software so that minimal training is needed to run it. However, testers are assumed to have familiarity with UML diagrams. Each tester will be given a quick tutorial (or quick reference card?) on the software's basic functionality, and will be expected to refer to the help documentation if any difficulties arise.
+
+Staff training will include the training in the use of the Cxx unit testing framework, the trucov coverage tester, the Open HMI GUI recorder, and the in-house makefile that automates the majority of tool use and also generates test reports on the wiki repository.
+
+ 
+}
 
 \section[RESPONSIBILITIES]{\bfseries\color{black} RESPONSIBILITIES}
-{\selectlanguage{english}\itshape\color{black}
-Who is in charge?
-
-This issue includes all areas of the plan. Here are some examples:
-
-\begin{itemize}
-\item Selecting features to be tested and not tested.
-\item Ensuring all required elements are in place for testing. 
-\end{itemize}
-}
 {\selectlanguage{english}\color{black}
-[Insert text here.]}
+Each team member will individually add their own parts to the test plans, that includes creating unit tests for individual sections of code and being able to run the unit test framework(Cxx Test) as well as the coverage tester (trucov) on their individual machines or on a VM.
+}
 
 \section[SCHEDULE]{\bfseries\color{black} SCHEDULE}
-{\selectlanguage{english}\itshape\color{black}
-
-Should be based on realistic and validated estimates. If the estimates
-for the development of the application are inaccurate, the entire
-project plan will slip and the testing is part of the overall project plan.
-
-}
 {\selectlanguage{english}\color{black}
-[Insert text here.]}
+\begin{list}{-}{ }
+\item Unit Testing is to be conducted April 16-26th.
+\item Integration Testing is to be conducted April 27th-May 3rd.
+\item Functional Testing is to be conducted May 3rd-9th
+\end{list}
+}
 
 \section[PLANNING RISKS AND CONTINGENCIES]{\bfseries\color{black}
 	 PLANNING RISKS AND CONTINGENCIES}
-{\selectlanguage{english}\itshape\color{black}
-
-What are the overall risks to the project with an emphasis on the
-testing process? Specify what will be done for various risk events.
-
-}
 {\selectlanguage{english}\color{black}
-[Insert text here.]}
+Ample time is allotted for testing even given possible delays, but in case of running short on given time, tests will begin before the remaining functionalities of the program are functional, or even included. This may require multiple retests as each new function is implemented and weaken the final test suit, but will have each piece tested before final date
+}
 
 \section[APPROVALS]{\bfseries\color{black} APPROVALS}
-{\selectlanguage{english}\itshape\color{black}
-
-Who can approve the process as complete and allow the project to
-proceed to the next level (depending on the level of the plan)? 
-
-}
 {\selectlanguage{english}\color{black}
-[Insert text here.]}
+Approvals for test will originate within the group from individuals working on specific parts that are to be tested. As each different function is added it will be approved for the given test case corresponding to it, and testing will begin as soon as milestone 3 is reached, or when the delivery date for milestone 3 has been passed and there is sufficient testable product.
+
+With regards to unit testing, a module is considered sufficiently tested when its report on the wiki repository displays satisfactory test and coverage results. These reports will be verified by a minimum of two team members (in addition to the author) and then be signed off after the report and the tests themselves are deemed sufficient.}
 
 \section[GLOSSARY]{\bfseries\color{black} GLOSSARY}
-
-{\selectlanguage{english}\itshape\color{black}
-
-Used to define terms and acronyms used in the document, and testing in
-general, to eliminate confusion and promote consistent communications.
-
+{\selectlanguage{english}\color{black}
+Icon - A graphic object used in UML Diagrams, such as an ellipse, classbox, rounded square, etc. 
 }
-{\selectlanguage{english}\color{black}
-[Insert text here.]}
-
-
-
-\clearpage\setcounter{page}{1}\pagestyle{Convertviii}
-\section[APPENDIX A. \ [insert name
-here{]}]{\selectlanguage{english}\bfseries\color{black} APPENDIX A.
-\ [insert name here]}
-{\selectlanguage{english}\itshape\color{black}
-Include copies of test examples, etc. supplied or
-derived from the customer. \ Appendices are labeled A, B, {\dots}n.
-\ \ Reference each appendix as appropriate in the text of the document.
-}
-
-{\selectlanguage{english}\color{black}
-\ [ insert appendix A here ]}
-
-\clearpage\setcounter{page}{1}\pagestyle{Convertix}
-\section[APPENDIX B. \ [insert name
-here{]}]{\selectlanguage{english}\bfseries\color{black} APPENDIX B.
-\ [insert name here]}
-
-\bigskip
-
-{\selectlanguage{english}\color{black}
-[ insert appendix B here ]}
-
 
 \bigskip
 \end{document}
